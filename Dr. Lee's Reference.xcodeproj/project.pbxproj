@@ -47,6 +47,8 @@
 		113DE9031843FBF70080B038 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 113DE9001843FBF70080B038 /* LICENSE */; };
 		113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE9021843FBF70080B038 /* MBProgressHUD.m */; };
 		11581FD218452150004186F2 /* DrugsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD118452150004186F2 /* DrugsLoader.m */; };
+		11581FD518453598004186F2 /* DrugSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD418453598004186F2 /* DrugSummaryViewController.m */; };
+		11581FD81845513E004186F2 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD71845513D004186F2 /* Util.m */; };
 		11FC406E18443047007EF755 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FC406D18443047007EF755 /* TabBarController.m */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +119,10 @@
 		113DE9021843FBF70080B038 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		11581FD018452150004186F2 /* DrugsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugsLoader.h; sourceTree = "<group>"; };
 		11581FD118452150004186F2 /* DrugsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsLoader.m; sourceTree = "<group>"; };
+		11581FD318453598004186F2 /* DrugSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSummaryViewController.h; sourceTree = "<group>"; };
+		11581FD418453598004186F2 /* DrugSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSummaryViewController.m; sourceTree = "<group>"; };
+		11581FD61845513D004186F2 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		11581FD71845513D004186F2 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		11FC406C18443047007EF755 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		11FC406D18443047007EF755 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +195,8 @@
 				113DE8F81843F2230080B038 /* Libs */,
 				113DE8B81843DBFA0080B038 /* Model */,
 				113DE8841843D8420080B038 /* Supporting Files */,
+				11581FD61845513D004186F2 /* Util.h */,
+				11581FD71845513D004186F2 /* Util.m */,
 				113DE8EA1843E1010080B038 /* View */,
 			);
 			path = "Dr. Lee's Reference";
@@ -281,6 +289,8 @@
 		113DE8EA1843E1010080B038 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				11581FD318453598004186F2 /* DrugSummaryViewController.h */,
+				11581FD418453598004186F2 /* DrugSummaryViewController.m */,
 				113DE8EE1843E25A0080B038 /* SearchViewController.h */,
 				113DE8EF1843E25A0080B038 /* SearchViewController.m */,
 				11FC406C18443047007EF755 /* TabBarController.h */,
@@ -423,6 +433,7 @@
 				113DE8CC1843DC240080B038 /* ChemicalType_Lookup.m in Sources */,
 				113DE8CE1843DC240080B038 /* Product_TECode.m in Sources */,
 				11581FD218452150004186F2 /* DrugsLoader.m in Sources */,
+				11581FD518453598004186F2 /* DrugSummaryViewController.m in Sources */,
 				113DE8F01843E25A0080B038 /* SearchViewController.m in Sources */,
 				113DE8CB1843DC240080B038 /* AppDocType_Lookup.m in Sources */,
 				113DE8C91843DC240080B038 /* Product.m in Sources */,
@@ -430,6 +441,7 @@
 				113DE88E1843D8420080B038 /* AppDelegate.m in Sources */,
 				11FC406E18443047007EF755 /* TabBarController.m in Sources */,
 				113DE88A1843D8420080B038 /* main.m in Sources */,
+				11581FD81845513E004186F2 /* Util.m in Sources */,
 				113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

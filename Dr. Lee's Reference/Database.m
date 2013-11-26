@@ -29,7 +29,7 @@
 {
     if (self = [super init])
     {
-        self.persistentStoreCoordinator;
+//        self.persistentStoreCoordinator;
     }
     return self;
 }
@@ -137,19 +137,51 @@
         
         if (dict)
         {
-            NSMutableArray *drugs = [dict objectForKey:@"Products"];
+//            NSMutableArray *drugs = [dict objectForKey:@"Products"];
+//            
+//            [drugs addObject:p];
             
-            [drugs addObject:p];
+            NSMutableArray *arrForms = [dict objectForKey:@"Forms and Strengths"];
+            BOOL bHasForm = NO;
+            for (NSMutableDictionary *dictForms in arrForms)
+            {
+                if ([dictForms objectForKey:p.form])
+                {
+                    NSMutableString *forms = [dictForms objectForKey:p.form];
+                    
+                    if (![Util string:forms containsString:p.dosage])
+                    {
+                        [forms appendFormat:@"%@%@", forms.length > 0 ? @"; ":@"", p.dosage];
+                    }
+                    bHasForm = YES;
+                }
+            }
+            
+            if (!bHasForm)
+            {
+                NSMutableDictionary *dictForms = [[NSMutableDictionary alloc] init];
+                NSMutableString *forms = [[NSMutableString alloc] init];
+                [forms appendFormat:@"%@", p.dosage];
+                [dictForms setObject:forms forKey:p.form];
+                [arrForms addObject:dictForms];
+            }
         }
         else
         {
             dict = [[NSMutableDictionary alloc] init];
-            NSMutableArray *drugs = [[NSMutableArray alloc] init];
-            [drugs addObject:p];
             
             [dict setObject:p.drugName forKey:@"Drug Name"];
-            [dict setObject:p.activeIngred forKey:@"Active Ingredient"];
-            [dict setObject:drugs forKey:@"Products"];
+            [dict setObject:p.activeIngred forKey:@"Active Ingredient(s)"];
+            
+            NSMutableDictionary *dictForms = [[NSMutableDictionary alloc] init];
+            NSMutableString *forms = [[NSMutableString alloc] init];
+            [forms appendFormat:@"%@", p.dosage];
+            [dictForms setObject:forms forKey:p.form];
+            NSMutableArray *arrForms = [[NSMutableArray alloc] init];
+            [arrForms addObject:dictForms];
+            [dict setObject:arrForms forKey:@"Forms and Strengths"];
+            
+            
             [arrDrugs addObject:dict];
         }
     }

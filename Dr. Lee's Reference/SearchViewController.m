@@ -159,9 +159,20 @@
     NSDictionary *dict = [arr objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [dict objectForKey:@"Drug Name"];
-    cell.detailTextLabel.text = [dict objectForKey:@"Active Ingredient"];
+    cell.detailTextLabel.text = [dict objectForKey:@"Active Ingredient(s)"];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *prefix = [_keys objectAtIndex:indexPath.section];
+    NSArray *arr = [_content objectForKey:prefix];
+    
+    DrugSummaryViewController *summaryVC = [[DrugSummaryViewController alloc] init];
+    summaryVC.drugSummary = [arr objectAtIndex:indexPath.row];
+    
+    [self.navigationController pushViewController:summaryVC animated:YES];
 }
 
 -(void) search

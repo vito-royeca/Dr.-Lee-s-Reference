@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "Database.h"
+#import "DrugSummaryViewController.h"
 #import "MBProgressHUD.h"
 
 @interface SearchViewController : UIViewController<MBProgressHUDDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
