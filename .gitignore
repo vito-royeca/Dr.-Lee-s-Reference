@@ -1,0 +1,40 @@
+# Mac OS X
+*.DS_Store
+ 
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+omeotte.xcworkspace/xcuserdata/jovitoroyeca.xcuserdatad/UserInterfaceState.xcuserstate
+project.xcworkspace/
+xcuserdata/
+.idea
+ 
+#Eclipse
+.metadata
+*/bin/dexedLibs/*
+*/bin/*.apk
+*/bin/classes.dex
+*/bin/resources.ap_
+*/bin/jarlist.cache
+*/bin/salesforcesdk.jar
+
+# Generated files
+*.o
+*.pyc
+*.hi
+ 
+#Python modules
+MANIFEST
+dist/
+build/
+ 
+# Backup files
+*~.nib
+\#*#
+.#*
+*.swp
+*.un~
+

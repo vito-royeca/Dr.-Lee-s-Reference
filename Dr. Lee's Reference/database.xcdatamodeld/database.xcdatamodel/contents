@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AppDoc" representedClassName="AppDoc" syncable="YES">
+        <attribute name="actionType" attributeType="String" syncable="YES"/>
+        <attribute name="appDocID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="docDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="docTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duplicateCounter" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="seqNo" attributeType="String" syncable="YES"/>
+        <relationship name="applNo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Application" syncable="YES"/>
+        <relationship name="docType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AppDocType_Lookup" syncable="YES"/>
+    </entity>
+    <entity name="AppDocType_Lookup" representedClassName="AppDocType_Lookup" syncable="YES">
+        <attribute name="appDocType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sortOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Application" representedClassName="Application" syncable="YES">
+        <attribute name="actionType" attributeType="String" syncable="YES"/>
+        <attribute name="applNo" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="applType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentPatentFlag" attributeType="Boolean" syncable="YES"/>
+        <attribute name="mostRecentLabelAvailableFlag" attributeType="Boolean" syncable="YES"/>
+        <attribute name="orphanCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sponsorApplicant" attributeType="String" syncable="YES"/>
+        <attribute name="therapeuticPotential" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="chemicalType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChemicalType_Lookup" syncable="YES"/>
+    </entity>
+    <entity name="ChemicalType_Lookup" representedClassName="ChemicalType_Lookup" syncable="YES">
+        <attribute name="chemicalTypeCode" attributeType="String" syncable="YES"/>
+        <attribute name="chemicalTypeDescription" attributeType="String" syncable="YES"/>
+        <attribute name="chemicalTypeID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="DocType_Lookup" representedClassName="DocType_Lookup" syncable="YES">
+        <attribute name="docType" attributeType="String" syncable="YES"/>
+        <attribute name="docTypeDesc" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Product" representedClassName="Product" syncable="YES">
+        <attribute name="activeIngred" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dosage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="drugName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="form" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productMktStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="productNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="referenceDrug" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="teCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="applNo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Application" syncable="YES"/>
+    </entity>
+    <entity name="Product_TECode" representedClassName="Product_TECode" syncable="YES">
+        <attribute name="productMktStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="teCode" attributeType="String" syncable="YES"/>
+        <attribute name="teSequence" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="applNo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Application" syncable="YES"/>
+        <relationship name="productNo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" syncable="YES"/>
+    </entity>
+    <entity name="RegActionDate" representedClassName="RegActionDate" syncable="YES">
+        <attribute name="actionDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="actionType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duplicateCounter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inDocTypeSeqNo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="applNo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Application" syncable="YES"/>
+        <relationship name="docType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocType_Lookup" syncable="YES"/>
+    </entity>
+    <entity name="ReviewClass_Lookup" representedClassName="ReviewClass_Lookup" syncable="YES">
+        <attribute name="longDescription" attributeType="String" syncable="YES"/>
+        <attribute name="reviewClassID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="reviewCode" attributeType="String" syncable="YES"/>
+        <attribute name="shortDescription_" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AppDoc" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="AppDocType_Lookup" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Application" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ChemicalType_Lookup" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DocType_Lookup" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Product" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Product_TECode" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="RegActionDate" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ReviewClass_Lookup" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>
