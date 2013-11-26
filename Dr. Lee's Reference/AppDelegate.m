@@ -16,7 +16,9 @@
 {
     tabBarController = [[TabBarController alloc] init];
     
-    [[DataLoader sharedInstance] loadData];
+    DrugsLoader *loader = [[DrugsLoader alloc] init];
+    [loader loadDrugs];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 //    self.window.backgroundColor = [UIColor whiteColor];
@@ -50,7 +52,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
-    [[DataLoader sharedInstance] saveContext];
+    [[Database sharedInstance] saveContext];
 }
 
 @end

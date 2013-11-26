@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DataLoader.h"
+#import "Database.h"
 #import "MBProgressHUD.h"
 
 @interface SearchViewController : UIViewController<MBProgressHUDDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>

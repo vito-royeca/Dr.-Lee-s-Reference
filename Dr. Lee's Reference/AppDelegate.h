@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DataLoader.h"
-//#import "MainViewController.h"
+#import "DrugsLoader.h"
 #import "TabBarController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

@@ -43,7 +43,6 @@
     _content = [[NSMutableDictionary alloc] init];
 
     
-//    results = [NSArray arrayWithObjects:@"Jovit", @"Mary Ann", @"Matthew", @"Matilda",nil];
     CGFloat currentX = 0;
     CGFloat currentY = 0;
     CGFloat currentWidth = self.view.frame.size.width;
@@ -56,7 +55,7 @@
     [self.view addSubview:searchBar];
     
     currentY = searchBar.frame.size.height;
-    currentHeight = self.view.frame.size.height-40;
+    currentHeight = self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height-40;
     frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
     tblResults = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     tblResults.delegate = self;
@@ -65,11 +64,6 @@
     tblResults.userInteractionEnabled = YES;
     [self.view addSubview:tblResults];
 
-    NSLog(@"all = %f, sb=%f, tbl=%f, combined=%f",
-          self.view.frame.size.height,
-          searchBar.frame.size.height,
-          tblResults.frame.size.height,
-          searchBar.frame.size.height+tblResults.frame.size.height);
     self.title = @"Dr. Lee's Reference";
 }
 
@@ -172,9 +166,28 @@
 
 -(void) search
 {
-    results = [[DataLoader sharedInstance] search:searchBar.text];
+    results = [[Database sharedInstance] searchDrugs:searchBar.text];
     
     [self createSections];
+    
+    [tblResults reloadData];
+    self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", results.count];
+    
+    if ([searchBar canResignFirstResponder])
+    {
+        [searchBar resignFirstResponder];
+    }
+}
+
+-(void) performSearchOnMainThread
+{
+    [self performSelectorOnMainThread:@selector(search) withObject:nil waitUntilDone:YES];
+}
+
+#pragma mark - MBProgressHUDDelegate methods
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+	[hud removeFromSuperview];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -183,32 +196,25 @@
 //    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0),
 //    ^{
-        [self search];
-        
+//        [self performSearchOnMainThread];
+//        
 //        dispatch_async(dispatch_get_main_queue(),
 //        ^{
 //            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [searchBar resignFirstResponder];
-            [tblResults reloadData];
-            self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", results.count];
 //        });
 //    });
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hud];
+    hud.delegate = self;
+    [hud showWhileExecuting:@selector(performSearchOnMainThread) onTarget:self withObject:nil animated:YES];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)bar
 {
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0),
-//    ^{
-        [self search];
-        
-//        dispatch_async(dispatch_get_main_queue(),
-//        ^{
-//            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [tblResults reloadData];
-            self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", results.count];
-//        });
-//    });
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hud];
+    hud.delegate = self;
+    [hud showWhileExecuting:@selector(performSearchOnMainThread) onTarget:self withObject:nil animated:YES];
 }
 
 @end

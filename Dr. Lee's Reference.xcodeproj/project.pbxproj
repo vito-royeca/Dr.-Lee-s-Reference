@@ -21,7 +21,7 @@
 		113DE89D1843D8420080B038 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE8811843D8420080B038 /* CoreData.framework */; };
 		113DE8A51843D8420080B038 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8A31843D8420080B038 /* InfoPlist.strings */; };
 		113DE8A71843D8420080B038 /* Dr__Lee_s_ReferenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8A61843D8420080B038 /* Dr__Lee_s_ReferenceTests.m */; };
-		113DE8B31843DB400080B038 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8B11843DB400080B038 /* DataLoader.m */; };
+		113DE8B31843DB400080B038 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8B11843DB400080B038 /* Database.m */; };
 		113DE8C91843DC240080B038 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8BA1843DC240080B038 /* Product.m */; };
 		113DE8CA1843DC240080B038 /* AppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8BF1843DC240080B038 /* AppDoc.m */; };
 		113DE8CB1843DC240080B038 /* AppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8C01843DC240080B038 /* AppDocType_Lookup.m */; };
@@ -46,6 +46,7 @@
 		113DE8F71843EB5D0080B038 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8F51843EB5D0080B038 /* database.xcdatamodeld */; };
 		113DE9031843FBF70080B038 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 113DE9001843FBF70080B038 /* LICENSE */; };
 		113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE9021843FBF70080B038 /* MBProgressHUD.m */; };
+		11581FD218452150004186F2 /* DrugsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD118452150004186F2 /* DrugsLoader.m */; };
 		11FC406E18443047007EF755 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FC406D18443047007EF755 /* TabBarController.m */; };
 /* End PBXBuildFile section */
 
@@ -77,8 +78,8 @@
 		113DE8A21843D8420080B038 /* Dr. Lee's ReferenceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dr. Lee's ReferenceTests-Info.plist"; sourceTree = "<group>"; };
 		113DE8A41843D8420080B038 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		113DE8A61843D8420080B038 /* Dr__Lee_s_ReferenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dr__Lee_s_ReferenceTests.m; sourceTree = "<group>"; };
-		113DE8B11843DB400080B038 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
-		113DE8B21843DB400080B038 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
+		113DE8B11843DB400080B038 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
+		113DE8B21843DB400080B038 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		113DE8B91843DC240080B038 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		113DE8BA1843DC240080B038 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		113DE8BB1843DC240080B038 /* ChemicalType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChemicalType_Lookup.h; sourceTree = "<group>"; };
@@ -114,6 +115,8 @@
 		113DE9001843FBF70080B038 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		113DE9011843FBF70080B038 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		113DE9021843FBF70080B038 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		11581FD018452150004186F2 /* DrugsLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugsLoader.h; sourceTree = "<group>"; };
+		11581FD118452150004186F2 /* DrugsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsLoader.m; sourceTree = "<group>"; };
 		11FC406C18443047007EF755 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		11FC406D18443047007EF755 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,8 +226,10 @@
 		113DE8B01843DB230080B038 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				113DE8B21843DB400080B038 /* DataLoader.h */,
-				113DE8B11843DB400080B038 /* DataLoader.m */,
+				113DE8B21843DB400080B038 /* Database.h */,
+				113DE8B11843DB400080B038 /* Database.m */,
+				11581FD018452150004186F2 /* DrugsLoader.h */,
+				11581FD118452150004186F2 /* DrugsLoader.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -413,10 +418,11 @@
 				113DE8E91843DC850080B038 /* Application.m in Sources */,
 				113DE8CF1843DC240080B038 /* RegActionDate.m in Sources */,
 				113DE8F71843EB5D0080B038 /* database.xcdatamodeld in Sources */,
-				113DE8B31843DB400080B038 /* DataLoader.m in Sources */,
+				113DE8B31843DB400080B038 /* Database.m in Sources */,
 				113DE8CD1843DC240080B038 /* DocType_Lookup.m in Sources */,
 				113DE8CC1843DC240080B038 /* ChemicalType_Lookup.m in Sources */,
 				113DE8CE1843DC240080B038 /* Product_TECode.m in Sources */,
+				11581FD218452150004186F2 /* DrugsLoader.m in Sources */,
 				113DE8F01843E25A0080B038 /* SearchViewController.m in Sources */,
 				113DE8CB1843DC240080B038 /* AppDocType_Lookup.m in Sources */,
 				113DE8C91843DC240080B038 /* Product.m in Sources */,

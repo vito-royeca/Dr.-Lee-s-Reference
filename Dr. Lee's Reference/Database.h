@@ -19,7 +19,7 @@
 #import "ReviewClass_Lookup.h"
 #import "Util.h"
 
-@interface DataLoader : NSObject
+@interface Database : NSObject
 
 + (id)sharedInstance;
 
@@ -27,21 +27,12 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
--(void) loadData;
+
 -(BOOL) bIsTableEmpty:(NSString*)tableName;
 -(int) tableCount:(NSString*)tableName;
 -(id) objectByName:(NSString*)tableName andIdName:(NSString*)idName andIdValue:(id)idValue;
--(void) loadChemicalType_Lookup;
--(void) loadReviewClass_Lookup;
--(void) loadApplication;
--(void) loadProduct;
--(void) loadProductTECode;
--(void) loadAppDocType_Lookup;
--(void) loadAppDoc;
--(void) loadDocType_Lookup;
--(void) loadRegActionDate;
 
--(NSArray*) search:(NSString*)query;
+-(NSArray*) searchDrugs:(NSString*)query;
 -(NSArray*) searchAllDrugs;
 
 - (void)saveContext;
