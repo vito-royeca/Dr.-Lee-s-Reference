@@ -31,25 +31,25 @@
 		113DE8CE1843DC240080B038 /* Product_TECode.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8C41843DC240080B038 /* Product_TECode.m */; };
 		113DE8CF1843DC240080B038 /* RegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8C61843DC240080B038 /* RegActionDate.m */; };
 		113DE8D01843DC240080B038 /* ReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8C81843DC240080B038 /* ReviewClass_Lookup.m */; };
-		113DE8DC1843DC440080B038 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8D11843DC440080B038 /* database.sqlite */; };
-		113DE8DD1843DC440080B038 /* db.sql in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8D21843DC440080B038 /* db.sql */; };
-		113DE8DE1843DC440080B038 /* ReviewClass_Lookup.csv in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8D31843DC440080B038 /* ReviewClass_Lookup.csv */; };
-		113DE8DF1843DC440080B038 /* RegActionDate.csv in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8D41843DC440080B038 /* RegActionDate.csv */; };
-		113DE8E01843DC440080B038 /* Product_tecode.csv in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8D51843DC440080B038 /* Product_tecode.csv */; };
-		113DE8E11843DC440080B038 /* Product.csv in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8D61843DC440080B038 /* Product.csv */; };
-		113DE8E21843DC440080B038 /* DocType_lookup.csv in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8D71843DC440080B038 /* DocType_lookup.csv */; };
-		113DE8E31843DC440080B038 /* ChemTypeLookup.csv in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8D81843DC440080B038 /* ChemTypeLookup.csv */; };
-		113DE8E41843DC440080B038 /* application.csv in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8D91843DC440080B038 /* application.csv */; };
-		113DE8E51843DC440080B038 /* AppDocType_Lookup.csv in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8DA1843DC440080B038 /* AppDocType_Lookup.csv */; };
-		113DE8E61843DC440080B038 /* AppDoc.csv in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8DB1843DC440080B038 /* AppDoc.csv */; };
 		113DE8E91843DC850080B038 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8E81843DC850080B038 /* Application.m */; };
 		113DE8F01843E25A0080B038 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8EF1843E25A0080B038 /* SearchViewController.m */; };
-		113DE8F71843EB5D0080B038 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8F51843EB5D0080B038 /* database.xcdatamodeld */; };
 		113DE9031843FBF70080B038 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 113DE9001843FBF70080B038 /* LICENSE */; };
 		113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE9021843FBF70080B038 /* MBProgressHUD.m */; };
 		11581FD218452150004186F2 /* DrugsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD118452150004186F2 /* DrugsLoader.m */; };
 		11581FD518453598004186F2 /* DrugSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD418453598004186F2 /* DrugSummaryViewController.m */; };
 		11581FD81845513E004186F2 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD71845513D004186F2 /* Util.m */; };
+		116ED0B118468F4100CDC13D /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0AD18468F4100CDC13D /* database.sqlite */; };
+		116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 116ED0AE18468F4100CDC13D /* database.xcdatamodeld */; };
+		116ED0B318468F4100CDC13D /* db.sql in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0B018468F4100CDC13D /* db.sql */; };
+		116ED0BE18468F6500CDC13D /* AppDoc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0B518468F6500CDC13D /* AppDoc.txt */; };
+		116ED0BF18468F6500CDC13D /* AppDocType_Lookup.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0B618468F6500CDC13D /* AppDocType_Lookup.txt */; };
+		116ED0C018468F6500CDC13D /* application.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0B718468F6500CDC13D /* application.txt */; };
+		116ED0C118468F6500CDC13D /* ChemTypeLookup.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0B818468F6500CDC13D /* ChemTypeLookup.txt */; };
+		116ED0C218468F6500CDC13D /* DocType_lookup.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0B918468F6500CDC13D /* DocType_lookup.txt */; };
+		116ED0C318468F6500CDC13D /* Product.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0BA18468F6500CDC13D /* Product.txt */; };
+		116ED0C418468F6500CDC13D /* Product_tecode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0BB18468F6500CDC13D /* Product_tecode.txt */; };
+		116ED0C518468F6500CDC13D /* RegActionDate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0BC18468F6500CDC13D /* RegActionDate.txt */; };
+		116ED0C618468F6500CDC13D /* ReviewClass_Lookup.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0BD18468F6500CDC13D /* ReviewClass_Lookup.txt */; };
 		11FC406E18443047007EF755 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FC406D18443047007EF755 /* TabBarController.m */; };
 /* End PBXBuildFile section */
 
@@ -101,22 +101,10 @@
 		113DE8C61843DC240080B038 /* RegActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegActionDate.m; sourceTree = "<group>"; };
 		113DE8C71843DC240080B038 /* ReviewClass_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewClass_Lookup.h; sourceTree = "<group>"; };
 		113DE8C81843DC240080B038 /* ReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewClass_Lookup.m; sourceTree = "<group>"; };
-		113DE8D11843DC440080B038 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
-		113DE8D21843DC440080B038 /* db.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db.sql; sourceTree = "<group>"; };
-		113DE8D31843DC440080B038 /* ReviewClass_Lookup.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReviewClass_Lookup.csv; sourceTree = "<group>"; };
-		113DE8D41843DC440080B038 /* RegActionDate.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RegActionDate.csv; sourceTree = "<group>"; };
-		113DE8D51843DC440080B038 /* Product_tecode.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Product_tecode.csv; sourceTree = "<group>"; };
-		113DE8D61843DC440080B038 /* Product.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Product.csv; sourceTree = "<group>"; };
-		113DE8D71843DC440080B038 /* DocType_lookup.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocType_lookup.csv; sourceTree = "<group>"; };
-		113DE8D81843DC440080B038 /* ChemTypeLookup.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChemTypeLookup.csv; sourceTree = "<group>"; };
-		113DE8D91843DC440080B038 /* application.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = application.csv; sourceTree = "<group>"; };
-		113DE8DA1843DC440080B038 /* AppDocType_Lookup.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDocType_Lookup.csv; sourceTree = "<group>"; };
-		113DE8DB1843DC440080B038 /* AppDoc.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDoc.csv; sourceTree = "<group>"; };
 		113DE8E71843DC850080B038 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		113DE8E81843DC850080B038 /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Application.m; sourceTree = "<group>"; };
 		113DE8EE1843E25A0080B038 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		113DE8EF1843E25A0080B038 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		113DE8F61843EB5D0080B038 /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		113DE9001843FBF70080B038 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		113DE9011843FBF70080B038 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		113DE9021843FBF70080B038 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -126,6 +114,18 @@
 		11581FD418453598004186F2 /* DrugSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSummaryViewController.m; sourceTree = "<group>"; };
 		11581FD61845513D004186F2 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		11581FD71845513D004186F2 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		116ED0AD18468F4100CDC13D /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
+		116ED0AF18468F4100CDC13D /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
+		116ED0B018468F4100CDC13D /* db.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db.sql; sourceTree = "<group>"; };
+		116ED0B518468F6500CDC13D /* AppDoc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDoc.txt; sourceTree = "<group>"; };
+		116ED0B618468F6500CDC13D /* AppDocType_Lookup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDocType_Lookup.txt; sourceTree = "<group>"; };
+		116ED0B718468F6500CDC13D /* application.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = application.txt; sourceTree = "<group>"; };
+		116ED0B818468F6500CDC13D /* ChemTypeLookup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChemTypeLookup.txt; sourceTree = "<group>"; };
+		116ED0B918468F6500CDC13D /* DocType_lookup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DocType_lookup.txt; sourceTree = "<group>"; };
+		116ED0BA18468F6500CDC13D /* Product.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Product.txt; sourceTree = "<group>"; };
+		116ED0BB18468F6500CDC13D /* Product_tecode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Product_tecode.txt; sourceTree = "<group>"; };
+		116ED0BC18468F6500CDC13D /* RegActionDate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RegActionDate.txt; sourceTree = "<group>"; };
+		116ED0BD18468F6500CDC13D /* ReviewClass_Lookup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReviewClass_Lookup.txt; sourceTree = "<group>"; };
 		11FC406C18443047007EF755 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		11FC406D18443047007EF755 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,7 +193,7 @@
 				113DE88C1843D8420080B038 /* AppDelegate.h */,
 				113DE88D1843D8420080B038 /* AppDelegate.m */,
 				113DE8B01843DB230080B038 /* Controller */,
-				113DE8B41843DBAB0080B038 /* Data */,
+				116ED0AC18468F1700CDC13D /* Data */,
 				113DE8921843D8420080B038 /* Images.xcassets */,
 				113DE8F81843F2230080B038 /* Libs */,
 				113DE8B81843DBFA0080B038 /* Model */,
@@ -245,41 +245,22 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		113DE8B41843DBAB0080B038 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				113DE8DB1843DC440080B038 /* AppDoc.csv */,
-				113DE8DA1843DC440080B038 /* AppDocType_Lookup.csv */,
-				113DE8D91843DC440080B038 /* application.csv */,
-				113DE8D81843DC440080B038 /* ChemTypeLookup.csv */,
-				113DE8D11843DC440080B038 /* database.sqlite */,
-				113DE8F51843EB5D0080B038 /* database.xcdatamodeld */,
-				113DE8D21843DC440080B038 /* db.sql */,
-				113DE8D71843DC440080B038 /* DocType_lookup.csv */,
-				113DE8D61843DC440080B038 /* Product.csv */,
-				113DE8D51843DC440080B038 /* Product_tecode.csv */,
-				113DE8D41843DC440080B038 /* RegActionDate.csv */,
-				113DE8D31843DC440080B038 /* ReviewClass_Lookup.csv */,
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
 		113DE8B81843DBFA0080B038 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				113DE8BD1843DC240080B038 /* AppDoc.h */,
+				113DE8BF1843DC240080B038 /* AppDoc.m */,
+				113DE8BC1843DC240080B038 /* AppDocType_Lookup.h */,
+				113DE8C01843DC240080B038 /* AppDocType_Lookup.m */,
 				113DE8E71843DC850080B038 /* Application.h */,
 				113DE8E81843DC850080B038 /* Application.m */,
-				113DE8B91843DC240080B038 /* Product.h */,
-				113DE8BA1843DC240080B038 /* Product.m */,
 				113DE8BB1843DC240080B038 /* ChemicalType_Lookup.h */,
-				113DE8BC1843DC240080B038 /* AppDocType_Lookup.h */,
-				113DE8BD1843DC240080B038 /* AppDoc.h */,
-				113DE8BE1843DC240080B038 /* Product_TECode.h */,
-				113DE8BF1843DC240080B038 /* AppDoc.m */,
-				113DE8C01843DC240080B038 /* AppDocType_Lookup.m */,
 				113DE8C11843DC240080B038 /* ChemicalType_Lookup.m */,
 				113DE8C21843DC240080B038 /* DocType_Lookup.h */,
 				113DE8C31843DC240080B038 /* DocType_Lookup.m */,
+				113DE8B91843DC240080B038 /* Product.h */,
+				113DE8BA1843DC240080B038 /* Product.m */,
+				113DE8BE1843DC240080B038 /* Product_TECode.h */,
 				113DE8C41843DC240080B038 /* Product_TECode.m */,
 				113DE8C51843DC240080B038 /* RegActionDate.h */,
 				113DE8C61843DC240080B038 /* RegActionDate.m */,
@@ -320,6 +301,33 @@
 				113DE9021843FBF70080B038 /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		116ED0AC18468F1700CDC13D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				116ED0B418468F6500CDC13D /* drugsatfda */,
+				116ED0AD18468F4100CDC13D /* database.sqlite */,
+				116ED0AE18468F4100CDC13D /* database.xcdatamodeld */,
+				116ED0B018468F4100CDC13D /* db.sql */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		116ED0B418468F6500CDC13D /* drugsatfda */ = {
+			isa = PBXGroup;
+			children = (
+				116ED0B518468F6500CDC13D /* AppDoc.txt */,
+				116ED0B618468F6500CDC13D /* AppDocType_Lookup.txt */,
+				116ED0B718468F6500CDC13D /* application.txt */,
+				116ED0B818468F6500CDC13D /* ChemTypeLookup.txt */,
+				116ED0B918468F6500CDC13D /* DocType_lookup.txt */,
+				116ED0BA18468F6500CDC13D /* Product.txt */,
+				116ED0BB18468F6500CDC13D /* Product_tecode.txt */,
+				116ED0BC18468F6500CDC13D /* RegActionDate.txt */,
+				116ED0BD18468F6500CDC13D /* ReviewClass_Lookup.txt */,
+			);
+			path = drugsatfda;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,20 +405,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116ED0C418468F6500CDC13D /* Product_tecode.txt in Resources */,
+				116ED0B318468F4100CDC13D /* db.sql in Resources */,
+				116ED0C018468F6500CDC13D /* application.txt in Resources */,
+				116ED0B118468F4100CDC13D /* database.sqlite in Resources */,
+				116ED0BF18468F6500CDC13D /* AppDocType_Lookup.txt in Resources */,
+				116ED0C618468F6500CDC13D /* ReviewClass_Lookup.txt in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
-				113DE8E51843DC440080B038 /* AppDocType_Lookup.csv in Resources */,
+				116ED0C318468F6500CDC13D /* Product.txt in Resources */,
+				116ED0BE18468F6500CDC13D /* AppDoc.txt in Resources */,
+				116ED0C518468F6500CDC13D /* RegActionDate.txt in Resources */,
+				116ED0C118468F6500CDC13D /* ChemTypeLookup.txt in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
-				113DE8DD1843DC440080B038 /* db.sql in Resources */,
-				113DE8DC1843DC440080B038 /* database.sqlite in Resources */,
-				113DE8E01843DC440080B038 /* Product_tecode.csv in Resources */,
-				113DE8E41843DC440080B038 /* application.csv in Resources */,
-				113DE8E31843DC440080B038 /* ChemTypeLookup.csv in Resources */,
-				113DE8DE1843DC440080B038 /* ReviewClass_Lookup.csv in Resources */,
-				113DE8E11843DC440080B038 /* Product.csv in Resources */,
 				113DE9031843FBF70080B038 /* LICENSE in Resources */,
-				113DE8DF1843DC440080B038 /* RegActionDate.csv in Resources */,
-				113DE8E61843DC440080B038 /* AppDoc.csv in Resources */,
-				113DE8E21843DC440080B038 /* DocType_lookup.csv in Resources */,
+				116ED0C218468F6500CDC13D /* DocType_lookup.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +441,6 @@
 				110A69891845F5DF00852030 /* DrugDetailsViewController.m in Sources */,
 				113DE8E91843DC850080B038 /* Application.m in Sources */,
 				113DE8CF1843DC240080B038 /* RegActionDate.m in Sources */,
-				113DE8F71843EB5D0080B038 /* database.xcdatamodeld in Sources */,
 				113DE8B31843DB400080B038 /* Database.m in Sources */,
 				113DE8CD1843DC240080B038 /* DocType_Lookup.m in Sources */,
 				113DE8CC1843DC240080B038 /* ChemicalType_Lookup.m in Sources */,
@@ -448,6 +455,7 @@
 				11FC406E18443047007EF755 /* TabBarController.m in Sources */,
 				113DE88A1843D8420080B038 /* main.m in Sources */,
 				11581FD81845513E004186F2 /* Util.m in Sources */,
+				116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */,
 				113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,12 +675,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		113DE8F51843EB5D0080B038 /* database.xcdatamodeld */ = {
+		116ED0AE18468F4100CDC13D /* database.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				113DE8F61843EB5D0080B038 /* database.xcdatamodel */,
+				116ED0AF18468F4100CDC13D /* database.xcdatamodel */,
 			);
-			currentVersion = 113DE8F61843EB5D0080B038 /* database.xcdatamodel */;
+			currentVersion = 116ED0AF18468F4100CDC13D /* database.xcdatamodel */;
 			path = database.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

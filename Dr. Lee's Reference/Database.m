@@ -64,21 +64,50 @@
     return fetchedObjects.count;
 }
 
--(id) objectByName:(NSString*)tableName andIdName:(NSString*)idName andIdValue:(id)idValue
+-(NSArray*) find:(NSString*)tableName
+      columnName:(NSString*)columnName
+     columnValue:(id)columnValue
+       relationshipKeys:(NSArray*)relationshipKeys
+         sorters:(NSArray*)sorters
 {
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:tableName
                                               inManagedObjectContext:[self managedObjectContext]];
     NSPredicate *predicate = [NSPredicate
-                              predicateWithFormat:@"%K == %@", idName, idValue];
+                              predicateWithFormat:@"%K == %@", columnName, columnValue];
     
+    if (relationshipKeys)
+    {
+        [fetchRequest setRelationshipKeyPathsForPrefetching:relationshipKeys];
+    }
+    if (sorters)
+    {
+        NSMutableArray *arrSorters = [[NSMutableArray alloc] initWithCapacity:sorters.count];
+        
+        for (NSDictionary *dict in sorters)
+        {
+            NSString *key = [[dict allKeys] objectAtIndex:0];
+            NSSortDescriptor *descriptor = [[NSSortDescriptor alloc]
+                                                 initWithKey:key ascending:[[dict objectForKey:key] boolValue]];
+            [arrSorters addObject:descriptor];
+        }
+        [fetchRequest setSortDescriptors:arrSorters];
+    }
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:predicate];
     
     NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
     
-    return fetchedObjects.count > 0 ? [fetchedObjects objectAtIndex:0] : nil;
+    if (error)
+    {
+        NSLog(@"fetch error: %@ : %@", error, [error userInfo]);
+        return [NSArray arrayWithObjects:nil, nil];
+    }
+    else
+    {
+        return fetchedObjects;
+    }
 }
 
 -(NSArray*) searchDrugs:(NSString*)query

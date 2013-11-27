@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "AppDoc.h"
+#import "Application.h"
+#import "Database.h"
 #import "Product.h"
 
 @interface DrugDetailsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
@@ -15,5 +18,6 @@
 @property(strong,nonatomic) UITableView *tblDrug;
 
 @property(strong,nonatomic) NSDictionary *drugDetails;
+@property(strong,nonatomic) NSArray *documents;
 
 @end

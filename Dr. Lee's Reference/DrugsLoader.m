@@ -92,7 +92,8 @@
         NSArray *allLines = [file componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         float sentinel = allLines.count/10;
         int done = 0;
-        
+        BOOL bFirstLine = YES;
+
         if (sentinel < 10)
         {
             sentinel = allLines.count;
@@ -100,6 +101,12 @@
         
         for (NSString* line in allLines)
         {
+            if (bFirstLine)
+            {
+                bFirstLine = NO;
+                continue;
+            }
+            
             NSArray *elements = [line componentsSeparatedByString:@"\t"];
             
             if (elements.count <= 1)
@@ -148,7 +155,8 @@
         NSArray *allLines = [file componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         float sentinel = allLines.count/10;
         int done = 0;
-        
+        BOOL bFirstLine = YES;
+
         if (sentinel < 10)
         {
             sentinel = allLines.count;
@@ -156,6 +164,12 @@
         
         for (NSString* line in allLines)
         {
+            if (bFirstLine)
+            {
+                bFirstLine = NO;
+                continue;
+            }
+
             NSArray *elements = [line componentsSeparatedByString:@"\t"];
             
             if (elements.count <= 1)
@@ -209,7 +223,8 @@
         NSArray *allLines = [file componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         float sentinel = allLines.count/10;
         int done = 0;
-        
+        BOOL bFirstLine = YES;
+
         if (sentinel < 10)
         {
             sentinel = allLines.count;
@@ -217,6 +232,12 @@
         
         for (NSString* line in allLines)
         {
+            if (bFirstLine)
+            {
+                bFirstLine = NO;
+                continue;
+            }
+
             NSArray *elements = [line componentsSeparatedByString:@"\t"];
             
             if (elements.count <= 1)
@@ -257,9 +278,11 @@
             }
             if (elements.count >= 7 && [[elements objectAtIndex:6] length] > 0)
             {
-                obj.chemicalType = [_database objectByName:@"ChemicalType_Lookup"
-                                            andIdName:@"chemicalTypeID"
-                                           andIdValue:[elements objectAtIndex:6]];
+                obj.chemicalType = [[_database find:@"ChemicalType_Lookup"
+                                         columnName:@"chemicalTypeID"
+                                        columnValue:[elements objectAtIndex:6]
+                                   relationshipKeys:nil
+                                            sorters:nil] objectAtIndex:0];
             }
             if (elements.count >= 8)
             {
@@ -293,6 +316,7 @@
         NSArray *allLines = [file componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         float sentinel = allLines.count/10;
         int done = 0;
+        BOOL bFirstLine = YES;
         
         if (sentinel < 10)
         {
@@ -301,6 +325,12 @@
         
         for (NSString* line in allLines)
         {
+            if (bFirstLine)
+            {
+                bFirstLine = NO;
+                continue;
+            }
+            
             NSArray *elements = [line componentsSeparatedByString:@"\t"];
             
             if (elements.count <= 1)
@@ -318,9 +348,11 @@
             
             if (elements.count >= 1)
             {
-                obj.applNo = [_database objectByName:@"Application"
-                                      andIdName:@"applNo"
-                                     andIdValue:[elements objectAtIndex:0]];
+                obj.applNo = [[_database find:@"Application"
+                                   columnName:@"applNo"
+                                  columnValue:[elements objectAtIndex:0]
+                             relationshipKeys:nil
+                                      sorters:nil] objectAtIndex:0];
             }
             if (elements.count >= 2)
             {
@@ -377,7 +409,8 @@
         NSArray *allLines = [file componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         float sentinel = allLines.count/10;
         int done = 0;
-        
+        BOOL bFirstLine = YES;
+
         if (sentinel < 10)
         {
             sentinel = allLines.count;
@@ -385,6 +418,12 @@
         
         for (NSString* line in allLines)
         {
+            if (bFirstLine)
+            {
+                bFirstLine = NO;
+                continue;
+            }
+
             NSArray *elements = [line componentsSeparatedByString:@"\t"];
             
             if (elements.count <= 1)
@@ -401,15 +440,19 @@
             
             if (elements.count >= 1)
             {
-                obj.applNo = [_database objectByName:@"Application"
-                                      andIdName:@"applNo"
-                                     andIdValue:[elements objectAtIndex:0]];
+                obj.applNo = [[_database find:@"Application"
+                                   columnName:@"applNo"
+                                  columnValue:[elements objectAtIndex:0]
+                             relationshipKeys:nil
+                                      sorters:nil] objectAtIndex:0];
             }
             if (elements.count >= 2)
             {
-                obj.productNo = [_database objectByName:@"Product"
-                                         andIdName:@"productNo"
-                                        andIdValue:[elements objectAtIndex:1]];
+                obj.productNo = [[_database find:@"Product"
+                                      columnName:@"productNo"
+                                     columnValue:[elements objectAtIndex:1]
+                                relationshipKeys:nil
+                                         sorters:nil] objectAtIndex:0];
             }
             if (elements.count >= 3)
             {
@@ -446,7 +489,8 @@
         NSArray *allLines = [file componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         float sentinel = allLines.count/10;
         int done = 0;
-        
+        BOOL bFirstLine = YES;
+
         if (sentinel < 10)
         {
             sentinel = allLines.count;
@@ -454,6 +498,12 @@
         
         for (NSString* line in allLines)
         {
+            if (bFirstLine)
+            {
+                bFirstLine = NO;
+                continue;
+            }
+
             NSArray *elements = [line componentsSeparatedByString:@"\t"];
             
             if (elements.count <= 1)
@@ -499,7 +549,8 @@
         NSArray *allLines = [file componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         float sentinel = allLines.count/10;
         int done = 0;
-        
+        BOOL bFirstLine = YES;
+
         if (sentinel < 10)
         {
             sentinel = allLines.count;
@@ -507,6 +558,12 @@
         
         for (NSString* line in allLines)
         {
+            if (bFirstLine)
+            {
+                bFirstLine = NO;
+                continue;
+            }
+
             NSArray *elements = [line componentsSeparatedByString:@"\t"];
             
             if (elements.count <= 1)
@@ -530,9 +587,11 @@
             }
             if (elements.count >= 2)
             {
-                obj.applNo = [_database objectByName:@"Application"
-                                      andIdName:@"applNo"
-                                     andIdValue:[elements objectAtIndex:1]];
+                obj.applNo = [[_database find:@"Application"
+                                   columnName:@"applNo"
+                                  columnValue:[elements objectAtIndex:1]
+                             relationshipKeys:nil
+                                      sorters:nil] objectAtIndex:0];
             }
             if (elements.count >= 3)
             {
@@ -540,9 +599,11 @@
             }
             if (elements.count >= 4)
             {
-                obj.docType = [_database objectByName:@"AppDocType_Lookup"
-                                       andIdName:@"appDocType"
-                                      andIdValue:[elements objectAtIndex:3]];
+                obj.docType = [[_database find:@"AppDocType_Lookup"
+                                    columnName:@"appDocType"
+                                   columnValue:[elements objectAtIndex:3]
+                              relationshipKeys:nil
+                                       sorters:nil] objectAtIndex:0];
             }
             if (elements.count >= 5)
             {
@@ -588,7 +649,8 @@
         NSArray *allLines = [file componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         float sentinel = allLines.count/10;
         int done = 0;
-        
+        BOOL bFirstLine = YES;
+
         if (sentinel < 10)
         {
             sentinel = allLines.count;
@@ -596,6 +658,12 @@
         
         for (NSString* line in allLines)
         {
+            if (bFirstLine)
+            {
+                bFirstLine = NO;
+                continue;
+            }
+
             NSArray *elements = [line componentsSeparatedByString:@"\t"];
             
             if (elements.count <= 1)
@@ -641,7 +709,8 @@
         NSArray *allLines = [file componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
         float sentinel = allLines.count/10;
         int done = 0;
-        
+        BOOL bFirstLine = YES;
+
         if (sentinel < 10)
         {
             sentinel = allLines.count;
@@ -649,6 +718,12 @@
         
         for (NSString* line in allLines)
         {
+            if (bFirstLine)
+            {
+                bFirstLine = NO;
+                continue;
+            }
+
             NSArray *elements = [line componentsSeparatedByString:@"\t"];
             
             if (elements.count <= 1)
@@ -668,9 +743,11 @@
             
             if (elements.count >= 1)
             {
-                obj.applNo = [_database objectByName:@"Application"
-                                      andIdName:@"applNo"
-                                     andIdValue:[elements objectAtIndex:0]];
+                obj.applNo = [[_database find:@"Application"
+                                   columnName:@"applNo"
+                                  columnValue:[elements objectAtIndex:0]
+                             relationshipKeys:nil
+                                      sorters:nil] objectAtIndex:0];
             }
             if (elements.count >= 2)
             {
@@ -691,9 +768,11 @@
             }
             if (elements.count >= 6)
             {
-                obj.docType = [_database objectByName:@"DocType_Lookup"
-                                       andIdName:@"docType"
-                                      andIdValue:[elements objectAtIndex:5]];
+                obj.docType = [[_database find:@"DocType_Lookup"
+                                   columnName:@"docType"
+                                   columnValue:[elements objectAtIndex:5]
+                              relationshipKeys:nil
+                                       sorters:nil] objectAtIndex:0];
             }
             
             NSError *error2;

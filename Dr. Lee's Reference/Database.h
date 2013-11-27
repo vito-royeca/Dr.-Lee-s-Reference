@@ -30,7 +30,11 @@
 
 -(BOOL) bIsTableEmpty:(NSString*)tableName;
 -(int) tableCount:(NSString*)tableName;
--(id) objectByName:(NSString*)tableName andIdName:(NSString*)idName andIdValue:(id)idValue;
+-(NSArray*) find:(NSString*)tableName
+      columnName:(NSString*)columnName
+     columnValue:(id)columnValue
+relationshipKeys:(NSArray*)relationshipKeys
+         sorters:(NSArray*)sorters;
 
 -(NSArray*) searchDrugs:(NSString*)query;
 -(NSArray*) searchAllDrugs;

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DrugsLoader.h"
+#import "MBProgressHUD.h"
 #import "SearchViewController.h"
 
-@interface TabBarController : UITabBarController
+@interface TabBarController : UITabBarController<MBProgressHUDDelegate>
 
 @end

@@ -53,12 +53,30 @@
 //    tab.title = @"Favorites";
     
     [self setViewControllers:[NSArray arrayWithObjects:_searchNavView, _drugsView, _icd10View, _favoritesView, nil]];
+    
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+    hud.labelText = @"Loading Database...";
+    [self.view addSubview:hud];
+    hud.delegate = self;
+    [hud showWhileExecuting:@selector(loadDatabase) onTarget:self withObject:nil animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - MBProgressHUDDelegate methods
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+	[hud removeFromSuperview];
+}
+
+-(void) loadDatabase
+{
+    DrugsLoader *loader = [[DrugsLoader alloc] init];
+    [loader loadDrugs];
 }
 
 @end

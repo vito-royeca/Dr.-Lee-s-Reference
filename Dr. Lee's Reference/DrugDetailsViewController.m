@@ -19,13 +19,25 @@
 @synthesize sections;
 @synthesize tblDrug;
 @synthesize drugDetails;
+@synthesize documents;
 
 - (void) setDrugDetails:(NSDictionary *)drugDetails_
 {
     drugDetails = drugDetails_;
     
-    sections = [NSArray arrayWithObjects:@"Drug Details", @" ",
-            [NSString stringWithFormat:@"Products on Application %@", [drugDetails objectForKey:@"ApplNo"]], nil];
+    sections = [NSArray arrayWithObjects:@"Drug Details",
+            [NSString stringWithFormat:@"Products on Application %@", [drugDetails objectForKey:@"ApplNo"]],
+                @"Documents", nil];
+    
+    NSArray *arrDrugs = [drugDetails objectForKey:@"Drugs"];
+    Product *p = [arrDrugs objectAtIndex:0];
+    NSMutableDictionary *dicSorter = [[NSMutableDictionary alloc] init];
+    [dicSorter  setObject:[NSNumber numberWithBool:NO] forKey:@"docDate"];
+    documents = [[Database sharedInstance] find:@"AppDoc"
+                                     columnName:@"applNo.applNo"
+                                    columnValue:p.applNo.applNo
+                               relationshipKeys:[NSArray arrayWithObjects:@"applNo", nil]
+                                        sorters:[NSArray arrayWithObjects:dicSorter, nil]];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -49,7 +61,6 @@
     tblDrug.dataSource = self;
     [self.view addSubview:tblDrug];
     
-//    self.navigationController.navigationBar.backItem.title = @"Back";
     [self setTitle:@"Details"];
 }
 
@@ -88,12 +99,12 @@
         }
         case 1:
         {
-            rows = 4;
+            rows = [[drugDetails objectForKey:@"Drugs"] count];
             break;
         }
         case 2:
         {
-            rows = [[drugDetails objectForKey:@"Drugs"] count];
+            rows = documents.count;
             break;
         }
     }
@@ -158,42 +169,23 @@
         }
         case 1:
         {
-            switch (indexPath.row)
-            {
-                case 0:
-                {
-                    cell.textLabel.text = @"Therapeutic Equivalent";
-                    break;
-                }
-                case 1:
-                {
-                    cell.textLabel.text = @"Approval History, Letters, Reviews";
-                    break;
-                }
-                case 2:
-                {
-                    cell.textLabel.text = @"Labels";
-                    break;
-                }
-                case 3:
-                {
-                    cell.textLabel.text = @"Healthcare Professional Sheet";
-                    break;
-                }
-            }
-            
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            break;
-        }
-            
-        case 2:
-        {
-            NSArray *arrDetails = [drugDetails objectForKey:@"Drugs"];
-            Product *p = [arrDetails objectAtIndex:indexPath.row];
+            NSArray *arrDrugs = [drugDetails objectForKey:@"Drugs"];
+            Product *p = [arrDrugs objectAtIndex:indexPath.row];
             
             cell.textLabel.text = p.dosage;
             cell.detailTextLabel.text = [p productMktStatusString];
             cell.accessoryType = UITableViewCellAccessoryNone;
+            break;
+        }
+        case 2:
+        {
+            AppDoc *appDoc = [documents objectAtIndex:indexPath.row];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            
+            cell.textLabel.text = appDoc.docType.appDocType;
+            cell.detailTextLabel.text = appDoc.docDate ? [formatter stringFromDate:appDoc.docDate] : @"";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         }
     }
