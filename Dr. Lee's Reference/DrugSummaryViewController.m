@@ -107,12 +107,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *arrDetails = [drugSummary objectForKey:@"Details"];
+    if (indexPath.section == 2)
+    {
+        NSArray *arrDetails = [drugSummary objectForKey:@"Details"];
     
-    DrugDetailsViewController *detailsVC = [[DrugDetailsViewController alloc] init];
-    detailsVC.drugDetails = [arrDetails objectAtIndex:indexPath.row];
+        if (arrDetails)
+        {
+            id drugDetails = [arrDetails objectAtIndex:indexPath.row];
+        
+            if (drugDetails && [drugDetails isKindOfClass:[NSDictionary class]])
+            {
+                DrugDetailsViewController *detailsVC = [[DrugDetailsViewController alloc] init];
+                detailsVC.drugDetails = drugDetails;
     
-    [self.navigationController pushViewController:detailsVC animated:YES];
+                [self.navigationController pushViewController:detailsVC animated:YES];
+            }
+        }
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -144,6 +155,7 @@
                     break;
                 }
             }
+            cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         }
         case 1:
@@ -161,6 +173,7 @@
             
             cell.textLabel.text = key;
             cell.detailTextLabel.text = [Util arrayToString:[dictForms valueForKey:key]];
+            cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         }
         case 2:
