@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DrugDetailsViewController.h"
+#import "Util.h"
+
 @interface DrugSummaryViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property(strong,nonatomic) UITableView *tblDrug;

@@ -64,7 +64,7 @@
     tblResults.userInteractionEnabled = YES;
     [self.view addSubview:tblResults];
 
-    self.title = @"Dr. Lee's Reference";
+    self.title = @"Search";
 }
 
 - (void)didReceiveMemoryWarning
@@ -177,17 +177,17 @@
 
 -(void) search
 {
+    if ([searchBar canResignFirstResponder])
+    {
+        [searchBar resignFirstResponder];
+    }
+    
     results = [[Database sharedInstance] searchDrugs:searchBar.text];
     
     [self createSections];
     
     [tblResults reloadData];
     self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", results.count];
-    
-    if ([searchBar canResignFirstResponder])
-    {
-        [searchBar resignFirstResponder];
-    }
 }
 
 -(void) performSearchOnMainThread

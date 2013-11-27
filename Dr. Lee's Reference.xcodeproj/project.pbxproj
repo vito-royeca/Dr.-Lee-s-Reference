@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110A69891845F5DF00852030 /* DrugDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110A69881845F5DF00852030 /* DrugDetailsViewController.m */; };
 		113DE87C1843D8420080B038 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87B1843D8420080B038 /* Foundation.framework */; };
 		113DE87E1843D8420080B038 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87D1843D8420080B038 /* CoreGraphics.framework */; };
 		113DE8801843D8420080B038 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87F1843D8420080B038 /* UIKit.framework */; };
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		110A69871845F5DE00852030 /* DrugDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDetailsViewController.h; sourceTree = "<group>"; };
+		110A69881845F5DF00852030 /* DrugDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDetailsViewController.m; sourceTree = "<group>"; };
 		113DE8781843D8420080B038 /* Dr. Lee's Reference.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dr. Lee's Reference.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113DE87B1843D8420080B038 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		113DE87D1843D8420080B038 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -289,6 +292,8 @@
 		113DE8EA1843E1010080B038 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				110A69871845F5DE00852030 /* DrugDetailsViewController.h */,
+				110A69881845F5DF00852030 /* DrugDetailsViewController.m */,
 				11581FD318453598004186F2 /* DrugSummaryViewController.h */,
 				11581FD418453598004186F2 /* DrugSummaryViewController.m */,
 				113DE8EE1843E25A0080B038 /* SearchViewController.h */,
@@ -425,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				113DE8D01843DC240080B038 /* ReviewClass_Lookup.m in Sources */,
+				110A69891845F5DF00852030 /* DrugDetailsViewController.m in Sources */,
 				113DE8E91843DC850080B038 /* Application.m in Sources */,
 				113DE8CF1843DC240080B038 /* RegActionDate.m in Sources */,
 				113DE8F71843EB5D0080B038 /* database.xcdatamodeld in Sources */,

@@ -1,30 +1,31 @@
 //
-//  DrugSummaryViewController.m
+//  DrugDetailsViewController.m
 //  Dr. Lee's Reference
 //
 //  Created by Jovito Royeca on 11/27/13.
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.
 //
 
-#import "DrugSummaryViewController.h"
+#import "DrugDetailsViewController.h"
 
-@interface DrugSummaryViewController ()
+@interface DrugDetailsViewController ()
 
 @property(strong,nonatomic) NSArray *sections;
 
 @end
 
-@implementation DrugSummaryViewController
+@implementation DrugDetailsViewController
 
 @synthesize sections;
 @synthesize tblDrug;
-@synthesize drugSummary;
+@synthesize drugDetails;
 
-- (void) setDrugSummary:(NSDictionary *)drugSummary_
+- (void) setDrugDetails:(NSDictionary *)drugDetails_
 {
-    drugSummary = drugSummary_;
+    drugDetails = drugDetails_;
     
-    sections = [NSArray arrayWithObjects:@"Overview", @"Forms and Strengths", @"Details", nil];
+    sections = [NSArray arrayWithObjects:@"Drug Details", @" ",
+            [NSString stringWithFormat:@"Products on Application %@", [drugDetails objectForKey:@"ApplNo"]], nil];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -49,7 +50,7 @@
     [self.view addSubview:tblDrug];
     
 //    self.navigationController.navigationBar.backItem.title = @"Back";
-    [self setTitle:@"Summary"];
+    [self setTitle:@"Details"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,17 +83,17 @@
     {
         case 0:
         {
-            rows = 2;
+            rows = 5;
             break;
         }
         case 1:
         {
-            rows = [[drugSummary objectForKey:@"Forms and Strengths"] count];
+            rows = 4;
             break;
         }
         case 2:
         {
-            rows = [[drugSummary objectForKey:@"Details"] count];
+            rows = [[drugDetails objectForKey:@"Drugs"] count];
             break;
         }
     }
@@ -103,16 +104,6 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return [sections objectAtIndex:section];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSArray *arrDetails = [drugSummary objectForKey:@"Details"];
-    
-    DrugDetailsViewController *detailsVC = [[DrugDetailsViewController alloc] init];
-    detailsVC.drugDetails = [arrDetails objectAtIndex:indexPath.row];
-    
-    [self.navigationController pushViewController:detailsVC animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -134,43 +125,75 @@
                 case 0:
                 {
                     cell.textLabel.text = @"Drug Name";
-                    cell.detailTextLabel.text = [drugSummary objectForKey:@"Drug Name"];
+                    cell.detailTextLabel.text = [drugDetails objectForKey:@"Drug Name"];
                     break;
                 }
                 case 1:
                 {
+                    cell.textLabel.text = @"FDA Application No.";
+                    cell.detailTextLabel.text = [drugDetails objectForKey:@"ApplNo"];
+                    break;
+                }
+                case 2:
+                {
                     cell.textLabel.text = @"Active Ingredient(s)";
-                    cell.detailTextLabel.text = [drugSummary objectForKey:@"Active Ingredient(s)"];
+                    cell.detailTextLabel.text = [drugDetails objectForKey:@"Active Ingredient(s)"];
+                    break;
+                }
+                case 3:
+                {
+                    cell.textLabel.text = @"Company";
+                    cell.detailTextLabel.text = [drugDetails objectForKey:@"Company"];
+                    break;
+                }
+                case 4:
+                {
+                    cell.textLabel.text = @"Approval Date";
+                    cell.detailTextLabel.text = @"";
                     break;
                 }
             }
+            cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         }
         case 1:
         {
-            NSArray *arrForms = [drugSummary objectForKey:@"Forms and Strengths"];
-//            NSMutableArray *allKeys = [[NSMutableArray alloc] init];
-//            for (NSDictionary *dict in arrForms)
-//            {
-//                [allKeys addObject:[[dict allKeys] objectAtIndex:0]];
-//            }
-//            NSArray *sortedKeys = [sortedKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            switch (indexPath.row)
+            {
+                case 0:
+                {
+                    cell.textLabel.text = @"Therapeutic Equivalent";
+                    break;
+                }
+                case 1:
+                {
+                    cell.textLabel.text = @"Approval History, Letters, Reviews";
+                    break;
+                }
+                case 2:
+                {
+                    cell.textLabel.text = @"Labels";
+                    break;
+                }
+                case 3:
+                {
+                    cell.textLabel.text = @"Healthcare Professional Sheet";
+                    break;
+                }
+            }
             
-            NSDictionary *dictForms = [arrForms objectAtIndex:indexPath.row];
-            NSString *key = [[dictForms allKeys] objectAtIndex:0];
-            
-            cell.textLabel.text = key;
-            cell.detailTextLabel.text = [Util arrayToString:[dictForms valueForKey:key]];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         }
+            
         case 2:
         {
-            NSArray *arrDetails = [drugSummary objectForKey:@"Details"];
-            NSDictionary *dict = [arrDetails objectAtIndex:indexPath.row];
+            NSArray *arrDetails = [drugDetails objectForKey:@"Drugs"];
+            Product *p = [arrDetails objectAtIndex:indexPath.row];
             
-            cell.textLabel.text = [dict objectForKey:@"ApplNo"];
-            cell.detailTextLabel.text = [dict objectForKey:@"Company"];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.textLabel.text = p.dosage;
+            cell.detailTextLabel.text = [p productMktStatusString];
+            cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         }
     }

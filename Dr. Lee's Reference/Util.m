@@ -28,4 +28,16 @@
     return NO;
 }
 
++ (NSString*) arrayToString:(NSArray*)arr
+{
+    NSMutableString *retString = [[NSMutableString alloc] init];
+
+    for (id i in [arr sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)])
+    {
+        [retString appendFormat:@"%@%@", retString.length>0 ? @" ":@"", i];
+    }
+    
+    return retString;
+}
+
 @end

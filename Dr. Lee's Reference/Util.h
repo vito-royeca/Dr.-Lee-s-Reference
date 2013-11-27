@@ -14,5 +14,5 @@
 @interface Util : NSObject
 
 + (BOOL)string:(NSString *)string containsString:(NSString*)x;
-
++ (NSString*) arrayToString:(NSArray*)arr;
 @end

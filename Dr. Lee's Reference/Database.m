@@ -109,13 +109,15 @@
                      @"applNo.sponsorApplicant", query];
     }
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc]
                                         initWithKey:@"drugName" ascending:YES];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc]
+                                         initWithKey:@"applNo.applNo" ascending:YES];
     
     NSArray *relationshipKeys = [NSArray arrayWithObject:@"applNo"];
     
     [fetchRequest setRelationshipKeyPathsForPrefetching:relationshipKeys];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    [fetchRequest setSortDescriptors:@[sortDescriptor1, sortDescriptor2]];
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:predicate];
     
@@ -125,6 +127,7 @@
     for (Product *p in fetchedObjects)
     {
         NSMutableDictionary *dict;
+        NSString *applNoString = [NSString stringWithFormat:@"%@ # %@", [p.applNo applTypeString], p.applNo.applNo];
         
         for (NSMutableDictionary *d in arrDrugs)
         {
@@ -137,33 +140,57 @@
         
         if (dict)
         {
-//            NSMutableArray *drugs = [dict objectForKey:@"Products"];
-//            
-//            [drugs addObject:p];
-            
             NSMutableArray *arrForms = [dict objectForKey:@"Forms and Strengths"];
             BOOL bHasForm = NO;
             for (NSMutableDictionary *dictForms in arrForms)
             {
                 if ([dictForms objectForKey:p.form])
                 {
-                    NSMutableString *forms = [dictForms objectForKey:p.form];
+                    NSMutableArray *forms = [dictForms objectForKey:p.form];
                     
-                    if (![Util string:forms containsString:p.dosage])
+                    if (![forms containsObject:p.dosage])
                     {
-                        [forms appendFormat:@"%@%@", forms.length > 0 ? @"; ":@"", p.dosage];
+                        [forms addObject:p.dosage];
                     }
                     bHasForm = YES;
                 }
             }
-            
             if (!bHasForm)
             {
                 NSMutableDictionary *dictForms = [[NSMutableDictionary alloc] init];
-                NSMutableString *forms = [[NSMutableString alloc] init];
-                [forms appendFormat:@"%@", p.dosage];
+                NSMutableArray *forms = [[NSMutableArray alloc] init];
+                [forms addObject:p.dosage];
                 [dictForms setObject:forms forKey:p.form];
                 [arrForms addObject:dictForms];
+            }
+            
+            NSMutableArray *arrDetails = [dict objectForKey:@"Details"];
+            BOOL bHasDetail = NO;
+            for (NSMutableDictionary *dictDetails in arrDetails)
+            {
+                if ([[dictDetails objectForKey:@"ApplNo"] isEqualToString:applNoString])
+                {
+                    NSMutableArray *drugs = [dictDetails objectForKey:@"Drugs"];
+                    
+                    if (![drugs containsObject:p])
+                    {
+                        [drugs addObject:p];
+                    }
+                    bHasDetail = YES;
+                }
+            }
+            if (!bHasDetail)
+            {
+                NSMutableDictionary *dictDetails = [[NSMutableDictionary alloc] init];
+                [dictDetails setObject:p.drugName forKey:@"Drug Name"];
+                [dictDetails setObject:applNoString forKey:@"ApplNo"];
+                [dictDetails setObject:p.activeIngred forKey:@"Active Ingredient(s)"];
+                [dictDetails setObject:p.applNo.sponsorApplicant forKey:@"Company"];
+                [dictDetails setObject:p.applNo.sponsorApplicant forKey:@"Date"];
+                NSMutableArray *drugs = [[NSMutableArray alloc] init];
+                [drugs addObject:p];
+                [dictDetails setObject:drugs forKey:@"Drugs"];
+                [arrDetails addObject:dictDetails];
             }
         }
         else
@@ -174,13 +201,25 @@
             [dict setObject:p.activeIngred forKey:@"Active Ingredient(s)"];
             
             NSMutableDictionary *dictForms = [[NSMutableDictionary alloc] init];
-            NSMutableString *forms = [[NSMutableString alloc] init];
-            [forms appendFormat:@"%@", p.dosage];
+            NSMutableArray *forms = [[NSMutableArray alloc] init];
+            [forms addObject:p.dosage];
             [dictForms setObject:forms forKey:p.form];
             NSMutableArray *arrForms = [[NSMutableArray alloc] init];
             [arrForms addObject:dictForms];
             [dict setObject:arrForms forKey:@"Forms and Strengths"];
             
+            NSMutableDictionary *dictDetails = [[NSMutableDictionary alloc] init];
+            [dictDetails setObject:p.drugName forKey:@"Drug Name"];
+            [dictDetails setObject:applNoString forKey:@"ApplNo"];
+            [dictDetails setObject:p.activeIngred forKey:@"Active Ingredient(s)"];
+            [dictDetails setObject:p.applNo.sponsorApplicant forKey:@"Company"];
+            [dictDetails setObject:p.applNo.sponsorApplicant forKey:@"Date"];
+            NSMutableArray *drugs = [[NSMutableArray alloc] init];
+            [drugs addObject:p];
+            [dictDetails setObject:drugs forKey:@"Drugs"];
+            NSMutableArray *arrDetails = [[NSMutableArray alloc] init];
+            [arrDetails addObject:dictDetails];
+            [dict setObject:arrDetails forKey:@"Details"];
             
             [arrDrugs addObject:dict];
         }
