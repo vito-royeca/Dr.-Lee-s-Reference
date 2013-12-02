@@ -127,14 +127,17 @@
             {
                 if ([[child tagName] isEqualToString:@"text"])
                 {
-                    [term appendFormat:@"%@", [child content]];
+                    NSString *utf8 = [NSString stringWithCString:[[child content] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
+                    
+                    [term appendFormat:@"%@", utf8];
                 }
                 else if ([[child tagName] isEqualToString:@"super"])
                 {
-                    [term appendFormat:@"%@", [[child firstChild] content]];
+                    NSString *utf8 = [NSString stringWithCString:[[[child firstChild] content] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
+                    
+                    [term appendFormat:@"%@", utf8];
                 }
             }
-            
         }
         [dict setObject:term forKey:@"term"];
         [dict setObject:[element objectForKey:@"href"] forKey:@"href"];
@@ -200,7 +203,8 @@
                                 
                                 for (TFHppleElement *a in syn.children)
                                 {
-                                    [synonyms addObject:[[syn firstChild] content]];
+                                    NSString *utf8 = [NSString stringWithCString:[[[syn firstChild] content] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
+                                    [synonyms addObject:utf8];
                                 }
                                 [dest setObject:synonyms forKey:strong];
                             }
@@ -220,7 +224,8 @@
                     {
                         if ([[desc tagName] isEqualToString:@"text"])
                         {
-                            
+//                            NSString *utf8 = [NSString stringWithCString:[[desc content] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
+//                            NSString *text = [utf8 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                             NSString *text = [[desc content] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                             [dest setObject:text forKey:strong];
                         }
@@ -262,9 +267,8 @@
     {
         return NO;
     }
-        
-    Dictionary *d = [[Database sharedInstance] createManagedObject:@"Dictionary"];
 
+    Dictionary *d = [[Database sharedInstance] createManagedObject:@"Dictionary"];
     d.dictionaryId = [dict objectForKey:@"id"];
     d.term = [dict objectForKey:@"term"];
     d.definition = [dict objectForKey:@"Definitions:"];
