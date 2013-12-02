@@ -1,6 +1,6 @@
 //
 //  DataLoader.h
-//  Mobile Drugs@FDA
+//  Dr. Lee's Reference
 //
 //  Created by Jovito Royeca on 11/20/13.
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.

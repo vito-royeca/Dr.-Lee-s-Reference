@@ -19,9 +19,35 @@
     
     if (self)
     {
-        _letters = [NSArray arrayWithObjects:@"9"/*,@"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h",
-                    @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u",
-                    @"v", @"w", @"x", @"y", @"z"*/, nil];
+        _letters = [NSArray arrayWithObjects:
+                    @"9",
+//                    @"a",
+//                    @"b",
+//                    @"c",
+//                    @"d",
+//                    @"e",
+//                    @"f",
+//                    @"g",
+//                    @"h",
+//                    @"i",
+//                    @"j",
+//                    @"k",
+//                    @"l",
+//                    @"m",
+//                    @"n",
+//                    @"o",
+//                    @"p",
+//                    @"q",
+//                    @"r",
+//                    @"s",
+//                    @"t",
+//                    @"u",
+//                    @"v",
+//                    @"w",
+//                    @"x",
+//                    @"y",
+//                    @"z",
+                    nil];
     }
     
     return self;
@@ -31,9 +57,13 @@
 {
 //    if ([[Database sharedInstance] tableCount:@"Dictionary"] == 0)
     {
+        NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
+        
         // #1 scrape each letter
         for (NSString *letter in _letters)
         {
+            int total = 0;
+            
             TFHpple *parser = [self parsePage:[NSString stringWithFormat:@"?l=%@", letter]];
         
             // #2 scrape terms in the 1st page letter
@@ -42,6 +72,7 @@
                 [self parseDefinition:dict];
                 NSLog(@"Inserting... %@", [dict objectForKey:@"term"]);
                 [self saveTermToDatabase:dict];
+                total++;
             }
 
             // #3 scrape terms in the subsections of of each letter
@@ -54,9 +85,14 @@
                     [self parseDefinition:dict2];
                     NSLog(@"Inserting... %@", [dict2 objectForKey:@"term"]);
                     [self saveTermToDatabase:dict2];
+                    total++;
                 }
             }
+            
+            [dictTotals setObject:[NSNumber numberWithInt:total] forKey:letter];
         }
+        
+        NSLog(@"%@", dictTotals);
     }
 }
 

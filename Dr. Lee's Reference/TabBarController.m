@@ -76,8 +76,8 @@
 //    [loader loadDrugs];
 //    [loader downloadDocuments];
     
-    StedmansScraper *sc = [[StedmansScraper alloc] init];
-    [sc scrape];
+//    StedmansScraper *sc = [[StedmansScraper alloc] init];
+//    [sc scrape];
 //    [Database sharedInstance];
 }
 
