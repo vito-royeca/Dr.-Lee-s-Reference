@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "Database.h"
+#import "StedmansScraper.h"
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;

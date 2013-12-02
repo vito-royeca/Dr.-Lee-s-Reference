@@ -47,17 +47,16 @@
     CGFloat currentX = 0;
     CGFloat currentY = 0;
     CGFloat currentWidth = self.view.frame.size.width;
-    CGFloat currentHeight = 40;
+    CGFloat currentHeight = 1000;
     CGRect frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
     searchBar = [[UISearchBar alloc] initWithFrame:frame];
     searchBar.delegate = self;
-//    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"All", @"Drugs", @"ICD 10", nil];
-//    searchBar.showsScopeBar = YES;
+    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"Dictionary", @"Drugs", @"ICD 10", nil];
+    searchBar.showsScopeBar = YES;
     [self.view addSubview:searchBar];
-//    self.navigationController.navigationBar.topItem.titleView = searchBar;
     
     currentY = searchBar.frame.size.height;
-    currentHeight = self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height-40;
+    currentHeight = self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height-100;
     frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
     tblResults = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     tblResults.delegate = self;

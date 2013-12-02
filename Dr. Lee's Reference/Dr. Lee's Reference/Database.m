@@ -7,7 +7,6 @@
 //
 
 #import "Database.h"
-#import "AppDelegate.h"
 
 @implementation Database
 
@@ -29,7 +28,7 @@
 {
     if (self = [super init])
     {
-        self.persistentStoreCoordinator;
+//        self.persistentStoreCoordinator;
     }
     return self;
 }
@@ -61,7 +60,7 @@
                                               inManagedObjectContext:[self managedObjectContext]];
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    return fetchedObjects.count;
+    return (int)fetchedObjects.count;
 }
 
 -(NSArray*) find:(NSString*)tableName

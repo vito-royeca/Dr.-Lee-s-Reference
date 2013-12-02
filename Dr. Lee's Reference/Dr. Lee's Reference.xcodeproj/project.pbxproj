@@ -41,6 +41,7 @@
 		11F34BEE1847A7DD00CF5852 /* DrugProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34BED1847A7DD00CF5852 /* DrugProductTableViewCell.m */; };
 		11F34BFE1849778D00CF5852 /* Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34BFD1849778D00CF5852 /* Dictionary.m */; };
 		11F34C15184B079700CF5852 /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34C14184B079700CF5852 /* DictionarySynonym.m */; };
+		11F362BD184C8CF4008659D5 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 11F362BC184C8CF4008659D5 /* database.sqlite */; };
 		11FC406E18443047007EF755 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FC406D18443047007EF755 /* TabBarController.m */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		11F34C0B184978DA00CF5852 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		11F34C13184B079700CF5852 /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySynonym.h; sourceTree = "<group>"; };
 		11F34C14184B079700CF5852 /* DictionarySynonym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionarySynonym.m; sourceTree = "<group>"; };
+		11F362BC184C8CF4008659D5 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
 		11FC406C18443047007EF755 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		11FC406D18443047007EF755 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -296,6 +298,7 @@
 		116ED0AC18468F1700CDC13D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				11F362BC184C8CF4008659D5 /* database.sqlite */,
 				116ED0AE18468F4100CDC13D /* database.xcdatamodeld */,
 			);
 			path = Data;
@@ -376,6 +379,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11F362BD184C8CF4008659D5 /* database.sqlite in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
 				113DE9031843FBF70080B038 /* LICENSE in Resources */,

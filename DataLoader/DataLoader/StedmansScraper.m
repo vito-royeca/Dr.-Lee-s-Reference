@@ -71,8 +71,10 @@
             {
                 [self parseDefinition:dict];
                 NSLog(@"Inserting... %@", [dict objectForKey:@"term"]);
-                [self saveTermToDatabase:dict];
-                total++;
+                if ([self saveTermToDatabase:dict])
+                {
+                    total++;
+                }
             }
 
             // #3 scrape terms in the subsections of of each letter
@@ -84,8 +86,10 @@
                 {
                     [self parseDefinition:dict2];
                     NSLog(@"Inserting... %@", [dict2 objectForKey:@"term"]);
-                    [self saveTermToDatabase:dict2];
-                    total++;
+                    if ([self saveTermToDatabase:dict2])
+                    {
+                        total++;
+                    }
                 }
             }
             
@@ -247,8 +251,18 @@
     return dest;
 }
 
--(void) saveTermToDatabase:(NSDictionary*)dict
+-(BOOL) saveTermToDatabase:(NSDictionary*)dict
 {
+    NSArray *arr = [[Database sharedInstance] find:@"Dictionary"
+                                        columnName:@"dictionaryId"
+                                       columnValue:[dict objectForKey:@"id"]
+                                  relationshipKeys:nil
+                                           sorters:nil];
+    if (arr && arr.count > 0)
+    {
+        return NO;
+    }
+        
     Dictionary *d = [[Database sharedInstance] createManagedObject:@"Dictionary"];
 
     d.dictionaryId = [dict objectForKey:@"id"];
@@ -287,6 +301,8 @@
             }
         }
     }
+    
+    return YES;
 }
 
 @end

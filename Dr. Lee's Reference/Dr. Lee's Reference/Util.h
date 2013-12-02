@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define APP_DELEGATE                    ((AppDelegate *)[[UIApplication sharedApplication] delegate])
-#define DEFAULTS                        [NSUserDefaults standardUserDefaults]
+//#define APP_DELEGATE                    ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+//#define DEFAULTS                        [NSUserDefaults standardUserDefaults]
 
 @interface Util : NSObject
 
