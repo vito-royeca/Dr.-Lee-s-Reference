@@ -24,7 +24,7 @@
 {
     drugSummary = drugSummary_;
     
-    sections = [NSArray arrayWithObjects:@"Overview", @"Forms and Strengths", @"Details", nil];
+    sections = [NSArray arrayWithObjects:@"Overview", @"Forms and Strengths", @"Applications", nil];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,6 +33,8 @@
     if (self)
     {
         // Custom initialization
+        [self setTitle:@"Summary"];
+
     }
     return self;
 }
@@ -48,8 +50,8 @@
     tblDrug.dataSource = self;
     [self.view addSubview:tblDrug];
     
-//    self.navigationController.navigationBar.backItem.title = @"Back";
-    [self setTitle:@"Summary"];
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationController.navigationItem.backBarButtonItem = btnBack;
 }
 
 - (void)didReceiveMemoryWarning

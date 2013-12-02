@@ -31,6 +31,16 @@
         <attribute name="chemicalTypeDescription" attributeType="String" syncable="YES"/>
         <attribute name="chemicalTypeID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
+    <entity name="Dictionary" representedClassName="Dictionary" syncable="YES">
+        <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dictionaryId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="DictionarySynonym" representedClassName="DictionarySynonym" syncable="YES">
+        <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dictionaryId" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dictionary" syncable="YES"/>
+    </entity>
     <entity name="DocType_Lookup" representedClassName="DocType_Lookup" syncable="YES">
         <attribute name="docType" attributeType="String" syncable="YES"/>
         <attribute name="docTypeDesc" attributeType="String" syncable="YES"/>
@@ -77,5 +87,7 @@
         <element name="Product_TECode" positionX="0" positionY="0" width="0" height="0"/>
         <element name="RegActionDate" positionX="0" positionY="0" width="0" height="0"/>
         <element name="ReviewClass_Lookup" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Dictionary" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DictionarySynonym" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

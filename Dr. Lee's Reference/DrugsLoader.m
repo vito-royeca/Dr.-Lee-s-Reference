@@ -85,7 +85,7 @@
     if ([_database bIsTableEmpty:@"ChemicalType_Lookup"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"ChemTypeLookup" ofType:@"csv"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"ChemTypeLookup" ofType:@"txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -118,8 +118,8 @@
                 NSLog(@"Loading ChemicalType_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            ChemicalType_Lookup *obj = [NSEntityDescription insertNewObjectForEntityForName:@"ChemicalType_Lookup"
-                                                                     inManagedObjectContext:[_database managedObjectContext]];
+            ChemicalType_Lookup *obj = [_database createManagedObject:@"ChemicalType_Lookup"];
+            
             if (elements.count >= 1)
             {
                 obj.chemicalTypeID =  [NSNumber numberWithInteger:[[elements objectAtIndex:0] integerValue]];
@@ -148,7 +148,7 @@
     if ([_database bIsTableEmpty:@"ReviewClass_Lookup"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"ReviewClass_Lookup" ofType:@"csv"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"ReviewClass_Lookup" ofType:@"txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -181,8 +181,7 @@
                 NSLog(@"Loading ReviewClass_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            ReviewClass_Lookup *obj = [NSEntityDescription insertNewObjectForEntityForName:@"ReviewClass_Lookup"
-                                                                    inManagedObjectContext:[_database managedObjectContext]];
+            ReviewClass_Lookup *obj = [_database createManagedObject:@"ReviewClass_Lookup"];
             
             if (elements.count >= 1)
             {
@@ -216,7 +215,7 @@
     if ([_database bIsTableEmpty:@"Application"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"application" ofType:@"csv"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"application" ofType:@"txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -249,8 +248,7 @@
                 NSLog(@"Loading Application...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            Application *obj = [NSEntityDescription insertNewObjectForEntityForName:@"Application"
-                                                             inManagedObjectContext:[_database managedObjectContext]];
+            Application *obj = [_database createManagedObject:@"Application"];
             
             if (elements.count >= 1)
             {
@@ -278,11 +276,16 @@
             }
             if (elements.count >= 7 && [[elements objectAtIndex:6] length] > 0)
             {
-                obj.chemicalType = [[_database find:@"ChemicalType_Lookup"
-                                         columnName:@"chemicalTypeID"
-                                        columnValue:[elements objectAtIndex:6]
-                                   relationshipKeys:nil
-                                            sorters:nil] objectAtIndex:0];
+                NSArray *array = [_database find:@"ChemicalType_Lookup"
+                                      columnName:@"chemicalTypeID"
+                                     columnValue:[elements objectAtIndex:6]
+                                relationshipKeys:nil
+                                         sorters:nil];
+                
+                if (array && array.count > 0)
+                {
+                    obj.chemicalType = [array objectAtIndex:0];
+                }
             }
             if (elements.count >= 8)
             {
@@ -309,7 +312,7 @@
     if ([_database bIsTableEmpty:@"Product"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"Product" ofType:@"csv"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"Product" ofType:@"txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -343,16 +346,19 @@
             }
             
             
-            Product *obj = [NSEntityDescription insertNewObjectForEntityForName:@"Product"
-                                                         inManagedObjectContext:[_database managedObjectContext]];
+            Product *obj = [_database createManagedObject:@"Product"];
             
             if (elements.count >= 1)
             {
-                obj.applNo = [[_database find:@"Application"
-                                   columnName:@"applNo"
-                                  columnValue:[elements objectAtIndex:0]
-                             relationshipKeys:nil
-                                      sorters:nil] objectAtIndex:0];
+                NSArray *array = [_database find:@"Application"
+                                      columnName:@"applNo"
+                                     columnValue:[elements objectAtIndex:0]
+                                relationshipKeys:nil
+                                         sorters:nil];
+                if (array && array.count > 0)
+                {
+                    obj.applNo = [array objectAtIndex:0];
+                }
             }
             if (elements.count >= 2)
             {
@@ -402,7 +408,7 @@
     if ([_database bIsTableEmpty:@"Product_TECode"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"Product_tecode" ofType:@"csv"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"Product_tecode" ofType:@"txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -435,24 +441,32 @@
                 NSLog(@"Loading Product_TECode...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            Product_TECode *obj = [NSEntityDescription insertNewObjectForEntityForName:@"Product_TECode"
-                                                                inManagedObjectContext:[_database managedObjectContext]];
+            Product_TECode *obj = [_database createManagedObject:@"Product_TECode"];
             
             if (elements.count >= 1)
             {
-                obj.applNo = [[_database find:@"Application"
-                                   columnName:@"applNo"
-                                  columnValue:[elements objectAtIndex:0]
-                             relationshipKeys:nil
-                                      sorters:nil] objectAtIndex:0];
+                NSArray *array = [_database find:@"Application"
+                                      columnName:@"applNo"
+                                     columnValue:[elements objectAtIndex:0]
+                                relationshipKeys:nil
+                                         sorters:nil];
+                
+                if (array && array.count > 0)
+                {
+                    obj.applNo = [array objectAtIndex:0];
+                }
             }
             if (elements.count >= 2)
             {
-                obj.productNo = [[_database find:@"Product"
+                NSArray *array = [_database find:@"Product"
                                       columnName:@"productNo"
                                      columnValue:[elements objectAtIndex:1]
                                 relationshipKeys:nil
-                                         sorters:nil] objectAtIndex:0];
+                                         sorters:nil];
+                if (array && array.count > 0)
+                {
+                    obj.productNo = [array objectAtIndex:0];
+                }
             }
             if (elements.count >= 3)
             {
@@ -482,7 +496,7 @@
     if ([_database bIsTableEmpty:@"AppDocType_Lookup"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"AppDocType_Lookup" ofType:@"csv"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"AppDocType_Lookup" ofType:@"txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -515,8 +529,7 @@
                 NSLog(@"Loading AppDocType_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            AppDocType_Lookup *obj = [NSEntityDescription insertNewObjectForEntityForName:@"AppDocType_Lookup"
-                                                                   inManagedObjectContext:[_database managedObjectContext]];
+            AppDocType_Lookup *obj = [_database createManagedObject:@"AppDocType_Lookup"];
             
             if (elements.count >= 1)
             {
@@ -542,7 +555,7 @@
     if ([_database bIsTableEmpty:@"AppDoc"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"AppDoc" ofType:@"csv"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"AppDoc" ofType:@"txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSASCIIStringEncoding
                                                             error:&error];
@@ -578,8 +591,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             
-            AppDoc *obj = [NSEntityDescription insertNewObjectForEntityForName:@"AppDoc"
-                                                        inManagedObjectContext:[_database managedObjectContext]];
+            AppDoc *obj = [_database createManagedObject:@"AppDoc"];
             
             if (elements.count >= 1)
             {
@@ -587,11 +599,16 @@
             }
             if (elements.count >= 2)
             {
-                obj.applNo = [[_database find:@"Application"
-                                   columnName:@"applNo"
-                                  columnValue:[elements objectAtIndex:1]
-                             relationshipKeys:nil
-                                      sorters:nil] objectAtIndex:0];
+                NSArray *array = [_database find:@"Application"
+                                      columnName:@"applNo"
+                                     columnValue:[elements objectAtIndex:1]
+                                relationshipKeys:nil
+                                         sorters:nil];
+                
+                if (array && array.count > 0)
+                {
+                    obj.applNo = [array objectAtIndex:0];
+                }
             }
             if (elements.count >= 3)
             {
@@ -599,11 +616,16 @@
             }
             if (elements.count >= 4)
             {
-                obj.docType = [[_database find:@"AppDocType_Lookup"
-                                    columnName:@"appDocType"
-                                   columnValue:[elements objectAtIndex:3]
-                              relationshipKeys:nil
-                                       sorters:nil] objectAtIndex:0];
+                NSArray *array = [_database find:@"AppDocType_Lookup"
+                                      columnName:@"appDocType"
+                                     columnValue:[elements objectAtIndex:3]
+                                relationshipKeys:nil
+                                         sorters:nil];
+                
+                if (array && array.count > 0)
+                {
+                    obj.docType = [array objectAtIndex:0];
+                }
             }
             if (elements.count >= 5)
             {
@@ -642,7 +664,7 @@
     if ([_database bIsTableEmpty:@"DocType_Lookup"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"DocType_lookup" ofType:@"csv"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"DocType_lookup" ofType:@"txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -675,8 +697,7 @@
                 NSLog(@"Loading DocTypeLookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            DocType_Lookup *obj = [NSEntityDescription insertNewObjectForEntityForName:@"DocType_Lookup"
-                                                                inManagedObjectContext:[_database managedObjectContext]];
+            DocType_Lookup *obj = [_database createManagedObject:@"DocType_Lookup"];
             
             if (elements.count >= 1)
             {
@@ -702,7 +723,7 @@
     if ([_database bIsTableEmpty:@"RegActionDate"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"RegActionDate" ofType:@"csv"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"RegActionDate" ofType:@"txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -738,16 +759,20 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             
-            RegActionDate *obj = [NSEntityDescription insertNewObjectForEntityForName:@"RegActionDate"
-                                                               inManagedObjectContext:[_database managedObjectContext]];
+            RegActionDate *obj = [_database createManagedObject:@"RegActionDate"];
             
             if (elements.count >= 1)
             {
-                obj.applNo = [[_database find:@"Application"
-                                   columnName:@"applNo"
-                                  columnValue:[elements objectAtIndex:0]
-                             relationshipKeys:nil
-                                      sorters:nil] objectAtIndex:0];
+                NSArray *array = [_database find:@"Application"
+                                      columnName:@"applNo"
+                                     columnValue:[elements objectAtIndex:0]
+                                relationshipKeys:nil
+                                         sorters:nil];
+                
+                if (array && array.count > 0)
+                {
+                    obj.applNo = [array objectAtIndex:0];
+                }
             }
             if (elements.count >= 2)
             {
@@ -768,11 +793,16 @@
             }
             if (elements.count >= 6)
             {
-                obj.docType = [[_database find:@"DocType_Lookup"
-                                   columnName:@"docType"
-                                   columnValue:[elements objectAtIndex:5]
-                              relationshipKeys:nil
-                                       sorters:nil] objectAtIndex:0];
+                NSArray *array = [_database find:@"DocType_Lookup"
+                                      columnName:@"docType"
+                                     columnValue:[elements objectAtIndex:5]
+                                relationshipKeys:nil
+                                         sorters:nil];
+                
+                if (array && array.count > 0)
+                {
+                    obj.docType = [array objectAtIndex:0];
+                }
             }
             
             NSError *error2;
@@ -785,6 +815,65 @@
             done++;
         }
     }
+}
+
+-(void) downloadDocuments
+{
+    NSArray *appDocs = [[Database sharedInstance] findAll:@"AppDoc" sorters:nil];
+    int total = 0;
+    
+    for (AppDoc *appDoc in appDocs)
+    {
+        NSRange range = [appDoc.docURL rangeOfString:@"/" options:NSBackwardsSearch];
+        NSString *fileName = [appDoc.docURL substringFromIndex:range.location+1];
+        
+        if ([self downloadFile:appDoc.docURL
+                    destFolder:appDoc.docType.appDocType
+                      destFile:fileName])
+        {
+            total++;
+        }
+    }
+    
+    NSLog(@"Finished downloading. appDocs=%d, total downloaded=%d", appDocs.count, total);
+}
+
+-(BOOL) downloadFile:(NSString*) urlString destFolder:(NSString*)destFolder destFile:(NSString*)destFile
+{
+    NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString  *dir = [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0], destFolder];
+    NSString  *file = [NSString stringWithFormat:@"%@/%@", dir, destFile];
+    
+    // create directory if does not exist
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dir])
+    {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:dir
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:&error];
+    }
+    // donut download file if it exists
+    if ([[NSFileManager defaultManager] fileExistsAtPath:file])
+    {
+        //            NSError *error;
+        //            [[NSFileManager defaultManager] removeItemAtPath:file error:&error];
+        NSLog(@"Skipping... %@", urlString);
+        return NO;
+    }
+    
+    else
+    {
+        NSLog(@"Downloading... %@", urlString);
+        NSURL  *url = [NSURL URLWithString:urlString];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+        if (urlData)
+        {
+            [urlData writeToFile:file atomically:YES];
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end

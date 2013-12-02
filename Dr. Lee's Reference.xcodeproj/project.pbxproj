@@ -38,7 +38,6 @@
 		11581FD218452150004186F2 /* DrugsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD118452150004186F2 /* DrugsLoader.m */; };
 		11581FD518453598004186F2 /* DrugSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD418453598004186F2 /* DrugSummaryViewController.m */; };
 		11581FD81845513E004186F2 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD71845513D004186F2 /* Util.m */; };
-		116ED0B118468F4100CDC13D /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0AD18468F4100CDC13D /* database.sqlite */; };
 		116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 116ED0AE18468F4100CDC13D /* database.xcdatamodeld */; };
 		116ED0B318468F4100CDC13D /* db.sql in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0B018468F4100CDC13D /* db.sql */; };
 		116ED0BE18468F6500CDC13D /* AppDoc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0B518468F6500CDC13D /* AppDoc.txt */; };
@@ -50,6 +49,16 @@
 		116ED0C418468F6500CDC13D /* Product_tecode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0BB18468F6500CDC13D /* Product_tecode.txt */; };
 		116ED0C518468F6500CDC13D /* RegActionDate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0BC18468F6500CDC13D /* RegActionDate.txt */; };
 		116ED0C618468F6500CDC13D /* ReviewClass_Lookup.txt in Resources */ = {isa = PBXBuildFile; fileRef = 116ED0BD18468F6500CDC13D /* ReviewClass_Lookup.txt */; };
+		11F34BEE1847A7DD00CF5852 /* DrugProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34BED1847A7DD00CF5852 /* DrugProductTableViewCell.m */; };
+		11F34BF11847CE0B00CF5852 /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34BF01847CE0B00CF5852 /* FileDownloader.m */; };
+		11F34BF818495C6900CF5852 /* StedmansScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34BF718495C6900CF5852 /* StedmansScraper.m */; };
+		11F34BFE1849778D00CF5852 /* Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34BFD1849778D00CF5852 /* Dictionary.m */; };
+		11F34C061849783800CF5852 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34C011849783800CF5852 /* TFHpple.m */; };
+		11F34C071849783800CF5852 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34C031849783800CF5852 /* TFHppleElement.m */; };
+		11F34C081849783800CF5852 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34C051849783800CF5852 /* XPathQuery.m */; };
+		11F34C0A1849785600CF5852 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 11F34C091849785600CF5852 /* LICENSE.txt */; };
+		11F34C0C184978DA00CF5852 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F34C0B184978DA00CF5852 /* libxml2.dylib */; };
+		11F34C15184B079700CF5852 /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34C14184B079700CF5852 /* DictionarySynonym.m */; };
 		11FC406E18443047007EF755 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FC406D18443047007EF755 /* TabBarController.m */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +123,6 @@
 		11581FD418453598004186F2 /* DrugSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSummaryViewController.m; sourceTree = "<group>"; };
 		11581FD61845513D004186F2 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		11581FD71845513D004186F2 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
-		116ED0AD18468F4100CDC13D /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
 		116ED0AF18468F4100CDC13D /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		116ED0B018468F4100CDC13D /* db.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db.sql; sourceTree = "<group>"; };
 		116ED0B518468F6500CDC13D /* AppDoc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDoc.txt; sourceTree = "<group>"; };
@@ -126,6 +134,24 @@
 		116ED0BB18468F6500CDC13D /* Product_tecode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Product_tecode.txt; sourceTree = "<group>"; };
 		116ED0BC18468F6500CDC13D /* RegActionDate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RegActionDate.txt; sourceTree = "<group>"; };
 		116ED0BD18468F6500CDC13D /* ReviewClass_Lookup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReviewClass_Lookup.txt; sourceTree = "<group>"; };
+		11F34BEC1847A7DD00CF5852 /* DrugProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugProductTableViewCell.h; sourceTree = "<group>"; };
+		11F34BED1847A7DD00CF5852 /* DrugProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugProductTableViewCell.m; sourceTree = "<group>"; };
+		11F34BEF1847CE0B00CF5852 /* FileDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloader.h; sourceTree = "<group>"; };
+		11F34BF01847CE0B00CF5852 /* FileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloader.m; sourceTree = "<group>"; };
+		11F34BF618495C6900CF5852 /* StedmansScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StedmansScraper.h; sourceTree = "<group>"; };
+		11F34BF718495C6900CF5852 /* StedmansScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StedmansScraper.m; sourceTree = "<group>"; };
+		11F34BFC1849778D00CF5852 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
+		11F34BFD1849778D00CF5852 /* Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dictionary.m; sourceTree = "<group>"; };
+		11F34C001849783800CF5852 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		11F34C011849783800CF5852 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		11F34C021849783800CF5852 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		11F34C031849783800CF5852 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		11F34C041849783800CF5852 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		11F34C051849783800CF5852 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		11F34C091849785600CF5852 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		11F34C0B184978DA00CF5852 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		11F34C13184B079700CF5852 /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySynonym.h; sourceTree = "<group>"; };
+		11F34C14184B079700CF5852 /* DictionarySynonym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionarySynonym.m; sourceTree = "<group>"; };
 		11FC406C18443047007EF755 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		11FC406D18443047007EF755 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11F34C0C184978DA00CF5852 /* libxml2.dylib in Frameworks */,
 				113DE87E1843D8420080B038 /* CoreGraphics.framework in Frameworks */,
 				113DE8821843D8420080B038 /* CoreData.framework in Frameworks */,
 				113DE8801843D8420080B038 /* UIKit.framework in Frameworks */,
@@ -178,6 +205,7 @@
 		113DE87A1843D8420080B038 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11F34C0B184978DA00CF5852 /* libxml2.dylib */,
 				113DE87B1843D8420080B038 /* Foundation.framework */,
 				113DE87D1843D8420080B038 /* CoreGraphics.framework */,
 				113DE87F1843D8420080B038 /* UIKit.framework */,
@@ -241,6 +269,10 @@
 				113DE8B11843DB400080B038 /* Database.m */,
 				11581FD018452150004186F2 /* DrugsLoader.h */,
 				11581FD118452150004186F2 /* DrugsLoader.m */,
+				11F34BEF1847CE0B00CF5852 /* FileDownloader.h */,
+				11F34BF01847CE0B00CF5852 /* FileDownloader.m */,
+				11F34BF618495C6900CF5852 /* StedmansScraper.h */,
+				11F34BF718495C6900CF5852 /* StedmansScraper.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -256,6 +288,10 @@
 				113DE8E81843DC850080B038 /* Application.m */,
 				113DE8BB1843DC240080B038 /* ChemicalType_Lookup.h */,
 				113DE8C11843DC240080B038 /* ChemicalType_Lookup.m */,
+				11F34BFC1849778D00CF5852 /* Dictionary.h */,
+				11F34BFD1849778D00CF5852 /* Dictionary.m */,
+				11F34C13184B079700CF5852 /* DictionarySynonym.h */,
+				11F34C14184B079700CF5852 /* DictionarySynonym.m */,
 				113DE8C21843DC240080B038 /* DocType_Lookup.h */,
 				113DE8C31843DC240080B038 /* DocType_Lookup.m */,
 				113DE8B91843DC240080B038 /* Product.h */,
@@ -275,6 +311,8 @@
 			children = (
 				110A69871845F5DE00852030 /* DrugDetailsViewController.h */,
 				110A69881845F5DF00852030 /* DrugDetailsViewController.m */,
+				11F34BEC1847A7DD00CF5852 /* DrugProductTableViewCell.h */,
+				11F34BED1847A7DD00CF5852 /* DrugProductTableViewCell.m */,
 				11581FD318453598004186F2 /* DrugSummaryViewController.h */,
 				11581FD418453598004186F2 /* DrugSummaryViewController.m */,
 				113DE8EE1843E25A0080B038 /* SearchViewController.h */,
@@ -288,6 +326,7 @@
 		113DE8F81843F2230080B038 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				11F34BFF184977E400CF5852 /* Hpple */,
 				113DE8FF1843FBF70080B038 /* MBProgressHUD */,
 			);
 			path = Libs;
@@ -306,10 +345,9 @@
 		116ED0AC18468F1700CDC13D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				116ED0B418468F6500CDC13D /* drugsatfda */,
-				116ED0AD18468F4100CDC13D /* database.sqlite */,
 				116ED0AE18468F4100CDC13D /* database.xcdatamodeld */,
 				116ED0B018468F4100CDC13D /* db.sql */,
+				116ED0B418468F6500CDC13D /* drugsatfda */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -328,6 +366,20 @@
 				116ED0BD18468F6500CDC13D /* ReviewClass_Lookup.txt */,
 			);
 			path = drugsatfda;
+			sourceTree = "<group>";
+		};
+		11F34BFF184977E400CF5852 /* Hpple */ = {
+			isa = PBXGroup;
+			children = (
+				11F34C091849785600CF5852 /* LICENSE.txt */,
+				11F34C001849783800CF5852 /* TFHpple.h */,
+				11F34C011849783800CF5852 /* TFHpple.m */,
+				11F34C021849783800CF5852 /* TFHppleElement.h */,
+				11F34C031849783800CF5852 /* TFHppleElement.m */,
+				11F34C041849783800CF5852 /* XPathQuery.h */,
+				11F34C051849783800CF5852 /* XPathQuery.m */,
+			);
+			path = Hpple;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,7 +460,7 @@
 				116ED0C418468F6500CDC13D /* Product_tecode.txt in Resources */,
 				116ED0B318468F4100CDC13D /* db.sql in Resources */,
 				116ED0C018468F6500CDC13D /* application.txt in Resources */,
-				116ED0B118468F4100CDC13D /* database.sqlite in Resources */,
+				11F34C0A1849785600CF5852 /* LICENSE.txt in Resources */,
 				116ED0BF18468F6500CDC13D /* AppDocType_Lookup.txt in Resources */,
 				116ED0C618468F6500CDC13D /* ReviewClass_Lookup.txt in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
@@ -442,19 +494,27 @@
 				113DE8E91843DC850080B038 /* Application.m in Sources */,
 				113DE8CF1843DC240080B038 /* RegActionDate.m in Sources */,
 				113DE8B31843DB400080B038 /* Database.m in Sources */,
+				11F34C15184B079700CF5852 /* DictionarySynonym.m in Sources */,
+				11F34C061849783800CF5852 /* TFHpple.m in Sources */,
 				113DE8CD1843DC240080B038 /* DocType_Lookup.m in Sources */,
 				113DE8CC1843DC240080B038 /* ChemicalType_Lookup.m in Sources */,
 				113DE8CE1843DC240080B038 /* Product_TECode.m in Sources */,
+				11F34BF11847CE0B00CF5852 /* FileDownloader.m in Sources */,
 				11581FD218452150004186F2 /* DrugsLoader.m in Sources */,
 				11581FD518453598004186F2 /* DrugSummaryViewController.m in Sources */,
+				11F34BEE1847A7DD00CF5852 /* DrugProductTableViewCell.m in Sources */,
+				11F34C081849783800CF5852 /* XPathQuery.m in Sources */,
 				113DE8F01843E25A0080B038 /* SearchViewController.m in Sources */,
+				11F34BF818495C6900CF5852 /* StedmansScraper.m in Sources */,
 				113DE8CB1843DC240080B038 /* AppDocType_Lookup.m in Sources */,
+				11F34C071849783800CF5852 /* TFHppleElement.m in Sources */,
 				113DE8C91843DC240080B038 /* Product.m in Sources */,
 				113DE8CA1843DC240080B038 /* AppDoc.m in Sources */,
 				113DE88E1843D8420080B038 /* AppDelegate.m in Sources */,
 				11FC406E18443047007EF755 /* TabBarController.m in Sources */,
 				113DE88A1843D8420080B038 /* main.m in Sources */,
 				11581FD81845513E004186F2 /* Util.m in Sources */,
+				11F34BFE1849778D00CF5852 /* Dictionary.m in Sources */,
 				116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */,
 				113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */,
 			);
@@ -579,6 +639,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dr. Lee's Reference/Dr. Lee's Reference-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "Dr. Lee's Reference/Dr. Lee's Reference-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -593,6 +658,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dr. Lee's Reference/Dr. Lee's Reference-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "Dr. Lee's Reference/Dr. Lee's Reference-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

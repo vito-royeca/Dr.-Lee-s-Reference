@@ -10,7 +10,7 @@
 
 @interface DrugDetailsViewController ()
 
-@property(strong,nonatomic) NSArray *sections;
+@property(strong,nonatomic) NSMutableArray *sections;
 
 @end
 
@@ -25,9 +25,7 @@
 {
     drugDetails = drugDetails_;
     
-    sections = [NSArray arrayWithObjects:@"Drug Details",
-            [NSString stringWithFormat:@"Products on Application %@", [drugDetails objectForKey:@"ApplNo"]],
-                @"Documents", nil];
+    sections = [[NSMutableArray alloc] init];
     
     NSArray *arrDrugs = [drugDetails objectForKey:@"Drugs"];
     Product *p = [arrDrugs objectAtIndex:0];
@@ -38,6 +36,13 @@
                                     columnValue:p.applNo.applNo
                                relationshipKeys:[NSArray arrayWithObjects:@"applNo", nil]
                                         sorters:[NSArray arrayWithObjects:dicSorter, nil]];
+    
+    [sections addObject:@"Drug Details"];
+    [sections addObject:[NSString stringWithFormat:@"Products on Application %@", [drugDetails objectForKey:@"ApplNo"]]];
+    if (documents.count > 0)
+    {
+        [sections addObject:@"Documents"];
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,6 +51,7 @@
     if (self)
     {
         // Custom initialization
+        [self setTitle:@"Details"];
     }
     return self;
 }
@@ -60,8 +66,6 @@
     tblDrug.delegate = self;
     tblDrug.dataSource = self;
     [self.view addSubview:tblDrug];
-    
-    [self setTitle:@"Details"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -117,20 +121,38 @@
     return [sections objectAtIndex:section];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section)
+    {
+        case 0:
+        case 2:
+        default:
+        {
+            return 44;
+        }
+        case 1:
+        {
+            return 100;
+        }
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
+    UITableViewCell *cell;
     
     switch (indexPath.section)
     {
         case 0:
         {
+            static NSString *CellIdentifier = @"Cell";
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            }
+            
             switch (indexPath.row)
             {
                 case 0:
@@ -169,16 +191,34 @@
         }
         case 1:
         {
+            static NSString *CellIdentifier = @"CustomCell";
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil)
+            {
+                cell = [[DrugProductTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                                       reuseIdentifier:CellIdentifier];
+            }
+            
             NSArray *arrDrugs = [drugDetails objectForKey:@"Drugs"];
             Product *p = [arrDrugs objectAtIndex:indexPath.row];
             
-            cell.textLabel.text = p.dosage;
-            cell.detailTextLabel.text = [p productMktStatusString];
+            ((DrugProductTableViewCell*)cell).lblStrength.text = p.dosage;
+            ((DrugProductTableViewCell*)cell).lblDosage.text = p.form;
+            ((DrugProductTableViewCell*)cell).lblMarketingStatus.text = [p productMktStatusString];
+            ((DrugProductTableViewCell*)cell).lblRLD.text = [p referenceDrugString];
+            ((DrugProductTableViewCell*)cell).lblTECode.text = p.teCode;
             cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         }
         case 2:
         {
+            static NSString *CellIdentifier = @"Cell";
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            }
+            
             AppDoc *appDoc = [documents objectAtIndex:indexPath.row];
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd"];

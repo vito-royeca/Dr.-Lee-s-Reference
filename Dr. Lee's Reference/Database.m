@@ -29,7 +29,7 @@
 {
     if (self = [super init])
     {
-//        self.persistentStoreCoordinator;
+        self.persistentStoreCoordinator;
     }
     return self;
 }
@@ -96,6 +96,41 @@
     }
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:predicate];
+    
+    NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    
+    if (error)
+    {
+        NSLog(@"fetch error: %@ : %@", error, [error userInfo]);
+        return [NSArray arrayWithObjects:nil, nil];
+    }
+    else
+    {
+        return fetchedObjects;
+    }
+}
+
+-(NSArray*) findAll:(NSString*)tableName
+            sorters:(NSArray*)sorters
+{
+    NSError *error;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:tableName
+                                              inManagedObjectContext:[self managedObjectContext]];
+    if (sorters)
+    {
+        NSMutableArray *arrSorters = [[NSMutableArray alloc] initWithCapacity:sorters.count];
+        
+        for (NSDictionary *dict in sorters)
+        {
+            NSString *key = [[dict allKeys] objectAtIndex:0];
+            NSSortDescriptor *descriptor = [[NSSortDescriptor alloc]
+                                            initWithKey:key ascending:[[dict objectForKey:key] boolValue]];
+            [arrSorters addObject:descriptor];
+        }
+        [fetchRequest setSortDescriptors:arrSorters];
+    }
+    [fetchRequest setEntity:entity];
     
     NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
     
@@ -257,22 +292,11 @@
     return arrDrugs;
 }
 
--(NSArray*) searchAllDrugs
+-(id) createManagedObject:(NSString*)name
 {
-    NSError *error;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product"
-                                              inManagedObjectContext:[self managedObjectContext]];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"drugName" ascending:YES];
-    
-    
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    [fetchRequest setEntity:entity];
-    
-    NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    
-    return fetchedObjects;
+    NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:name
+                                                            inManagedObjectContext:self.managedObjectContext];
+    return object;
 }
 
 - (void)saveContext
@@ -335,18 +359,18 @@
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"database.sqlite"];
     
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]])
-    {
-        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"database" ofType:@"sqlite"]];
-        
-        NSError* err = nil;
-        
-        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err])
-        {
-            NSLog(@"Oops, could copy preloaded data");
-        }
-    }
-    
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]])
+//    {
+//        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"database" ofType:@"sqlite"]];
+//        
+//        NSError* err = nil;
+//        
+//        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err])
+//        {
+//            NSLog(@"Oops, could copy preloaded data");
+//        }
+//    }
+
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])

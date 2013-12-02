@@ -36,8 +36,12 @@
 relationshipKeys:(NSArray*)relationshipKeys
          sorters:(NSArray*)sorters;
 
+-(NSArray*) findAll:(NSString*)tableName
+            sorters:(NSArray*)sorters;
+
 -(NSArray*) searchDrugs:(NSString*)query;
--(NSArray*) searchAllDrugs;
+
+-(id) createManagedObject:(NSString*)name;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

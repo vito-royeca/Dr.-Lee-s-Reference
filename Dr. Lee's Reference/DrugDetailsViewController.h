@@ -11,6 +11,7 @@
 #import "AppDoc.h"
 #import "Application.h"
 #import "Database.h"
+#import "DrugProductTableViewCell.h"
 #import "Product.h"
 
 @interface DrugDetailsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>

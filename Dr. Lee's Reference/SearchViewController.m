@@ -28,6 +28,7 @@
     if (self)
     {
         // Custom initialization
+        self.title = @"Dr. Lee's Reference";
     }
     return self;
 }
@@ -53,6 +54,7 @@
 //    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"All", @"Drugs", @"ICD 10", nil];
 //    searchBar.showsScopeBar = YES;
     [self.view addSubview:searchBar];
+//    self.navigationController.navigationBar.topItem.titleView = searchBar;
     
     currentY = searchBar.frame.size.height;
     currentHeight = self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height-40;
@@ -63,8 +65,6 @@
     tblResults.scrollEnabled = YES;
     tblResults.userInteractionEnabled = YES;
     [self.view addSubview:tblResults];
-
-    self.title = @"Search";
 }
 
 - (void)didReceiveMemoryWarning

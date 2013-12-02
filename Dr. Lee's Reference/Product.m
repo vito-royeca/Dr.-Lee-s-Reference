@@ -55,11 +55,11 @@
     {
         case 0:
         {
-            return @"Not RLD";
+            return @"No";
         }
         case 1:
         {
-            return @"RLD";
+            return @"Yes";
         }
         case 2:
         {

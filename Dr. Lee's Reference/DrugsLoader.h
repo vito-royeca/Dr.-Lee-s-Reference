@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "Database.h"
+#import "FileDownloader.h"
 
 @interface DrugsLoader : NSObject
 
@@ -22,5 +23,6 @@
 -(void) loadAppDoc;
 -(void) loadDocType_Lookup;
 -(void) loadRegActionDate;
+-(void) downloadDocuments;
 
 @end

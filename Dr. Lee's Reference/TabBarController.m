@@ -34,28 +34,25 @@
     UITabBarItem *tab = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
     _searchView = [[SearchViewController alloc] init];
     [_searchView setTabBarItem:tab];
-    tab.title = @"Search";
     UINavigationController *_searchNavView = [[UINavigationController alloc] initWithRootViewController:_searchView];
     
     tab = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:1];
-    UIViewController *_drugsView = [[UIViewController alloc] init];
-    [_drugsView setTabBarItem:tab];
-    tab.title = @"Drugs";
+    UIViewController *browseView = [[UIViewController alloc] init];
+    [browseView setTabBarItem:tab];
     
-    tab = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:2];
-    UIViewController *_icd10View = [[UIViewController alloc] init];
-    [_icd10View setTabBarItem:tab];
-    tab.title = @"ICD-10";
+    tab = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1];
+    UIViewController *favoritesView = [[UIViewController alloc] init];
+    [favoritesView setTabBarItem:tab];
     
-//    tab = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:3];
-    UIViewController *_favoritesView = [[UIViewController alloc] init];
-//    [_favoritesView setTabBarItem:tab];
-//    tab.title = @"Favorites";
+    tab = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemHistory tag:2];
+    UIViewController *historyView = [[UIViewController alloc] init];
+    [historyView setTabBarItem:tab];
     
-    [self setViewControllers:[NSArray arrayWithObjects:_searchNavView, _drugsView, _icd10View, _favoritesView, nil]];
+    
+    [self setViewControllers:[NSArray arrayWithObjects:_searchNavView, browseView, favoritesView, historyView, nil]];
     
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    hud.labelText = @"Loading Database...";
+    hud.labelText = @"Loading...";
     [self.view addSubview:hud];
     hud.delegate = self;
     [hud showWhileExecuting:@selector(loadDatabase) onTarget:self withObject:nil animated:YES];
@@ -75,8 +72,13 @@
 
 -(void) loadDatabase
 {
-    DrugsLoader *loader = [[DrugsLoader alloc] init];
-    [loader loadDrugs];
+//    DrugsLoader *loader = [[DrugsLoader alloc] init];
+//    [loader loadDrugs];
+//    [loader downloadDocuments];
+    
+    StedmansScraper *sc = [[StedmansScraper alloc] init];
+    [sc scrape];
+//    [Database sharedInstance];
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "DrugsLoader.h"
 #import "MBProgressHUD.h"
 #import "SearchViewController.h"
+#import "StedmansScraper.h"
 
 @interface TabBarController : UITabBarController<MBProgressHUDDelegate>
 
