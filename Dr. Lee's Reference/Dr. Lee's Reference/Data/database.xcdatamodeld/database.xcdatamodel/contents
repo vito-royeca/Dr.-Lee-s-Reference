@@ -33,7 +33,7 @@
     </entity>
     <entity name="Dictionary" representedClassName="Dictionary" syncable="YES">
         <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dictionaryId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dictionaryId" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -82,12 +82,12 @@
         <element name="AppDocType_Lookup" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Application" positionX="0" positionY="0" width="0" height="0"/>
         <element name="ChemicalType_Lookup" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Dictionary" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DictionarySynonym" positionX="0" positionY="0" width="0" height="0"/>
         <element name="DocType_Lookup" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Product" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Product_TECode" positionX="0" positionY="0" width="0" height="0"/>
         <element name="RegActionDate" positionX="0" positionY="0" width="0" height="0"/>
         <element name="ReviewClass_Lookup" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Dictionary" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="DictionarySynonym" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -40,4 +40,24 @@
     return retString;
 }
 
++ (NSString*) toUTF8:(NSString*)string
+{
+    if ([string canBeConvertedToEncoding:NSISOLatin1StringEncoding])
+    {
+        NSString *utf8 = [NSString stringWithCString:[string cStringUsingEncoding:NSISOLatin1StringEncoding]
+                                  encoding:NSUTF8StringEncoding];
+        
+        return utf8 ? utf8 : string;
+    }
+    else
+    {
+        return string;
+    }
+}
+
++ (NSString*) trim:(NSString*)string
+{
+    return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 @end

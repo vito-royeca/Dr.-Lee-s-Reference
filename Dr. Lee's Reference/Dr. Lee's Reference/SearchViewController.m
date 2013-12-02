@@ -38,7 +38,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    _letters = [NSArray arrayWithObjects:@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H",
+    _letters = [NSArray arrayWithObjects:@"#", @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H",
                @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U",
                @"V", @"W", @"X", @"Y", @"Z", nil];
     _content = [[NSMutableDictionary alloc] init];
@@ -47,11 +47,11 @@
     CGFloat currentX = 0;
     CGFloat currentY = 0;
     CGFloat currentWidth = self.view.frame.size.width;
-    CGFloat currentHeight = 1000;
+    CGFloat currentHeight = 100;
     CGRect frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
     searchBar = [[UISearchBar alloc] initWithFrame:frame];
     searchBar.delegate = self;
-    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"Dictionary", @"Drugs", @"ICD 10", nil];
+    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"Dictionary", @"Drugs", @"ICD-10", nil];
     searchBar.showsScopeBar = YES;
     [self.view addSubview:searchBar];
     
@@ -80,16 +80,41 @@
     {
         NSMutableArray *values = [[NSMutableArray alloc] init];
         
-        for (NSDictionary *dict in results)
+        switch (searchBar.selectedScopeButtonIndex)
         {
-            NSString *name = [dict objectForKey:@"Drug Name"];
-            
-            if ([name hasPrefix:letter])
+            case DictionaryDataSource:
             {
-                if (![values containsObject:dict])
+                for (Dictionary *d in results)
                 {
-                    [values addObject:dict];
+                    if ([d.term hasPrefix:letter])
+                    {
+                        if (![values containsObject:d])
+                        {
+                            [values addObject:d];
+                        }
+                    }
                 }
+                break;
+            }
+            case DrugsDataSource:
+            {
+                for (NSDictionary *dict in results)
+                {
+                    NSString *name = [dict objectForKey:@"Drug Name"];
+                    
+                    if ([name hasPrefix:letter])
+                    {
+                        if (![values containsObject:dict])
+                        {
+                            [values addObject:dict];
+                        }
+                    }
+                }
+                break;
+            }
+            default:
+            {
+                break;
             }
         }
         
@@ -155,10 +180,30 @@
     
     NSString *prefix = [_keys objectAtIndex:indexPath.section];
     NSArray *arr = [_content objectForKey:prefix];
-    NSDictionary *dict = [arr objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [dict objectForKey:@"Drug Name"];
-    cell.detailTextLabel.text = [dict objectForKey:@"Active Ingredient(s)"];
+    switch (searchBar.selectedScopeButtonIndex)
+    {
+        case DictionaryDataSource:
+        {
+            Dictionary *d = [arr objectAtIndex:indexPath.row];
+            cell.textLabel.text = d.term;
+            cell.detailTextLabel.text = @"";
+            break;
+        }
+        case DrugsDataSource:
+        {
+            NSDictionary *dict = [arr objectAtIndex:indexPath.row];
+            
+            cell.textLabel.text = [dict objectForKey:@"Drug Name"];
+            cell.detailTextLabel.text = [dict objectForKey:@"Active Ingredient(s)"];
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
+    
     
     return cell;
 }
@@ -181,8 +226,7 @@
         [searchBar resignFirstResponder];
     }
     
-    results = [[Database sharedInstance] searchDrugs:searchBar.text];
-    
+    results = [[Database sharedInstance] search:searchBar.selectedScopeButtonIndex query:searchBar.text];
     [self createSections];
     
     [tblResults reloadData];

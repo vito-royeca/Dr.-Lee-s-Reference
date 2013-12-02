@@ -72,13 +72,7 @@
 
 -(void) loadDatabase
 {
-//    DrugsLoader *loader = [[DrugsLoader alloc] init];
-//    [loader loadDrugs];
-//    [loader downloadDocuments];
     
-//    StedmansScraper *sc = [[StedmansScraper alloc] init];
-//    [sc scrape];
-//    [Database sharedInstance];
 }
 
 @end

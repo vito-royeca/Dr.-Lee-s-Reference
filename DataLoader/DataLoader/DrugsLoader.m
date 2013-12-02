@@ -835,7 +835,7 @@
         }
     }
     
-    NSLog(@"Finished downloading. appDocs=%d, total downloaded=%d", appDocs.count, total);
+    NSLog(@"Finished downloading. total downloaded=%d", total);
 }
 
 -(BOOL) downloadFile:(NSString*) urlString destFolder:(NSString*)destFolder destFile:(NSString*)destFile

@@ -20,8 +20,8 @@
     if (self)
     {
         _letters = [NSArray arrayWithObjects:
-                    @"9",
-//                    @"a",
+//                    @"9",
+                    @"a",
 //                    @"b",
 //                    @"c",
 //                    @"d",
@@ -69,10 +69,11 @@
             // #2 scrape terms in the 1st page letter
             for (NSMutableDictionary *dict in [self parseTerms:parser])
             {
-                [self parseDefinition:dict];
-                NSLog(@"Inserting... %@", [dict objectForKey:@"term"]);
-                if ([self saveTermToDatabase:dict])
+                if (![self isTermInDatabase:[dict objectForKey:@"term"]])
                 {
+                    [self parseDefinition:dict];
+                    NSLog(@"Inserting... %@", [dict objectForKey:@"term"]);
+                    [self saveTermToDatabase:dict];
                     total++;
                 }
             }
@@ -84,10 +85,11 @@
             
                 for (NSMutableDictionary *dict2 in [self parseTerms:parser2])
                 {
-                    [self parseDefinition:dict2];
-                    NSLog(@"Inserting... %@", [dict2 objectForKey:@"term"]);
-                    if ([self saveTermToDatabase:dict2])
+                    if (![self isTermInDatabase:[dict2 objectForKey:@"term"]])
                     {
+                        [self parseDefinition:dict2];
+                        NSLog(@"Inserting... %@", [dict2 objectForKey:@"term"]);
+                        [self saveTermToDatabase:dict2];
                         total++;
                     }
                 }
@@ -127,19 +129,17 @@
             {
                 if ([[child tagName] isEqualToString:@"text"])
                 {
-                    NSString *utf8 = [NSString stringWithCString:[[child content] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
-                    
-                    [term appendFormat:@"%@", utf8];
+                    [term appendFormat:@"%@", [child content]];
                 }
-                else if ([[child tagName] isEqualToString:@"super"])
-                {
-                    NSString *utf8 = [NSString stringWithCString:[[[child firstChild] content] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
+                else if ([[child tagName] isEqualToString:@"super"] ||
+                         [[child tagName] isEqualToString:@"sub"])
                     
-                    [term appendFormat:@"%@", utf8];
+                {
+                    [term appendFormat:@"%@", [[child firstChild] content]];
                 }
             }
         }
-        [dict setObject:term forKey:@"term"];
+        [dict setObject:[Util toUTF8:term] forKey:@"term"];
         [dict setObject:[element objectForKey:@"href"] forKey:@"href"];
         [arrTerms addObject:dict];
     }
@@ -195,41 +195,46 @@
                     // Synonyms:
                     if ([strong isEqualToString:@"Synonyms:"])
                     {
+                        NSMutableArray *synonyms = [[NSMutableArray alloc] init];
+                        
                         for (TFHppleElement *syn in child.parent.children)
                         {
                             if ([[syn tagName] isEqualToString:@"a"])
                             {
-                                NSMutableArray *synonyms = [[NSMutableArray alloc] init];
-                                
                                 for (TFHppleElement *a in syn.children)
                                 {
-                                    NSString *utf8 = [NSString stringWithCString:[[[syn firstChild] content] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
-                                    [synonyms addObject:utf8];
+                                    [synonyms addObject:[Util toUTF8:[[syn firstChild] content]]];
                                 }
-                                [dest setObject:synonyms forKey:strong];
                             }
                         }
+                        [dest setObject:synonyms forKey:strong];
                     }
                     else
                     {
                         // Pronunciation:
-                        NSString *text = [[child content] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                        NSString *text = [Util trim:[child content]];
                         [dest setObject:text forKey:strong];
                     }
                 }
                 // Definitions:
                 else
                 {
+                    NSMutableString *definitions = [[NSMutableString alloc] init];
+                    
                     for (TFHppleElement *desc in child.parent.children)
                     {
                         if ([[desc tagName] isEqualToString:@"text"])
                         {
-//                            NSString *utf8 = [NSString stringWithCString:[[desc content] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding];
-//                            NSString *text = [utf8 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                            NSString *text = [[desc content] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                            [dest setObject:text forKey:strong];
+                            [definitions appendFormat:@"%@", [Util trim:[desc content]]];
+                        }
+                        else if ([[desc tagName] isEqualToString:@"sub"] ||
+                                 [[desc tagName] isEqualToString:@"a"])
+//                        else if ([desc hasChildren])
+                        {
+                            [definitions appendFormat:@"%@", [Util trim:[[desc firstChild] content]]];
                         }
                     }
+                    [dest setObject:definitions forKey:strong];
                 }
                 
                 strong = nil;
@@ -256,18 +261,8 @@
     return dest;
 }
 
--(BOOL) saveTermToDatabase:(NSDictionary*)dict
+-(void) saveTermToDatabase:(NSDictionary*)dict
 {
-    NSArray *arr = [[Database sharedInstance] find:@"Dictionary"
-                                        columnName:@"dictionaryId"
-                                       columnValue:[dict objectForKey:@"id"]
-                                  relationshipKeys:nil
-                                           sorters:nil];
-    if (arr && arr.count > 0)
-    {
-        return NO;
-    }
-
     Dictionary *d = [[Database sharedInstance] createManagedObject:@"Dictionary"];
     d.dictionaryId = [dict objectForKey:@"id"];
     d.term = [dict objectForKey:@"term"];
@@ -305,8 +300,15 @@
             }
         }
     }
-    
-    return YES;
 }
 
+- (BOOL) isTermInDatabase:(NSString*)term
+{
+    NSArray *arr = [[Database sharedInstance] find:@"Dictionary"
+                                        columnName:@"term"
+                                       columnValue:term
+                                  relationshipKeys:nil
+                                           sorters:nil];
+    return arr && arr.count > 0;
+}
 @end

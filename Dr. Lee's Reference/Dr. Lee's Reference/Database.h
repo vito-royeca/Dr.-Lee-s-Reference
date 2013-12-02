@@ -12,12 +12,21 @@
 #import "AppDocType_Lookup.h"
 #import "Application.h"
 #import "ChemicalType_Lookup.h"
+#import "Dictionary.h"
+#import "DictionarySynonym.h"
 #import "DocType_Lookup.h"
 #import "Product.h"
 #import "Product_TECode.h"
 #import "RegActionDate.h"
 #import "ReviewClass_Lookup.h"
 #import "Util.h"
+
+typedef enum
+{
+    DictionaryDataSource = 0,
+    DrugsDataSource,
+    ICD10DataSource
+} DataSource;
 
 @interface Database : NSObject
 
@@ -39,7 +48,7 @@ relationshipKeys:(NSArray*)relationshipKeys
 -(NSArray*) findAll:(NSString*)tableName
             sorters:(NSArray*)sorters;
 
--(NSArray*) searchDrugs:(NSString*)query;
+-(NSArray*) search:(DataSource)dataSource query:(NSString*)query;
 
 -(id) createManagedObject:(NSString*)name;
 

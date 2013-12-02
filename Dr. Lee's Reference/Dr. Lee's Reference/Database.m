@@ -144,6 +144,65 @@
     }
 }
 
+-(NSArray*) search:(DataSource)dataSource query:(NSString*)query
+{
+    switch (dataSource)
+    {
+        case DictionaryDataSource:
+        {
+            return [self searchDictionary:query];
+        }
+        case DrugsDataSource:
+        {
+            return [self searchDrugs:query];
+        }
+        case ICD10DataSource:
+        default:
+        {
+            return  [NSArray array];
+        }
+    }
+}
+
+-(NSArray*) searchDictionary:(NSString*)query
+{
+    NSError *error;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Dictionary"
+                                              inManagedObjectContext:[self managedObjectContext]];
+    NSPredicate *predicate;
+    NSMutableArray *arrDictionary = [[NSMutableArray  alloc] init];
+    
+    if (query.length == 0)
+    {
+        return arrDictionary;
+    }
+    else if (query.length == 1)
+    {
+        predicate = [NSPredicate
+                     predicateWithFormat:@"%K BEGINSWITH[cd] %@",
+                     @"term", query];
+    }
+    else
+    {
+        predicate = [NSPredicate
+                     predicateWithFormat:@"%K CONTAINS[cd] %@ OR %K CONTAINS[cd] %@",
+                     @"term", query,
+                     @"definition", query];
+    }
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                         initWithKey:@"term" ascending:YES];
+    
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    
+    return fetchedObjects;
+}
+
 -(NSArray*) searchDrugs:(NSString*)query
 {
     NSError *error;
