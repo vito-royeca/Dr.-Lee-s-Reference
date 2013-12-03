@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1100DC91184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_DIndex.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1100DC8C184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_DIndex.xml */; };
+		1100DC92184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_EIndex.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1100DC8D184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_EIndex.xml */; };
+		1100DC93184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfDrugs.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1100DC8E184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfDrugs.xml */; };
+		1100DC94184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1100DC8F184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml */; };
+		1100DC95184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_Tabular.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1100DC90184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_Tabular.xml */; };
 		11F34C25184C6BB700CF5852 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F34C24184C6BB700CF5852 /* Cocoa.framework */; };
 		11F34C2F184C6BB700CF5852 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11F34C2D184C6BB700CF5852 /* InfoPlist.strings */; };
 		11F34C31184C6BB700CF5852 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34C30184C6BB700CF5852 /* main.m */; };
@@ -65,6 +70,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1100DC8C184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_DIndex.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_DIndex.xml; sourceTree = "<group>"; };
+		1100DC8D184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_EIndex.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_EIndex.xml; sourceTree = "<group>"; };
+		1100DC8E184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfDrugs.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_TableOfDrugs.xml; sourceTree = "<group>"; };
+		1100DC8F184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml; sourceTree = "<group>"; };
+		1100DC90184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_Tabular.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_Tabular.xml; sourceTree = "<group>"; };
 		11F34C21184C6BB700CF5852 /* DataLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F34C24184C6BB700CF5852 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		11F34C27184C6BB700CF5852 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -161,6 +171,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1100DC8B184DBA2D00EBEC1A /* icd10 */ = {
+			isa = PBXGroup;
+			children = (
+				1100DC8C184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_DIndex.xml */,
+				1100DC8D184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_EIndex.xml */,
+				1100DC8E184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfDrugs.xml */,
+				1100DC8F184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml */,
+				1100DC90184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_Tabular.xml */,
+			);
+			path = icd10;
+			sourceTree = "<group>";
+		};
 		11F34C18184C6BB600CF5852 = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +343,7 @@
 				11F34CC3184C712900CF5852 /* database.xcdatamodeld */,
 				11F34CA5184C6EE900CF5852 /* db.sql */,
 				11F34CA6184C6EE900CF5852 /* drugsatfda */,
+				1100DC8B184DBA2D00EBEC1A /* icd10 */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -420,8 +443,12 @@
 				11F34C2F184C6BB700CF5852 /* InfoPlist.strings in Resources */,
 				11F34CB1184C6EE900CF5852 /* AppDoc.txt in Resources */,
 				11F34C3D184C6BB700CF5852 /* Images.xcassets in Resources */,
+				1100DC94184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml in Resources */,
 				11F34C35184C6BB700CF5852 /* Credits.rtf in Resources */,
+				1100DC93184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfDrugs.xml in Resources */,
+				1100DC91184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_DIndex.xml in Resources */,
 				11F34C9D184C6DE800CF5852 /* LICENSE.txt in Resources */,
+				1100DC95184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_Tabular.xml in Resources */,
 				11F34CB4184C6EE900CF5852 /* ChemTypeLookup.txt in Resources */,
 				11F34CB3184C6EE900CF5852 /* application.txt in Resources */,
 				11F34CB2184C6EE900CF5852 /* AppDocType_Lookup.txt in Resources */,
@@ -432,6 +459,7 @@
 				11F34CB8184C6EE900CF5852 /* RegActionDate.txt in Resources */,
 				11F34CB6184C6EE900CF5852 /* Product.txt in Resources */,
 				11F34CB5184C6EE900CF5852 /* DocType_lookup.txt in Resources */,
+				1100DC92184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_EIndex.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

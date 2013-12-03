@@ -86,7 +86,7 @@
             {
                 for (Dictionary *d in results)
                 {
-                    if ([d.term hasPrefix:letter])
+                    if ([[Util toASCII:d.term] hasPrefix:letter])
                     {
                         if (![values containsObject:d])
                         {
@@ -227,6 +227,10 @@
     }
     
     results = [[Database sharedInstance] search:searchBar.selectedScopeButtonIndex query:searchBar.text];
+    for (Dictionary *d in results)
+    {
+        NSLog(@"%@", d.term);
+    }
     [self createSections];
     
     [tblResults reloadData];

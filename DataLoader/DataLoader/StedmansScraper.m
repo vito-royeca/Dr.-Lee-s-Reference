@@ -20,8 +20,8 @@
     if (self)
     {
         _letters = [NSArray arrayWithObjects:
-//                    @"9",
-                    @"a",
+                    @"9",
+//                    @"a",
 //                    @"b",
 //                    @"c",
 //                    @"d",
@@ -131,11 +131,13 @@
                 {
                     [term appendFormat:@"%@", [child content]];
                 }
-                else if ([[child tagName] isEqualToString:@"super"] ||
-                         [[child tagName] isEqualToString:@"sub"])
-                    
+                else if ([[child tagName] isEqualToString:@"super"])
                 {
-                    [term appendFormat:@"%@", [[child firstChild] content]];
+                    [term appendFormat:@"%@", [Util addSuperScriptToString:[[child firstChild] content] sub:1]];
+                }
+                else if ([[child tagName] isEqualToString:@"sub"])
+                {
+                    [term appendFormat:@"%@", [Util addSuperScriptToString:[[child firstChild] content] sub:-1]];
                 }
             }
         }
@@ -206,6 +208,14 @@
                                     [synonyms addObject:[Util toUTF8:[[syn firstChild] content]]];
                                 }
                             }
+                            else if ([[syn tagName] isEqualToString:@"super"])
+                            {
+                                [synonyms addObject:[Util addSuperScriptToString:[[syn firstChild] content] sub:1]];
+                            }
+                            else if ([[syn tagName] isEqualToString:@"sub"])
+                            {
+                                [synonyms addObject:[Util addSuperScriptToString:[[syn firstChild] content] sub:-1]];
+                            }
                         }
                         [dest setObject:synonyms forKey:strong];
                     }
@@ -227,9 +237,15 @@
                         {
                             [definitions appendFormat:@"%@", [Util trim:[desc content]]];
                         }
-                        else if ([[desc tagName] isEqualToString:@"sub"] ||
-                                 [[desc tagName] isEqualToString:@"a"])
-//                        else if ([desc hasChildren])
+                        else if ([[desc tagName] isEqualToString:@"super"])
+                        {
+                            [definitions appendFormat:@"%@", [Util addSuperScriptToString:[[desc firstChild] content] sub:1]];
+                        }
+                        else if ([[desc tagName] isEqualToString:@"sub"])
+                        {
+                            [definitions appendFormat:@"%@", [Util addSuperScriptToString:[[desc firstChild] content] sub:-1]];
+                        }
+                        else if ([[desc tagName] isEqualToString:@"a"])
                         {
                             [definitions appendFormat:@"%@", [Util trim:[[desc firstChild] content]]];
                         }

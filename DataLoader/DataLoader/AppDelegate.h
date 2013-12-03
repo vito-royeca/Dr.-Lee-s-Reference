@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "Database.h"
+#import "DrugsLoader.h"
 #import "StedmansScraper.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>

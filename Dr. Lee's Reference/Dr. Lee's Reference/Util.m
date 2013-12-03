@@ -55,9 +55,39 @@
     }
 }
 
++ (NSString*) toASCII:(NSString*)string
+{
+    if ([string canBeConvertedToEncoding:NSASCIIStringEncoding])
+    {
+        NSString *ascii = [NSString stringWithCString:[string cStringUsingEncoding:NSASCIIStringEncoding]
+                                             encoding:NSUTF8StringEncoding];
+        
+        return ascii ? ascii : string;
+    }
+    else
+    {
+        return string;
+    }
+}
+
 + (NSString*) trim:(NSString*)string
 {
     return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
++ (NSString*) addSuperScriptToString:(NSString*)string sub:(int)sub
+{
+    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] init];
+    @try {
+    [att beginEditing];
+//    [att addAttribute:(NSString*)NSSuperscriptAttributeName value:sub <0 ? @"-1":@"1" range:NSMakeRange(string.length - 1, string.length - 1)];
+    [att endEditing];
+    }
+    @catch (NSException *error)
+    {
+        NSLog(@"%@ = %@", string, error);
+    }
+    return [att string];
 }
 
 @end

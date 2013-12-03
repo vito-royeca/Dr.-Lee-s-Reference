@@ -16,5 +16,8 @@
 + (BOOL)string:(NSString *)string containsString:(NSString*)x;
 + (NSString*) arrayToString:(NSArray*)arr;
 + (NSString*) toUTF8:(NSString*)string;
++ (NSString*) toASCII:(NSString*)string;
 + (NSString*) trim:(NSString*)string;
++ (NSString*) addSuperScriptToString:(NSString*)string sub:(int)sub;
+
 @end
