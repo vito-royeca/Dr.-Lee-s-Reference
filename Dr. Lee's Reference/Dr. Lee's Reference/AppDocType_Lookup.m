@@ -1,8 +1,8 @@
 //
 //  AppDocType_Lookup.m
-//  Mobile Drugs@FDA
+//  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 11/19/13.
+//  Created by Jovito Royeca on 12/4/13.
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.
 //
 
@@ -12,7 +12,8 @@
 
 @implementation AppDocType_Lookup
 
-@dynamic sortOrder;
 @dynamic appDocType;
+@dynamic sortOrder;
+@dynamic appDocID;
 
 @end

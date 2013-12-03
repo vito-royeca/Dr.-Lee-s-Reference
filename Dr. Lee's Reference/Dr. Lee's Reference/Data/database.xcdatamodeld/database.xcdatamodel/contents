@@ -38,7 +38,7 @@
         <relationship name="applNo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Application" inverseName="chemicalType" inverseEntity="Application" syncable="YES"/>
     </entity>
     <entity name="Dictionary" representedClassName="Dictionary" syncable="YES">
-        <attribute name="definition" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="definition" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="dictionaryId" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="term" attributeType="String" indexed="YES" syncable="YES"/>

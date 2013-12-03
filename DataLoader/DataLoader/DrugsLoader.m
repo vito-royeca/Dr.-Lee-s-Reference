@@ -264,11 +264,11 @@
             }
             if (elements.count >= 4)
             {
-                obj.mostRecentLabelAvailableFlag = [[elements objectAtIndex:3] boolValue];
+                obj.mostRecentLabelAvailableFlag = [NSNumber numberWithBool:[[elements objectAtIndex:3] boolValue]];
             }
             if (elements.count >= 5)
             {
-                obj.currentPatentFlag = [[elements objectAtIndex:4] boolValue];
+                obj.currentPatentFlag = [NSNumber numberWithBool:[[elements objectAtIndex:4] boolValue]];
             }
             if (elements.count >= 6)
             {

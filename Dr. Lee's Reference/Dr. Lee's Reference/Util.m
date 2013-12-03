@@ -75,19 +75,288 @@
     return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-+ (NSString*) addSuperScriptToString:(NSString*)string sub:(int)sub
++ (NSString*) superScriptOf:(NSString*)string
 {
-    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] init];
-    @try {
-    [att beginEditing];
-//    [att addAttribute:(NSString*)NSSuperscriptAttributeName value:sub <0 ? @"-1":@"1" range:NSMakeRange(string.length - 1, string.length - 1)];
-    [att endEditing];
-    }
-    @catch (NSException *error)
+    NSMutableString *p = [[NSMutableString alloc] init];
+    
+    for (int i =0; i<string.length; i++)
     {
-        NSLog(@"%@ = %@", string, error);
+        unichar chara=[string characterAtIndex:i];
+        
+        switch (chara)
+        {
+            case '1':
+            {
+                [p appendFormat:@"%@", @"\u00B9"];
+                break;
+            }
+            case '2':
+            {
+                [p appendFormat:@"%@", @"\u00B2"];
+                break;
+            }
+            case '3':
+            {
+                [p appendFormat:@"%@", @"\u00B3"];
+                break;
+            }
+            case '4':
+            {
+                [p appendFormat:@"%@", @"\u2074"];
+                break;
+            }
+            case '5':
+            {
+                [p appendFormat:@"%@", @"\u2075"];
+                break;
+            }
+            case '6':
+            {
+                [p appendFormat:@"%@", @"\u2076"];
+                break;
+            }
+            case '7':
+            {
+                [p appendFormat:@"%@", @"\u2077"];
+                break;
+            }
+            case '8':
+            {
+                [p appendFormat:@"%@", @"\u2078"];
+                break;
+            }
+            case '9':
+            {
+                [p appendFormat:@"%@", @"\u2079"];
+                break;
+            }
+            case '0':
+            {
+                [p appendFormat:@"%@", @"\u2070"];
+                break;
+            }
+            case '+':
+            {
+                [p appendFormat:@"%@", @"\u207A"];
+                break;
+            }
+            case '-':
+            {
+                [p appendFormat:@"%@", @"\u207B"];
+                break;
+            }
+            case '=':
+            {
+                [p appendFormat:@"%@", @"\u207C"];
+                break;
+            }
+            case '(':
+            {
+                [p appendFormat:@"%@", @"\u207D"];
+                break;
+            }
+            case ')':
+            {
+                [p appendFormat:@"%@", @"\u207E"];
+                break;
+            }
+            case 'n':
+            {
+                [p appendFormat:@"%@", @"\u207F"];
+                break;
+            }
+            default:
+            {
+                [p appendFormat:@"%c", chara];
+                break;
+            }
+        }
     }
-    return [att string];
+    
+    return p;
 }
+
++ (NSString*) subScriptOf:(NSString*)string
+{
+    NSMutableString *p = [[NSMutableString alloc] init];
+    
+    for (int i =0; i<string.length; i++)
+    {
+        unichar chara=[string characterAtIndex:i];
+        
+        switch (chara)
+        {
+            case '0':
+            {
+                [p appendFormat:@"%@", @"\u2080"];
+                break;
+            }
+            case '1':
+            {
+                [p appendFormat:@"%@", @"\u2081"];
+                break;
+            }
+            case '2':
+            {
+                [p appendFormat:@"%@", @"\u2082"];
+                break;
+            }
+            case '3':
+            {
+                [p appendFormat:@"%@", @"\u2083"];
+                break;
+            }
+            case '4':
+            {
+                [p appendFormat:@"%@", @"\u2084"];
+                break;
+            }
+            case '5':
+            {
+                [p appendFormat:@"%@", @"\u2085"];
+                break;
+            }
+            case '6':
+            {
+                [p appendFormat:@"%@", @"\u2086"];
+                break;
+            }
+            case '7':
+            {
+                [p appendFormat:@"%@", @"\u2087"];
+                break;
+            }
+            case '8':
+            {
+                [p appendFormat:@"%@", @"\u2088"];
+                break;
+            }
+            case '9':
+            {
+                [p appendFormat:@"%@", @"\u2089"];
+                break;
+            }
+            case '+':
+            {
+                [p appendFormat:@"%@", @"\u208A"];
+                break;
+            }
+            case '-':
+            {
+                [p appendFormat:@"%@", @"\u208B"];
+                break;
+            }
+            case '=':
+            {
+                [p appendFormat:@"%@", @"\u208C"];
+                break;
+            }
+            case '(':
+            {
+                [p appendFormat:@"%@", @"\u208D"];
+                break;
+            }
+            case ')':
+            {
+                [p appendFormat:@"%@", @"\u208E"];
+                break;
+            }
+            case 'a':
+            {
+                [p appendFormat:@"%@", @"\u2090"];
+                break;
+            }
+            case 'e':
+            {
+                [p appendFormat:@"%@", @"\u2091"];
+                break;
+            }
+            case 'o':
+            {
+                [p appendFormat:@"%@", @"\u2092"];
+                break;
+            }
+            case 'x':
+            {
+                [p appendFormat:@"%@", @"\u2093"];
+                break;
+            }
+            case 'h':
+            {
+                [p appendFormat:@"%@", @"\u2095"];
+                break;
+            }
+            case 'k':
+            {
+                [p appendFormat:@"%@", @"\u2096"];
+                break;
+            }
+            case 'l':
+            {
+                [p appendFormat:@"%@", @"\u2097"];
+                break;
+            }
+            case 'm':
+            {
+                [p appendFormat:@"%@", @"\u2098"];
+                break;
+            }
+            case 'n':
+            {
+                [p appendFormat:@"%@", @"\u2099"];
+                break;
+            }
+            case 'p':
+            {
+                [p appendFormat:@"%@", @"\u209A"];
+                break;
+            }
+            case 's':
+            {
+                [p appendFormat:@"%@", @"\u209B"];
+                break;
+            }
+            case 't':
+            {
+                [p appendFormat:@"%@", @"\u209C"];
+                break;
+            }
+            default:
+            {
+                [p appendFormat:@"%c", chara];
+                break;
+            }
+        }
+    }
+    
+    return p;
+}
+
+
+//+ (NSString*) addSuperScriptToString:(NSString*)string
+//{
+//    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:string];
+//
+//    [att beginEditing];
+//    [att addAttribute:(NSString*)NSSuperscriptAttributeName
+//                value:[NSNumber numberWithInt:1]
+//                range:NSMakeRange(0, string.length-1)];
+//    [att endEditing];
+//    
+//    return [att string];
+//}
+//
+//+ (NSString*) addSubScriptToString:(NSString*)string
+//{
+//    NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:string];
+//        [att beginEditing];
+//        [att addAttribute:(NSString*)NSSuperscriptAttributeName
+//                    value:[NSNumber numberWithInt:-1]
+//                    range:NSMakeRange(0, string.length-1)];
+//        [att endEditing];
+//
+//    return [att string];
+//}
+
 
 @end

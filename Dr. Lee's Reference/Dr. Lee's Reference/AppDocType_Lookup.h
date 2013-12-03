@@ -1,8 +1,8 @@
 //
 //  AppDocType_Lookup.h
-//  Mobile Drugs@FDA
+//  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 11/19/13.
+//  Created by Jovito Royeca on 12/4/13.
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.
 //
 
@@ -13,7 +13,16 @@
 
 @interface AppDocType_Lookup : NSManagedObject
 
+@property (nonatomic, retain) NSString * appDocType;
 @property (nonatomic, retain) NSNumber * sortOrder;
-@property (nonatomic, retain) NSString *appDocType;
+@property (nonatomic, retain) NSSet *appDocID;
+@end
+
+@interface AppDocType_Lookup (CoreDataGeneratedAccessors)
+
+- (void)addAppDocIDObject:(AppDoc *)value;
+- (void)removeAppDocIDObject:(AppDoc *)value;
+- (void)addAppDocID:(NSSet *)values;
+- (void)removeAppDocID:(NSSet *)values;
 
 @end

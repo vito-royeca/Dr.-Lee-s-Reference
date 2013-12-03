@@ -18,6 +18,7 @@
 + (NSString*) toUTF8:(NSString*)string;
 + (NSString*) toASCII:(NSString*)string;
 + (NSString*) trim:(NSString*)string;
-+ (NSString*) addSuperScriptToString:(NSString*)string sub:(int)sub;
++ (NSString*) superScriptOf:(NSString*)string;
++ (NSString*) subScriptOf:(NSString*)string;
 
 @end

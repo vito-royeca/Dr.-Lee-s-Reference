@@ -12,6 +12,18 @@
 		1100DC93184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfDrugs.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1100DC8E184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfDrugs.xml */; };
 		1100DC94184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1100DC8F184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml */; };
 		1100DC95184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_Tabular.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1100DC90184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_Tabular.xml */; };
+		11B78981184E490E00125E97 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11B7897F184E490E00125E97 /* database.xcdatamodeld */; };
+		11B78998184E497600125E97 /* AppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78983184E497600125E97 /* AppDoc.m */; };
+		11B78999184E497600125E97 /* AppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78985184E497600125E97 /* AppDocType_Lookup.m */; };
+		11B7899A184E497600125E97 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78987184E497600125E97 /* Application.m */; };
+		11B7899B184E497600125E97 /* ChemicalType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78989184E497600125E97 /* ChemicalType_Lookup.m */; };
+		11B7899C184E497600125E97 /* Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B7898B184E497600125E97 /* Dictionary.m */; };
+		11B7899D184E497600125E97 /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B7898D184E497600125E97 /* DictionarySynonym.m */; };
+		11B7899E184E497600125E97 /* DocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B7898F184E497600125E97 /* DocType_Lookup.m */; };
+		11B7899F184E497600125E97 /* Product_TECode.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78991184E497600125E97 /* Product_TECode.m */; };
+		11B789A0184E497600125E97 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78993184E497600125E97 /* Product.m */; };
+		11B789A1184E497600125E97 /* RegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78995184E497600125E97 /* RegActionDate.m */; };
+		11B789A2184E497600125E97 /* ReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78997184E497600125E97 /* ReviewClass_Lookup.m */; };
 		11F34C25184C6BB700CF5852 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F34C24184C6BB700CF5852 /* Cocoa.framework */; };
 		11F34C2F184C6BB700CF5852 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11F34C2D184C6BB700CF5852 /* InfoPlist.strings */; };
 		11F34C31184C6BB700CF5852 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34C30184C6BB700CF5852 /* main.m */; };
@@ -41,20 +53,8 @@
 		11F34CB7184C6EE900CF5852 /* Product_tecode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 11F34CAD184C6EE900CF5852 /* Product_tecode.txt */; };
 		11F34CB8184C6EE900CF5852 /* RegActionDate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 11F34CAE184C6EE900CF5852 /* RegActionDate.txt */; };
 		11F34CB9184C6EE900CF5852 /* ReviewClass_Lookup.txt in Resources */ = {isa = PBXBuildFile; fileRef = 11F34CAF184C6EE900CF5852 /* ReviewClass_Lookup.txt */; };
-		11F34CC5184C712900CF5852 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CC3184C712900CF5852 /* database.xcdatamodeld */; };
 		11F34CC8184C714000CF5852 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CC7184C714000CF5852 /* Database.m */; };
 		11F34CCB184C715F00CF5852 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CCA184C715F00CF5852 /* Util.m */; };
-		11F34CE2184C719A00CF5852 /* AppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CCD184C719A00CF5852 /* AppDoc.m */; };
-		11F34CE3184C719A00CF5852 /* AppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CCF184C719A00CF5852 /* AppDocType_Lookup.m */; };
-		11F34CE4184C719A00CF5852 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CD1184C719A00CF5852 /* Application.m */; };
-		11F34CE5184C719A00CF5852 /* ChemicalType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CD3184C719A00CF5852 /* ChemicalType_Lookup.m */; };
-		11F34CE6184C719A00CF5852 /* Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CD5184C719A00CF5852 /* Dictionary.m */; };
-		11F34CE7184C719A00CF5852 /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CD7184C719A00CF5852 /* DictionarySynonym.m */; };
-		11F34CE8184C719A00CF5852 /* DocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CD9184C719A00CF5852 /* DocType_Lookup.m */; };
-		11F34CE9184C719A00CF5852 /* Product_TECode.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CDB184C719A00CF5852 /* Product_TECode.m */; };
-		11F34CEA184C719A00CF5852 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CDD184C719A00CF5852 /* Product.m */; };
-		11F34CEB184C719A00CF5852 /* RegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CDF184C719A00CF5852 /* RegActionDate.m */; };
-		11F34CEC184C719A00CF5852 /* ReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34CE1184C719A00CF5852 /* ReviewClass_Lookup.m */; };
 		11F362BA184C7720008659D5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F34C28184C6BB700CF5852 /* CoreData.framework */; };
 		11F362BB184C7733008659D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F34C29184C6BB700CF5852 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +75,29 @@
 		1100DC8E184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfDrugs.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_TableOfDrugs.xml; sourceTree = "<group>"; };
 		1100DC8F184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml; sourceTree = "<group>"; };
 		1100DC90184DBBFE00EBEC1A /* ICD10CM_FY2014_Full_XML_Tabular.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_Tabular.xml; sourceTree = "<group>"; };
+		11B78980184E490E00125E97 /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
+		11B78982184E497600125E97 /* AppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDoc.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/AppDoc.h"; sourceTree = "<group>"; };
+		11B78983184E497600125E97 /* AppDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDoc.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/AppDoc.m"; sourceTree = "<group>"; };
+		11B78984184E497600125E97 /* AppDocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDocType_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/AppDocType_Lookup.h"; sourceTree = "<group>"; };
+		11B78985184E497600125E97 /* AppDocType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDocType_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/AppDocType_Lookup.m"; sourceTree = "<group>"; };
+		11B78986184E497600125E97 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Application.h"; sourceTree = "<group>"; };
+		11B78987184E497600125E97 /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Application.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Application.m"; sourceTree = "<group>"; };
+		11B78988184E497600125E97 /* ChemicalType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChemicalType_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/ChemicalType_Lookup.h"; sourceTree = "<group>"; };
+		11B78989184E497600125E97 /* ChemicalType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChemicalType_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/ChemicalType_Lookup.m"; sourceTree = "<group>"; };
+		11B7898A184E497600125E97 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dictionary.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Dictionary.h"; sourceTree = "<group>"; };
+		11B7898B184E497600125E97 /* Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dictionary.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Dictionary.m"; sourceTree = "<group>"; };
+		11B7898C184E497600125E97 /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionarySynonym.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/DictionarySynonym.h"; sourceTree = "<group>"; };
+		11B7898D184E497600125E97 /* DictionarySynonym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionarySynonym.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/DictionarySynonym.m"; sourceTree = "<group>"; };
+		11B7898E184E497600125E97 /* DocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocType_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/DocType_Lookup.h"; sourceTree = "<group>"; };
+		11B7898F184E497600125E97 /* DocType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocType_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/DocType_Lookup.m"; sourceTree = "<group>"; };
+		11B78990184E497600125E97 /* Product_TECode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product_TECode.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Product_TECode.h"; sourceTree = "<group>"; };
+		11B78991184E497600125E97 /* Product_TECode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product_TECode.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Product_TECode.m"; sourceTree = "<group>"; };
+		11B78992184E497600125E97 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Product.h"; sourceTree = "<group>"; };
+		11B78993184E497600125E97 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Product.m"; sourceTree = "<group>"; };
+		11B78994184E497600125E97 /* RegActionDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegActionDate.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/RegActionDate.h"; sourceTree = "<group>"; };
+		11B78995184E497600125E97 /* RegActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegActionDate.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/RegActionDate.m"; sourceTree = "<group>"; };
+		11B78996184E497600125E97 /* ReviewClass_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReviewClass_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/ReviewClass_Lookup.h"; sourceTree = "<group>"; };
+		11B78997184E497600125E97 /* ReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReviewClass_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/ReviewClass_Lookup.m"; sourceTree = "<group>"; };
 		11F34C21184C6BB700CF5852 /* DataLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F34C24184C6BB700CF5852 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		11F34C27184C6BB700CF5852 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -118,33 +141,10 @@
 		11F34CAD184C6EE900CF5852 /* Product_tecode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Product_tecode.txt; sourceTree = "<group>"; };
 		11F34CAE184C6EE900CF5852 /* RegActionDate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RegActionDate.txt; sourceTree = "<group>"; };
 		11F34CAF184C6EE900CF5852 /* ReviewClass_Lookup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReviewClass_Lookup.txt; sourceTree = "<group>"; };
-		11F34CC4184C712900CF5852 /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		11F34CC6184C714000CF5852 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Database.h"; sourceTree = "<group>"; };
 		11F34CC7184C714000CF5852 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Database.m"; sourceTree = "<group>"; };
 		11F34CC9184C715F00CF5852 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Util.h"; sourceTree = "<group>"; };
 		11F34CCA184C715F00CF5852 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Util.m"; sourceTree = "<group>"; };
-		11F34CCC184C719A00CF5852 /* AppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDoc.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/AppDoc.h"; sourceTree = "<group>"; };
-		11F34CCD184C719A00CF5852 /* AppDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDoc.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/AppDoc.m"; sourceTree = "<group>"; };
-		11F34CCE184C719A00CF5852 /* AppDocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDocType_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/AppDocType_Lookup.h"; sourceTree = "<group>"; };
-		11F34CCF184C719A00CF5852 /* AppDocType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDocType_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/AppDocType_Lookup.m"; sourceTree = "<group>"; };
-		11F34CD0184C719A00CF5852 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Application.h"; sourceTree = "<group>"; };
-		11F34CD1184C719A00CF5852 /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Application.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Application.m"; sourceTree = "<group>"; };
-		11F34CD2184C719A00CF5852 /* ChemicalType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChemicalType_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/ChemicalType_Lookup.h"; sourceTree = "<group>"; };
-		11F34CD3184C719A00CF5852 /* ChemicalType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChemicalType_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/ChemicalType_Lookup.m"; sourceTree = "<group>"; };
-		11F34CD4184C719A00CF5852 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dictionary.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Dictionary.h"; sourceTree = "<group>"; };
-		11F34CD5184C719A00CF5852 /* Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dictionary.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Dictionary.m"; sourceTree = "<group>"; };
-		11F34CD6184C719A00CF5852 /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionarySynonym.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/DictionarySynonym.h"; sourceTree = "<group>"; };
-		11F34CD7184C719A00CF5852 /* DictionarySynonym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionarySynonym.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/DictionarySynonym.m"; sourceTree = "<group>"; };
-		11F34CD8184C719A00CF5852 /* DocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocType_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/DocType_Lookup.h"; sourceTree = "<group>"; };
-		11F34CD9184C719A00CF5852 /* DocType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocType_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/DocType_Lookup.m"; sourceTree = "<group>"; };
-		11F34CDA184C719A00CF5852 /* Product_TECode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product_TECode.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Product_TECode.h"; sourceTree = "<group>"; };
-		11F34CDB184C719A00CF5852 /* Product_TECode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product_TECode.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Product_TECode.m"; sourceTree = "<group>"; };
-		11F34CDC184C719A00CF5852 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Product.h"; sourceTree = "<group>"; };
-		11F34CDD184C719A00CF5852 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Product.m"; sourceTree = "<group>"; };
-		11F34CDE184C719A00CF5852 /* RegActionDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegActionDate.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/RegActionDate.h"; sourceTree = "<group>"; };
-		11F34CDF184C719A00CF5852 /* RegActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegActionDate.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/RegActionDate.m"; sourceTree = "<group>"; };
-		11F34CE0184C719A00CF5852 /* ReviewClass_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReviewClass_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/ReviewClass_Lookup.h"; sourceTree = "<group>"; };
-		11F34CE1184C719A00CF5852 /* ReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReviewClass_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/ReviewClass_Lookup.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,28 +289,28 @@
 		11F34C71184C6CE800CF5852 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				11F34CCC184C719A00CF5852 /* AppDoc.h */,
-				11F34CCD184C719A00CF5852 /* AppDoc.m */,
-				11F34CCE184C719A00CF5852 /* AppDocType_Lookup.h */,
-				11F34CCF184C719A00CF5852 /* AppDocType_Lookup.m */,
-				11F34CD0184C719A00CF5852 /* Application.h */,
-				11F34CD1184C719A00CF5852 /* Application.m */,
-				11F34CD2184C719A00CF5852 /* ChemicalType_Lookup.h */,
-				11F34CD3184C719A00CF5852 /* ChemicalType_Lookup.m */,
-				11F34CD4184C719A00CF5852 /* Dictionary.h */,
-				11F34CD5184C719A00CF5852 /* Dictionary.m */,
-				11F34CD6184C719A00CF5852 /* DictionarySynonym.h */,
-				11F34CD7184C719A00CF5852 /* DictionarySynonym.m */,
-				11F34CD8184C719A00CF5852 /* DocType_Lookup.h */,
-				11F34CD9184C719A00CF5852 /* DocType_Lookup.m */,
-				11F34CDA184C719A00CF5852 /* Product_TECode.h */,
-				11F34CDB184C719A00CF5852 /* Product_TECode.m */,
-				11F34CDC184C719A00CF5852 /* Product.h */,
-				11F34CDD184C719A00CF5852 /* Product.m */,
-				11F34CDE184C719A00CF5852 /* RegActionDate.h */,
-				11F34CDF184C719A00CF5852 /* RegActionDate.m */,
-				11F34CE0184C719A00CF5852 /* ReviewClass_Lookup.h */,
-				11F34CE1184C719A00CF5852 /* ReviewClass_Lookup.m */,
+				11B78982184E497600125E97 /* AppDoc.h */,
+				11B78983184E497600125E97 /* AppDoc.m */,
+				11B78984184E497600125E97 /* AppDocType_Lookup.h */,
+				11B78985184E497600125E97 /* AppDocType_Lookup.m */,
+				11B78986184E497600125E97 /* Application.h */,
+				11B78987184E497600125E97 /* Application.m */,
+				11B78988184E497600125E97 /* ChemicalType_Lookup.h */,
+				11B78989184E497600125E97 /* ChemicalType_Lookup.m */,
+				11B7898A184E497600125E97 /* Dictionary.h */,
+				11B7898B184E497600125E97 /* Dictionary.m */,
+				11B7898C184E497600125E97 /* DictionarySynonym.h */,
+				11B7898D184E497600125E97 /* DictionarySynonym.m */,
+				11B7898E184E497600125E97 /* DocType_Lookup.h */,
+				11B7898F184E497600125E97 /* DocType_Lookup.m */,
+				11B78990184E497600125E97 /* Product_TECode.h */,
+				11B78991184E497600125E97 /* Product_TECode.m */,
+				11B78992184E497600125E97 /* Product.h */,
+				11B78993184E497600125E97 /* Product.m */,
+				11B78994184E497600125E97 /* RegActionDate.h */,
+				11B78995184E497600125E97 /* RegActionDate.m */,
+				11B78996184E497600125E97 /* ReviewClass_Lookup.h */,
+				11B78997184E497600125E97 /* ReviewClass_Lookup.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 		11F34CA4184C6ECD00CF5852 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				11F34CC3184C712900CF5852 /* database.xcdatamodeld */,
+				11B7897F184E490E00125E97 /* database.xcdatamodeld */,
 				11F34CA5184C6EE900CF5852 /* db.sql */,
 				11F34CA6184C6EE900CF5852 /* drugsatfda */,
 				1100DC8B184DBA2D00EBEC1A /* icd10 */,
@@ -478,28 +478,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11F34CEC184C719A00CF5852 /* ReviewClass_Lookup.m in Sources */,
+				11B789A2184E497600125E97 /* ReviewClass_Lookup.m in Sources */,
+				11B78981184E490E00125E97 /* database.xcdatamodeld in Sources */,
+				11B789A0184E497600125E97 /* Product.m in Sources */,
 				11F34CA0184C6DE800CF5852 /* XPathQuery.m in Sources */,
-				11F34CEA184C719A00CF5852 /* Product.m in Sources */,
+				11B7899F184E497600125E97 /* Product_TECode.m in Sources */,
+				11B7899A184E497600125E97 /* Application.m in Sources */,
+				11B78998184E497600125E97 /* AppDoc.m in Sources */,
+				11B7899D184E497600125E97 /* DictionarySynonym.m in Sources */,
 				11F34C6E184C6C8B00CF5852 /* FileDownloader.m in Sources */,
-				11F34CE9184C719A00CF5852 /* Product_TECode.m in Sources */,
-				11F34CE4184C719A00CF5852 /* Application.m in Sources */,
-				11F34CE2184C719A00CF5852 /* AppDoc.m in Sources */,
-				11F34CE7184C719A00CF5852 /* DictionarySynonym.m in Sources */,
 				11F34C9F184C6DE800CF5852 /* TFHppleElement.m in Sources */,
 				11F34C69184C6C6200CF5852 /* DrugsLoader.m in Sources */,
 				11F34C6F184C6C8B00CF5852 /* StedmansScraper.m in Sources */,
 				11F34C9E184C6DE800CF5852 /* TFHpple.m in Sources */,
+				11B789A1184E497600125E97 /* RegActionDate.m in Sources */,
+				11B7899E184E497600125E97 /* DocType_Lookup.m in Sources */,
 				11F34CC8184C714000CF5852 /* Database.m in Sources */,
-				11F34CEB184C719A00CF5852 /* RegActionDate.m in Sources */,
-				11F34CE8184C719A00CF5852 /* DocType_Lookup.m in Sources */,
-				11F34CC5184C712900CF5852 /* database.xcdatamodeld in Sources */,
 				11F34CCB184C715F00CF5852 /* Util.m in Sources */,
 				11F34C38184C6BB700CF5852 /* AppDelegate.m in Sources */,
-				11F34CE3184C719A00CF5852 /* AppDocType_Lookup.m in Sources */,
-				11F34CE6184C719A00CF5852 /* Dictionary.m in Sources */,
+				11B78999184E497600125E97 /* AppDocType_Lookup.m in Sources */,
+				11B7899C184E497600125E97 /* Dictionary.m in Sources */,
 				11F34C31184C6BB700CF5852 /* main.m in Sources */,
-				11F34CE5184C719A00CF5852 /* ChemicalType_Lookup.m in Sources */,
+				11B7899B184E497600125E97 /* ChemicalType_Lookup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,12 +734,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		11F34CC3184C712900CF5852 /* database.xcdatamodeld */ = {
+		11B7897F184E490E00125E97 /* database.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				11F34CC4184C712900CF5852 /* database.xcdatamodel */,
+				11B78980184E490E00125E97 /* database.xcdatamodel */,
 			);
-			currentVersion = 11F34CC4184C712900CF5852 /* database.xcdatamodel */;
+			currentVersion = 11B78980184E490E00125E97 /* database.xcdatamodel */;
 			name = database.xcdatamodeld;
 			path = "../../../Dr. Lee's Reference/Dr. Lee's Reference/Data/database.xcdatamodeld";
 			sourceTree = "<group>";

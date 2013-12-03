@@ -133,11 +133,11 @@
                 }
                 else if ([[child tagName] isEqualToString:@"super"])
                 {
-                    [term appendFormat:@"%@", [Util addSuperScriptToString:[[child firstChild] content] sub:1]];
+                    [term appendFormat:@"%@", [Util superScriptOf:[[child firstChild] content]]];
                 }
                 else if ([[child tagName] isEqualToString:@"sub"])
                 {
-                    [term appendFormat:@"%@", [Util addSuperScriptToString:[[child firstChild] content] sub:-1]];
+                    [term appendFormat:@"%@", [Util subScriptOf:[[child firstChild] content]]];
                 }
             }
         }
@@ -210,11 +210,11 @@
                             }
                             else if ([[syn tagName] isEqualToString:@"super"])
                             {
-                                [synonyms addObject:[Util addSuperScriptToString:[[syn firstChild] content] sub:1]];
+                                [synonyms addObject:[Util superScriptOf:[[syn firstChild] content]]];
                             }
                             else if ([[syn tagName] isEqualToString:@"sub"])
                             {
-                                [synonyms addObject:[Util addSuperScriptToString:[[syn firstChild] content] sub:-1]];
+                                [synonyms addObject:[Util subScriptOf:[[syn firstChild] content]]];
                             }
                         }
                         [dest setObject:synonyms forKey:strong];
@@ -239,11 +239,11 @@
                         }
                         else if ([[desc tagName] isEqualToString:@"super"])
                         {
-                            [definitions appendFormat:@"%@", [Util addSuperScriptToString:[[desc firstChild] content] sub:1]];
+                            [definitions appendFormat:@"%@", [Util superScriptOf:[[desc firstChild] content]]];
                         }
                         else if ([[desc tagName] isEqualToString:@"sub"])
                         {
-                            [definitions appendFormat:@"%@", [Util addSuperScriptToString:[[desc firstChild] content] sub:-1]];
+                            [definitions appendFormat:@"%@", [Util subScriptOf:[[desc firstChild] content]]];
                         }
                         else if ([[desc tagName] isEqualToString:@"a"])
                         {
@@ -299,18 +299,8 @@
             
             ds.term = syn;
             
-            NSArray *array = [[Database sharedInstance] find:@"Dictionary"
-                                  columnName:@"dictionaryId"
-                                 columnValue:[dict objectForKey:@"id"]
-                            relationshipKeys:nil
-                                     sorters:nil];
-            if (array && array.count > 0)
-            {
-                ds.dictionaryId = [array objectAtIndex:0];
-            }
-            
-            NSError *error2;
-            if (![[[Database sharedInstance] managedObjectContext] save:&error2])
+            [d addDictionarySynonymObject:ds];
+            if (![[[Database sharedInstance] managedObjectContext] save:&error])
             {
                 NSLog(@"Save error: %@", [error localizedDescription]);
             }

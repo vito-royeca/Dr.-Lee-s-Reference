@@ -1,26 +1,28 @@
 //
 //  Product.m
-//  Mobile Drugs@FDA
+//  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 11/19/13.
+//  Created by Jovito Royeca on 12/4/13.
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.
 //
 
 #import "Product.h"
 #import "Application.h"
+#import "Product_TECode.h"
 
 
 @implementation Product
 
-@dynamic productNo;
-@dynamic form;
-@dynamic dosage;
-@dynamic productMktStatus;
-@dynamic teCode;
-@dynamic referenceDrug;
-@dynamic drugName;
 @dynamic activeIngred;
+@dynamic dosage;
+@dynamic drugName;
+@dynamic form;
+@dynamic productMktStatus;
+@dynamic productNo;
+@dynamic referenceDrug;
+@dynamic teCode;
 @dynamic applNo;
+@dynamic product_teCode;
 
 -(NSString*) productMktStatusString
 {
