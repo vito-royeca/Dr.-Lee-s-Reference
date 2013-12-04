@@ -167,7 +167,7 @@
             }
             default:
             {
-                [p appendFormat:@"%c", chara];
+                [p appendFormat:@"%@", [string substringWithRange:NSMakeRange(i, 1)]];
                 break;
             }
         }
@@ -323,7 +323,7 @@
             }
             default:
             {
-                [p appendFormat:@"%c", chara];
+                [p appendFormat:@"%@", [string substringWithRange:NSMakeRange(i, 1)]];
                 break;
             }
         }

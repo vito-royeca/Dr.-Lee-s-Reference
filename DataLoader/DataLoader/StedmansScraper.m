@@ -21,7 +21,7 @@
     {
         _letters = [NSArray arrayWithObjects:
                     @"9",
-//                    @"a",
+                    @"a",
 //                    @"b",
 //                    @"c",
 //                    @"d",
@@ -129,7 +129,7 @@
             {
                 if ([[child tagName] isEqualToString:@"text"])
                 {
-                    [term appendFormat:@"%@", [child content]];
+                    [term appendFormat:@"%@", [Util toUTF8:[child content]]];
                 }
                 else if ([[child tagName] isEqualToString:@"super"])
                 {
@@ -141,7 +141,7 @@
                 }
             }
         }
-        [dict setObject:[Util toUTF8:term] forKey:@"term"];
+        [dict setObject:term forKey:@"term"];
         [dict setObject:[element objectForKey:@"href"] forKey:@"href"];
         [arrTerms addObject:dict];
     }

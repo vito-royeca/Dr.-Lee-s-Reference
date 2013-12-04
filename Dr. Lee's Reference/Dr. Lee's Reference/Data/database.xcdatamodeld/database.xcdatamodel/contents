@@ -46,12 +46,21 @@
     </entity>
     <entity name="DictionarySynonym" representedClassName="DictionarySynonym" syncable="YES">
         <attribute name="term" attributeType="String" syncable="YES"/>
-        <relationship name="dictionary" maxCount="1" deletionRule="Nullify" destinationEntity="Dictionary" inverseName="dictionarySynonym" inverseEntity="Dictionary" syncable="YES"/>
+        <relationship name="dictionary" maxCount="1" deletionRule="Cascade" destinationEntity="Dictionary" inverseName="dictionarySynonym" inverseEntity="Dictionary" syncable="YES"/>
     </entity>
     <entity name="DocType_Lookup" representedClassName="DocType_Lookup" syncable="YES">
         <attribute name="docType" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="docTypeDesc" attributeType="String" syncable="YES"/>
         <relationship name="regActionDate" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RegActionDate" inverseName="docType" inverseEntity="RegActionDate" syncable="YES"/>
+    </entity>
+    <entity name="Favorite" representedClassName="Favorite" syncable="YES">
+        <attribute name="rowId" attributeType="String" syncable="YES"/>
+        <attribute name="tableName" attributeType="String" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="History" representedClassName="History" syncable="YES">
+        <attribute name="query" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rowId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tableName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Product" representedClassName="Product" syncable="YES">
         <attribute name="activeIngred" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
@@ -98,5 +107,7 @@
         <element name="Product_TECode" positionX="0" positionY="0" width="0" height="0"/>
         <element name="RegActionDate" positionX="0" positionY="0" width="0" height="0"/>
         <element name="ReviewClass_Lookup" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Favorite" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="History" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

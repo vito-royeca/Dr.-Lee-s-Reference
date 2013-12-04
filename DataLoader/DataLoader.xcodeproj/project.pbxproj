@@ -24,6 +24,8 @@
 		11B789A0184E497600125E97 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78993184E497600125E97 /* Product.m */; };
 		11B789A1184E497600125E97 /* RegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78995184E497600125E97 /* RegActionDate.m */; };
 		11B789A2184E497600125E97 /* ReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78997184E497600125E97 /* ReviewClass_Lookup.m */; };
+		11B789B7184E6DCC00125E97 /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B789B4184E6DCC00125E97 /* Favorite.m */; };
+		11B789B8184E6DCC00125E97 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B789B6184E6DCC00125E97 /* History.m */; };
 		11F34C25184C6BB700CF5852 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F34C24184C6BB700CF5852 /* Cocoa.framework */; };
 		11F34C2F184C6BB700CF5852 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11F34C2D184C6BB700CF5852 /* InfoPlist.strings */; };
 		11F34C31184C6BB700CF5852 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34C30184C6BB700CF5852 /* main.m */; };
@@ -98,6 +100,10 @@
 		11B78995184E497600125E97 /* RegActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegActionDate.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/RegActionDate.m"; sourceTree = "<group>"; };
 		11B78996184E497600125E97 /* ReviewClass_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReviewClass_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/ReviewClass_Lookup.h"; sourceTree = "<group>"; };
 		11B78997184E497600125E97 /* ReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReviewClass_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/ReviewClass_Lookup.m"; sourceTree = "<group>"; };
+		11B789B3184E6DCC00125E97 /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Favorite.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Favorite.h"; sourceTree = "<group>"; };
+		11B789B4184E6DCC00125E97 /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Favorite.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Favorite.m"; sourceTree = "<group>"; };
+		11B789B5184E6DCC00125E97 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = History.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/History.h"; sourceTree = "<group>"; };
+		11B789B6184E6DCC00125E97 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = History.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/History.m"; sourceTree = "<group>"; };
 		11F34C21184C6BB700CF5852 /* DataLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F34C24184C6BB700CF5852 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		11F34C27184C6BB700CF5852 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -303,10 +309,14 @@
 				11B7898D184E497600125E97 /* DictionarySynonym.m */,
 				11B7898E184E497600125E97 /* DocType_Lookup.h */,
 				11B7898F184E497600125E97 /* DocType_Lookup.m */,
-				11B78990184E497600125E97 /* Product_TECode.h */,
-				11B78991184E497600125E97 /* Product_TECode.m */,
+				11B789B3184E6DCC00125E97 /* Favorite.h */,
+				11B789B4184E6DCC00125E97 /* Favorite.m */,
+				11B789B5184E6DCC00125E97 /* History.h */,
+				11B789B6184E6DCC00125E97 /* History.m */,
 				11B78992184E497600125E97 /* Product.h */,
 				11B78993184E497600125E97 /* Product.m */,
+				11B78990184E497600125E97 /* Product_TECode.h */,
+				11B78991184E497600125E97 /* Product_TECode.m */,
 				11B78994184E497600125E97 /* RegActionDate.h */,
 				11B78995184E497600125E97 /* RegActionDate.m */,
 				11B78996184E497600125E97 /* ReviewClass_Lookup.h */,
@@ -492,6 +502,7 @@
 				11F34C6F184C6C8B00CF5852 /* StedmansScraper.m in Sources */,
 				11F34C9E184C6DE800CF5852 /* TFHpple.m in Sources */,
 				11B789A1184E497600125E97 /* RegActionDate.m in Sources */,
+				11B789B8184E6DCC00125E97 /* History.m in Sources */,
 				11B7899E184E497600125E97 /* DocType_Lookup.m in Sources */,
 				11F34CC8184C714000CF5852 /* Database.m in Sources */,
 				11F34CCB184C715F00CF5852 /* Util.m in Sources */,
@@ -500,6 +511,7 @@
 				11B7899C184E497600125E97 /* Dictionary.m in Sources */,
 				11F34C31184C6BB700CF5852 /* main.m in Sources */,
 				11B7899B184E497600125E97 /* ChemicalType_Lookup.m in Sources */,
+				11B789B7184E6DCC00125E97 /* Favorite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
