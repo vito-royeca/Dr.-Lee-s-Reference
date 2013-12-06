@@ -24,15 +24,6 @@
     return me;
 }
 
-- (id)init
-{
-    if (self = [super init])
-    {
-//        self.persistentStoreCoordinator;
-    }
-    return self;
-}
-
 - (void)dealloc
 {
     // Should never be called, but just here for clarity really.
@@ -416,22 +407,27 @@
     }
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"database.sqlite"];
-    
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]])
-//    {
-//        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"database" ofType:@"sqlite"]];
-//        
-//        NSError* err = nil;
-//        
-//        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err])
-//        {
-//            NSLog(@"Oops, could copy preloaded data");
-//        }
-//    }
+
+#if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]])
+    {
+        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"database" ofType:@"sqlite"]];
+        NSError* error = nil;
+        
+        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&error])
+        {
+            NSLog(@"Error copying database.sqlite: %@", error);
+        }
+    }
+#endif
 
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                   configuration:nil
+                                                             URL:storeURL
+                                                         options:nil
+                                                           error:&error])
     {
         /*
          Replace this implementation with code to handle the error appropriately.

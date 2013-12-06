@@ -11,6 +11,7 @@
 @implementation StedmansScraper
 {
     NSArray *_letters;
+    int _total;
 }
 
 -(id) init
@@ -20,24 +21,24 @@
     if (self)
     {
         _letters = [NSArray arrayWithObjects:
-                    @"9",
-                    @"a",
+//                    @"9",
+//                    @"a",
 //                    @"b",
 //                    @"c",
 //                    @"d",
 //                    @"e",
 //                    @"f",
 //                    @"g",
-//                    @"h",
-//                    @"i",
+//                    @"h", // setObjectForKey: object cannot be nil (key: nodeContent)
+//                    @"i", // setObjectForKey: object cannot be nil (key: nodeContent)
 //                    @"j",
 //                    @"k",
 //                    @"l",
 //                    @"m",
 //                    @"n",
-//                    @"o",
-//                    @"p",
-//                    @"q",
+                    @"o",
+                    @"p",
+                    @"q",
 //                    @"r",
 //                    @"s",
 //                    @"t",
@@ -55,51 +56,43 @@
 
 -(void) scrape
 {
-//    if ([[Database sharedInstance] tableCount:@"Dictionary"] == 0)
+    NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
+        
+    // #1 scrape each letter
+    for (NSString *letter in _letters)
     {
-        NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
-        
-        // #1 scrape each letter
-        for (NSString *letter in _letters)
-        {
-            int total = 0;
-            
-            TFHpple *parser = [self parsePage:[NSString stringWithFormat:@"?l=%@", letter]];
-        
-            // #2 scrape terms in the 1st page letter
-            for (NSMutableDictionary *dict in [self parseTerms:parser])
-            {
-                if (![self isTermInDatabase:[dict objectForKey:@"term"]])
-                {
-                    [self parseDefinition:dict];
-                    NSLog(@"Inserting... %@", [dict objectForKey:@"term"]);
-                    [self saveTermToDatabase:dict];
-                    total++;
-                }
-            }
+        // #2 scrape terms in the 1st page letter
+        TFHpple *parser = [self scrapePageTerms:[NSString stringWithFormat:@"?l=%@", letter]];
 
-            // #3 scrape terms in the subsections of of each letter
-            for (NSString *sub in [self subsectionsByLetter:parser])
-            {
-                TFHpple *parser2 = [self parsePage:[NSString stringWithFormat:@"%@", sub]];
-            
-                for (NSMutableDictionary *dict2 in [self parseTerms:parser2])
-                {
-                    if (![self isTermInDatabase:[dict2 objectForKey:@"term"]])
-                    {
-                        [self parseDefinition:dict2];
-                        NSLog(@"Inserting... %@", [dict2 objectForKey:@"term"]);
-                        [self saveTermToDatabase:dict2];
-                        total++;
-                    }
-                }
-            }
-            
-            [dictTotals setObject:[NSNumber numberWithInt:total] forKey:letter];
+        // #3 scrape terms in the subsections of the letter
+        for (NSString *sub in [self subsectionsByLetter:parser])
+        {
+            [self scrapePageTerms:[NSString stringWithFormat:@"%@", sub]];
         }
-        
-        NSLog(@"%@", dictTotals);
+            
+        [dictTotals setObject:[NSNumber numberWithInt:_total] forKey:letter];
+        _total = 0;
     }
+        
+    NSLog(@"%@", dictTotals);
+}
+
+-(TFHpple*) scrapePageTerms:(NSString*)pageParams
+{
+    TFHpple *parser = [self parsePage:pageParams];
+    
+    for (NSMutableDictionary *dict in [self parseTerms:parser])
+    {
+        if (![self isTermInDatabase:[dict objectForKey:@"term"]])
+        {
+            [self parseDefinition:dict];
+            NSLog(@"Inserting... %@", [dict objectForKey:@"term"]);
+            [self saveTermToDatabase:dict];
+            _total++;
+        }
+    }
+    
+    return parser;
 }
 
 -(TFHpple*) parsePage:(NSString*) params
@@ -154,7 +147,13 @@
     NSMutableArray *arrSubsections = [[NSMutableArray alloc] init];
     
     NSString *path = @"//div[@id='main']/a";
-    NSArray *nodes = [parser searchWithXPathQuery:path];
+    NSArray *nodes;
+    @try {
+    nodes = [parser searchWithXPathQuery:path];
+    } @catch (NSException *error)
+    {
+        NSLog(@"%@ = %@", error, [error userInfo]);
+    }
     
     for (TFHppleElement *element in nodes)
     {
@@ -222,8 +221,7 @@
                     else
                     {
                         // Pronunciation:
-                        NSString *text = [Util trim:[child content]];
-                        [dest setObject:text forKey:strong];
+                        [dest setObject:[Util toUTF8:[child content]] forKey:strong];
                     }
                 }
                 // Definitions:

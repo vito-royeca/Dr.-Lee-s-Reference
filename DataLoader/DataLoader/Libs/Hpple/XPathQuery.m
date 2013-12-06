@@ -176,7 +176,8 @@ NSArray *PerformHTMLXPathQueryWithEncoding(NSData *document, NSString *query,NSS
     xmlDocPtr doc;
 
     /* Load XML document */
-    const char *encoded = encoding ? [encoding cStringUsingEncoding:NSUTF8StringEncoding] : NULL;
+//    const char *encoded = encoding ? [encoding cStringUsingEncoding:NSUTF8StringEncoding] : NULL;
+    const char *encoded=[@"ISO-8859-1" cStringUsingEncoding:NSUTF8StringEncoding];
 
     doc = htmlReadMemory([document bytes], (int)[document length], "", encoded, HTML_PARSE_NOWARNING | HTML_PARSE_NOERROR);
     

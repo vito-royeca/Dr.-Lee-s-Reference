@@ -227,10 +227,6 @@
     }
     
     results = [[Database sharedInstance] search:searchBar.selectedScopeButtonIndex query:searchBar.text];
-    for (Dictionary *d in results)
-    {
-        NSLog(@"%@", d.term);
-    }
     [self createSections];
     
     [tblResults reloadData];

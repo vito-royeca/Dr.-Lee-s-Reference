@@ -14,9 +14,9 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+
 //    DrugsLoader *loader = [[DrugsLoader alloc] init];
 //    [loader loadDrugs];
-//    [loader downloadDocuments];
     
     StedmansScraper *sc = [[StedmansScraper alloc] init];
     [sc scrape];
