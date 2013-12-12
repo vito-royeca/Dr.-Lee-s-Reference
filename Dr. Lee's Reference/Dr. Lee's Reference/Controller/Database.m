@@ -216,26 +216,18 @@
     else
     {
         predicate = [NSPredicate
-                     predicateWithFormat:@"%K CONTAINS[cd] %@ OR %K CONTAINS[cd] %@ OR %K CONTAINS[cd] %@",
+                     predicateWithFormat:@"%K CONTAINS[cd] %@ OR %K CONTAINS[cd] %@",
                      @"drugName", query,
-                     @"activeIngred", query,
-                     @"applNo.sponsorApplicant", query];
+                     @"activeIngred", query];
     }
     
-    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc]
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:@"drugName" ascending:YES];
-    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc]
-                                         initWithKey:@"applNo.applNo" ascending:YES];
-    
-    NSArray *relationshipKeys = [NSArray arrayWithObject:@"applNo"];
-    
-    [fetchRequest setRelationshipKeyPathsForPrefetching:relationshipKeys];
-    [fetchRequest setSortDescriptors:@[sortDescriptor1, sortDescriptor2]];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:predicate];
     
     NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    
     
     for (Product *p in fetchedObjects)
     {

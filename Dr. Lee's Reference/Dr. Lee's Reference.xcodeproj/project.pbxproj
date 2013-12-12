@@ -7,7 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		110A69891845F5DF00852030 /* DrugDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 110A69881845F5DF00852030 /* DrugDetailsViewController.m */; };
+		113383231859A90400CBA6FF /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383221859A90400CBA6FF /* Database.m */; };
+		1133833F1859A95400CBA6FF /* AppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383261859A95400CBA6FF /* AppDoc.m */; };
+		113383401859A95400CBA6FF /* AppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383281859A95400CBA6FF /* AppDocType_Lookup.m */; };
+		113383411859A95400CBA6FF /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133832A1859A95400CBA6FF /* Application.m */; };
+		113383421859A95400CBA6FF /* ChemicalType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133832C1859A95400CBA6FF /* ChemicalType_Lookup.m */; };
+		113383431859A95400CBA6FF /* Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133832E1859A95400CBA6FF /* Dictionary.m */; };
+		113383441859A95400CBA6FF /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383301859A95400CBA6FF /* DictionarySynonym.m */; };
+		113383451859A95400CBA6FF /* DocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383321859A95400CBA6FF /* DocType_Lookup.m */; };
+		113383461859A95400CBA6FF /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383341859A95400CBA6FF /* Favorite.m */; };
+		113383471859A95400CBA6FF /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383361859A95400CBA6FF /* History.m */; };
+		113383481859A95400CBA6FF /* Product_TECode.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383381859A95400CBA6FF /* Product_TECode.m */; };
+		113383491859A95400CBA6FF /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133833A1859A95400CBA6FF /* Product.m */; };
+		1133834A1859A95400CBA6FF /* RegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133833C1859A95400CBA6FF /* RegActionDate.m */; };
+		1133834B1859A95400CBA6FF /* ReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133833E1859A95400CBA6FF /* ReviewClass_Lookup.m */; };
+		113383571859A9A800CBA6FF /* DrugDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133834E1859A9A800CBA6FF /* DrugDetailsViewController.m */; };
+		113383581859A9A800CBA6FF /* DrugProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383501859A9A800CBA6FF /* DrugProductTableViewCell.m */; };
+		113383591859A9A800CBA6FF /* DrugSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383521859A9A800CBA6FF /* DrugSummaryViewController.m */; };
+		1133835A1859A9A800CBA6FF /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383541859A9A800CBA6FF /* SearchViewController.m */; };
+		1133835B1859A9A800CBA6FF /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383561859A9A800CBA6FF /* TabBarController.m */; };
 		113DE87C1843D8420080B038 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87B1843D8420080B038 /* Foundation.framework */; };
 		113DE87E1843D8420080B038 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87D1843D8420080B038 /* CoreGraphics.framework */; };
 		113DE8801843D8420080B038 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87F1843D8420080B038 /* UIKit.framework */; };
@@ -22,29 +40,11 @@
 		113DE89D1843D8420080B038 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE8811843D8420080B038 /* CoreData.framework */; };
 		113DE8A51843D8420080B038 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8A31843D8420080B038 /* InfoPlist.strings */; };
 		113DE8A71843D8420080B038 /* Dr__Lee_s_ReferenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8A61843D8420080B038 /* Dr__Lee_s_ReferenceTests.m */; };
-		113DE8B31843DB400080B038 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8B11843DB400080B038 /* Database.m */; };
-		113DE8F01843E25A0080B038 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8EF1843E25A0080B038 /* SearchViewController.m */; };
 		113DE9031843FBF70080B038 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 113DE9001843FBF70080B038 /* LICENSE */; };
 		113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE9021843FBF70080B038 /* MBProgressHUD.m */; };
-		11581FD518453598004186F2 /* DrugSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD418453598004186F2 /* DrugSummaryViewController.m */; };
 		11581FD81845513E004186F2 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD71845513D004186F2 /* Util.m */; };
 		116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 116ED0AE18468F4100CDC13D /* database.xcdatamodeld */; };
-		11B78960184E48F000125E97 /* DocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B7895F184E48F000125E97 /* DocType_Lookup.m */; };
-		11B78963184E48F100125E97 /* ReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78962184E48F100125E97 /* ReviewClass_Lookup.m */; };
-		11B78969184E48F100125E97 /* AppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78968184E48F100125E97 /* AppDocType_Lookup.m */; };
-		11B7896C184E48F100125E97 /* ChemicalType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B7896B184E48F100125E97 /* ChemicalType_Lookup.m */; };
-		11B78972184E48F100125E97 /* Product_TECode.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78971184E48F100125E97 /* Product_TECode.m */; };
-		11B78975184E48F100125E97 /* RegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78974184E48F100125E97 /* RegActionDate.m */; };
-		11B78978184E48F100125E97 /* AppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B78977184E48F100125E97 /* AppDoc.m */; };
-		11B7897B184E48F100125E97 /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B7897A184E48F100125E97 /* Application.m */; };
-		11B7897E184E48F100125E97 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B7897D184E48F100125E97 /* Product.m */; };
-		11B789A5184E580200125E97 /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B789A4184E580200125E97 /* DictionarySynonym.m */; };
-		11B789A8184E580200125E97 /* Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B789A7184E580200125E97 /* Dictionary.m */; };
 		11B789AC184E670600125E97 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 11B789AB184E670600125E97 /* database.sqlite */; };
-		11B789AF184E6D9800125E97 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B789AE184E6D9800125E97 /* History.m */; };
-		11B789B2184E6D9900125E97 /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B789B1184E6D9900125E97 /* Favorite.m */; };
-		11F34BEE1847A7DD00CF5852 /* DrugProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F34BED1847A7DD00CF5852 /* DrugProductTableViewCell.m */; };
-		11FC406E18443047007EF755 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FC406D18443047007EF755 /* TabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +58,44 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		110A69871845F5DE00852030 /* DrugDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDetailsViewController.h; sourceTree = "<group>"; };
-		110A69881845F5DF00852030 /* DrugDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDetailsViewController.m; sourceTree = "<group>"; };
+		113383211859A90400CBA6FF /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		113383221859A90400CBA6FF /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
+		113383251859A95400CBA6FF /* AppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDoc.h; sourceTree = "<group>"; };
+		113383261859A95400CBA6FF /* AppDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDoc.m; sourceTree = "<group>"; };
+		113383271859A95400CBA6FF /* AppDocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDocType_Lookup.h; sourceTree = "<group>"; };
+		113383281859A95400CBA6FF /* AppDocType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDocType_Lookup.m; sourceTree = "<group>"; };
+		113383291859A95400CBA6FF /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		1133832A1859A95400CBA6FF /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Application.m; sourceTree = "<group>"; };
+		1133832B1859A95400CBA6FF /* ChemicalType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChemicalType_Lookup.h; sourceTree = "<group>"; };
+		1133832C1859A95400CBA6FF /* ChemicalType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChemicalType_Lookup.m; sourceTree = "<group>"; };
+		1133832D1859A95400CBA6FF /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
+		1133832E1859A95400CBA6FF /* Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dictionary.m; sourceTree = "<group>"; };
+		1133832F1859A95400CBA6FF /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySynonym.h; sourceTree = "<group>"; };
+		113383301859A95400CBA6FF /* DictionarySynonym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionarySynonym.m; sourceTree = "<group>"; };
+		113383311859A95400CBA6FF /* DocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocType_Lookup.h; sourceTree = "<group>"; };
+		113383321859A95400CBA6FF /* DocType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocType_Lookup.m; sourceTree = "<group>"; };
+		113383331859A95400CBA6FF /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
+		113383341859A95400CBA6FF /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
+		113383351859A95400CBA6FF /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		113383361859A95400CBA6FF /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		113383371859A95400CBA6FF /* Product_TECode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product_TECode.h; sourceTree = "<group>"; };
+		113383381859A95400CBA6FF /* Product_TECode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product_TECode.m; sourceTree = "<group>"; };
+		113383391859A95400CBA6FF /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		1133833A1859A95400CBA6FF /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		1133833B1859A95400CBA6FF /* RegActionDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegActionDate.h; sourceTree = "<group>"; };
+		1133833C1859A95400CBA6FF /* RegActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegActionDate.m; sourceTree = "<group>"; };
+		1133833D1859A95400CBA6FF /* ReviewClass_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewClass_Lookup.h; sourceTree = "<group>"; };
+		1133833E1859A95400CBA6FF /* ReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewClass_Lookup.m; sourceTree = "<group>"; };
+		1133834D1859A9A800CBA6FF /* DrugDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDetailsViewController.h; sourceTree = "<group>"; };
+		1133834E1859A9A800CBA6FF /* DrugDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDetailsViewController.m; sourceTree = "<group>"; };
+		1133834F1859A9A800CBA6FF /* DrugProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugProductTableViewCell.h; sourceTree = "<group>"; };
+		113383501859A9A800CBA6FF /* DrugProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugProductTableViewCell.m; sourceTree = "<group>"; };
+		113383511859A9A800CBA6FF /* DrugSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSummaryViewController.h; sourceTree = "<group>"; };
+		113383521859A9A800CBA6FF /* DrugSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSummaryViewController.m; sourceTree = "<group>"; };
+		113383531859A9A800CBA6FF /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		113383541859A9A800CBA6FF /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		113383551859A9A800CBA6FF /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		113383561859A9A800CBA6FF /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		113DE8781843D8420080B038 /* Dr. Lee's Reference.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dr. Lee's Reference.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113DE87B1843D8420080B038 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		113DE87D1843D8420080B038 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -77,50 +113,14 @@
 		113DE8A21843D8420080B038 /* Dr. Lee's ReferenceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dr. Lee's ReferenceTests-Info.plist"; sourceTree = "<group>"; };
 		113DE8A41843D8420080B038 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		113DE8A61843D8420080B038 /* Dr__Lee_s_ReferenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dr__Lee_s_ReferenceTests.m; sourceTree = "<group>"; };
-		113DE8B11843DB400080B038 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
-		113DE8B21843DB400080B038 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
-		113DE8EE1843E25A0080B038 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		113DE8EF1843E25A0080B038 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		113DE9001843FBF70080B038 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		113DE9011843FBF70080B038 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		113DE9021843FBF70080B038 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		11581FD318453598004186F2 /* DrugSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSummaryViewController.h; sourceTree = "<group>"; };
-		11581FD418453598004186F2 /* DrugSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSummaryViewController.m; sourceTree = "<group>"; };
 		11581FD61845513D004186F2 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		11581FD71845513D004186F2 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		116ED0AF18468F4100CDC13D /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
-		11B7895E184E48F000125E97 /* DocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocType_Lookup.h; sourceTree = "<group>"; };
-		11B7895F184E48F000125E97 /* DocType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocType_Lookup.m; sourceTree = "<group>"; };
-		11B78961184E48F100125E97 /* ReviewClass_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewClass_Lookup.h; sourceTree = "<group>"; };
-		11B78962184E48F100125E97 /* ReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewClass_Lookup.m; sourceTree = "<group>"; };
-		11B78967184E48F100125E97 /* AppDocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDocType_Lookup.h; sourceTree = "<group>"; };
-		11B78968184E48F100125E97 /* AppDocType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDocType_Lookup.m; sourceTree = "<group>"; };
-		11B7896A184E48F100125E97 /* ChemicalType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChemicalType_Lookup.h; sourceTree = "<group>"; };
-		11B7896B184E48F100125E97 /* ChemicalType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChemicalType_Lookup.m; sourceTree = "<group>"; };
-		11B78970184E48F100125E97 /* Product_TECode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product_TECode.h; sourceTree = "<group>"; };
-		11B78971184E48F100125E97 /* Product_TECode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product_TECode.m; sourceTree = "<group>"; };
-		11B78973184E48F100125E97 /* RegActionDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegActionDate.h; sourceTree = "<group>"; };
-		11B78974184E48F100125E97 /* RegActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegActionDate.m; sourceTree = "<group>"; };
-		11B78976184E48F100125E97 /* AppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDoc.h; sourceTree = "<group>"; };
-		11B78977184E48F100125E97 /* AppDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDoc.m; sourceTree = "<group>"; };
-		11B78979184E48F100125E97 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
-		11B7897A184E48F100125E97 /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Application.m; sourceTree = "<group>"; };
-		11B7897C184E48F100125E97 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
-		11B7897D184E48F100125E97 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
-		11B789A3184E580200125E97 /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySynonym.h; sourceTree = "<group>"; };
-		11B789A4184E580200125E97 /* DictionarySynonym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionarySynonym.m; sourceTree = "<group>"; };
-		11B789A6184E580200125E97 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
-		11B789A7184E580200125E97 /* Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dictionary.m; sourceTree = "<group>"; };
 		11B789AB184E670600125E97 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
-		11B789AD184E6D9800125E97 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
-		11B789AE184E6D9800125E97 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
-		11B789B0184E6D9900125E97 /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
-		11B789B1184E6D9900125E97 /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
-		11F34BEC1847A7DD00CF5852 /* DrugProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugProductTableViewCell.h; sourceTree = "<group>"; };
-		11F34BED1847A7DD00CF5852 /* DrugProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugProductTableViewCell.m; sourceTree = "<group>"; };
 		11F34C0B184978DA00CF5852 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		11FC406C18443047007EF755 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
-		11FC406D18443047007EF755 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +149,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		113383201859A8BF00CBA6FF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				113383211859A90400CBA6FF /* Database.h */,
+				113383221859A90400CBA6FF /* Database.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		113383241859A91D00CBA6FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				113383251859A95400CBA6FF /* AppDoc.h */,
+				113383261859A95400CBA6FF /* AppDoc.m */,
+				113383271859A95400CBA6FF /* AppDocType_Lookup.h */,
+				113383281859A95400CBA6FF /* AppDocType_Lookup.m */,
+				113383291859A95400CBA6FF /* Application.h */,
+				1133832A1859A95400CBA6FF /* Application.m */,
+				1133832B1859A95400CBA6FF /* ChemicalType_Lookup.h */,
+				1133832C1859A95400CBA6FF /* ChemicalType_Lookup.m */,
+				1133832D1859A95400CBA6FF /* Dictionary.h */,
+				1133832E1859A95400CBA6FF /* Dictionary.m */,
+				1133832F1859A95400CBA6FF /* DictionarySynonym.h */,
+				113383301859A95400CBA6FF /* DictionarySynonym.m */,
+				113383311859A95400CBA6FF /* DocType_Lookup.h */,
+				113383321859A95400CBA6FF /* DocType_Lookup.m */,
+				113383331859A95400CBA6FF /* Favorite.h */,
+				113383341859A95400CBA6FF /* Favorite.m */,
+				113383351859A95400CBA6FF /* History.h */,
+				113383361859A95400CBA6FF /* History.m */,
+				113383371859A95400CBA6FF /* Product_TECode.h */,
+				113383381859A95400CBA6FF /* Product_TECode.m */,
+				113383391859A95400CBA6FF /* Product.h */,
+				1133833A1859A95400CBA6FF /* Product.m */,
+				1133833B1859A95400CBA6FF /* RegActionDate.h */,
+				1133833C1859A95400CBA6FF /* RegActionDate.m */,
+				1133833D1859A95400CBA6FF /* ReviewClass_Lookup.h */,
+				1133833E1859A95400CBA6FF /* ReviewClass_Lookup.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1133834C1859A97200CBA6FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1133834D1859A9A800CBA6FF /* DrugDetailsViewController.h */,
+				1133834E1859A9A800CBA6FF /* DrugDetailsViewController.m */,
+				1133834F1859A9A800CBA6FF /* DrugProductTableViewCell.h */,
+				113383501859A9A800CBA6FF /* DrugProductTableViewCell.m */,
+				113383511859A9A800CBA6FF /* DrugSummaryViewController.h */,
+				113383521859A9A800CBA6FF /* DrugSummaryViewController.m */,
+				113383531859A9A800CBA6FF /* SearchViewController.h */,
+				113383541859A9A800CBA6FF /* SearchViewController.m */,
+				113383551859A9A800CBA6FF /* TabBarController.h */,
+				113383561859A9A800CBA6FF /* TabBarController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		113DE86F1843D8420080B038 = {
 			isa = PBXGroup;
 			children = (
@@ -186,15 +245,15 @@
 			children = (
 				113DE88C1843D8420080B038 /* AppDelegate.h */,
 				113DE88D1843D8420080B038 /* AppDelegate.m */,
-				113DE8B01843DB230080B038 /* Controller */,
+				113383201859A8BF00CBA6FF /* Controller */,
 				116ED0AC18468F1700CDC13D /* Data */,
 				113DE8921843D8420080B038 /* Images.xcassets */,
 				113DE8F81843F2230080B038 /* Libs */,
-				113DE8B81843DBFA0080B038 /* Model */,
+				113383241859A91D00CBA6FF /* Model */,
 				113DE8841843D8420080B038 /* Supporting Files */,
 				11581FD61845513D004186F2 /* Util.h */,
 				11581FD71845513D004186F2 /* Util.m */,
-				113DE8EA1843E1010080B038 /* View */,
+				1133834C1859A97200CBA6FF /* View */,
 			);
 			path = "Dr. Lee's Reference";
 			sourceTree = "<group>";
@@ -226,65 +285,6 @@
 				113DE8A31843D8420080B038 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		113DE8B01843DB230080B038 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				113DE8B21843DB400080B038 /* Database.h */,
-				113DE8B11843DB400080B038 /* Database.m */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		113DE8B81843DBFA0080B038 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				11B78976184E48F100125E97 /* AppDoc.h */,
-				11B78977184E48F100125E97 /* AppDoc.m */,
-				11B78967184E48F100125E97 /* AppDocType_Lookup.h */,
-				11B78968184E48F100125E97 /* AppDocType_Lookup.m */,
-				11B78979184E48F100125E97 /* Application.h */,
-				11B7897A184E48F100125E97 /* Application.m */,
-				11B7896A184E48F100125E97 /* ChemicalType_Lookup.h */,
-				11B7896B184E48F100125E97 /* ChemicalType_Lookup.m */,
-				11B789A6184E580200125E97 /* Dictionary.h */,
-				11B789A7184E580200125E97 /* Dictionary.m */,
-				11B789A3184E580200125E97 /* DictionarySynonym.h */,
-				11B789A4184E580200125E97 /* DictionarySynonym.m */,
-				11B7895E184E48F000125E97 /* DocType_Lookup.h */,
-				11B7895F184E48F000125E97 /* DocType_Lookup.m */,
-				11B789B0184E6D9900125E97 /* Favorite.h */,
-				11B789B1184E6D9900125E97 /* Favorite.m */,
-				11B789AD184E6D9800125E97 /* History.h */,
-				11B789AE184E6D9800125E97 /* History.m */,
-				11B7897C184E48F100125E97 /* Product.h */,
-				11B7897D184E48F100125E97 /* Product.m */,
-				11B78970184E48F100125E97 /* Product_TECode.h */,
-				11B78971184E48F100125E97 /* Product_TECode.m */,
-				11B78973184E48F100125E97 /* RegActionDate.h */,
-				11B78974184E48F100125E97 /* RegActionDate.m */,
-				11B78961184E48F100125E97 /* ReviewClass_Lookup.h */,
-				11B78962184E48F100125E97 /* ReviewClass_Lookup.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		113DE8EA1843E1010080B038 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				110A69871845F5DE00852030 /* DrugDetailsViewController.h */,
-				110A69881845F5DF00852030 /* DrugDetailsViewController.m */,
-				11F34BEC1847A7DD00CF5852 /* DrugProductTableViewCell.h */,
-				11F34BED1847A7DD00CF5852 /* DrugProductTableViewCell.m */,
-				11581FD318453598004186F2 /* DrugSummaryViewController.h */,
-				11581FD418453598004186F2 /* DrugSummaryViewController.m */,
-				113DE8EE1843E25A0080B038 /* SearchViewController.h */,
-				113DE8EF1843E25A0080B038 /* SearchViewController.m */,
-				11FC406C18443047007EF755 /* TabBarController.h */,
-				11FC406D18443047007EF755 /* TabBarController.m */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		113DE8F81843F2230080B038 /* Libs */ = {
@@ -428,30 +428,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				110A69891845F5DF00852030 /* DrugDetailsViewController.m in Sources */,
-				11B789AF184E6D9800125E97 /* History.m in Sources */,
-				11B78975184E48F100125E97 /* RegActionDate.m in Sources */,
-				11B7896C184E48F100125E97 /* ChemicalType_Lookup.m in Sources */,
-				11B78963184E48F100125E97 /* ReviewClass_Lookup.m in Sources */,
-				113DE8B31843DB400080B038 /* Database.m in Sources */,
-				11581FD518453598004186F2 /* DrugSummaryViewController.m in Sources */,
-				11F34BEE1847A7DD00CF5852 /* DrugProductTableViewCell.m in Sources */,
-				11B7897B184E48F100125E97 /* Application.m in Sources */,
-				11B78960184E48F000125E97 /* DocType_Lookup.m in Sources */,
-				11B789A8184E580200125E97 /* Dictionary.m in Sources */,
-				11B78972184E48F100125E97 /* Product_TECode.m in Sources */,
-				113DE8F01843E25A0080B038 /* SearchViewController.m in Sources */,
-				11B7897E184E48F100125E97 /* Product.m in Sources */,
-				11B789A5184E580200125E97 /* DictionarySynonym.m in Sources */,
+				1133834B1859A95400CBA6FF /* ReviewClass_Lookup.m in Sources */,
+				113383571859A9A800CBA6FF /* DrugDetailsViewController.m in Sources */,
+				113383411859A95400CBA6FF /* Application.m in Sources */,
+				1133833F1859A95400CBA6FF /* AppDoc.m in Sources */,
+				113383441859A95400CBA6FF /* DictionarySynonym.m in Sources */,
+				113383591859A9A800CBA6FF /* DrugSummaryViewController.m in Sources */,
+				113383461859A95400CBA6FF /* Favorite.m in Sources */,
+				113383231859A90400CBA6FF /* Database.m in Sources */,
+				113383481859A95400CBA6FF /* Product_TECode.m in Sources */,
 				113DE88E1843D8420080B038 /* AppDelegate.m in Sources */,
-				11FC406E18443047007EF755 /* TabBarController.m in Sources */,
-				11B78978184E48F100125E97 /* AppDoc.m in Sources */,
-				11B78969184E48F100125E97 /* AppDocType_Lookup.m in Sources */,
+				113383451859A95400CBA6FF /* DocType_Lookup.m in Sources */,
+				113383581859A9A800CBA6FF /* DrugProductTableViewCell.m in Sources */,
+				113383491859A95400CBA6FF /* Product.m in Sources */,
+				1133834A1859A95400CBA6FF /* RegActionDate.m in Sources */,
 				113DE88A1843D8420080B038 /* main.m in Sources */,
 				11581FD81845513E004186F2 /* Util.m in Sources */,
-				11B789B2184E6D9900125E97 /* Favorite.m in Sources */,
 				116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */,
+				113383401859A95400CBA6FF /* AppDocType_Lookup.m in Sources */,
+				113383431859A95400CBA6FF /* Dictionary.m in Sources */,
 				113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */,
+				113383471859A95400CBA6FF /* History.m in Sources */,
+				1133835B1859A9A800CBA6FF /* TabBarController.m in Sources */,
+				113383421859A95400CBA6FF /* ChemicalType_Lookup.m in Sources */,
+				1133835A1859A9A800CBA6FF /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

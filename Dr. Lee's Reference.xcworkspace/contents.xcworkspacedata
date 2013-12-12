@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:DataLoader/DataLoader.xcodeproj">
+      location = "group:DataSource/DataSource.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Dr. Lee&apos;s Reference/Dr. Lee&apos;s Reference.xcodeproj">

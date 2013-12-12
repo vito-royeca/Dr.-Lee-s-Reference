@@ -22,7 +22,7 @@
     {
         _letters = [NSArray arrayWithObjects:
 //                    @"9",
-//                    @"a",
+                    @"a",
 //                    @"b",
 //                    @"c",
 //                    @"d",
@@ -36,12 +36,14 @@
 //                    @"l",
 //                    @"m",
 //                    @"n",
-                    @"o",
-                    @"p",
-                    @"q",
+//                    @"o",
+//                    @"p",
+//                    @"q",
+                    
 //                    @"r",
 //                    @"s",
 //                    @"t",
+                    
 //                    @"u",
 //                    @"v",
 //                    @"w",
@@ -87,7 +89,7 @@
         {
             [self parseDefinition:dict];
             NSLog(@"Inserting... %@", [dict objectForKey:@"term"]);
-            [self saveTermToDatabase:dict];
+//            [self saveTermToDatabase:dict];
             _total++;
         }
     }
@@ -114,27 +116,8 @@
     for (TFHppleElement *element in nodes)
     {
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-        NSMutableString *term = [[NSMutableString alloc] init];
         
-        if ([element hasChildren])
-        {
-            for (TFHppleElement *child in element.children)
-            {
-                if ([[child tagName] isEqualToString:@"text"])
-                {
-                    [term appendFormat:@"%@", [Util toUTF8:[child content]]];
-                }
-                else if ([[child tagName] isEqualToString:@"super"])
-                {
-                    [term appendFormat:@"%@", [Util superScriptOf:[[child firstChild] content]]];
-                }
-                else if ([[child tagName] isEqualToString:@"sub"])
-                {
-                    [term appendFormat:@"%@", [Util subScriptOf:[[child firstChild] content]]];
-                }
-            }
-        }
-        [dict setObject:term forKey:@"term"];
+        [dict setObject:[self extractTextFromElement:element isParent:NO] forKey:@"term"];
         [dict setObject:[element objectForKey:@"href"] forKey:@"href"];
         [arrTerms addObject:dict];
     }
@@ -187,7 +170,7 @@
     {
         NSString *strong;
     
-        for (TFHppleElement * child in element.children)
+        for (TFHppleElement *child in element.children)
         {
             if (strong)
             {
@@ -196,27 +179,7 @@
                     // Synonyms:
                     if ([strong isEqualToString:@"Synonyms:"])
                     {
-                        NSMutableArray *synonyms = [[NSMutableArray alloc] init];
-                        
-                        for (TFHppleElement *syn in child.parent.children)
-                        {
-                            if ([[syn tagName] isEqualToString:@"a"])
-                            {
-                                for (TFHppleElement *a in syn.children)
-                                {
-                                    [synonyms addObject:[Util toUTF8:[[syn firstChild] content]]];
-                                }
-                            }
-                            else if ([[syn tagName] isEqualToString:@"super"])
-                            {
-                                [synonyms addObject:[Util superScriptOf:[[syn firstChild] content]]];
-                            }
-                            else if ([[syn tagName] isEqualToString:@"sub"])
-                            {
-                                [synonyms addObject:[Util subScriptOf:[[syn firstChild] content]]];
-                            }
-                        }
-                        [dest setObject:synonyms forKey:strong];
+                        [dest setObject:[self extractTextFromElement:child isParent:YES] forKey:strong];
                     }
                     else
                     {
@@ -227,38 +190,18 @@
                 // Definitions:
                 else
                 {
-                    NSMutableString *definitions = [[NSMutableString alloc] init];
-                    
-                    for (TFHppleElement *desc in child.parent.children)
-                    {
-                        if ([[desc tagName] isEqualToString:@"text"])
-                        {
-                            [definitions appendFormat:@"%@", [Util trim:[desc content]]];
-                        }
-                        else if ([[desc tagName] isEqualToString:@"super"])
-                        {
-                            [definitions appendFormat:@"%@", [Util superScriptOf:[[desc firstChild] content]]];
-                        }
-                        else if ([[desc tagName] isEqualToString:@"sub"])
-                        {
-                            [definitions appendFormat:@"%@", [Util subScriptOf:[[desc firstChild] content]]];
-                        }
-                        else if ([[desc tagName] isEqualToString:@"a"])
-                        {
-                            [definitions appendFormat:@"%@", [Util trim:[[desc firstChild] content]]];
-                        }
-                    }
-                    [dest setObject:definitions forKey:strong];
+                    [dest setObject:[self extractTextFromElement:child isParent:YES] forKey:strong];
                 }
                 
                 strong = nil;
             }
             
-            NSString *content = [[child firstChild] content];
             if ([[child tagName] isEqualToString:@"strong"])
             {
+                NSString *content = [[child firstChild] content];
+                
                 if ([Util string:content containsString:@"Pronunciation"] ||
-                    [Util string:content containsString:@"Synonym"] ||
+                    [Util string:content containsString:@"Synonyms"] ||
                     [Util string:content containsString:@"Definitions"])
                 {
                     strong = content;
@@ -274,6 +217,39 @@
     
     return dest;
 }
+
+-(NSString*) extractTextFromElement:(TFHppleElement*)element isParent:(BOOL)parent
+{
+    NSMutableString *text = [[NSMutableString alloc] init];
+    
+    for (TFHppleElement *e in parent?element.parent.children:element.children)
+    {
+        if ([[e tagName] isEqualToString:@"text"])
+        {
+            [text appendFormat:@"%@", [Util toUTF8:[Util trim:[e content]]]];
+        }
+        else if ([[e tagName] isEqualToString:@"super"])
+        {
+            [text appendFormat:@"%@", [Util superScriptOf:[[e firstChild] content]]];
+        }
+        else if ([[e tagName] isEqualToString:@"sub"])
+        {
+            [text appendFormat:@"%@", [Util subScriptOf:[[e firstChild] content]]];
+        }
+        else if ([[e tagName] isEqualToString:@"a"])
+        {
+            [text appendFormat:@"%@", [Util toUTF8:[Util trim:[[e firstChild] content]]]];
+        }
+        
+        if ([e hasChildren])
+        {
+            [text appendString:[self extractTextFromElement:e isParent:NO]];
+        }
+    }
+    
+    return text;
+}
+
 
 -(void) saveTermToDatabase:(NSDictionary*)dict
 {
@@ -315,4 +291,5 @@
                                            sorters:nil];
     return arr && arr.count > 0;
 }
+
 @end
