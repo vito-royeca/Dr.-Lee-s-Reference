@@ -19,6 +19,11 @@ int main(int argc, const char * argv[])
         
         StedmansScraper *sc = [[StedmansScraper alloc] init];
         [sc scrape];
+        
+//        NSString *test = @"A<sup>-</sup>";
+//        NSLog(@"UTF8 = %@", [Util toUTF8:test]);
+//        NSLog(@"ASCII = %@", [Util toASCII:test]);
+//        NSLog(@"extracted = %@", [sc extractTextFromElement:<#(TFHppleElement *)#> isParent:<#(BOOL)#>]);
     }
     return 0;
 }

@@ -28,6 +28,11 @@
     return NO;
 }
 
++ (BOOL)isEmptyString:(NSString*)string
+{
+    return [[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] <= 0;
+}
+
 + (NSString*) arrayToString:(NSArray*)arr
 {
     NSMutableString *retString = [[NSMutableString alloc] init];

@@ -1,5 +1,5 @@
 //
-//  DictionarySynonym.h
+//  DictionaryDefinition.h
 //  Dr. Lee's Reference
 //
 //  Created by Jovito Royeca on 12/14/13.
@@ -11,9 +11,9 @@
 
 @class DictionaryTerm;
 
-@interface DictionarySynonym : NSManagedObject
+@interface DictionaryDefinition : NSManagedObject
 
-@property (nonatomic, retain) NSString * term;
+@property (nonatomic, retain) NSString * definition;
 @property (nonatomic, retain) DictionaryTerm *dictionaryTerm;
 
 @end

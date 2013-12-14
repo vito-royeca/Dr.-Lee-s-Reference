@@ -23,14 +23,14 @@
         _letters = [NSArray arrayWithObjects:
 //                    @"9",
                     @"a",
-//                    @"b",
-//                    @"c",
+                    @"b",
+                    @"c",
 //                    @"d",
 //                    @"e",
 //                    @"f",
 //                    @"g",
-//                    @"h", // setObjectForKey: object cannot be nil (key: nodeContent)
-//                    @"i", // setObjectForKey: object cannot be nil (key: nodeContent)
+//                    @"h",
+//                    @"i",
 //                    @"j",
 //                    @"k",
 //                    @"l",
@@ -58,6 +58,7 @@
 
 -(void) scrape
 {
+    NSDate *dateStart = [NSDate date];
     NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
         
     // #1 scrape each letter
@@ -76,7 +77,7 @@
         _total = 0;
     }
         
-    NSLog(@"%@", dictTotals);
+    NSLog(@"Started: %@; Ended: %@; Total: %@", dateStart, [NSDate date], dictTotals);
 }
 
 -(TFHpple*) scrapePageTerms:(NSString*)pageParams
@@ -88,9 +89,11 @@
         if (![self isTermInDatabase:[dict objectForKey:@"term"]])
         {
             [self parseDefinition:dict];
-            NSLog(@"Inserting... %@", [dict objectForKey:@"term"]);
-//            [self saveTermToDatabase:dict];
-            _total++;
+            NSLog(@"%@", dict);
+            if ([self saveTermToDatabase:dict])
+            {
+                _total++;
+            }
         }
     }
     
@@ -164,6 +167,93 @@
     }
 }
 
+-(NSString*) extractTextFromElement:(TFHppleElement*)element isParent:(BOOL)parent
+{
+    NSMutableString *text = [[NSMutableString alloc] init];
+    
+    for (TFHppleElement *e in parent?element.parent.children:element.children)
+    {
+        if ([e hasChildren])
+        {
+            for (TFHppleElement *child in e.children)
+            {
+                if ([[e tagName] isEqualToString:@"super"])
+                {
+                    [text appendFormat:@"%@", [Util superScriptOf:[Util toUTF8:[child content]]]];
+                }
+                else if ([[e tagName] isEqualToString:@"sub"])
+                {
+                    [text appendFormat:@"%@", [Util subScriptOf:[Util toUTF8:[child content]]]];
+                }
+                else if ([[e tagName] isEqualToString:@"a"])
+                {
+                    [text appendFormat:@"%@", [Util toUTF8:[Util trim:[child content]]]];
+                }
+            }
+        }
+        else
+        {
+            if ([[e tagName] isEqualToString:@"text"])
+            {
+                NSString *content = [Util toUTF8:[e content]];
+
+                if (![Util isEmptyString:[Util trim:content]] &&
+                    ![Util string:content containsString:@"Pronunciation"] &&
+                    ![Util string:content containsString:@"Synonyms"] &&
+                    ![Util string:content containsString:@"Definitions"] &&
+                    ![Util string:content containsString:@"See"])
+                {
+                    [text appendFormat:@"%@", content];
+                }
+            }
+        }
+    }
+    
+    return text;
+}
+
+-(NSArray*) extractDefinitionsFromElement:(TFHppleElement*)element
+{
+    NSMutableArray *arrResult = [[NSMutableArray alloc] init];
+    NSString *text = [Util trim:[self extractTextFromElement:element isParent:YES]];
+    NSString *delim = @"$";
+    
+    for (int i=1; i<11; i++)
+    {
+        NSString *num = [NSString stringWithFormat:@"%d. ", i];
+        text = [text stringByReplacingOccurrencesOfString:num withString:delim];
+    }
+
+    for (NSString *token in [text componentsSeparatedByString:delim])
+    {
+        NSString *trimmed = [Util trim:token];
+        
+        if ([trimmed length] > 0)
+        {
+            [arrResult addObject:trimmed];
+        }
+    }
+    return arrResult;
+}
+
+-(NSArray*) extractSynonymsFromElement:(TFHppleElement*)element
+{
+    NSMutableArray *arrResult = [[NSMutableArray alloc] init];
+    NSString *text = [Util trim:[self extractTextFromElement:element isParent:YES]];
+    NSString *delim = @",";
+    
+    for (NSString *token in [text componentsSeparatedByString:delim])
+    {
+        NSString *trimmed = [Util trim:token];
+        
+        if ([trimmed length] > 0)
+        {
+            [arrResult addObject:trimmed];
+        }
+    }
+    return arrResult;
+}
+
 -(NSMutableDictionary*) extractStrongFromElement:(TFHppleElement*)element dest:(NSMutableDictionary*)dest
 {
     if ([element hasChildren])
@@ -176,21 +266,35 @@
             {
                 if ([[child tagName] isEqualToString:@"text"])
                 {
-                    // Synonyms:
                     if ([strong isEqualToString:@"Synonyms:"])
                     {
-                        [dest setObject:[self extractTextFromElement:child isParent:YES] forKey:strong];
+                        NSArray *arr = [self extractSynonymsFromElement:child];
+                        if (arr && [arr count] > 0)
+                        {
+                            [dest setObject:arr forKey:strong];
+                        }
                     }
-                    else
+                    else if ([strong isEqualToString:@"See:"])
                     {
-                        // Pronunciation:
-                        [dest setObject:[Util toUTF8:[child content]] forKey:strong];
+                        NSArray *arr = [self extractSynonymsFromElement:child];
+                        if (arr && [arr count] > 0)
+                        {
+                            [dest setObject:arr forKey:strong];
+                        }
+                    }
+                    else if ([strong isEqualToString:@"Pronunciation:"])
+                    {
+                        [dest setObject:[Util trim:[Util toUTF8:[child content]]] forKey:strong];
                     }
                 }
                 // Definitions:
                 else
                 {
-                    [dest setObject:[self extractTextFromElement:child isParent:YES] forKey:strong];
+                    NSArray *arr = [self extractDefinitionsFromElement:child];
+                    if (arr && [arr count] > 0)
+                    {
+                        [dest setObject:arr forKey:strong];
+                    }
                 }
                 
                 strong = nil;
@@ -202,7 +306,8 @@
                 
                 if ([Util string:content containsString:@"Pronunciation"] ||
                     [Util string:content containsString:@"Synonyms"] ||
-                    [Util string:content containsString:@"Definitions"])
+                    [Util string:content containsString:@"Definitions"] ||
+                    [Util string:content containsString:@"See"])
                 {
                     strong = content;
                 }
@@ -218,73 +323,83 @@
     return dest;
 }
 
--(NSString*) extractTextFromElement:(TFHppleElement*)element isParent:(BOOL)parent
+-(BOOL) saveTermToDatabase:(NSDictionary*)dict
 {
-    NSMutableString *text = [[NSMutableString alloc] init];
-    
-    for (TFHppleElement *e in parent?element.parent.children:element.children)
-    {
-        if ([[e tagName] isEqualToString:@"text"])
-        {
-            [text appendFormat:@"%@", [Util toUTF8:[Util trim:[e content]]]];
-        }
-        else if ([[e tagName] isEqualToString:@"super"])
-        {
-            [text appendFormat:@"%@", [Util superScriptOf:[[e firstChild] content]]];
-        }
-        else if ([[e tagName] isEqualToString:@"sub"])
-        {
-            [text appendFormat:@"%@", [Util subScriptOf:[[e firstChild] content]]];
-        }
-        else if ([[e tagName] isEqualToString:@"a"])
-        {
-            [text appendFormat:@"%@", [Util toUTF8:[Util trim:[[e firstChild] content]]]];
-        }
-        
-        if ([e hasChildren])
-        {
-            [text appendString:[self extractTextFromElement:e isParent:NO]];
-        }
-    }
-    
-    return text;
-}
-
-
--(void) saveTermToDatabase:(NSDictionary*)dict
-{
-    Dictionary *d = [[Database sharedInstance] createManagedObject:@"Dictionary"];
+    DictionaryTerm *d = [[Database sharedInstance] createManagedObject:@"DictionaryTerm"];
     d.dictionaryId = [dict objectForKey:@"id"];
     d.term = [dict objectForKey:@"term"];
-    d.definition = [dict objectForKey:@"Definitions:"];
     d.pronunciation = [dict objectForKey:@"Pronunciation:"];
     
     NSError *error;
     if (![[[Database sharedInstance] managedObjectContext] save:&error])
     {
         NSLog(@"Save error: %@", [error localizedDescription]);
+        return NO;
     }
 
-    if ([dict objectForKey:@"Synonyms:"])
+    if ([dict objectForKey:@"Definitions:"])
     {
-        for (NSString *syn in [dict objectForKey:@"Synonyms:"])
+        NSMutableSet *set = [[NSMutableSet alloc] init];
+        
+        for (NSString *x in [dict objectForKey:@"Definitions:"])
         {
-            DictionarySynonym *ds = [[Database sharedInstance] createManagedObject:@"DictionarySynonym"];
-            
-            ds.term = syn;
-            
-            [d addDictionarySynonymObject:ds];
-            if (![[[Database sharedInstance] managedObjectContext] save:&error])
-            {
-                NSLog(@"Save error: %@", [error localizedDescription]);
-            }
+            DictionaryDefinition *dd = [[Database sharedInstance] createManagedObject:@"DictionaryDefinition"];
+            dd.definition = x;
+            [set addObject:dd];
+        }
+        
+        [d addDictionaryDefinition:set];
+        if (![[[Database sharedInstance] managedObjectContext] save:&error])
+        {
+            NSLog(@"Save error: %@", [error localizedDescription]);
+            return NO;
         }
     }
+    
+    if ([dict objectForKey:@"Synonyms:"])
+    {
+        NSMutableSet *set = [[NSMutableSet alloc] init];
+        
+        for (NSString *x in [dict objectForKey:@"Synonyms:"])
+        {
+            DictionarySynonym *ds = [[Database sharedInstance] createManagedObject:@"DictionarySynonym"];
+            ds.term = x;
+            [set addObject:ds];
+        }
+        
+        [d addDictionarySynonym:set];
+        if (![[[Database sharedInstance] managedObjectContext] save:&error])
+        {
+            NSLog(@"Save error: %@", [error localizedDescription]);
+            return NO;
+        }
+    }
+    
+    if ([dict objectForKey:@"See:"])
+    {
+        NSMutableSet *set = [[NSMutableSet alloc] init];
+        
+        for (NSString *x in [dict objectForKey:@"See:"])
+        {
+            DictionaryXRef *dx = [[Database sharedInstance] createManagedObject:@"DictionaryXRef"];
+            dx.term = x;
+            [set addObject:dx];
+        }
+        
+        [d addDictionaryXRef:set];
+        if (![[[Database sharedInstance] managedObjectContext] save:&error])
+        {
+            NSLog(@"Save error: %@", [error localizedDescription]);
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 - (BOOL) isTermInDatabase:(NSString*)term
 {
-    NSArray *arr = [[Database sharedInstance] find:@"Dictionary"
+    NSArray *arr = [[Database sharedInstance] find:@"DictionaryTerm"
                                         columnName:@"term"
                                        columnValue:term
                                   relationshipKeys:nil

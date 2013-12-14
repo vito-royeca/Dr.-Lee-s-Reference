@@ -12,7 +12,7 @@
 #import "AppDocType_Lookup.h"
 #import "Application.h"
 #import "ChemicalType_Lookup.h"
-#import "Dictionary.h"
+#import "DictionaryTerm.h"
 #import "DictionarySynonym.h"
 #import "DocType_Lookup.h"
 #import "Product.h"

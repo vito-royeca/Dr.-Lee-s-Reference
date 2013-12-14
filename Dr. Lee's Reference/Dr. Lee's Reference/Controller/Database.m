@@ -415,10 +415,14 @@
 
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],
+                          NSMigratePersistentStoresAutomaticallyOption,
+                          [NSNumber numberWithBool:YES],
+                          NSInferMappingModelAutomaticallyOption, nil];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                    configuration:nil
                                                              URL:storeURL
-                                                         options:nil
+                                                         options:dict
                                                            error:&error])
     {
         /*

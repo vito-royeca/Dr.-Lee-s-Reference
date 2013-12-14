@@ -12,8 +12,6 @@
 		113383401859A95400CBA6FF /* AppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383281859A95400CBA6FF /* AppDocType_Lookup.m */; };
 		113383411859A95400CBA6FF /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133832A1859A95400CBA6FF /* Application.m */; };
 		113383421859A95400CBA6FF /* ChemicalType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133832C1859A95400CBA6FF /* ChemicalType_Lookup.m */; };
-		113383431859A95400CBA6FF /* Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133832E1859A95400CBA6FF /* Dictionary.m */; };
-		113383441859A95400CBA6FF /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383301859A95400CBA6FF /* DictionarySynonym.m */; };
 		113383451859A95400CBA6FF /* DocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383321859A95400CBA6FF /* DocType_Lookup.m */; };
 		113383461859A95400CBA6FF /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383341859A95400CBA6FF /* Favorite.m */; };
 		113383471859A95400CBA6FF /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383361859A95400CBA6FF /* History.m */; };
@@ -44,6 +42,10 @@
 		113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE9021843FBF70080B038 /* MBProgressHUD.m */; };
 		11581FD81845513E004186F2 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD71845513D004186F2 /* Util.m */; };
 		116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 116ED0AE18468F4100CDC13D /* database.xcdatamodeld */; };
+		119B62E3185C823F009D3184 /* DictionaryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E2185C823F009D3184 /* DictionaryDefinition.m */; };
+		119B62E6185C8240009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E5185C8240009D3184 /* DictionaryTerm.m */; };
+		119B62E9185C8240009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E8185C8240009D3184 /* DictionaryXRef.m */; };
+		119B62EC185C8240009D3184 /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62EB185C8240009D3184 /* DictionarySynonym.m */; };
 		11B789AC184E670600125E97 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 11B789AB184E670600125E97 /* database.sqlite */; };
 /* End PBXBuildFile section */
 
@@ -68,10 +70,6 @@
 		1133832A1859A95400CBA6FF /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Application.m; sourceTree = "<group>"; };
 		1133832B1859A95400CBA6FF /* ChemicalType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChemicalType_Lookup.h; sourceTree = "<group>"; };
 		1133832C1859A95400CBA6FF /* ChemicalType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChemicalType_Lookup.m; sourceTree = "<group>"; };
-		1133832D1859A95400CBA6FF /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
-		1133832E1859A95400CBA6FF /* Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dictionary.m; sourceTree = "<group>"; };
-		1133832F1859A95400CBA6FF /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySynonym.h; sourceTree = "<group>"; };
-		113383301859A95400CBA6FF /* DictionarySynonym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionarySynonym.m; sourceTree = "<group>"; };
 		113383311859A95400CBA6FF /* DocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocType_Lookup.h; sourceTree = "<group>"; };
 		113383321859A95400CBA6FF /* DocType_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocType_Lookup.m; sourceTree = "<group>"; };
 		113383331859A95400CBA6FF /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
@@ -119,7 +117,16 @@
 		11581FD61845513D004186F2 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		11581FD71845513D004186F2 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		116ED0AF18468F4100CDC13D /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
+		119B62E1185C823F009D3184 /* DictionaryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryDefinition.h; sourceTree = "<group>"; };
+		119B62E2185C823F009D3184 /* DictionaryDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryDefinition.m; sourceTree = "<group>"; };
+		119B62E4185C8240009D3184 /* DictionaryTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryTerm.h; sourceTree = "<group>"; };
+		119B62E5185C8240009D3184 /* DictionaryTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryTerm.m; sourceTree = "<group>"; };
+		119B62E7185C8240009D3184 /* DictionaryXRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryXRef.h; sourceTree = "<group>"; };
+		119B62E8185C8240009D3184 /* DictionaryXRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryXRef.m; sourceTree = "<group>"; };
+		119B62EA185C8240009D3184 /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySynonym.h; sourceTree = "<group>"; };
+		119B62EB185C8240009D3184 /* DictionarySynonym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionarySynonym.m; sourceTree = "<group>"; };
 		11B789AB184E670600125E97 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
+		11BA749B185C7C3800C41044 /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
 		11F34C0B184978DA00CF5852 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -169,20 +176,24 @@
 				1133832A1859A95400CBA6FF /* Application.m */,
 				1133832B1859A95400CBA6FF /* ChemicalType_Lookup.h */,
 				1133832C1859A95400CBA6FF /* ChemicalType_Lookup.m */,
-				1133832D1859A95400CBA6FF /* Dictionary.h */,
-				1133832E1859A95400CBA6FF /* Dictionary.m */,
-				1133832F1859A95400CBA6FF /* DictionarySynonym.h */,
-				113383301859A95400CBA6FF /* DictionarySynonym.m */,
+				119B62E1185C823F009D3184 /* DictionaryDefinition.h */,
+				119B62E2185C823F009D3184 /* DictionaryDefinition.m */,
+				119B62EA185C8240009D3184 /* DictionarySynonym.h */,
+				119B62EB185C8240009D3184 /* DictionarySynonym.m */,
+				119B62E4185C8240009D3184 /* DictionaryTerm.h */,
+				119B62E5185C8240009D3184 /* DictionaryTerm.m */,
+				119B62E7185C8240009D3184 /* DictionaryXRef.h */,
+				119B62E8185C8240009D3184 /* DictionaryXRef.m */,
 				113383311859A95400CBA6FF /* DocType_Lookup.h */,
 				113383321859A95400CBA6FF /* DocType_Lookup.m */,
 				113383331859A95400CBA6FF /* Favorite.h */,
 				113383341859A95400CBA6FF /* Favorite.m */,
 				113383351859A95400CBA6FF /* History.h */,
 				113383361859A95400CBA6FF /* History.m */,
-				113383371859A95400CBA6FF /* Product_TECode.h */,
-				113383381859A95400CBA6FF /* Product_TECode.m */,
 				113383391859A95400CBA6FF /* Product.h */,
 				1133833A1859A95400CBA6FF /* Product.m */,
+				113383371859A95400CBA6FF /* Product_TECode.h */,
+				113383381859A95400CBA6FF /* Product_TECode.m */,
 				1133833B1859A95400CBA6FF /* RegActionDate.h */,
 				1133833C1859A95400CBA6FF /* RegActionDate.m */,
 				1133833D1859A95400CBA6FF /* ReviewClass_Lookup.h */,
@@ -429,10 +440,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1133834B1859A95400CBA6FF /* ReviewClass_Lookup.m in Sources */,
+				119B62E6185C8240009D3184 /* DictionaryTerm.m in Sources */,
 				113383571859A9A800CBA6FF /* DrugDetailsViewController.m in Sources */,
+				119B62E3185C823F009D3184 /* DictionaryDefinition.m in Sources */,
 				113383411859A95400CBA6FF /* Application.m in Sources */,
 				1133833F1859A95400CBA6FF /* AppDoc.m in Sources */,
-				113383441859A95400CBA6FF /* DictionarySynonym.m in Sources */,
 				113383591859A9A800CBA6FF /* DrugSummaryViewController.m in Sources */,
 				113383461859A95400CBA6FF /* Favorite.m in Sources */,
 				113383231859A90400CBA6FF /* Database.m in Sources */,
@@ -440,13 +452,14 @@
 				113DE88E1843D8420080B038 /* AppDelegate.m in Sources */,
 				113383451859A95400CBA6FF /* DocType_Lookup.m in Sources */,
 				113383581859A9A800CBA6FF /* DrugProductTableViewCell.m in Sources */,
+				119B62EC185C8240009D3184 /* DictionarySynonym.m in Sources */,
 				113383491859A95400CBA6FF /* Product.m in Sources */,
 				1133834A1859A95400CBA6FF /* RegActionDate.m in Sources */,
 				113DE88A1843D8420080B038 /* main.m in Sources */,
+				119B62E9185C8240009D3184 /* DictionaryXRef.m in Sources */,
 				11581FD81845513E004186F2 /* Util.m in Sources */,
 				116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */,
 				113383401859A95400CBA6FF /* AppDocType_Lookup.m in Sources */,
-				113383431859A95400CBA6FF /* Dictionary.m in Sources */,
 				113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */,
 				113383471859A95400CBA6FF /* History.m in Sources */,
 				1133835B1859A9A800CBA6FF /* TabBarController.m in Sources */,
@@ -683,9 +696,10 @@
 		116ED0AE18468F4100CDC13D /* database.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				11BA749B185C7C3800C41044 /* 1.xcdatamodel */,
 				116ED0AF18468F4100CDC13D /* database.xcdatamodel */,
 			);
-			currentVersion = 116ED0AF18468F4100CDC13D /* database.xcdatamodel */;
+			currentVersion = 11BA749B185C7C3800C41044 /* 1.xcdatamodel */;
 			path = database.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
