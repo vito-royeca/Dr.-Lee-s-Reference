@@ -46,7 +46,6 @@
 		119B62E6185C8240009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E5185C8240009D3184 /* DictionaryTerm.m */; };
 		119B62E9185C8240009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E8185C8240009D3184 /* DictionaryXRef.m */; };
 		119B62EC185C8240009D3184 /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62EB185C8240009D3184 /* DictionarySynonym.m */; };
-		11B789AC184E670600125E97 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 11B789AB184E670600125E97 /* database.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +124,6 @@
 		119B62E8185C8240009D3184 /* DictionaryXRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryXRef.m; sourceTree = "<group>"; };
 		119B62EA185C8240009D3184 /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySynonym.h; sourceTree = "<group>"; };
 		119B62EB185C8240009D3184 /* DictionarySynonym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionarySynonym.m; sourceTree = "<group>"; };
-		11B789AB184E670600125E97 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
 		11BA749B185C7C3800C41044 /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
 		11F34C0B184978DA00CF5852 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -319,7 +317,6 @@
 		116ED0AC18468F1700CDC13D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				11B789AB184E670600125E97 /* database.sqlite */,
 				116ED0AE18468F4100CDC13D /* database.xcdatamodeld */,
 			);
 			path = Data;
@@ -401,7 +398,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11B789AC184E670600125E97 /* database.sqlite in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
 				113DE9031843FBF70080B038 /* LICENSE in Resources */,

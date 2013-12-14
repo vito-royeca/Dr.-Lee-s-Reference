@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111B40F9185CB1E50077E5ED /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 111B40F6185CB1E50077E5ED /* database.xcdatamodeld */; };
 		11322DE41857A2E30007E7B9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11322DE31857A2E30007E7B9 /* CoreData.framework */; };
 		11322DE61857A2E30007E7B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11322DE51857A2E30007E7B9 /* Foundation.framework */; };
 		11322DE91857A2E30007E7B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11322DE81857A2E30007E7B9 /* main.m */; };
@@ -31,7 +32,6 @@
 		113383AD1859AAD400CBA6FF /* RegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133839F1859AAD400CBA6FF /* RegActionDate.m */; };
 		113383AE1859AAD400CBA6FF /* ReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383A11859AAD400CBA6FF /* ReviewClass_Lookup.m */; };
 		113383B11859AAEA00CBA6FF /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383B01859AAEA00CBA6FF /* Util.m */; };
-		113383B51859AD5C00CBA6FF /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 113383B31859AD5C00CBA6FF /* database.xcdatamodeld */; };
 		119B62F3185C827C009D3184 /* DictionaryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62EE185C827C009D3184 /* DictionaryDefinition.m */; };
 		119B62F4185C827C009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F0185C827C009D3184 /* DictionaryTerm.m */; };
 		119B62F5185C827C009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F2185C827C009D3184 /* DictionaryXRef.m */; };
@@ -50,6 +50,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		111B40F7185CB1E50077E5ED /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
+		111B40F8185CB1E50077E5ED /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		11322DE01857A2E30007E7B9 /* DataSource */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataSource; sourceTree = BUILT_PRODUCTS_DIR; };
 		11322DE31857A2E30007E7B9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		11322DE51857A2E30007E7B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -112,8 +114,6 @@
 		113383A11859AAD400CBA6FF /* ReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReviewClass_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ReviewClass_Lookup.m"; sourceTree = "<group>"; };
 		113383AF1859AAEA00CBA6FF /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Util.h"; sourceTree = "<group>"; };
 		113383B01859AAEA00CBA6FF /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Util.m"; sourceTree = "<group>"; };
-		113383B21859AD5C00CBA6FF /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = database.sqlite; path = "../../../Dr. Lee's Reference/Dr. Lee's Reference/Data/database.sqlite"; sourceTree = "<group>"; };
-		113383B41859AD5C00CBA6FF /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		119B62ED185C827C009D3184 /* DictionaryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryDefinition.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryDefinition.h"; sourceTree = "<group>"; };
 		119B62EE185C827C009D3184 /* DictionaryDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryDefinition.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryDefinition.m"; sourceTree = "<group>"; };
 		119B62EF185C827C009D3184 /* DictionaryTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryTerm.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryTerm.h"; sourceTree = "<group>"; };
@@ -204,8 +204,7 @@
 		113383691859AA5E00CBA6FF /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				113383B21859AD5C00CBA6FF /* database.sqlite */,
-				113383B31859AD5C00CBA6FF /* database.xcdatamodeld */,
+				111B40F6185CB1E50077E5ED /* database.xcdatamodeld */,
 				1133836A1859AA7200CBA6FF /* db.sql */,
 				1133836B1859AA7200CBA6FF /* drugsatfda */,
 				113383751859AA7200CBA6FF /* icd10 */,
@@ -362,9 +361,9 @@
 				113383A31859AAD400CBA6FF /* AppDocType_Lookup.m in Sources */,
 				113383851859AAAA00CBA6FF /* TFHppleElement.m in Sources */,
 				113383A91859AAD400CBA6FF /* Favorite.m in Sources */,
-				113383B51859AD5C00CBA6FF /* database.xcdatamodeld in Sources */,
 				113383A51859AAD400CBA6FF /* ChemicalType_Lookup.m in Sources */,
 				113383AA1859AAD400CBA6FF /* History.m in Sources */,
+				111B40F9185CB1E50077E5ED /* database.xcdatamodeld in Sources */,
 				11322DE91857A2E30007E7B9 /* main.m in Sources */,
 				113383AD1859AAD400CBA6FF /* RegActionDate.m in Sources */,
 				119B62F5185C827C009D3184 /* DictionaryXRef.m in Sources */,
@@ -502,12 +501,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		113383B31859AD5C00CBA6FF /* database.xcdatamodeld */ = {
+		111B40F6185CB1E50077E5ED /* database.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				113383B41859AD5C00CBA6FF /* database.xcdatamodel */,
+				111B40F7185CB1E50077E5ED /* 1.xcdatamodel */,
+				111B40F8185CB1E50077E5ED /* database.xcdatamodel */,
 			);
-			currentVersion = 113383B41859AD5C00CBA6FF /* database.xcdatamodel */;
+			currentVersion = 111B40F7185CB1E50077E5ED /* 1.xcdatamodel */;
 			name = database.xcdatamodeld;
 			path = "../../../Dr. Lee's Reference/Dr. Lee's Reference/Data/database.xcdatamodeld";
 			sourceTree = "<group>";
