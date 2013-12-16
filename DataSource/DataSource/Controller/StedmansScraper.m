@@ -22,9 +22,9 @@
     {
         _letters = [NSArray arrayWithObjects:
 //                    @"9",
-                    @"a",
-                    @"b",
-                    @"c",
+//                    @"a",
+//                    @"b",
+//                    @"c",
 //                    @"d",
 //                    @"e",
 //                    @"f",
@@ -34,7 +34,7 @@
 //                    @"j",
 //                    @"k",
 //                    @"l",
-//                    @"m",
+                    @"m",
 //                    @"n",
 //                    @"o",
 //                    @"p",
@@ -327,8 +327,8 @@
     d.dictionaryId = [dict objectForKey:@"id"];
     d.term = [dict objectForKey:@"term"];
     d.pronunciation = [dict objectForKey:@"Pronunciation:"];
-    
     NSError *error;
+    
     if (![[[Database sharedInstance] managedObjectContext] save:&error])
     {
         NSLog(@"Save error: %@", [error localizedDescription]);
