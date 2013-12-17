@@ -41,6 +41,10 @@
 		113DE8A71843D8420080B038 /* Dr__Lee_s_ReferenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8A61843D8420080B038 /* Dr__Lee_s_ReferenceTests.m */; };
 		113DE9031843FBF70080B038 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 113DE9001843FBF70080B038 /* LICENSE */; };
 		113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE9021843FBF70080B038 /* MBProgressHUD.m */; };
+		1156CDA41860D6770072519C /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1156CDA01860D6770072519C /* LICENSE.txt */; };
+		1156CDA51860D6770072519C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1156CDA11860D6770072519C /* README.md */; };
+		1156CDA61860D6770072519C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1156CDA31860D6770072519C /* SWRevealViewController.m */; };
+		1156CDA81860D6A70072519C /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 1156CDA71860D6A70072519C /* README.mdown */; };
 		11581FD81845513E004186F2 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD71845513D004186F2 /* Util.m */; };
 		116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 116ED0AE18468F4100CDC13D /* database.xcdatamodeld */; };
 		119B62E3185C823F009D3184 /* DictionaryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E2185C823F009D3184 /* DictionaryDefinition.m */; };
@@ -115,6 +119,11 @@
 		113DE9001843FBF70080B038 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		113DE9011843FBF70080B038 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		113DE9021843FBF70080B038 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		1156CDA01860D6770072519C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		1156CDA11860D6770072519C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		1156CDA21860D6770072519C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		1156CDA31860D6770072519C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		1156CDA71860D6A70072519C /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
 		11581FD61845513D004186F2 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		11581FD71845513D004186F2 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		116ED0AF18468F4100CDC13D /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
@@ -302,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				113DE8FF1843FBF70080B038 /* MBProgressHUD */,
+				1156CD9F1860D5690072519C /* SWRevealViewController */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -312,8 +322,20 @@
 				113DE9001843FBF70080B038 /* LICENSE */,
 				113DE9011843FBF70080B038 /* MBProgressHUD.h */,
 				113DE9021843FBF70080B038 /* MBProgressHUD.m */,
+				1156CDA71860D6A70072519C /* README.mdown */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		1156CD9F1860D5690072519C /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1156CDA01860D6770072519C /* LICENSE.txt */,
+				1156CDA11860D6770072519C /* README.md */,
+				1156CDA21860D6770072519C /* SWRevealViewController.h */,
+				1156CDA31860D6770072519C /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 		116ED0AC18468F1700CDC13D /* Data */ = {
@@ -401,9 +423,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1156CDA51860D6770072519C /* README.md in Resources */,
 				111B40FB185D5DED0077E5ED /* database.sqlite in Resources */,
+				1156CDA81860D6A70072519C /* README.mdown in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
+				1156CDA41860D6770072519C /* LICENSE.txt in Resources */,
 				113DE9031843FBF70080B038 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +469,7 @@
 				113383571859A9A800CBA6FF /* DrugDetailsViewController.m in Sources */,
 				119B62E3185C823F009D3184 /* DictionaryDefinition.m in Sources */,
 				113383411859A95400CBA6FF /* Application.m in Sources */,
+				1156CDA61860D6770072519C /* SWRevealViewController.m in Sources */,
 				1133833F1859A95400CBA6FF /* AppDoc.m in Sources */,
 				113383591859A9A800CBA6FF /* DrugSummaryViewController.m in Sources */,
 				113383461859A95400CBA6FF /* Favorite.m in Sources */,
