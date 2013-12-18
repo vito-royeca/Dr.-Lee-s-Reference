@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+#include "Constants.h"
+#import "DictionaryDefinition.h"
+#import "DictionaryXRef.h"
+#import "DictionarySynonym.h"
+#import "DictionaryTerm.h"
+
 @interface DictionaryTermViewController : UIViewController
+
+@property(strong, nonatomic) UIWebView *webView;
+
+@property(strong, nonatomic) DictionaryTerm *dictionaryTerm;
 
 @end
