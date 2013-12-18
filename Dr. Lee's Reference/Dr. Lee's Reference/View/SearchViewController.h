@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#include "Constants.h"
+
 #import "Database.h"
 #import "DictionaryTerm.h"
+#import "DictionaryTermViewController.h"
 #import "DrugSummaryViewController.h"
 #import "MBProgressHUD.h"
 #import "SWRevealViewController.h"

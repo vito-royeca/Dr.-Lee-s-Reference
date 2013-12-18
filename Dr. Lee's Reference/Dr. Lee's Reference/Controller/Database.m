@@ -18,7 +18,8 @@
 {
     static Database *me = nil;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    dispatch_once(&onceToken,
+    ^{
         me = [[self alloc] init];
     });
     return me;
@@ -161,8 +162,9 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
                                               inManagedObjectContext:[self managedObjectContext]];
-    NSPredicate *predicate;
+    
     NSMutableArray *arrDictionary = [[NSMutableArray  alloc] init];
+    NSPredicate *predicate;
     
     if (query.length == 0)
     {
@@ -170,23 +172,19 @@
     }
     else if (query.length == 1)
     {
-        predicate = [NSPredicate
-                     predicateWithFormat:@"%K BEGINSWITH[cd] %@",
-                     @"term", query];
+        predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"term", query];
     }
     else
     {
-        predicate = [NSPredicate
-                     predicateWithFormat:@"%K CONTAINS[cd] %@ OR %K CONTAINS[cd] %@",
-                     @"term", query,
-                     @"dictionaryDefinition.definition", query];
+        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"term", query];
+        NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"dictionaryDefinition.definition", query];
+        predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
         NSArray *relationshipKeys = [NSArray arrayWithObject:@"dictionaryDefinition"];
+        
         [fetchRequest setRelationshipKeyPathsForPrefetching:relationshipKeys];
     }
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                         initWithKey:@"term" ascending:YES];
-    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"term" ascending:YES];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:predicate];
@@ -202,29 +200,26 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product"
                                               inManagedObjectContext:[self managedObjectContext]];
-    NSPredicate *predicate;
+    
     NSMutableArray *arrDrugs = [[NSMutableArray  alloc] init];
-
+    NSPredicate *predicate;
+    
     if (query.length == 0)
     {
         return arrDrugs;
     }
     else if (query.length == 1)
     {
-        predicate = [NSPredicate
-                     predicateWithFormat:@"%K BEGINSWITH[cd] %@",
-                     @"drugName", query];
+        predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"drugName", query];
     }
     else
     {
-        predicate = [NSPredicate
-                     predicateWithFormat:@"%K CONTAINS[cd] %@ OR %K CONTAINS[cd] %@",
-                     @"drugName", query,
-                     @"activeIngred", query];
+        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"drugName", query];
+        NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"activeIngred", query];
+        predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
     }
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"drugName" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"drugName" ascending:YES];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:predicate];

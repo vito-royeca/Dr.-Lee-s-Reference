@@ -83,9 +83,11 @@
 {
     [_content removeAllObjects];
     
+    NSMutableArray *arrNonAlpha = [[NSMutableArray alloc] init];
+    
     for (NSString *letter in _letters)
     {
-        NSMutableArray *values = [[NSMutableArray alloc] init];
+        NSMutableArray *arrValues = [[NSMutableArray alloc] init];
         
         switch (searchBar.selectedScopeButtonIndex)
         {
@@ -93,11 +95,23 @@
             {
                 for (DictionaryTerm *d in results)
                 {
-                    if ([[[Util toASCII:d.term] uppercaseString] hasPrefix:letter])
+                    NSString *term = [Util toASCII:d.term];
+                    
+                    if ([Util isAlphaStart:term])
                     {
-                        if (![values containsObject:d])
+                        if ([[term uppercaseString] hasPrefix:letter])
                         {
-                            [values addObject:d];
+                            if (![arrValues containsObject:d])
+                            {
+                                [arrValues addObject:d];
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (![arrNonAlpha containsObject:d])
+                        {
+                            [arrNonAlpha addObject:d];
                         }
                     }
                 }
@@ -111,9 +125,9 @@
                     
                     if ([[name uppercaseString] hasPrefix:letter])
                     {
-                        if (![values containsObject:dict])
+                        if (![arrValues containsObject:dict])
                         {
-                            [values addObject:dict];
+                            [arrValues addObject:dict];
                         }
                     }
                 }
@@ -125,10 +139,15 @@
             }
         }
         
-        if (values.count > 0)
+        if (arrValues.count > 0)
         {
-            [_content setValue:values forKey:letter];
+            [_content setValue:arrValues forKey:letter];
         }
+    }
+
+    if (arrNonAlpha.count > 0)
+    {
+        [_content setValue:arrNonAlpha forKey:@"#"];
     }
     
     _keys =  [[_content allKeys] sortedArrayUsingSelector:@selector(localizedStandardCompare:)];
@@ -165,8 +184,8 @@
     NSString *letter = [_keys objectAtIndex:section];
     [text appendFormat:@"%@ (%d of %d)", letter, [[_content valueForKey:letter] count], [results count]];
     lblHeader.text = text;
-    lblHeader.backgroundColor = [UIColor lightGrayColor];
-    lblHeader.textColor = [UIColor lightTextColor];
+    lblHeader.backgroundColor = kMenuBackgroundColor;
+    lblHeader.textColor = kMenuFontColor;
     lblHeader.userInteractionEnabled = YES;
     [lblHeader setTag:section+1];
     return lblHeader;
@@ -214,7 +233,6 @@
         }
     }
     
-    
     return cell;
 }
 
@@ -223,10 +241,29 @@
     NSString *prefix = [_keys objectAtIndex:indexPath.section];
     NSArray *arr = [_content objectForKey:prefix];
     
-    DrugSummaryViewController *summaryVC = [[DrugSummaryViewController alloc] init];
-    summaryVC.drugSummary = [arr objectAtIndex:indexPath.row];
-    
-    [self.navigationController pushViewController:summaryVC animated:YES];
+    switch (searchBar.selectedScopeButtonIndex)
+    {
+        case DictionaryDataSource:
+        {
+            DictionaryTermViewController *viewController = [[DictionaryTermViewController alloc] init];
+            viewController.dictionaryTerm = [arr objectAtIndex:indexPath.row];
+            
+            [self.navigationController pushViewController:viewController animated:YES];
+            break;
+        }
+        case DrugsDataSource:
+        {
+            DrugSummaryViewController *viewController = [[DrugSummaryViewController alloc] init];
+            viewController.drugSummary = [arr objectAtIndex:indexPath.row];
+            
+            [self.navigationController pushViewController:viewController animated:YES];
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
 }
 
 -(void) search
@@ -273,12 +310,12 @@
     [hud showWhileExecuting:@selector(performSearchOnMainThread) onTarget:self withObject:nil animated:YES];
 }
 
-- (void)searchBarTextDidEndEditing:(UISearchBar *)bar
-{
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:hud];
-    hud.delegate = self;
-    [hud showWhileExecuting:@selector(performSearchOnMainThread) onTarget:self withObject:nil animated:YES];
-}
+//- (void)searchBarTextDidEndEditing:(UISearchBar *)bar
+//{
+//    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+//    [self.view addSubview:hud];
+//    hud.delegate = self;
+//    [hud showWhileExecuting:@selector(performSearchOnMainThread) onTarget:self withObject:nil animated:YES];
+//}
 
 @end

@@ -36,6 +36,7 @@
 
 + (BOOL)string:(NSString *)string containsString:(NSString*)x;
 + (BOOL)isEmptyString:(NSString*)string;
++ (BOOL)isAlphaStart:(NSString*)string;
 + (NSString*) arrayToString:(NSArray*)arr;
 + (NSString*) toUTF8:(NSString*)string;
 + (NSString*) toASCII:(NSString*)string;

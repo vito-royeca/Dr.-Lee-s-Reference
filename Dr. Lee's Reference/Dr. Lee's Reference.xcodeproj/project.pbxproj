@@ -49,6 +49,7 @@
 		1156CDA61860D6770072519C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1156CDA31860D6770072519C /* SWRevealViewController.m */; };
 		1156CDA81860D6A70072519C /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 1156CDA71860D6A70072519C /* README.mdown */; };
 		11581FD81845513E004186F2 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD71845513D004186F2 /* Util.m */; };
+		116A2C31186214A900A463AA /* DictionaryTermViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 116A2C30186214A800A463AA /* DictionaryTermViewController.m */; };
 		116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 116ED0AE18468F4100CDC13D /* database.xcdatamodeld */; };
 		119B62E3185C823F009D3184 /* DictionaryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E2185C823F009D3184 /* DictionaryDefinition.m */; };
 		119B62E6185C8240009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E5185C8240009D3184 /* DictionaryTerm.m */; };
@@ -133,6 +134,9 @@
 		1156CDA71860D6A70072519C /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
 		11581FD61845513D004186F2 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		11581FD71845513D004186F2 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		116A2C2E1861E90F00A463AA /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		116A2C2F186214A800A463AA /* DictionaryTermViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryTermViewController.h; sourceTree = "<group>"; };
+		116A2C30186214A800A463AA /* DictionaryTermViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryTermViewController.m; sourceTree = "<group>"; };
 		116ED0AF18468F4100CDC13D /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		119B62E1185C823F009D3184 /* DictionaryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryDefinition.h; sourceTree = "<group>"; };
 		119B62E2185C823F009D3184 /* DictionaryDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryDefinition.m; sourceTree = "<group>"; };
@@ -230,18 +234,20 @@
 		1133834C1859A97200CBA6FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				116A2C2F186214A800A463AA /* DictionaryTermViewController.h */,
+				116A2C30186214A800A463AA /* DictionaryTermViewController.m */,
 				1133834D1859A9A800CBA6FF /* DrugDetailsViewController.h */,
 				1133834E1859A9A800CBA6FF /* DrugDetailsViewController.m */,
 				1133834F1859A9A800CBA6FF /* DrugProductTableViewCell.h */,
 				113383501859A9A800CBA6FF /* DrugProductTableViewCell.m */,
 				113383511859A9A800CBA6FF /* DrugSummaryViewController.h */,
 				113383521859A9A800CBA6FF /* DrugSummaryViewController.m */,
-				113383531859A9A800CBA6FF /* SearchViewController.h */,
-				113383541859A9A800CBA6FF /* SearchViewController.m */,
 				11251C0C18618A25009D158C /* MainViewController.h */,
 				11251C0D18618A25009D158C /* MainViewController.m */,
 				11251C0F18618A6E009D158C /* MenuViewController.h */,
 				11251C1018618A6E009D158C /* MenuViewController.m */,
+				113383531859A9A800CBA6FF /* SearchViewController.h */,
+				113383541859A9A800CBA6FF /* SearchViewController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 			children = (
 				113DE88C1843D8420080B038 /* AppDelegate.h */,
 				113DE88D1843D8420080B038 /* AppDelegate.m */,
+				116A2C2E1861E90F00A463AA /* Constants.h */,
 				113383201859A8BF00CBA6FF /* Controller */,
 				116ED0AC18468F1700CDC13D /* Data */,
 				113DE8921843D8420080B038 /* Images.xcassets */,
@@ -497,6 +504,7 @@
 				113383461859A95400CBA6FF /* Favorite.m in Sources */,
 				113383231859A90400CBA6FF /* Database.m in Sources */,
 				113383481859A95400CBA6FF /* Product_TECode.m in Sources */,
+				116A2C31186214A900A463AA /* DictionaryTermViewController.m in Sources */,
 				11251C0E18618A25009D158C /* MainViewController.m in Sources */,
 				113DE88E1843D8420080B038 /* AppDelegate.m in Sources */,
 				113383451859A95400CBA6FF /* DocType_Lookup.m in Sources */,

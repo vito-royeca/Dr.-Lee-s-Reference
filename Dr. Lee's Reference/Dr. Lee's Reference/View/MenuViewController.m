@@ -37,9 +37,9 @@
     tblMenu.delegate = self;
     [self.view addSubview:tblMenu];
     
-    self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
-    tblMenu.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
-    tblMenu.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
+    self.view.backgroundColor = kMenuBackgroundColor;
+    tblMenu.backgroundColor = kTableBackgroundColor;
+    tblMenu.separatorColor = kTableSeparatorColor;
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +62,7 @@
 	if (nil == cell)
 	{
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.textLabel.textColor = kMenuFontColor;
 	}
 	
 	if (row == 0)
@@ -72,33 +72,32 @@
     else if (row == 1)
 	{
 		cell.textLabel.text = @"Search";
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:[UIFont systemFontSize]];
-//        cell.imageView.image = UITabBarSystemItemSearch;
+        cell.textLabel.font = kMenuFont;
 	}
 	else if (row == 2)
 	{
 		cell.textLabel.text = @"Browse";
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:[UIFont systemFontSize]];
+        cell.textLabel.font = kMenuFont;
 	}
 	else if (row == 3)
 	{
 		cell.textLabel.text = @"Favorites";
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:[UIFont systemFontSize]];
+        cell.textLabel.font = kMenuFont;
 	}
 	else if (row == 4)
 	{
 		cell.textLabel.text = @"History";
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:[UIFont systemFontSize]];
+        cell.textLabel.font = kMenuFont;
 	}
 	else if (row == 5)
 	{
 		cell.textLabel.text = @"Settings";
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:[UIFont systemFontSize]];
+        cell.textLabel.font = kMenuFont;
 	}
     else if (row == 6)
 	{
 		cell.textLabel.text = @"About";
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:[UIFont systemFontSize]];
+        cell.textLabel.font = kMenuFont;
 	}
     
 	return cell;

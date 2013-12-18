@@ -33,6 +33,12 @@
     return [[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] <= 0;
 }
 
++ (BOOL)isAlphaStart:(NSString*)string
+{
+//    return [[NSCharacterSet letterCharacterSet] characterIsMember:[string characterAtIndex:0]];
+    return isalpha([string characterAtIndex:0]);
+}
+
 + (NSString*) arrayToString:(NSArray*)arr
 {
     NSMutableString *retString = [[NSMutableString alloc] init];

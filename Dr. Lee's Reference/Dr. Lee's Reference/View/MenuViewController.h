@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#include "Constants.h"
+
 @interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tblMenu;
