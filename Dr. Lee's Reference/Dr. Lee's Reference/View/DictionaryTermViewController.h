@@ -14,7 +14,7 @@
 #import "DictionarySynonym.h"
 #import "DictionaryTerm.h"
 
-@interface DictionaryTermViewController : UIViewController
+@interface DictionaryTermViewController : UIViewController<UIWebViewDelegate>
 
 @property(strong, nonatomic) UIWebView *webView;
 

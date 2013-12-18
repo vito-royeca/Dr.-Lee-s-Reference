@@ -25,49 +25,48 @@
     dictionaryTerm = dictionaryTerm_;
     html = [[NSMutableString alloc] init];
     
-    [html appendFormat:@"<head><style type='text/css'> body {font-family:verdana;} </style> </head>"];
+    [html appendFormat:@"<html><head><style type='text/css'> body {font-family:verdana;} </style> </head>"];
     [html appendFormat:@"<body"];
     
-    [html appendFormat:@"<h1>%@</h1>", dictionaryTerm.term];
+    [html appendFormat:@"<p><font color='blue'><strong>%@</strong></font>", dictionaryTerm.term];
     if (dictionaryTerm.pronunciation)
     {
-        [html appendFormat:@"<p><h3>Pronunciation</h3>"];
-        [html appendFormat:@"<p>%@", dictionaryTerm.pronunciation];
+        [html appendFormat:@"<br>(<font color='red'>%@</font>)", dictionaryTerm.pronunciation];
     }
     
     if (dictionaryTerm.dictionaryDefinition.count > 0)
     {
-        [html appendFormat:@"<p><h3>Definitions:</h3>"];
-        [html appendFormat:@"<ol>"];
+        [html appendFormat:@"<p><ul>"];
         for (DictionaryDefinition *def in dictionaryTerm.dictionaryDefinition)
         {
             [html appendFormat:@"<li>%@</li>", def.definition];
         }
-        [html appendFormat:@"</ol>"];
-    }
-    
-    if (dictionaryTerm.dictionarySynonym.count > 0)
-    {
-        [html appendFormat:@"<p><h3>Synonyms:</h3>"];
-        int sentinel = 0;
-        for (DictionarySynonym *syn in dictionaryTerm.dictionarySynonym)
-        {
-            [html appendFormat:@"%@%@", syn.term, sentinel<dictionaryTerm.dictionarySynonym.count-1?@", ":@""];
-            sentinel++;
-        }
+        [html appendFormat:@"</ul>"];
     }
     
     if (dictionaryTerm.dictionaryXRef.count > 0)
     {
-        [html appendFormat:@"<p><h3>See:</h3>"];
+        [html appendFormat:@"<p>SEE ALSO "];
         int sentinel = 0;
         for (DictionaryXRef *ref in dictionaryTerm.dictionaryXRef)
         {
-            [html appendFormat:@"%@%@", ref.term, sentinel<dictionaryTerm.dictionaryXRef.count-1?@", ":@""];
+            [html appendFormat:@"<a href='#%@'>%@</a>%@", ref.term, ref.term, sentinel<dictionaryTerm.dictionaryXRef.count-1?@", ":@""];
             sentinel++;
         }
     }
-    [html appendFormat:@"</body>"];
+    
+    if (dictionaryTerm.dictionarySynonym.count > 0)
+    {
+        [html appendFormat:@"<p>SYN "];
+        int sentinel = 0;
+        for (DictionarySynonym *syn in dictionaryTerm.dictionarySynonym)
+        {
+            [html appendFormat:@"<a href='#%@'>%@</a>%@", syn.term, syn.term, sentinel<dictionaryTerm.dictionarySynonym.count-1?@", ":@""];
+            sentinel++;
+        }
+    }
+    
+    [html appendFormat:@"</body></html>"];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -86,16 +85,43 @@
 	// Do any additional setup after loading the view.
     
     webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+//    webView.delegate = self;
     [self.view addSubview:webView];
     
     NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     [webView loadHTMLString:html baseURL:bundleUrl];
+    
+    UIBarButtonItem *btnAddFavorite = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                    target:self
+                                                                                    action:@selector(addToFavorite)];
+    UIBarButtonItem *btnShare = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                    target:self
+                                                                                    action:@selector(share)];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:btnShare, btnAddFavorite, nil];
+}
+
+- (void) addToFavorite
+{
+    
+}
+
+- (void) share
+{
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UIWebViewDelegate
+- (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+//    NSString *url = [[request URL] absoluteString];
+    
+    return NO;
 }
 
 @end

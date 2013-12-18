@@ -51,6 +51,7 @@
     searchBar = [[UISearchBar alloc] initWithFrame:frame];
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     searchBar.delegate = self;
+    searchBar.placeholder = @"search dictionary";
     
     currentHeight = self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height;
     frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
@@ -186,6 +187,7 @@
     lblHeader.text = text;
     lblHeader.backgroundColor = kMenuBackgroundColor;
     lblHeader.textColor = kMenuFontColor;
+    lblHeader.font = kMenuFont;
     lblHeader.userInteractionEnabled = YES;
     [lblHeader setTag:section+1];
     return lblHeader;
@@ -217,6 +219,8 @@
             DictionaryTerm *d = [arr objectAtIndex:indexPath.row];
             cell.textLabel.text = d.term;
             cell.detailTextLabel.text = @"";
+            cell.textLabel.font = kMenuFont;
+            cell.detailTextLabel.font = kMenuFont;
             break;
         }
         case DrugsDataSource:
@@ -225,6 +229,8 @@
             
             cell.textLabel.text = [dict objectForKey:@"Drug Name"];
             cell.detailTextLabel.text = [dict objectForKey:@"Active Ingredient(s)"];
+            cell.textLabel.font = kMenuFont;
+            cell.detailTextLabel.font = kMenuFont;
             break;
         }
         default:

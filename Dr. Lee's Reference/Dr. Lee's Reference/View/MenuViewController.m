@@ -39,7 +39,7 @@
     
     self.view.backgroundColor = kMenuBackgroundColor;
     tblMenu.backgroundColor = kTableBackgroundColor;
-    tblMenu.separatorColor = kTableSeparatorColor;
+    tblMenu.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,7 +50,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 7;
+	return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,30 +71,35 @@
 	}
     else if (row == 1)
 	{
-		cell.textLabel.text = @"Search";
+		cell.textLabel.text = @"Dictionary";
         cell.textLabel.font = kMenuFont;
 	}
 	else if (row == 2)
 	{
-		cell.textLabel.text = @"Browse";
+		cell.textLabel.text = @"Drugs";
         cell.textLabel.font = kMenuFont;
 	}
-	else if (row == 3)
+    else if (row == 3)
 	{
-		cell.textLabel.text = @"Favorites";
+		cell.textLabel.text = @"ICD-10";
         cell.textLabel.font = kMenuFont;
 	}
 	else if (row == 4)
 	{
-		cell.textLabel.text = @"History";
+		cell.textLabel.text = @"Favorites";
         cell.textLabel.font = kMenuFont;
 	}
 	else if (row == 5)
 	{
+		cell.textLabel.text = @"Recents";
+        cell.textLabel.font = kMenuFont;
+	}
+	else if (row == 6)
+	{
 		cell.textLabel.text = @"Settings";
         cell.textLabel.font = kMenuFont;
 	}
-    else if (row == 6)
+    else if (row == 7)
 	{
 		cell.textLabel.text = @"About";
         cell.textLabel.font = kMenuFont;
