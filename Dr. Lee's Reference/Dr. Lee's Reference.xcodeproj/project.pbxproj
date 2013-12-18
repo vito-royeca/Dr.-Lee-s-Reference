@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		111B40FB185D5DED0077E5ED /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 111B40FA185D5DED0077E5ED /* database.sqlite */; };
+		11251C0E18618A25009D158C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11251C0D18618A25009D158C /* MainViewController.m */; };
+		11251C1118618A6E009D158C /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11251C1018618A6E009D158C /* MenuViewController.m */; };
+		11251C1518619422009D158C /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 11251C1318619422009D158C /* reveal-icon.png */; };
+		11251C1618619422009D158C /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11251C1418619422009D158C /* reveal-icon@2x.png */; };
 		113383231859A90400CBA6FF /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383221859A90400CBA6FF /* Database.m */; };
 		1133833F1859A95400CBA6FF /* AppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383261859A95400CBA6FF /* AppDoc.m */; };
 		113383401859A95400CBA6FF /* AppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383281859A95400CBA6FF /* AppDocType_Lookup.m */; };
@@ -24,7 +28,6 @@
 		113383581859A9A800CBA6FF /* DrugProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383501859A9A800CBA6FF /* DrugProductTableViewCell.m */; };
 		113383591859A9A800CBA6FF /* DrugSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383521859A9A800CBA6FF /* DrugSummaryViewController.m */; };
 		1133835A1859A9A800CBA6FF /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383541859A9A800CBA6FF /* SearchViewController.m */; };
-		1133835B1859A9A800CBA6FF /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383561859A9A800CBA6FF /* TabBarController.m */; };
 		113DE87C1843D8420080B038 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87B1843D8420080B038 /* Foundation.framework */; };
 		113DE87E1843D8420080B038 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87D1843D8420080B038 /* CoreGraphics.framework */; };
 		113DE8801843D8420080B038 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87F1843D8420080B038 /* UIKit.framework */; };
@@ -65,6 +68,12 @@
 
 /* Begin PBXFileReference section */
 		111B40FA185D5DED0077E5ED /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
+		11251C0C18618A25009D158C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		11251C0D18618A25009D158C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		11251C0F18618A6E009D158C /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		11251C1018618A6E009D158C /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		11251C1318619422009D158C /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
+		11251C1418619422009D158C /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		113383211859A90400CBA6FF /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		113383221859A90400CBA6FF /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		113383251859A95400CBA6FF /* AppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDoc.h; sourceTree = "<group>"; };
@@ -97,8 +106,6 @@
 		113383521859A9A800CBA6FF /* DrugSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSummaryViewController.m; sourceTree = "<group>"; };
 		113383531859A9A800CBA6FF /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		113383541859A9A800CBA6FF /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		113383551859A9A800CBA6FF /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
-		113383561859A9A800CBA6FF /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		113DE8781843D8420080B038 /* Dr. Lee's Reference.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dr. Lee's Reference.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113DE87B1843D8420080B038 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		113DE87D1843D8420080B038 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -165,6 +172,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11251C1218619409009D158C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				11251C1318619422009D158C /* reveal-icon.png */,
+				11251C1418619422009D158C /* reveal-icon@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		113383201859A8BF00CBA6FF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,8 +238,10 @@
 				113383521859A9A800CBA6FF /* DrugSummaryViewController.m */,
 				113383531859A9A800CBA6FF /* SearchViewController.h */,
 				113383541859A9A800CBA6FF /* SearchViewController.m */,
-				113383551859A9A800CBA6FF /* TabBarController.h */,
-				113383561859A9A800CBA6FF /* TabBarController.m */,
+				11251C0C18618A25009D158C /* MainViewController.h */,
+				11251C0D18618A25009D158C /* MainViewController.m */,
+				11251C0F18618A6E009D158C /* MenuViewController.h */,
+				11251C1018618A6E009D158C /* MenuViewController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -270,6 +288,7 @@
 				113DE8921843D8420080B038 /* Images.xcassets */,
 				113DE8F81843F2230080B038 /* Libs */,
 				113383241859A91D00CBA6FF /* Model */,
+				11251C1218619409009D158C /* Resources */,
 				113DE8841843D8420080B038 /* Supporting Files */,
 				11581FD61845513D004186F2 /* Util.h */,
 				11581FD71845513D004186F2 /* Util.m */,
@@ -428,8 +447,10 @@
 				1156CDA81860D6A70072519C /* README.mdown in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
+				11251C1618619422009D158C /* reveal-icon@2x.png in Resources */,
 				1156CDA41860D6770072519C /* LICENSE.txt in Resources */,
 				113DE9031843FBF70080B038 /* LICENSE in Resources */,
+				11251C1518619422009D158C /* reveal-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,9 +493,11 @@
 				1156CDA61860D6770072519C /* SWRevealViewController.m in Sources */,
 				1133833F1859A95400CBA6FF /* AppDoc.m in Sources */,
 				113383591859A9A800CBA6FF /* DrugSummaryViewController.m in Sources */,
+				11251C1118618A6E009D158C /* MenuViewController.m in Sources */,
 				113383461859A95400CBA6FF /* Favorite.m in Sources */,
 				113383231859A90400CBA6FF /* Database.m in Sources */,
 				113383481859A95400CBA6FF /* Product_TECode.m in Sources */,
+				11251C0E18618A25009D158C /* MainViewController.m in Sources */,
 				113DE88E1843D8420080B038 /* AppDelegate.m in Sources */,
 				113383451859A95400CBA6FF /* DocType_Lookup.m in Sources */,
 				113383581859A9A800CBA6FF /* DrugProductTableViewCell.m in Sources */,
@@ -488,7 +511,6 @@
 				113383401859A95400CBA6FF /* AppDocType_Lookup.m in Sources */,
 				113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */,
 				113383471859A95400CBA6FF /* History.m in Sources */,
-				1133835B1859A9A800CBA6FF /* TabBarController.m in Sources */,
 				113383421859A95400CBA6FF /* ChemicalType_Lookup.m in Sources */,
 				1133835A1859A9A800CBA6FF /* SearchViewController.m in Sources */,
 			);
@@ -565,9 +587,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -599,8 +621,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				SDKROOT = iphoneos;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos6.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

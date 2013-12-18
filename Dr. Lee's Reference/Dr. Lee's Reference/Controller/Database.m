@@ -159,7 +159,7 @@
 {
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Dictionary"
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
                                               inManagedObjectContext:[self managedObjectContext]];
     NSPredicate *predicate;
     NSMutableArray *arrDictionary = [[NSMutableArray  alloc] init];
@@ -179,7 +179,9 @@
         predicate = [NSPredicate
                      predicateWithFormat:@"%K CONTAINS[cd] %@ OR %K CONTAINS[cd] %@",
                      @"term", query,
-                     @"definition", query];
+                     @"dictionaryDefinition.definition", query];
+        NSArray *relationshipKeys = [NSArray arrayWithObject:@"dictionaryDefinition"];
+        [fetchRequest setRelationshipKeyPathsForPrefetching:relationshipKeys];
     }
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]

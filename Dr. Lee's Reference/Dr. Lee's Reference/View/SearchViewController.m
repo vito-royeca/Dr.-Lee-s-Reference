@@ -28,7 +28,6 @@
     if (self)
     {
         // Custom initialization
-        self.title = @"Dr. Lee's Reference";
     }
     return self;
 }
@@ -47,16 +46,13 @@
     CGFloat currentX = 0;
     CGFloat currentY = 0;
     CGFloat currentWidth = self.view.frame.size.width;
-    CGFloat currentHeight = 100;
+    CGFloat currentHeight = self.navigationController.navigationBar.frame.size.height;
     CGRect frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
     searchBar = [[UISearchBar alloc] initWithFrame:frame];
+    searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     searchBar.delegate = self;
-    searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"Dictionary", @"Drugs", @"ICD-10", nil];
-    searchBar.showsScopeBar = YES;
-    [self.view addSubview:searchBar];
     
-    currentY = searchBar.frame.size.height;
-    currentHeight = self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height-100;
+    currentHeight = self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height;
     frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
     tblResults = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     tblResults.delegate = self;
@@ -64,6 +60,17 @@
     tblResults.scrollEnabled = YES;
     tblResults.userInteractionEnabled = YES;
     [self.view addSubview:tblResults];
+    
+    SWRevealViewController *revealController = [self revealViewController];
+    [revealController panGestureRecognizer];
+    [revealController tapGestureRecognizer];
+    
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
+                                                                         style:UIBarButtonItemStyleBordered
+                                                                        target:revealController
+                                                                        action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem = revealButtonItem;
+    self.navigationItem.titleView = searchBar;
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,9 +91,9 @@
         {
             case DictionaryDataSource:
             {
-                for (Dictionary *d in results)
+                for (DictionaryTerm *d in results)
                 {
-                    if ([[Util toASCII:d.term] hasPrefix:letter])
+                    if ([[[Util toASCII:d.term] uppercaseString] hasPrefix:letter])
                     {
                         if (![values containsObject:d])
                         {
@@ -102,7 +109,7 @@
                 {
                     NSString *name = [dict objectForKey:@"Drug Name"];
                     
-                    if ([name hasPrefix:letter])
+                    if ([[name uppercaseString] hasPrefix:letter])
                     {
                         if (![values containsObject:dict])
                         {
@@ -154,7 +161,10 @@
 {
     UILabel *lblHeader = [[UILabel alloc] init];
     
-    lblHeader.text = [_keys objectAtIndex:section];
+    NSMutableString *text = [[NSMutableString alloc] init];
+    NSString *letter = [_keys objectAtIndex:section];
+    [text appendFormat:@"%@ (%d of %d)", letter, [[_content valueForKey:letter] count], [results count]];
+    lblHeader.text = text;
     lblHeader.backgroundColor = [UIColor lightGrayColor];
     lblHeader.textColor = [UIColor lightTextColor];
     lblHeader.userInteractionEnabled = YES;
@@ -185,7 +195,7 @@
     {
         case DictionaryDataSource:
         {
-            Dictionary *d = [arr objectAtIndex:indexPath.row];
+            DictionaryTerm *d = [arr objectAtIndex:indexPath.row];
             cell.textLabel.text = d.term;
             cell.detailTextLabel.text = @"";
             break;
