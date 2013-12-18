@@ -14,8 +14,6 @@
 
 @implementation MainViewController
 
-@synthesize revealController;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,21 +23,15 @@
     return self;
 }
 
--(id) init
+-(void) viewDidLoad
 {
-    if (self = [super init])
-    {
-        SearchViewController *searchViewController = [[SearchViewController alloc] init];
-        MenuViewController *menuViewController = [[MenuViewController alloc] init];
-	
-        UINavigationController *searchNavigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
-        UINavigationController *menuNavigationController = [[UINavigationController alloc] initWithRootViewController:menuViewController];
-	
-        revealController = [[SWRevealViewController alloc] initWithRearViewController:menuNavigationController
-                                                              frontViewController:searchNavigationController];
-        revealController.delegate = self;
-    }
-    return self;
+    SearchViewController *searchViewController = [[SearchViewController alloc] init];
+    MenuViewController *menuViewController = [[MenuViewController alloc] init];
+    UINavigationController *searchNavigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+
+    self.rearViewController = menuViewController;
+    self.frontViewController = searchNavigationController;
+//    self.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning

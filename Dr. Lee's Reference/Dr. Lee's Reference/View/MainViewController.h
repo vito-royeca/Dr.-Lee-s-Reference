@@ -12,8 +12,6 @@
 #import "SearchViewController.h"
 #import "SWRevealViewController.h"
 
-@interface MainViewController : UIViewController<SWRevealViewControllerDelegate>
-
-@property (strong, nonatomic) SWRevealViewController *revealController;
+@interface MainViewController : SWRevealViewController<SWRevealViewControllerDelegate>
 
 @end

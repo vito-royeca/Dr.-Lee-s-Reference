@@ -18,7 +18,7 @@
     // Override point for customization after application launch.
     
     MainViewController *mainViewController = [[MainViewController alloc] init];
-    self.window.rootViewController = mainViewController.revealController;
+    self.window.rootViewController = mainViewController;
     
     [self.window makeKeyAndVisible];
     return YES;
