@@ -317,7 +317,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 010021	N    	ABBVIE                                            	False	False	AP	5	S	
 010028	N    	WYETH AYERST                                      	False	False	AP	1	P	
 010040	N    	BRACCO                                            	False	False	AP	24	S	
-010060	N    	KING PHARMS                                       	False	False	AP	3	S	
+010060	N    	CITRON PHARMA LLC                                 	False	False	AP	3	S	
 010093	N    	UCB INC                                           	False	False	AP	2	S	
 010104	N    	VALEANT PHARMS                                    	False	False	AP	3	P	
 010124	N    	LANNETT                                           	False	False	AP	5	S	
@@ -365,7 +365,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 010679	N    	SANOFI AVENTIS US                                 	False	False	AP	1	S	
 010686	N    	PFIZER                                            	False	False	AP	5	S	
 010718	N    	REED AND CARNRICK                                 	False	False	AP	3	P	
-010721	N    	PFIZER                                            	False	False	AP		S	
+010721	N    	CITRON PHARMA LLC                                 	False	False	AP		S	
 010742	N    	GLAXOSMITHKLINE                                   	False	False	AP	2	S	
 010744	N    	GLAXOSMITHKLINE                                   	False	False	AP	3	S	
 010753	N    	WYETH AYERST                                      	False	False	AP	1	S	
@@ -560,7 +560,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 012366	N    	MEDA PHARMS                                       	False	False	AP	4	S	
 012376	N    	MERCK                                             	False	False	AP	3	S	
 012380	N    	PARKE DAVIS                                       	False	False	AP	1	P	
-012382	N    	BAXTER HLTHCARE CORP                              	False	False	AP	1	S	
+012382	N    	HIKMA MAPLE                                       	False	False	AP	1	S	
 012383	N    	MERCK                                             	False	False	AP	4	S	
 012394	N    	SCHERING                                          	False	False	AP	24	S	
 012402	N    	PROCTER AND GAMBLE                                	False	False	AP	2	S	
@@ -2130,7 +2130,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 019568	N    	VALEANT BERMUDA                                   	False	False	AP	2	S	
 019569	N    	MISSION PHARMA                                    	False	False	AP	1	P	V
 019571	N    	LILLY                                             	False	False	AP	3	S	
-019574	N    	MONARCH PHARMS                                    	False	False	AP	3	S	
+019574	N    	CITRON PHARMA LLC                                 	False	False	AP	3	S	
 019578	N    	US ARMY WALTER REED                               	False	False	AP	1	P	
 019579	N    	JANSSEN PHARMS                                    	False	False	AP	1	S	
 019580	N    	BAYER HLTHCARE                                    	False	False	AP	1	S	
@@ -2415,7 +2415,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 020071	N    	ORGANON USA INC                                   	False	False	AP	14	S	
 020073	N    	HOFFMANN LA ROCHE                                 	False	False	AP	1	P	
 020074	N	SAGENT PHARMS	False	False	AP			
-020075	N    	MEDTRONIC                                         	False	False	AP	3	P	V
+020075	N    	MEDTRONIC NEURO                                   	False	False	AP	3	P	V
 020076	N    	NOVARTIS                                          	False	False	AP	3	S	
 020079	N    	AKORN                                             	False	False	AP	3	S	
 020080	N    	GLAXOSMITHKLINE                                   	False	False	AP	1	P	
@@ -2579,11 +2579,11 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 020338	N    	GALDERMA LABS LP                                  	False	False	AP	1	S	
 020340	N    	FOUGERA PHARMS                                    	False	False	AP	3	S	
 020343	N    	SANOFI AVENTIS US                                 	False	False	AP	3	S	
-020345	N    	HOSPIRA                                           	False	False	AP	5	S	
+020345	A    	HOSPIRA                                           	False	False	AP	5	S	
 020346	N    	MCNEIL CONSUMER                                   	False	False	AP	3	S	
 020347	N    	ABBOTT                                            	False	False	AP	3	S	
 020351	N    	GE HEALTHCARE                                     	False	False	AP	1	S	
-020353	N    	STAT TRADE                                        	False	False	AP	3	S	
+020353	N    	ALMATICA PHARMA INC                               	False	False	AP	3	S	
 020355	N    	CSL BEHRING                                       	False	False	AP	3	S	V
 020356	N    	SHIONOGI INC                                      	False	False	AP	1	S	
 020357	N    	BRISTOL MYERS SQUIBB                              	False	False	AP	1	P	
@@ -2594,7 +2594,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 020367	N    	GENZYME                                           	False	False	AP	1	P	V
 020369	N    	ALCON PHARMS LTD                                  	False	False	AP	3	S	
 020372	N    	GE HEALTHCARE                                     	False	False	AP	1	S	
-020374	N    	FRESENIUS                                         	False	False	AP	5	S	
+020374	A    	FRESENIUS                                         	False	False	AP	5	S	
 020375	N    	BAYER HLTHCARE                                    	False	False	AP	5	S	
 020377	N    	WYETH PHARMS INC                                  	False	False	AP	3	S	V
 020378	N    	EMD SERONO                                        	False	False	AP	3	S	
@@ -2940,7 +2940,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 020865	N    	MERCK                                             	False	False	AP	3	S	
 020866	N    	VEROSCIENCE                                       	False	False	AP	3	S	
 020868	N    	GD SEARLE LLC                                     	False	False	AP	3	S	
-020869	N    	MERCK                                             	False	False	AP	4	S	
+020869	N    	OAK PHARMS AKORN                                  	False	False	AP	4	S	
 020870	N    	NOVARTIS                                          	False	False	AP	3	S	
 020872	N    	SANOFI AVENTIS US                                 	False	False	AP	3	S	
 020873	N    	MEDICINES CO                                      	False	False	AP	1	S	
@@ -2973,7 +2973,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 020913	N    	MEDICURE                                          	False	False	AP	3	P	
 020918	N    	NOVO NORDISK                                      	False	False	AP	3	P	
 020919	N    	PFIZER                                            	False	False	AP	3	S	
-020920	N    	SCIOS                                             	False	False	AP	1	S	
+020920	N    	SCIOS LLC                                         	False	False	AP	1	S	
 020922	N    	AQUA PHARMS                                       	False	False	AP	14	S	
 020923	N    	MALLINCKRODT                                      	False	False	AP	3	S	
 020925	N    	NOVARTIS                                          	False	False	AP	8		
@@ -3141,7 +3141,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 021152	N    	FOUGERA PHARMS                                    	False	False	AP	3	S	
 021153	N    	ASTRAZENECA                                       	False	False	AP	2		
 021156	N	GD SEARLE LLC	False	False	AP	6	P	
-021158	N    	CORNERSTONE THERAP                                	False	False	AP	1	S	
+021158	N    	LG LIFE SCIENCES                                  	False	False	AP	1	S	
 021159	N    	MEDICIS                                           	False	False	AP	3	S	
 021160	N    	FRESENIUS MEDCL                                   	False	False	AP	3	S	
 021162	N    	BOEHRINGER INGELHEIM                              	False	False	AP	4	S	
@@ -3943,7 +3943,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 022408	N    	PARAPRO LLC                                       	False	False	AP	1	S	
 022410	N    	RECKITT BENCKISER                                 	False	False	AP	4	S	
 022411	N    	ANGELINI PHARMA                                   	False	False	AP	3	S	
-022416	N	SUNOVION PHARMS INC	False	False	AP	1	S	
+022416	N    	SUNOVION PHARMS INC                               	False	False	AP	1	S	
 022417	N    	ABBVIE                                            	False	False	AP	3	S	
 022418	N    	MUTUAL PHARM CO INC                               	False	False	AP	5	S	
 022420	N	STRIDES ARCOLAB LTD	False	False	TA	5	S	
@@ -4326,9 +4326,9 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 040392	A    	VINTAGE PHARMS                                    	False	False	AP			
 040394	A    	ABLE                                              	False	False	AP			
 040395	A    	ABLE                                              	False	False	AP			
-040396	A    	FERNDALE LABS                                     	False	False	AP			
+040396	A    	SEBELA IRELAND LTD                                	False	False	AP			
 040397	A    	COREPHARMA                                        	False	False	AP			
-040398	A    	FERNDALE LABS                                     	False	False	AP			
+040398	A    	SEBELA IRELAND LTD                                	False	False	AP			
 040399	A    	PHARM ASSOC                                       	False	False	AP			
 040400	A    	MALLINCKRODT                                      	False	False	AP			
 040401	A    	HI TECH PHARMA CO                                 	False	False	AP			
@@ -4667,8 +4667,8 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 040797	A    	INVAGEN PHARMS                                    	False	False	AP			
 040798	A    	MYLAN INSTITUTIONAL                               	False	False	AP			
 040800	A    	ACTAVIS TOTOWA                                    	False	False	AP			
-040802	A    	PFIZER                                            	False	False	AP			
-040803	A    	PFIZER                                            	False	False	AP			
+040802	A    	AGILA SPECLTS                                     	False	False	AP			
+040803	A    	AGILA SPECLTS                                     	False	False	AP			
 040804	A    	HERITAGE PHARMS INC                               	False	False	AP			
 040805	A    	HETERO LABS LTD III                               	False	False	AP			
 040806	A    	HOSPIRA INC                                       	False	False	AP			
@@ -4851,8 +4851,8 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 050404	N    	LEDERLE                                           	False	False	AP			
 050405	N    	SHIONOGI INC                                      	False	False	AP			
 050406	N    	SHIONOGI INC                                      	False	False	AP	5	S	
-050416	N    	MONARCH PHARMS                                    	False	False	AP			
-050417	N    	MONARCH PHARMS                                    	False	False	AP			
+050416	N    	CITRON PHARMA LLC                                 	False	False	AP			
+050417	N    	CITRON PHARMA LLC                                 	False	False	AP			
 050420	N    	SANOFI AVENTIS US                                 	False	False	AP			
 050425	N    	SCHERING                                          	False	False	AP			
 050429	N    	PROSAM LABS                                       	False	False	AP			
@@ -5099,7 +5099,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 050807	N    	HOSPIRA                                           	False	False	AP	5	S	
 050808	N    	MEDICIS                                           	False	False	AP	3	S	
 050809	N    	TEVA PARENTERAL                                   	False	False	AP	3	S	
-050810	N    	INSPIRE                                           	False	False	AP	3	S	
+050810	N    	OAK PHARMS AKORN                                  	False	False	AP	3	S	
 050813	N    	SHIONOGI INC                                      	False	False	AP	3	S	
 050814	N    	GILEAD                                            	False	False	AP	3	S	
 050817	N    	BAXTER HLTHCARE                                   	False	False	AP	3	S	
@@ -5198,7 +5198,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 060610	A    	PHARMACIA AND UPJOHN                              	False	False	AP			
 060611	A    	PHARMACIA AND UPJOHN                              	False	False	AP			
 060612	A    	PHARMACIA AND UPJOHN                              	False	False	AP			
-060613	A    	MONARCH PHARMS                                    	False	False	AP			
+060613	A    	CITRON PHARMA LLC                                 	False	False	AP			
 060618	A    	J AND J                                           	False	False	AP			
 060624	A    	WYETH AYERST                                      	False	False	AP			
 060625	A    	WYETH AYERST                                      	False	False	AP			
@@ -6451,7 +6451,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 065404	A    	WOCKHARDT                                         	False	False	AP			
 065405	A    	WOCKHARDT                                         	False	False	AP			
 065406	A    	ACS DOBFAR                                        	False	False	AP			
-065407	A    	PFIZER                                            	False	False	AP			
+065407	A    	AGILA SPECLTS                                     	False	False	AP			
 065408	A    	FRESENIUS KABI USA                                	False	False	AP			
 065409	A    	AUROBINDO PHARMA LTD                              	False	False	AP			
 065410	A    	ROXANE                                            	False	False	AP			
@@ -6463,7 +6463,8 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 065416	A    	ACCORD HLTHCARE                                   	False	False	AP			
 065418	A    	ORCHID HLTHCARE                                   	False	False	AP			
 065419	A    	TEVA PHARMS                                       	False	False	AP			
-065421	A    	PFIZER                                            	False	False	AP			
+065420	A    	WOCKHARDT EU OPERATN                              	False	False	AP			
+065421	A    	AGILA SPECLTS                                     	False	False	AP			
 065422	A    	VISTAPHARM                                        	False	False	AP			
 065425	A    	AMNEAL PHARM                                      	False	False	AP			
 065427	A    	MYLAN                                             	False	False	AP			
@@ -7821,7 +7822,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 071801	A    	PLIVA                                             	False	False	AP			
 071802	A    	PLIVA                                             	False	False	AP			
 071803	A    	PLIVA                                             	False	False	AP			
-071804	A    	PLIVA                                             	False	False	AP			
+071804	A    	BARR LABS INC                                     	False	False	AP			
 071805	A    	DEY                                               	False	False	AP			
 071806	A    	DEY                                               	False	False	AP			
 071807	A    	SANDOZ                                            	False	False	AP			
@@ -11788,6 +11789,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078167	A    	EBEWE PHARMA                                      	False	False	AP			
 078169	A    	LUPIN LTD                                         	False	False	AP			
 078170	A    	GLENMARK GENERICS                                 	False	False	AP			
+078171	A    	CIPLA LTD                                         	False	False	AP			
 078172	A    	APOTEX INC                                        	False	False	AP			
 078173	A    	MYLAN PHARMS INC                                  	False	False	AP			
 078175	A    	PROSAM LABS                                       	False	False	AP			
@@ -11849,7 +11851,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078241	A    	ROXANE                                            	False	False	AP			
 078242	A    	PHARMALUCENCE                                     	False	False	AP			
 078243	A    	ZYDUS PHARMS USA INC                              	False	False	AP			
-078244	A    	PFIZER                                            	False	False	AP			
+078244	A    	AGILA SPECLTS                                     	False	False	AP			
 078245	A    	LUPIN LTD                                         	False	False	AP			
 078246	A    	DR REDDYS LABS LTD                                	False	False	AP			
 078247	A    	HIKMA FARMACEUTICA                                	False	False	AP			
@@ -11860,7 +11862,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078253	A    	NORTHSTAR HLTHCARE                                	False	False	AP			
 078254	A    	NORTHSTAR HLTHCARE                                	False	False	AP			
 078256	A	STRIDES ACROLAB	False	False	TA			
-078257	A    	PFIZER                                            	False	False	AP			
+078257	A    	AGILA SPECLTS                                     	False	False	AP			
 078258	A    	CIPLA LTD                                         	False	False	AP			
 078260	A    	COREPHARMA                                        	False	False	AP			
 078261	A    	AKORN                                             	False	False	AP			
@@ -11891,7 +11893,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078296	A    	LUPIN                                             	False	False	AP			
 078297	A    	AUROBINDO PHARMA                                  	False	False	AP			
 078298	A    	HIKMA PHARMS                                      	False	False	AP			
-078299	A    	PFIZER                                            	False	False	AP			
+078299	A    	AGILA SPECLTS                                     	False	False	AP			
 078300	A    	MN PHARMS                                         	False	False	AP			
 078301	A    	DR REDDYS LABS LTD                                	False	False	AP			
 078302	A    	PROSAM LABS                                       	False	False	AP			
@@ -11928,7 +11930,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078343	A    	DR REDDYS LABS LTD                                	False	False	AP			
 078345	A    	AMNEAL PHARMS                                     	False	False	AP			
 078346	A    	MYLAN                                             	False	False	AP			
-078347	A    	PFIZER                                            	False	False	AP			
+078347	A    	AGILA SPECLTS                                     	False	False	AP			
 078348	A	CIPLA LIMITED	False	False	TA			
 078349	A    	CIPLA LTD                                         	False	False	AP			
 078350	A	APOTEX	False	False	TA			
@@ -12065,7 +12067,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078517	A    	PLIVA HRVATSKA DOO                                	False	False	AP			
 078518	A    	MYLAN PHARMS INC                                  	False	False	AP			
 078519	A    	HOSPIRA                                           	False	False	AP			
-078520	A    	PFIZER                                            	False	False	AP			
+078520	A    	AGILA SPECLTS                                     	False	False	AP			
 078522	A    	FRESENIUS KABI USA                                	False	False	AP			
 078523	A    	HIKMA FARMACEUTICA                                	False	False	AP			
 078525	A    	TARO PHARM INDS                                   	False	False	AP			
@@ -12091,6 +12093,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078552	A    	EPIC PHARMA LLC                                   	False	False	AP			
 078553	A    	NEXUS PHARMS                                      	False	False	AP			
 078554	A    	HERITAGE PHARMS INC                               	False	False	AP			
+078555	A    	SANDOZ                                            	False	False	AP			
 078556	A    	IMPAX LABS                                        	False	False	AP			
 078558	A    	AMNEAL PHARMS NY                                  	False	False	AP			
 078559	A    	FDC LTD                                           	False	False	AP			
@@ -12120,7 +12123,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078592	A    	TEVA PHARMS                                       	False	False	AP			
 078593	A    	WOCKHARDT                                         	False	False	AP			
 078594	A    	PERRIGO                                           	False	False	AP			
-078595	A    	PFIZER                                            	False	False	AP			
+078595	A    	AGILA SPECLTS                                     	False	False	AP			
 078596	A    	AMNEAL PHARMS NY                                  	False	False	AP			
 078597	A    	SUN PHARM INDS                                    	False	False	AP			
 078598	A    	PHARMAFORCE                                       	False	False	AP			
@@ -12155,8 +12158,8 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078637	A    	ACTIVIS TOTOWA LLC                                	False	False	AP			
 078638	A    	MYLAN                                             	False	False	AP			
 078639	A    	MYLAN INSTITUTIONAL                               	False	False	AP			
-078641	A    	PFIZER                                            	False	False	AP			
-078642	A    	PFIZER                                            	False	False	AP			
+078641	A    	AGILA SPECLTS                                     	False	False	AP			
+078642	A    	AGILA SPECLTS                                     	False	False	AP			
 078643	A    	AUROBINDO PHARMA                                  	False	False	AP			
 078644	A    	PRINSTON INC                                      	False	False	AP			
 078645	A    	SANDOZ                                            	False	False	AP			
@@ -12311,7 +12314,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078858	A    	TORRENT PHARMS                                    	False	False	AP			
 078861	A    	AUROBINDO PHARMA                                  	False	False	AP			
 078862	A    	ORCHID HLTHCARE                                   	False	False	AP			
-078863	A    	DR REDDYS LABS INC                                	False	False	AP			
+078863	A    	DSM PHARMS INC                                    	False	False	AP			
 078864	A    	MYLAN LABS                                        	False	False	AP			
 078865	A    	WOCKHARDT                                         	False	False	AP			
 078866	A    	SUN PHARMA GLOBAL                                 	False	False	AP			
@@ -12326,7 +12329,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 078877	A    	ZYDUS PHARMS USA INC                              	False	False	AP			
 078878	A    	DR REDDYS LABS LTD                                	False	False	AP			
 078879	A    	BARR                                              	False	False	AP			
-078880	A    	DR REDDYS LABS INC                                	False	False	AP			
+078880	A    	DSM PHARMS INC                                    	False	False	AP			
 078881	A    	MYLAN                                             	False	False	AP			
 078883	A	MATRIX LABS	False	False	TA			
 078884	A    	WOCKHARDT                                         	False	False	AP			
@@ -12489,6 +12492,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 079104	A    	ACS DOBFAR INFO SA                                	False	False	AP			
 079106	A    	UNICHEM                                           	False	False	AP			
 079107	A    	TOLMAR                                            	False	False	AP			
+079108	A    	WATSON LABS INC                                   	False	False	AP			
 079109	A    	DR REDDYS LABS LTD                                	False	False	AP			
 079110	A    	SUN PHARMA GLOBAL                                 	False	False	AP			
 079111	A    	AUROBINDO PHARMA                                  	False	False	AP			
@@ -13361,7 +13365,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 083771	A    	DELL LABS                                         	False	False	AP			
 083772	A    	DELL LABS                                         	False	False	AP			
 083775	A    	DELL LABS                                         	False	False	AP			
-083778	A    	FERNDALE LABS                                     	False	False	AP			
+083778	A    	SEBELA IRELAND LTD                                	False	False	AP			
 083784	A    	IVAX SUB TEVA PHARMS                              	False	False	AP			
 083786	A    	WARNER CHILCOTT                                   	False	False	AP			
 083787	A    	WEST WARD                                         	False	False	AP			
@@ -14085,7 +14089,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 085363	A    	KV PHARM                                          	False	False	AP			
 085364	A    	KV PHARM                                          	False	False	AP			
 085365	A    	KV PHARM                                          	False	False	AP			
-085368	A    	FERNDALE LABS                                     	False	False	AP			
+085368	A    	SEBELA IRELAND LTD                                	False	False	AP			
 085370	A    	SANDOZ                                            	False	False	AP			
 085371	A    	SANDOZ                                            	False	False	AP			
 085372	A    	LANNETT                                           	False	False	AP			
@@ -14422,8 +14426,8 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 085975	A    	WATSON LABS                                       	False	False	AP			
 085976	A    	WATSON LABS                                       	False	False	AP			
 085978	A    	BAYER HLTHCARE                                    	False	False	AP			
-085979	A    	FERNDALE LABS                                     	False	False	AP			
-085980	A    	FERNDALE LABS                                     	False	False	AP			
+085979	A    	SEBELA IRELAND LTD                                	False	False	AP			
+085980	A    	SEBELA IRELAND LTD                                	False	False	AP			
 085981	A    	X GEN PHARMS                                      	False	False	AP			
 085982	A    	X GEN PHARMS                                      	False	False	AP			
 085983	A    	WHITBY                                            	False	False	AP			
@@ -16798,7 +16802,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 090240	A    	LUITPOLD                                          	False	False	AP			
 090241	A    	TEVA PHARMS                                       	False	False	AP			
 090242	A    	FRESENIUS KABI USA                                	False	False	AP			
-090243	A    	PFIZER                                            	False	False	AP			
+090243	A    	AGILA SPECLTS                                     	False	False	AP			
 090244	A	APOTEX INC	False	False	TA			
 090245	A	LUPIN LTD	False	False	TA			
 090246	A    	LUPIN LTD                                         	False	False	AP			
@@ -17076,7 +17080,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 090659	A    	SUN PHARM INDS INC                                	False	False	AP			
 090663	A    	HAMELN RDS GMBH                                   	False	False	AP			
 090664	A    	MYLAN INSTITUTIONAL                               	False	False	AP			
-090665	A    	PFIZER                                            	False	False	AP			
+090665	A    	AGILA SPECLTS                                     	False	False	AP			
 090666	A    	APOTEX                                            	False	False	AP			
 090669	A	IMPAX LABS INC	False	False	TA			
 090671	A    	WOCKHARDT                                         	False	False	AP			
@@ -17090,7 +17094,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 090688	A	MACLEODS PHARMA	False	False	TA			
 090690	A    	SUN PHARMA GLOBAL                                 	False	False	AP			
 090692	A    	LUPIN LTD                                         	False	False	AP			
-090694	A	LUPIN PHARMS	False	False	TA			
+090694	A    	LUPIN LTD                                         	False	False	AP			
 090695	A    	LANNETT HOLDINGS INC                              	False	False	AP			
 090696	A    	GLAND PHARMA LTD                                  	False	False	AP			
 090697	A    	ZYDUS PHARMS USA INC                              	False	False	AP			
@@ -17111,7 +17115,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 090720	A    	WATSON LABS INC                                   	False	False	AP			
 090721	A    	NOVAST LABS LTD                                   	False	False	AP			
 090722	A    	TORRENT PHARMS                                    	False	False	AP			
-090723	A	DR REDDYS LABS LTD	False	False	TA			
+090723	A    	DR REDDYS LABS LTD                                	False	False	AP			
 090724	A    	MYLAN INSTITUTIONAL                               	False	False	AP			
 090726	A    	AKORN                                             	False	False	AP			
 090727	A    	VERSAPHARM                                        	False	False	AP			
@@ -17123,7 +17127,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 090739	A	ZYDUS HEALTHCARE	False	False	TA			
 090740	A    	PERRIGO R AND D                                   	False	False	AP			
 090742	A	STRIDES ARCOLAB LTD	False	False	TA			
-090745	A	SUN PHARMA GLOBAL	False	False	TA			
+090745	A    	SUN PHARMA GLOBAL                                 	False	False	AP			
 090747	A    	LUITPOLD                                          	False	False	AP			
 090749	A    	ROXANE                                            	False	False	AP			
 090750	A    	AUROBINDO PHARMA                                  	False	False	AP			
@@ -17142,13 +17146,14 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 090768	A    	JUBILANT LIFE                                     	False	False	AP			
 090769	A    	PADDOCK LLC                                       	False	False	AP			
 090773	A	WOCKHARDT	False	False	TA			
-090774	A	TORRENT PHARMS	False	False	TA			
+090774	A    	TORRENT PHARMS LTD                                	False	False	AP			
 090775	A	SANDOZ	False	False	TA			
-090778	A	AUROBINDO PHARMA LTD	False	False	TA			
+090776	A    	ACTAVIS ELIZABETH                                 	False	False	AP			
+090778	A    	AUROBINDO PHARMA LTD                              	False	False	AP			
 090779	A    	HERITAGE PHARMS INC                               	False	False	AP			
 090781	A    	GLENMARK GENERICS                                 	False	False	AP			
 090782	A    	HOSPIRA INC                                       	False	False	AP			
-090783	A	TEVA PHARMS USA	False	False	TA			
+090783	A    	TEVA PHARMS USA                                   	False	False	AP			
 090785	A    	PERRIGO UK FINCO                                  	False	False	AP			
 090786	A    	WOCKHARDT LTD                                     	False	False	AP			
 090787	A    	APOTEX INC                                        	False	False	AP			
@@ -17205,7 +17210,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 090867	A    	CARACO                                            	False	False	AP			
 090868	A    	MYLAN PHARMS INC                                  	False	False	AP			
 090869	A    	ACTAVIS ELIZABETH                                 	False	False	AP			
-090870	A    	CYPRESS PHARM                                     	False	False	AP			
+090870	A    	BRECKENRIDGE PHARM                                	False	False	AP			
 090871	A    	AUROBINDO PHARMA USA                              	False	False	AP			
 090872	A	MYLAN PHARMS INC	False	False	TA			
 090874	A    	MYLAN INSTITUTIONAL                               	False	False	AP			
@@ -17288,6 +17293,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 091031	A    	WEST-WARD PHARM CORP                              	False	False	AP			
 091032	A    	HIKMA FARMACEUTICA                                	False	False	AP			
 091033	A    	HIKMA FARMACEUTICA                                	False	False	AP			
+091034	A    	ZACH SYSTEMS                                      	False	False	AP			
 091036	A    	HIKMA PHARMS                                      	False	False	AP			
 091037	A    	SUN PHARM INDS LTD                                	False	False	AP			
 091038	A    	SUN PHARM INDS                                    	False	False	AP			
@@ -17302,10 +17308,11 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 091053	A    	MYLAN                                             	False	False	AP			
 091054	A    	MYLAN                                             	False	False	AP			
 091055	A	STRIDES ARCOLAB LTD	False	False	TA			
-091056	A    	PFIZER                                            	False	False	AP			
-091058	A    	PFIZER                                            	False	False	AP			
+091056	A    	AGILA SPECLTS                                     	False	False	AP			
+091058	A    	AGILA SPECLTS                                     	False	False	AP			
 091062	A    	ONCO THERAPIES LTD                                	False	False	AP			
 091063	A    	ONCO THERAPIES LTD                                	False	False	AP			
+091065	A    	SAGENT PHARMS                                     	False	False	AP			
 091068	A    	STRIDES ARCOLAB LTD                               	False	False	AP			
 091072	A    	APOTEX INC                                        	False	False	AP			
 091077	A    	NOVEL LABS INC                                    	False	False	AP			
@@ -17357,8 +17364,10 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 091176	A    	MYLAN                                             	False	False	AP			
 091177	A    	SUN PHARM INDS LTD                                	False	False	AP			
 091179	A    	AMNEAL PHARMS NY                                  	False	False	AP			
+091180	A    	ZACH SYSTEMS                                      	False	False	AP			
 091183	A    	RANBAXY LABS LTD                                  	False	False	AP			
 091184	A    	ALKEM                                             	False	False	AP			
+091185	A    	HIKMA PHARMS                                      	False	False	AP			
 091186	A    	DR REDDYS LABS LTD                                	False	False	AP			
 091187	A	DR REDDYS LABS LTD	False	False	TA			
 091188	A    	VINTAGE PHARMS                                    	False	False	AP			
@@ -17368,6 +17377,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 091195	A    	ACCORD HLTHCARE                                   	False	False	AP			
 091198	A    	SANDOZ                                            	False	False	AP			
 091199	A    	THREE RIVERS PHARMS                               	False	False	AP			
+091200	A    	RANBAXY LABS LTD                                  	False	False	AP			
 091201	A    	SANDOZ                                            	False	False	AP			
 091202	A	MYLAN PHARMA	False	False	TA			
 091203	A	CIPLA LIMITED	False	False	TA			
@@ -17498,7 +17508,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 091399	A    	LUPIN LTD                                         	False	False	AP			
 091401	A    	CARACO                                            	False	False	AP			
 091404	A    	ACS DOBFAR                                        	False	False	AP			
-091406	A    	PFIZER                                            	False	False	AP			
+091406	A    	AGILA SPECLTS                                     	False	False	AP			
 091407	A    	LUPIN LTD                                         	False	False	AP			
 091408	A    	LUPIN LTD                                         	False	False	AP			
 091412	A	DR REDDYS LABS LTD	False	False	TA			
@@ -17776,6 +17786,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 200044	A    	ACCORD HLTHCARE                                   	False	False	AP			
 200045	N    	NOVARTIS                                          	False	False	AP	4	S	
 200065	A    	IMPAX LABS INC                                    	False	False	AP			
+200068	A	ROXANE	False	False	TA			
 200082	A	MYLAN PHARMA	False	False	TA			
 200104	A    	IPCA LABS LTD                                     	False	False	AP			
 200122	A    	UNITED BIOMEDCL                                   	False	False	AP			
@@ -17851,6 +17862,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 200461	A    	MYLAN PHARMS INC                                  	False	False	AP			
 200462	A    	MYLAN PHARMS INC                                  	False	False	AP			
 200463	A    	MYLAN PHARMS INC                                  	False	False	AP			
+200465	A    	MYLAN PHARMS INC                                  	False	False	AP			
 200475	A    	MYLAN PHARMS INC                                  	False	False	AP			
 200477	A	MYLAN PHARMS INC	False	False	TA			
 200481	A    	TEVA PHARMS USA                                   	False	False	AP			
@@ -17906,6 +17918,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 200742	A    	SAGENT PHARMS                                     	False	False	AP			
 200747	A    	TEVA PHARMS USA                                   	False	False	AP			
 200748	N	MATRIX LABS LTD	False	False	TA	5	S	
+200750	A    	LUPIN LTD                                         	False	False	AP			
 200751	A	LUPIN LTD	False	False	TA			
 200752	A    	MYLAN INSTITUTIONAL                               	False	False	AP			
 200753	A    	SAGENT PHARMS                                     	False	False	AP			
@@ -18035,6 +18048,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 201466	A    	CARACO                                            	False	False	AP			
 201467	A	MYLAN LABS	False	False	TA			
 201483	A    	FAMY CARE LTD                                     	False	False	AP			
+201484	A    	WATSON LABS INC                                   	False	False	AP			
 201486	A    	MYLAN PHARMS INC                                  	False	False	AP			
 201503	A    	APOTEX CORP                                       	False	False	AP			
 201504	A    	ALKEM LABS LTD                                    	False	False	AP			
@@ -18120,6 +18134,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 201820	N    	CORNERSTONE THERAP                                	False	False	AP	5	S	
 201821	A    	LYNE                                              	False	False	AP			
 201823	A    	WATSON LABS INC                                   	False	False	AP			
+201831	A	GLENMARK GENERICS	False	False	TA			
 201833	A    	HIKMA MAPLE                                       	False	False	AP			
 201845	A    	CADISTA PHARMS                                    	False	False	AP			
 201846	A    	APOTEX INC                                        	False	False	AP			
@@ -18225,6 +18240,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 202172	N	WATSON LABS INC	False	False	TA	2	S	
 202176	A    	WOCKHARDT USA                                     	False	False	AP			
 202179	A    	MYLAN PHARMS INC                                  	False	False	AP			
+202180	A    	TORRENT PHARMS LTD                                	False	False	AP			
 202182	A    	HIKMA FARMACEUTICA                                	False	False	AP			
 202189	A    	WOCKHARDT LTD                                     	False	False	AP			
 202192	N    	INCYTE CORP                                       	False	False	AP	1	P	V
@@ -18312,7 +18328,9 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 202414	A    	MACLEODS PHARMS LTD                               	False	False	AP			
 202418	A    	AUROBINDO PHARMA LTD                              	False	False	AP			
 202420	A    	INVAGEN PHARMS                                    	False	False	AP			
+202421	A	ENDO PHARMS	False	False	TA			
 202423	A	SUN PHARMA GLOBAL	False	False	TA			
+202424	A    	AUROLIFE PHARMA LLC                               	False	False	AP			
 202428	N    	STIEFEL LABS INC                                  	False	False	AP	3	S	
 202429	N    	HOFFMANN LA ROCHE                                 	False	False	AP	1	P	V
 202431	A    	MYLAN PHARMS INC                                  	False	False	AP			
@@ -18362,12 +18380,14 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 202556	A    	ACCORD HLTHCARE                                   	False	False	AP			
 202560	A    	GLENMARK GENERICS                                 	False	False	AP			
 202561	A    	LUITPOLD                                          	False	False	AP			
-202562	A    	PHARMAFORCE                                       	False	False	AP			
+202562	A    	LUITPOLD                                          	False	False	AP			
 202563	A    	HOSPIRA INC                                       	False	False	AP			
 202566	A    	AUROBINDO PHARMA LTD                              	False	False	AP			
 202567	A    	SPEAR PHARMS INC                                  	False	False	AP			
+202568	A	SANDOZ INC	False	False	TA			
 202570	N    	PF PRISM CV                                       	False	False	AP	1	P	V
 202571	A    	PHARMS                                            	False	False	AP			
+202572	A    	WATSON LABS INC                                   	False	False	AP			
 202579	A    	MYLAN PHARMS INC                                  	False	False	AP			
 202580	A    	MYLAN PHARMS INC                                  	False	False	AP			
 202581	A    	MYLAN PHARMS INC                                  	False	False	AP			
@@ -18394,7 +18414,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 202653	A    	LUPIN LTD                                         	False	False	AP			
 202659	A	HETERO LABS LTD V	False	False	TA			
 202660	A	SANDOZ INC	False	False	TA			
-202667	N    	MERCK SHARP DOHME                                 	False	False	AP	5	S	
+202667	N    	OAK PHARMS AKORN                                  	False	False	AP	5	S	
 202668	A    	ONCO THERAPIES LTD                                	False	False	AP			
 202669	A    	ONCO THERAPIES LTD                                	False	False	AP			
 202673	A    	TARO PHARM INDS                                   	False	False	AP			
@@ -18462,11 +18482,13 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 202897	A    	TEVA PHARMS USA                                   	False	False	AP			
 202906	A    	DR REDDYS LABS LTD                                	False	False	AP			
 202910	A    	HETERO LABS LTD V                                 	False	False	AP			
+202912	A    	LUPIN LTD                                         	False	False	AP			
 202916	A	AKORN INC	False	False	AP			
 202917	A	SUN PHARMA GLOBAL	False	False	TA			
 202925	A    	ACCORD HLTHCARE                                   	False	False	AP			
 202930	A    	GLAND PHARMA LTD                                  	False	False	AP			
 202938	A    	NAVINTA LLC                                       	False	False	AP			
+202947	A    	MYLAN PHARMS INC                                  	False	False	AP			
 202958	A	APOTEX INC	False	False	AP			
 202961	A    	AMNEAL PHARMS                                     	False	False	AP			
 202965	A    	DR REDDYS LABS LTD                                	False	False	AP			
@@ -18475,6 +18497,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 202984	A    	ANCHEN PHARMS                                     	False	False	AP			
 202990	A	PAR FORMULATIONS PRIVATE LTD	False	False	TA			
 202992	N    	SANOFI AVENTIS US                                 	False	False	AP	1	S	
+202995	A    	NOVAST LABS LTD                                   	False	False	AP			
 202997	A    	DR REDDYS LABS LTD                                	False	False	AP			
 203006	A    	FAMY CARE LTD                                     	False	False	AP			
 203020	A	UNICHEM LABS LTD	False	False	TA			
@@ -18507,6 +18530,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 203136	A    	AMNEAL PHARMS                                     	False	False	AP			
 203137	N    	GE HEALTHCARE                                     	False	False	AP	1	S	
 203145	A    	MACLEODS PHARMS LTD                               	False	False	AP			
+203150	A    	JUBILANT LIFE                                     	False	False	AP			
 203154	A    	ACCORD HLTHCARE                                   	False	False	AP			
 203155	N    	MCPRF                                             	False	False	AP	1	P	
 203159	N    	BAYER HLTHCARE                                    	False	False	AP	5	S	
@@ -18522,6 +18546,7 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 203231	N    	ACS DOBFAR INFO SA                                	False	False	AP	5	S	
 203244	A    	ALLIED PHARMA INC                                 	False	False	AP			
 203245	A    	UNICHEM LABS LTD                                  	False	False	AP			
+203257	A    	AKORN                                             	False	False	AP			
 203263	A    	SUN PHARMA GLOBAL                                 	False	False	AP			
 203283	N	MACLEODS PHARMS LTD	False	False	TA	5	S	
 203284	N    	HYPERION THERAP INC                               	False	False	AP	2	S	V
@@ -18573,34 +18598,40 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 203797	N	HOSPIRA INC	False	False	TA	5	S	
 203811	A    	UCLA BIOMEDICAL                                   	False	False	AP			
 203812	A    	UCLA BIOMEDICAL                                   	False	False	AP			
+203814	A    	MACLEODS PHARMS LTD                               	False	False	AP			
 203826	N    	WEST WARD PHARM CORP                              	False	False	AP	7	S	
 203834	A    	HETERO LABS LTD V                                 	False	False	AP			
 203853	A    	INNOPHARMA INC                                    	False	False	AP			
 203856	N    	ROXANE                                            	False	False	AP	5	S	
 203858	N    	AEGERION                                          	False	False	AP	1	S	
+203884	A    	HOSPIRA INC                                       	False	False	AP			
+203885	A    	HOSPIRA INC                                       	False	False	AP			
 203895	A    	AUROBINDO PHARMA LTD                              	False	False	AP			
 203901	A    	ACTAVIS ELIZABETH                                 	False	False	AP			
 203922	N    	HOPE PHARMS                                       	False	False	AP	5	S	
 203923	N    	HOPE PHARMS                                       	False	False	AP	5	S	
+203938	A    	KREITCHMAN PET CTR                                	False	False	AP			
 203971	N    	BAYER HLTHCARE                                    	False	False	AP	1	P	
 203985	N    	NOVARTIS PHARM                                    	False	False	AP	3	P	
 203993	N    	LUNDBECK LLC                                      	False	False	AP	3	S	
 204016	N	HOSPIRA INC	False	False	TA	5		
 204026	N    	CELGENE                                           	False	False	AP	1	S	
 204037	A    	ROXANE                                            	False	False	AP			
+204040	A    	EMCURE PHARMS LTD                                 	False	False	AP			
 204042	N    	JANSSEN PHARMS                                    	False	False	AP	1	S	
 204054	A    	NEXGEN PHARMA                                     	False	False	AP			
 204061	N    	TEVA BRANDED PHARM                                	False	False	AP	5	S	
 204063	N    	BIOGEN IDEC INC                                   	False	False	AP	1	S	
 204078	N    	ECLAT PHARMS LLC                                  	False	False	AP	5	S	
+204090	A    	EMCURE PHARMS LTD                                 	False	False	AP			
 204096	N    	ASTELLAS                                          	False	False	AP	3	S	
 204114	N    	GLAXOSMITHKLINE LLC                               	False	False	AP	1	S	
 204119	N	HETERO DRUGS LTD	False	False	TA	4	S	
 204141	N    	TARO                                              	False	False	AP	3	S	
 204147	A    	EMCURE PHARMS LTD                                 	False	False	AP			
 204150	N    	ALEMBIC PHARMS LTD                                	False	False	AP	5	S	
-204153	N	MEDICIS	False	False	AP	1	S	
-204168	N    	FOREST LABS INC                                   	False	False	AP		S	
+204153	N    	MEDICIS                                           	False	False	AP	1	S	
+204168	N    	FOREST LABS INC                                   	False	False	AP	2	S	
 204200	N    	JHP PHARMS                                        	False	False	AP	7	S	
 204223	N    	BD RX                                             	False	False	AP	5	S	
 204226	A    	PERRIGO R AND D                                   	False	False	AP			
@@ -18621,9 +18652,11 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 204505	N	AUROBINDO PHARMA LTD	False	False	TA	4		
 204508	N    	BAXTER HLTHCARE                                   	False	False	AP	5	P	
 204516	N    	NOVEN THERAP                                      	False	False	AP	3	S	
+204538	A    	LIAONING CHENGDA                                  	False	False	AP			
 204553	N	GATOR PHARMA INC	False	False	TA	3	S	
 204592	N    	IROKO PHARMS LLC                                  	False	False	AP	3	S	
 204654	N    	WARNER CHILCOTT                                   	False	False	AP	5	S	
+204671	N	GILEAD SCIENCES INC	False	False	AP	1		
 204683	N    	OSMOTICA PHARM CORP                               	False	False	AP	5	S	
 204708	N    	GALDERMA LABS LP                                  	False	False	AP	3	S	
 204736	N    	EISAI INC                                         	False	False	AP	3	P	
@@ -18631,8 +18664,12 @@ ApplNo	ApplType	SponsorApplicant	MostRecentLabelAvailableFlag	CurrentPatentFlag	
 204790	N    	VIIV HLTHCARE                                     	False	False	AP	1	P	
 204819	N    	BAYER HLTHCARE                                    	False	False	AP	1	P	
 204824	N    	ANTARES PHARMA INC                                	False	False	AP	5	S	
+205053	N    	MERCK SHARP DOHME                                 	False	False	AP	3		
+205098	N    	PROVENSIS                                         	False	False	AP	5		
+205109	N    	VIFOR FRESENIUS                                   	False	False	AP	5	S	
+205123	N    	JANSSEN RES AND DEV                               	False	False	AP	1		
 205175	N    	AMDERMA PHARMS                                    	False	False	AP	3	S	
 205208	N    	TEVA PHARMS USA                                   	False	False	AP	5	S	
-205552	N	PHARMACYCLICS	False	False	AP	1		
+205552	N    	PHARMACYCLICS INC                                 	False	False	AP	1		
 303030	N	3M	False	False	AP			
-91592 	A	SANDOZ INC	False	False	AP			
+91592 	A    	SANDOZ                                            	False	False	AP			
