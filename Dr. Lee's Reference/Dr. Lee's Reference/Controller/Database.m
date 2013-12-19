@@ -136,17 +136,17 @@
     }
 }
 
--(NSArray*) search:(DataSource)dataSource query:(NSString*)query
+-(NSArray*) search:(DataSource)dataSource query:(NSString*)query narrowToName:(BOOL)narrowToName
 {
     switch (dataSource)
     {
         case DictionaryDataSource:
         {
-            return [self searchDictionary:query];
+            return [self searchDictionary:query narrowToName:narrowToName];
         }
         case DrugsDataSource:
         {
-            return [self searchDrugs:query];
+            return [self searchDrugs:query narrowToName:narrowToName];
         }
         case ICD10DataSource:
         default:
@@ -156,7 +156,7 @@
     }
 }
 
--(NSArray*) searchDictionary:(NSString*)query
+-(NSArray*) searchDictionary:(NSString*)query narrowToName:(BOOL)narrowToName
 {
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -177,11 +177,19 @@
     else
     {
         NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"term", query];
-        NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"dictionaryDefinition.definition", query];
-        predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
-        NSArray *relationshipKeys = [NSArray arrayWithObject:@"dictionaryDefinition"];
         
-        [fetchRequest setRelationshipKeyPathsForPrefetching:relationshipKeys];
+        if (narrowToName)
+        {
+            predicate = pred1;
+        }
+        else
+        {
+            NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"dictionaryDefinition.definition", query];
+            predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
+            NSArray *relationshipKeys = [NSArray arrayWithObject:@"dictionaryDefinition"];
+        
+            [fetchRequest setRelationshipKeyPathsForPrefetching:relationshipKeys];
+        }
     }
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"term" ascending:YES];
@@ -194,7 +202,7 @@
     return fetchedObjects;
 }
 
--(NSArray*) searchDrugs:(NSString*)query
+-(NSArray*) searchDrugs:(NSString*)query narrowToName:(BOOL)narrowToName
 {
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -215,8 +223,16 @@
     else
     {
         NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"drugName", query];
-        NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"activeIngred", query];
-        predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
+        
+        if (narrowToName)
+        {
+            predicate = pred1;
+        }
+        else
+        {
+            NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"activeIngred", query];
+            predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
+        }
     }
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"drugName" ascending:YES];

@@ -14,15 +14,5 @@
 @interface DrugsLoader : NSObject
 
 -(void) loadDrugs;
--(void) loadChemicalType_Lookup;
--(void) loadReviewClass_Lookup;
--(void) loadApplication;
--(void) loadProduct;
--(void) loadProductTECode;
--(void) loadAppDocType_Lookup;
--(void) loadAppDoc;
--(void) loadDocType_Lookup;
--(void) loadRegActionDate;
--(void) downloadDocuments;
 
 @end

@@ -14,16 +14,54 @@
 
 @implementation DictionaryTermViewController
 {
-    NSMutableString *html;
+    NSString *currentHTML;
 }
 
 @synthesize webView;
 @synthesize dictionaryTerm;
 
-- (void) setDictionaryTerm:(DictionaryTerm *)dictionaryTerm_
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    dictionaryTerm = dictionaryTerm_;
-    html = [[NSMutableString alloc] init];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    
+    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    webView.delegate = self;
+    [self.view addSubview:webView];
+    
+    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    [webView loadHTMLString:[self composeHTMLDefinition] baseURL:bundleUrl];
+    
+    UIBarButtonItem *btnAction = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                    target:self
+                                                                                    action:@selector(doAction)];
+    self.navigationItem.rightBarButtonItem = btnAction;
+}
+
+- (void) doAction
+{
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (NSString*) composeHTMLDefinition
+{
+    NSMutableString *html = [[NSMutableString alloc] init];
     
     [html appendFormat:@"<html><head><style type='text/css'> body {font-family:verdana;} </style> </head>"];
     [html appendFormat:@"<body"];
@@ -36,12 +74,20 @@
     
     if (dictionaryTerm.dictionaryDefinition.count > 0)
     {
-        [html appendFormat:@"<p><ul>"];
-        for (DictionaryDefinition *def in dictionaryTerm.dictionaryDefinition)
+        if (dictionaryTerm.dictionaryDefinition.count == 1)
         {
-            [html appendFormat:@"<li>%@</li>", def.definition];
+            DictionaryDefinition *def = [[dictionaryTerm.dictionaryDefinition allObjects] objectAtIndex:0];
+            [html appendFormat:@"<p>%@",  def.definition];
         }
-        [html appendFormat:@"</ul>"];
+        else
+        {
+            [html appendFormat:@"<p><ul>"];
+            for (DictionaryDefinition *def in dictionaryTerm.dictionaryDefinition)
+            {
+                [html appendFormat:@"<li>%@</li>", def.definition];
+            }
+            [html appendFormat:@"</ul>"];
+        }
     }
     
     if (dictionaryTerm.dictionaryXRef.count > 0)
@@ -66,62 +112,81 @@
         }
     }
     
-    [html appendFormat:@"</body></html>"];
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
+    if (currentHTML && ![currentHTML isEqualToString:html])
     {
-        // Custom initialization
+        [html appendFormat:@"<p><a href='#back__'>Back</a>"];
     }
-    return self;
+    [html appendFormat:@"</body></html>"];
+    
+    return html;
 }
 
-- (void)viewDidLoad
+- (NSString*) composeHTMLList:(NSString*)term withResults:(NSArray*)results
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    NSMutableString *html = [[NSMutableString alloc] init];
     
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//    webView.delegate = self;
-    [self.view addSubview:webView];
+    [html appendFormat:@"<html><head><style type='text/css'> body {font-family:verdana;} </style> </head>"];
+    [html appendFormat:@"<body"];
     
-    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-    [webView loadHTMLString:html baseURL:bundleUrl];
+    [html appendFormat:@"<p><font color='blue'><strong>%@</strong></font>", term];
     
-    UIBarButtonItem *btnAddFavorite = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                    target:self
-                                                                                    action:@selector(addToFavorite)];
-    UIBarButtonItem *btnShare = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                    target:self
-                                                                                    action:@selector(share)];
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:btnShare, btnAddFavorite, nil];
-}
 
-- (void) addToFavorite
-{
-    
-}
+    [html appendFormat:@"<p><ul>"];
+    for (DictionaryTerm *dict in results)
+    {
+        [html appendFormat:@"<li><a href='#%@'>%@</a></li>", dict.term, dict.term];
+    }
+    [html appendFormat:@"</ul>"];
 
-- (void) share
-{
+    if (currentHTML && ![currentHTML isEqualToString:html])
+    {
+        [html appendFormat:@"<p><a href='#back__'>Back</a>"];
+    }
+    [html appendFormat:@"</body></html>"];
     
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return html;
 }
 
 #pragma mark - UIWebViewDelegate
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-//    NSString *url = [[request URL] absoluteString];
+    if (navigationType == UIWebViewNavigationTypeLinkClicked)
+    {
+        NSURL *url = [request URL];
+        NSString *fragment = [[url fragment] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+        
+        if ([fragment isEqualToString:@"back__"])
+        {
+            if (currentHTML)
+            {
+                [self.webView loadHTMLString:currentHTML baseURL:bundleUrl];
+                return YES;
+            }
+        }
+        else
+        {
+            NSArray *results = [[Database sharedInstance] search:DictionaryDataSource
+                                                           query:fragment
+                                                    narrowToName:YES];
+            currentHTML = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+
+            if (results.count == 1)
+            {
+                dictionaryTerm = [results objectAtIndex:0];
+                [self.webView loadHTMLString:[self composeHTMLDefinition] baseURL:bundleUrl];
+                return YES;
+            }
+            else
+            {
+                [self.webView loadHTMLString:[self composeHTMLList:fragment withResults:results] baseURL:bundleUrl];
+                return YES;
+            }
+        }
+        return NO;
+    }
     
-    return NO;
+    return YES;
 }
 
 @end

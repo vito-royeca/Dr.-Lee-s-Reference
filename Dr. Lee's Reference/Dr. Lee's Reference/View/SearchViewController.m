@@ -279,7 +279,7 @@
         [searchBar resignFirstResponder];
     }
     
-    results = [[Database sharedInstance] search:searchBar.selectedScopeButtonIndex query:searchBar.text];
+    results = [[Database sharedInstance] search:DictionaryDataSource query:searchBar.text narrowToName:NO];
     [self createSections];
     
     [tblResults reloadData];

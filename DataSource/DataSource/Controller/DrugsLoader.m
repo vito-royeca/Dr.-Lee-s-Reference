@@ -85,7 +85,10 @@
     if ([_database bIsTableEmpty:@"ChemicalType_Lookup"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"ChemTypeLookup" ofType:@"txt"];
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"ChemTypeLookup"
+//                                                         ofType:@"txt"
+//                                                    inDirectory:@"drugsatfda"];
+        NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"ChemTypeLookup.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];

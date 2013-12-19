@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #include "Constants.h"
+#import "Database.h"
 #import "DictionaryDefinition.h"
 #import "DictionaryXRef.h"
 #import "DictionarySynonym.h"
 #import "DictionaryTerm.h"
+#import "Util.h"
 
 @interface DictionaryTermViewController : UIViewController<UIWebViewDelegate>
 

@@ -14,17 +14,13 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool
     {
-        //    DrugsLoader *loader = [[DrugsLoader alloc] init];
-        //    [loader loadDrugs];
+        DrugsLoader *loader = [[DrugsLoader alloc] init];
+        [loader loadDrugs];
         
-        StedmansScraper *sc = [[StedmansScraper alloc] init];
-        [sc scrape];
-        
-//        NSString *test = @"A<sup>-</sup>";
-//        NSLog(@"UTF8 = %@", [Util toUTF8:test]);
-//        NSLog(@"ASCII = %@", [Util toASCII:test]);
-//        NSLog(@"extracted = %@", [sc extractTextFromElement:<#(TFHppleElement *)#> isParent:<#(BOOL)#>]);
+//        StedmansScraper *sc = [[StedmansScraper alloc] init];
+//        [sc scrape];
     }
+
     return 0;
 }
 

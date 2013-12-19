@@ -48,7 +48,7 @@ relationshipKeys:(NSArray*)relationshipKeys
 -(NSArray*) findAll:(NSString*)tableName
             sorters:(NSArray*)sorters;
 
--(NSArray*) search:(DataSource)dataSource query:(NSString*)query;
+-(NSArray*) search:(DataSource)dataSource query:(NSString*)query narrowToName:(BOOL)narrowToName;
 
 -(id) createManagedObject:(NSString*)name;
 
