@@ -14,7 +14,8 @@
 
 @implementation DictionaryTermViewController
 {
-    NSString *currentHTML;
+    NSString *_currentHTML;
+    NSString *_backButton;
 }
 
 @synthesize webView;
@@ -35,6 +36,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    _backButton = @"<p><a href='#back__'>Back</a>";
+
     webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     webView.delegate = self;
     [self.view addSubview:webView];
@@ -112,9 +115,9 @@
         }
     }
     
-    if (currentHTML && ![currentHTML isEqualToString:html])
+    if (_currentHTML && ![_currentHTML isEqualToString:html])
     {
-        [html appendFormat:@"<p><a href='#back__'>Back</a>"];
+        [html appendFormat:@"%@", _backButton];
     }
     [html appendFormat:@"</body></html>"];
     
@@ -138,9 +141,9 @@
     }
     [html appendFormat:@"</ul>"];
 
-    if (currentHTML && ![currentHTML isEqualToString:html])
+    if (_currentHTML && ![_currentHTML isEqualToString:html])
     {
-        [html appendFormat:@"<p><a href='#back__'>Back</a>"];
+        [html appendFormat:@"%@", _backButton];
     }
     [html appendFormat:@"</body></html>"];
     
@@ -158,9 +161,9 @@
         
         if ([fragment isEqualToString:@"back__"])
         {
-            if (currentHTML)
+            if (_currentHTML)
             {
-                [self.webView loadHTMLString:currentHTML baseURL:bundleUrl];
+                [self.webView loadHTMLString:_currentHTML baseURL:bundleUrl];
                 return YES;
             }
         }
@@ -169,8 +172,14 @@
             NSArray *results = [[Database sharedInstance] search:DictionaryDataSource
                                                            query:fragment
                                                     narrowToName:YES];
-            currentHTML = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
-
+            _currentHTML = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+//            // remove the back button
+//            NSRange rangeOfSubstring = [_currentHTML rangeOfString:_backButton];
+//            if(rangeOfSubstring.location != NSNotFound)
+//            {
+//                _currentHTML = [_currentHTML substringToIndex:rangeOfSubstring.location];
+//            }
+            
             if (results.count == 1)
             {
                 dictionaryTerm = [results objectAtIndex:0];
