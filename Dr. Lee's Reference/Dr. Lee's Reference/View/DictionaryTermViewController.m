@@ -15,6 +15,7 @@
 @implementation DictionaryTermViewController
 {
     NSString *_currentHTML;
+    NSString *_previousHTML;
     NSString *_backButton;
 }
 
@@ -114,13 +115,12 @@
             sentinel++;
         }
     }
-    
-    if (_currentHTML && ![_currentHTML isEqualToString:html])
-    {
-        [html appendFormat:@"%@", _backButton];
-    }
     [html appendFormat:@"</body></html>"];
-    
+
+    if (_previousHTML && ![_previousHTML isEqualToString:html])
+    {
+        [html insertString:_backButton atIndex:html.length-14];
+    }
     return html;
 }
 
@@ -140,13 +140,12 @@
         [html appendFormat:@"<li><a href='#%@'>%@</a></li>", dict.term, dict.term];
     }
     [html appendFormat:@"</ul>"];
-
-    if (_currentHTML && ![_currentHTML isEqualToString:html])
-    {
-        [html appendFormat:@"%@", _backButton];
-    }
     [html appendFormat:@"</body></html>"];
-    
+
+    if (_previousHTML && ![_previousHTML isEqualToString:html])
+    {
+        [html insertString:_backButton atIndex:html.length-14];
+    }
     return html;
 }
 
@@ -161,9 +160,9 @@
         
         if ([fragment isEqualToString:@"back__"])
         {
-            if (_currentHTML)
+            if (_previousHTML)
             {
-                [self.webView loadHTMLString:_currentHTML baseURL:bundleUrl];
+                [self.webView loadHTMLString:_previousHTML baseURL:bundleUrl];
                 return YES;
             }
         }
@@ -172,23 +171,24 @@
             NSArray *results = [[Database sharedInstance] search:DictionaryDataSource
                                                            query:fragment
                                                     narrowToName:YES];
-            _currentHTML = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
-//            // remove the back button
-//            NSRange rangeOfSubstring = [_currentHTML rangeOfString:_backButton];
-//            if(rangeOfSubstring.location != NSNotFound)
-//            {
-//                _currentHTML = [_currentHTML substringToIndex:rangeOfSubstring.location];
-//            }
+
+            _previousHTML = _currentHTML;
+            if (_previousHTML)
+            {
+                _previousHTML = [_previousHTML stringByReplacingOccurrencesOfString:_backButton withString:@""];
+            }
             
             if (results.count == 1)
             {
                 dictionaryTerm = [results objectAtIndex:0];
-                [self.webView loadHTMLString:[self composeHTMLDefinition] baseURL:bundleUrl];
+                _currentHTML = [self composeHTMLDefinition];
+                [self.webView loadHTMLString:_currentHTML baseURL:bundleUrl];
                 return YES;
             }
             else
             {
-                [self.webView loadHTMLString:[self composeHTMLList:fragment withResults:results] baseURL:bundleUrl];
+                _currentHTML = [self composeHTMLList:fragment withResults:results];
+                [self.webView loadHTMLString:_currentHTML baseURL:bundleUrl];
                 return YES;
             }
         }

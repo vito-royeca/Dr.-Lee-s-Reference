@@ -17,4 +17,13 @@
 #define kMenuFontColor           [UIColor lightGrayColor]
 #define kMenuFont                [UIFont fontWithName:@"Helvetica" size:[UIFont systemFontSize]]
 
+#define kAppTitle                @"Dr. Lee's Reference"
+#define kDictionaryTitle         @"Dictionary"
+#define kDrugsTitle              @"Drugs"
+#define kICD10Title              @"ICD-10"
+#define kFavoritesTitle          @"Favorites"
+#define kHistoryTitle            @"History"
+#define kSettingsTitle           @"Settings"
+#define kAboutTitle              @"About"
+
 #endif

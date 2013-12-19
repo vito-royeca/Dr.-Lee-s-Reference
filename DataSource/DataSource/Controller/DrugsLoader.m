@@ -85,10 +85,7 @@
     if ([_database bIsTableEmpty:@"ChemicalType_Lookup"])
     {
         NSError *error;
-//        NSString *path = [[NSBundle mainBundle] pathForResource:@"ChemTypeLookup"
-//                                                         ofType:@"txt"
-//                                                    inDirectory:@"drugsatfda"];
-        NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"ChemTypeLookup.txt"];
+        NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/ChemTypeLookup.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -151,7 +148,7 @@
     if ([_database bIsTableEmpty:@"ReviewClass_Lookup"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"ReviewClass_Lookup" ofType:@"txt"];
+        NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/ReviewClass_Lookup.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -218,7 +215,7 @@
     if ([_database bIsTableEmpty:@"Application"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"application" ofType:@"txt"];
+        NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/application.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -315,7 +312,7 @@
     if ([_database bIsTableEmpty:@"Product"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"Product" ofType:@"txt"];
+        NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Product.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -411,7 +408,7 @@
     if ([_database bIsTableEmpty:@"Product_TECode"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"Product_tecode" ofType:@"txt"];
+        NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Product_tecode.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -499,7 +496,7 @@
     if ([_database bIsTableEmpty:@"AppDocType_Lookup"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"AppDocType_Lookup" ofType:@"txt"];
+        NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/AppDocType_Lookup.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -558,7 +555,7 @@
     if ([_database bIsTableEmpty:@"AppDoc"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"AppDoc" ofType:@"txt"];
+        NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/AppDoc.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSASCIIStringEncoding
                                                             error:&error];
@@ -667,7 +664,7 @@
     if ([_database bIsTableEmpty:@"DocType_Lookup"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"DocType_lookup" ofType:@"txt"];
+        NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/DocType_lookup.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];
@@ -726,7 +723,7 @@
     if ([_database bIsTableEmpty:@"RegActionDate"])
     {
         NSError *error;
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"RegActionDate" ofType:@"txt"];
+        NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/RegActionDate.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
                                                          encoding:NSUTF8StringEncoding
                                                             error:&error];

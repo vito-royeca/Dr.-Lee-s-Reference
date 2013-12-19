@@ -51,6 +51,24 @@
 		11581FD81845513E004186F2 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 11581FD71845513D004186F2 /* Util.m */; };
 		116A2C31186214A900A463AA /* DictionaryTermViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 116A2C30186214A800A463AA /* DictionaryTermViewController.m */; };
 		116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 116ED0AE18468F4100CDC13D /* database.xcdatamodeld */; };
+		117E6CF118635E4000D78A82 /* pill.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CEF18635E4000D78A82 /* pill.png */; };
+		117E6CF218635E4000D78A82 /* pill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CF018635E4000D78A82 /* pill@2x.png */; };
+		117E6CF518635E7300D78A82 /* brick.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CF318635E7300D78A82 /* brick.png */; };
+		117E6CF618635E7300D78A82 /* brick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CF418635E7300D78A82 /* brick@2x.png */; };
+		117E6CF918635EB600D78A82 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CF718635EB600D78A82 /* info.png */; };
+		117E6CFA18635EB600D78A82 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CF818635EB600D78A82 /* info@2x.png */; };
+		117E6CFD18635F0800D78A82 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CFB18635F0800D78A82 /* star.png */; };
+		117E6CFE18635F0800D78A82 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CFC18635F0800D78A82 /* star@2x.png */; };
+		117E6D0118635FAD00D78A82 /* literature.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CFF18635FAD00D78A82 /* literature.png */; };
+		117E6D0218635FAD00D78A82 /* literature@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6D0018635FAD00D78A82 /* literature@2x.png */; };
+		117E6D051863602400D78A82 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6D031863602400D78A82 /* settings.png */; };
+		117E6D061863602400D78A82 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6D041863602400D78A82 /* settings@2x.png */; };
+		117E6D091863628D00D78A82 /* safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6D071863628D00D78A82 /* safari.png */; };
+		117E6D0A1863628D00D78A82 /* safari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6D081863628D00D78A82 /* safari@2x.png */; };
+		117E6D0D1863822B00D78A82 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 117E6D0C1863822A00D78A82 /* FavoritesViewController.m */; };
+		117E6D101863826500D78A82 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 117E6D0F1863826500D78A82 /* HistoryViewController.m */; };
+		117E6D131863828E00D78A82 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 117E6D121863828E00D78A82 /* AboutViewController.m */; };
+		117E6D16186382B200D78A82 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 117E6D15186382B200D78A82 /* SettingsViewController.m */; };
 		119B62E3185C823F009D3184 /* DictionaryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E2185C823F009D3184 /* DictionaryDefinition.m */; };
 		119B62E6185C8240009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E5185C8240009D3184 /* DictionaryTerm.m */; };
 		119B62E9185C8240009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E8185C8240009D3184 /* DictionaryXRef.m */; };
@@ -138,6 +156,28 @@
 		116A2C2F186214A800A463AA /* DictionaryTermViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryTermViewController.h; sourceTree = "<group>"; };
 		116A2C30186214A800A463AA /* DictionaryTermViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryTermViewController.m; sourceTree = "<group>"; };
 		116ED0AF18468F4100CDC13D /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
+		117E6CEF18635E4000D78A82 /* pill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pill.png; sourceTree = "<group>"; };
+		117E6CF018635E4000D78A82 /* pill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pill@2x.png"; sourceTree = "<group>"; };
+		117E6CF318635E7300D78A82 /* brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brick.png; sourceTree = "<group>"; };
+		117E6CF418635E7300D78A82 /* brick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brick@2x.png"; sourceTree = "<group>"; };
+		117E6CF718635EB600D78A82 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		117E6CF818635EB600D78A82 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
+		117E6CFB18635F0800D78A82 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		117E6CFC18635F0800D78A82 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
+		117E6CFF18635FAD00D78A82 /* literature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = literature.png; sourceTree = "<group>"; };
+		117E6D0018635FAD00D78A82 /* literature@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "literature@2x.png"; sourceTree = "<group>"; };
+		117E6D031863602400D78A82 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		117E6D041863602400D78A82 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		117E6D071863628D00D78A82 /* safari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = safari.png; sourceTree = "<group>"; };
+		117E6D081863628D00D78A82 /* safari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari@2x.png"; sourceTree = "<group>"; };
+		117E6D0B1863822900D78A82 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		117E6D0C1863822A00D78A82 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		117E6D0E1863826500D78A82 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		117E6D0F1863826500D78A82 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		117E6D111863828E00D78A82 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		117E6D121863828E00D78A82 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		117E6D14186382B200D78A82 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		117E6D15186382B200D78A82 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		119B62E1185C823F009D3184 /* DictionaryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryDefinition.h; sourceTree = "<group>"; };
 		119B62E2185C823F009D3184 /* DictionaryDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryDefinition.m; sourceTree = "<group>"; };
 		119B62E4185C8240009D3184 /* DictionaryTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryTerm.h; sourceTree = "<group>"; };
@@ -179,8 +219,22 @@
 		11251C1218619409009D158C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				117E6CF318635E7300D78A82 /* brick.png */,
+				117E6CF418635E7300D78A82 /* brick@2x.png */,
+				117E6CF718635EB600D78A82 /* info.png */,
+				117E6CF818635EB600D78A82 /* info@2x.png */,
+				117E6CFF18635FAD00D78A82 /* literature.png */,
+				117E6D0018635FAD00D78A82 /* literature@2x.png */,
+				117E6CEF18635E4000D78A82 /* pill.png */,
+				117E6CF018635E4000D78A82 /* pill@2x.png */,
 				11251C1318619422009D158C /* reveal-icon.png */,
 				11251C1418619422009D158C /* reveal-icon@2x.png */,
+				117E6D071863628D00D78A82 /* safari.png */,
+				117E6D081863628D00D78A82 /* safari@2x.png */,
+				117E6D031863602400D78A82 /* settings.png */,
+				117E6D041863602400D78A82 /* settings@2x.png */,
+				117E6CFB18635F0800D78A82 /* star.png */,
+				117E6CFC18635F0800D78A82 /* star@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -234,6 +288,8 @@
 		1133834C1859A97200CBA6FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				117E6D111863828E00D78A82 /* AboutViewController.h */,
+				117E6D121863828E00D78A82 /* AboutViewController.m */,
 				116A2C2F186214A800A463AA /* DictionaryTermViewController.h */,
 				116A2C30186214A800A463AA /* DictionaryTermViewController.m */,
 				1133834D1859A9A800CBA6FF /* DrugDetailsViewController.h */,
@@ -242,12 +298,18 @@
 				113383501859A9A800CBA6FF /* DrugProductTableViewCell.m */,
 				113383511859A9A800CBA6FF /* DrugSummaryViewController.h */,
 				113383521859A9A800CBA6FF /* DrugSummaryViewController.m */,
+				117E6D0B1863822900D78A82 /* FavoritesViewController.h */,
+				117E6D0C1863822A00D78A82 /* FavoritesViewController.m */,
+				117E6D0E1863826500D78A82 /* HistoryViewController.h */,
+				117E6D0F1863826500D78A82 /* HistoryViewController.m */,
 				11251C0C18618A25009D158C /* MainViewController.h */,
 				11251C0D18618A25009D158C /* MainViewController.m */,
 				11251C0F18618A6E009D158C /* MenuViewController.h */,
 				11251C1018618A6E009D158C /* MenuViewController.m */,
 				113383531859A9A800CBA6FF /* SearchViewController.h */,
 				113383541859A9A800CBA6FF /* SearchViewController.m */,
+				117E6D14186382B200D78A82 /* SettingsViewController.h */,
+				117E6D15186382B200D78A82 /* SettingsViewController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,14 +512,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				1156CDA51860D6770072519C /* README.md in Resources */,
+				117E6D0118635FAD00D78A82 /* literature.png in Resources */,
 				111B40FB185D5DED0077E5ED /* database.sqlite in Resources */,
+				117E6D051863602400D78A82 /* settings.png in Resources */,
 				1156CDA81860D6A70072519C /* README.mdown in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
 				11251C1618619422009D158C /* reveal-icon@2x.png in Resources */,
+				117E6D061863602400D78A82 /* settings@2x.png in Resources */,
+				117E6CF218635E4000D78A82 /* pill@2x.png in Resources */,
+				117E6CF518635E7300D78A82 /* brick.png in Resources */,
+				117E6CFA18635EB600D78A82 /* info@2x.png in Resources */,
+				117E6D0218635FAD00D78A82 /* literature@2x.png in Resources */,
+				117E6CFD18635F0800D78A82 /* star.png in Resources */,
 				1156CDA41860D6770072519C /* LICENSE.txt in Resources */,
+				117E6CF618635E7300D78A82 /* brick@2x.png in Resources */,
+				117E6D091863628D00D78A82 /* safari.png in Resources */,
 				113DE9031843FBF70080B038 /* LICENSE in Resources */,
+				117E6CFE18635F0800D78A82 /* star@2x.png in Resources */,
 				11251C1518619422009D158C /* reveal-icon.png in Resources */,
+				117E6D0A1863628D00D78A82 /* safari@2x.png in Resources */,
+				117E6CF918635EB600D78A82 /* info.png in Resources */,
+				117E6CF118635E4000D78A82 /* pill.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,16 +578,19 @@
 				113383591859A9A800CBA6FF /* DrugSummaryViewController.m in Sources */,
 				11251C1118618A6E009D158C /* MenuViewController.m in Sources */,
 				113383461859A95400CBA6FF /* Favorite.m in Sources */,
+				117E6D131863828E00D78A82 /* AboutViewController.m in Sources */,
 				113383231859A90400CBA6FF /* Database.m in Sources */,
 				113383481859A95400CBA6FF /* Product_TECode.m in Sources */,
 				116A2C31186214A900A463AA /* DictionaryTermViewController.m in Sources */,
 				11251C0E18618A25009D158C /* MainViewController.m in Sources */,
 				113DE88E1843D8420080B038 /* AppDelegate.m in Sources */,
 				113383451859A95400CBA6FF /* DocType_Lookup.m in Sources */,
+				117E6D101863826500D78A82 /* HistoryViewController.m in Sources */,
 				113383581859A9A800CBA6FF /* DrugProductTableViewCell.m in Sources */,
 				119B62EC185C8240009D3184 /* DictionarySynonym.m in Sources */,
 				113383491859A95400CBA6FF /* Product.m in Sources */,
 				1133834A1859A95400CBA6FF /* RegActionDate.m in Sources */,
+				117E6D0D1863822B00D78A82 /* FavoritesViewController.m in Sources */,
 				113DE88A1843D8420080B038 /* main.m in Sources */,
 				119B62E9185C8240009D3184 /* DictionaryXRef.m in Sources */,
 				11581FD81845513E004186F2 /* Util.m in Sources */,
@@ -519,6 +598,7 @@
 				113383401859A95400CBA6FF /* AppDocType_Lookup.m in Sources */,
 				113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */,
 				113383471859A95400CBA6FF /* History.m in Sources */,
+				117E6D16186382B200D78A82 /* SettingsViewController.m in Sources */,
 				113383421859A95400CBA6FF /* ChemicalType_Lookup.m in Sources */,
 				1133835A1859A9A800CBA6FF /* SearchViewController.m in Sources */,
 			);

@@ -29,6 +29,7 @@
     MenuViewController *menuViewController = [[MenuViewController alloc] init];
     UINavigationController *searchNavigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
 
+    searchViewController.dataSource = DictionaryDataSource;
     self.rearViewController = menuViewController;
     self.frontViewController = searchNavigationController;
 //    self.delegate = self;

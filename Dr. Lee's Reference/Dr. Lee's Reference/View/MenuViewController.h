@@ -10,6 +10,13 @@
 
 #include "Constants.h"
 
+#import "AboutViewController.h"
+#import "SearchViewController.h"
+#import "FavoritesViewController.h"
+#import "HistoryViewController.h"
+#import "SettingsViewController.h"
+#import "SWRevealViewController.h"
+
 @interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tblMenu;

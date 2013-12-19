@@ -21,6 +21,31 @@
 @synthesize searchBar;
 @synthesize tblResults;
 @synthesize results;
+@synthesize dataSource;
+
+//- (void) setDataSource:(DataSource)dataSource_
+//{
+//    dataSource = dataSource_;
+//    
+//    switch (dataSource)
+//    {
+//        case DictionaryDataSource:
+//        {
+//            searchBar.placeholder = @"search dictionary";
+//            break;
+//        }
+//        case DrugsDataSource:
+//        {
+//            searchBar.placeholder = @"search drugs";
+//            break;
+//        }
+//        case ICD10DataSource:
+//        {
+//            searchBar.placeholder = @"search ICD-10";
+//            break;
+//        }
+//    }
+//}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,7 +76,24 @@
     searchBar = [[UISearchBar alloc] initWithFrame:frame];
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     searchBar.delegate = self;
-    searchBar.placeholder = @"search dictionary";
+    switch (dataSource)
+    {
+        case DictionaryDataSource:
+        {
+            searchBar.placeholder = @"search dictionary";
+            break;
+        }
+        case DrugsDataSource:
+        {
+            searchBar.placeholder = @"search drugs";
+            break;
+        }
+        case ICD10DataSource:
+        {
+            searchBar.placeholder = @"search ICD-10";
+            break;
+        }
+    }
     
     currentHeight = self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height;
     frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
@@ -300,28 +342,10 @@
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)bar
 {
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0),
-//    ^{
-//        [self performSearchOnMainThread];
-//        
-//        dispatch_async(dispatch_get_main_queue(),
-//        ^{
-//            [MBProgressHUD hideHUDForView:self.view animated:YES];
-//        });
-//    });
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hud];
     hud.delegate = self;
     [hud showWhileExecuting:@selector(performSearchOnMainThread) onTarget:self withObject:nil animated:YES];
 }
-
-//- (void)searchBarTextDidEndEditing:(UISearchBar *)bar
-//{
-//    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-//    [self.view addSubview:hud];
-//    hud.delegate = self;
-//    [hud showWhileExecuting:@selector(performSearchOnMainThread) onTarget:self withObject:nil animated:YES];
-//}
 
 @end

@@ -32,6 +32,15 @@
 		113383AD1859AAD400CBA6FF /* RegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133839F1859AAD400CBA6FF /* RegActionDate.m */; };
 		113383AE1859AAD400CBA6FF /* ReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383A11859AAD400CBA6FF /* ReviewClass_Lookup.m */; };
 		113383B11859AAEA00CBA6FF /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383B01859AAEA00CBA6FF /* Util.m */; };
+		117E6CC818634D1E00D78A82 /* AppDoc.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1133836C1859AA7200CBA6FF /* AppDoc.txt */; };
+		117E6CC918634D1E00D78A82 /* AppDocType_Lookup.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1133836D1859AA7200CBA6FF /* AppDocType_Lookup.txt */; };
+		117E6CCA18634D1E00D78A82 /* application.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1133836E1859AA7200CBA6FF /* application.txt */; };
+		117E6CCB18634D1E00D78A82 /* ChemTypeLookup.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1133836F1859AA7200CBA6FF /* ChemTypeLookup.txt */; };
+		117E6CCC18634D1E00D78A82 /* DocType_lookup.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 113383701859AA7200CBA6FF /* DocType_lookup.txt */; };
+		117E6CCD18634D1E00D78A82 /* Product.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 113383711859AA7200CBA6FF /* Product.txt */; };
+		117E6CCE18634D1E00D78A82 /* Product_tecode.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 113383721859AA7200CBA6FF /* Product_tecode.txt */; };
+		117E6CCF18634D1E00D78A82 /* RegActionDate.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 113383731859AA7200CBA6FF /* RegActionDate.txt */; };
+		117E6CD018634D1E00D78A82 /* ReviewClass_Lookup.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 113383741859AA7200CBA6FF /* ReviewClass_Lookup.txt */; };
 		119B62F3185C827C009D3184 /* DictionaryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62EE185C827C009D3184 /* DictionaryDefinition.m */; };
 		119B62F4185C827C009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F0185C827C009D3184 /* DictionaryTerm.m */; };
 		119B62F5185C827C009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F2185C827C009D3184 /* DictionaryXRef.m */; };
@@ -40,12 +49,21 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		11322DDE1857A2E30007E7B9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = Data;
+			dstSubfolderSpec = 16;
 			files = (
+				117E6CC818634D1E00D78A82 /* AppDoc.txt in CopyFiles */,
+				117E6CC918634D1E00D78A82 /* AppDocType_Lookup.txt in CopyFiles */,
+				117E6CCA18634D1E00D78A82 /* application.txt in CopyFiles */,
+				117E6CCB18634D1E00D78A82 /* ChemTypeLookup.txt in CopyFiles */,
+				117E6CCC18634D1E00D78A82 /* DocType_lookup.txt in CopyFiles */,
+				117E6CCD18634D1E00D78A82 /* Product.txt in CopyFiles */,
+				117E6CCE18634D1E00D78A82 /* Product_tecode.txt in CopyFiles */,
+				117E6CCF18634D1E00D78A82 /* RegActionDate.txt in CopyFiles */,
+				117E6CD018634D1E00D78A82 /* ReviewClass_Lookup.txt in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 

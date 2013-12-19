@@ -23,5 +23,6 @@
 @property(strong,nonatomic) UITableView *tblResults;
 
 @property(strong,nonatomic) NSArray *results;
+@property(nonatomic) DataSource dataSource;
 
 @end
