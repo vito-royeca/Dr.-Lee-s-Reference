@@ -30,6 +30,8 @@
     UINavigationController *searchNavigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
 
     searchViewController.dataSource = DictionaryDataSource;
+//    searchNavigationController.navigationBar.tintColor = [UIColor blueColor];
+//    searchNavigationController.navigationBar.translucent = YES;
     self.rearViewController = menuViewController;
     self.frontViewController = searchNavigationController;
 //    self.delegate = self;

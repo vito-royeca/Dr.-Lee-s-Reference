@@ -14,8 +14,8 @@
 
 @implementation DictionaryTermViewController
 {
-    NSString *_currentHTML;
-    NSString *_previousHTML;
+    NSString *_currentTerm;
+    NSMutableArray *_history;
     NSString *_backButton;
 }
 
@@ -37,7 +37,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    _history = [[NSMutableArray alloc] init];
     _backButton = @"<p><a href='#back__'>Back</a>";
+    
 
     webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     webView.delegate = self;
@@ -117,9 +119,13 @@
     }
     [html appendFormat:@"</body></html>"];
 
-    if (_previousHTML && ![_previousHTML isEqualToString:html])
+//    if (_previousHTML && ![_previousHTML isEqualToString:html])
+    if (_history.count > 0)
     {
-        [html insertString:_backButton atIndex:html.length-14];
+        if (![[_history objectAtIndex:_history.count-1] isEqualToString:dictionaryTerm.term])
+        {
+            [html insertString:_backButton atIndex:html.length-14];
+        }
     }
     return html;
 }
@@ -142,9 +148,13 @@
     [html appendFormat:@"</ul>"];
     [html appendFormat:@"</body></html>"];
 
-    if (_previousHTML && ![_previousHTML isEqualToString:html])
+//    if (_previousHTML && ![_previousHTML isEqualToString:html])
+    if (_history.count > 0)
     {
-        [html insertString:_backButton atIndex:html.length-14];
+        if (![[_history objectAtIndex:_history.count-1] isEqualToString:dictionaryTerm.term])
+        {
+            [html insertString:_backButton atIndex:html.length-14];
+        }
     }
     return html;
 }
@@ -160,9 +170,9 @@
         
         if ([fragment isEqualToString:@"back__"])
         {
-            if (_previousHTML)
+            if (_history.count > 0)
             {
-                [self.webView loadHTMLString:_previousHTML baseURL:bundleUrl];
+                [self.webView loadHTMLString:[_history objectAtIndex:_history.count-1]  baseURL:bundleUrl];
                 return YES;
             }
         }
@@ -170,25 +180,27 @@
         {
             NSArray *results = [[Database sharedInstance] search:DictionaryDataSource
                                                            query:fragment
-                                                    narrowToName:YES];
+                                                    narrowSearch:YES];
 
-            _previousHTML = _currentHTML;
-            if (_previousHTML)
+            if (_history.count > 0)
             {
-                _previousHTML = [_previousHTML stringByReplacingOccurrencesOfString:_backButton withString:@""];
+                
             }
+//            _previousHTML = _currentHTML;
+//            if (_previousHTML)
+//            {
+//                _previousHTML = [_previousHTML stringByReplacingOccurrencesOfString:_backButton withString:@""];
+//            }
             
             if (results.count == 1)
             {
                 dictionaryTerm = [results objectAtIndex:0];
-                _currentHTML = [self composeHTMLDefinition];
-                [self.webView loadHTMLString:_currentHTML baseURL:bundleUrl];
+                [self.webView loadHTMLString:[self composeHTMLDefinition] baseURL:bundleUrl];
                 return YES;
             }
             else
             {
-                _currentHTML = [self composeHTMLList:fragment withResults:results];
-                [self.webView loadHTMLString:_currentHTML baseURL:bundleUrl];
+                [self.webView loadHTMLString:[self composeHTMLList:fragment withResults:results] baseURL:bundleUrl];
                 return YES;
             }
         }

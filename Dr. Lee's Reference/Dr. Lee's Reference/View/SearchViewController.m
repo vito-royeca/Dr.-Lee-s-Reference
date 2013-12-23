@@ -75,6 +75,8 @@
     CGRect frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
     searchBar = [[UISearchBar alloc] initWithFrame:frame];
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//    searchBar.tintColor = [UIColor blueColor];
+//    searchBar.translucent = YES;
     searchBar.delegate = self;
     switch (dataSource)
     {
@@ -132,7 +134,7 @@
     {
         NSMutableArray *arrValues = [[NSMutableArray alloc] init];
         
-        switch (searchBar.selectedScopeButtonIndex)
+        switch (dataSource)
         {
             case DictionaryDataSource:
             {
@@ -254,13 +256,15 @@
     NSString *prefix = [_keys objectAtIndex:indexPath.section];
     NSArray *arr = [_content objectForKey:prefix];
     
-    switch (searchBar.selectedScopeButtonIndex)
+    switch (dataSource)
     {
         case DictionaryDataSource:
         {
             DictionaryTerm *d = [arr objectAtIndex:indexPath.row];
+            DictionaryDefinition *def = d.dictionaryDefinition && d.dictionaryDefinition.count > 0 ? [[d.dictionaryDefinition allObjects] objectAtIndex:0] : nil;
+            DictionarySynonym *syn = d.dictionarySynonym && d.dictionarySynonym.count > 0 ? [[d.dictionarySynonym allObjects] objectAtIndex:0] : nil;
             cell.textLabel.text = d.term;
-            cell.detailTextLabel.text = @"";
+            cell.detailTextLabel.text = def ? def.definition : (syn ? [NSString stringWithFormat:@"SYN %@", syn.term] : @"");
             cell.textLabel.font = kMenuFont;
             cell.detailTextLabel.font = kMenuFont;
             break;
@@ -289,7 +293,7 @@
     NSString *prefix = [_keys objectAtIndex:indexPath.section];
     NSArray *arr = [_content objectForKey:prefix];
     
-    switch (searchBar.selectedScopeButtonIndex)
+    switch (dataSource)
     {
         case DictionaryDataSource:
         {
@@ -316,21 +320,11 @@
 
 -(void) search
 {
-    if ([searchBar canResignFirstResponder])
-    {
-        [searchBar resignFirstResponder];
-    }
-    
-    results = [[Database sharedInstance] search:DictionaryDataSource query:searchBar.text narrowToName:NO];
+    results = [[Database sharedInstance] search:dataSource query:searchBar.text narrowSearch:YES];
     [self createSections];
     
     [tblResults reloadData];
     self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", results.count];
-}
-
--(void) performSearchOnMainThread
-{
-    [self performSelectorOnMainThread:@selector(search) withObject:nil waitUntilDone:YES];
 }
 
 #pragma mark - MBProgressHUDDelegate methods
@@ -342,10 +336,15 @@
 #pragma mark - UISearchBarDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)bar
 {
+    if ([searchBar canResignFirstResponder])
+    {
+        [searchBar resignFirstResponder];
+    }
+    
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hud];
     hud.delegate = self;
-    [hud showWhileExecuting:@selector(performSearchOnMainThread) onTarget:self withObject:nil animated:YES];
+    [hud showWhileExecuting:@selector(search) onTarget:self withObject:nil animated:YES];
 }
 
 @end

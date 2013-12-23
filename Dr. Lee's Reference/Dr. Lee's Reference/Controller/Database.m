@@ -136,17 +136,17 @@
     }
 }
 
--(NSArray*) search:(DataSource)dataSource query:(NSString*)query narrowToName:(BOOL)narrowToName
+-(NSArray*) search:(DataSource)dataSource query:(NSString*)query narrowSearch:(BOOL)narrow
 {
     switch (dataSource)
     {
         case DictionaryDataSource:
         {
-            return [self searchDictionary:query narrowToName:narrowToName];
+            return [self searchDictionary:query narrowSearch:narrow];
         }
         case DrugsDataSource:
         {
-            return [self searchDrugs:query narrowToName:narrowToName];
+            return [self searchDrugs:query narrowSearch:narrow];
         }
         case ICD10DataSource:
         default:
@@ -156,7 +156,7 @@
     }
 }
 
--(NSArray*) searchDictionary:(NSString*)query narrowToName:(BOOL)narrowToName
+-(NSArray*) searchDictionary:(NSString*)query narrowSearch:(BOOL)narrow
 {
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -176,14 +176,13 @@
     }
     else
     {
-        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"term", query];
-        
-        if (narrowToName)
+        if (narrow)
         {
-            predicate = pred1;
+            predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"term", query];
         }
         else
         {
+            NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"term", query];
             NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"dictionaryDefinition.definition", query];
             predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
             NSArray *relationshipKeys = [NSArray arrayWithObject:@"dictionaryDefinition"];
@@ -202,7 +201,7 @@
     return fetchedObjects;
 }
 
--(NSArray*) searchDrugs:(NSString*)query narrowToName:(BOOL)narrowToName
+-(NSArray*) searchDrugs:(NSString*)query narrowSearch:(BOOL)narrow
 {
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -222,14 +221,13 @@
     }
     else
     {
-        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"drugName", query];
-        
-        if (narrowToName)
+        if (narrow)
         {
-            predicate = pred1;
+            predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"drugName", query];
         }
         else
         {
+            NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"drugName", query];
             NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"activeIngred", query];
             predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
         }
