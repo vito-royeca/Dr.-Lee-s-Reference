@@ -94,11 +94,6 @@
 		113383721859AA7200CBA6FF /* Product_tecode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Product_tecode.txt; sourceTree = "<group>"; };
 		113383731859AA7200CBA6FF /* RegActionDate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RegActionDate.txt; sourceTree = "<group>"; };
 		113383741859AA7200CBA6FF /* ReviewClass_Lookup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReviewClass_Lookup.txt; sourceTree = "<group>"; };
-		113383761859AA7200CBA6FF /* ICD10CM_FY2014_Full_XML_DIndex.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_DIndex.xml; sourceTree = "<group>"; };
-		113383771859AA7200CBA6FF /* ICD10CM_FY2014_Full_XML_EIndex.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_EIndex.xml; sourceTree = "<group>"; };
-		113383781859AA7200CBA6FF /* ICD10CM_FY2014_Full_XML_TableOfDrugs.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_TableOfDrugs.xml; sourceTree = "<group>"; };
-		113383791859AA7200CBA6FF /* ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml; sourceTree = "<group>"; };
-		1133837A1859AA7200CBA6FF /* ICD10CM_FY2014_Full_XML_Tabular.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ICD10CM_FY2014_Full_XML_Tabular.xml; sourceTree = "<group>"; };
 		1133837D1859AAAA00CBA6FF /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		1133837E1859AAAA00CBA6FF /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		1133837F1859AAAA00CBA6FF /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
@@ -268,11 +263,6 @@
 			children = (
 				119F65921867F43800EF658B /* 2014-Code-Tables-and-Index */,
 				119F659A1867F43800EF658B /* 2014-ICD10-Code-Tables-and-Index */,
-				113383761859AA7200CBA6FF /* ICD10CM_FY2014_Full_XML_DIndex.xml */,
-				113383771859AA7200CBA6FF /* ICD10CM_FY2014_Full_XML_EIndex.xml */,
-				113383781859AA7200CBA6FF /* ICD10CM_FY2014_Full_XML_TableOfDrugs.xml */,
-				113383791859AA7200CBA6FF /* ICD10CM_FY2014_Full_XML_TableOfNeoplasms.xml */,
-				1133837A1859AA7200CBA6FF /* ICD10CM_FY2014_Full_XML_Tabular.xml */,
 			);
 			path = icd10;
 			sourceTree = "<group>";
