@@ -20,32 +20,8 @@
 
 @synthesize searchBar;
 @synthesize tblResults;
-@synthesize results;
+@synthesize fetchedResultsController;
 @synthesize dataSource;
-
-//- (void) setDataSource:(DataSource)dataSource_
-//{
-//    dataSource = dataSource_;
-//    
-//    switch (dataSource)
-//    {
-//        case DictionaryDataSource:
-//        {
-//            searchBar.placeholder = @"search dictionary";
-//            break;
-//        }
-//        case DrugsDataSource:
-//        {
-//            searchBar.placeholder = @"search drugs";
-//            break;
-//        }
-//        case ICD10DataSource:
-//        {
-//            searchBar.placeholder = @"search ICD-10";
-//            break;
-//        }
-//    }
-//}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,8 +51,6 @@
     CGRect frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
     searchBar = [[UISearchBar alloc] initWithFrame:frame];
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-//    searchBar.tintColor = [UIColor blueColor];
-//    searchBar.translucent = YES;
     searchBar.delegate = self;
     switch (dataSource)
     {
@@ -122,6 +96,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    _content = nil;
+    _keys = nil;
+    fetchedResultsController = nil;
 }
 
 - (void) createSections
@@ -138,11 +116,11 @@
         {
             case DictionaryDataSource:
             {
-                for (DictionaryTerm *d in results)
+                for (DictionaryTerm *d in [fetchedResultsController fetchedObjects])
                 {
-                    NSString *term = [Util toASCII:d.term];
+                    NSString *term = [JJJUtil toASCII:d.term];
                     
-                    if ([Util isAlphaStart:term])
+                    if ([JJJUtil isAlphaStart:term])
                     {
                         if ([[term uppercaseString] hasPrefix:letter])
                         {
@@ -164,17 +142,37 @@
             }
             case DrugsDataSource:
             {
-                for (NSDictionary *dict in results)
+                for (Product *p in [fetchedResultsController fetchedObjects])
                 {
-                    NSString *name = [dict objectForKey:@"Drug Name"];
+                    NSString *term = [JJJUtil toASCII:p.drugName];
                     
-                    if ([[name uppercaseString] hasPrefix:letter])
+                    if ([JJJUtil isAlphaStart:term])
                     {
-                        if (![arrValues containsObject:dict])
+                        if ([[term uppercaseString] hasPrefix:letter])
                         {
-                            [arrValues addObject:dict];
+                            if (![arrValues containsObject:p])
+                            {
+                                [arrValues addObject:p];
+                            }
                         }
                     }
+                    else
+                    {
+                        if (![arrNonAlpha containsObject:p])
+                        {
+                            [arrNonAlpha addObject:p];
+                        }
+                    }
+                    
+//                    NSString *name = [dict objectForKey:@"Drug Name"];
+//                    
+//                    if ([[name uppercaseString] hasPrefix:letter])
+//                    {
+//                        if (![arrValues containsObject:dict])
+//                        {
+//                            [arrValues addObject:dict];
+//                        }
+//                    }
                 }
                 break;
             }
@@ -198,6 +196,60 @@
     _keys =  [[_content allKeys] sortedArrayUsingSelector:@selector(localizedStandardCompare:)];
 }
 
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *prefix = [_keys objectAtIndex:indexPath.section];
+    NSArray *arr = [_content objectForKey:prefix];
+    
+    switch (dataSource)
+    {
+        case DictionaryDataSource:
+        {
+            DictionaryTerm *d = [arr objectAtIndex:indexPath.row];
+            DictionaryDefinition *def = d.dictionaryDefinition && d.dictionaryDefinition.count > 0 ? [[d.dictionaryDefinition allObjects] objectAtIndex:0] : nil;
+            DictionarySynonym *syn = d.dictionarySynonym && d.dictionarySynonym.count > 0 ? [[d.dictionarySynonym allObjects] objectAtIndex:0] : nil;
+            
+            cell.textLabel.text = d.term;
+            cell.detailTextLabel.text = def ? def.definition : (syn ? [NSString stringWithFormat:@"SYN %@", syn.term] : @"");
+            cell.textLabel.font = kMenuFont;
+            cell.detailTextLabel.font = kMenuFont;
+            break;
+        }
+        case DrugsDataSource:
+        {
+            Product *p = [arr objectAtIndex:indexPath.row];
+            
+            cell.textLabel.text = p.drugName;
+            cell.detailTextLabel.text = p.activeIngred;
+            cell.textLabel.font = kMenuFont;
+            cell.detailTextLabel.font = kMenuFont;
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
+}
+
+-(void) search
+{
+    NSError *error;
+    fetchedResultsController = [[Database sharedInstance] search:dataSource
+                                                           query:searchBar.text
+                                                    narrowSearch:YES];
+    fetchedResultsController.delegate = self;
+
+    if (![fetchedResultsController performFetch:&error])
+    {
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	}
+    
+    [self createSections];
+    [tblResults reloadData];
+}
+
 #pragma - mark UITableViewDataSource
 - (NSArray*) sectionIndexTitlesForTableView:(UITableView *)tableView
 {
@@ -219,6 +271,9 @@
     NSString *prefix = [_keys objectAtIndex:section];
     NSArray *list = [_content objectForKey:prefix];
     return list.count;
+    
+//    id  sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
+//    return [sectionInfo numberOfObjects];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
@@ -227,7 +282,7 @@
     
     NSMutableString *text = [[NSMutableString alloc] init];
     NSString *letter = [_keys objectAtIndex:section];
-    [text appendFormat:@"%@ (%d of %d)", letter, [[_content valueForKey:letter] count], [results count]];
+    [text appendFormat:@"%@ (%d of %d)", letter, [[_content valueForKey:letter] count], [[fetchedResultsController fetchedObjects] count]];
     lblHeader.text = text;
     lblHeader.backgroundColor = kMenuBackgroundColor;
     lblHeader.textColor = kMenuFontColor;
@@ -253,37 +308,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    NSString *prefix = [_keys objectAtIndex:indexPath.section];
-    NSArray *arr = [_content objectForKey:prefix];
-    
-    switch (dataSource)
-    {
-        case DictionaryDataSource:
-        {
-            DictionaryTerm *d = [arr objectAtIndex:indexPath.row];
-            DictionaryDefinition *def = d.dictionaryDefinition && d.dictionaryDefinition.count > 0 ? [[d.dictionaryDefinition allObjects] objectAtIndex:0] : nil;
-            DictionarySynonym *syn = d.dictionarySynonym && d.dictionarySynonym.count > 0 ? [[d.dictionarySynonym allObjects] objectAtIndex:0] : nil;
-            cell.textLabel.text = d.term;
-            cell.detailTextLabel.text = def ? def.definition : (syn ? [NSString stringWithFormat:@"SYN %@", syn.term] : @"");
-            cell.textLabel.font = kMenuFont;
-            cell.detailTextLabel.font = kMenuFont;
-            break;
-        }
-        case DrugsDataSource:
-        {
-            NSDictionary *dict = [arr objectAtIndex:indexPath.row];
-            
-            cell.textLabel.text = [dict objectForKey:@"Drug Name"];
-            cell.detailTextLabel.text = [dict objectForKey:@"Active Ingredient(s)"];
-            cell.textLabel.font = kMenuFont;
-            cell.detailTextLabel.font = kMenuFont;
-            break;
-        }
-        default:
-        {
-            break;
-        }
-    }
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
@@ -318,15 +343,6 @@
     }
 }
 
--(void) search
-{
-    results = [[Database sharedInstance] search:dataSource query:searchBar.text narrowSearch:YES];
-    [self createSections];
-    
-    [tblResults reloadData];
-    self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", results.count];
-}
-
 #pragma mark - MBProgressHUDDelegate methods
 - (void)hudWasHidden:(MBProgressHUD *)hud
 {
@@ -345,6 +361,87 @@
     [self.view addSubview:hud];
     hud.delegate = self;
     [hud showWhileExecuting:@selector(search) onTarget:self withObject:nil animated:YES];
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [tblResults beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    
+    UITableView *tableView = tblResults;
+    
+    switch(type)
+    {
+        case NSFetchedResultsChangeInsert:
+        {
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeDelete:
+        {
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeUpdate:
+        {
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath]
+                    atIndexPath:indexPath];
+            break;
+        }
+        case NSFetchedResultsChangeMove:
+        {
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id )sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type
+{
+    UITableView *tableView = tblResults;
+    
+    switch(type)
+    {
+        case NSFetchedResultsChangeInsert:
+        {
+            [tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeDelete:
+        {
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    UITableView *tableView = tblResults;
+    
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [tableView endUpdates];
 }
 
 @end

@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Database.h"
+#import "JJJ/JJJ.h"
+
 #import "DictionaryDefinition.h"
 #import "DictionarySynonym.h"
 #import "DictionaryTerm.h"
 #import "DictionaryXRef.h"
 #import "TFHpple.h"
-#import "Util.h"
+
 
 #define TARGET_WEBSITE @"http://www.medilexicon.com/medicaldictionary.php"
 

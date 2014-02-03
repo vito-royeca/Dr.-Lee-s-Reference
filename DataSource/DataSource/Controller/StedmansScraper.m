@@ -12,6 +12,7 @@
 {
     NSArray *_letters;
     int _total;
+    JJJCoreData *_coreData;
 }
 
 -(id) init
@@ -49,6 +50,8 @@
                     @"y",
                     @"z",
                     nil];
+        
+        _coreData = [JJJCoreData sharedInstanceWithModel:@"database"];
     }
     
     return self;
@@ -177,15 +180,15 @@
             {
                 if ([[e tagName] isEqualToString:@"super"])
                 {
-                    [text appendFormat:@"%@", [Util superScriptOf:[Util toUTF8:[child content]]]];
+                    [text appendFormat:@"%@", [JJJUtil superScriptOf:[JJJUtil toUTF8:[child content]]]];
                 }
                 else if ([[e tagName] isEqualToString:@"sub"])
                 {
-                    [text appendFormat:@"%@", [Util subScriptOf:[Util toUTF8:[child content]]]];
+                    [text appendFormat:@"%@", [JJJUtil subScriptOf:[JJJUtil toUTF8:[child content]]]];
                 }
                 else if ([[e tagName] isEqualToString:@"a"])
                 {
-                    [text appendFormat:@"%@", [Util toUTF8:[Util trim:[child content]]]];
+                    [text appendFormat:@"%@", [JJJUtil toUTF8:[JJJUtil trim:[child content]]]];
                 }
             }
         }
@@ -193,13 +196,13 @@
         {
             if ([[e tagName] isEqualToString:@"text"])
             {
-                NSString *content = [Util toUTF8:[e content]];
+                NSString *content = [JJJUtil toUTF8:[e content]];
 
-                if (![Util isEmptyString:[Util trim:content]] &&
-                    ![Util string:content containsString:@"Pronunciation"] &&
-                    ![Util string:content containsString:@"Synonyms"] &&
-                    ![Util string:content containsString:@"Definitions"] &&
-                    ![Util string:content containsString:@"See"])
+                if (![JJJUtil isEmptyString:[JJJUtil trim:content]] &&
+                    ![JJJUtil string:content containsString:@"Pronunciation"] &&
+                    ![JJJUtil string:content containsString:@"Synonyms"] &&
+                    ![JJJUtil string:content containsString:@"Definitions"] &&
+                    ![JJJUtil string:content containsString:@"See"])
                 {
                     [text appendFormat:@"%@", content];
                 }
@@ -213,7 +216,7 @@
 -(NSArray*) extractDefinitionsFromElement:(TFHppleElement*)element
 {
     NSMutableArray *arrResult = [[NSMutableArray alloc] init];
-    NSString *text = [Util trim:[self extractTextFromElement:element isParent:YES]];
+    NSString *text = [JJJUtil trim:[self extractTextFromElement:element isParent:YES]];
     NSString *delim = @"$";
     
     for (int i=1; i<11; i++)
@@ -224,7 +227,7 @@
 
     for (NSString *token in [text componentsSeparatedByString:delim])
     {
-        NSString *trimmed = [Util trim:token];
+        NSString *trimmed = [JJJUtil trim:token];
         
         if ([trimmed length] > 0)
         {
@@ -237,12 +240,12 @@
 -(NSArray*) extractSynonymsFromElement:(TFHppleElement*)element
 {
     NSMutableArray *arrResult = [[NSMutableArray alloc] init];
-    NSString *text = [Util trim:[self extractTextFromElement:element isParent:YES]];
+    NSString *text = [JJJUtil trim:[self extractTextFromElement:element isParent:YES]];
     NSString *delim = @",";
     
     for (NSString *token in [text componentsSeparatedByString:delim])
     {
-        NSString *trimmed = [Util trim:token];
+        NSString *trimmed = [JJJUtil trim:token];
         
         if ([trimmed length] > 0)
         {
@@ -282,7 +285,7 @@
                     }
                     else if ([strong isEqualToString:@"Pronunciation:"])
                     {
-                        [dest setObject:[Util trim:[Util toUTF8:[child content]]] forKey:strong];
+                        [dest setObject:[JJJUtil trim:[JJJUtil toUTF8:[child content]]] forKey:strong];
                     }
                 }
                 // Definitions:
@@ -302,10 +305,10 @@
             {
                 NSString *content = [[child firstChild] content];
                 
-                if ([Util string:content containsString:@"Pronunciation"] ||
-                    [Util string:content containsString:@"Synonyms"] ||
-                    [Util string:content containsString:@"Definitions"] ||
-                    [Util string:content containsString:@"See"])
+                if ([JJJUtil string:content containsString:@"Pronunciation"] ||
+                    [JJJUtil string:content containsString:@"Synonyms"] ||
+                    [JJJUtil string:content containsString:@"Definitions"] ||
+                    [JJJUtil string:content containsString:@"See"])
                 {
                     strong = content;
                 }
@@ -323,15 +326,13 @@
 
 -(BOOL) saveTermToDatabase:(NSDictionary*)dict
 {
-    DictionaryTerm *d = [[Database sharedInstance] createManagedObject:@"DictionaryTerm"];
+    DictionaryTerm *d = [_coreData createManagedObject:@"DictionaryTerm"];
     d.dictionaryId = [dict objectForKey:@"id"];
     d.term = [dict objectForKey:@"term"];
     d.pronunciation = [dict objectForKey:@"Pronunciation:"];
-    NSError *error;
     
-    if (![[[Database sharedInstance] managedObjectContext] save:&error])
+    if (![_coreData save])
     {
-        NSLog(@"Save error: %@", [error localizedDescription]);
         return NO;
     }
 
@@ -341,15 +342,14 @@
         
         for (NSString *x in [dict objectForKey:@"Definitions:"])
         {
-            DictionaryDefinition *dd = [[Database sharedInstance] createManagedObject:@"DictionaryDefinition"];
+            DictionaryDefinition *dd = [_coreData createManagedObject:@"DictionaryDefinition"];
             dd.definition = x;
             [set addObject:dd];
         }
         
         [d addDictionaryDefinition:set];
-        if (![[[Database sharedInstance] managedObjectContext] save:&error])
+        if (![_coreData save])
         {
-            NSLog(@"Save error: %@", [error localizedDescription]);
             return NO;
         }
     }
@@ -360,15 +360,14 @@
         
         for (NSString *x in [dict objectForKey:@"Synonyms:"])
         {
-            DictionarySynonym *ds = [[Database sharedInstance] createManagedObject:@"DictionarySynonym"];
+            DictionarySynonym *ds = [_coreData createManagedObject:@"DictionarySynonym"];
             ds.term = x;
             [set addObject:ds];
         }
         
         [d addDictionarySynonym:set];
-        if (![[[Database sharedInstance] managedObjectContext] save:&error])
+        if (![_coreData save])
         {
-            NSLog(@"Save error: %@", [error localizedDescription]);
             return NO;
         }
     }
@@ -379,15 +378,14 @@
         
         for (NSString *x in [dict objectForKey:@"See:"])
         {
-            DictionaryXRef *dx = [[Database sharedInstance] createManagedObject:@"DictionaryXRef"];
+            DictionaryXRef *dx = [_coreData createManagedObject:@"DictionaryXRef"];
             dx.term = x;
             [set addObject:dx];
         }
         
         [d addDictionaryXRef:set];
-        if (![[[Database sharedInstance] managedObjectContext] save:&error])
+        if (![_coreData save])
         {
-            NSLog(@"Save error: %@", [error localizedDescription]);
             return NO;
         }
     }
@@ -397,11 +395,11 @@
 
 - (BOOL) isTermInDatabase:(NSString*)term
 {
-    NSArray *arr = [[Database sharedInstance] find:@"DictionaryTerm"
-                                        columnName:@"term"
-                                       columnValue:term
-                                  relationshipKeys:nil
-                                           sorters:nil];
+    NSArray *arr = [_coreData find:@"DictionaryTerm"
+                        columnName:@"term"
+                        columnValue:term
+                    relationshipKeys:nil
+                            sorters:nil];
     return arr && arr.count > 0;
 }
 

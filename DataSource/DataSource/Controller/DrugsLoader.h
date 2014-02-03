@@ -8,8 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Database.h"
+#import "JJJ/JJJ.h"
+#import "AppDoc.h"
+#import "AppDocType_Lookup.h"
+#import "Application.h"
+#import "ChemicalType_Lookup.h"
+#import "DocType_Lookup.h"
 #import "FileDownloader.h"
+#import "Product.h"
+#import "Product_TECode.h"
+#import "RegActionDate.h"
+#import "ReviewClass_Lookup.h"
 
 @interface DrugsLoader : NSObject
 

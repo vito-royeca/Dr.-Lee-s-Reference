@@ -14,7 +14,7 @@
 #import "DictionaryXRef.h"
 #import "DictionarySynonym.h"
 #import "DictionaryTerm.h"
-#import "Util.h"
+
 
 @interface DictionaryTermViewController : UIViewController<UIWebViewDelegate>
 

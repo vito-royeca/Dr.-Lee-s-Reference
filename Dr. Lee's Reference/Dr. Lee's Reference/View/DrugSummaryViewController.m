@@ -174,7 +174,7 @@
             NSString *key = [[dictForms allKeys] objectAtIndex:0];
             
             cell.textLabel.text = key;
-            cell.detailTextLabel.text = [Util arrayToString:[dictForms valueForKey:key]];
+            cell.detailTextLabel.text = [JJJUtil arrayToString:[dictForms valueForKey:key]];
             cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         }

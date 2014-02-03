@@ -15,6 +15,19 @@
 @end
 
 @implementation DrugDetailsViewController
+{
+    JJJCoreData *_coreData;
+}
+
+-(id) init
+{
+    if (self = [super init])
+    {
+        _coreData = [JJJCoreData sharedInstanceWithModel:@"database"];
+    }
+    
+    return self;
+}
 
 @synthesize sections;
 @synthesize tblDrug;
@@ -31,11 +44,11 @@
     Product *p = [arrDrugs objectAtIndex:0];
     NSMutableDictionary *dicSorter = [[NSMutableDictionary alloc] init];
     [dicSorter  setObject:[NSNumber numberWithBool:NO] forKey:@"docDate"];
-    documents = [[Database sharedInstance] find:@"AppDoc"
-                                     columnName:@"applNo.applNo"
-                                    columnValue:p.applNo.applNo
-                               relationshipKeys:[NSArray arrayWithObjects:@"applNo", nil]
-                                        sorters:[NSArray arrayWithObjects:dicSorter, nil]];
+    documents = [_coreData find:@"AppDoc"
+                     columnName:@"applNo.applNo"
+                    columnValue:p.applNo.applNo
+               relationshipKeys:[NSArray arrayWithObjects:@"applNo", nil]
+                        sorters:[NSArray arrayWithObjects:dicSorter, nil]];
     
     [sections addObject:@"Drug Details"];
     [sections addObject:[NSString stringWithFormat:@"Products on Application %@", [drugDetails objectForKey:@"ApplNo"]]];
@@ -223,7 +236,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd"];
             
-            cell.textLabel.text = appDoc.docType.appDocType;
+//            cell.textLabel.text = appDoc.docType.appDocType;
             cell.detailTextLabel.text = appDoc.docDate ? [formatter stringFromDate:appDoc.docDate] : @"";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "JJJ/JJJ.h"
 #import "DrugDetailsViewController.h"
-#import "Util.h"
 
 @interface DrugSummaryViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 

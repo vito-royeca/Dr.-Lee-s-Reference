@@ -10,14 +10,14 @@
 
 @implementation DrugsLoader
 {
-    Database *_database;
+    JJJCoreData *_coreData;
 }
 
 -(id) init
 {
     if (self = [super init])
     {
-        _database = [Database sharedInstance];
+        _coreData = [JJJCoreData sharedInstanceWithModel:@"database"];
     }
     
     return self;
@@ -25,64 +25,64 @@
 
 -(void) loadDrugs
 {
-    if ([_database tableCount:@"ChemicalType_Lookup"] == 0)
+    if ([_coreData tableCount:@"ChemicalType_Lookup"] == 0)
     {
         [self loadChemicalType_Lookup];
     }
-    NSLog(@"ChemicalType_Lookup = %d", [_database tableCount:@"ChemicalType_Lookup"]);
+    NSLog(@"ChemicalType_Lookup = %d", [_coreData tableCount:@"ChemicalType_Lookup"]);
     
-    if ([_database tableCount:@"ReviewClass_Lookup"] == 0)
+    if ([_coreData tableCount:@"ReviewClass_Lookup"] == 0)
     {
         [self loadReviewClass_Lookup];
     }
-    NSLog(@"ReviewClass_Lookup = %d", [_database tableCount:@"ReviewClass_Lookup"]);
+    NSLog(@"ReviewClass_Lookup = %d", [_coreData tableCount:@"ReviewClass_Lookup"]);
     
-    if ([_database tableCount:@"Application"] == 0)
+    if ([_coreData tableCount:@"Application"] == 0)
     {
         [self loadApplication];
     }
-    NSLog(@"Application = %d", [_database tableCount:@"Application"]);
+    NSLog(@"Application = %d", [_coreData tableCount:@"Application"]);
     
-    if ([_database tableCount:@"Product"] == 0)
+    if ([_coreData tableCount:@"Product"] == 0)
     {
         [self loadProduct];
     }
-    NSLog(@"Product = %d", [_database tableCount:@"Product"]);
+    NSLog(@"Product = %d", [_coreData tableCount:@"Product"]);
     
-    if ([_database tableCount:@"Product_TECode"] == 0)
+    if ([_coreData tableCount:@"Product_TECode"] == 0)
     {
         [self loadProductTECode];
     }
-    NSLog(@"Product_TECode = %d", [_database tableCount:@"Product_TECode"]);
+    NSLog(@"Product_TECode = %d", [_coreData tableCount:@"Product_TECode"]);
     
-    if ([_database tableCount:@"AppDocType_Lookup"] == 0)
+    if ([_coreData tableCount:@"AppDocType_Lookup"] == 0)
     {
         [self loadAppDocType_Lookup];
     }
-    NSLog(@"AppDocType_Lookup = %d", [_database tableCount:@"AppDocType_Lookup"]);
+    NSLog(@"AppDocType_Lookup = %d", [_coreData tableCount:@"AppDocType_Lookup"]);
     
-    if ([_database tableCount:@"AppDoc"] == 0)
+    if ([_coreData tableCount:@"AppDoc"] == 0)
     {
         [self loadAppDoc];
     }
-    NSLog(@"AppDoc = %d", [_database tableCount:@"AppDoc"]);
+    NSLog(@"AppDoc = %d", [_coreData tableCount:@"AppDoc"]);
     
-    if ([_database tableCount:@"DocType_Lookup"] == 0)
+    if ([_coreData tableCount:@"DocType_Lookup"] == 0)
     {
         [self loadDocType_Lookup];
     }
-    NSLog(@"DocType_Lookup = %d", [_database tableCount:@"DocType_Lookup"]);
+    NSLog(@"DocType_Lookup = %d", [_coreData tableCount:@"DocType_Lookup"]);
     
-    if ([_database tableCount:@"RegActionDate"] == 0)
+    if ([_coreData tableCount:@"RegActionDate"] == 0)
     {
         [self loadRegActionDate];
     }
-    NSLog(@"RegActionDate = %d", [_database tableCount:@"RegActionDate"]);
+    NSLog(@"RegActionDate = %d", [_coreData tableCount:@"RegActionDate"]);
 }
 
 -(void) loadChemicalType_Lookup
 {
-    if ([_database bIsTableEmpty:@"ChemicalType_Lookup"])
+    if ([_coreData bIsTableEmpty:@"ChemicalType_Lookup"])
     {
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/ChemTypeLookup.txt"];
@@ -118,7 +118,7 @@
                 NSLog(@"Loading ChemicalType_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            ChemicalType_Lookup *obj = [_database createManagedObject:@"ChemicalType_Lookup"];
+            ChemicalType_Lookup *obj = [_coreData createManagedObject:@"ChemicalType_Lookup"];
             
             if (elements.count >= 1)
             {
@@ -133,19 +133,17 @@
                 obj.chemicalTypeDescription = [[elements objectAtIndex:2] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
             
-            NSError *error2;
-            if (![[_database managedObjectContext] save:&error2])
+            if ([_coreData save])
             {
-                NSLog(@"Save error: %@", [error2 localizedDescription]);
+                done++;
             }
-            done++;
         }
     }
 }
 
 -(void) loadReviewClass_Lookup
 {
-    if ([_database bIsTableEmpty:@"ReviewClass_Lookup"])
+    if ([_coreData bIsTableEmpty:@"ReviewClass_Lookup"])
     {
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/ReviewClass_Lookup.txt"];
@@ -181,7 +179,7 @@
                 NSLog(@"Loading ReviewClass_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            ReviewClass_Lookup *obj = [_database createManagedObject:@"ReviewClass_Lookup"];
+            ReviewClass_Lookup *obj = [_coreData createManagedObject:@"ReviewClass_Lookup"];
             
             if (elements.count >= 1)
             {
@@ -200,19 +198,17 @@
                 obj.shortDescription_ = [[elements objectAtIndex:3] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
             
-            NSError *error2;
-            if (![[_database managedObjectContext] save:&error2])
+            if ([_coreData save])
             {
-                NSLog(@"Save error: %@", [error2 localizedDescription]);
+                done++;
             }
-            done++;
         }
     }
 }
 
 -(void) loadApplication
 {
-    if ([_database bIsTableEmpty:@"Application"])
+    if ([_coreData bIsTableEmpty:@"Application"])
     {
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/application.txt"];
@@ -248,7 +244,7 @@
                 NSLog(@"Loading Application...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            Application *obj = [_database createManagedObject:@"Application"];
+            Application *obj = [_coreData createManagedObject:@"Application"];
             
             if (elements.count >= 1)
             {
@@ -276,7 +272,7 @@
             }
             if (elements.count >= 7 && [[elements objectAtIndex:6] length] > 0)
             {
-                NSArray *array = [_database find:@"ChemicalType_Lookup"
+                NSArray *array = [_coreData find:@"ChemicalType_Lookup"
                                       columnName:@"chemicalTypeID"
                                      columnValue:[elements objectAtIndex:6]
                                 relationshipKeys:nil
@@ -296,20 +292,17 @@
                 obj.orphanCode = [[elements objectAtIndex:8] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
             
-            
-            NSError *error2;
-            if (![[_database managedObjectContext] save:&error2])
+            if ([_coreData save])
             {
-                NSLog(@"Save error: %@", [error2 localizedDescription]);
+                done++;
             }
-            done++;
         }
     }
 }
 
 -(void) loadProduct
 {
-    if ([_database bIsTableEmpty:@"Product"])
+    if ([_coreData bIsTableEmpty:@"Product"])
     {
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Product.txt"];
@@ -346,11 +339,11 @@
             }
             
             
-            Product *obj = [_database createManagedObject:@"Product"];
+            Product *obj = [_coreData createManagedObject:@"Product"];
             
             if (elements.count >= 1)
             {
-                NSArray *array = [_database find:@"Application"
+                NSArray *array = [_coreData find:@"Application"
                                       columnName:@"applNo"
                                      columnValue:[elements objectAtIndex:0]
                                 relationshipKeys:nil
@@ -393,19 +386,17 @@
                 obj.activeIngred = [[elements objectAtIndex:8] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
             
-            NSError *error2;
-            if (![[_database managedObjectContext] save:&error2])
+            if ([_coreData save])
             {
-                NSLog(@"Save error: %@", [error2 localizedDescription]);
+                done++;
             }
-            done++;
         }
     }
 }
 
 -(void) loadProductTECode
 {
-    if ([_database bIsTableEmpty:@"Product_TECode"])
+    if ([_coreData bIsTableEmpty:@"Product_TECode"])
     {
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Product_tecode.txt"];
@@ -441,11 +432,11 @@
                 NSLog(@"Loading Product_TECode...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            Product_TECode *obj = [_database createManagedObject:@"Product_TECode"];
+            Product_TECode *obj = [_coreData createManagedObject:@"Product_TECode"];
             
             if (elements.count >= 1)
             {
-                NSArray *array = [_database find:@"Application"
+                NSArray *array = [_coreData find:@"Application"
                                       columnName:@"applNo"
                                      columnValue:[elements objectAtIndex:0]
                                 relationshipKeys:nil
@@ -458,7 +449,7 @@
             }
             if (elements.count >= 2)
             {
-                NSArray *array = [_database find:@"Product"
+                NSArray *array = [_coreData find:@"Product"
                                       columnName:@"productNo"
                                      columnValue:[elements objectAtIndex:1]
                                 relationshipKeys:nil
@@ -481,19 +472,17 @@
                 obj.productMktStatus = [NSNumber numberWithInteger:[[elements objectAtIndex:4] integerValue]];
             }
             
-            NSError *error2;
-            if (![[_database managedObjectContext] save:&error2])
+            if ([_coreData save])
             {
-                NSLog(@"Save error: %@", [error2 localizedDescription]);
+                done++;
             }
-            done++;
         }
     }
 }
 
 -(void) loadAppDocType_Lookup
 {
-    if ([_database bIsTableEmpty:@"AppDocType_Lookup"])
+    if ([_coreData bIsTableEmpty:@"AppDocType_Lookup"])
     {
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/AppDocType_Lookup.txt"];
@@ -529,7 +518,7 @@
                 NSLog(@"Loading AppDocType_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            AppDocType_Lookup *obj = [_database createManagedObject:@"AppDocType_Lookup"];
+            AppDocType_Lookup *obj = [_coreData createManagedObject:@"AppDocType_Lookup"];
             
             if (elements.count >= 1)
             {
@@ -540,19 +529,17 @@
                 obj.sortOrder = [NSNumber numberWithInteger:[[elements objectAtIndex:1] integerValue]];
             }
             
-            NSError *error2;
-            if (![[_database managedObjectContext] save:&error2])
+            if ([_coreData save])
             {
-                NSLog(@"Save error: %@", [error2 localizedDescription]);
+                done++;
             }
-            done++;
         }
     }
 }
 
 -(void) loadAppDoc
 {
-    if ([_database bIsTableEmpty:@"AppDoc"])
+    if ([_coreData bIsTableEmpty:@"AppDoc"])
     {
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/AppDoc.txt"];
@@ -591,7 +578,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             
-            AppDoc *obj = [_database createManagedObject:@"AppDoc"];
+            AppDoc *obj = [_coreData createManagedObject:@"AppDoc"];
             
             if (elements.count >= 1)
             {
@@ -599,7 +586,7 @@
             }
             if (elements.count >= 2)
             {
-                NSArray *array = [_database find:@"Application"
+                NSArray *array = [_coreData find:@"Application"
                                       columnName:@"applNo"
                                      columnValue:[elements objectAtIndex:1]
                                 relationshipKeys:nil
@@ -616,7 +603,7 @@
             }
             if (elements.count >= 4)
             {
-                NSArray *array = [_database find:@"AppDocType_Lookup"
+                NSArray *array = [_coreData find:@"AppDocType_Lookup"
                                       columnName:@"appDocType"
                                      columnValue:[elements objectAtIndex:3]
                                 relationshipKeys:nil
@@ -648,20 +635,17 @@
                 obj.duplicateCounter = [NSNumber numberWithInteger:[[elements objectAtIndex:8] integerValue]];
             }
             
-            NSError *error2;
-            if (![[_database managedObjectContext] save:&error2])
+            if ([_coreData save])
             {
-                NSLog(@"Save error: %@", [error2 localizedDescription]);
-                break;
+                done++;
             }
-            done++;
         }
     }
 }
 
 -(void) loadDocType_Lookup
 {
-    if ([_database bIsTableEmpty:@"DocType_Lookup"])
+    if ([_coreData bIsTableEmpty:@"DocType_Lookup"])
     {
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/DocType_lookup.txt"];
@@ -697,7 +681,7 @@
                 NSLog(@"Loading DocTypeLookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            DocType_Lookup *obj = [_database createManagedObject:@"DocType_Lookup"];
+            DocType_Lookup *obj = [_coreData createManagedObject:@"DocType_Lookup"];
             
             if (elements.count >= 1)
             {
@@ -708,19 +692,17 @@
                 obj.docTypeDesc = [[elements objectAtIndex:1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
             
-            NSError *error2;
-            if (![[_database managedObjectContext] save:&error2])
+            if ([_coreData save])
             {
-                NSLog(@"Save error: %@", [error2 localizedDescription]);
+                done++;
             }
-            done++;
         }
     }
 }
 
 -(void) loadRegActionDate
 {
-    if ([_database bIsTableEmpty:@"RegActionDate"])
+    if ([_coreData bIsTableEmpty:@"RegActionDate"])
     {
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/RegActionDate.txt"];
@@ -759,11 +741,11 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             
-            RegActionDate *obj = [_database createManagedObject:@"RegActionDate"];
+            RegActionDate *obj = [_coreData createManagedObject:@"RegActionDate"];
             
             if (elements.count >= 1)
             {
-                NSArray *array = [_database find:@"Application"
+                NSArray *array = [_coreData find:@"Application"
                                       columnName:@"applNo"
                                      columnValue:[elements objectAtIndex:0]
                                 relationshipKeys:nil
@@ -793,7 +775,7 @@
             }
             if (elements.count >= 6)
             {
-                NSArray *array = [_database find:@"DocType_Lookup"
+                NSArray *array = [_coreData find:@"DocType_Lookup"
                                       columnName:@"docType"
                                      columnValue:[elements objectAtIndex:5]
                                 relationshipKeys:nil
@@ -805,21 +787,17 @@
                 }
             }
             
-            NSError *error2;
-            if (![[_database managedObjectContext] save:&error2])
+            if ([_coreData save])
             {
-                NSLog(@"Save error: %@", [error2 localizedDescription]);
-                NSLog(@"%@", elements);
-                break;
+                done++;
             }
-            done++;
         }
     }
 }
 
 -(void) downloadDocuments
 {
-    NSArray *appDocs = [[Database sharedInstance] findAll:@"AppDoc" sorters:nil];
+    NSArray *appDocs = [_coreData findAll:@"AppDoc" sorters:nil];
     int total = 0;
     
     for (AppDoc *appDoc in appDocs)

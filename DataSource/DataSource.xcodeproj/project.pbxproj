@@ -15,7 +15,6 @@
 		113383631859AA1900CBA6FF /* DrugsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133835E1859AA1900CBA6FF /* DrugsLoader.m */; };
 		113383641859AA1900CBA6FF /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383601859AA1900CBA6FF /* FileDownloader.m */; };
 		113383651859AA1900CBA6FF /* StedmansScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383621859AA1900CBA6FF /* StedmansScraper.m */; };
-		113383681859AA3000CBA6FF /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383671859AA3000CBA6FF /* Database.m */; };
 		113383841859AAAA00CBA6FF /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133837F1859AAAA00CBA6FF /* TFHpple.m */; };
 		113383851859AAAA00CBA6FF /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383811859AAAA00CBA6FF /* TFHppleElement.m */; };
 		113383861859AAAA00CBA6FF /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383831859AAAA00CBA6FF /* XPathQuery.m */; };
@@ -31,7 +30,6 @@
 		113383AC1859AAD400CBA6FF /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133839D1859AAD400CBA6FF /* Product.m */; };
 		113383AD1859AAD400CBA6FF /* RegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133839F1859AAD400CBA6FF /* RegActionDate.m */; };
 		113383AE1859AAD400CBA6FF /* ReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383A11859AAD400CBA6FF /* ReviewClass_Lookup.m */; };
-		113383B11859AAEA00CBA6FF /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383B01859AAEA00CBA6FF /* Util.m */; };
 		117E6CC818634D1E00D78A82 /* AppDoc.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1133836C1859AA7200CBA6FF /* AppDoc.txt */; };
 		117E6CC918634D1E00D78A82 /* AppDocType_Lookup.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1133836D1859AA7200CBA6FF /* AppDocType_Lookup.txt */; };
 		117E6CCA18634D1E00D78A82 /* application.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1133836E1859AA7200CBA6FF /* application.txt */; };
@@ -44,7 +42,32 @@
 		119B62F3185C827C009D3184 /* DictionaryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62EE185C827C009D3184 /* DictionaryDefinition.m */; };
 		119B62F4185C827C009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F0185C827C009D3184 /* DictionaryTerm.m */; };
 		119B62F5185C827C009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F2185C827C009D3184 /* DictionaryXRef.m */; };
+		58264E88189E97E200D83B00 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E6E189E95B300D83B00 /* libJJJ.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		58264E6D189E95B300D83B00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58264E67189E95B200D83B00 /* JJJ.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 580E1D4C189E8DDA00336A44;
+			remoteInfo = JJJ;
+		};
+		58264E6F189E95B300D83B00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58264E67189E95B200D83B00 /* JJJ.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 580E1D5C189E8DDB00336A44;
+			remoteInfo = JJJTests;
+		};
+		58264E71189E95B300D83B00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58264E67189E95B200D83B00 /* JJJ.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 580E1D79189E8F4000336A44;
+			remoteInfo = JJJBundle;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		11322DDE1857A2E30007E7B9 /* CopyFiles */ = {
@@ -82,8 +105,6 @@
 		113383601859AA1900CBA6FF /* FileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloader.m; sourceTree = "<group>"; };
 		113383611859AA1900CBA6FF /* StedmansScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StedmansScraper.h; sourceTree = "<group>"; };
 		113383621859AA1900CBA6FF /* StedmansScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StedmansScraper.m; sourceTree = "<group>"; };
-		113383661859AA3000CBA6FF /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = "../../../Dr. Lee's Reference/Dr. Lee's Reference/Controller/Database.h"; sourceTree = "<group>"; };
-		113383671859AA3000CBA6FF /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = "../../../Dr. Lee's Reference/Dr. Lee's Reference/Controller/Database.m"; sourceTree = "<group>"; };
 		1133836A1859AA7200CBA6FF /* db.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db.sql; sourceTree = "<group>"; };
 		1133836C1859AA7200CBA6FF /* AppDoc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDoc.txt; sourceTree = "<group>"; };
 		1133836D1859AA7200CBA6FF /* AppDocType_Lookup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDocType_Lookup.txt; sourceTree = "<group>"; };
@@ -130,8 +151,6 @@
 		1133839F1859AAD400CBA6FF /* RegActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegActionDate.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/RegActionDate.m"; sourceTree = "<group>"; };
 		113383A01859AAD400CBA6FF /* ReviewClass_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReviewClass_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ReviewClass_Lookup.h"; sourceTree = "<group>"; };
 		113383A11859AAD400CBA6FF /* ReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReviewClass_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ReviewClass_Lookup.m"; sourceTree = "<group>"; };
-		113383AF1859AAEA00CBA6FF /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Util.h"; sourceTree = "<group>"; };
-		113383B01859AAEA00CBA6FF /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Util.m"; sourceTree = "<group>"; };
 		119B62ED185C827C009D3184 /* DictionaryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryDefinition.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryDefinition.h"; sourceTree = "<group>"; };
 		119B62EE185C827C009D3184 /* DictionaryDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryDefinition.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryDefinition.m"; sourceTree = "<group>"; };
 		119B62EF185C827C009D3184 /* DictionaryTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryTerm.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryTerm.h"; sourceTree = "<group>"; };
@@ -155,6 +174,8 @@
 		119F65A21867F43800EF658B /* Neoplasm.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Neoplasm.xml; sourceTree = "<group>"; };
 		119F65A31867F43800EF658B /* Tabular.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Tabular.pdf; sourceTree = "<group>"; };
 		119F65A41867F43800EF658B /* Tabular.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Tabular.xml; sourceTree = "<group>"; };
+		58264E61189E941F00D83B00 /* libJJJ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJJJ.a; path = "../../../../../../../../Users/buttmanizer/Library/Developer/Xcode/DerivedData/Dr._Lee's_Reference-czjeuqoykfphysdhxudpnheeuitz/Build/Products/Debug-iphoneos/libJJJ.a"; sourceTree = "<group>"; };
+		58264E67189E95B200D83B00 /* JJJ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JJJ.xcodeproj; path = ../jjj/JJJ/JJJ.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58264E88189E97E200D83B00 /* libJJJ.a in Frameworks */,
 				11322DF71857A3070007E7B9 /* libxml2.dylib in Frameworks */,
 				11322DE41857A2E30007E7B9 /* CoreData.framework in Frameworks */,
 				11322DE61857A2E30007E7B9 /* Foundation.framework in Frameworks */,
@@ -174,6 +196,7 @@
 		11322DD71857A2E30007E7B9 = {
 			isa = PBXGroup;
 			children = (
+				58264E67189E95B200D83B00 /* JJJ.xcodeproj */,
 				11322DE71857A2E30007E7B9 /* DataSource */,
 				11322DE21857A2E30007E7B9 /* Frameworks */,
 				11322DE11857A2E30007E7B9 /* Products */,
@@ -191,6 +214,7 @@
 		11322DE21857A2E30007E7B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58264E61189E941F00D83B00 /* libJJJ.a */,
 				11322DF61857A3070007E7B9 /* libxml2.dylib */,
 				11322DE31857A2E30007E7B9 /* CoreData.framework */,
 				11322DE51857A2E30007E7B9 /* Foundation.framework */,
@@ -207,8 +231,6 @@
 				11322DE81857A2E30007E7B9 /* main.m */,
 				113383871859AABB00CBA6FF /* Model */,
 				11322DEA1857A2E30007E7B9 /* Supporting Files */,
-				113383AF1859AAEA00CBA6FF /* Util.h */,
-				113383B01859AAEA00CBA6FF /* Util.m */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -224,8 +246,6 @@
 		1133835C1859A9EA00CBA6FF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				113383661859AA3000CBA6FF /* Database.h */,
-				113383671859AA3000CBA6FF /* Database.m */,
 				1133835D1859AA1900CBA6FF /* DrugsLoader.h */,
 				1133835E1859AA1900CBA6FF /* DrugsLoader.m */,
 				1133835F1859AA1900CBA6FF /* FileDownloader.h */,
@@ -367,6 +387,16 @@
 			path = "2014-ICD10-Code-Tables-and-Index";
 			sourceTree = "<group>";
 		};
+		58264E68189E95B200D83B00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58264E6E189E95B300D83B00 /* libJJJ.a */,
+				58264E70189E95B300D83B00 /* JJJTests.xctest */,
+				58264E72189E95B300D83B00 /* JJJBundle.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -406,12 +436,42 @@
 			mainGroup = 11322DD71857A2E30007E7B9;
 			productRefGroup = 11322DE11857A2E30007E7B9 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 58264E68189E95B200D83B00 /* Products */;
+					ProjectRef = 58264E67189E95B200D83B00 /* JJJ.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				11322DDF1857A2E30007E7B9 /* DataSource */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		58264E6E189E95B300D83B00 /* libJJJ.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libJJJ.a;
+			remoteRef = 58264E6D189E95B300D83B00 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		58264E70189E95B300D83B00 /* JJJTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = JJJTests.xctest;
+			remoteRef = 58264E6F189E95B300D83B00 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		58264E72189E95B300D83B00 /* JJJBundle.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = JJJBundle.bundle;
+			remoteRef = 58264E71189E95B300D83B00 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		11322DDC1857A2E30007E7B9 /* Sources */ = {
@@ -424,7 +484,6 @@
 				119B62F3185C827C009D3184 /* DictionaryDefinition.m in Sources */,
 				113383AC1859AAD400CBA6FF /* Product.m in Sources */,
 				113383A41859AAD400CBA6FF /* Application.m in Sources */,
-				113383B11859AAEA00CBA6FF /* Util.m in Sources */,
 				113383AB1859AAD400CBA6FF /* Product_TECode.m in Sources */,
 				113383A31859AAD400CBA6FF /* AppDocType_Lookup.m in Sources */,
 				113383851859AAAA00CBA6FF /* TFHppleElement.m in Sources */,
@@ -441,7 +500,6 @@
 				113383841859AAAA00CBA6FF /* TFHpple.m in Sources */,
 				113383A81859AAD400CBA6FF /* DocType_Lookup.m in Sources */,
 				113383631859AA1900CBA6FF /* DrugsLoader.m in Sources */,
-				113383681859AA3000CBA6FF /* Database.m in Sources */,
 				113383651859AA1900CBA6FF /* StedmansScraper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,9 +538,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -512,14 +575,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
 		11322DF41857A2E40007E7B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DataSource/DataSource-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -527,13 +596,17 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SDKROOT)/usr/include/libxml2",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		11322DF51857A2E40007E7B9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DataSource/DataSource-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -541,7 +614,10 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SDKROOT)/usr/include/libxml2",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
