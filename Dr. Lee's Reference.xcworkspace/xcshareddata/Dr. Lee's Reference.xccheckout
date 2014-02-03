@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EFEA7D89-FA3E-4A70-AF38-CC6C8BEE9A77</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Dr. Lee's Reference</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1BE1CF33-9D87-423F-A665-5A3B6E547D19</key>
+		<string>ssh://bitbucket.org/jovito/jjj.git</string>
+		<key>B29CDF70-6EFC-4FE0-825D-228051F6716E</key>
+		<string>ssh://bitbucket.org/jovito/dr.-lees-reference.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Dr. Lee's Reference.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1BE1CF33-9D87-423F-A665-5A3B6E547D19</key>
+		<string>../jjj</string>
+		<key>B29CDF70-6EFC-4FE0-825D-228051F6716E</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://bitbucket.org/jovito/dr.-lees-reference.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B29CDF70-6EFC-4FE0-825D-228051F6716E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B29CDF70-6EFC-4FE0-825D-228051F6716E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>dr</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1BE1CF33-9D87-423F-A665-5A3B6E547D19</string>
+			<key>IDESourceControlWCCName</key>
+			<string>jjj</string>
+		</dict>
+	</array>
+</dict>
+</plist>
