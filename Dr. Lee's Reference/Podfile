@@ -1,0 +1,13 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, "6.0"
+`$(inherited)`
+
+target "Dr. Lee's Reference" do
+pod "AFNetworking"
+pod "MagicalRecord"
+pod "MBProgressHUD"
+pod "MMDrawerController" 
+pod "SWRevealViewController"
+
+end
+

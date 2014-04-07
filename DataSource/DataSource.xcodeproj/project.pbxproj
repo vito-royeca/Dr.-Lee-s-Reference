@@ -15,9 +15,6 @@
 		113383631859AA1900CBA6FF /* DrugsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133835E1859AA1900CBA6FF /* DrugsLoader.m */; };
 		113383641859AA1900CBA6FF /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383601859AA1900CBA6FF /* FileDownloader.m */; };
 		113383651859AA1900CBA6FF /* StedmansScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383621859AA1900CBA6FF /* StedmansScraper.m */; };
-		113383841859AAAA00CBA6FF /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133837F1859AAAA00CBA6FF /* TFHpple.m */; };
-		113383851859AAAA00CBA6FF /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383811859AAAA00CBA6FF /* TFHppleElement.m */; };
-		113383861859AAAA00CBA6FF /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383831859AAAA00CBA6FF /* XPathQuery.m */; };
 		113383A21859AAD400CBA6FF /* AppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383891859AAD400CBA6FF /* AppDoc.m */; };
 		113383A31859AAD400CBA6FF /* AppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133838B1859AAD400CBA6FF /* AppDocType_Lookup.m */; };
 		113383A41859AAD400CBA6FF /* Application.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133838D1859AAD400CBA6FF /* Application.m */; };
@@ -43,6 +40,7 @@
 		119B62F4185C827C009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F0185C827C009D3184 /* DictionaryTerm.m */; };
 		119B62F5185C827C009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F2185C827C009D3184 /* DictionaryXRef.m */; };
 		58264E88189E97E200D83B00 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E6E189E95B300D83B00 /* libJJJ.a */; };
+		B631D180A81C48A49AE71C6D /* libPods-DataSource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D306F727684247149BF7310D /* libPods-DataSource.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +89,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		10F2562502044ED380BA6CD7 /* Pods-DataSource.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataSource.xcconfig"; path = "Pods/Pods-DataSource.xcconfig"; sourceTree = "<group>"; };
 		111B40F7185CB1E50077E5ED /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
 		111B40F8185CB1E50077E5ED /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		11322DE01857A2E30007E7B9 /* DataSource */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataSource; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,13 +114,6 @@
 		113383721859AA7200CBA6FF /* Product_tecode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Product_tecode.txt; sourceTree = "<group>"; };
 		113383731859AA7200CBA6FF /* RegActionDate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RegActionDate.txt; sourceTree = "<group>"; };
 		113383741859AA7200CBA6FF /* ReviewClass_Lookup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReviewClass_Lookup.txt; sourceTree = "<group>"; };
-		1133837D1859AAAA00CBA6FF /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		1133837E1859AAAA00CBA6FF /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
-		1133837F1859AAAA00CBA6FF /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
-		113383801859AAAA00CBA6FF /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
-		113383811859AAAA00CBA6FF /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
-		113383821859AAAA00CBA6FF /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
-		113383831859AAAA00CBA6FF /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		113383881859AAD400CBA6FF /* AppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDoc.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/AppDoc.h"; sourceTree = "<group>"; };
 		113383891859AAD400CBA6FF /* AppDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDoc.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/AppDoc.m"; sourceTree = "<group>"; };
 		1133838A1859AAD400CBA6FF /* AppDocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDocType_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/AppDocType_Lookup.h"; sourceTree = "<group>"; };
@@ -171,6 +163,7 @@
 		119F65A41867F43800EF658B /* Tabular.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Tabular.xml; sourceTree = "<group>"; };
 		58264E61189E941F00D83B00 /* libJJJ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJJJ.a; path = "../../../../../../../../Users/buttmanizer/Library/Developer/Xcode/DerivedData/Dr._Lee's_Reference-czjeuqoykfphysdhxudpnheeuitz/Build/Products/Debug-iphoneos/libJJJ.a"; sourceTree = "<group>"; };
 		58264E67189E95B200D83B00 /* JJJ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JJJ.xcodeproj; path = ../jjj/JJJ/JJJ.xcodeproj; sourceTree = "<group>"; };
+		D306F727684247149BF7310D /* libPods-DataSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataSource.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +175,7 @@
 				11322DF71857A3070007E7B9 /* libxml2.dylib in Frameworks */,
 				11322DE41857A2E30007E7B9 /* CoreData.framework in Frameworks */,
 				11322DE61857A2E30007E7B9 /* Foundation.framework in Frameworks */,
+				B631D180A81C48A49AE71C6D /* libPods-DataSource.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +189,7 @@
 				11322DE71857A2E30007E7B9 /* DataSource */,
 				11322DE21857A2E30007E7B9 /* Frameworks */,
 				11322DE11857A2E30007E7B9 /* Products */,
+				10F2562502044ED380BA6CD7 /* Pods-DataSource.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,6 +208,7 @@
 				11322DF61857A3070007E7B9 /* libxml2.dylib */,
 				11322DE31857A2E30007E7B9 /* CoreData.framework */,
 				11322DE51857A2E30007E7B9 /* Foundation.framework */,
+				D306F727684247149BF7310D /* libPods-DataSource.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -222,7 +218,6 @@
 			children = (
 				1133835C1859A9EA00CBA6FF /* Controller */,
 				113383691859AA5E00CBA6FF /* Data */,
-				1133837B1859AA9900CBA6FF /* Libs */,
 				11322DE81857A2E30007E7B9 /* main.m */,
 				113383871859AABB00CBA6FF /* Model */,
 				11322DEA1857A2E30007E7B9 /* Supporting Files */,
@@ -285,28 +280,6 @@
 				119F659A1867F43800EF658B /* 2014-ICD10-Code-Tables-and-Index */,
 			);
 			path = icd10;
-			sourceTree = "<group>";
-		};
-		1133837B1859AA9900CBA6FF /* Libs */ = {
-			isa = PBXGroup;
-			children = (
-				1133837C1859AAAA00CBA6FF /* Hpple */,
-			);
-			path = Libs;
-			sourceTree = "<group>";
-		};
-		1133837C1859AAAA00CBA6FF /* Hpple */ = {
-			isa = PBXGroup;
-			children = (
-				1133837D1859AAAA00CBA6FF /* LICENSE.txt */,
-				1133837E1859AAAA00CBA6FF /* TFHpple.h */,
-				1133837F1859AAAA00CBA6FF /* TFHpple.m */,
-				113383801859AAAA00CBA6FF /* TFHppleElement.h */,
-				113383811859AAAA00CBA6FF /* TFHppleElement.m */,
-				113383821859AAAA00CBA6FF /* XPathQuery.h */,
-				113383831859AAAA00CBA6FF /* XPathQuery.m */,
-			);
-			path = Hpple;
 			sourceTree = "<group>";
 		};
 		113383871859AABB00CBA6FF /* Model */ = {
@@ -394,9 +367,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11322DF31857A2E40007E7B9 /* Build configuration list for PBXNativeTarget "DataSource" */;
 			buildPhases = (
+				C1C1F7E1327140189E178BF9 /* Check Pods Manifest.lock */,
 				11322DDC1857A2E30007E7B9 /* Sources */,
 				11322DDD1857A2E30007E7B9 /* Frameworks */,
 				11322DDE1857A2E30007E7B9 /* CopyFiles */,
+				7B8B3A124DCD48B58C622501 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -463,6 +438,39 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7B8B3A124DCD48B58C622501 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-DataSource-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1C1F7E1327140189E178BF9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		11322DDC1857A2E30007E7B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -476,7 +484,6 @@
 				113383A41859AAD400CBA6FF /* Application.m in Sources */,
 				113383AB1859AAD400CBA6FF /* Product_TECode.m in Sources */,
 				113383A31859AAD400CBA6FF /* AppDocType_Lookup.m in Sources */,
-				113383851859AAAA00CBA6FF /* TFHppleElement.m in Sources */,
 				113383A91859AAD400CBA6FF /* Favorite.m in Sources */,
 				113383A51859AAD400CBA6FF /* ChemicalType_Lookup.m in Sources */,
 				113383AA1859AAD400CBA6FF /* History.m in Sources */,
@@ -486,8 +493,6 @@
 				119B62F5185C827C009D3184 /* DictionaryXRef.m in Sources */,
 				113383641859AA1900CBA6FF /* FileDownloader.m in Sources */,
 				113383A21859AAD400CBA6FF /* AppDoc.m in Sources */,
-				113383861859AAAA00CBA6FF /* XPathQuery.m in Sources */,
-				113383841859AAAA00CBA6FF /* TFHpple.m in Sources */,
 				113383A81859AAD400CBA6FF /* DocType_Lookup.m in Sources */,
 				113383631859AA1900CBA6FF /* DrugsLoader.m in Sources */,
 				113383651859AA1900CBA6FF /* StedmansScraper.m in Sources */,
@@ -577,6 +582,7 @@
 		};
 		11322DF41857A2E40007E7B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10F2562502044ED380BA6CD7 /* Pods-DataSource.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -595,6 +601,7 @@
 		};
 		11322DF51857A2E40007E7B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10F2562502044ED380BA6CD7 /* Pods-DataSource.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

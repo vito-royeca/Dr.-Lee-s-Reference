@@ -16,14 +16,14 @@
 
 @implementation DrugDetailsViewController
 {
-    JJJCoreData *_coreData;
+//    JJJCoreData *_coreData;
 }
 
 -(id) init
 {
     if (self = [super init])
     {
-        _coreData = [JJJCoreData sharedInstanceWithModel:@"database"];
+//        _coreData = [JJJCoreData sharedInstanceWithModel:@"database"];
     }
     
     return self;
@@ -44,11 +44,12 @@
     Product *p = [arrDrugs objectAtIndex:0];
     NSMutableDictionary *dicSorter = [[NSMutableDictionary alloc] init];
     [dicSorter  setObject:[NSNumber numberWithBool:NO] forKey:@"docDate"];
-    documents = [_coreData find:@"AppDoc"
-                     columnName:@"applNo.applNo"
-                    columnValue:p.applNo.applNo
-               relationshipKeys:[NSArray arrayWithObjects:@"applNo", nil]
-                        sorters:[NSArray arrayWithObjects:dicSorter, nil]];
+    documents = nil;
+//    documents = [_coreData find:@"AppDoc"
+//                     columnName:@"applNo.applNo"
+//                    columnValue:p.applNo.applNo
+//               relationshipKeys:[NSArray arrayWithObjects:@"applNo", nil]
+//                        sorters:[NSArray arrayWithObjects:dicSorter, nil]];
     
     [sections addObject:@"Drug Details"];
     [sections addObject:[NSString stringWithFormat:@"Products on Application %@", [drugDetails objectForKey:@"ApplNo"]]];

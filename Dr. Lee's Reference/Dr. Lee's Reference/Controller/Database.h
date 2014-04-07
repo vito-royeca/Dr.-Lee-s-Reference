@@ -29,6 +29,4 @@ typedef enum
                          narrowSearch:(BOOL)narrow;
 
 
-- (void)saveContext;
-
 @end

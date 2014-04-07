@@ -41,12 +41,6 @@
 		113DE89D1843D8420080B038 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE8811843D8420080B038 /* CoreData.framework */; };
 		113DE8A51843D8420080B038 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 113DE8A31843D8420080B038 /* InfoPlist.strings */; };
 		113DE8A71843D8420080B038 /* Dr__Lee_s_ReferenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE8A61843D8420080B038 /* Dr__Lee_s_ReferenceTests.m */; };
-		113DE9031843FBF70080B038 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 113DE9001843FBF70080B038 /* LICENSE */; };
-		113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DE9021843FBF70080B038 /* MBProgressHUD.m */; };
-		1156CDA41860D6770072519C /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1156CDA01860D6770072519C /* LICENSE.txt */; };
-		1156CDA51860D6770072519C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1156CDA11860D6770072519C /* README.md */; };
-		1156CDA61860D6770072519C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1156CDA31860D6770072519C /* SWRevealViewController.m */; };
-		1156CDA81860D6A70072519C /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 1156CDA71860D6A70072519C /* README.mdown */; };
 		116A2C31186214A900A463AA /* DictionaryTermViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 116A2C30186214A800A463AA /* DictionaryTermViewController.m */; };
 		116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 116ED0AE18468F4100CDC13D /* database.xcdatamodeld */; };
 		117E6CF118635E4000D78A82 /* pill.png in Resources */ = {isa = PBXBuildFile; fileRef = 117E6CEF18635E4000D78A82 /* pill.png */; };
@@ -71,9 +65,9 @@
 		119B62E6185C8240009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E5185C8240009D3184 /* DictionaryTerm.m */; };
 		119B62E9185C8240009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62E8185C8240009D3184 /* DictionaryXRef.m */; };
 		119B62EC185C8240009D3184 /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62EB185C8240009D3184 /* DictionarySynonym.m */; };
-		58264E89189E980900D83B00 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E7A189E95BA00D83B00 /* libJJJ.a */; };
-		58264E8A189E981A00D83B00 /* JJJBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58264E7E189E95BA00D83B00 /* JJJBundle.bundle */; };
 		5836F832189F2B3E00BE8DF3 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 5836F831189F2B3E00BE8DF3 /* Database.m */; };
+		8C9FECE718F280F100714818 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E7A189E95BA00D83B00 /* libJJJ.a */; };
+		E9F67E2DAFD3466DAB5B6015 /* libPods-Dr. Lee's Reference.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA74D43AEC3403DB9C07229 /* libPods-Dr. Lee's Reference.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,14 +156,6 @@
 		113DE8A21843D8420080B038 /* Dr. Lee's ReferenceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dr. Lee's ReferenceTests-Info.plist"; sourceTree = "<group>"; };
 		113DE8A41843D8420080B038 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		113DE8A61843D8420080B038 /* Dr__Lee_s_ReferenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dr__Lee_s_ReferenceTests.m; sourceTree = "<group>"; };
-		113DE9001843FBF70080B038 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		113DE9011843FBF70080B038 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		113DE9021843FBF70080B038 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		1156CDA01860D6770072519C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		1156CDA11860D6770072519C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		1156CDA21860D6770072519C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		1156CDA31860D6770072519C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		1156CDA71860D6A70072519C /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
 		116A2C2E1861E90F00A463AA /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		116A2C2F186214A800A463AA /* DictionaryTermViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryTermViewController.h; sourceTree = "<group>"; };
 		116A2C30186214A800A463AA /* DictionaryTermViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryTermViewController.m; sourceTree = "<group>"; };
@@ -206,11 +192,13 @@
 		119B62EB185C8240009D3184 /* DictionarySynonym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionarySynonym.m; sourceTree = "<group>"; };
 		11BA749B185C7C3800C41044 /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
 		11F34C0B184978DA00CF5852 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		49E3C478C73C4F4B886077A8 /* Pods-Dr. Lee's Reference.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dr. Lee's Reference.xcconfig"; path = "Pods/Pods-Dr. Lee's Reference.xcconfig"; sourceTree = "<group>"; };
 		58264E63189E942C00D83B00 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		58264E65189E943F00D83B00 /* libJJJ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJJJ.a; path = "../../../../../../../../Users/buttmanizer/Library/Developer/Xcode/DerivedData/Dr._Lee's_Reference-czjeuqoykfphysdhxudpnheeuitz/Build/Products/Debug-iphoneos/libJJJ.a"; sourceTree = "<group>"; };
 		58264E73189E95BA00D83B00 /* JJJ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JJJ.xcodeproj; path = ../jjj/JJJ/JJJ.xcodeproj; sourceTree = "<group>"; };
 		5836F830189F2B3E00BE8DF3 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		5836F831189F2B3E00BE8DF3 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
+		FAA74D43AEC3403DB9C07229 /* libPods-Dr. Lee's Reference.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dr. Lee's Reference.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,11 +206,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58264E89189E980900D83B00 /* libJJJ.a in Frameworks */,
+				8C9FECE718F280F100714818 /* libJJJ.a in Frameworks */,
 				113DE87E1843D8420080B038 /* CoreGraphics.framework in Frameworks */,
 				113DE8821843D8420080B038 /* CoreData.framework in Frameworks */,
 				113DE8801843D8420080B038 /* UIKit.framework in Frameworks */,
 				113DE87C1843D8420080B038 /* Foundation.framework in Frameworks */,
+				E9F67E2DAFD3466DAB5B6015 /* libPods-Dr. Lee's Reference.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +335,7 @@
 				113DE8A01843D8420080B038 /* Dr. Lee's ReferenceTests */,
 				113DE87A1843D8420080B038 /* Frameworks */,
 				113DE8791843D8420080B038 /* Products */,
+				49E3C478C73C4F4B886077A8 /* Pods-Dr. Lee's Reference.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -369,6 +359,7 @@
 				113DE87F1843D8420080B038 /* UIKit.framework */,
 				113DE8811843D8420080B038 /* CoreData.framework */,
 				113DE8991843D8420080B038 /* XCTest.framework */,
+				FAA74D43AEC3403DB9C07229 /* libPods-Dr. Lee's Reference.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -382,7 +373,6 @@
 				113383201859A8BF00CBA6FF /* Controller */,
 				116ED0AC18468F1700CDC13D /* Data */,
 				113DE8921843D8420080B038 /* Images.xcassets */,
-				113DE8F81843F2230080B038 /* Libs */,
 				113383241859A91D00CBA6FF /* Model */,
 				11251C1218619409009D158C /* Resources */,
 				113DE8841843D8420080B038 /* Supporting Files */,
@@ -420,37 +410,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		113DE8F81843F2230080B038 /* Libs */ = {
-			isa = PBXGroup;
-			children = (
-				113DE8FF1843FBF70080B038 /* MBProgressHUD */,
-				1156CD9F1860D5690072519C /* SWRevealViewController */,
-			);
-			path = Libs;
-			sourceTree = "<group>";
-		};
-		113DE8FF1843FBF70080B038 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				113DE9001843FBF70080B038 /* LICENSE */,
-				113DE9011843FBF70080B038 /* MBProgressHUD.h */,
-				113DE9021843FBF70080B038 /* MBProgressHUD.m */,
-				1156CDA71860D6A70072519C /* README.mdown */,
-			);
-			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
-		1156CD9F1860D5690072519C /* SWRevealViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1156CDA01860D6770072519C /* LICENSE.txt */,
-				1156CDA11860D6770072519C /* README.md */,
-				1156CDA21860D6770072519C /* SWRevealViewController.h */,
-				1156CDA31860D6770072519C /* SWRevealViewController.m */,
-			);
-			path = SWRevealViewController;
-			sourceTree = "<group>";
-		};
 		116ED0AC18468F1700CDC13D /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,10 +436,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 113DE8AA1843D8420080B038 /* Build configuration list for PBXNativeTarget "Dr. Lee's Reference" */;
 			buildPhases = (
+				D9592F840A944BE5A6D86710 /* Check Pods Manifest.lock */,
 				113DE8741843D8420080B038 /* Sources */,
 				113DE8751843D8420080B038 /* Frameworks */,
 				113DE8761843D8420080B038 /* Resources */,
 				11B789AA184E620A00125E97 /* ShellScript */,
+				7C72EBACD1E44248B92698E6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -579,12 +540,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58264E8A189E981A00D83B00 /* JJJBundle.bundle in Resources */,
-				1156CDA51860D6770072519C /* README.md in Resources */,
 				117E6D0118635FAD00D78A82 /* literature.png in Resources */,
 				111B40FB185D5DED0077E5ED /* database.sqlite in Resources */,
 				117E6D051863602400D78A82 /* settings.png in Resources */,
-				1156CDA81860D6A70072519C /* README.mdown in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
 				11251C1618619422009D158C /* reveal-icon@2x.png in Resources */,
@@ -594,10 +552,8 @@
 				117E6CFA18635EB600D78A82 /* info@2x.png in Resources */,
 				117E6D0218635FAD00D78A82 /* literature@2x.png in Resources */,
 				117E6CFD18635F0800D78A82 /* star.png in Resources */,
-				1156CDA41860D6770072519C /* LICENSE.txt in Resources */,
 				117E6CF618635E7300D78A82 /* brick@2x.png in Resources */,
 				117E6D091863628D00D78A82 /* safari.png in Resources */,
-				113DE9031843FBF70080B038 /* LICENSE in Resources */,
 				117E6CFE18635F0800D78A82 /* star@2x.png in Resources */,
 				11251C1518619422009D158C /* reveal-icon.png in Resources */,
 				117E6D0A1863628D00D78A82 /* safari@2x.png in Resources */,
@@ -630,6 +586,36 @@
 			shellPath = /bin/sh;
 			shellScript = "bN=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbN=$((0x$bN))\nbN=$(($bN + 1))\nbN=$(printf \"%X\" $bN)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $bN\" \"$INFOPLIST_FILE\"";
 		};
+		7C72EBACD1E44248B92698E6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Dr. Lee's Reference-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9592F840A944BE5A6D86710 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -642,7 +628,6 @@
 				113383571859A9A800CBA6FF /* DrugDetailsViewController.m in Sources */,
 				119B62E3185C823F009D3184 /* DictionaryDefinition.m in Sources */,
 				113383411859A95400CBA6FF /* Application.m in Sources */,
-				1156CDA61860D6770072519C /* SWRevealViewController.m in Sources */,
 				1133833F1859A95400CBA6FF /* AppDoc.m in Sources */,
 				113383591859A9A800CBA6FF /* DrugSummaryViewController.m in Sources */,
 				11251C1118618A6E009D158C /* MenuViewController.m in Sources */,
@@ -663,7 +648,6 @@
 				119B62E9185C8240009D3184 /* DictionaryXRef.m in Sources */,
 				116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */,
 				113383401859A95400CBA6FF /* AppDocType_Lookup.m in Sources */,
-				113DE9041843FBF70080B038 /* MBProgressHUD.m in Sources */,
 				113383471859A95400CBA6FF /* History.m in Sources */,
 				117E6D16186382B200D78A82 /* SettingsViewController.m in Sources */,
 				113383421859A95400CBA6FF /* ChemicalType_Lookup.m in Sources */,
@@ -743,9 +727,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos6.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -777,8 +761,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				SDKROOT = iphoneos6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -786,6 +770,7 @@
 		};
 		113DE8AB1843D8420080B038 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49E3C478C73C4F4B886077A8 /* Pods-Dr. Lee's Reference.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -799,6 +784,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "Dr. Lee's Reference/Dr. Lee's Reference-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -810,6 +796,7 @@
 		};
 		113DE8AC1843D8420080B038 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49E3C478C73C4F4B886077A8 /* Pods-Dr. Lee's Reference.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -823,6 +810,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "Dr. Lee's Reference/Dr. Lee's Reference-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

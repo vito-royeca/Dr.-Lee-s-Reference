@@ -17,6 +17,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"database.sqlite"];
+    
     MainViewController *mainViewController = [[MainViewController alloc] init];
     self.window.rootViewController = mainViewController;
     
@@ -49,7 +51,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
-    [[Database sharedInstance] saveContext];
+
+//    [[Database sharedInstance] saveContext];
+    [MagicalRecord cleanUp];
+
 }
 
 @end

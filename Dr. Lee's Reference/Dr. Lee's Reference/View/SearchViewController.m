@@ -44,11 +44,11 @@
     _content = [[NSMutableDictionary alloc] init];
 
     
-    CGFloat currentX = 0;
-    CGFloat currentY = 0;
-    CGFloat currentWidth = self.view.frame.size.width;
-    CGFloat currentHeight = self.navigationController.navigationBar.frame.size.height;
-    CGRect frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
+    CGFloat dX = 0;
+    CGFloat dY = 0;
+    CGFloat dWidth = self.view.frame.size.width;
+    CGFloat dHeight = self.navigationController.navigationBar.frame.size.height;
+    CGRect frame = CGRectMake(dX, dY, dWidth, dHeight);
     searchBar = [[UISearchBar alloc] initWithFrame:frame];
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     searchBar.delegate = self;
@@ -71,8 +71,8 @@
         }
     }
     
-    currentHeight = self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height;
-    frame = CGRectMake(currentX, currentY, currentWidth, currentHeight);
+    dHeight = self.view.frame.size.height + dHeight + [UIApplication sharedApplication].statusBarFrame.size.height;
+    frame = CGRectMake(dX, dY, dWidth, dHeight);
     tblResults = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     tblResults.delegate = self;
     tblResults.dataSource = self;
@@ -271,9 +271,6 @@
     NSString *prefix = [_keys objectAtIndex:section];
     NSArray *list = [_content objectForKey:prefix];
     return list.count;
-    
-//    id  sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
-//    return [sectionInfo numberOfObjects];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
