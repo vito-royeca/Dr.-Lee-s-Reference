@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.
 //
 
-#import "SearchViewController.h"
+#import "DictionarySearchViewController.h"
 
-@interface SearchViewController ()
+@interface DictionarySearchViewController ()
 {
     NSArray *_letters;
     NSArray *_keys;
@@ -16,7 +16,7 @@
 }
 @end
 
-@implementation SearchViewController
+@implementation DictionarySearchViewController
 
 @synthesize searchBar;
 @synthesize tblResults;
@@ -26,6 +26,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self)
     {
         // Custom initialization
@@ -38,7 +39,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    _letters = [NSArray arrayWithObjects:@"#", @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H",
+    _letters = [NSArray arrayWithObjects:@"SYM", @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H",
                @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U",
                @"V", @"W", @"X", @"Y", @"Z", nil];
     _content = [[NSMutableDictionary alloc] init];
@@ -47,7 +48,7 @@
     CGFloat dX = 0;
     CGFloat dY = 0;
     CGFloat dWidth = self.view.frame.size.width;
-    CGFloat dHeight = self.navigationController.navigationBar.frame.size.height;
+    CGFloat dHeight = 40;
     CGRect frame = CGRectMake(dX, dY, dWidth, dHeight);
     searchBar = [[UISearchBar alloc] initWithFrame:frame];
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -71,25 +72,17 @@
         }
     }
     
-    dHeight = self.view.frame.size.height + dHeight + [UIApplication sharedApplication].statusBarFrame.size.height;
+    dY = self.searchBar.frame.size.height;
+    dHeight = self.view.frame.size.height + dHeight;
     frame = CGRectMake(dX, dY, dWidth, dHeight);
     tblResults = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     tblResults.delegate = self;
     tblResults.dataSource = self;
     tblResults.scrollEnabled = YES;
     tblResults.userInteractionEnabled = YES;
+    
+    [self.view addSubview:searchBar];
     [self.view addSubview:tblResults];
-    
-    SWRevealViewController *revealController = [self revealViewController];
-    [revealController panGestureRecognizer];
-    [revealController tapGestureRecognizer];
-    
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
-                                                                         style:UIBarButtonItemStyleBordered
-                                                                        target:revealController
-                                                                        action:@selector(revealToggle:)];
-    self.navigationItem.leftBarButtonItem = revealButtonItem;
-    self.navigationItem.titleView = searchBar;
 }
 
 - (void)didReceiveMemoryWarning
@@ -319,7 +312,7 @@
     {
         case DictionaryDataSource:
         {
-            DictionaryTermViewController *viewController = [[DictionaryTermViewController alloc] init];
+            DictionaryDetailViewContoller *viewController = [[DictionaryDetailViewContoller alloc] init];
             viewController.dictionaryTerm = [arr objectAtIndex:indexPath.row];
             
             [self.navigationController pushViewController:viewController animated:YES];

@@ -119,114 +119,114 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SWRevealViewController *revealController = self.revealViewController;
-    UINavigationController *frontViewController = (id)revealController.frontViewController;
+//    SWRevealViewController *revealController = self.revealViewController;
+//    UINavigationController *frontViewController = (id)revealController.frontViewController;
     NSInteger row = indexPath.row;
 
-    if (row == 1)
-	{
-        if (![frontViewController isKindOfClass:[SearchViewController class]])
-        {
-			SearchViewController *viewController = [[SearchViewController alloc] init];
-            viewController.dataSource = DictionaryDataSource;
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
-            SearchViewController *viewController = [frontViewController.viewControllers objectAtIndex:0];
-            viewController.dataSource = DictionaryDataSource;
-			[revealController revealToggle:self];
-		}
-	}
-    else if (row == 2)
-	{
-        if (![frontViewController isKindOfClass:[SearchViewController class]])
-        {
-			SearchViewController *viewController = [[SearchViewController alloc] init];
-            viewController.dataSource = DrugsDataSource;
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
-            SearchViewController *viewController = [frontViewController.viewControllers objectAtIndex:0];
-            viewController.dataSource = DrugsDataSource;
-			[revealController revealToggle:self];
-		}
-	}
-    else if (row == 3)
-	{
-        if (![frontViewController isKindOfClass:[SearchViewController class]])
-        {
-			SearchViewController *viewController = [[SearchViewController alloc] init];
-            viewController.dataSource = ICD10DataSource;
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
-            SearchViewController *viewController = [frontViewController.viewControllers objectAtIndex:0];
-            viewController.dataSource = ICD10DataSource;
-			[revealController revealToggle:self];
-		}
-	}
-    else if (row == 4)
-	{
-        if (![frontViewController isKindOfClass:[FavoritesViewController class]])
-        {
-			FavoritesViewController *viewController = [[FavoritesViewController alloc] init];
-            viewController.title = kFavoritesTitle;
-			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
-			[revealController revealToggle:self];
-		}
-	}
-    else if (row == 5)
-	{
-        if (![frontViewController isKindOfClass:[HistoryViewController class]])
-        {
-			HistoryViewController *viewController = [[HistoryViewController alloc] init];
-            viewController.title = kHistoryTitle;
-			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
-			[revealController revealToggle:self];
-		}
-	}
-    else if (row == 6)
-	{
-        if (![frontViewController isKindOfClass:[SettingsViewController class]])
-        {
-			SettingsViewController *viewController = [[SettingsViewController alloc] init];
-            viewController.title = kSettingsTitle;
-			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
-			[revealController revealToggle:self];
-		}
-	}
-    else if (row == 7)
-	{
-        if (![frontViewController isKindOfClass:[AboutViewController class]])
-        {
-			AboutViewController *viewController = [[AboutViewController alloc] init];
-            viewController.title = kAboutTitle;
-			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-			[revealController setFrontViewController:navigationController animated:YES];
-        }
-		else
-		{
-			[revealController revealToggle:self];
-		}
-	}
+//    if (row == 1)
+//	{
+//        if (![frontViewController isKindOfClass:[SearchViewController class]])
+//        {
+//			SearchViewController *viewController = [[SearchViewController alloc] init];
+//            viewController.dataSource = DictionaryDataSource;
+//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+//			[revealController setFrontViewController:navigationController animated:YES];
+//        }
+//		else
+//		{
+//            SearchViewController *viewController = [frontViewController.viewControllers objectAtIndex:0];
+//            viewController.dataSource = DictionaryDataSource;
+//			[revealController revealToggle:self];
+//		}
+//	}
+//    else if (row == 2)
+//	{
+//        if (![frontViewController isKindOfClass:[SearchViewController class]])
+//        {
+//			SearchViewController *viewController = [[SearchViewController alloc] init];
+//            viewController.dataSource = DrugsDataSource;
+//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+//			[revealController setFrontViewController:navigationController animated:YES];
+//        }
+//		else
+//		{
+//            SearchViewController *viewController = [frontViewController.viewControllers objectAtIndex:0];
+//            viewController.dataSource = DrugsDataSource;
+//			[revealController revealToggle:self];
+//		}
+//	}
+//    else if (row == 3)
+//	{
+//        if (![frontViewController isKindOfClass:[SearchViewController class]])
+//        {
+//			SearchViewController *viewController = [[SearchViewController alloc] init];
+//            viewController.dataSource = ICD10DataSource;
+//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+//			[revealController setFrontViewController:navigationController animated:YES];
+//        }
+//		else
+//		{
+//            SearchViewController *viewController = [frontViewController.viewControllers objectAtIndex:0];
+//            viewController.dataSource = ICD10DataSource;
+//			[revealController revealToggle:self];
+//		}
+//	}
+//    else if (row == 4)
+//	{
+//        if (![frontViewController isKindOfClass:[FavoritesViewController class]])
+//        {
+//			FavoritesViewController *viewController = [[FavoritesViewController alloc] init];
+//            viewController.title = kFavoritesTitle;
+//			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+//			[revealController setFrontViewController:navigationController animated:YES];
+//        }
+//		else
+//		{
+//			[revealController revealToggle:self];
+//		}
+//	}
+//    else if (row == 5)
+//	{
+//        if (![frontViewController isKindOfClass:[HistoryViewController class]])
+//        {
+//			HistoryViewController *viewController = [[HistoryViewController alloc] init];
+//            viewController.title = kHistoryTitle;
+//			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+//			[revealController setFrontViewController:navigationController animated:YES];
+//        }
+//		else
+//		{
+//			[revealController revealToggle:self];
+//		}
+//	}
+//    else if (row == 6)
+//	{
+//        if (![frontViewController isKindOfClass:[SettingsViewController class]])
+//        {
+//			SettingsViewController *viewController = [[SettingsViewController alloc] init];
+//            viewController.title = kSettingsTitle;
+//			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+//			[revealController setFrontViewController:navigationController animated:YES];
+//        }
+//		else
+//		{
+//			[revealController revealToggle:self];
+//		}
+//	}
+//    else if (row == 7)
+//	{
+//        if (![frontViewController isKindOfClass:[AboutViewController class]])
+//        {
+//			AboutViewController *viewController = [[AboutViewController alloc] init];
+//            viewController.title = kAboutTitle;
+//			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+//			[revealController setFrontViewController:navigationController animated:YES];
+//        }
+//		else
+//		{
+//			[revealController revealToggle:self];
+//		}
+//	}
 }
 
 @end

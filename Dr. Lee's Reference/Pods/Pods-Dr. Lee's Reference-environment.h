@@ -96,9 +96,3 @@
 #define COCOAPODS_VERSION_MINOR_MagicalRecord_Core 2
 #define COCOAPODS_VERSION_PATCH_MagicalRecord_Core 0
 
-// SWRevealViewController
-#define COCOAPODS_POD_AVAILABLE_SWRevealViewController
-#define COCOAPODS_VERSION_MAJOR_SWRevealViewController 2
-#define COCOAPODS_VERSION_MINOR_SWRevealViewController 0
-#define COCOAPODS_VERSION_PATCH_SWRevealViewController 0
-

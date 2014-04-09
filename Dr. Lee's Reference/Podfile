@@ -7,7 +7,6 @@ pod "AFNetworking"
 pod "MagicalRecord"
 pod "MBProgressHUD"
 pod "MMDrawerController" 
-pod "SWRevealViewController"
 
 end
 

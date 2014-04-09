@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.
 //
 
-#import "DictionaryTermViewController.h"
+#import "DictionaryDetailViewContoller.h"
 
-@interface DictionaryTermViewController ()
+@interface DictionaryDetailViewContoller ()
 
 @end
 
-@implementation DictionaryTermViewController
+@implementation DictionaryDetailViewContoller
 {
     NSString *_currentTerm;
     NSMutableArray *_history;
