@@ -211,7 +211,7 @@
             DictionarySynonym *syn = d.dictionarySynonym && d.dictionarySynonym.count > 0 ? [[d.dictionarySynonym allObjects] objectAtIndex:0] : nil;
             
             cell.textLabel.text = d.term;
-            cell.detailTextLabel.text = def ? def.definition : (syn ? [NSString stringWithFormat:@"SYN %@", syn.term] : @"");
+//            cell.detailTextLabel.text = def ? def.definition : (syn ? [NSString stringWithFormat:@"SYN %@", syn.term] : @"");
             cell.textLabel.font = kMenuFont;
             cell.detailTextLabel.font = kMenuFont;
             break;

@@ -479,9 +479,6 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jovito Royeca";
 				TargetAttributes = {
-					113DE8771843D8420080B038 = {
-						DevelopmentTeam = 43CD66539H;
-					};
 					113DE8971843D8420080B038 = {
 						TestTargetID = 113DE8771843D8420080B038;
 					};

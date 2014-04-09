@@ -17,13 +17,33 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"database.sqlite"];
+    [self setupDb:@"database.sqlite"];
     
     MainViewController *mainViewController = [[MainViewController alloc] init];
     self.window.rootViewController = mainViewController;
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void) setupDb:(NSString*) dbname
+{
+    NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    NSURL *documentPath = [paths lastObject];
+    NSURL *storeURL = [documentPath URLByAppendingPathComponent:dbname];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]])
+    {
+        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:[dbname stringByDeletingPathExtension] ofType:@"sqlite"]];
+        NSError* err = nil;
+        
+        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err])
+        {
+            NSLog(@"Error: Unable to copy preloaded database.");
+        }
+    }
+    
+    [MagicalRecord setupCoreDataStackWithStoreNamed:dbname];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
