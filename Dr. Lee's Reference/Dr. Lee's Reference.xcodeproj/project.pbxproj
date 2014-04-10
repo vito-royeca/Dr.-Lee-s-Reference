@@ -46,6 +46,7 @@
 		5892E0C318F5904F004160E0 /* DictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0C218F5904F004160E0 /* DictionaryViewController.m */; };
 		5892E0C618F591E4004160E0 /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0C518F591E4004160E0 /* TestView.m */; };
 		5892E0C918F5973E004160E0 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0C818F5973E004160E0 /* CenterViewController.m */; };
+		8C35366618F6A7610029BFF9 /* DictionaryBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C35366518F6A7610029BFF9 /* DictionaryBrowseViewController.m */; };
 		8C9FECE718F280F100714818 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E7A189E95BA00D83B00 /* libJJJ.a */; };
 		E9F67E2DAFD3466DAB5B6015 /* libPods-Dr. Lee's Reference.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA74D43AEC3403DB9C07229 /* libPods-Dr. Lee's Reference.a */; };
 /* End PBXBuildFile section */
@@ -155,6 +156,8 @@
 		5892E0C518F591E4004160E0 /* TestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestView.m; sourceTree = "<group>"; };
 		5892E0C718F5973E004160E0 /* CenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterViewController.h; sourceTree = "<group>"; };
 		5892E0C818F5973E004160E0 /* CenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterViewController.m; sourceTree = "<group>"; };
+		8C35366418F6A7610029BFF9 /* DictionaryBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBrowseViewController.h; sourceTree = "<group>"; };
+		8C35366518F6A7610029BFF9 /* DictionaryBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryBrowseViewController.m; sourceTree = "<group>"; };
 		FAA74D43AEC3403DB9C07229 /* libPods-Dr. Lee's Reference.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dr. Lee's Reference.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -339,6 +342,8 @@
 				5892E0B018F58605004160E0 /* DictionarySearchViewController.m */,
 				5892E0C118F5904F004160E0 /* DictionaryViewController.h */,
 				5892E0C218F5904F004160E0 /* DictionaryViewController.m */,
+				8C35366418F6A7610029BFF9 /* DictionaryBrowseViewController.h */,
+				8C35366518F6A7610029BFF9 /* DictionaryBrowseViewController.m */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -541,6 +546,7 @@
 				119B62E6185C8240009D3184 /* DictionaryTerm.m in Sources */,
 				119B62E3185C823F009D3184 /* DictionaryDefinition.m in Sources */,
 				113383411859A95400CBA6FF /* Application.m in Sources */,
+				8C35366618F6A7610029BFF9 /* DictionaryBrowseViewController.m in Sources */,
 				1133833F1859A95400CBA6FF /* AppDoc.m in Sources */,
 				5892E0B418F5862F004160E0 /* DictionaryDetailViewContoller.m in Sources */,
 				113383461859A95400CBA6FF /* Favorite.m in Sources */,

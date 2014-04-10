@@ -28,6 +28,27 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UINavigationController *nc1 = [[UINavigationController alloc] init];
+    [nc1.navigationBar setTintColor:[UIColor blackColor]];
+    UIViewController *viewController1 = [[DictionaryBrowseViewController alloc] initWithNibName:nil bundle:nil];
+    nc1.viewControllers = [NSArray arrayWithObjects:viewController1, nil];
+    [nc1.navigationBar setTintColor:[UIColor yellowColor]];
+    nc1.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:0];
+//    nc1.tabBarItem.title = @"Browse";
+//    nc1.tabBarItem.image =
+    
+    UINavigationController *nc2 = [[UINavigationController alloc] init];
+    [nc2.navigationBar setTintColor:[UIColor blackColor]];
+    UIViewController *viewController2 = [[DictionarySearchViewController alloc] initWithNibName:nil bundle:nil];
+    nc2.viewControllers = [NSArray arrayWithObjects:viewController2, nil];
+    nc2.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+	tabBarController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    tabBarController.viewControllers = [NSArray arrayWithObjects:nc1, nc2 ,nil];
+    [self.view addSubview:tabBarController.view];
 }
 
 - (void)didReceiveMemoryWarning

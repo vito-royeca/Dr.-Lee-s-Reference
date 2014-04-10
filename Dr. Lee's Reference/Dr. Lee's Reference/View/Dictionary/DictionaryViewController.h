@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DictionaryBrowseViewController.h"
+#import "DictionarySearchViewController.h"
+
 @interface DictionaryViewController : UIViewController
 
 @end

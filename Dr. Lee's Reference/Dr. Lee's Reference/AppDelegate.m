@@ -7,10 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "DictionaryViewController.h"
 #import "MenuViewController.h"
 #import "MMDrawerController.h"
-#import "DictionaryViewController.h"
-
 
 @interface AppDelegate()
 @property (nonatomic,strong) MMDrawerController * drawerController;
@@ -22,66 +21,65 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
     [self setupDb:@"database.sqlite"];
     
-//    MenuViewController *menuVC = [[MenuViewController alloc] init];
-//    DictionaryViewController *dictionaryVC = [[DictionaryViewController alloc] initWithNibName:nil bundle:nil];
-//    MMDrawerController *mainVC = [[MMDrawerController alloc] initWithCenterViewController:dictionaryVC
-//                                                                   leftDrawerViewController:menuVC];
-//    self.window.rootViewController = mainVC;
-//    
-//    [self.window makeKeyAndVisible];
-//    return YES;
-    
     MenuViewController *menuVC = [[MenuViewController alloc] init];
     DictionaryViewController *dictionaryVC = [[DictionaryViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:dictionaryVC];
-    
-    [navigationController setRestorationIdentifier:@"CenterNavigationControllerRestorationKey"];
-    if(OSVersionIsAtLeastiOS7())
-    {
-        UINavigationController * leftSideNavController = [[UINavigationController alloc] initWithRootViewController:menuVC];
-		[leftSideNavController setRestorationIdentifier:@"LeftNavigationControllerRestorationKey"];
-        self.drawerController = [[MMDrawerController alloc]
-                                 initWithCenterViewController:navigationController
-                                 leftDrawerViewController:leftSideNavController];
-        [self.drawerController setShowsShadow:NO];
-    }
-    else
-    {
-        self.drawerController = [[MMDrawerController alloc]
-                                 initWithCenterViewController:navigationController
-                                 leftDrawerViewController:menuVC];
-    }
-    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
-    [self.drawerController setMaximumRightDrawerWidth:200.0];
-    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    
-//    [self.drawerController
-//     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-//         MMDrawerControllerDrawerVisualStateBlock block;
-//         block = [[MMExampleDrawerVisualStateManager sharedManager]
-//                  drawerVisualStateBlockForDrawerSide:drawerSide];
-//         if(block){
-//             block(drawerController, drawerSide, percentVisible);
-//         }
-//     }];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    if(OSVersionIsAtLeastiOS7())
-    {
-        UIColor * tintColor = [UIColor colorWithRed:29.0/255.0
-                                              green:173.0/255.0
-                                               blue:234.0/255.0
-                                              alpha:1.0];
-        [self.window setTintColor:tintColor];
-    }
-    [self.window setRootViewController:self.drawerController];
-    
+    MMDrawerController *mainVC = [[MMDrawerController alloc] initWithCenterViewController:dictionaryVC
+                                                                   leftDrawerViewController:menuVC];
+    self.window.rootViewController = mainVC;
+    [self.window makeKeyAndVisible];
     return YES;
+    
+//    MenuViewController *menuVC = [[MenuViewController alloc] init];
+//    DictionaryViewController *dictionaryVC = [[DictionaryViewController alloc] initWithNibName:nil bundle:nil];
+//    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:dictionaryVC];
+//    
+//    [navigationController setRestorationIdentifier:@"CenterNavigationControllerRestorationKey"];
+//    if(OSVersionIsAtLeastiOS7())
+//    {
+//        UINavigationController * leftSideNavController = [[UINavigationController alloc] initWithRootViewController:menuVC];
+//		[leftSideNavController setRestorationIdentifier:@"LeftNavigationControllerRestorationKey"];
+//        self.drawerController = [[MMDrawerController alloc]
+//                                 initWithCenterViewController:navigationController
+//                                 leftDrawerViewController:leftSideNavController];
+//        [self.drawerController setShowsShadow:NO];
+//    }
+//    else
+//    {
+//        self.drawerController = [[MMDrawerController alloc]
+//                                 initWithCenterViewController:navigationController
+//                                 leftDrawerViewController:menuVC];
+//    }
+//    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
+//    [self.drawerController setMaximumRightDrawerWidth:200.0];
+//    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+//    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+//    
+////    [self.drawerController
+////     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+////         MMDrawerControllerDrawerVisualStateBlock block;
+////         block = [[MMExampleDrawerVisualStateManager sharedManager]
+////                  drawerVisualStateBlockForDrawerSide:drawerSide];
+////         if(block){
+////             block(drawerController, drawerSide, percentVisible);
+////         }
+////     }];
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    if(OSVersionIsAtLeastiOS7())
+//    {
+//        UIColor * tintColor = [UIColor colorWithRed:29.0/255.0
+//                                              green:173.0/255.0
+//                                               blue:234.0/255.0
+//                                              alpha:1.0];
+//        [self.window setTintColor:tintColor];
+//    }
+//    [self.window setRootViewController:self.drawerController];
+//    
+//    return YES;
 }
 
 - (void) setupDb:(NSString*) dbname
