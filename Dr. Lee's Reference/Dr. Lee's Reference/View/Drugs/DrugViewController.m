@@ -1,26 +1,25 @@
 //
-//  DictionaryViewController.m
+//  DrugViewController.m
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 4/9/14.
+//  Created by Jovit Royeca on 4/11/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
-#import "DictionaryViewController.h"
-#import "DictionaryBrowseViewController.h"
-#import "DictionarySearchViewController.h"
+#import "DrugViewController.h"
+#import "DrugBrowseViewController.h"
+#import "DrugSearchViewController.h"
 
-@interface DictionaryViewController ()
+@interface DrugViewController ()
 
 @end
 
-@implementation DictionaryViewController
+@implementation DrugViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
+    if (self) {
         // Custom initialization
     }
     return self;
@@ -32,14 +31,14 @@
     // Do any additional setup after loading the view.
     
     UINavigationController *nc1 = [[UINavigationController alloc] init];
-    UIViewController *vc1 = [[DictionaryBrowseViewController alloc] initWithNibName:nil bundle:nil];
+    UIViewController *vc1 = [[DrugBrowseViewController alloc] initWithNibName:nil bundle:nil];
     nc1.viewControllers = [NSArray arrayWithObjects:vc1, nil];
     nc1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse"
                                                    image:[UIImage imageNamed:@"box.png"]
                                            selectedImage:[UIImage imageNamed:@"box.png"]];
     
     UINavigationController *nc2 = [[UINavigationController alloc] init];
-    UIViewController *vc2 = [[DictionarySearchViewController alloc] initWithNibName:nil bundle:nil];
+    UIViewController *vc2 = [[DrugSearchViewController alloc] initWithNibName:nil bundle:nil];
     nc2.viewControllers = [NSArray arrayWithObjects:vc2, nil];
     nc2.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Search"
                                                    image:[UIImage imageNamed:@"search.png"]
@@ -53,12 +52,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - UITabBarControllerDelegate
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-{
-    
 }
 
 /*

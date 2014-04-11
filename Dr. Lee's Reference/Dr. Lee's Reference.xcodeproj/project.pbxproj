@@ -44,10 +44,11 @@
 		5892E0BD18F58657004160E0 /* DrugSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0BA18F58657004160E0 /* DrugSummaryViewController.m */; };
 		5892E0C018F58661004160E0 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0BF18F58661004160E0 /* MenuViewController.m */; };
 		5892E0C318F5904F004160E0 /* DictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0C218F5904F004160E0 /* DictionaryViewController.m */; };
-		5892E0C618F591E4004160E0 /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0C518F591E4004160E0 /* TestView.m */; };
-		5892E0C918F5973E004160E0 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0C818F5973E004160E0 /* CenterViewController.m */; };
 		8C35366618F6A7610029BFF9 /* DictionaryBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C35366518F6A7610029BFF9 /* DictionaryBrowseViewController.m */; };
 		8C9FECE718F280F100714818 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E7A189E95BA00D83B00 /* libJJJ.a */; };
+		8CEF1E7618F8026100EAE98E /* DrugSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7518F8026100EAE98E /* DrugSearchViewController.m */; };
+		8CEF1E7918F8092D00EAE98E /* DrugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7818F8092D00EAE98E /* DrugViewController.m */; };
+		8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7B18F809C100EAE98E /* DrugBrowseViewController.m */; };
 		E9F67E2DAFD3466DAB5B6015 /* libPods-Dr. Lee's Reference.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA74D43AEC3403DB9C07229 /* libPods-Dr. Lee's Reference.a */; };
 /* End PBXBuildFile section */
 
@@ -152,12 +153,14 @@
 		5892E0BF18F58661004160E0 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		5892E0C118F5904F004160E0 /* DictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryViewController.h; sourceTree = "<group>"; };
 		5892E0C218F5904F004160E0 /* DictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryViewController.m; sourceTree = "<group>"; };
-		5892E0C418F591E4004160E0 /* TestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
-		5892E0C518F591E4004160E0 /* TestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestView.m; sourceTree = "<group>"; };
-		5892E0C718F5973E004160E0 /* CenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterViewController.h; sourceTree = "<group>"; };
-		5892E0C818F5973E004160E0 /* CenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterViewController.m; sourceTree = "<group>"; };
 		8C35366418F6A7610029BFF9 /* DictionaryBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBrowseViewController.h; sourceTree = "<group>"; };
 		8C35366518F6A7610029BFF9 /* DictionaryBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryBrowseViewController.m; sourceTree = "<group>"; };
+		8CEF1E7418F8026100EAE98E /* DrugSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSearchViewController.h; sourceTree = "<group>"; };
+		8CEF1E7518F8026100EAE98E /* DrugSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSearchViewController.m; sourceTree = "<group>"; };
+		8CEF1E7718F8092D00EAE98E /* DrugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugViewController.h; sourceTree = "<group>"; };
+		8CEF1E7818F8092D00EAE98E /* DrugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugViewController.m; sourceTree = "<group>"; };
+		8CEF1E7A18F809C100EAE98E /* DrugBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugBrowseViewController.h; sourceTree = "<group>"; };
+		8CEF1E7B18F809C100EAE98E /* DrugBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugBrowseViewController.m; sourceTree = "<group>"; };
 		FAA74D43AEC3403DB9C07229 /* libPods-Dr. Lee's Reference.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dr. Lee's Reference.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -243,10 +246,6 @@
 				5892E0AE18F585DB004160E0 /* ICD10 */,
 				5892E0BE18F58661004160E0 /* MenuViewController.h */,
 				5892E0BF18F58661004160E0 /* MenuViewController.m */,
-				5892E0C418F591E4004160E0 /* TestView.h */,
-				5892E0C518F591E4004160E0 /* TestView.m */,
-				5892E0C718F5973E004160E0 /* CenterViewController.h */,
-				5892E0C818F5973E004160E0 /* CenterViewController.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -336,14 +335,14 @@
 		5892E0AC18F585AC004160E0 /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
+				8C35366418F6A7610029BFF9 /* DictionaryBrowseViewController.h */,
+				8C35366518F6A7610029BFF9 /* DictionaryBrowseViewController.m */,
 				5892E0B218F5862F004160E0 /* DictionaryDetailViewContoller.h */,
 				5892E0B318F5862F004160E0 /* DictionaryDetailViewContoller.m */,
 				5892E0AF18F58605004160E0 /* DictionarySearchViewController.h */,
 				5892E0B018F58605004160E0 /* DictionarySearchViewController.m */,
 				5892E0C118F5904F004160E0 /* DictionaryViewController.h */,
 				5892E0C218F5904F004160E0 /* DictionaryViewController.m */,
-				8C35366418F6A7610029BFF9 /* DictionaryBrowseViewController.h */,
-				8C35366518F6A7610029BFF9 /* DictionaryBrowseViewController.m */,
 			);
 			path = Dictionary;
 			sourceTree = "<group>";
@@ -351,12 +350,18 @@
 		5892E0AD18F585CB004160E0 /* Drugs */ = {
 			isa = PBXGroup;
 			children = (
+				8CEF1E7A18F809C100EAE98E /* DrugBrowseViewController.h */,
+				8CEF1E7B18F809C100EAE98E /* DrugBrowseViewController.m */,
 				5892E0B518F58657004160E0 /* DrugDetailsViewController.h */,
 				5892E0B618F58657004160E0 /* DrugDetailsViewController.m */,
 				5892E0B718F58657004160E0 /* DrugProductTableViewCell.h */,
 				5892E0B818F58657004160E0 /* DrugProductTableViewCell.m */,
+				8CEF1E7418F8026100EAE98E /* DrugSearchViewController.h */,
+				8CEF1E7518F8026100EAE98E /* DrugSearchViewController.m */,
 				5892E0B918F58657004160E0 /* DrugSummaryViewController.h */,
 				5892E0BA18F58657004160E0 /* DrugSummaryViewController.m */,
+				8CEF1E7718F8092D00EAE98E /* DrugViewController.h */,
+				8CEF1E7818F8092D00EAE98E /* DrugViewController.m */,
 			);
 			path = Drugs;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 				113383411859A95400CBA6FF /* Application.m in Sources */,
 				8C35366618F6A7610029BFF9 /* DictionaryBrowseViewController.m in Sources */,
 				1133833F1859A95400CBA6FF /* AppDoc.m in Sources */,
+				8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */,
 				5892E0B418F5862F004160E0 /* DictionaryDetailViewContoller.m in Sources */,
 				113383461859A95400CBA6FF /* Favorite.m in Sources */,
 				113383481859A95400CBA6FF /* Product_TECode.m in Sources */,
@@ -556,11 +562,9 @@
 				5892E0B118F58605004160E0 /* DictionarySearchViewController.m in Sources */,
 				5892E0BD18F58657004160E0 /* DrugSummaryViewController.m in Sources */,
 				113383451859A95400CBA6FF /* DocType_Lookup.m in Sources */,
-				5892E0C918F5973E004160E0 /* CenterViewController.m in Sources */,
 				119B62EC185C8240009D3184 /* DictionarySynonym.m in Sources */,
 				113383491859A95400CBA6FF /* Product.m in Sources */,
 				1133834A1859A95400CBA6FF /* RegActionDate.m in Sources */,
-				5892E0C618F591E4004160E0 /* TestView.m in Sources */,
 				5892E0C318F5904F004160E0 /* DictionaryViewController.m in Sources */,
 				5892E0C018F58661004160E0 /* MenuViewController.m in Sources */,
 				113DE88A1843D8420080B038 /* main.m in Sources */,
@@ -568,6 +572,8 @@
 				116ED0B218468F4100CDC13D /* database.xcdatamodeld in Sources */,
 				5892E0BC18F58657004160E0 /* DrugProductTableViewCell.m in Sources */,
 				113383401859A95400CBA6FF /* AppDocType_Lookup.m in Sources */,
+				8CEF1E7618F8026100EAE98E /* DrugSearchViewController.m in Sources */,
+				8CEF1E7918F8092D00EAE98E /* DrugViewController.m in Sources */,
 				113383471859A95400CBA6FF /* History.m in Sources */,
 				113383421859A95400CBA6FF /* ChemicalType_Lookup.m in Sources */,
 				5836F832189F2B3E00BE8DF3 /* Database.m in Sources */,

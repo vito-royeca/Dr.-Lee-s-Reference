@@ -1,18 +1,20 @@
 //
-//  CenterViewController.m
+//  DrugBrowseViewController.m
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 4/9/14.
+//  Created by Jovit Royeca on 4/11/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
-#import "CenterViewController.h"
+#import "DrugBrowseViewController.h"
+#import "MMDrawerBarButtonItem.h"
+#import "UIViewController+MMDrawerController.h"
 
-@interface CenterViewController ()
+@interface DrugBrowseViewController ()
 
 @end
 
-@implementation CenterViewController
+@implementation DrugBrowseViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +29,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
+                                                                                      action:@selector(rightDrawerButtonPress:)];
+    [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
+    self.navigationItem.title = @"Browse Drugs";
+    self.view.backgroundColor = [UIColor greenColor];
+}
+
+-(void) rightDrawerButtonPress:(id)sender
+{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

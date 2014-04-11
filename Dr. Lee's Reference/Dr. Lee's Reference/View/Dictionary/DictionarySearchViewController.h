@@ -24,6 +24,5 @@
 @property(strong,nonatomic) UITableView *tblResults;
 
 @property(strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property(nonatomic) DataSource dataSource;
 
 @end

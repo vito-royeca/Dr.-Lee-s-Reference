@@ -1,16 +1,18 @@
 //
-//  SearchViewController.m
+//  DrugSearchViewController.m
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 11/26/13.
-//  Copyright (c) 2013 Jovito Royeca. All rights reserved.
+//  Created by Jovit Royeca on 4/11/14.
+//  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
-#import "DictionarySearchViewController.h"
+#import "DrugSearchViewController.h"
+#import "DrugSummaryViewController.h"
 #import "MMDrawerBarButtonItem.h"
+#import "Product.h"
 #import "UIViewController+MMDrawerController.h"
 
-@interface DictionarySearchViewController ()
+@interface DrugSearchViewController ()
 {
     NSArray *_letters;
     NSArray *_keys;
@@ -18,7 +20,8 @@
 }
 @end
 
-@implementation DictionarySearchViewController
+
+@implementation DrugSearchViewController
 
 @synthesize searchBar = _searchBar;
 @synthesize tblResults = _tblResults;
@@ -27,9 +30,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
-    if (self)
-    {
+    if (self) {
         // Custom initialization
     }
     return self;
@@ -38,13 +39,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     
     _letters = [NSArray arrayWithObjects:@"SYM", @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H",
-               @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U",
-               @"V", @"W", @"X", @"Y", @"Z", nil];
+                @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U",
+                @"V", @"W", @"X", @"Y", @"Z", nil];
     _content = [[NSMutableDictionary alloc] init];
-
+    
     
     CGFloat dX = 0;
     CGFloat dY = self.navigationController.navigationBar.frame.size.height+[UIApplication sharedApplication].statusBarFrame.size.height;
@@ -70,7 +71,7 @@
     MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
                                                                                       action:@selector(rightDrawerButtonPress:)];
     [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
-    self.navigationItem.title = @"Search Dictionary";
+    self.navigationItem.title = @"Search Drugs";
 }
 
 -(void) rightDrawerButtonPress:(id)sender
@@ -98,27 +99,37 @@
     {
         NSMutableArray *arrValues = [[NSMutableArray alloc] init];
         
-        for (DictionaryTerm *d in [self.fetchedResultsController fetchedObjects])
+        for (Product *p in [self.fetchedResultsController fetchedObjects])
         {
-            NSString *term = [JJJUtil toASCII:d.term];
+            NSString *term = [JJJUtil toASCII:p.drugName];
             
             if ([JJJUtil isAlphaStart:term])
             {
                 if ([[term uppercaseString] hasPrefix:letter])
                 {
-                    if (![arrValues containsObject:d])
+                    if (![arrValues containsObject:p])
                     {
-                        [arrValues addObject:d];
+                        [arrValues addObject:p];
                     }
                 }
             }
             else
             {
-                if (![arrNonAlpha containsObject:d])
+                if (![arrNonAlpha containsObject:p])
                 {
-                    [arrNonAlpha addObject:d];
+                    [arrNonAlpha addObject:p];
                 }
             }
+            
+            //                    NSString *name = [dict objectForKey:@"Drug Name"];
+            //
+            //                    if ([[name uppercaseString] hasPrefix:letter])
+            //                    {
+            //                        if (![arrValues containsObject:dict])
+            //                        {
+            //                            [arrValues addObject:dict];
+            //                        }
+            //                    }
         }
         
         if (arrValues.count > 0)
@@ -126,7 +137,7 @@
             [_content setValue:arrValues forKey:letter];
         }
     }
-
+    
     if (arrNonAlpha.count > 0)
     {
         [_content setValue:arrNonAlpha forKey:[_letters objectAtIndex:0]];
@@ -141,12 +152,10 @@
     NSString *prefix = [_keys objectAtIndex:indexPath.section];
     NSArray *arr = [_content objectForKey:prefix];
     
-    DictionaryTerm *d = [arr objectAtIndex:indexPath.row];
-//    DictionaryDefinition *def = d.dictionaryDefinition && d.dictionaryDefinition.count > 0 ? [[d.dictionaryDefinition allObjects] objectAtIndex:0] : nil;
-//    DictionarySynonym *syn = d.dictionarySynonym && d.dictionarySynonym.count > 0 ? [[d.dictionarySynonym allObjects] objectAtIndex:0] : nil;
+    Product *p = [arr objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = d.term;
-    //            cell.detailTextLabel.text = def ? def.definition : (syn ? [NSString stringWithFormat:@"SYN %@", syn.term] : @"");
+    cell.textLabel.text = p.drugName;
+    cell.detailTextLabel.text = p.activeIngred;
     cell.textLabel.font = kMenuFont;
     cell.detailTextLabel.font = kMenuFont;
 }
@@ -154,11 +163,11 @@
 -(void) search
 {
     NSError *error;
-    self.fetchedResultsController = [[Database sharedInstance] search:DictionaryDataSource
+    self.fetchedResultsController = [[Database sharedInstance] search:DrugsDataSource
                                                                 query:self.searchBar.text
                                                          narrowSearch:YES];
     self.fetchedResultsController.delegate = self;
-
+    
     if (![self.fetchedResultsController performFetch:&error])
     {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -233,8 +242,8 @@
     NSString *prefix = [_keys objectAtIndex:indexPath.section];
     NSArray *arr = [_content objectForKey:prefix];
     
-    DictionaryDetailViewContoller *viewController = [[DictionaryDetailViewContoller alloc] init];
-    viewController.dictionaryTerm = [arr objectAtIndex:indexPath.row];
+    DrugSummaryViewController *viewController = [[DrugSummaryViewController alloc] init];
+    viewController.drugSummary = [arr objectAtIndex:indexPath.row];
     
     [self.navigationController pushViewController:viewController animated:YES];
 }
@@ -319,13 +328,13 @@
         case NSFetchedResultsChangeInsert:
         {
             [tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
+                     withRowAnimation:UITableViewRowAnimationFade];
             break;
         }
         case NSFetchedResultsChangeDelete:
         {
             [tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
+                     withRowAnimation:UITableViewRowAnimationFade];
             break;
         }
     }
@@ -339,5 +348,17 @@
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [tableView endUpdates];
 }
+
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

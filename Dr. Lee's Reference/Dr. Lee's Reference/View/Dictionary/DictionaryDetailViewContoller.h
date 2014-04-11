@@ -11,10 +11,9 @@
 #include "Constants.h"
 #import "Database.h"
 #import "DictionaryDefinition.h"
-#import "DictionaryXRef.h"
 #import "DictionarySynonym.h"
 #import "DictionaryTerm.h"
-
+#import "DictionaryXRef.h"
 
 @interface DictionaryDetailViewContoller : UIViewController<UIWebViewDelegate>
 

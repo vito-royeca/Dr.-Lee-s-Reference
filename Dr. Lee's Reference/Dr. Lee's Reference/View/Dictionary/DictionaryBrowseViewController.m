@@ -7,6 +7,8 @@
 //
 
 #import "DictionaryBrowseViewController.h"
+#import "MMDrawerBarButtonItem.h"
+#import "UIViewController+MMDrawerController.h"
 
 @interface DictionaryBrowseViewController ()
 
@@ -28,12 +30,23 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
+                                                                                      action:@selector(rightDrawerButtonPress:)];
+    [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
+    self.navigationItem.title = @"Browse Dictionary";
+    self.view.backgroundColor = [UIColor purpleColor];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) rightDrawerButtonPress:(id)sender
+{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 /*
