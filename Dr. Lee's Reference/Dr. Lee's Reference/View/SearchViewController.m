@@ -104,14 +104,21 @@
 }
 
 #pragma - mark UITableViewDataSource
-//- (NSArray*) sectionIndexTitlesForTableView:(UITableView *)tableView
-//{
-//    return self.keys;
-//}
-//
+- (NSArray*) sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    NSMutableArray *arrSections = [[NSMutableArray alloc] init];
+
+    for (id <NSFetchedResultsSectionInfo> info in [self.fetchedResultsController sections])
+    {
+        [arrSections addObject:[info name]];
+    }
+
+    return arrSections;
+}
+
 //- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString*)title atIndex:(NSInteger)index
 //{
-//    return [self.keys indexOfObject:title];
+//    return [[self.fetchedResultsController sections] indexOfObject:title];
 //}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -151,15 +158,6 @@
     id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
 
     return [theSection name];
-//    NSString *name = [theSection name];
-//    if ([JJJUtil isAlphaStart:name])
-//    {
-//        return [[name substringToIndex:1] uppercaseString];
-//    }
-//    else
-//    {
-//        return @"#";
-//    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

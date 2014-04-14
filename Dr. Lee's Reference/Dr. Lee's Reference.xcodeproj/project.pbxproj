@@ -43,6 +43,7 @@
 		5892E0BD18F58657004160E0 /* DrugSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0BA18F58657004160E0 /* DrugSummaryViewController.m */; };
 		5892E0C018F58661004160E0 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0BF18F58661004160E0 /* MenuViewController.m */; };
 		5892E0C318F5904F004160E0 /* DictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0C218F5904F004160E0 /* DictionaryViewController.m */; };
+		58F07A4818FC5BF2002701F2 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58F07A4418FC5BF2002701F2 /* database.xcdatamodeld */; };
 		8C182DAF18FB6CC8005105DB /* MMSideDrawerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C182DAE18FB6CC8005105DB /* MMSideDrawerTableViewCell.m */; };
 		8C182DB518FB6D6A005105DB /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C182DB418FB6D6A005105DB /* MMTableViewCell.m */; };
 		8C182DB818FB6FF3005105DB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C182DB718FB6FF3005105DB /* SearchViewController.m */; };
@@ -153,6 +154,9 @@
 		5892E0BF18F58661004160E0 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		5892E0C118F5904F004160E0 /* DictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryViewController.h; sourceTree = "<group>"; };
 		5892E0C218F5904F004160E0 /* DictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryViewController.m; sourceTree = "<group>"; };
+		58F07A4518FC5BF2002701F2 /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
+		58F07A4618FC5BF2002701F2 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
+		58F07A4718FC5BF2002701F2 /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		8C182DAD18FB6CC8005105DB /* MMSideDrawerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSideDrawerTableViewCell.h; sourceTree = "<group>"; };
 		8C182DAE18FB6CC8005105DB /* MMSideDrawerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSideDrawerTableViewCell.m; sourceTree = "<group>"; };
 		8C182DB318FB6D6A005105DB /* MMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableViewCell.h; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 		116ED0AC18468F1700CDC13D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				58F07A4418FC5BF2002701F2 /* database.xcdatamodeld */,
 				111B40FA185D5DED0077E5ED /* database.sqlite */,
 			);
 			path = Data;
@@ -561,6 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F07A4818FC5BF2002701F2 /* database.xcdatamodeld in Sources */,
 				1133834B1859A95400CBA6FF /* ReviewClass_Lookup.m in Sources */,
 				119B62E6185C8240009D3184 /* DictionaryTerm.m in Sources */,
 				119B62E3185C823F009D3184 /* DictionaryDefinition.m in Sources */,
@@ -824,6 +830,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		58F07A4418FC5BF2002701F2 /* database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				58F07A4518FC5BF2002701F2 /* 1.xcdatamodel */,
+				58F07A4618FC5BF2002701F2 /* 2.xcdatamodel */,
+				58F07A4718FC5BF2002701F2 /* database.xcdatamodel */,
+			);
+			currentVersion = 58F07A4618FC5BF2002701F2 /* 2.xcdatamodel */;
+			path = database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 113DE8701843D8420080B038 /* Project object */;
 }

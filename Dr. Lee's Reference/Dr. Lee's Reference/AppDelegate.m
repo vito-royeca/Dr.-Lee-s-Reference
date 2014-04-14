@@ -52,8 +52,7 @@
         }
     }
     
-//    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:dbname];
-    [MagicalRecord setupCoreDataStackWithStoreNamed:dbname];
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:dbname];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
