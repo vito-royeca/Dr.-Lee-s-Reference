@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * activeIngred;
 @property (nonatomic, retain) NSString * dosage;
 @property (nonatomic, retain) NSString * drugName;
+@property (readonly) NSString *drugNameInitial;
 @property (nonatomic, retain) NSString * form;
 @property (nonatomic, retain) NSNumber * productMktStatus;
 @property (nonatomic, retain) NSString * productNo;

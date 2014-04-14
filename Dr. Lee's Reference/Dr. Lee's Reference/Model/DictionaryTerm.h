@@ -13,13 +13,13 @@
 
 @interface DictionaryTerm : NSManagedObject
 
-@property (nonatomic, retain) NSString * dictionaryId;
-@property (nonatomic, retain) NSString * pronunciation;
-@property (nonatomic, retain) NSString * term;
+@property (nonatomic, retain) NSString *dictionaryId;
+@property (nonatomic, retain) NSString *pronunciation;
+@property (nonatomic, retain) NSString *term;
+@property (nonatomic, retain) NSString *termInitial;
 @property (nonatomic, retain) NSSet *dictionarySynonym;
 @property (nonatomic, retain) NSSet *dictionaryDefinition;
 @property (nonatomic, retain) NSSet *dictionaryXRef;
-@property (nonatomic, retain) NSString *termInitial;
 
 @end
 

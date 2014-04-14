@@ -17,19 +17,25 @@
 @dynamic dictionaryId;
 @dynamic pronunciation;
 @dynamic term;
+@dynamic termInitial;
 @dynamic dictionarySynonym;
 @dynamic dictionaryDefinition;
 @dynamic dictionaryXRef;
 
-- (NSString *) termInitial
+/*- (NSString *) termInitial
 {
-    if ([JJJUtil isAlphaStart:[self term]])
+    [self willAccessValueForKey:@"termInitial"];
+    NSString *term = [self term];
+    [self didAccessValueForKey:@"termInitial"];
+    
+    if ([JJJUtil isAlphaStart:term])
     {
-        return [[self term] substringToIndex:1];
+        return [[term substringToIndex:1] uppercaseString];
     }
     else
     {
-        return @"SYM";
+        return @"#";
     }
-}
+}*/
+
 @end

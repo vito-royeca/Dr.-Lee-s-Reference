@@ -9,7 +9,7 @@
 #import "Product.h"
 #import "Application.h"
 #import "Product_TECode.h"
-
+#import "JJJ/JJJUtil.h"
 
 @implementation Product
 
@@ -23,6 +23,22 @@
 @dynamic teCode;
 @dynamic applNo;
 @dynamic product_teCode;
+
+- (NSString *) drugNameInitial
+{
+    [self willAccessValueForKey:@"drugNameInitial"];
+    NSString *drugName = [self drugName];
+    [self didAccessValueForKey:@"drugNameInitial"];
+    
+    if ([JJJUtil isAlphaStart:drugName])
+    {
+        return [[drugName substringToIndex:1] uppercaseString];
+    }
+    else
+    {
+        return @"#";
+    }
+}
 
 -(NSString*) productMktStatusString
 {

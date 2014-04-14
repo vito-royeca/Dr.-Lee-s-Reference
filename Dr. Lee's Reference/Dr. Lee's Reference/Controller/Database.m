@@ -12,7 +12,7 @@
 
 @implementation Database
 {
-//    JJJCoreData *_coreData;
+
 }
 
 static Database *_me;
@@ -31,7 +31,7 @@ static Database *_me;
 {
     if (self = [super init])
     {
-//        _coreData = [JJJCoreData sharedInstanceWithModel:@"database"];
+
     }
     
     return self;
@@ -87,29 +87,23 @@ static Database *_me;
             predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
         }
     }
-    
-    
-    
-    
    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"termInitial" ascending:YES];
-    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor1, sortDescriptor2];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
+                                                                   ascending:YES
+                                                                    selector:@selector(localizedCaseInsensitiveCompare:)];
+//    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term"
+//                                                                   ascending:YES
+//                                                                    selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSArray *sortDescriptors = @[sortDescriptor];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
                                               inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    
+    [fetchRequest setFetchBatchSize:kFetchBatchSize];
+    [fetchRequest setReturnsDistinctResults:YES];
     [fetchRequest setPredicate:predicate];
     [fetchRequest setEntity:entity];
     [fetchRequest setSortDescriptors:sortDescriptors];
-   
-    
-    
-    
-//    NSFetchRequest *fetchRequest = [DictionaryTerm MR_requestAllSortedBy:@"term" ascending:YES];
-//    [fetchRequest setFetchBatchSize:kFetchBatchSize];
-//    [fetchRequest setReturnsDistinctResults:YES];
-//    [fetchRequest setPredicate:predicate];
-    
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                managedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]
@@ -145,16 +139,32 @@ static Database *_me;
             predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
         }
     }
-    
-    NSFetchRequest *fetchRequest = [Product MR_requestAllSortedBy:@"drugName" ascending:YES];
+
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"drugName"
+                                                                   ascending:YES
+                                                                    selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product"
+                                              inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+
     [fetchRequest setFetchBatchSize:kFetchBatchSize];
     [fetchRequest setReturnsDistinctResults:YES];
+//    [fetchRequest setResultType:NSDictionaryResultType];
     [fetchRequest setPredicate:predicate];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObjects:@"drugName", nil]];
+    
+//    NSFetchRequest *fetchRequest = [Product MR_requestAllSortedBy:@"drugName" ascending:YES];
+//    [fetchRequest setFetchBatchSize:kFetchBatchSize];
+//    [fetchRequest setReturnsDistinctResults:YES];
+//    [fetchRequest setPredicate:predicate];
 
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                managedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]
-                                                 sectionNameKeyPath:@"drugName"
+                                                 sectionNameKeyPath:@"drugNameInitial"
                                                           cacheName:@"DrugCache"];
 }
 

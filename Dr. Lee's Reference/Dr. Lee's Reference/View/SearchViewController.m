@@ -149,15 +149,16 @@
 {
 //    return [self.keys objectAtIndex:section];
     id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
-    NSString *name = [theSection name];
-    return name;
+
+    return [theSection name];
+//    NSString *name = [theSection name];
 //    if ([JJJUtil isAlphaStart:name])
 //    {
-//        return [name substringToIndex:1];
+//        return [[name substringToIndex:1] uppercaseString];
 //    }
 //    else
 //    {
-//        return @"SYM";
+//        return @"#";
 //    }
 }
 
@@ -220,7 +221,6 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
     
-//    [self createSections];
     [self.tblResults reloadData];
 }
 
