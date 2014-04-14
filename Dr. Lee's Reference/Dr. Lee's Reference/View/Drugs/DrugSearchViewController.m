@@ -48,16 +48,15 @@
     
     
     CGFloat dX = 0;
-    CGFloat dY = self.navigationController.navigationBar.frame.size.height+[UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat dY = 0;
     CGFloat dWidth = self.view.frame.size.width;
-    CGFloat dHeight = 40;
+    CGFloat dHeight = self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height;;
     CGRect frame = CGRectMake(dX, dY, dWidth, dHeight);
-    self.searchBar = [[UISearchBar alloc] initWithFrame:frame];
+    self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.searchBar.delegate = self;
+    self.searchBar.placeholder = @"search drugs";
     
-    dY = self.searchBar.frame.origin.y+self.searchBar.frame.size.height;
-    dHeight = self.view.frame.size.height - dY - self.tabBarController.tabBar.frame.size.height;
     frame = CGRectMake(dX, dY, dWidth, dHeight);
     self.tblResults = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     self.tblResults.delegate = self;
@@ -65,13 +64,12 @@
     self.tblResults.scrollEnabled = YES;
     self.tblResults.userInteractionEnabled = YES;
     
-    [self.view addSubview:self.searchBar];
-    [self.view addSubview:self.tblResults];
-    
     MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
                                                                                       action:@selector(rightDrawerButtonPress:)];
+    
     [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
-    self.navigationItem.title = @"Search Drugs";
+    self.navigationItem.titleView = self.searchBar;
+    [self.view addSubview:self.tblResults];
 }
 
 -(void) rightDrawerButtonPress:(id)sender

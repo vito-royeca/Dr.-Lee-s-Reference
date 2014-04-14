@@ -32,18 +32,18 @@
     // Do any additional setup after loading the view.
     
     UINavigationController *nc1 = [[UINavigationController alloc] init];
-    UIViewController *vc1 = [[DictionaryBrowseViewController alloc] initWithNibName:nil bundle:nil];
+    UIViewController *vc1 = [[DictionarySearchViewController alloc] initWithNibName:nil bundle:nil];
     nc1.viewControllers = [NSArray arrayWithObjects:vc1, nil];
-    nc1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse"
-                                                   image:[UIImage imageNamed:@"box.png"]
-                                           selectedImage:[UIImage imageNamed:@"box.png"]];
-    
-    UINavigationController *nc2 = [[UINavigationController alloc] init];
-    UIViewController *vc2 = [[DictionarySearchViewController alloc] initWithNibName:nil bundle:nil];
-    nc2.viewControllers = [NSArray arrayWithObjects:vc2, nil];
-    nc2.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Search"
+    nc1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Search"
                                                    image:[UIImage imageNamed:@"search.png"]
                                            selectedImage:[UIImage imageNamed:@"search.png"]];
+    
+    UINavigationController *nc2 = [[UINavigationController alloc] init];
+    UIViewController *vc2 = [[DictionaryBrowseViewController alloc] initWithNibName:nil bundle:nil];
+    nc2.viewControllers = [NSArray arrayWithObjects:vc2, nil];
+    nc2.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse"
+                                                   image:[UIImage imageNamed:@"box.png"]
+                                           selectedImage:[UIImage imageNamed:@"box.png"]];
     
     self.viewControllers = [NSArray arrayWithObjects:nc1, nc2 ,nil];
     self.selectedViewController = nc1;
