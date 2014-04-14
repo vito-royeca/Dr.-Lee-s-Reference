@@ -19,6 +19,8 @@
 @property (nonatomic, retain) NSSet *dictionarySynonym;
 @property (nonatomic, retain) NSSet *dictionaryDefinition;
 @property (nonatomic, retain) NSSet *dictionaryXRef;
+@property (nonatomic, retain) NSString *termInitial;
+
 @end
 
 @interface DictionaryTerm (CoreDataGeneratedAccessors)

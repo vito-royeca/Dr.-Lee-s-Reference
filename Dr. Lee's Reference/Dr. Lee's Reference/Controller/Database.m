@@ -61,6 +61,9 @@ static Database *_me;
 
 - (NSFetchedResultsController*)searchDictionary:(NSString*)query narrowSearch:(BOOL)narrow
 {
+    // Delete cache first, if a cache is used
+    [NSFetchedResultsController deleteCacheWithName:@"DictionaryCache"];
+    
     NSPredicate *predicate;
     
     if (query.length == 0)
@@ -84,29 +87,41 @@ static Database *_me;
             predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
         }
     }
-//
-//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"term" ascending:YES];
-//    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-//    [fetchRequest setEntity:entity];
-//    [fetchRequest setPredicate:predicate];
-//    [fetchRequest setFetchBatchSize:kFetchBatchSize];
-//    
-//    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-//                                                                          managedObjectContext:[_coreData managedObjectContext]
-//                                                                            sectionNameKeyPath:nil
-//                                                                                     cacheName:nil];
-//    return frc;
     
-    return [DictionaryTerm MR_fetchAllSortedBy:@"term"
-                                     ascending:YES
-                                 withPredicate:predicate
-                                       groupBy:nil
-                                      delegate:nil];
-
+    
+    
+    
+   
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"termInitial" ascending:YES];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor1, sortDescriptor2];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
+                                              inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+   
+    
+    
+    
+//    NSFetchRequest *fetchRequest = [DictionaryTerm MR_requestAllSortedBy:@"term" ascending:YES];
+//    [fetchRequest setFetchBatchSize:kFetchBatchSize];
+//    [fetchRequest setReturnsDistinctResults:YES];
+//    [fetchRequest setPredicate:predicate];
+    
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                               managedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]
+                                                 sectionNameKeyPath:@"termInitial"
+                                                          cacheName:@"DictionaryCache"];
 }
 
 - (NSFetchedResultsController*)searchDrugs:(NSString*)query narrowSearch:(BOOL)narrow
 {
+    // Delete cache first, if a cache is used
+    [NSFetchedResultsController deleteCacheWithName:@"DrugCache"];
+    
     NSPredicate *predicate;
     
     if (query.length == 0)
@@ -131,39 +146,16 @@ static Database *_me;
         }
     }
     
-//    NSFetchRequest *fetchRequest = [Product MR_requestAllWithPredicate:predicate];
-//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"drugName" ascending:YES];
-//    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-//    [fetchRequest setFetchBatchSize:kFetchBatchSize];
-//    fetchRequest.propertiesToFetch = [NSArray arrayWithObjects:@"drugName", @"activeIngred", nil];
-//    fetchRequest.returnsDistinctResults = YES;
-//    
-//    return [Product MR_fetchController:fetchRequest
-//                              delegate:nil
-//                          useFileCache:YES
-//                             groupedBy:nil
-//                             inContext:[NSManagedObjectContext MR_defaultContext]];
-
-    
-//        
-//    return [Product MR_fetchAllSortedBy:@"drugName"
-//                              ascending:YES
-//                          withPredicate:predicate
-//                                groupBy:nil
-//                               delegate:nil];
-//
-    NSFetchRequest *fetchRequest = [Product MR_requestAllSortedBy:@"drugName" ascending:NO];
-//    [fetchRequest setFetchLimit:100];
+    NSFetchRequest *fetchRequest = [Product MR_requestAllSortedBy:@"drugName" ascending:YES];
     [fetchRequest setFetchBatchSize:kFetchBatchSize];
     [fetchRequest setReturnsDistinctResults:YES];
     [fetchRequest setPredicate:predicate];
 
     
-    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                          managedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]
-                                                                            sectionNameKeyPath:nil
-                                                                                     cacheName:@"ProductCache"];
-    return frc;
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                               managedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]
+                                                 sectionNameKeyPath:@"drugName"
+                                                          cacheName:@"DrugCache"];
 }
 
 @end

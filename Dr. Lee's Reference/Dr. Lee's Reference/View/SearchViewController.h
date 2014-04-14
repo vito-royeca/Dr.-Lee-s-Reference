@@ -13,11 +13,9 @@
 
 @property(strong,nonatomic) UISearchBar *searchBar;
 @property(strong,nonatomic) UITableView *tblResults;
+@property(strong,nonatomic) NSMutableArray *sections;
 
 @property(strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property(strong,nonatomic) NSArray *letters;
-@property(strong,nonatomic) NSMutableArray *keys;
-@property(strong,nonatomic) NSMutableDictionary *content;
 
 - (void) doSearch;
 - (void) createSections;

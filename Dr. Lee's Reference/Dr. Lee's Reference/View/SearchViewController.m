@@ -7,6 +7,7 @@
 //
 
 #import "SearchViewController.h"
+#import "JJJ/JJJUtil.h"
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
 
@@ -20,9 +21,6 @@
 @synthesize searchBar = _searchBar;
 @synthesize tblResults = _tblResults;
 @synthesize fetchedResultsController = _fetchedResultsController;
-@synthesize letters = _letters;
-@synthesize keys = _keys;
-@synthesize content = _content;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,12 +36,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.letters = [NSArray arrayWithObjects:@"SYM", @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H",
-                @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U",
-                @"V", @"W", @"X", @"Y", @"Z", nil];
-    self.content = [[NSMutableDictionary alloc] init];
-    
     
     CGFloat dX = 0;
     CGFloat dY = 0;
@@ -108,59 +100,65 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
-    self.content = nil;
-    self.keys = nil;
     self.fetchedResultsController = nil;
 }
 
 #pragma - mark UITableViewDataSource
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-{
-    return 50;
-}
-
-- (NSArray*) sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return self.keys;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString*)title atIndex:(NSInteger)index
-{
-    return [self.keys indexOfObject:title];
-}
+//- (NSArray*) sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//    return self.keys;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString*)title atIndex:(NSInteger)index
+//{
+//    return [self.keys indexOfObject:title];
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.keys count];
+    NSInteger count = [[self.fetchedResultsController sections] count];
+	return count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSString *prefix = [self.keys objectAtIndex:section];
-    NSArray *list = [self.content objectForKey:prefix];
-    return list.count;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    
+	return [sectionInfo numberOfObjects];
+    
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
-{
-    UILabel *lblHeader = [[UILabel alloc] init];
-    
-    NSMutableString *text = [[NSMutableString alloc] init];
-    NSString *letter = [_keys objectAtIndex:section];
-    [text appendFormat:@"%@ (%d of %d)", letter, [[self.content valueForKey:letter] count], [[self.fetchedResultsController fetchedObjects] count]];
-    lblHeader.text = text;
-    lblHeader.backgroundColor = [UIColor colorWithRed:208.0/255.0
-                                                green:208.0/255.0
-                                                 blue:208.0/255.0
-                                                alpha:1.0];
-    lblHeader.userInteractionEnabled = YES;
-    [lblHeader setTag:section+1];
-    return lblHeader;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
+//{
+//    UILabel *lblHeader = [[UILabel alloc] init];
+//    
+//    NSMutableString *text = [[NSMutableString alloc] init];
+//    NSString *letter = [_keys objectAtIndex:section];
+//    [text appendFormat:@"%@ (%d of %d)", letter, [[self.content valueForKey:letter] count], [[self.fetchedResultsController fetchedObjects] count]];
+//    lblHeader.text = text;
+//    lblHeader.backgroundColor = [UIColor colorWithRed:208.0/255.0
+//                                                green:208.0/255.0
+//                                                 blue:208.0/255.0
+//                                                alpha:1.0];
+//    lblHeader.userInteractionEnabled = YES;
+//    [lblHeader setTag:section+1];
+//    return lblHeader;
+//}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [self.keys objectAtIndex:section];
+//    return [self.keys objectAtIndex:section];
+    id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
+    NSString *name = [theSection name];
+    return name;
+//    if ([JJJUtil isAlphaStart:name])
+//    {
+//        return [name substringToIndex:1];
+//    }
+//    else
+//    {
+//        return @"SYM";
+//    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -172,7 +170,6 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     
     [self configureCell:cell atIndexPath:indexPath];
@@ -182,10 +179,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *prefix = [self.keys objectAtIndex:indexPath.section];
-    NSArray *arr = [self.content objectForKey:prefix];
-    UIViewController *viewController = [self detailViewWithObject:[arr objectAtIndex:indexPath.row]];
- 
+//    NSString *prefix = [self.keys objectAtIndex:indexPath.section];
+//    NSArray *arr = [self.content objectForKey:prefix];
+//    UIViewController *viewController = [self detailViewWithObject:[arr objectAtIndex:indexPath.row]];
+
+    id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    UIViewController *viewController = [self detailViewWithObject:object];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
@@ -213,18 +212,15 @@
 {
     self.fetchedResultsController = nil;
     NSFetchedResultsController *frc = self.fetchedResultsController;
-    
     frc.delegate = self;
     
-    // Delete cache first, if a cache is used
-    [NSFetchedResultsController deleteCacheWithName:@"ProductCache"];
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error])
     {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
     
-    [self createSections];
+//    [self createSections];
     [self.tblResults reloadData];
 }
 

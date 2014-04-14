@@ -10,7 +10,7 @@
 #import "DictionaryDefinition.h"
 #import "DictionarySynonym.h"
 #import "DictionaryXRef.h"
-
+#import "JJJ/JJJUtil.h"
 
 @implementation DictionaryTerm
 
@@ -21,4 +21,15 @@
 @dynamic dictionaryDefinition;
 @dynamic dictionaryXRef;
 
+- (NSString *) termInitial
+{
+    if ([JJJUtil isAlphaStart:[self term]])
+    {
+        return [[self term] substringToIndex:1];
+    }
+    else
+    {
+        return @"SYM";
+    }
+}
 @end

@@ -46,7 +46,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/*
 - (void) createSections
 {
     [super.content removeAllObjects];
@@ -110,19 +110,18 @@
         [super.keys insertObject:[super.letters objectAtIndex:0] atIndex:0];
     }
 }
-
+*/
 - (void)configureCell:(UITableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *prefix = [super.keys objectAtIndex:indexPath.section];
-    NSArray *arr = [super.content objectForKey:prefix];
-    
-    Product *p = [arr objectAtIndex:indexPath.row];
-    
+//    NSString *prefix = [super.keys objectAtIndex:indexPath.section];
+//    NSArray *arr = [super.content objectForKey:prefix];
+//    
+//    Product *p = [arr objectAtIndex:indexPath.row];
+
+    Product *p = [super.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = p.drugName;
     cell.detailTextLabel.text = p.activeIngred;
-//    cell.textLabel.font = kMenuFont;
-//    cell.detailTextLabel.font = kMenuFont;
 }
 
 - (UIViewController*) detailViewWithObject:(id) object
