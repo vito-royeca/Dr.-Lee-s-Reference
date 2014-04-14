@@ -131,27 +131,39 @@ static Database *_me;
         }
     }
     
+//    NSFetchRequest *fetchRequest = [Product MR_requestAllWithPredicate:predicate];
 //    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"drugName" ascending:YES];
 //    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-//    [fetchRequest setEntity:entity];
-//    [fetchRequest setPredicate:predicate];
 //    [fetchRequest setFetchBatchSize:kFetchBatchSize];
-    
-//    fetchRequest.resultType = NSDictionaryResultType;
 //    fetchRequest.propertiesToFetch = [NSArray arrayWithObjects:@"drugName", @"activeIngred", nil];
 //    fetchRequest.returnsDistinctResults = YES;
+//    
+//    return [Product MR_fetchController:fetchRequest
+//                              delegate:nil
+//                          useFileCache:YES
+//                             groupedBy:nil
+//                             inContext:[NSManagedObjectContext MR_defaultContext]];
+
     
-//    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-//                                                                          managedObjectContext:[_coreData managedObjectContext]
-//                                                                            sectionNameKeyPath:nil
-//                                                                                     cacheName:nil];
-//    return frc;
+//        
+//    return [Product MR_fetchAllSortedBy:@"drugName"
+//                              ascending:YES
+//                          withPredicate:predicate
+//                                groupBy:nil
+//                               delegate:nil];
+//
+    NSFetchRequest *fetchRequest = [Product MR_requestAllSortedBy:@"drugName" ascending:NO];
+//    [fetchRequest setFetchLimit:100];
+    [fetchRequest setFetchBatchSize:kFetchBatchSize];
+    [fetchRequest setReturnsDistinctResults:YES];
+    [fetchRequest setPredicate:predicate];
+
     
-    return [Product MR_fetchAllSortedBy:@"term"
-                                     ascending:YES
-                                 withPredicate:predicate
-                                       groupBy:nil
-                                      delegate:nil];
+    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                          managedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]
+                                                                            sectionNameKeyPath:nil
+                                                                                     cacheName:@"ProductCache"];
+    return frc;
 }
 
 @end

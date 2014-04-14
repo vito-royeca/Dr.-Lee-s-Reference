@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.
 //
 
-#import "DictionaryDetailViewContoller.h"
+#import "DictionaryDetailViewController.h"
 
-@interface DictionaryDetailViewContoller ()
+@interface DictionaryDetailViewController ()
 
 @end
 
-@implementation DictionaryDetailViewContoller
+@implementation DictionaryDetailViewController
 {
     NSString *_currentTerm;
     NSMutableArray *_history;
@@ -43,15 +43,16 @@
 
     webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     webView.delegate = self;
-    [self.view addSubview:webView];
     
     NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     [webView loadHTMLString:[self composeHTMLDefinition] baseURL:bundleUrl];
     
     UIBarButtonItem *btnAction = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                    target:self
-                                                                                    action:@selector(doAction)];
+                                                                               target:self
+                                                                               action:@selector(doAction)];
+
     self.navigationItem.rightBarButtonItem = btnAction;
+    [self.view addSubview:webView];
 }
 
 - (void) doAction
@@ -178,7 +179,7 @@
         }
         else
         {
-            NSArray *results = [[Database sharedInstance] search:DictionaryDataSource
+/*            NSArray *results = [[Database sharedInstance] search:DictionaryDataSource
                                                            query:fragment
                                                     narrowSearch:YES];
 
@@ -202,7 +203,7 @@
             {
                 [self.webView loadHTMLString:[self composeHTMLList:fragment withResults:results] baseURL:bundleUrl];
                 return YES;
-            }
+            }*/
         }
         return NO;
     }

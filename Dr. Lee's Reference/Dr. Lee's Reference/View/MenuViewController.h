@@ -13,5 +13,6 @@
 @interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tblMenu;
+@property (nonatomic,strong) NSArray * drawerWidths;
 
 @end

@@ -15,7 +15,7 @@
 #import "DictionaryTerm.h"
 #import "DictionaryXRef.h"
 
-@interface DictionaryDetailViewContoller : UIViewController<UIWebViewDelegate>
+@interface DictionaryDetailViewController : UIViewController<UIWebViewDelegate>
 
 @property(strong, nonatomic) UIWebView *webView;
 

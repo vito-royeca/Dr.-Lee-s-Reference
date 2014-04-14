@@ -16,16 +16,9 @@
 
 @implementation DrugSummaryViewController
 
-@synthesize sections;
-@synthesize tblDrug;
-@synthesize drugSummary;
-
-- (void) setDrugSummary:(NSDictionary *)drugSummary_
-{
-    drugSummary = drugSummary_;
-    
-    sections = [NSArray arrayWithObjects:@"Overview", @"Forms and Strengths", @"Applications", nil];
-}
+@synthesize sections = _sections;
+@synthesize tblDrug = _tblDrug;
+@synthesize drugSummary = _drugSummary;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,14 +37,17 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height);
-    tblDrug = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
-    tblDrug.delegate = self;
-    tblDrug.dataSource = self;
-    [self.view addSubview:tblDrug];
+    self.sections = [NSArray arrayWithObjects:@"Overview", @"Forms and Strengths", @"Applications", nil];
     
-    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
-    self.navigationController.navigationItem.backBarButtonItem = btnBack;
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height);
+    self.tblDrug = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
+    self.tblDrug.delegate = self;
+    self.tblDrug.dataSource = self;
+    
+//    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:nil action:nil];
+    
+    [self.view addSubview:self.tblDrug];
+//    self.navigationController.navigationItem.backBarButtonItem = btnBack;
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,12 +64,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString*)title atIndex:(NSInteger)index
 {
-    return [sections indexOfObject:title];
+    return [self.sections indexOfObject:title];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [sections count];
+    return [self.sections count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -89,12 +85,12 @@
         }
         case 1:
         {
-            rows = [[drugSummary objectForKey:@"Forms and Strengths"] count];
+            rows = [[self.drugSummary objectForKey:@"Forms and Strengths"] count];
             break;
         }
         case 2:
         {
-            rows = [[drugSummary objectForKey:@"Details"] count];
+            rows = [[self.drugSummary objectForKey:@"Details"] count];
             break;
         }
     }
@@ -104,14 +100,14 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [sections objectAtIndex:section];
+    return [self.sections objectAtIndex:section];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 2)
     {
-        NSArray *arrDetails = [drugSummary objectForKey:@"Details"];
+        NSArray *arrDetails = [self.drugSummary objectForKey:@"Details"];
     
         if (arrDetails)
         {
@@ -147,13 +143,13 @@
                 case 0:
                 {
                     cell.textLabel.text = @"Drug Name";
-                    cell.detailTextLabel.text = [drugSummary objectForKey:@"Drug Name"];
+                    cell.detailTextLabel.text = [self.drugSummary objectForKey:@"Drug Name"];
                     break;
                 }
                 case 1:
                 {
                     cell.textLabel.text = @"Active Ingredient(s)";
-                    cell.detailTextLabel.text = [drugSummary objectForKey:@"Active Ingredient(s)"];
+                    cell.detailTextLabel.text = [self.drugSummary objectForKey:@"Active Ingredient(s)"];
                     break;
                 }
             }
@@ -162,7 +158,7 @@
         }
         case 1:
         {
-            NSArray *arrForms = [drugSummary objectForKey:@"Forms and Strengths"];
+            NSArray *arrForms = [self.drugSummary objectForKey:@"Forms and Strengths"];
 //            NSMutableArray *allKeys = [[NSMutableArray alloc] init];
 //            for (NSDictionary *dict in arrForms)
 //            {
@@ -180,7 +176,7 @@
         }
         case 2:
         {
-            NSArray *arrDetails = [drugSummary objectForKey:@"Details"];
+            NSArray *arrDetails = [self.drugSummary objectForKey:@"Details"];
             NSDictionary *dict = [arrDetails objectAtIndex:indexPath.row];
             
             cell.textLabel.text = [dict objectForKey:@"ApplNo"];

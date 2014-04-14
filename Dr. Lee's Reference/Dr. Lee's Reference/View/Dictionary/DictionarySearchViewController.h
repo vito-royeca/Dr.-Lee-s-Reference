@@ -13,16 +13,11 @@
 #import "JJJ/JJJ.h"
 #import "Database.h"
 #import "DictionaryTerm.h"
-#import "DictionaryDetailViewContoller.h"
+#import "DictionaryDetailViewController.h"
 #import "DrugSummaryViewController.h"
-#import "MBProgressHUD.h"
-#import "Product.h"
+#import "SearchViewController.h"
 
-@interface DictionarySearchViewController : UIViewController<MBProgressHUDDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface DictionarySearchViewController : SearchViewController
 
-@property(strong,nonatomic) UISearchBar *searchBar;
-@property(strong,nonatomic) UITableView *tblResults;
-
-@property(strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end

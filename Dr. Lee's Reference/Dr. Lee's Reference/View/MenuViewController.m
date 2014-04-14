@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "DictionaryViewController.h"
 #import "DrugViewController.h"
+#import "MMSideDrawerTableViewCell.h"
 
 @interface MenuViewController ()
 
@@ -17,7 +18,8 @@
 
 @implementation MenuViewController
 
-@synthesize tblMenu;
+@synthesize tblMenu = _tblMenu;
+@synthesize drawerWidths = _drawerWidths;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,15 +36,92 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    tblMenu = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-    tblMenu.dataSource = self;
-    tblMenu.delegate = self;
-    [self.view addSubview:tblMenu];
+//    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+//    tblMenu = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+//    tblMenu.dataSource = self;
+//    tblMenu.delegate = self;
+//    [self.view addSubview:tblMenu];
     
-    self.view.backgroundColor = kMenuBackgroundColor;
-    tblMenu.backgroundColor = kTableBackgroundColor;
-    tblMenu.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.view.backgroundColor = kMenuBackgroundColor;
+//    tblMenu.backgroundColor = kTableBackgroundColor;
+//    tblMenu.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    if(OSVersionIsAtLeastiOS7())
+    {
+        self.tblMenu = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    }
+    else
+    {
+        self.tblMenu = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    }
+    
+    [self.tblMenu setDelegate:self];
+    [self.tblMenu setDataSource:self];
+    [self.view addSubview:self.tblMenu];
+    [self.tblMenu setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+    
+    UIColor * tableViewBackgroundColor;
+    if(OSVersionIsAtLeastiOS7())
+    {
+        tableViewBackgroundColor = [UIColor colorWithRed:110.0/255.0
+                                                   green:113.0/255.0
+                                                    blue:115.0/255.0
+                                                   alpha:1.0];
+    }
+    else
+    {
+        tableViewBackgroundColor = [UIColor colorWithRed:77.0/255.0
+                                                   green:79.0/255.0
+                                                    blue:80.0/255.0
+                                                   alpha:1.0];
+    }
+    [self.tblMenu setBackgroundColor:tableViewBackgroundColor];
+    
+    [self.tblMenu setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    [self.view setBackgroundColor:[UIColor colorWithRed:66.0/255.0
+                                                  green:69.0/255.0
+                                                   blue:71.0/255.0
+                                                  alpha:1.0]];
+    
+    UIColor * barColor = [UIColor colorWithRed:161.0/255.0
+                                         green:164.0/255.0
+                                          blue:166.0/255.0
+                                         alpha:1.0];
+    if([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)])
+    {
+        [self.navigationController.navigationBar setBarTintColor:barColor];
+    }
+    else
+    {
+        [self.navigationController.navigationBar setTintColor:barColor];
+    }
+    
+    
+    NSDictionary *navBarTitleDict;
+    UIColor * titleColor = [UIColor colorWithRed:55.0/255.0
+                                           green:70.0/255.0
+                                            blue:77.0/255.0
+                                           alpha:1.0];
+    navBarTitleDict = @{NSForegroundColorAttributeName:titleColor};
+    [self.navigationController.navigationBar setTitleTextAttributes:navBarTitleDict];
+    
+    self.drawerWidths = @[@(160),@(200),@(240),@(280),@(320)];
+    
+//    CGSize logoSize = CGSizeMake(58, 62);
+//    MMLogoView * logo = [[MMLogoView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.tableView.bounds)-logoSize.width/2.0,
+//                                                                     -logoSize.height-logoSize.height/4.0,
+//                                                                     logoSize.width,
+//                                                                     logoSize.height)];
+//    [logo setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
+//    [self.tableView addSubview:logo];
+    [self.view setBackgroundColor:[UIColor clearColor]];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tblMenu reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.tblMenu.numberOfSections-1)] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +130,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)contentSizeDidChange:(NSString *)size
+{
+    [self.tblMenu reloadData];
+}
+
+#pragma mark - TableViewDataSourceDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	return 8;
@@ -64,56 +149,57 @@
 	
 	if (nil == cell)
 	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-        cell.textLabel.textColor = kMenuFontColor;
+		cell = [[MMSideDrawerTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+//        cell.textLabel.textColor = kMenuFontColor;
+        [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];
 	}
 	
 	if (row == 0)
 	{
 		cell.textLabel.text = kAppTitle;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.userInteractionEnabled = NO;
 	}
     else if (row == 1)
 	{
 		cell.textLabel.text = kDictionaryTitle;
-        cell.textLabel.font = kMenuFont;
+//        cell.textLabel.font = kMenuFont;
         cell.imageView.image = [UIImage imageNamed:@"literature.png"];
 	}
 	else if (row == 2)
 	{
 		cell.textLabel.text = kDrugsTitle;
-        cell.textLabel.font = kMenuFont;
+//        cell.textLabel.font = kMenuFont;
         cell.imageView.image = [UIImage imageNamed:@"pill.png"];
 	}
     else if (row == 3)
 	{
 		cell.textLabel.text = kICD10Title;
-        cell.textLabel.font = kMenuFont;
+//        cell.textLabel.font = kMenuFont;
         cell.imageView.image = [UIImage imageNamed:@"brick.png"];
 	}
 	else if (row == 4)
 	{
 		cell.textLabel.text = kFavoritesTitle;
-        cell.textLabel.font = kMenuFont;
+//        cell.textLabel.font = kMenuFont;
         cell.imageView.image = [UIImage imageNamed:@"star.png"];
 	}
 	else if (row == 5)
 	{
 		cell.textLabel.text = kHistoryTitle;
-        cell.textLabel.font = kMenuFont;
+//        cell.textLabel.font = kMenuFont;
         cell.imageView.image = [UIImage imageNamed:@"safari.png"];
 	}
 	else if (row == 6)
 	{
 		cell.textLabel.text = kSettingsTitle;
-        cell.textLabel.font = kMenuFont;
+//        cell.textLabel.font = kMenuFont;
         cell.imageView.image = [UIImage imageNamed:@"settings.png"];
 	}
     else if (row == 7)
 	{
 		cell.textLabel.text = kAboutTitle;
-        cell.textLabel.font = kMenuFont;
+//        cell.textLabel.font = kMenuFont;
         cell.imageView.image = [UIImage imageNamed:@"info.png"];
 	}
     

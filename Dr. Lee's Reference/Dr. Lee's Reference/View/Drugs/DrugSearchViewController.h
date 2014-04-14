@@ -13,13 +13,9 @@
 #import "Database.h"
 #import "DictionaryDefinition.h"
 #import "DictionaryXRef.h"
-#import "MBProgressHUD.h"
+#import "SearchViewController.h"
 
-@interface DrugSearchViewController : UIViewController<MBProgressHUDDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface DrugSearchViewController : SearchViewController
 
-@property(strong,nonatomic) UISearchBar *searchBar;
-@property(strong,nonatomic) UITableView *tblResults;
-
-@property(strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
