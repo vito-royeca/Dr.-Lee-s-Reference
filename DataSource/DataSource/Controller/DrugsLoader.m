@@ -9,15 +9,12 @@
 #import "DrugsLoader.h"
 
 @implementation DrugsLoader
-{
-    JJJCoreData *_coreData;
-}
 
 -(id) init
 {
     if (self = [super init])
     {
-        _coreData = [JJJCoreData sharedInstanceWithModel:@"database"];
+
     }
     
     return self;
@@ -25,65 +22,74 @@
 
 -(void) loadDrugs
 {
-    if ([_coreData tableCount:@"ChemicalType_Lookup"] == 0)
+    NSUInteger count = [ChemicalType_Lookup MR_countOfEntities];
+    if (count == 0)
     {
         [self loadChemicalType_Lookup];
     }
-    NSLog(@"ChemicalType_Lookup = %d", [_coreData tableCount:@"ChemicalType_Lookup"]);
+    NSLog(@"ChemicalType_Lookup = %tu", count);
     
-    if ([_coreData tableCount:@"ReviewClass_Lookup"] == 0)
+    count = [ReviewClass_Lookup MR_countOfEntities];
+    if (count == 0)
     {
         [self loadReviewClass_Lookup];
     }
-    NSLog(@"ReviewClass_Lookup = %d", [_coreData tableCount:@"ReviewClass_Lookup"]);
+    NSLog(@"ReviewClass_Lookup = %tu", count);
     
-    if ([_coreData tableCount:@"Application"] == 0)
+    count = [Application MR_countOfEntities];
+    if (count == 0)
     {
         [self loadApplication];
     }
-    NSLog(@"Application = %d", [_coreData tableCount:@"Application"]);
+    NSLog(@"Application = %tu", count);
     
-    if ([_coreData tableCount:@"Product"] == 0)
+    count = [Product MR_countOfEntities];
+    if (count == 0)
     {
         [self loadProduct];
     }
-    NSLog(@"Product = %d", [_coreData tableCount:@"Product"]);
+    NSLog(@"Product = %tu", count);
     
-    if ([_coreData tableCount:@"Product_TECode"] == 0)
+    count = [Product_TECode MR_countOfEntities];
+    if (count == 0)
     {
         [self loadProductTECode];
     }
-    NSLog(@"Product_TECode = %d", [_coreData tableCount:@"Product_TECode"]);
+    NSLog(@"Product_TECode = %tu", count);
     
-    if ([_coreData tableCount:@"AppDocType_Lookup"] == 0)
+    count = [AppDocType_Lookup MR_countOfEntities];
+    if (count == 0)
     {
         [self loadAppDocType_Lookup];
     }
-    NSLog(@"AppDocType_Lookup = %d", [_coreData tableCount:@"AppDocType_Lookup"]);
+    NSLog(@"AppDocType_Lookup = %tu", count);
     
-    if ([_coreData tableCount:@"AppDoc"] == 0)
+    count = [AppDoc MR_countOfEntities];
+    if (count == 0)
     {
         [self loadAppDoc];
     }
-    NSLog(@"AppDoc = %d", [_coreData tableCount:@"AppDoc"]);
+    NSLog(@"AppDoc = %tu", count);
     
-    if ([_coreData tableCount:@"DocType_Lookup"] == 0)
+    count = [DocType_Lookup MR_countOfEntities];
+    if (count == 0)
     {
         [self loadDocType_Lookup];
     }
-    NSLog(@"DocType_Lookup = %d", [_coreData tableCount:@"DocType_Lookup"]);
+    NSLog(@"DocType_Lookup = %tu", count);
     
-    if ([_coreData tableCount:@"RegActionDate"] == 0)
+    count = [RegActionDate MR_countOfEntities];
+    if (count == 0)
     {
         [self loadRegActionDate];
     }
-    NSLog(@"RegActionDate = %d", [_coreData tableCount:@"RegActionDate"]);
+    NSLog(@"RegActionDate = %tu", count);
 }
 
 -(void) loadChemicalType_Lookup
 {
-    if ([_coreData bIsTableEmpty:@"ChemicalType_Lookup"])
-    {
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/ChemTypeLookup.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
@@ -118,7 +124,7 @@
                 NSLog(@"Loading ChemicalType_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            ChemicalType_Lookup *obj = [_coreData createManagedObject:@"ChemicalType_Lookup"];
+            ChemicalType_Lookup *obj = [ChemicalType_Lookup MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -133,18 +139,15 @@
                 obj.chemicalTypeDescription = [[elements objectAtIndex:2] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
             
-            if ([_coreData save])
-            {
-                done++;
-            }
+            [currentContext MR_save];
+            done++;
         }
-    }
 }
 
 -(void) loadReviewClass_Lookup
 {
-    if ([_coreData bIsTableEmpty:@"ReviewClass_Lookup"])
-    {
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/ReviewClass_Lookup.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
@@ -179,7 +182,7 @@
                 NSLog(@"Loading ReviewClass_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            ReviewClass_Lookup *obj = [_coreData createManagedObject:@"ReviewClass_Lookup"];
+            ReviewClass_Lookup *obj = [ReviewClass_Lookup MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -198,18 +201,15 @@
                 obj.shortDescription_ = [[elements objectAtIndex:3] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
             
-            if ([_coreData save])
-            {
-                done++;
-            }
+            [currentContext MR_save];
+            done++;
         }
-    }
 }
 
 -(void) loadApplication
 {
-    if ([_coreData bIsTableEmpty:@"Application"])
-    {
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/application.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
@@ -244,7 +244,7 @@
                 NSLog(@"Loading Application...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            Application *obj = [_coreData createManagedObject:@"Application"];
+            Application *obj = [Application MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -272,11 +272,7 @@
             }
             if (elements.count >= 7 && [[elements objectAtIndex:6] length] > 0)
             {
-                NSArray *array = [_coreData find:@"ChemicalType_Lookup"
-                                      columnName:@"chemicalTypeID"
-                                     columnValue:[elements objectAtIndex:6]
-                                relationshipKeys:nil
-                                         sorters:nil];
+                NSArray *array = [ChemicalType_Lookup MR_findByAttribute:@"chemicalTypeID" withValue:[elements objectAtIndex:6]];
                 
                 if (array && array.count > 0)
                 {
@@ -292,18 +288,15 @@
                 obj.orphanCode = [[elements objectAtIndex:8] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
             
-            if ([_coreData save])
-            {
-                done++;
-            }
+            [currentContext MR_save];
+            done++;
         }
-    }
 }
 
 -(void) loadProduct
 {
-    if ([_coreData bIsTableEmpty:@"Product"])
-    {
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Product.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
@@ -339,15 +332,12 @@
             }
             
             
-            Product *obj = [_coreData createManagedObject:@"Product"];
+            Product *obj = [Product MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
-                NSArray *array = [_coreData find:@"Application"
-                                      columnName:@"applNo"
-                                     columnValue:[elements objectAtIndex:0]
-                                relationshipKeys:nil
-                                         sorters:nil];
+                NSArray *array = [Application MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:0]];
+
                 if (array && array.count > 0)
                 {
                     obj.applNo = [array objectAtIndex:0];
@@ -386,18 +376,15 @@
                 obj.activeIngred = [[elements objectAtIndex:8] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
             
-            if ([_coreData save])
-            {
-                done++;
-            }
+            [currentContext MR_save];
+            done++;
         }
-    }
 }
 
 -(void) loadProductTECode
 {
-    if ([_coreData bIsTableEmpty:@"Product_TECode"])
-    {
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Product_tecode.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
@@ -432,15 +419,11 @@
                 NSLog(@"Loading Product_TECode...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            Product_TECode *obj = [_coreData createManagedObject:@"Product_TECode"];
+            Product_TECode *obj = [Product_TECode MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
-                NSArray *array = [_coreData find:@"Application"
-                                      columnName:@"applNo"
-                                     columnValue:[elements objectAtIndex:0]
-                                relationshipKeys:nil
-                                         sorters:nil];
+                NSArray *array = [Application MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:0]];
                 
                 if (array && array.count > 0)
                 {
@@ -449,11 +432,8 @@
             }
             if (elements.count >= 2)
             {
-                NSArray *array = [_coreData find:@"Product"
-                                      columnName:@"productNo"
-                                     columnValue:[elements objectAtIndex:1]
-                                relationshipKeys:nil
-                                         sorters:nil];
+                NSArray *array = [Product MR_findByAttribute:@"productNo" withValue:[elements objectAtIndex:1]];
+                
                 if (array && array.count > 0)
                 {
                     obj.productNo = [array objectAtIndex:0];
@@ -472,18 +452,15 @@
                 obj.productMktStatus = [NSNumber numberWithInteger:[[elements objectAtIndex:4] integerValue]];
             }
             
-            if ([_coreData save])
-            {
-                done++;
-            }
+            [currentContext MR_save];
+            done++;
         }
-    }
 }
 
 -(void) loadAppDocType_Lookup
 {
-    if ([_coreData bIsTableEmpty:@"AppDocType_Lookup"])
-    {
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/AppDocType_Lookup.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
@@ -518,7 +495,7 @@
                 NSLog(@"Loading AppDocType_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            AppDocType_Lookup *obj = [_coreData createManagedObject:@"AppDocType_Lookup"];
+            AppDocType_Lookup *obj = [AppDocType_Lookup MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -529,18 +506,15 @@
                 obj.sortOrder = [NSNumber numberWithInteger:[[elements objectAtIndex:1] integerValue]];
             }
             
-            if ([_coreData save])
-            {
-                done++;
-            }
+            [currentContext MR_save];
+            done++;
         }
-    }
 }
 
 -(void) loadAppDoc
 {
-    if ([_coreData bIsTableEmpty:@"AppDoc"])
-    {
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/AppDoc.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
@@ -578,7 +552,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             
-            AppDoc *obj = [_coreData createManagedObject:@"AppDoc"];
+            AppDoc *obj = [AppDoc MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -586,11 +560,7 @@
             }
             if (elements.count >= 2)
             {
-                NSArray *array = [_coreData find:@"Application"
-                                      columnName:@"applNo"
-                                     columnValue:[elements objectAtIndex:1]
-                                relationshipKeys:nil
-                                         sorters:nil];
+                NSArray *array = [Application MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:1]];
                 
                 if (array && array.count > 0)
                 {
@@ -603,11 +573,7 @@
             }
             if (elements.count >= 4)
             {
-                NSArray *array = [_coreData find:@"AppDocType_Lookup"
-                                      columnName:@"appDocType"
-                                     columnValue:[elements objectAtIndex:3]
-                                relationshipKeys:nil
-                                         sorters:nil];
+                NSArray *array = [AppDocType_Lookup MR_findByAttribute:@"appDocType" withValue:[elements objectAtIndex:3]];
                 
                 if (array && array.count > 0)
                 {
@@ -635,18 +601,15 @@
                 obj.duplicateCounter = [NSNumber numberWithInteger:[[elements objectAtIndex:8] integerValue]];
             }
             
-            if ([_coreData save])
-            {
-                done++;
-            }
+            [currentContext MR_save];
+            done++;
         }
-    }
 }
 
 -(void) loadDocType_Lookup
 {
-    if ([_coreData bIsTableEmpty:@"DocType_Lookup"])
-    {
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/DocType_lookup.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
@@ -681,7 +644,7 @@
                 NSLog(@"Loading DocTypeLookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            DocType_Lookup *obj = [_coreData createManagedObject:@"DocType_Lookup"];
+            DocType_Lookup *obj = [DocType_Lookup MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -692,18 +655,15 @@
                 obj.docTypeDesc = [[elements objectAtIndex:1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             }
             
-            if ([_coreData save])
-            {
-                done++;
-            }
+            [currentContext MR_save];
+            done++;
         }
-    }
 }
 
 -(void) loadRegActionDate
 {
-    if ([_coreData bIsTableEmpty:@"RegActionDate"])
-    {
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
         NSError *error;
         NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/RegActionDate.txt"];
         NSString *file = [[NSString alloc] initWithContentsOfFile:path
@@ -741,15 +701,11 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             
-            RegActionDate *obj = [_coreData createManagedObject:@"RegActionDate"];
+            RegActionDate *obj = [RegActionDate MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
-                NSArray *array = [_coreData find:@"Application"
-                                      columnName:@"applNo"
-                                     columnValue:[elements objectAtIndex:0]
-                                relationshipKeys:nil
-                                         sorters:nil];
+                NSArray *array = [Application MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:0]];
                 
                 if (array && array.count > 0)
                 {
@@ -775,11 +731,7 @@
             }
             if (elements.count >= 6)
             {
-                NSArray *array = [_coreData find:@"DocType_Lookup"
-                                      columnName:@"docType"
-                                     columnValue:[elements objectAtIndex:5]
-                                relationshipKeys:nil
-                                         sorters:nil];
+                NSArray *array = [DocType_Lookup MR_findByAttribute:@"docType" withValue:[elements objectAtIndex:5]];
                 
                 if (array && array.count > 0)
                 {
@@ -787,17 +739,14 @@
                 }
             }
             
-            if ([_coreData save])
-            {
-                done++;
-            }
+            [currentContext MR_save];
+            done++;
         }
-    }
 }
 
 -(void) downloadDocuments
 {
-    NSArray *appDocs = [_coreData findAll:@"AppDoc" sorters:nil];
+    NSArray *appDocs = [AppDoc MR_findAll];
     int total = 0;
     
     for (AppDoc *appDoc in appDocs)

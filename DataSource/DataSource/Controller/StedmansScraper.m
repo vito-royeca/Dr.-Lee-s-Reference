@@ -12,7 +12,6 @@
 {
     NSArray *_letters;
     int _total;
-    JJJCoreData *_coreData;
 }
 
 -(id) init
@@ -50,8 +49,6 @@
                     @"y",
                     @"z",
                     nil];
-        
-        _coreData = [JJJCoreData sharedInstanceWithModel:@"database"];
     }
     
     return self;
@@ -326,32 +323,27 @@
 
 -(BOOL) saveTermToDatabase:(NSDictionary*)dict
 {
-    DictionaryTerm *d = [_coreData createManagedObject:@"DictionaryTerm"];
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
+    DictionaryTerm *d = [DictionaryTerm MR_createInContext:currentContext];
     d.dictionaryId = [dict objectForKey:@"id"];
     d.term = [dict objectForKey:@"term"];
     d.pronunciation = [dict objectForKey:@"Pronunciation:"];
+    [currentContext MR_save];
     
-    if (![_coreData save])
-    {
-        return NO;
-    }
-
     if ([dict objectForKey:@"Definitions:"])
     {
         NSMutableSet *set = [[NSMutableSet alloc] init];
         
         for (NSString *x in [dict objectForKey:@"Definitions:"])
         {
-            DictionaryDefinition *dd = [_coreData createManagedObject:@"DictionaryDefinition"];
+            DictionaryDefinition *dd = [DictionaryDefinition MR_createInContext:currentContext];
             dd.definition = x;
             [set addObject:dd];
         }
         
         [d addDictionaryDefinition:set];
-        if (![_coreData save])
-        {
-            return NO;
-        }
+        [currentContext MR_save];
     }
     
     if ([dict objectForKey:@"Synonyms:"])
@@ -360,16 +352,13 @@
         
         for (NSString *x in [dict objectForKey:@"Synonyms:"])
         {
-            DictionarySynonym *ds = [_coreData createManagedObject:@"DictionarySynonym"];
+            DictionarySynonym *ds = [DictionarySynonym MR_createInContext:currentContext];
             ds.term = x;
             [set addObject:ds];
         }
         
         [d addDictionarySynonym:set];
-        if (![_coreData save])
-        {
-            return NO;
-        }
+        [currentContext MR_save];
     }
     
     if ([dict objectForKey:@"See:"])
@@ -378,16 +367,13 @@
         
         for (NSString *x in [dict objectForKey:@"See:"])
         {
-            DictionaryXRef *dx = [_coreData createManagedObject:@"DictionaryXRef"];
+            DictionaryXRef *dx = [DictionaryXRef MR_createInContext:currentContext];
             dx.term = x;
             [set addObject:dx];
         }
         
         [d addDictionaryXRef:set];
-        if (![_coreData save])
-        {
-            return NO;
-        }
+        [currentContext MR_save];
     }
     
     return YES;
@@ -395,11 +381,8 @@
 
 - (BOOL) isTermInDatabase:(NSString*)term
 {
-    NSArray *arr = [_coreData find:@"DictionaryTerm"
-                        columnName:@"term"
-                        columnValue:term
-                    relationshipKeys:nil
-                            sorters:nil];
+    NSArray *arr = [DictionaryTerm MR_findByAttribute:@"term" withValue:term];
+    
     return arr && arr.count > 0;
 }
 
