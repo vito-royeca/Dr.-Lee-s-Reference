@@ -1,0 +1,15 @@
+D 02VW0DJ Restriction of Thoracic Aorta with Intraluminal Device, Temporary, Open Approach
+D 02VW3DJ Restriction of Thoracic Aorta with Intraluminal Device, Temporary, Percutaneous Approach
+D 02VW4DJ Restriction of Thoracic Aorta with Intraluminal Device, Temporary, Percutaneous Endoscopic Approach
+A 04V00DJ Restriction of Abdominal Aorta with Intraluminal Device, Temporary, Open Approach
+A 04V03DJ Restriction of Abdominal Aorta with Intraluminal Device, Temporary, Percutaneous Approach
+A 04V04DJ Restriction of Abdominal Aorta with Intraluminal Device, Temporary, Percutaneous Endoscopic Approach
+A 08H005Z Insertion of Epiretinal Visual Prosthesis into Right Eye, Open Approach
+A 08H105Z Insertion of Epiretinal Visual Prosthesis into Left Eye, Open Approach
+A 30280B1 Transfusion of Nonautologous 4-Factor Prothrombin Complex Concentrate into Vein, Open Approach
+A 30283B1 Transfusion of Nonautologous 4-Factor Prothrombin Complex Concentrate into Vein, Percutaneous Approach
+    71920 old_lines_read
+    71924 new_lines_read
+        7 additions
+        3 deletions
+        0 changes

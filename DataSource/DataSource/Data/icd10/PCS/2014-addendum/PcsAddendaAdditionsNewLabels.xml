@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ICD10PCS.tabular addenda="new">
+  <version>2014</version>
+  <title>Final Addenda New Codes</title>
+  <pcsTable>
+    <axis pos="1" values="1">
+      <title>Section</title>
+      <label code="0">Medical and Surgical</label>
+    </axis>
+    <axis pos="2" values="1">
+      <title>Body System</title>
+      <label code="4">Lower Arteries</label>
+    </axis>
+    <axis pos="3" values="1">
+      <title>Operation</title>
+      <label code="V">Restriction</label>
+      <definition>Partially closing an orifice or the lumen of a tubular body part</definition>
+    </axis>
+    <pcsRow codes="3">
+      <axis pos="4" values="1">
+        <title>Body Part</title>
+        <label code="0">Abdominal Aorta</label>
+      </axis>
+      <axis pos="5" values="3">
+        <title>Approach</title>
+        <label code="0">Open</label>
+        <label code="3">Percutaneous</label>
+        <label code="4">Percutaneous Endoscopic</label>
+      </axis>
+      <axis pos="6" values="1">
+        <title>Device</title>
+        <label code="D">Intraluminal Device</label>
+      </axis>
+      <axis pos="7" values="1">
+        <title>Qualifier</title>
+        <label code="J">Temporary</label>
+      </axis>
+    </pcsRow>
+  </pcsTable>
+  <pcsTable>
+    <axis pos="1" values="1">
+      <title>Section</title>
+      <label code="0">Medical and Surgical</label>
+    </axis>
+    <axis pos="2" values="1">
+      <title>Body System</title>
+      <label code="8">Eye</label>
+    </axis>
+    <axis pos="3" values="1">
+      <title>Operation</title>
+      <label code="H">Insertion</label>
+      <definition>Putting in a nonbiological appliance that monitors, assists, performs, or prevents a physiological function but does not physically take the place of a body part</definition>
+    </axis>
+    <pcsRow codes="2">
+      <axis pos="4" values="2">
+        <title>Body Part</title>
+        <label code="0">Eye, Right</label>
+        <label code="1">Eye, Left</label>
+      </axis>
+      <axis pos="5" values="1">
+        <title>Approach</title>
+        <label code="0">Open</label>
+      </axis>
+      <axis pos="6" values="1">
+        <title>Device</title>
+        <label code="5">Epiretinal Visual Prosthesis</label>
+      </axis>
+      <axis pos="7" values="1">
+        <title>Qualifier</title>
+        <label code="Z">No Qualifier</label>
+      </axis>
+    </pcsRow>
+  </pcsTable>
+  <pcsTable>
+    <axis pos="1" values="1">
+      <title>Section</title>
+      <label code="3">Administration</label>
+    </axis>
+    <axis pos="2" values="1">
+      <title>Body System</title>
+      <label code="0">Circulatory</label>
+    </axis>
+    <axis pos="3" values="1">
+      <title>Operation</title>
+      <label code="2">Transfusion</label>
+      <definition>Putting in blood or blood products</definition>
+    </axis>
+    <pcsRow codes="2">
+      <axis pos="4" values="1">
+        <title>Body System / Region</title>
+        <label code="8">Vein</label>
+      </axis>
+      <axis pos="5" values="2">
+        <title>Approach</title>
+        <label code="0">Open</label>
+        <label code="3">Percutaneous</label>
+      </axis>
+      <axis pos="6" values="1">
+        <title>Substance</title>
+        <label code="B">4-Factor Prothrombin Complex Concentrate</label>
+      </axis>
+      <axis pos="7" values="1">
+        <title>Qualifier</title>
+        <label code="1">Nonautologous</label>
+      </axis>
+    </pcsRow>
+  </pcsTable>
+  <labels-revised>
+  </labels-revised>
+</ICD10PCS.tabular>

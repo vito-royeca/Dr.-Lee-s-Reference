@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ICD10PCS.tabular addenda="old">
+  <version>2014</version>
+  <title>Final Addenda Deleted Codes</title>
+  <pcsTable>
+    <axis pos="1" values="1">
+      <title>Section</title>
+      <label code="0">Medical and Surgical</label>
+    </axis>
+    <axis pos="2" values="1">
+      <title>Body System</title>
+      <label code="2">Heart and Great Vessels</label>
+    </axis>
+    <axis pos="3" values="1">
+      <title>Operation</title>
+      <label code="V">Restriction</label>
+      <definition>Partially closing an orifice or the lumen of a tubular body part</definition>
+    </axis>
+    <pcsRow codes="3">
+      <axis pos="4" values="1">
+        <title>Body Part</title>
+        <label code="W">Thoracic Aorta</label>
+      </axis>
+      <axis pos="5" values="3">
+        <title>Approach</title>
+        <label code="0">Open</label>
+        <label code="3">Percutaneous</label>
+        <label code="4">Percutaneous Endoscopic</label>
+      </axis>
+      <axis pos="6" values="1">
+        <title>Device</title>
+        <label code="D">Intraluminal Device</label>
+      </axis>
+      <axis pos="7" values="1">
+        <title>Qualifier</title>
+        <label code="J">Temporary</label>
+      </axis>
+    </pcsRow>
+  </pcsTable>
+  <labels-revised>
+  </labels-revised>
+</ICD10PCS.tabular>

@@ -1,0 +1,70 @@
+ 
+Section 0               Medical and Surgical
+Axis 4                  Body Part
+Row                     
+Term                    Cervical Nerve
+Includes    Add         Spinal nerve, cervical
+ 
+Row         Add         
+Term        Add         Knee Joint, Femoral Surface, Left
+Term        Add         Knee Joint, Femoral Surface, Right
+Includes    Add         Femoropatellar joint
+Includes    Add         Patellofemoral joint
+ 
+Row                     
+Term                    Knee Joint, Left
+Term                    Knee Joint, Right
+Includes    Add         Patellofemoral joint
+Includes    Add         Tibiofemoral joint
+ 
+Row         Add         
+Term        Add         Knee Joint, Tibial Surface, Left
+Term        Add         Knee Joint, Tibial Surface, Right
+Includes    Add         Femorotibial joint
+Includes    Add         Tibiofemoral joint
+ 
+Row                     
+Term                    Lumbar Nerve
+Includes    Add         Spinal nerve, lumbar
+ 
+Row         Delete      
+Term        Delete      Spinal Cord
+Includes    Delete      Denticulate ligament
+ 
+Row         Add         
+Term        Add         Sacral Nerve
+Includes    Add         Spinal nerve, sacral
+ 
+Row                     
+Term                    Spinal Meninges
+Includes    Add         Denticulate ligament
+ 
+Row                     
+Term                    Thoracic Nerve
+Includes    Add         Spinal nerve, thoracic
+ 
+Axis 6                  Device
+Row         Add         
+Term        Add         Epiretinal Visual Prosthesis in Eye
+Includes    Add         Epiretinal visual prosthesis
+ 
+Row                     
+Term                    External Heart Assist System in Heart and Great Vessels
+Includes    Delete      PVAD™ Ventricular Assist Device
+Includes    Add         TandemHeart® System
+Includes    Add         Thoratec Paracorporeal Ventricular Assist Device
+ 
+Row                     
+Term                    Implantable Heart Assist System in Heart and Great Vessels
+Includes    Add         MicroMed HeartAssist
+ 
+Row                     
+Term                    Intraluminal Device
+Includes    Delete      TandemHeart® System
+Includes    Add         Impella® (2.5)(5.0)(LD) cardiac assist device
+ 
+Dev Aggrgtn Add         
+Device      Add         Epiretinal Visual Prosthesis
+Operation   Add         All applicable
+BodySys     Add         Eye
+Parent J    Add         Synthetic Substitute

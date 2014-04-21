@@ -1,0 +1,9 @@
+Count	List elements
+34342	FY2014 ICD-10-CM diagnoses
+0	codes have comments
+0	FY2014 ICD-10-CM diagnoses removed
+0	FY2014 ICD-10-CM diagnosis clusters
+	
+History	
+	Created by donnap on 08/01/2013 11:10AM EDT
+	All codes from [donnap lists and folders] by donnap on 08/01/2013 11:10AM EDT

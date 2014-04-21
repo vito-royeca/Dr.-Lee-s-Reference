@@ -1,0 +1,325 @@
+
+
+Lttr             A
+Main Revise from Arytenoidopexy
+Main Revise to   Arytenoidopexy <i>see</i> Repair, Larynx 0CQS
+     Delete        <i>see</i> Repair, Larynx 0CQS
+
+
+Lttr             B
+Main             Biopsy
+     Add           Bone Marrow <i>see</i> Extraction with qualifier Diagnostic
+
+
+Lttr             D
+Main Revise from Denticulate ligament <i>use</i> Spinal Cord
+Main Revise to   Denticulate ligament <i>use</i> Spinal Meninges
+
+
+Lttr             E
+Main Add         Epiretinal Visual Prosthesis
+     Add           <i>use</i> Epiretinal Visual Prosthesis in Eye
+     Add           Insertion of device in
+     Add             Left 08H105Z
+     Add             Right 08H005Z
+
+
+Lttr             F
+Main             Femoropatellar joint
+     Add           <i>use</i> Joint, Knee, Right, Femoral Surface
+     Add           <i>use</i> Joint, Knee, Left, Femoral Surface
+Main             Femorotibial joint
+     Add           <i>use</i> Joint, Knee, Right, Tibial Surface
+     Add           <i>use</i> Joint, Knee, Left, Tibial Surface
+
+
+Lttr             H
+Main             Hearing Device
+                   Insertion of device in
+     Delete          Bone
+     Delete            Left 0NH6[034]SZ
+     Delete            Right 0NH5[034]SZ
+     Delete          Ear
+     Delete            Left 09HE[034]SZ
+     Delete            Right 09HD[034]SZ
+     Add             Left 0NH6[034]SZ
+     Add             Right 0NH5[034]SZ
+     Delete        Removal of device from
+     Delete          Ear
+     Delete            Left 09PE[078]SZ
+     Delete            Right 09PD[078]SZ
+     Delete          Skull 0NP0
+     Delete        Revision of device in
+     Delete          Ear
+     Delete            Left 09WE[078]SZ
+     Delete            Right 09WD[078]SZ
+     Delete          Skull 0NW0
+     Add           Removal of device from, Skull 0NP0
+     Add           Revision of device in, Skull 0NW0
+Main             Hyperthermia
+     Delete        Radiation Oncology
+     Delete          Abdomen DWY38ZZ
+     Delete          Adrenal Gland DGY28ZZ
+     Delete          Bile Ducts DFY28ZZ
+     Delete          Bladder DTY28ZZ
+     Delete          Bone, Other DPYC8ZZ
+     Delete          Bone Marrow D7Y08ZZ
+     Delete          Brain D0Y08ZZ
+     Delete          Brain Stem D0Y18ZZ
+     Delete          Breast
+     Delete            Left DMY08ZZ
+     Delete            Right DMY18ZZ
+     Delete          Bronchus DBY18ZZ
+     Delete          Cervix DUY18ZZ
+     Delete          Chest DWY28ZZ
+     Delete          Chest Wall DBY78ZZ
+     Delete          Colon DDY58ZZ
+     Delete          Diaphragm DBY88ZZ
+     Delete          Duodenum DDY28ZZ
+     Delete          Ear D9Y08ZZ
+     Delete          Esophagus DDY08ZZ
+     Delete          Eye D8Y08ZZ
+     Delete          Femur DPY98ZZ
+     Delete          Fibula DPYB8ZZ
+     Delete          Gallbladder DFY18ZZ
+     Delete          Gland
+     Delete            Adrenal DGY28ZZ
+     Delete            Parathyroid DGY48ZZ
+     Delete            Pituitary DGY08ZZ
+     Delete            Thyroid DGY58ZZ
+     Delete          Glands, Salivary D9Y68ZZ
+     Delete          Head and Neck DWY18ZZ
+     Delete          Hemibody DWY48ZZ
+     Delete          Humerus DPY68ZZ
+     Delete          Hypopharynx D9Y38ZZ
+     Delete          Ileum DDY48ZZ
+     Delete          Jejunum DDY38ZZ
+     Delete          Kidney DTY08ZZ
+     Delete          Larynx D9YB8ZZ
+     Delete          Liver DFY08ZZ
+     Delete          Lung DBY28ZZ
+     Delete          Lymphatics
+     Delete            Abdomen D7Y68ZZ
+     Delete            Axillary D7Y48ZZ
+     Delete            Inguinal D7Y88ZZ
+     Delete            Neck D7Y38ZZ
+     Delete            Pelvis D7Y78ZZ
+     Delete            Thorax D7Y58ZZ
+     Delete          Mandible DPY38ZZ
+     Delete          Maxilla DPY28ZZ
+     Delete          Mediastinum DBY68ZZ
+     Delete          Mouth D9Y48ZZ
+     Delete          Nasopharynx D9YD8ZZ
+     Delete          Neck and Head DWY18ZZ
+     Delete          Nerve, Peripheral D0Y78ZZ
+     Delete          Nose D9Y18ZZ
+     Delete          Oropharynx D9YF8ZZ
+     Delete          Ovary DUY08ZZ
+     Delete          Palate
+     Delete            Hard D9Y88ZZ
+     Delete            Soft D9Y98ZZ
+     Delete          Pancreas DFY38ZZ
+     Delete          Parathyroid Gland DGY48ZZ
+     Delete          Pelvic Bones DPY88ZZ
+     Delete          Pelvic Region DWY68ZZ
+     Delete          Pineal Body DGY18ZZ
+     Delete          Pituitary Gland DGY08ZZ
+     Delete          Pleura DBY58ZZ
+     Delete          Prostate DVY08ZZ
+     Delete          Radius DPY78ZZ
+     Delete          Rectum DDY78ZZ
+     Delete          Rib DPY58ZZ
+     Delete          Sinuses D9Y78ZZ
+     Delete          Skin
+     Delete            Abdomen DHY88ZZ
+     Delete            Arm DHY48ZZ
+     Delete            Back DHY78ZZ
+     Delete            Buttock DHY98ZZ
+     Delete            Chest DHY68ZZ
+     Delete            Face DHY28ZZ
+     Delete            Leg DHYB8ZZ
+     Delete            Neck DHY38ZZ
+     Delete          Skull DPY08ZZ
+     Delete          Spinal Cord D0Y68ZZ
+     Delete          Spleen D7Y28ZZ
+     Delete          Sternum DPY48ZZ
+     Delete          Stomach DDY18ZZ
+     Delete          Testis DVY18ZZ
+     Delete          Thymus D7Y18ZZ
+     Delete          Thyroid Gland DGY58ZZ
+     Delete          Tibia DPYB8ZZ
+     Delete          Tongue D9Y58ZZ
+     Delete          Trachea DBY08ZZ
+     Delete          Ulna DPY78ZZ
+     Delete          Ureter DTY18ZZ
+     Delete          Urethra DTY38ZZ
+     Delete          Uterus DUY28ZZ
+     Delete          Whole Body DWY58ZZ
+     Add           Radiation Therapy
+     Add             Abdomen DWY38ZZ
+     Add             Adrenal Gland DGY28ZZ
+     Add             Bile Ducts DFY28ZZ
+     Add             Bladder DTY28ZZ
+     Add             Bone, Other DPYC8ZZ
+     Add             Bone Marrow D7Y08ZZ
+     Add             Brain D0Y08ZZ
+     Add             Brain Stem D0Y18ZZ
+     Add             Breast
+     Add               Left DMY08ZZ
+     Add               Right DMY18ZZ
+     Add             Bronchus DBY18ZZ
+     Add             Cervix DUY18ZZ
+     Add             Chest DWY28ZZ
+     Add             Chest Wall DBY78ZZ
+     Add             Colon DDY58ZZ
+     Add             Diaphragm DBY88ZZ
+     Add             Duodenum DDY28ZZ
+     Add             Ear D9Y08ZZ
+     Add             Esophagus DDY08ZZ
+     Add             Eye D8Y08ZZ
+     Add             Femur DPY98ZZ
+     Add             Fibula DPYB8ZZ
+     Add             Gallbladder DFY18ZZ
+     Add             Gland
+     Add               Adrenal DGY28ZZ
+     Add               Parathyroid DGY48ZZ
+     Add               Pituitary DGY08ZZ
+     Add               Thyroid DGY58ZZ
+     Add             Glands, Salivary D9Y68ZZ
+     Add             Head and Neck DWY18ZZ
+     Add             Hemibody DWY48ZZ
+     Add             Humerus DPY68ZZ
+     Add             Hypopharynx D9Y38ZZ
+     Add             Ileum DDY48ZZ
+     Add             Jejunum DDY38ZZ
+     Add             Kidney DTY08ZZ
+     Add             Larynx D9YB8ZZ
+     Add             Liver DFY08ZZ
+     Add             Lung DBY28ZZ
+     Add             Lymphatics
+     Add               Abdomen D7Y68ZZ
+     Add               Axillary D7Y48ZZ
+     Add               Inguinal D7Y88ZZ
+     Add               Neck D7Y38ZZ
+     Add               Pelvis D7Y78ZZ
+     Add               Thorax D7Y58ZZ
+     Add             Mandible DPY38ZZ
+     Add             Maxilla DPY28ZZ
+     Add             Mediastinum DBY68ZZ
+     Add             Mouth D9Y48ZZ
+     Add             Nasopharynx D9YD8ZZ
+     Add             Neck and Head DWY18ZZ
+     Add             Nerve, Peripheral D0Y78ZZ
+     Add             Nose D9Y18ZZ
+     Add             Oropharynx D9YF8ZZ
+     Add             Ovary DUY08ZZ
+     Add             Palate
+     Add               Hard D9Y88ZZ
+     Add               Soft D9Y98ZZ
+     Add             Pancreas DFY38ZZ
+     Add             Parathyroid Gland DGY48ZZ
+     Add             Pelvic Bones DPY88ZZ
+     Add             Pelvic Region DWY68ZZ
+     Add             Pineal Body DGY18ZZ
+     Add             Pituitary Gland DGY08ZZ
+     Add             Pleura DBY58ZZ
+     Add             Prostate DVY08ZZ
+     Add             Radius DPY78ZZ
+     Add             Rectum DDY78ZZ
+     Add             Rib DPY58ZZ
+     Add             Sinuses D9Y78ZZ
+     Add             Skin
+     Add               Abdomen DHY88ZZ
+     Add               Arm DHY48ZZ
+     Add               Back DHY78ZZ
+     Add               Buttock DHY98ZZ
+     Add               Chest DHY68ZZ
+     Add               Face DHY28ZZ
+     Add               Leg DHYB8ZZ
+     Add               Neck DHY38ZZ
+     Add             Skull DPY08ZZ
+     Add             Spinal Cord D0Y68ZZ
+     Add             Spleen D7Y28ZZ
+     Add             Sternum DPY48ZZ
+     Add             Stomach DDY18ZZ
+     Add             Testis DVY18ZZ
+     Add             Thymus D7Y18ZZ
+     Add             Thyroid Gland DGY58ZZ
+     Add             Tibia DPYB8ZZ
+     Add             Tongue D9Y58ZZ
+     Add             Trachea DBY08ZZ
+     Add             Ulna DPY78ZZ
+     Add             Ureter DTY18ZZ
+     Add             Urethra DTY38ZZ
+     Add             Uterus DUY28ZZ
+     Add             Whole Body DWY58ZZ
+
+
+Lttr             I
+Main Add         Impella® (2.5)(5.0)(LD) cardiac assist device <i>use</i> Intraluminal Device
+Main             Insertion of device in
+                   Eye
+     Revise from     Left 08H1[3X][13]Z
+     Revise to       Left 08H1
+     Revise from     Right 08H0[3X][13]Z
+     Revise to       Right 08H0
+
+
+Lttr             L
+Main             Laminotomy
+     Add           <i>see</i> Release, Central Nervous System 00N
+     Add           <i>see</i> Release, Peripheral Nervous System 01N
+
+
+Lttr             M
+Main Add         MicroMed HeartAssist <i>use</i> Implantable Heart Assist System in Heart and Great Vessels
+
+
+Lttr             P
+Main Add         Patellofemoral joint
+     Add           <i>use</i> Joint, Knee, Right
+     Add           <i>use</i> Joint, Knee, Left
+     Add           <i>use</i> Joint, Knee, Right, Femoral Surface
+     Add           <i>use</i> Joint, Knee, Left, Femoral Surface
+Main Revise from Pneumonectomy
+Main Revise to   Pneumonectomy <i>see</i> Resection, Respiratory System 0BT
+Main Delete      PVAD™ Ventricular Assist Device <i>use</i> External Heart Assist System in Heart and Great Vessels
+
+
+Lttr             R
+Main Delete      Radiation Oncology
+     Delete        <i>see</i> Beam Radiation
+     Delete        <i>see</i> Brachytherapy
+Main Add         Radiation Therapy
+     Add           <i>see</i> Beam Radiation
+     Add           <i>see</i> Brachytherapy
+Main Revise from Rectocele repair
+Main Revise to   Rectocele repair <i>see</i> Repair, Subcutaneous Tissue and Fascia, Pelvic Region 0JQC
+     Delete        <i>see</i> Repair, Subcutaneous Tissue and Fascia, Pelvic Region 0JQC
+Main             Restriction
+                   Aorta
+     Revise from     Abdominal 04V0[034][CDZ]Z
+     Revise to       Abdominal 04V0
+     Revise from     Thoracic 02VW
+     Revise to       Thoracic 02VW[034][CDZ]Z
+
+
+Lttr             S
+Main Add         Spinal nerve, cervical <i>use</i> Nerve, Cervical
+Main Add         Spinal nerve, lumbar <i>use</i> Nerve, Lumbar
+Main Add         Spinal nerve, sacral <i>use</i> Nerve, Sacral
+Main Add         Spinal nerve, thoracic <i>use</i> Nerve, Thoracic
+
+
+Lttr             T
+Main Revise from TandemHeart® System <i>use</i> Intraluminal Device
+Main Revise to   TandemHeart® System <i>use</i> External Heart Assist System in Heart and Great Vessels
+Main Add         Thoratec Paracorporeal Ventricular Assist Device <i>use</i> External Heart Assist System in Heart and Great Vessels
+Main Add         Tibiofemoral joint
+     Add           <i>use</i> Joint, Knee, Right, Tibial Surface
+     Add           <i>use</i> Joint, Knee, Left, Tibial Surface
+     Add           <i>use</i> Joint, Knee, Right
+     Add           <i>use</i> Joint, Knee, Left
+Main             Transfusion
+                   Vein
+     Add             4-Factor Prothrombin Complex Concentrate 3028[03]B1
