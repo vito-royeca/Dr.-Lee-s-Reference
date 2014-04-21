@@ -29,6 +29,25 @@
 		119B62F3185C827C009D3184 /* DictionaryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62EE185C827C009D3184 /* DictionaryDefinition.m */; };
 		119B62F4185C827C009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F0185C827C009D3184 /* DictionaryTerm.m */; };
 		119B62F5185C827C009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F2185C827C009D3184 /* DictionaryXRef.m */; };
+		5815F09D1905841000BB62AE /* ICD10.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F08C1905841000BB62AE /* ICD10.m */; };
+		5815F09E1905841000BB62AE /* ICD10Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F08E1905841000BB62AE /* ICD10Diagnosis.m */; };
+		5815F09F1905841000BB62AE /* ICD10DiagnosisDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F0901905841000BB62AE /* ICD10DiagnosisDrug.m */; };
+		5815F0A01905841000BB62AE /* ICD10DiagnosisEIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F0921905841000BB62AE /* ICD10DiagnosisEIndex.m */; };
+		5815F0A11905841000BB62AE /* ICD10DiagnosisIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F0941905841000BB62AE /* ICD10DiagnosisIndex.m */; };
+		5815F0A21905841000BB62AE /* ICD10DiagnosisNeoplasm.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F0961905841000BB62AE /* ICD10DiagnosisNeoplasm.m */; };
+		5815F0A31905841000BB62AE /* ICD10Procedure.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F0981905841000BB62AE /* ICD10Procedure.m */; };
+		5815F0A41905841000BB62AE /* ICD10ProcedureDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F09A1905841000BB62AE /* ICD10ProcedureDefinition.m */; };
+		5815F0A51905841000BB62AE /* ICD10ProcedureIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F09C1905841000BB62AE /* ICD10ProcedureIndex.m */; };
+		5815F0AC1905867F00BB62AE /* DiagnosesLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F0AB1905867F00BB62AE /* DiagnosesLoader.m */; };
+		5815F0B21905869700BB62AE /* ProceduresLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F0B11905869700BB62AE /* ProceduresLoader.m */; };
+		5815F0FE19058D8F00BB62AE /* Drug.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0BA1905896D00BB62AE /* Drug.xml */; };
+		5815F0FF19058D8F00BB62AE /* E-Index.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0BC1905896D00BB62AE /* E-Index.xml */; };
+		5815F10019058D8F00BB62AE /* Index.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0BE1905896D00BB62AE /* Index.xml */; };
+		5815F10119058D8F00BB62AE /* Neoplasm.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0C01905896D00BB62AE /* Neoplasm.xml */; };
+		5815F10219058D8F00BB62AE /* Tabular.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0C21905896D00BB62AE /* Tabular.xml */; };
+		5815F10319058D8F00BB62AE /* icd10pcs_definitions_2014.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0E31905896D00BB62AE /* icd10pcs_definitions_2014.xml */; };
+		5815F10419058D8F00BB62AE /* icd10pcs_index_2014.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0E51905896D00BB62AE /* icd10pcs_index_2014.xml */; };
+		5815F10519058D8F00BB62AE /* icd10pcs_tabular_2014.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0E71905896D00BB62AE /* icd10pcs_tabular_2014.xml */; };
 		58264E88189E97E200D83B00 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E6E189E95B300D83B00 /* libJJJ.a */; };
 		8C97C5551904EC2C000CEA20 /* DrugAppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5441904EC2C000CEA20 /* DrugAppDoc.m */; };
 		8C97C5561904EC2C000CEA20 /* DrugAppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5461904EC2C000CEA20 /* DrugAppDocType_Lookup.m */; };
@@ -74,6 +93,14 @@
 			dstPath = Data;
 			dstSubfolderSpec = 16;
 			files = (
+				5815F0FE19058D8F00BB62AE /* Drug.xml in CopyFiles */,
+				5815F0FF19058D8F00BB62AE /* E-Index.xml in CopyFiles */,
+				5815F10019058D8F00BB62AE /* Index.xml in CopyFiles */,
+				5815F10119058D8F00BB62AE /* Neoplasm.xml in CopyFiles */,
+				5815F10219058D8F00BB62AE /* Tabular.xml in CopyFiles */,
+				5815F10319058D8F00BB62AE /* icd10pcs_definitions_2014.xml in CopyFiles */,
+				5815F10419058D8F00BB62AE /* icd10pcs_index_2014.xml in CopyFiles */,
+				5815F10519058D8F00BB62AE /* icd10pcs_tabular_2014.xml in CopyFiles */,
 				117E6CC818634D1E00D78A82 /* AppDoc.txt in CopyFiles */,
 				117E6CC918634D1E00D78A82 /* AppDocType_Lookup.txt in CopyFiles */,
 				117E6CCA18634D1E00D78A82 /* application.txt in CopyFiles */,
@@ -124,23 +151,88 @@
 		119B62F0185C827C009D3184 /* DictionaryTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryTerm.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryTerm.m"; sourceTree = "<group>"; };
 		119B62F1185C827C009D3184 /* DictionaryXRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryXRef.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryXRef.h"; sourceTree = "<group>"; };
 		119B62F2185C827C009D3184 /* DictionaryXRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryXRef.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryXRef.m"; sourceTree = "<group>"; };
-		119F65931867F43800EF658B /* icd10pcs_definitions.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_definitions.xsd; sourceTree = "<group>"; };
-		119F65941867F43800EF658B /* icd10pcs_definitions_2014.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_definitions_2014.xml; sourceTree = "<group>"; };
-		119F65951867F43800EF658B /* icd10pcs_index.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_index.xsd; sourceTree = "<group>"; };
-		119F65961867F43800EF658B /* icd10pcs_index_2014.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_index_2014.xml; sourceTree = "<group>"; };
-		119F65971867F43800EF658B /* icd10pcs_tabular.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_tabular.xsd; sourceTree = "<group>"; };
-		119F65981867F43800EF658B /* icd10pcs_tabular_2014.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_tabular_2014.xml; sourceTree = "<group>"; };
-		119F65991867F43800EF658B /* PCS_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PCS_2014.pdf; sourceTree = "<group>"; };
-		119F659B1867F43800EF658B /* Drug.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Drug.pdf; sourceTree = "<group>"; };
-		119F659C1867F43800EF658B /* Drug.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Drug.xml; sourceTree = "<group>"; };
-		119F659D1867F43800EF658B /* E-Index.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "E-Index.pdf"; sourceTree = "<group>"; };
-		119F659E1867F43800EF658B /* E-Index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "E-Index.xml"; sourceTree = "<group>"; };
-		119F659F1867F43800EF658B /* Index.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Index.pdf; sourceTree = "<group>"; };
-		119F65A01867F43800EF658B /* Index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Index.xml; sourceTree = "<group>"; };
-		119F65A11867F43800EF658B /* Neoplasm.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Neoplasm.pdf; sourceTree = "<group>"; };
-		119F65A21867F43800EF658B /* Neoplasm.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Neoplasm.xml; sourceTree = "<group>"; };
-		119F65A31867F43800EF658B /* Tabular.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Tabular.pdf; sourceTree = "<group>"; };
-		119F65A41867F43800EF658B /* Tabular.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Tabular.xml; sourceTree = "<group>"; };
+		5815F08B1905841000BB62AE /* ICD10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10.h"; sourceTree = "<group>"; };
+		5815F08C1905841000BB62AE /* ICD10.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10.m"; sourceTree = "<group>"; };
+		5815F08D1905841000BB62AE /* ICD10Diagnosis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10Diagnosis.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10Diagnosis.h"; sourceTree = "<group>"; };
+		5815F08E1905841000BB62AE /* ICD10Diagnosis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10Diagnosis.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10Diagnosis.m"; sourceTree = "<group>"; };
+		5815F08F1905841000BB62AE /* ICD10DiagnosisDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10DiagnosisDrug.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10DiagnosisDrug.h"; sourceTree = "<group>"; };
+		5815F0901905841000BB62AE /* ICD10DiagnosisDrug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10DiagnosisDrug.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10DiagnosisDrug.m"; sourceTree = "<group>"; };
+		5815F0911905841000BB62AE /* ICD10DiagnosisEIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10DiagnosisEIndex.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10DiagnosisEIndex.h"; sourceTree = "<group>"; };
+		5815F0921905841000BB62AE /* ICD10DiagnosisEIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10DiagnosisEIndex.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10DiagnosisEIndex.m"; sourceTree = "<group>"; };
+		5815F0931905841000BB62AE /* ICD10DiagnosisIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10DiagnosisIndex.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10DiagnosisIndex.h"; sourceTree = "<group>"; };
+		5815F0941905841000BB62AE /* ICD10DiagnosisIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10DiagnosisIndex.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10DiagnosisIndex.m"; sourceTree = "<group>"; };
+		5815F0951905841000BB62AE /* ICD10DiagnosisNeoplasm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10DiagnosisNeoplasm.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10DiagnosisNeoplasm.h"; sourceTree = "<group>"; };
+		5815F0961905841000BB62AE /* ICD10DiagnosisNeoplasm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10DiagnosisNeoplasm.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10DiagnosisNeoplasm.m"; sourceTree = "<group>"; };
+		5815F0971905841000BB62AE /* ICD10Procedure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10Procedure.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10Procedure.h"; sourceTree = "<group>"; };
+		5815F0981905841000BB62AE /* ICD10Procedure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10Procedure.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10Procedure.m"; sourceTree = "<group>"; };
+		5815F0991905841000BB62AE /* ICD10ProcedureDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10ProcedureDefinition.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10ProcedureDefinition.h"; sourceTree = "<group>"; };
+		5815F09A1905841000BB62AE /* ICD10ProcedureDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10ProcedureDefinition.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10ProcedureDefinition.m"; sourceTree = "<group>"; };
+		5815F09B1905841000BB62AE /* ICD10ProcedureIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10ProcedureIndex.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10ProcedureIndex.h"; sourceTree = "<group>"; };
+		5815F09C1905841000BB62AE /* ICD10ProcedureIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10ProcedureIndex.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10ProcedureIndex.m"; sourceTree = "<group>"; };
+		5815F0AA1905867F00BB62AE /* DiagnosesLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiagnosesLoader.h; sourceTree = "<group>"; };
+		5815F0AB1905867F00BB62AE /* DiagnosesLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiagnosesLoader.m; sourceTree = "<group>"; };
+		5815F0B01905869700BB62AE /* ProceduresLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProceduresLoader.h; sourceTree = "<group>"; };
+		5815F0B11905869700BB62AE /* ProceduresLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProceduresLoader.m; sourceTree = "<group>"; };
+		5815F0B51905896D00BB62AE /* icd10cm_diff_2014.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icd10cm_diff_2014.txt; sourceTree = "<group>"; };
+		5815F0B61905896D00BB62AE /* icd10cm_order_2014.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icd10cm_order_2014.txt; sourceTree = "<group>"; };
+		5815F0B71905896D00BB62AE /* ICD10OrderFiles.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ICD10OrderFiles.pdf; sourceTree = "<group>"; };
+		5815F0B91905896D00BB62AE /* Drug.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Drug.pdf; sourceTree = "<group>"; };
+		5815F0BA1905896D00BB62AE /* Drug.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Drug.xml; sourceTree = "<group>"; };
+		5815F0BB1905896D00BB62AE /* E-Index.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "E-Index.pdf"; sourceTree = "<group>"; };
+		5815F0BC1905896D00BB62AE /* E-Index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "E-Index.xml"; sourceTree = "<group>"; };
+		5815F0BD1905896D00BB62AE /* Index.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Index.pdf; sourceTree = "<group>"; };
+		5815F0BE1905896D00BB62AE /* Index.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Index.xml; sourceTree = "<group>"; };
+		5815F0BF1905896D00BB62AE /* Neoplasm.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Neoplasm.pdf; sourceTree = "<group>"; };
+		5815F0C01905896D00BB62AE /* Neoplasm.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Neoplasm.xml; sourceTree = "<group>"; };
+		5815F0C11905896D00BB62AE /* Tabular.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Tabular.pdf; sourceTree = "<group>"; };
+		5815F0C21905896D00BB62AE /* Tabular.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Tabular.xml; sourceTree = "<group>"; };
+		5815F0C41905896D00BB62AE /* reimb_map_dx_2014.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = reimb_map_dx_2014.txt; sourceTree = "<group>"; };
+		5815F0C51905896D00BB62AE /* reimb_map_guide_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = reimb_map_guide_2014.pdf; sourceTree = "<group>"; };
+		5815F0C71905896D00BB62AE /* 2014-I10Dx-codes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "2014-I10Dx-codes.txt"; sourceTree = "<group>"; };
+		5815F0C81905896D00BB62AE /* Detailed List  of Codes Exempt from POA.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Detailed List  of Codes Exempt from POA.pdf"; sourceTree = "<group>"; };
+		5815F0C91905896D00BB62AE /* Detailed List  of Codes Exempt from POA.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Detailed List  of Codes Exempt from POA.txt"; sourceTree = "<group>"; };
+		5815F0CA1905896D00BB62AE /* Detailed List  of Codes Exempt from POA.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Detailed List  of Codes Exempt from POA.xlsx"; sourceTree = "<group>"; };
+		5815F0CC1905896D00BB62AE /* 2014_I10gem.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2014_I10gem.txt; sourceTree = "<group>"; };
+		5815F0CD1905896D00BB62AE /* 2014_I9gem.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2014_I9gem.txt; sourceTree = "<group>"; };
+		5815F0CE1905896D00BB62AE /* Dxgem_guide_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Dxgem_guide_2014.pdf; sourceTree = "<group>"; };
+		5815F0CF1905896D00BB62AE /* Gems2014UpdateSummary.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Gems2014UpdateSummary.pdf; sourceTree = "<group>"; };
+		5815F0D01905896D00BB62AE /* GemsTechDoc.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GemsTechDoc.pdf; sourceTree = "<group>"; };
+		5815F0D21905896D00BB62AE /* duplicate_ICD10CM_codes.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = duplicate_ICD10CM_codes.pdf; sourceTree = "<group>"; };
+		5815F0D31905896D00BB62AE /* duplicate_ICD10CM_codes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = duplicate_ICD10CM_codes.txt; sourceTree = "<group>"; };
+		5815F0D41905896D00BB62AE /* duplicate_ICD10CM_codes.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = duplicate_ICD10CM_codes.xlsx; sourceTree = "<group>"; };
+		5815F0D71905896D00BB62AE /* definitions_addenda_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = definitions_addenda_2014.pdf; sourceTree = "<group>"; };
+		5815F0D81905896D00BB62AE /* definitions_addenda_2014.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = definitions_addenda_2014.txt; sourceTree = "<group>"; };
+		5815F0D91905896D00BB62AE /* icd10pcs_diff_13_14.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icd10pcs_diff_13_14.txt; sourceTree = "<group>"; };
+		5815F0DA1905896D00BB62AE /* index_addenda_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = index_addenda_2014.pdf; sourceTree = "<group>"; };
+		5815F0DB1905896D00BB62AE /* index_addenda_2014.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index_addenda_2014.txt; sourceTree = "<group>"; };
+		5815F0DC1905896D00BB62AE /* pcs_addenda_readme2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pcs_addenda_readme2014.pdf; sourceTree = "<group>"; };
+		5815F0DD1905896D00BB62AE /* PcsAddendaAdditionsNewLabels.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PcsAddendaAdditionsNewLabels.pdf; sourceTree = "<group>"; };
+		5815F0DE1905896D00BB62AE /* PcsAddendaAdditionsNewLabels.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PcsAddendaAdditionsNewLabels.xml; sourceTree = "<group>"; };
+		5815F0DF1905896D00BB62AE /* PcsAddendaDeletionsOldLabels.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PcsAddendaDeletionsOldLabels.pdf; sourceTree = "<group>"; };
+		5815F0E01905896D00BB62AE /* PcsAddendaDeletionsOldLabels.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PcsAddendaDeletionsOldLabels.xml; sourceTree = "<group>"; };
+		5815F0E21905896D00BB62AE /* icd10pcs_definitions.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_definitions.xsd; sourceTree = "<group>"; };
+		5815F0E31905896D00BB62AE /* icd10pcs_definitions_2014.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_definitions_2014.xml; sourceTree = "<group>"; };
+		5815F0E41905896D00BB62AE /* icd10pcs_index.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_index.xsd; sourceTree = "<group>"; };
+		5815F0E51905896D00BB62AE /* icd10pcs_index_2014.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_index_2014.xml; sourceTree = "<group>"; };
+		5815F0E61905896D00BB62AE /* icd10pcs_tabular.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_tabular.xsd; sourceTree = "<group>"; };
+		5815F0E71905896D00BB62AE /* icd10pcs_tabular_2014.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = icd10pcs_tabular_2014.xml; sourceTree = "<group>"; };
+		5815F0E81905896D00BB62AE /* PCS_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PCS_2014.pdf; sourceTree = "<group>"; };
+		5815F0EA1905896D00BB62AE /* ICD10OrderFiles.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ICD10OrderFiles.pdf; sourceTree = "<group>"; };
+		5815F0EB1905896D00BB62AE /* icd10pcs_order_2014.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = icd10pcs_order_2014.txt; sourceTree = "<group>"; };
+		5815F0EC1905896D00BB62AE /* 2014-pcs-procedure-coding-system.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "2014-pcs-procedure-coding-system.pdf"; sourceTree = "<group>"; };
+		5815F0EE1905896D00BB62AE /* ICD-10-PCS Reference Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ICD-10-PCS Reference Manual.pdf"; sourceTree = "<group>"; };
+		5815F0EF1905896D00BB62AE /* pcs_ref_addenda_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pcs_ref_addenda_2014.pdf; sourceTree = "<group>"; };
+		5815F0F11905896D00BB62AE /* reimb_map_guide_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = reimb_map_guide_2014.pdf; sourceTree = "<group>"; };
+		5815F0F21905896D00BB62AE /* reimb_map_pr_2014.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = reimb_map_pr_2014.txt; sourceTree = "<group>"; };
+		5815F0F31905896D00BB62AE /* PCS-2014-guidelines.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "PCS-2014-guidelines.pdf"; sourceTree = "<group>"; };
+		5815F0F51905896D00BB62AE /* pcs_slides2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pcs_slides2014.pdf; sourceTree = "<group>"; };
+		5815F0F61905896D00BB62AE /* pcs_slides2014_outline.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pcs_slides2014_outline.pdf; sourceTree = "<group>"; };
+		5815F0F71905896D00BB62AE /* pcs-whats-new-2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "pcs-whats-new-2014.pdf"; sourceTree = "<group>"; };
+		5815F0F91905896D00BB62AE /* gem_i9pcs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gem_i9pcs.txt; sourceTree = "<group>"; };
+		5815F0FA1905896D00BB62AE /* gem_pcsi9.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gem_pcsi9.txt; sourceTree = "<group>"; };
+		5815F0FB1905896D00BB62AE /* Gems2014UpdateSummary.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Gems2014UpdateSummary.pdf; sourceTree = "<group>"; };
+		5815F0FC1905896D00BB62AE /* GemsTechDoc.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GemsTechDoc.pdf; sourceTree = "<group>"; };
+		5815F0FD1905896D00BB62AE /* pcs_gemguide_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pcs_gemguide_2014.pdf; sourceTree = "<group>"; };
 		58264E61189E941F00D83B00 /* libJJJ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJJJ.a; path = "../../../../../../../../Users/buttmanizer/Library/Developer/Xcode/DerivedData/Dr._Lee's_Reference-czjeuqoykfphysdhxudpnheeuitz/Build/Products/Debug-iphoneos/libJJJ.a"; sourceTree = "<group>"; };
 		58264E67189E95B200D83B00 /* JJJ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JJJ.xcodeproj; path = ../jjj/JJJ/JJJ.xcodeproj; sourceTree = "<group>"; };
 		8C97C5431904EC2C000CEA20 /* DrugAppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrugAppDoc.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugAppDoc.h"; sourceTree = "<group>"; };
@@ -238,10 +330,14 @@
 		1133835C1859A9EA00CBA6FF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5815F0AA1905867F00BB62AE /* DiagnosesLoader.h */,
+				5815F0AB1905867F00BB62AE /* DiagnosesLoader.m */,
 				1133835D1859AA1900CBA6FF /* DrugsLoader.h */,
 				1133835E1859AA1900CBA6FF /* DrugsLoader.m */,
 				1133835F1859AA1900CBA6FF /* FileDownloader.h */,
 				113383601859AA1900CBA6FF /* FileDownloader.m */,
+				5815F0B01905869700BB62AE /* ProceduresLoader.h */,
+				5815F0B11905869700BB62AE /* ProceduresLoader.m */,
 				113383611859AA1900CBA6FF /* StedmansScraper.h */,
 				113383621859AA1900CBA6FF /* StedmansScraper.m */,
 			);
@@ -278,8 +374,8 @@
 		113383751859AA7200CBA6FF /* icd10 */ = {
 			isa = PBXGroup;
 			children = (
-				119F65921867F43800EF658B /* 2014-Code-Tables-and-Index */,
-				119F659A1867F43800EF658B /* 2014-ICD10-Code-Tables-and-Index */,
+				5815F0B31905896D00BB62AE /* CM */,
+				5815F0D51905896D00BB62AE /* PCS */,
 			);
 			path = icd10;
 			sourceTree = "<group>";
@@ -317,39 +413,204 @@
 				113383971859AAD400CBA6FF /* Favorite.m */,
 				113383981859AAD400CBA6FF /* History.h */,
 				113383991859AAD400CBA6FF /* History.m */,
+				5815F08B1905841000BB62AE /* ICD10.h */,
+				5815F08C1905841000BB62AE /* ICD10.m */,
+				5815F08D1905841000BB62AE /* ICD10Diagnosis.h */,
+				5815F08E1905841000BB62AE /* ICD10Diagnosis.m */,
+				5815F08F1905841000BB62AE /* ICD10DiagnosisDrug.h */,
+				5815F0901905841000BB62AE /* ICD10DiagnosisDrug.m */,
+				5815F0911905841000BB62AE /* ICD10DiagnosisEIndex.h */,
+				5815F0921905841000BB62AE /* ICD10DiagnosisEIndex.m */,
+				5815F0931905841000BB62AE /* ICD10DiagnosisIndex.h */,
+				5815F0941905841000BB62AE /* ICD10DiagnosisIndex.m */,
+				5815F0951905841000BB62AE /* ICD10DiagnosisNeoplasm.h */,
+				5815F0961905841000BB62AE /* ICD10DiagnosisNeoplasm.m */,
+				5815F0971905841000BB62AE /* ICD10Procedure.h */,
+				5815F0981905841000BB62AE /* ICD10Procedure.m */,
+				5815F0991905841000BB62AE /* ICD10ProcedureDefinition.h */,
+				5815F09A1905841000BB62AE /* ICD10ProcedureDefinition.m */,
+				5815F09B1905841000BB62AE /* ICD10ProcedureIndex.h */,
+				5815F09C1905841000BB62AE /* ICD10ProcedureIndex.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		119F65921867F43800EF658B /* 2014-Code-Tables-and-Index */ = {
+		5815F0B31905896D00BB62AE /* CM */ = {
 			isa = PBXGroup;
 			children = (
-				119F65931867F43800EF658B /* icd10pcs_definitions.xsd */,
-				119F65941867F43800EF658B /* icd10pcs_definitions_2014.xml */,
-				119F65951867F43800EF658B /* icd10pcs_index.xsd */,
-				119F65961867F43800EF658B /* icd10pcs_index_2014.xml */,
-				119F65971867F43800EF658B /* icd10pcs_tabular.xsd */,
-				119F65981867F43800EF658B /* icd10pcs_tabular_2014.xml */,
-				119F65991867F43800EF658B /* PCS_2014.pdf */,
+				5815F0B41905896D00BB62AE /* 2014-ICD10-Code-Descriptions */,
+				5815F0B81905896D00BB62AE /* 2014-ICD10-Code-Tables-and-Index */,
+				5815F0C31905896D00BB62AE /* 2014-Reimbursement-Mappings-DX */,
+				5815F0C61905896D00BB62AE /* Detailed-List-of-Codes-Exempt-from-POA */,
+				5815F0CB1905896D00BB62AE /* DiagnosisGEMs-2014 */,
+				5815F0D11905896D00BB62AE /* ICD10CM-duplicate-codes */,
+			);
+			path = CM;
+			sourceTree = "<group>";
+		};
+		5815F0B41905896D00BB62AE /* 2014-ICD10-Code-Descriptions */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0B51905896D00BB62AE /* icd10cm_diff_2014.txt */,
+				5815F0B61905896D00BB62AE /* icd10cm_order_2014.txt */,
+				5815F0B71905896D00BB62AE /* ICD10OrderFiles.pdf */,
+			);
+			path = "2014-ICD10-Code-Descriptions";
+			sourceTree = "<group>";
+		};
+		5815F0B81905896D00BB62AE /* 2014-ICD10-Code-Tables-and-Index */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0B91905896D00BB62AE /* Drug.pdf */,
+				5815F0BA1905896D00BB62AE /* Drug.xml */,
+				5815F0BB1905896D00BB62AE /* E-Index.pdf */,
+				5815F0BC1905896D00BB62AE /* E-Index.xml */,
+				5815F0BD1905896D00BB62AE /* Index.pdf */,
+				5815F0BE1905896D00BB62AE /* Index.xml */,
+				5815F0BF1905896D00BB62AE /* Neoplasm.pdf */,
+				5815F0C01905896D00BB62AE /* Neoplasm.xml */,
+				5815F0C11905896D00BB62AE /* Tabular.pdf */,
+				5815F0C21905896D00BB62AE /* Tabular.xml */,
+			);
+			path = "2014-ICD10-Code-Tables-and-Index";
+			sourceTree = "<group>";
+		};
+		5815F0C31905896D00BB62AE /* 2014-Reimbursement-Mappings-DX */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0C41905896D00BB62AE /* reimb_map_dx_2014.txt */,
+				5815F0C51905896D00BB62AE /* reimb_map_guide_2014.pdf */,
+			);
+			path = "2014-Reimbursement-Mappings-DX";
+			sourceTree = "<group>";
+		};
+		5815F0C61905896D00BB62AE /* Detailed-List-of-Codes-Exempt-from-POA */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0C71905896D00BB62AE /* 2014-I10Dx-codes.txt */,
+				5815F0C81905896D00BB62AE /* Detailed List  of Codes Exempt from POA.pdf */,
+				5815F0C91905896D00BB62AE /* Detailed List  of Codes Exempt from POA.txt */,
+				5815F0CA1905896D00BB62AE /* Detailed List  of Codes Exempt from POA.xlsx */,
+			);
+			path = "Detailed-List-of-Codes-Exempt-from-POA";
+			sourceTree = "<group>";
+		};
+		5815F0CB1905896D00BB62AE /* DiagnosisGEMs-2014 */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0CC1905896D00BB62AE /* 2014_I10gem.txt */,
+				5815F0CD1905896D00BB62AE /* 2014_I9gem.txt */,
+				5815F0CE1905896D00BB62AE /* Dxgem_guide_2014.pdf */,
+				5815F0CF1905896D00BB62AE /* Gems2014UpdateSummary.pdf */,
+				5815F0D01905896D00BB62AE /* GemsTechDoc.pdf */,
+			);
+			path = "DiagnosisGEMs-2014";
+			sourceTree = "<group>";
+		};
+		5815F0D11905896D00BB62AE /* ICD10CM-duplicate-codes */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0D21905896D00BB62AE /* duplicate_ICD10CM_codes.pdf */,
+				5815F0D31905896D00BB62AE /* duplicate_ICD10CM_codes.txt */,
+				5815F0D41905896D00BB62AE /* duplicate_ICD10CM_codes.xlsx */,
+			);
+			path = "ICD10CM-duplicate-codes";
+			sourceTree = "<group>";
+		};
+		5815F0D51905896D00BB62AE /* PCS */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0D61905896D00BB62AE /* 2014-addendum */,
+				5815F0E11905896D00BB62AE /* 2014-Code-Tables-and-Index */,
+				5815F0E91905896D00BB62AE /* 2014-PCS-long-and-abbreviated-titles */,
+				5815F0EC1905896D00BB62AE /* 2014-pcs-procedure-coding-system.pdf */,
+				5815F0ED1905896D00BB62AE /* 2014-Reference-Manual */,
+				5815F0F01905896D00BB62AE /* 2014-Reimbursement-Mappings-PR */,
+				5815F0F31905896D00BB62AE /* PCS-2014-guidelines.pdf */,
+				5815F0F41905896D00BB62AE /* pcs-slides-2014 */,
+				5815F0F71905896D00BB62AE /* pcs-whats-new-2014.pdf */,
+				5815F0F81905896D00BB62AE /* ProcedureGEMs-2014 */,
+			);
+			path = PCS;
+			sourceTree = "<group>";
+		};
+		5815F0D61905896D00BB62AE /* 2014-addendum */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0D71905896D00BB62AE /* definitions_addenda_2014.pdf */,
+				5815F0D81905896D00BB62AE /* definitions_addenda_2014.txt */,
+				5815F0D91905896D00BB62AE /* icd10pcs_diff_13_14.txt */,
+				5815F0DA1905896D00BB62AE /* index_addenda_2014.pdf */,
+				5815F0DB1905896D00BB62AE /* index_addenda_2014.txt */,
+				5815F0DC1905896D00BB62AE /* pcs_addenda_readme2014.pdf */,
+				5815F0DD1905896D00BB62AE /* PcsAddendaAdditionsNewLabels.pdf */,
+				5815F0DE1905896D00BB62AE /* PcsAddendaAdditionsNewLabels.xml */,
+				5815F0DF1905896D00BB62AE /* PcsAddendaDeletionsOldLabels.pdf */,
+				5815F0E01905896D00BB62AE /* PcsAddendaDeletionsOldLabels.xml */,
+			);
+			path = "2014-addendum";
+			sourceTree = "<group>";
+		};
+		5815F0E11905896D00BB62AE /* 2014-Code-Tables-and-Index */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0E21905896D00BB62AE /* icd10pcs_definitions.xsd */,
+				5815F0E31905896D00BB62AE /* icd10pcs_definitions_2014.xml */,
+				5815F0E41905896D00BB62AE /* icd10pcs_index.xsd */,
+				5815F0E51905896D00BB62AE /* icd10pcs_index_2014.xml */,
+				5815F0E61905896D00BB62AE /* icd10pcs_tabular.xsd */,
+				5815F0E71905896D00BB62AE /* icd10pcs_tabular_2014.xml */,
+				5815F0E81905896D00BB62AE /* PCS_2014.pdf */,
 			);
 			path = "2014-Code-Tables-and-Index";
 			sourceTree = "<group>";
 		};
-		119F659A1867F43800EF658B /* 2014-ICD10-Code-Tables-and-Index */ = {
+		5815F0E91905896D00BB62AE /* 2014-PCS-long-and-abbreviated-titles */ = {
 			isa = PBXGroup;
 			children = (
-				119F659B1867F43800EF658B /* Drug.pdf */,
-				119F659C1867F43800EF658B /* Drug.xml */,
-				119F659D1867F43800EF658B /* E-Index.pdf */,
-				119F659E1867F43800EF658B /* E-Index.xml */,
-				119F659F1867F43800EF658B /* Index.pdf */,
-				119F65A01867F43800EF658B /* Index.xml */,
-				119F65A11867F43800EF658B /* Neoplasm.pdf */,
-				119F65A21867F43800EF658B /* Neoplasm.xml */,
-				119F65A31867F43800EF658B /* Tabular.pdf */,
-				119F65A41867F43800EF658B /* Tabular.xml */,
+				5815F0EA1905896D00BB62AE /* ICD10OrderFiles.pdf */,
+				5815F0EB1905896D00BB62AE /* icd10pcs_order_2014.txt */,
 			);
-			path = "2014-ICD10-Code-Tables-and-Index";
+			path = "2014-PCS-long-and-abbreviated-titles";
+			sourceTree = "<group>";
+		};
+		5815F0ED1905896D00BB62AE /* 2014-Reference-Manual */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0EE1905896D00BB62AE /* ICD-10-PCS Reference Manual.pdf */,
+				5815F0EF1905896D00BB62AE /* pcs_ref_addenda_2014.pdf */,
+			);
+			path = "2014-Reference-Manual";
+			sourceTree = "<group>";
+		};
+		5815F0F01905896D00BB62AE /* 2014-Reimbursement-Mappings-PR */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0F11905896D00BB62AE /* reimb_map_guide_2014.pdf */,
+				5815F0F21905896D00BB62AE /* reimb_map_pr_2014.txt */,
+			);
+			path = "2014-Reimbursement-Mappings-PR";
+			sourceTree = "<group>";
+		};
+		5815F0F41905896D00BB62AE /* pcs-slides-2014 */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0F51905896D00BB62AE /* pcs_slides2014.pdf */,
+				5815F0F61905896D00BB62AE /* pcs_slides2014_outline.pdf */,
+			);
+			path = "pcs-slides-2014";
+			sourceTree = "<group>";
+		};
+		5815F0F81905896D00BB62AE /* ProcedureGEMs-2014 */ = {
+			isa = PBXGroup;
+			children = (
+				5815F0F91905896D00BB62AE /* gem_i9pcs.txt */,
+				5815F0FA1905896D00BB62AE /* gem_pcsi9.txt */,
+				5815F0FB1905896D00BB62AE /* Gems2014UpdateSummary.pdf */,
+				5815F0FC1905896D00BB62AE /* GemsTechDoc.pdf */,
+				5815F0FD1905896D00BB62AE /* pcs_gemguide_2014.pdf */,
+			);
+			path = "ProcedureGEMs-2014";
 			sourceTree = "<group>";
 		};
 		58264E68189E95B200D83B00 /* Products */ = {
@@ -478,15 +739,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5815F0AC1905867F00BB62AE /* DiagnosesLoader.m in Sources */,
+				5815F0A01905841000BB62AE /* ICD10DiagnosisEIndex.m in Sources */,
 				119B62F4185C827C009D3184 /* DictionaryTerm.m in Sources */,
 				8C97C55A1904EC2C000CEA20 /* DrugProduct_TECode.m in Sources */,
 				8C97C55D1904EC2C000CEA20 /* DrugReviewClass_Lookup.m in Sources */,
 				113383A71859AAD400CBA6FF /* DictionarySynonym.m in Sources */,
+				5815F0B21905869700BB62AE /* ProceduresLoader.m in Sources */,
+				5815F09F1905841000BB62AE /* ICD10DiagnosisDrug.m in Sources */,
 				8C97C5591904EC2C000CEA20 /* DrugDocType_Lookup.m in Sources */,
 				8C97C55C1904EC2C000CEA20 /* DrugRegActionDate.m in Sources */,
 				119B62F3185C827C009D3184 /* DictionaryDefinition.m in Sources */,
+				5815F0A11905841000BB62AE /* ICD10DiagnosisIndex.m in Sources */,
 				113383A91859AAD400CBA6FF /* Favorite.m in Sources */,
 				113383AA1859AAD400CBA6FF /* History.m in Sources */,
+				5815F09D1905841000BB62AE /* ICD10.m in Sources */,
 				8C97C5581904EC2C000CEA20 /* DrugChemicalType_Lookup.m in Sources */,
 				11322DE91857A2E30007E7B9 /* main.m in Sources */,
 				8C97C5561904EC2C000CEA20 /* DrugAppDocType_Lookup.m in Sources */,
@@ -494,10 +761,15 @@
 				8C97C5551904EC2C000CEA20 /* DrugAppDoc.m in Sources */,
 				8C97C55B1904EC2C000CEA20 /* DrugProduct.m in Sources */,
 				8C97C5571904EC2C000CEA20 /* DrugApplication.m in Sources */,
+				5815F0A41905841000BB62AE /* ICD10ProcedureDefinition.m in Sources */,
 				113383641859AA1900CBA6FF /* FileDownloader.m in Sources */,
+				5815F0A31905841000BB62AE /* ICD10Procedure.m in Sources */,
+				5815F0A51905841000BB62AE /* ICD10ProcedureIndex.m in Sources */,
 				113383631859AA1900CBA6FF /* DrugsLoader.m in Sources */,
 				8C97C56E1904F27A000CEA20 /* database.xcdatamodeld in Sources */,
 				113383651859AA1900CBA6FF /* StedmansScraper.m in Sources */,
+				5815F0A21905841000BB62AE /* ICD10DiagnosisNeoplasm.m in Sources */,
+				5815F09E1905841000BB62AE /* ICD10Diagnosis.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

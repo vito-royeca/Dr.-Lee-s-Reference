@@ -7,18 +7,19 @@
 //
 
 #import "DrugsLoader.h"
+#import "JJJ/JJJ.h"
+#import "DrugAppDoc.h"
+#import "DrugAppDocType_Lookup.h"
+#import "DrugApplication.h"
+#import "DrugChemicalType_Lookup.h"
+#import "DrugDocType_Lookup.h"
+#import "FileDownloader.h"
+#import "DrugProduct.h"
+#import "DrugProduct_TECode.h"
+#import "DrugRegActionDate.h"
+#import "DrugReviewClass_Lookup.h"
 
 @implementation DrugsLoader
-
--(id) init
-{
-    if (self = [super init])
-    {
-
-    }
-    
-    return self;
-}
 
 -(void) loadDrugs
 {
@@ -26,6 +27,7 @@
     if (count == 0)
     {
         [self loadChemicalType_Lookup];
+        count = [DrugChemicalType_Lookup MR_countOfEntities];
     }
     NSLog(@"DrugChemicalType_Lookup = %tu", count);
     
@@ -33,6 +35,7 @@
     if (count == 0)
     {
         [self loadReviewClass_Lookup];
+        count = [DrugReviewClass_Lookup MR_countOfEntities];
     }
     NSLog(@"DrugReviewClass_Lookup = %tu", count);
     
@@ -40,6 +43,7 @@
     if (count == 0)
     {
         [self loadApplication];
+        count = [DrugApplication MR_countOfEntities];
     }
     NSLog(@"DrugApplication = %tu", count);
     
@@ -47,6 +51,7 @@
     if (count == 0)
     {
         [self loadProduct];
+        count = [DrugProduct MR_countOfEntities];
     }
     NSLog(@"DrugProduct = %tu", count);
     
@@ -54,6 +59,7 @@
     if (count == 0)
     {
         [self loadProductTECode];
+        count = [DrugProduct_TECode MR_countOfEntities];
     }
     NSLog(@"DrugProduct_TECode = %tu", count);
     
@@ -61,6 +67,7 @@
     if (count == 0)
     {
         [self loadAppDocType_Lookup];
+        count = [DrugAppDocType_Lookup MR_countOfEntities];
     }
     NSLog(@"DrugAppDocType_Lookup = %tu", count);
     
@@ -68,6 +75,7 @@
     if (count == 0)
     {
         [self loadAppDoc];
+        count = [DrugAppDoc MR_countOfEntities];
     }
     NSLog(@"DrugAppDoc = %tu", count);
     
@@ -75,6 +83,7 @@
     if (count == 0)
     {
         [self loadDocType_Lookup];
+        count = [DrugDocType_Lookup MR_countOfEntities];
     }
     NSLog(@"DrugDocType_Lookup = %tu", count);
     
@@ -82,6 +91,7 @@
     if (count == 0)
     {
         [self loadRegActionDate];
+        count = [DrugRegActionDate MR_countOfEntities];
     }
     NSLog(@"DrugRegActionDate = %tu", count);
 }

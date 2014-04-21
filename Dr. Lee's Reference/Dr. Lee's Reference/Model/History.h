@@ -13,7 +13,6 @@
 @interface History : NSManagedObject
 
 @property (nonatomic, retain) NSString * query;
-@property (nonatomic, retain) NSString * rowId;
 @property (nonatomic, retain) NSString * tableName;
 
 @end

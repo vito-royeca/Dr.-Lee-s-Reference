@@ -12,7 +12,6 @@
 @implementation History
 
 @dynamic query;
-@dynamic rowId;
 @dynamic tableName;
 
 @end

@@ -7,6 +7,12 @@
 //
 
 #import "StedmansScraper.h"
+#import "JJJ/JJJ.h"
+#import "DictionaryDefinition.h"
+#import "DictionarySynonym.h"
+#import "DictionaryTerm.h"
+#import "DictionaryXRef.h"
+#import "TFHpple.h"
 
 @implementation StedmansScraper
 {
@@ -54,29 +60,9 @@
     return self;
 }
 
-- (void) setupDb:(NSString*) dbname
-{
-    NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-    NSURL *documentPath = [paths lastObject];
-    NSURL *storeURL = [documentPath URLByAppendingPathComponent:dbname];
-    
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]])
-//    {
-//        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:[dbname stringByDeletingPathExtension] ofType:@"sqlite"]];
-//        NSError* err = nil;
-//        
-//        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err])
-//        {
-//            NSLog(@"Error: Unable to copy preloaded database.");
-//        }
-//    }
-    
-    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:dbname];
-}
-
 -(void) scrape
 {
-    [self setupDb:@"database.sqlite"];
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"database.sqlite"];
     
     NSDate *dateStart = [NSDate date];
     NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
@@ -353,7 +339,7 @@
     NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
     
     DictionaryTerm *d = [DictionaryTerm MR_createInContext:currentContext];
-    d.dictionaryId = [dict objectForKey:@"id"];
+    d.termId = [dict objectForKey:@"id"];
     d.term = [dict objectForKey:@"term"];
     d.pronunciation = [dict objectForKey:@"Pronunciation:"];
     if ([JJJUtil isAlphaStart:d.term])
@@ -377,7 +363,7 @@
             [set addObject:dd];
         }
         
-        [d addDictionaryDefinition:set];
+        [d addDefinition:set];
         [currentContext MR_save];
     }
     
@@ -392,7 +378,7 @@
             [set addObject:ds];
         }
         
-        [d addDictionarySynonym:set];
+        [d addSynonym:set];
         [currentContext MR_save];
     }
     
@@ -407,7 +393,7 @@
             [set addObject:dx];
         }
         
-        [d addDictionaryXRef:set];
+        [d addXref:set];
         [currentContext MR_save];
     }
     

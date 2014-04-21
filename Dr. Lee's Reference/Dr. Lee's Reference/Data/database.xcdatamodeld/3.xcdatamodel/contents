@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="DictionaryDefinition" representedClassName="DictionaryDefinition" syncable="YES">
-        <attribute name="definition" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="dictionaryTerm" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="dictionaryDefinition" inverseEntity="DictionaryTerm" syncable="YES"/>
+        <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="term" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="definition" inverseEntity="DictionaryTerm" syncable="YES"/>
     </entity>
     <entity name="DictionarySynonym" representedClassName="DictionarySynonym" syncable="YES">
         <attribute name="synonym" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="dictionaryTerm" maxCount="1" deletionRule="Cascade" destinationEntity="DictionaryTerm" inverseName="dictionarySynonym" inverseEntity="DictionaryTerm" syncable="YES"/>
+        <relationship name="term" maxCount="1" deletionRule="Cascade" destinationEntity="DictionaryTerm" inverseName="synonym" inverseEntity="DictionaryTerm" syncable="YES"/>
     </entity>
     <entity name="DictionaryTerm" representedClassName="DictionaryTerm" syncable="YES">
-        <attribute name="dictionaryId" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="term" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="termId" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="termInitial" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="dictionaryDefinition" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryDefinition" inverseName="dictionaryTerm" inverseEntity="DictionaryDefinition" syncable="YES"/>
-        <relationship name="dictionarySynonym" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionarySynonym" inverseName="dictionaryTerm" inverseEntity="DictionarySynonym" syncable="YES"/>
-        <relationship name="dictionaryXRef" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryXRef" inverseName="dictionaryTerm" inverseEntity="DictionaryXRef" syncable="YES"/>
+        <relationship name="definition" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryDefinition" inverseName="term" inverseEntity="DictionaryDefinition" syncable="YES"/>
+        <relationship name="synonym" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionarySynonym" inverseName="term" inverseEntity="DictionarySynonym" syncable="YES"/>
+        <relationship name="xref" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryXRef" inverseName="term" inverseEntity="DictionaryXRef" syncable="YES"/>
     </entity>
     <entity name="DictionaryXRef" representedClassName="DictionaryXRef" syncable="YES">
         <attribute name="xref" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="dictionaryTerm" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="dictionaryXRef" inverseEntity="DictionaryTerm" syncable="YES"/>
+        <relationship name="term" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="xref" inverseEntity="DictionaryTerm" syncable="YES"/>
     </entity>
     <entity name="DrugAppDoc" representedClassName="DrugAppDoc" syncable="YES">
         <attribute name="actionType" attributeType="String" syncable="YES"/>
@@ -97,43 +97,115 @@
         <attribute name="shortDescription_" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Favorite" representedClassName="Favorite" syncable="YES">
-        <attribute name="rowId" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="tableName" attributeType="String" indexed="YES" syncable="YES"/>
     </entity>
     <entity name="History" representedClassName="History" syncable="YES">
         <attribute name="query" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="rowId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tableName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="ICD10Diagnosis" syncable="YES">
+    <entity name="ICD10" representedClassName="ICD10" syncable="YES">
+        <attribute name="icd10Type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tableName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ICD10Diagnosis" representedClassName="ICD10Diagnosis" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excludes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="excludes1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="excludes2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="includes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="inclusionTerms" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="section" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisSection" inverseName="diagnoses" inverseEntity="ICD10DiagnosisSection" syncable="YES"/>
-    </entity>
-    <entity name="ICD10DiagnosisChapter" syncable="YES">
-        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="excludes1" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="excludes2" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="includes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="useAdditionalCode" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="sections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ICD10DiagnosisSection" inverseName="chapter" inverseEntity="ICD10DiagnosisSection" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10Diagnosis" inverseName="parent" inverseEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="first" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="last" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" inverseName="children" inverseEntity="ICD10Diagnosis" syncable="YES"/>
     </entity>
-    <entity name="ICD10DiagnosisSection" syncable="YES">
-        <attribute name="first" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="last" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="ICD10DiagnosisDrug" representedClassName="ICD10DiagnosisDrug" syncable="YES">
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="substance" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="adverseEffect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ICD10DiagnosisDrug" inverseName="parent" inverseEntity="ICD10DiagnosisDrug" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisDrug" inverseName="children" inverseEntity="ICD10DiagnosisDrug" syncable="YES"/>
+        <relationship name="poisoningAccidental" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="poisoningAssault" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="poisoningIntentional" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="poisoningUndetermined" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="underdosing" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+    </entity>
+    <entity name="ICD10DiagnosisEIndex" representedClassName="ICD10DiagnosisEIndex" syncable="YES">
+        <attribute name="see" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seeAlso" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titleInitial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ICD10DiagnosisEIndex" inverseName="parent" inverseEntity="ICD10DiagnosisEIndex" syncable="YES"/>
+        <relationship name="code" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisEIndex" inverseName="children" inverseEntity="ICD10DiagnosisEIndex" syncable="YES"/>
+    </entity>
+    <entity name="ICD10DiagnosisIndex" representedClassName="ICD10DiagnosisIndex" syncable="YES">
+        <attribute name="see" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seeAlso" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titleInitial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="ICD10DiagnosisIndex" syncable="YES"/>
+        <relationship name="code" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="ICD10DiagnosisIndex" inverseName="children" inverseEntity="ICD10DiagnosisIndex" syncable="YES"/>
+    </entity>
+    <entity name="ICD10DiagnosisNeoplasm" representedClassName="ICD10DiagnosisNeoplasm" syncable="YES">
+        <attribute name="neoplasm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="benign" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="caInSitu" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ICD10DiagnosisNeoplasm" inverseName="parent" inverseEntity="ICD10DiagnosisNeoplasm" syncable="YES"/>
+        <relationship name="malignantPrimary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="malignantSecondary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisNeoplasm" inverseName="children" inverseEntity="ICD10DiagnosisNeoplasm" syncable="YES"/>
+        <relationship name="uncertainBehavior" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+        <relationship name="unspecifiedBehavior" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
+    </entity>
+    <entity name="ICD10Procedure" representedClassName="ICD10Procedure" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="chapter" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisChapter" inverseName="sections" inverseEntity="ICD10DiagnosisChapter" syncable="YES"/>
-        <relationship name="diagnoses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" inverseName="section" inverseEntity="ICD10Diagnosis" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="approach" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="bodyPart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="bodySystem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10Procedure" inverseName="parent" inverseEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="device" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" inverseName="children" inverseEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="qualifier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+    </entity>
+    <entity name="ICD10ProcedureDefinition" representedClassName="ICD10ProcedureDefinition" syncable="YES">
+        <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="explanation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="includes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+    </entity>
+    <entity name="ICD10ProcedureIndex" representedClassName="ICD10ProcedureIndex" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titleInitial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10ProcedureIndex" inverseName="parent" inverseEntity="ICD10ProcedureIndex" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10ProcedureIndex" inverseName="children" inverseEntity="ICD10ProcedureIndex" syncable="YES"/>
+        <relationship name="procedure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="see" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10ProcedureIndex" syncable="YES"/>
+        <relationship name="use" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10ProcedureIndex" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DictionaryDefinition" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="DictionarySynonym" positionX="0" positionY="0" width="128" height="73"/>
-        <element name="DictionaryTerm" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="DictionarySynonym" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="DictionaryTerm" positionX="0" positionY="0" width="128" height="148"/>
         <element name="DictionaryXRef" positionX="0" positionY="0" width="128" height="73"/>
         <element name="DrugAppDoc" positionX="0" positionY="0" width="128" height="178"/>
         <element name="DrugAppDocType_Lookup" positionX="0" positionY="0" width="128" height="88"/>
@@ -145,9 +217,16 @@
         <element name="DrugRegActionDate" positionX="0" positionY="0" width="128" height="133"/>
         <element name="DrugReviewClass_Lookup" positionX="0" positionY="0" width="128" height="103"/>
         <element name="Favorite" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="History" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="ICD10Diagnosis" positionX="9" positionY="108" width="128" height="148"/>
-        <element name="ICD10DiagnosisChapter" positionX="18" positionY="117" width="128" height="148"/>
-        <element name="ICD10DiagnosisSection" positionX="27" positionY="126" width="128" height="118"/>
+        <element name="History" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="ICD10Diagnosis" positionX="9" positionY="108" width="128" height="238"/>
+        <element name="ICD10DiagnosisDrug" positionX="18" positionY="144" width="128" height="208"/>
+        <element name="ICD10" positionX="27" positionY="162" width="128" height="118"/>
+        <element name="ICD10DiagnosisEIndex" positionX="45" positionY="180" width="128" height="163"/>
+        <element name="ICD10DiagnosisIndex" positionX="72" positionY="189" width="128" height="163"/>
+        <element name="ICD10DiagnosisNeoplasm" positionX="90" positionY="198" width="128" height="193"/>
+        <element name="ICD10Procedure" positionX="108" positionY="207" width="128" height="223"/>
+        <element name="ICD10ProcedureDefinition" positionX="63" positionY="162" width="128" height="133"/>
+        <element name="ICD10ProcedureIndex" positionX="72" positionY="171" width="128" height="163"/>
+        <element name="DictionaryDefinition" positionX="90" positionY="180" width="128" height="73"/>
     </elements>
 </model>

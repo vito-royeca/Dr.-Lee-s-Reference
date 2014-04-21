@@ -8,15 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "JJJ/JJJ.h"
-
-#import "DictionaryDefinition.h"
-#import "DictionarySynonym.h"
-#import "DictionaryTerm.h"
-#import "DictionaryXRef.h"
-#import "TFHpple.h"
-
-
 #define TARGET_WEBSITE @"http://www.medilexicon.com/medicaldictionary.php"
 
 @interface StedmansScraper : NSObject

@@ -79,17 +79,17 @@
         [html appendFormat:@"<br>(<font color='red'>%@</font>)", dictionaryTerm.pronunciation];
     }
     
-    if (dictionaryTerm.dictionaryDefinition.count > 0)
+    if (dictionaryTerm.definition.count > 0)
     {
-        if (dictionaryTerm.dictionaryDefinition.count == 1)
+        if (dictionaryTerm.definition.count == 1)
         {
-            DictionaryDefinition *def = [[dictionaryTerm.dictionaryDefinition allObjects] objectAtIndex:0];
+            DictionaryDefinition *def = [[dictionaryTerm.definition allObjects] objectAtIndex:0];
             [html appendFormat:@"<p>%@",  def.definition];
         }
         else
         {
             [html appendFormat:@"<p><ul>"];
-            for (DictionaryDefinition *def in dictionaryTerm.dictionaryDefinition)
+            for (DictionaryDefinition *def in dictionaryTerm.definition)
             {
                 [html appendFormat:@"<li>%@</li>", def.definition];
             }
@@ -97,24 +97,24 @@
         }
     }
     
-    if (dictionaryTerm.dictionaryXRef.count > 0)
+    if (dictionaryTerm.xref.count > 0)
     {
         [html appendFormat:@"<p>SEE ALSO "];
         int sentinel = 0;
-        for (DictionaryXRef *ref in dictionaryTerm.dictionaryXRef)
+        for (DictionaryXRef *ref in dictionaryTerm.xref)
         {
-            [html appendFormat:@"<a href='#%@'>%@</a>%@", ref.term, ref.term, sentinel<dictionaryTerm.dictionaryXRef.count-1?@", ":@""];
+            [html appendFormat:@"<a href='#%@'>%@</a>%@", ref.term, ref.term, sentinel<dictionaryTerm.xref.count-1?@", ":@""];
             sentinel++;
         }
     }
     
-    if (dictionaryTerm.dictionarySynonym.count > 0)
+    if (dictionaryTerm.synonym.count > 0)
     {
         [html appendFormat:@"<p>SYN "];
         int sentinel = 0;
-        for (DictionarySynonym *syn in dictionaryTerm.dictionarySynonym)
+        for (DictionarySynonym *syn in dictionaryTerm.synonym)
         {
-            [html appendFormat:@"<a href='#%@'>%@</a>%@", syn.term, syn.term, sentinel<dictionaryTerm.dictionarySynonym.count-1?@", ":@""];
+            [html appendFormat:@"<a href='#%@'>%@</a>%@", syn.term, syn.term, sentinel<dictionaryTerm.synonym.count-1?@", ":@""];
             sentinel++;
         }
     }

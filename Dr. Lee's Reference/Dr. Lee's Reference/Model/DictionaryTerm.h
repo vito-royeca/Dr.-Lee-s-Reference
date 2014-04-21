@@ -2,8 +2,8 @@
 //  DictionaryTerm.h
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 12/14/13.
-//  Copyright (c) 2013 Jovito Royeca. All rights reserved.
+//  Created by Jovito Royeca on 4/22/14.
+//  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,31 +13,30 @@
 
 @interface DictionaryTerm : NSManagedObject
 
-@property (nonatomic, retain) NSString *dictionaryId;
-@property (nonatomic, retain) NSString *pronunciation;
-@property (nonatomic, retain) NSString *term;
-@property (nonatomic, retain) NSString *termInitial;
-@property (nonatomic, retain) NSSet *dictionarySynonym;
-@property (nonatomic, retain) NSSet *dictionaryDefinition;
-@property (nonatomic, retain) NSSet *dictionaryXRef;
-
+@property (nonatomic, retain) NSString * termId;
+@property (nonatomic, retain) NSString * pronunciation;
+@property (nonatomic, retain) NSString * term;
+@property (nonatomic, retain) NSString * termInitial;
+@property (nonatomic, retain) NSSet *synonym;
+@property (nonatomic, retain) NSSet *xref;
+@property (nonatomic, retain) NSSet *definition;
 @end
 
 @interface DictionaryTerm (CoreDataGeneratedAccessors)
 
-- (void)addDictionarySynonymObject:(DictionarySynonym *)value;
-- (void)removeDictionarySynonymObject:(DictionarySynonym *)value;
-- (void)addDictionarySynonym:(NSSet *)values;
-- (void)removeDictionarySynonym:(NSSet *)values;
+- (void)addSynonymObject:(DictionarySynonym *)value;
+- (void)removeSynonymObject:(DictionarySynonym *)value;
+- (void)addSynonym:(NSSet *)values;
+- (void)removeSynonym:(NSSet *)values;
 
-- (void)addDictionaryDefinitionObject:(DictionaryDefinition *)value;
-- (void)removeDictionaryDefinitionObject:(DictionaryDefinition *)value;
-- (void)addDictionaryDefinition:(NSSet *)values;
-- (void)removeDictionaryDefinition:(NSSet *)values;
+- (void)addXrefObject:(DictionaryXRef *)value;
+- (void)removeXrefObject:(DictionaryXRef *)value;
+- (void)addXref:(NSSet *)values;
+- (void)removeXref:(NSSet *)values;
 
-- (void)addDictionaryXRefObject:(DictionaryXRef *)value;
-- (void)removeDictionaryXRefObject:(DictionaryXRef *)value;
-- (void)addDictionaryXRef:(NSSet *)values;
-- (void)removeDictionaryXRef:(NSSet *)values;
+- (void)addDefinitionObject:(DictionaryDefinition *)value;
+- (void)removeDefinitionObject:(DictionaryDefinition *)value;
+- (void)addDefinition:(NSSet *)values;
+- (void)removeDefinition:(NSSet *)values;
 
 @end

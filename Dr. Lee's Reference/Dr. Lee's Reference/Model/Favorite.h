@@ -13,6 +13,6 @@
 @interface Favorite : NSManagedObject
 
 @property (nonatomic, retain) NSString * tableName;
-@property (nonatomic, retain) NSString * rowId;
+@property (nonatomic, retain) NSString * name;
 
 @end

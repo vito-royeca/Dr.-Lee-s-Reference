@@ -2,8 +2,8 @@
 //  DictionaryDefinition.m
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 12/14/13.
-//  Copyright (c) 2013 Jovito Royeca. All rights reserved.
+//  Created by Jovito Royeca on 4/22/14.
+//  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
 #import "DictionaryDefinition.h"
@@ -13,6 +13,6 @@
 @implementation DictionaryDefinition
 
 @dynamic definition;
-@dynamic dictionaryTerm;
+@dynamic term;
 
 @end

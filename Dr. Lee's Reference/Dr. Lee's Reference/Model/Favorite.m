@@ -12,6 +12,6 @@
 @implementation Favorite
 
 @dynamic tableName;
-@dynamic rowId;
+@dynamic name;
 
 @end
