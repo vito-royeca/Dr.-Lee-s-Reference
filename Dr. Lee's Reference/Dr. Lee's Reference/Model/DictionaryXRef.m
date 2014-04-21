@@ -12,7 +12,7 @@
 
 @implementation DictionaryXRef
 
-@dynamic term;
+@dynamic xref;
 @dynamic dictionaryTerm;
 
 @end

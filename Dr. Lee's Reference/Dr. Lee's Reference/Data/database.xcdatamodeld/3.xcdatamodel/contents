@@ -5,7 +5,7 @@
         <relationship name="dictionaryTerm" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="dictionaryDefinition" inverseEntity="DictionaryTerm" syncable="YES"/>
     </entity>
     <entity name="DictionarySynonym" representedClassName="DictionarySynonym" syncable="YES">
-        <attribute name="term" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="synonym" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="dictionaryTerm" maxCount="1" deletionRule="Cascade" destinationEntity="DictionaryTerm" inverseName="dictionarySynonym" inverseEntity="DictionaryTerm" syncable="YES"/>
     </entity>
     <entity name="DictionaryTerm" representedClassName="DictionaryTerm" syncable="YES">
@@ -18,7 +18,7 @@
         <relationship name="dictionaryXRef" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryXRef" inverseName="dictionaryTerm" inverseEntity="DictionaryXRef" syncable="YES"/>
     </entity>
     <entity name="DictionaryXRef" representedClassName="DictionaryXRef" syncable="YES">
-        <attribute name="term" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="xref" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="dictionaryTerm" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="dictionaryXRef" inverseEntity="DictionaryTerm" syncable="YES"/>
     </entity>
     <entity name="DrugAppDoc" representedClassName="DrugAppDoc" syncable="YES">
@@ -105,21 +105,49 @@
         <attribute name="rowId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tableName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="ICD10Diagnosis" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excludes1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excludes2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="includes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inclusionTerms" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="section" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisSection" inverseName="diagnoses" inverseEntity="ICD10DiagnosisSection" syncable="YES"/>
+    </entity>
+    <entity name="ICD10DiagnosisChapter" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excludes1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excludes2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="includes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="useAdditionalCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="sections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ICD10DiagnosisSection" inverseName="chapter" inverseEntity="ICD10DiagnosisSection" syncable="YES"/>
+    </entity>
+    <entity name="ICD10DiagnosisSection" syncable="YES">
+        <attribute name="first" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="last" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="chapter" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisChapter" inverseName="sections" inverseEntity="ICD10DiagnosisChapter" syncable="YES"/>
+        <relationship name="diagnoses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" inverseName="section" inverseEntity="ICD10Diagnosis" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="DictionaryDefinition" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="DictionarySynonym" positionX="0" positionY="0" width="128" height="73"/>
+        <element name="DictionaryTerm" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="DictionaryXRef" positionX="0" positionY="0" width="128" height="73"/>
         <element name="DrugAppDoc" positionX="0" positionY="0" width="128" height="178"/>
         <element name="DrugAppDocType_Lookup" positionX="0" positionY="0" width="128" height="88"/>
         <element name="DrugApplication" positionX="0" positionY="0" width="128" height="238"/>
         <element name="DrugChemicalType_Lookup" positionX="0" positionY="0" width="128" height="103"/>
-        <element name="DictionaryDefinition" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="DictionarySynonym" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="DictionaryTerm" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="DictionaryXRef" positionX="0" positionY="0" width="128" height="75"/>
         <element name="DrugDocType_Lookup" positionX="0" positionY="0" width="128" height="88"/>
-        <element name="Favorite" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="History" positionX="0" positionY="0" width="128" height="90"/>
         <element name="DrugProduct" positionX="0" positionY="0" width="128" height="193"/>
         <element name="DrugProduct_TECode" positionX="0" positionY="0" width="128" height="118"/>
         <element name="DrugRegActionDate" positionX="0" positionY="0" width="128" height="133"/>
         <element name="DrugReviewClass_Lookup" positionX="0" positionY="0" width="128" height="103"/>
+        <element name="Favorite" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="History" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="ICD10Diagnosis" positionX="9" positionY="108" width="128" height="148"/>
+        <element name="ICD10DiagnosisChapter" positionX="18" positionY="117" width="128" height="148"/>
+        <element name="ICD10DiagnosisSection" positionX="27" positionY="126" width="128" height="118"/>
     </elements>
 </model>

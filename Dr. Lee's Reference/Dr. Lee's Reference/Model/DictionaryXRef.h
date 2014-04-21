@@ -13,7 +13,7 @@
 
 @interface DictionaryXRef : NSManagedObject
 
-@property (nonatomic, retain) NSString * term;
+@property (nonatomic, retain) NSString *xref;
 @property (nonatomic, retain) DictionaryTerm *dictionaryTerm;
 
 @end

@@ -12,7 +12,7 @@
 
 @implementation DictionarySynonym
 
-@dynamic term;
+@dynamic synonym;
 @dynamic dictionaryTerm;
 
 @end

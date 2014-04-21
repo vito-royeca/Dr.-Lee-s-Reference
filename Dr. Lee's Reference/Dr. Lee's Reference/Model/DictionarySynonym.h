@@ -13,7 +13,7 @@
 
 @interface DictionarySynonym : NSManagedObject
 
-@property (nonatomic, retain) NSString * term;
+@property (nonatomic, retain) NSString *synonym;
 @property (nonatomic, retain) DictionaryTerm *dictionaryTerm;
 
 @end
