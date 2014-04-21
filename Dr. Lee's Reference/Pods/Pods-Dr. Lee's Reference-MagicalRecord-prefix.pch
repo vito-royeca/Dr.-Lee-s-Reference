@@ -3,6 +3,5 @@
 #endif
 
 #import "Pods-Dr. Lee's Reference-environment.h"
-
 #import <CoreData/CoreData.h>
 #import "CoreData+MagicalRecord.h"
