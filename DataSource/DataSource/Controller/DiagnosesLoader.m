@@ -8,6 +8,7 @@
 
 #import "DiagnosesLoader.h"
 #import "JJJ/JJJ.h"
+#import "ICD10.h"
 #import "ICD10Diagnosis.h"
 #import "TFHpple.h"
 
@@ -40,15 +41,25 @@
 {
     NSError *error;
     NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Tabular.xml"];
-//    NSString *file = [[NSString alloc] initWithContentsOfFile:path
-//                                                     encoding:NSUTF8StringEncoding
-//                                                        error:&error];
     TFHpple *parser = [self parseFile:path];
-        
-    for (NSDictionary *chapter in [self parseChapters:parser])
+
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+
+    ICD10 *icd10 = [ICD10 MR_createInContext:currentContext];
+    for (TFHppleElement *element in [self elementsWithPath:@"//introduction/introSection" inParser:parser])
     {
-        NSLog(@"%@ - %@", [chapter objectForKey:@"name"], [chapter objectForKey:@"desc"]);
+        if ([[element objectForKey:@"type"] isEqualToString:@"title"])
+        {
+            NSLog(@"type=%@ / title=%@", [element objectForKey:@"type"], [[element firstChild] content]);
+        }
     }
+    
+//    
+//    
+//    for (NSDictionary *chapter in [self parseChapters:parser])
+//    {
+//        NSLog(@"%@ - %@", [chapter objectForKey:@"name"], [chapter objectForKey:@"desc"]);
+//    }
 }
 
 -(TFHpple*) parseFile:(NSString*) file
@@ -57,6 +68,11 @@
     TFHpple *parser = [TFHpple hppleWithXMLData:data];
     
     return parser;
+}
+
+-(NSArray*) elementsWithPath:(NSString*)path inParser:(TFHpple*)parser
+{
+    return [parser searchWithXPathQuery:path];
 }
 
 -(NSArray*) parseChapters:(TFHpple*)parser
@@ -71,13 +87,11 @@
         {
             if ([child.tagName isEqualToString:@"name"])
             {
-                TFHppleElement *e = [child.children objectAtIndex:0];
-                
-                NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-//
-                [dict setObject:e.tagName forKey:@"name"];
-                [dict setObject:e.content forKey:@"desc"];
-//                [arrTerms addObject:dict];
+                NSLog(@"#### name=%@", [[child firstChild] content]);
+            }
+            if ([child.tagName isEqualToString:@"desc"])
+            {
+                NSLog(@"#### desc=%@", [[child firstChild] content]);
             }
         }
     }
