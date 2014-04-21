@@ -50,7 +50,14 @@
     {
         if ([[element objectForKey:@"type"] isEqualToString:@"title"])
         {
-            NSLog(@"type=%@ / title=%@", [element objectForKey:@"type"], [[element firstChild] content]);
+            for (TFHppleElement *child in element.children)
+            {
+                if ([child.tagName isEqualToString:@"title"])
+                {
+//                    NSLog(@"type=%@ / title=%@", [element objectForKey:@"type"], [[child firstChild] content]);
+                    icd10.longName = [[child firstChild] content];
+                }
+            }
         }
     }
     
