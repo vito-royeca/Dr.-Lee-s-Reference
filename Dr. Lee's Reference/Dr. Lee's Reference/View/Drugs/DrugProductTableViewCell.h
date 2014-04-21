@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Product.h"
+#import "DrugProduct.h"
 
 @interface DrugProductTableViewCell : UITableViewCell
 
@@ -18,6 +18,6 @@
 @property(strong,nonatomic) UILabel *lblRLD;
 @property(strong,nonatomic) UILabel *lblTECode;
 
-@property(strong,nonatomic) Product *product;
+@property(strong,nonatomic) DrugProduct *drugProduct;
 
 @end

@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 
 #import "JJJ/JJJ.h"
-#import "AppDoc.h"
-#import "AppDocType_Lookup.h"
-#import "Application.h"
-#import "ChemicalType_Lookup.h"
-#import "DocType_Lookup.h"
+#import "DrugAppDoc.h"
+#import "DrugAppDocType_Lookup.h"
+#import "DrugApplication.h"
+#import "DrugChemicalType_Lookup.h"
+#import "DrugDocType_Lookup.h"
 #import "FileDownloader.h"
-#import "Product.h"
-#import "Product_TECode.h"
-#import "RegActionDate.h"
-#import "ReviewClass_Lookup.h"
+#import "DrugProduct.h"
+#import "DrugProduct_TECode.h"
+#import "DrugRegActionDate.h"
+#import "DrugReviewClass_Lookup.h"
 
 @interface DrugsLoader : NSObject
 

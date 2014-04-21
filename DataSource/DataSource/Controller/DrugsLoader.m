@@ -22,68 +22,68 @@
 
 -(void) loadDrugs
 {
-    NSUInteger count = [ChemicalType_Lookup MR_countOfEntities];
+    NSUInteger count = [DrugChemicalType_Lookup MR_countOfEntities];
     if (count == 0)
     {
         [self loadChemicalType_Lookup];
     }
-    NSLog(@"ChemicalType_Lookup = %tu", count);
+    NSLog(@"DrugChemicalType_Lookup = %tu", count);
     
-    count = [ReviewClass_Lookup MR_countOfEntities];
+    count = [DrugReviewClass_Lookup MR_countOfEntities];
     if (count == 0)
     {
         [self loadReviewClass_Lookup];
     }
-    NSLog(@"ReviewClass_Lookup = %tu", count);
+    NSLog(@"DrugReviewClass_Lookup = %tu", count);
     
-    count = [Application MR_countOfEntities];
+    count = [DrugApplication MR_countOfEntities];
     if (count == 0)
     {
         [self loadApplication];
     }
-    NSLog(@"Application = %tu", count);
+    NSLog(@"DrugApplication = %tu", count);
     
-    count = [Product MR_countOfEntities];
+    count = [DrugProduct MR_countOfEntities];
     if (count == 0)
     {
         [self loadProduct];
     }
-    NSLog(@"Product = %tu", count);
+    NSLog(@"DrugProduct = %tu", count);
     
-    count = [Product_TECode MR_countOfEntities];
+    count = [DrugProduct_TECode MR_countOfEntities];
     if (count == 0)
     {
         [self loadProductTECode];
     }
-    NSLog(@"Product_TECode = %tu", count);
+    NSLog(@"DrugProduct_TECode = %tu", count);
     
-    count = [AppDocType_Lookup MR_countOfEntities];
+    count = [DrugAppDocType_Lookup MR_countOfEntities];
     if (count == 0)
     {
         [self loadAppDocType_Lookup];
     }
-    NSLog(@"AppDocType_Lookup = %tu", count);
+    NSLog(@"DrugAppDocType_Lookup = %tu", count);
     
-    count = [AppDoc MR_countOfEntities];
+    count = [DrugAppDoc MR_countOfEntities];
     if (count == 0)
     {
         [self loadAppDoc];
     }
-    NSLog(@"AppDoc = %tu", count);
+    NSLog(@"DrugAppDoc = %tu", count);
     
-    count = [DocType_Lookup MR_countOfEntities];
+    count = [DrugDocType_Lookup MR_countOfEntities];
     if (count == 0)
     {
         [self loadDocType_Lookup];
     }
-    NSLog(@"DocType_Lookup = %tu", count);
+    NSLog(@"DrugDocType_Lookup = %tu", count);
     
-    count = [RegActionDate MR_countOfEntities];
+    count = [DrugRegActionDate MR_countOfEntities];
     if (count == 0)
     {
         [self loadRegActionDate];
     }
-    NSLog(@"RegActionDate = %tu", count);
+    NSLog(@"DrugRegActionDate = %tu", count);
 }
 
 -(void) loadChemicalType_Lookup
@@ -121,10 +121,10 @@
             }
             if (done % (int)sentinel == 0)
             {
-                NSLog(@"Loading ChemicalType_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
+                NSLog(@"Loading DrugChemicalType_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            ChemicalType_Lookup *obj = [ChemicalType_Lookup MR_createInContext:currentContext];
+            DrugChemicalType_Lookup *obj = [DrugChemicalType_Lookup MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -179,10 +179,10 @@
             }
             if (done % (int)sentinel == 0)
             {
-                NSLog(@"Loading ReviewClass_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
+                NSLog(@"Loading DrugReviewClass_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            ReviewClass_Lookup *obj = [ReviewClass_Lookup MR_createInContext:currentContext];
+            DrugReviewClass_Lookup *obj = [DrugReviewClass_Lookup MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -244,7 +244,7 @@
                 NSLog(@"Loading Application...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            Application *obj = [Application MR_createInContext:currentContext];
+            DrugApplication *obj = [DrugApplication MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -272,7 +272,7 @@
             }
             if (elements.count >= 7 && [[elements objectAtIndex:6] length] > 0)
             {
-                NSArray *array = [ChemicalType_Lookup MR_findByAttribute:@"chemicalTypeID" withValue:[elements objectAtIndex:6]];
+                NSArray *array = [DrugChemicalType_Lookup MR_findByAttribute:@"chemicalTypeID" withValue:[elements objectAtIndex:6]];
                 
                 if (array && array.count > 0)
                 {
@@ -332,11 +332,11 @@
             }
             
             
-            Product *obj = [Product MR_createInContext:currentContext];
+            DrugProduct *obj = [DrugProduct MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
-                NSArray *array = [Application MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:0]];
+                NSArray *array = [DrugApplication MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:0]];
 
                 if (array && array.count > 0)
                 {
@@ -416,14 +416,14 @@
             }
             if (done % (int)sentinel == 0)
             {
-                NSLog(@"Loading Product_TECode...%d%%", (int)(((float)done/allLines.count)*100));
+                NSLog(@"Loading DrugProduct_TECode...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            Product_TECode *obj = [Product_TECode MR_createInContext:currentContext];
+            DrugProduct_TECode *obj = [DrugProduct_TECode MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
-                NSArray *array = [Application MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:0]];
+                NSArray *array = [DrugApplication MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:0]];
                 
                 if (array && array.count > 0)
                 {
@@ -432,7 +432,7 @@
             }
             if (elements.count >= 2)
             {
-                NSArray *array = [Product MR_findByAttribute:@"productNo" withValue:[elements objectAtIndex:1]];
+                NSArray *array = [DrugProduct MR_findByAttribute:@"productNo" withValue:[elements objectAtIndex:1]];
                 
                 if (array && array.count > 0)
                 {
@@ -492,10 +492,10 @@
             }
             if (done % (int)sentinel == 0)
             {
-                NSLog(@"Loading AppDocType_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
+                NSLog(@"Loading DrugAppDocType_Lookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            AppDocType_Lookup *obj = [AppDocType_Lookup MR_createInContext:currentContext];
+            DrugAppDocType_Lookup *obj = [DrugAppDocType_Lookup MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -552,7 +552,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             
-            AppDoc *obj = [AppDoc MR_createInContext:currentContext];
+            DrugAppDoc *obj = [DrugAppDoc MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -560,7 +560,7 @@
             }
             if (elements.count >= 2)
             {
-                NSArray *array = [Application MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:1]];
+                NSArray *array = [DrugApplication MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:1]];
                 
                 if (array && array.count > 0)
                 {
@@ -573,7 +573,7 @@
             }
             if (elements.count >= 4)
             {
-                NSArray *array = [AppDocType_Lookup MR_findByAttribute:@"appDocType" withValue:[elements objectAtIndex:3]];
+                NSArray *array = [DrugAppDocType_Lookup MR_findByAttribute:@"appDocType" withValue:[elements objectAtIndex:3]];
                 
                 if (array && array.count > 0)
                 {
@@ -641,10 +641,10 @@
             }
             if (done % (int)sentinel == 0)
             {
-                NSLog(@"Loading DocTypeLookup...%d%%", (int)(((float)done/allLines.count)*100));
+                NSLog(@"Loading DrugDocTypeLookup...%d%%", (int)(((float)done/allLines.count)*100));
             }
             
-            DocType_Lookup *obj = [DocType_Lookup MR_createInContext:currentContext];
+            DrugDocType_Lookup *obj = [DrugDocType_Lookup MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
@@ -701,11 +701,11 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             
-            RegActionDate *obj = [RegActionDate MR_createInContext:currentContext];
+            DrugRegActionDate *obj = [DrugRegActionDate MR_createInContext:currentContext];
             
             if (elements.count >= 1)
             {
-                NSArray *array = [Application MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:0]];
+                NSArray *array = [DrugApplication MR_findByAttribute:@"applNo" withValue:[elements objectAtIndex:0]];
                 
                 if (array && array.count > 0)
                 {
@@ -731,7 +731,7 @@
             }
             if (elements.count >= 6)
             {
-                NSArray *array = [DocType_Lookup MR_findByAttribute:@"docType" withValue:[elements objectAtIndex:5]];
+                NSArray *array = [DrugDocType_Lookup MR_findByAttribute:@"docType" withValue:[elements objectAtIndex:5]];
                 
                 if (array && array.count > 0)
                 {
@@ -746,10 +746,10 @@
 
 -(void) downloadDocuments
 {
-    NSArray *appDocs = [AppDoc MR_findAll];
+    NSArray *appDocs = [DrugAppDoc MR_findAll];
     int total = 0;
     
-    for (AppDoc *appDoc in appDocs)
+    for (DrugAppDoc *appDoc in appDocs)
     {
         NSRange range = [appDoc.docURL rangeOfString:@"/" options:NSBackwardsSearch];
         NSString *fileName = [appDoc.docURL substringFromIndex:range.location+1];

@@ -10,7 +10,7 @@
 
 #import "JJJ/JJJ.h"
 
-#define kFetchBatchSize                20
+#define kFetchBatchSize                100
 
 typedef enum
 {

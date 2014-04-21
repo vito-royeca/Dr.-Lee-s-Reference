@@ -15,7 +15,7 @@
 @synthesize lblMarketingStatus;
 @synthesize lblRLD;
 @synthesize lblTECode;
-@synthesize product;
+@synthesize drugProduct;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

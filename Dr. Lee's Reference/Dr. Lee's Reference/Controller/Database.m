@@ -8,7 +8,7 @@
 
 #import "Database.h"
 #import "DictionaryTerm.h"
-#import "Product.h"
+#import "DrugProduct.h"
 
 @implementation Database
 {
@@ -62,7 +62,7 @@ static Database *_me;
 - (NSFetchedResultsController*)searchDictionary:(NSString*)query narrowSearch:(BOOL)narrow
 {
     // Delete cache first, if a cache is used
-    [NSFetchedResultsController deleteCacheWithName:@"DictionaryCache"];
+//    [NSFetchedResultsController deleteCacheWithName:@"DictionaryCache"];
     
     NSPredicate *predicate;
     
@@ -87,23 +87,25 @@ static Database *_me;
             predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
         }
     }
-   
+
+    NSManagedObjectContext *moc = [NSManagedObjectContext MR_contextForCurrentThread];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
-                                                                   ascending:YES
-                                                                    selector:@selector(localizedCaseInsensitiveCompare:)];
-    NSArray *sortDescriptors = @[sortDescriptor];
+                                                                   ascending:YES];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term"
+                                                                    ascending:YES
+                                                                     selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSArray *sortDescriptors = @[sortDescriptor, sortDescriptor2];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
-                                              inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+                                              inManagedObjectContext:moc];
     
-    [fetchRequest setFetchBatchSize:kFetchBatchSize];
-    [fetchRequest setReturnsDistinctResults:YES];
     [fetchRequest setPredicate:predicate];
     [fetchRequest setEntity:entity];
     [fetchRequest setSortDescriptors:sortDescriptors];
+    [fetchRequest setFetchBatchSize:kFetchBatchSize];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                               managedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]
+                                               managedObjectContext:moc
                                                  sectionNameKeyPath:@"termInitial"
                                                           cacheName:@"DictionaryCache"];
 }
@@ -146,7 +148,7 @@ static Database *_me;
                                               inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 
     [fetchRequest setFetchBatchSize:kFetchBatchSize];
-    [fetchRequest setReturnsDistinctResults:YES];
+//    [fetchRequest setReturnsDistinctResults:YES];
     [fetchRequest setPredicate:predicate];
     [fetchRequest setEntity:entity];
     [fetchRequest setSortDescriptors:sortDescriptors];

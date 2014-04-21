@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DictionaryDefinition" representedClassName="DictionaryDefinition" syncable="YES">
+        <attribute name="definition" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="dictionaryTerm" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="dictionaryDefinition" inverseEntity="DictionaryTerm" syncable="YES"/>
+    </entity>
+    <entity name="DictionarySynonym" representedClassName="DictionarySynonym" syncable="YES">
+        <attribute name="term" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="dictionaryTerm" maxCount="1" deletionRule="Cascade" destinationEntity="DictionaryTerm" inverseName="dictionarySynonym" inverseEntity="DictionaryTerm" syncable="YES"/>
+    </entity>
+    <entity name="DictionaryTerm" representedClassName="DictionaryTerm" syncable="YES">
+        <attribute name="dictionaryId" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="term" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="termInitial" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="dictionaryDefinition" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryDefinition" inverseName="dictionaryTerm" inverseEntity="DictionaryDefinition" syncable="YES"/>
+        <relationship name="dictionarySynonym" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionarySynonym" inverseName="dictionaryTerm" inverseEntity="DictionarySynonym" syncable="YES"/>
+        <relationship name="dictionaryXRef" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryXRef" inverseName="dictionaryTerm" inverseEntity="DictionaryXRef" syncable="YES"/>
+    </entity>
+    <entity name="DictionaryXRef" representedClassName="DictionaryXRef" syncable="YES">
+        <attribute name="term" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="dictionaryTerm" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="dictionaryXRef" inverseEntity="DictionaryTerm" syncable="YES"/>
+    </entity>
+    <entity name="DrugAppDoc" representedClassName="DrugAppDoc" syncable="YES">
+        <attribute name="actionType" attributeType="String" syncable="YES"/>
+        <attribute name="appDocID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="docDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="docTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duplicateCounter" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="seqNo" attributeType="String" syncable="YES"/>
+        <relationship name="applNo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DrugApplication" inverseName="appDocId" inverseEntity="DrugApplication" syncable="YES"/>
+        <relationship name="docType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DrugAppDocType_Lookup" inverseName="appDocID" inverseEntity="DrugAppDocType_Lookup" syncable="YES"/>
+    </entity>
+    <entity name="DrugAppDocType_Lookup" representedClassName="DrugAppDocType_Lookup" syncable="YES">
+        <attribute name="appDocType" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="sortOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="appDocID" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrugAppDoc" inverseName="docType" inverseEntity="DrugAppDoc" syncable="YES"/>
+    </entity>
+    <entity name="DrugApplication" representedClassName="DrugApplication" syncable="YES">
+        <attribute name="actionType" attributeType="String" syncable="YES"/>
+        <attribute name="applNo" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="applType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentPatentFlag" attributeType="Boolean" syncable="YES"/>
+        <attribute name="mostRecentLabelAvailableFlag" attributeType="Boolean" syncable="YES"/>
+        <attribute name="orphanCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sponsorApplicant" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="therapeuticPotential" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="appDocId" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrugAppDoc" inverseName="applNo" inverseEntity="DrugAppDoc" syncable="YES"/>
+        <relationship name="chemicalType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DrugChemicalType_Lookup" inverseName="applNo" inverseEntity="DrugChemicalType_Lookup" syncable="YES"/>
+        <relationship name="product" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrugProduct" inverseName="applNo" inverseEntity="DrugProduct" syncable="YES"/>
+        <relationship name="product_teCode" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrugProduct_TECode" inverseName="applNo" inverseEntity="DrugProduct_TECode" syncable="YES"/>
+        <relationship name="regActionDate" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrugRegActionDate" inverseName="applNo" inverseEntity="DrugRegActionDate" syncable="YES"/>
+    </entity>
+    <entity name="DrugChemicalType_Lookup" representedClassName="DrugChemicalType_Lookup" syncable="YES">
+        <attribute name="chemicalTypeCode" attributeType="String" syncable="YES"/>
+        <attribute name="chemicalTypeDescription" attributeType="String" syncable="YES"/>
+        <attribute name="chemicalTypeID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <relationship name="applNo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrugApplication" inverseName="chemicalType" inverseEntity="DrugApplication" syncable="YES"/>
+    </entity>
+    <entity name="DrugDocType_Lookup" representedClassName="DrugDocType_Lookup" syncable="YES">
+        <attribute name="docType" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="docTypeDesc" attributeType="String" syncable="YES"/>
+        <relationship name="regActionDate" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrugRegActionDate" inverseName="docType" inverseEntity="DrugRegActionDate" syncable="YES"/>
+    </entity>
+    <entity name="DrugProduct" representedClassName="DrugProduct" syncable="YES">
+        <attribute name="activeIngred" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="dosage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="drugName" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="form" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productMktStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="productNo" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="referenceDrug" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="teCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="applNo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DrugApplication" inverseName="product" inverseEntity="DrugApplication" syncable="YES"/>
+        <relationship name="product_teCode" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrugProduct_TECode" inverseName="productNo" inverseEntity="DrugProduct_TECode" syncable="YES"/>
+    </entity>
+    <entity name="DrugProduct_TECode" representedClassName="DrugProduct_TECode" syncable="YES">
+        <attribute name="productMktStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="teCode" attributeType="String" syncable="YES"/>
+        <attribute name="teSequence" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="applNo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DrugApplication" inverseName="product_teCode" inverseEntity="DrugApplication" syncable="YES"/>
+        <relationship name="productNo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DrugProduct" inverseName="product_teCode" inverseEntity="DrugProduct" syncable="YES"/>
+    </entity>
+    <entity name="DrugRegActionDate" representedClassName="DrugRegActionDate" syncable="YES">
+        <attribute name="actionDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="actionType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duplicateCounter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inDocTypeSeqNo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="applNo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DrugApplication" inverseName="regActionDate" inverseEntity="DrugApplication" syncable="YES"/>
+        <relationship name="docType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DrugDocType_Lookup" inverseName="regActionDate" inverseEntity="DrugDocType_Lookup" syncable="YES"/>
+    </entity>
+    <entity name="DrugReviewClass_Lookup" representedClassName="DrugReviewClass_Lookup" syncable="YES">
+        <attribute name="longDescription" attributeType="String" syncable="YES"/>
+        <attribute name="reviewClassID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="reviewCode" attributeType="String" syncable="YES"/>
+        <attribute name="shortDescription_" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Favorite" representedClassName="Favorite" syncable="YES">
+        <attribute name="rowId" attributeType="String" syncable="YES"/>
+        <attribute name="tableName" attributeType="String" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="History" representedClassName="History" syncable="YES">
+        <attribute name="query" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rowId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tableName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DrugAppDoc" positionX="0" positionY="0" width="128" height="178"/>
+        <element name="DrugAppDocType_Lookup" positionX="0" positionY="0" width="128" height="88"/>
+        <element name="DrugApplication" positionX="0" positionY="0" width="128" height="238"/>
+        <element name="DrugChemicalType_Lookup" positionX="0" positionY="0" width="128" height="103"/>
+        <element name="DictionaryDefinition" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="DictionarySynonym" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="DictionaryTerm" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="DictionaryXRef" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="DrugDocType_Lookup" positionX="0" positionY="0" width="128" height="88"/>
+        <element name="Favorite" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="History" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="DrugProduct" positionX="0" positionY="0" width="128" height="193"/>
+        <element name="DrugProduct_TECode" positionX="0" positionY="0" width="128" height="118"/>
+        <element name="DrugRegActionDate" positionX="0" positionY="0" width="128" height="133"/>
+        <element name="DrugReviewClass_Lookup" positionX="0" positionY="0" width="128" height="103"/>
+    </elements>
+</model>

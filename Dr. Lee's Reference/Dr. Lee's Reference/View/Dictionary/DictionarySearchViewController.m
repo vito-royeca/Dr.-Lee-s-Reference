@@ -14,12 +14,16 @@
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
-    if (!super.fetchedResultsController)
+    if (super.fetchedResultsController != nil)
     {
-        super.fetchedResultsController = [[Database sharedInstance] search:DictionaryDataSource
-                                                                     query:super.searchBar.text
-                                                              narrowSearch:NO];
+        return super.fetchedResultsController;
     }
+    
+    NSFetchedResultsController *nsfrc = [[Database sharedInstance] search:DictionaryDataSource
+                                                                    query:super.searchBar.text
+                                                             narrowSearch:NO];
+    super.fetchedResultsController = nsfrc;
+    super.fetchedResultsController.delegate = self;
     return super.fetchedResultsController;
 }
 
@@ -47,60 +51,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//- (void) createSections
-//{
-//    [super.content removeAllObjects];
-//    
-//    NSMutableArray *arrNonAlpha = [[NSMutableArray alloc] init];
-//    
-//    for (NSString *letter in super.letters)
-//    {
-//        NSMutableArray *arrValues = [[NSMutableArray alloc] init];
-//        
-//        for (DictionaryTerm *d in [self.fetchedResultsController fetchedObjects])
-//        {
-//            NSString *term = [JJJUtil toASCII:d.term];
-//            
-//            if ([JJJUtil isAlphaStart:term])
-//            {
-//                if ([[term uppercaseString] hasPrefix:letter])
-//                {
-//                    if (![arrValues containsObject:d])
-//                    {
-//                        [arrValues addObject:d];
-//                    }
-//                }
-//            }
-//            else
-//            {
-//                if (![arrNonAlpha containsObject:d])
-//                {
-//                    [arrNonAlpha addObject:d];
-//                }
-//            }
-//        }
-//        
-//        if (arrValues.count > 0)
-//        {
-//            [super.content setValue:arrValues forKey:letter];
-//        }
-//    }
-//
-//    if (arrNonAlpha.count > 0)
-//    {
-//        [super.content setValue:arrNonAlpha forKey:[super.letters objectAtIndex:0]];
-//    }
-//    
-//    super.keys =  [[NSMutableArray alloc] initWithArray:[[super.content allKeys] sortedArrayUsingSelector:@selector(localizedStandardCompare:)]];
-//    
-//    if (arrNonAlpha.count > 0)
-//    {
-//        [super.content setValue:arrNonAlpha forKey:[super.letters objectAtIndex:0]];
-//        [super.keys removeObject:[super.letters objectAtIndex:0]];
-//        [super.keys insertObject:[super.letters objectAtIndex:0] atIndex:0];
-//    }
-//}
 
 - (void)configureCell:(UITableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath

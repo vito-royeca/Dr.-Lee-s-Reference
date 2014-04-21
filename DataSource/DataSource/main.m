@@ -14,11 +14,11 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool
     {
-        DrugsLoader *loader = [[DrugsLoader alloc] init];
-        [loader loadDrugs];
+//        DrugsLoader *loader = [[DrugsLoader alloc] init];
+//        [loader loadDrugs];
         
-//        StedmansScraper *sc = [[StedmansScraper alloc] init];
-//        [sc scrape];
+        StedmansScraper *sc = [[StedmansScraper alloc] init];
+        [sc scrape];
     }
 
     return 0;

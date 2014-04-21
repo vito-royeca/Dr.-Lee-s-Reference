@@ -8,7 +8,7 @@
 
 #import "DrugSearchViewController.h"
 #import "DrugSummaryViewController.h"
-#import "Product.h"
+#import "DrugProduct.h"
 
 @implementation DrugSearchViewController
 
@@ -119,7 +119,7 @@
 //    
 //    Product *p = [arr objectAtIndex:indexPath.row];
 
-    Product *p = [super.fetchedResultsController objectAtIndexPath:indexPath];
+    DrugProduct *p = [super.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = p.drugName;
     cell.detailTextLabel.text = p.activeIngred;
 }

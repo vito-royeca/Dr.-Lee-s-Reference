@@ -1,17 +1,17 @@
 //
-//  Product.m
+//  DrugProduct.m
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 12/4/13.
-//  Copyright (c) 2013 Jovito Royeca. All rights reserved.
+//  Created by Jovit Royeca on 4/21/14.
+//  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
-#import "Product.h"
-#import "Application.h"
-#import "Product_TECode.h"
-#import "JJJ/JJJUtil.h"
+#import "DrugProduct.h"
+#import "DrugApplication.h"
+#import "DrugProduct_TECode.h"
 
-@implementation Product
+
+@implementation DrugProduct
 
 @dynamic activeIngred;
 @dynamic dosage;
@@ -23,22 +23,6 @@
 @dynamic teCode;
 @dynamic applNo;
 @dynamic product_teCode;
-
-- (NSString *) drugNameInitial
-{
-    [self willAccessValueForKey:@"drugNameInitial"];
-    NSString *drugName = [self drugName];
-    [self didAccessValueForKey:@"drugNameInitial"];
-    
-    if ([JJJUtil isAlphaStart:drugName])
-    {
-        return [[drugName substringToIndex:1] uppercaseString];
-    }
-    else
-    {
-        return @"#";
-    }
-}
 
 -(NSString*) productMktStatusString
 {

@@ -22,40 +22,62 @@
     {
         _letters = [NSArray arrayWithObjects:
                     @"9",
-                    @"a",
-                    @"b",
-                    @"c",
-                    @"d",
-                    @"e",
-                    @"f",
-                    @"g",
-                    @"h",
-                    @"i",
-                    @"j",
-                    @"k",
-                    @"l",
-                    @"m",
-                    @"n",
-                    @"o",
-                    @"p",
-                    @"q",
-                    @"r",
-                    @"s",
-                    @"t",
-                    @"u",
-                    @"v",
-                    @"w",
-                    @"x",
-                    @"y",
-                    @"z",
+//                    @"a",
+//                    @"b",
+//                    @"c",
+//                    @"d",
+//                    @"e",
+//                    @"f",
+//                    @"g",
+//                    @"h",
+//                    @"i",
+//                    @"j",
+//                    @"k",
+//                    @"l",
+//                    @"m",
+//                    @"n",
+//                    @"o",
+//                    @"p",
+//                    @"q",
+//                    @"r",
+//                    @"s",
+//                    @"t",
+//                    @"u",
+//                    @"v",
+//                    @"w",
+//                    @"x",
+//                    @"y",
+//                    @"z",
                     nil];
     }
     
     return self;
 }
 
+- (void) setupDb:(NSString*) dbname
+{
+    NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    NSURL *documentPath = [paths lastObject];
+    NSURL *storeURL = [documentPath URLByAppendingPathComponent:dbname];
+    
+//    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]])
+//    {
+//        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:[dbname stringByDeletingPathExtension] ofType:@"sqlite"]];
+//        NSError* err = nil;
+//        
+//        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err])
+//        {
+//            NSLog(@"Error: Unable to copy preloaded database.");
+//        }
+//    }
+    
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:dbname];
+}
+
 -(void) scrape
 {
+    [self setupDb:@"database.sqlite"];
+    
     NSDate *dateStart = [NSDate date];
     NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
         
@@ -74,8 +96,13 @@
         [dictTotals setObject:[NSNumber numberWithInt:_total] forKey:letter];
         _total = 0;
     }
-        
-    NSLog(@"Started: %@; Ended: %@; Total: %@", dateStart, [NSDate date], dictTotals);
+    
+    NSDate *dateEnd = [NSDate date];
+    NSTimeInterval timeDifference = [dateEnd timeIntervalSinceDate:dateStart];
+    NSLog(@"Started: %@", dateStart);
+    NSLog(@"Ended: %@", dateEnd);
+    NSLog(@"Time Elapsed: %@",  [JJJUtil formatInterval:timeDifference]);
+    NSLog(@"Total: %@", dictTotals);
 }
 
 -(TFHpple*) scrapePageTerms:(NSString*)pageParams
@@ -329,6 +356,14 @@
     d.dictionaryId = [dict objectForKey:@"id"];
     d.term = [dict objectForKey:@"term"];
     d.pronunciation = [dict objectForKey:@"Pronunciation:"];
+    if ([JJJUtil isAlphaStart:d.term])
+    {
+        d.termInitial = [[d.term substringToIndex:1] uppercaseString];
+    }
+    else
+    {
+        d.termInitial = @"#";
+    }
     [currentContext MR_save];
     
     if ([dict objectForKey:@"Definitions:"])

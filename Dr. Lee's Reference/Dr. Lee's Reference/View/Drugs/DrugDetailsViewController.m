@@ -41,7 +41,7 @@
     sections = [[NSMutableArray alloc] init];
     
     NSArray *arrDrugs = [drugDetails objectForKey:@"Drugs"];
-    Product *p = [arrDrugs objectAtIndex:0];
+    DrugProduct *p = [arrDrugs objectAtIndex:0];
     NSMutableDictionary *dicSorter = [[NSMutableDictionary alloc] init];
     [dicSorter  setObject:[NSNumber numberWithBool:NO] forKey:@"docDate"];
     documents = nil;
@@ -214,7 +214,7 @@
             }
             
             NSArray *arrDrugs = [drugDetails objectForKey:@"Drugs"];
-            Product *p = [arrDrugs objectAtIndex:indexPath.row];
+            DrugProduct *p = [arrDrugs objectAtIndex:indexPath.row];
             
             ((DrugProductTableViewCell*)cell).lblStrength.text = p.dosage;
             ((DrugProductTableViewCell*)cell).lblDosage.text = p.form;
@@ -233,7 +233,7 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
             }
             
-            AppDoc *appDoc = [documents objectAtIndex:indexPath.row];
+            DrugAppDoc *appDoc = [documents objectAtIndex:indexPath.row];
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy-MM-dd"];
             

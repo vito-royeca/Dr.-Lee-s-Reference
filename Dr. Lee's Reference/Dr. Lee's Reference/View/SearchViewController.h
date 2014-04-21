@@ -13,12 +13,9 @@
 
 @property(strong,nonatomic) UISearchBar *searchBar;
 @property(strong,nonatomic) UITableView *tblResults;
-@property(strong,nonatomic) NSMutableArray *sections;
-
 @property(strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 - (void) doSearch;
-- (void) createSections;
 - (void) configureCell:(UITableViewCell *)cell
            atIndexPath:(NSIndexPath *)indexPath;
 - (UIViewController*) detailViewWithObject:(id) object;

@@ -10,7 +10,7 @@
 #import "JJJ/JJJUtil.h"
 #import "MMDrawerBarButtonItem.h"
 #import "UIViewController+MMDrawerController.h"
-
+#import "Database.h"
 
 @interface SearchViewController ()
 
@@ -116,11 +116,6 @@
     return arrSections;
 }
 
-//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString*)title atIndex:(NSInteger)index
-//{
-//    return [[self.fetchedResultsController sections] indexOfObject:title];
-//}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSInteger count = [[self.fetchedResultsController sections] count];
@@ -135,26 +130,8 @@
     
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
-//{
-//    UILabel *lblHeader = [[UILabel alloc] init];
-//    
-//    NSMutableString *text = [[NSMutableString alloc] init];
-//    NSString *letter = [_keys objectAtIndex:section];
-//    [text appendFormat:@"%@ (%d of %d)", letter, [[self.content valueForKey:letter] count], [[self.fetchedResultsController fetchedObjects] count]];
-//    lblHeader.text = text;
-//    lblHeader.backgroundColor = [UIColor colorWithRed:208.0/255.0
-//                                                green:208.0/255.0
-//                                                 blue:208.0/255.0
-//                                                alpha:1.0];
-//    lblHeader.userInteractionEnabled = YES;
-//    [lblHeader setTag:section+1];
-//    return lblHeader;
-//}
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-//    return [self.keys objectAtIndex:section];
     id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
 
     return [theSection name];
@@ -178,10 +155,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *prefix = [self.keys objectAtIndex:indexPath.section];
-//    NSArray *arr = [self.content objectForKey:prefix];
-//    UIViewController *viewController = [self detailViewWithObject:[arr objectAtIndex:indexPath.row]];
-
     id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UIViewController *viewController = [self detailViewWithObject:object];
     [self.navigationController pushViewController:viewController animated:YES];
@@ -210,11 +183,9 @@
 - (void) doSearch
 {
     self.fetchedResultsController = nil;
-    NSFetchedResultsController *frc = self.fetchedResultsController;
-    frc.delegate = self;
-    
+
     NSError *error;
-    if (![self.fetchedResultsController performFetch:&error])
+    if (![[self fetchedResultsController] performFetch:&error])
     {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
@@ -310,11 +281,6 @@
 }
 
 #pragma mark - Empty methods to be implemented by subclasses
-- (void) createSections
-{
-    
-}
-
 - (void) configureCell:(UITableViewCell *)cell
            atIndexPath:(NSIndexPath *)indexPath
 {

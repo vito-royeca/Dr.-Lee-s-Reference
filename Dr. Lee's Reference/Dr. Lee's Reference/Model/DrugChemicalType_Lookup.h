@@ -1,17 +1,17 @@
 //
-//  ChemicalType_Lookup.h
+//  DrugChemicalType_Lookup.h
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 12/4/13.
-//  Copyright (c) 2013 Jovito Royeca. All rights reserved.
+//  Created by Jovit Royeca on 4/21/14.
+//  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Application;
+@class DrugApplication;
 
-@interface ChemicalType_Lookup : NSManagedObject
+@interface DrugChemicalType_Lookup : NSManagedObject
 
 @property (nonatomic, retain) NSString * chemicalTypeCode;
 @property (nonatomic, retain) NSString * chemicalTypeDescription;
@@ -19,10 +19,10 @@
 @property (nonatomic, retain) NSSet *applNo;
 @end
 
-@interface ChemicalType_Lookup (CoreDataGeneratedAccessors)
+@interface DrugChemicalType_Lookup (CoreDataGeneratedAccessors)
 
-- (void)addApplNoObject:(Application *)value;
-- (void)removeApplNoObject:(Application *)value;
+- (void)addApplNoObject:(DrugApplication *)value;
+- (void)removeApplNoObject:(DrugApplication *)value;
 - (void)addApplNo:(NSSet *)values;
 - (void)removeApplNo:(NSSet *)values;
 

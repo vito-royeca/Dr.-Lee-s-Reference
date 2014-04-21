@@ -1,16 +1,16 @@
 //
-//  ReviewClass_Lookup.h
+//  DrugReviewClass_Lookup.h
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 12/4/13.
-//  Copyright (c) 2013 Jovito Royeca. All rights reserved.
+//  Created by Jovit Royeca on 4/21/14.
+//  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
 
-@interface ReviewClass_Lookup : NSManagedObject
+@interface DrugReviewClass_Lookup : NSManagedObject
 
 @property (nonatomic, retain) NSString * longDescription;
 @property (nonatomic, retain) NSNumber * reviewClassID;

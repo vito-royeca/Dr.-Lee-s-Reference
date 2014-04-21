@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AppDoc.h"
-#import "Application.h"
+#import "DrugAppDoc.h"
+#import "DrugApplication.h"
 #import "Database.h"
 #import "DrugProductTableViewCell.h"
-#import "Product.h"
+#import "DrugProduct.h"
 
 @interface DrugDetailsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 

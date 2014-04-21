@@ -1,17 +1,17 @@
 //
-//  AppDoc.h
+//  DrugAppDoc.h
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 12/4/13.
-//  Copyright (c) 2013 Jovito Royeca. All rights reserved.
+//  Created by Jovit Royeca on 4/21/14.
+//  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class AppDocType_Lookup, Application;
+@class DrugAppDocType_Lookup, DrugApplication;
 
-@interface AppDoc : NSManagedObject
+@interface DrugAppDoc : NSManagedObject
 
 @property (nonatomic, retain) NSString * actionType;
 @property (nonatomic, retain) NSNumber * appDocID;
@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSString * docURL;
 @property (nonatomic, retain) NSNumber * duplicateCounter;
 @property (nonatomic, retain) NSString * seqNo;
-@property (nonatomic, retain) Application *applNo;
-@property (nonatomic, retain) AppDocType_Lookup *docType;
+@property (nonatomic, retain) DrugApplication *applNo;
+@property (nonatomic, retain) DrugAppDocType_Lookup *docType;
 
 @end
