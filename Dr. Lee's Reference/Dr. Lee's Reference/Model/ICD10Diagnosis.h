@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString * includes;
 @property (nonatomic, retain) NSString * inclusionTerms;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * shortName;
 @property (nonatomic, retain) NSString * version;
 @property (nonatomic, retain) NSString * excludes;
 @property (nonatomic, retain) NSString * useAdditionalCode;

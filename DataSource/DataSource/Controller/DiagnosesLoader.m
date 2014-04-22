@@ -8,9 +8,14 @@
 
 #import "DiagnosesLoader.h"
 #import "JJJ/JJJ.h"
-#import "ICD10.h"
 #import "ICD10Diagnosis.h"
 #import "TFHpple.h"
+
+@interface DiagnosesLoader()
+{
+    NSArray *_arrShortNames;
+}
+@end
 
 @implementation DiagnosesLoader
 
@@ -39,34 +44,62 @@
 
 - (void) loadICD10Diagnoses
 {
+    _arrShortNames = @[@{@"Infectious"            : @[@"A00", @"B99"]},
+                       @{@"Neoplasms"             : @[@"C00", @"D49"]},
+                       @{@"Blood | Immune"        : @[@"D50", @"D89"]},
+                       @{@"Endo | Nutrit | Metab" : @[@"E00", @"E89"]},
+                       @{@"Mental | Behavioral"   : @[@"F01", @"F99"]},
+                       @{@"Nervous System"        : @[@"G00", @"G99"]},
+                       @{@"Eye | Adnexa"          : @[@"H00", @"H59"]},
+                       @{@"Ear | Mastoid"         : @[@"H60", @"H95"]},
+                       @{@"Circulatory"           : @[@"I00", @"I99"]},
+                       @{@"Respiratory"           : @[@"J00", @"J99"]},
+                       @{@"Digestive"             : @[@"K00", @"K95"]},
+                       @{@"Skin | Subcutaneous"   : @[@"L00", @"L99"]},
+                       @{@"Musculoskeletal"       : @[@"M00", @"M99"]},
+                       @{@"Genetourinary"         : @[@"N00", @"N99"]},
+                       @{@"Pregnancy | Childbirth": @[@"O00", @"O9A"]},
+                       @{@"Perinatal"             : @[@"P00", @"P96"]},
+                       @{@"Congenital"            : @[@"Q00", @"Q99"]},
+                       @{@"Symp | Signs | Labs"   : @[@"R00", @"R99"]},
+                       @{@"Injury | Poisoning"    : @[@"S00", @"T88"]},
+                       @{@"External Causes"       : @[@"V00", @"Y99"]},
+                       @{@"Factors | Reasons"     : @[@"Z00", @"Z99"]}];
+    
     NSError *error;
     NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Tabular.xml"];
     TFHpple *parser = [self parseFile:path];
 
     NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
 
-    ICD10 *icd10 = [ICD10 MR_createInContext:currentContext];
-    for (TFHppleElement *element in [self elementsWithPath:@"//introduction/introSection" inParser:parser])
+    for (TFHppleElement *element in [self elementsWithPath:@"//chapter" inParser:parser])
     {
-        if ([[element objectForKey:@"type"] isEqualToString:@"title"])
+        ICD10Diagnosis *chapter = [ICD10Diagnosis MR_createEntity];
+
+        for (TFHppleElement *child in element.children)
         {
-            for (TFHppleElement *child in element.children)
+            if ([child.tagName isEqualToString:@"name"])
             {
-                if ([child.tagName isEqualToString:@"title"])
-                {
-//                    NSLog(@"type=%@ / title=%@", [element objectForKey:@"type"], [[child firstChild] content]);
-                    icd10.longName = [[child firstChild] content];
-                }
+                chapter.name = [[child firstChild] content];
+                
+                NSDictionary *shortName = [_arrShortNames objectAtIndex:[chapter.name integerValue]-1];
+                chapter.first = [[[shortName allValues] objectAtIndex:0] objectAtIndex:0];
+                chapter.last = [[[shortName allValues] objectAtIndex:0] objectAtIndex:1];
+                chapter.shortName = [[shortName allKeys] objectAtIndex:0];
             }
+            if ([child.tagName isEqualToString:@"desc"])
+            {
+                chapter.desc = [[child firstChild] content];
+            }
+            if ([child.tagName isEqualToString:@"includes"])
+            {
+                
+            }
+            
+           
         }
+        [currentContext MR_save];
     }
-    
-//    
-//    
-//    for (NSDictionary *chapter in [self parseChapters:parser])
-//    {
-//        NSLog(@"%@ - %@", [chapter objectForKey:@"name"], [chapter objectForKey:@"desc"]);
-//    }
 }
 
 -(TFHpple*) parseFile:(NSString*) file

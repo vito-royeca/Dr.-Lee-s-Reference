@@ -29,7 +29,6 @@
 		119B62F3185C827C009D3184 /* DictionaryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62EE185C827C009D3184 /* DictionaryDefinition.m */; };
 		119B62F4185C827C009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F0185C827C009D3184 /* DictionaryTerm.m */; };
 		119B62F5185C827C009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F2185C827C009D3184 /* DictionaryXRef.m */; };
-		5815F09D1905841000BB62AE /* ICD10.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F08C1905841000BB62AE /* ICD10.m */; };
 		5815F09E1905841000BB62AE /* ICD10Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F08E1905841000BB62AE /* ICD10Diagnosis.m */; };
 		5815F09F1905841000BB62AE /* ICD10DiagnosisDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F0901905841000BB62AE /* ICD10DiagnosisDrug.m */; };
 		5815F0A01905841000BB62AE /* ICD10DiagnosisEIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F0921905841000BB62AE /* ICD10DiagnosisEIndex.m */; };
@@ -151,8 +150,6 @@
 		119B62F0185C827C009D3184 /* DictionaryTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryTerm.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryTerm.m"; sourceTree = "<group>"; };
 		119B62F1185C827C009D3184 /* DictionaryXRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryXRef.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryXRef.h"; sourceTree = "<group>"; };
 		119B62F2185C827C009D3184 /* DictionaryXRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryXRef.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryXRef.m"; sourceTree = "<group>"; };
-		5815F08B1905841000BB62AE /* ICD10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10.h"; sourceTree = "<group>"; };
-		5815F08C1905841000BB62AE /* ICD10.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10.m"; sourceTree = "<group>"; };
 		5815F08D1905841000BB62AE /* ICD10Diagnosis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10Diagnosis.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10Diagnosis.h"; sourceTree = "<group>"; };
 		5815F08E1905841000BB62AE /* ICD10Diagnosis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10Diagnosis.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10Diagnosis.m"; sourceTree = "<group>"; };
 		5815F08F1905841000BB62AE /* ICD10DiagnosisDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ICD10DiagnosisDrug.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10DiagnosisDrug.h"; sourceTree = "<group>"; };
@@ -413,8 +410,6 @@
 				113383971859AAD400CBA6FF /* Favorite.m */,
 				113383981859AAD400CBA6FF /* History.h */,
 				113383991859AAD400CBA6FF /* History.m */,
-				5815F08B1905841000BB62AE /* ICD10.h */,
-				5815F08C1905841000BB62AE /* ICD10.m */,
 				5815F08D1905841000BB62AE /* ICD10Diagnosis.h */,
 				5815F08E1905841000BB62AE /* ICD10Diagnosis.m */,
 				5815F08F1905841000BB62AE /* ICD10DiagnosisDrug.h */,
@@ -754,7 +749,6 @@
 				5815F0A11905841000BB62AE /* ICD10DiagnosisIndex.m in Sources */,
 				113383A91859AAD400CBA6FF /* Favorite.m in Sources */,
 				113383AA1859AAD400CBA6FF /* History.m in Sources */,
-				5815F09D1905841000BB62AE /* ICD10.m in Sources */,
 				8C97C5581904EC2C000CEA20 /* DrugChemicalType_Lookup.m in Sources */,
 				11322DE91857A2E30007E7B9 /* main.m in Sources */,
 				8C97C5561904EC2C000CEA20 /* DrugAppDocType_Lookup.m in Sources */,

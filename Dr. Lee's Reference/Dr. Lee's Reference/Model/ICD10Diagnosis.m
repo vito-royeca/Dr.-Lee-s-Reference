@@ -18,6 +18,7 @@
 @dynamic includes;
 @dynamic inclusionTerms;
 @dynamic name;
+@dynamic shortName;
 @dynamic version;
 @dynamic excludes;
 @dynamic useAdditionalCode;

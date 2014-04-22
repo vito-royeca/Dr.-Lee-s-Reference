@@ -104,13 +104,6 @@
         <attribute name="query" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tableName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="ICD10" representedClassName="ICD10" syncable="YES">
-        <attribute name="icd10Type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="longName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tableName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <entity name="ICD10Diagnosis" representedClassName="ICD10Diagnosis" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="excludes" optional="YES" attributeType="String" syncable="YES"/>
@@ -121,6 +114,7 @@
         <attribute name="inclusionTerms" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="useAdditionalCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" inverseName="parent" inverseEntity="ICD10Diagnosis" syncable="YES"/>
@@ -219,8 +213,7 @@
         <element name="DrugReviewClass_Lookup" positionX="0" positionY="0" width="128" height="103"/>
         <element name="Favorite" positionX="0" positionY="0" width="128" height="75"/>
         <element name="History" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="ICD10" positionX="27" positionY="162" width="128" height="118"/>
-        <element name="ICD10Diagnosis" positionX="9" positionY="108" width="128" height="238"/>
+        <element name="ICD10Diagnosis" positionX="9" positionY="108" width="128" height="253"/>
         <element name="ICD10DiagnosisDrug" positionX="18" positionY="144" width="128" height="208"/>
         <element name="ICD10DiagnosisEIndex" positionX="45" positionY="180" width="128" height="163"/>
         <element name="ICD10DiagnosisIndex" positionX="72" positionY="189" width="128" height="163"/>
