@@ -23,7 +23,7 @@
 @property (nonatomic, retain) ICD10Procedure *approach;
 @property (nonatomic, retain) ICD10Procedure *device;
 @property (nonatomic, retain) ICD10Procedure *qualifier;
-@property (nonatomic, retain) NSOrderedSet *children;
+@property (nonatomic, retain) NSSet *children;
 @property (nonatomic, retain) ICD10Procedure *parent;
 @end
 
@@ -37,6 +37,6 @@
 - (void)replaceChildrenAtIndexes:(NSIndexSet *)indexes withChildren:(NSArray *)values;
 - (void)addChildrenObject:(ICD10Procedure *)value;
 - (void)removeChildrenObject:(ICD10Procedure *)value;
-- (void)addChildren:(NSOrderedSet *)values;
-- (void)removeChildren:(NSOrderedSet *)values;
+- (void)addChildren:(NSSet *)values;
+- (void)removeChildren:(NSSet *)values;
 @end

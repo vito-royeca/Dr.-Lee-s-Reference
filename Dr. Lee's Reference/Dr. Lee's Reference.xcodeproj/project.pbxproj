@@ -56,8 +56,8 @@
 		8C97C5381904EA6E000CEA20 /* DrugRegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5371904EA6E000CEA20 /* DrugRegActionDate.m */; };
 		8C97C53B1904EA6E000CEA20 /* DrugReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C53A1904EA6E000CEA20 /* DrugReviewClass_Lookup.m */; };
 		8C97C53E1904EA6E000CEA20 /* DrugApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C53D1904EA6E000CEA20 /* DrugApplication.m */; };
-		8C97C5671904F25C000CEA20 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5621904F25C000CEA20 /* database.xcdatamodeld */; };
 		8C9FECE718F280F100714818 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E7A189E95BA00D83B00 /* libJJJ.a */; };
+		8CA4A98D1906091800D1E451 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CA4A9881906091800D1E451 /* database.xcdatamodeld */; };
 		8CEF1E7618F8026100EAE98E /* DrugSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7518F8026100EAE98E /* DrugSearchViewController.m */; };
 		8CEF1E7918F8092D00EAE98E /* DrugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7818F8092D00EAE98E /* DrugViewController.m */; };
 		8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7B18F809C100EAE98E /* DrugBrowseViewController.m */; };
@@ -189,10 +189,10 @@
 		8C97C53A1904EA6E000CEA20 /* DrugReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugReviewClass_Lookup.m; sourceTree = "<group>"; };
 		8C97C53C1904EA6E000CEA20 /* DrugApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugApplication.h; sourceTree = "<group>"; };
 		8C97C53D1904EA6E000CEA20 /* DrugApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugApplication.m; sourceTree = "<group>"; };
-		8C97C5631904F25C000CEA20 /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
-		8C97C5641904F25C000CEA20 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
-		8C97C5651904F25C000CEA20 /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
-		8C97C5661904F25C000CEA20 /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
+		8CA4A9891906091800D1E451 /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
+		8CA4A98A1906091800D1E451 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
+		8CA4A98B1906091800D1E451 /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
+		8CA4A98C1906091800D1E451 /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		8CEF1E7418F8026100EAE98E /* DrugSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSearchViewController.h; sourceTree = "<group>"; };
 		8CEF1E7518F8026100EAE98E /* DrugSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSearchViewController.m; sourceTree = "<group>"; };
 		8CEF1E7718F8092D00EAE98E /* DrugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugViewController.h; sourceTree = "<group>"; };
@@ -242,6 +242,7 @@
 		113383241859A91D00CBA6FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8CA4A9881906091800D1E451 /* database.xcdatamodeld */,
 				5815F087190583A200BB62AE /* DictionaryDefinition.h */,
 				5815F088190583A200BB62AE /* DictionaryDefinition.m */,
 				5815F084190583A200BB62AE /* DictionarySynonym.h */,
@@ -378,7 +379,6 @@
 		116ED0AC18468F1700CDC13D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				8C97C5621904F25C000CEA20 /* database.xcdatamodeld */,
 				111B40FA185D5DED0077E5ED /* database.sqlite */,
 			);
 			path = Data;
@@ -612,13 +612,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C97C5671904F25C000CEA20 /* database.xcdatamodeld in Sources */,
 				8C97C5351904EA6D000CEA20 /* DrugProduct.m in Sources */,
 				5815F04A19057ED700BB62AE /* ICD10DiagnosisIndex.m in Sources */,
 				8C35366618F6A7610029BFF9 /* DictionaryBrowseViewController.m in Sources */,
 				5815F086190583A200BB62AE /* DictionarySynonym.m in Sources */,
 				8C97C53E1904EA6E000CEA20 /* DrugApplication.m in Sources */,
 				5815F05C19057ED800BB62AE /* ICD10Diagnosis.m in Sources */,
+				8CA4A98D1906091800D1E451 /* database.xcdatamodeld in Sources */,
 				8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */,
 				5815F080190583A100BB62AE /* DictionaryXRef.m in Sources */,
 				8C97C53B1904EA6E000CEA20 /* DrugReviewClass_Lookup.m in Sources */,
@@ -887,15 +887,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8C97C5621904F25C000CEA20 /* database.xcdatamodeld */ = {
+		8CA4A9881906091800D1E451 /* database.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8C97C5631904F25C000CEA20 /* 1.xcdatamodel */,
-				8C97C5641904F25C000CEA20 /* 2.xcdatamodel */,
-				8C97C5651904F25C000CEA20 /* 3.xcdatamodel */,
-				8C97C5661904F25C000CEA20 /* database.xcdatamodel */,
+				8CA4A9891906091800D1E451 /* 1.xcdatamodel */,
+				8CA4A98A1906091800D1E451 /* 2.xcdatamodel */,
+				8CA4A98B1906091800D1E451 /* 3.xcdatamodel */,
+				8CA4A98C1906091800D1E451 /* database.xcdatamodel */,
 			);
-			currentVersion = 8C97C5651904F25C000CEA20 /* 3.xcdatamodel */;
+			currentVersion = 8CA4A9891906091800D1E451 /* 1.xcdatamodel */;
 			path = database.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

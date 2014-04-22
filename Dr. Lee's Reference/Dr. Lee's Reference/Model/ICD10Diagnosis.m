@@ -21,9 +21,9 @@
 @dynamic version;
 @dynamic excludes;
 @dynamic useAdditionalCode;
-@dynamic parent;
-@dynamic children;
 @dynamic first;
 @dynamic last;
+@dynamic parent;
+@dynamic children;
 
 @end

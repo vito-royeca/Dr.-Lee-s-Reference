@@ -58,7 +58,7 @@
 		8C97C55B1904EC2C000CEA20 /* DrugProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5501904EC2C000CEA20 /* DrugProduct.m */; };
 		8C97C55C1904EC2C000CEA20 /* DrugRegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5521904EC2C000CEA20 /* DrugRegActionDate.m */; };
 		8C97C55D1904EC2C000CEA20 /* DrugReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5541904EC2C000CEA20 /* DrugReviewClass_Lookup.m */; };
-		8C97C56E1904F27A000CEA20 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5691904F27A000CEA20 /* database.xcdatamodeld */; };
+		8CA4A9941906093B00D1E451 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CA4A98F1906093B00D1E451 /* database.xcdatamodeld */; };
 		B631D180A81C48A49AE71C6D /* libPods-DataSource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D306F727684247149BF7310D /* libPods-DataSource.a */; };
 /* End PBXBuildFile section */
 
@@ -253,10 +253,10 @@
 		8C97C5521904EC2C000CEA20 /* DrugRegActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrugRegActionDate.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugRegActionDate.m"; sourceTree = "<group>"; };
 		8C97C5531904EC2C000CEA20 /* DrugReviewClass_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrugReviewClass_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugReviewClass_Lookup.h"; sourceTree = "<group>"; };
 		8C97C5541904EC2C000CEA20 /* DrugReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrugReviewClass_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugReviewClass_Lookup.m"; sourceTree = "<group>"; };
-		8C97C56A1904F27A000CEA20 /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
-		8C97C56B1904F27A000CEA20 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
-		8C97C56C1904F27A000CEA20 /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
-		8C97C56D1904F27A000CEA20 /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
+		8CA4A9901906093B00D1E451 /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
+		8CA4A9911906093B00D1E451 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
+		8CA4A9921906093B00D1E451 /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
+		8CA4A9931906093B00D1E451 /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		D306F727684247149BF7310D /* libPods-DataSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataSource.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -347,7 +347,6 @@
 		113383691859AA5E00CBA6FF /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				8C97C5691904F27A000CEA20 /* database.xcdatamodeld */,
 				1133836A1859AA7200CBA6FF /* db.sql */,
 				1133836B1859AA7200CBA6FF /* drugsatfda */,
 				113383751859AA7200CBA6FF /* icd10 */,
@@ -383,6 +382,7 @@
 		113383871859AABB00CBA6FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8CA4A98F1906093B00D1E451 /* database.xcdatamodeld */,
 				119B62ED185C827C009D3184 /* DictionaryDefinition.h */,
 				119B62EE185C827C009D3184 /* DictionaryDefinition.m */,
 				113383921859AAD400CBA6FF /* DictionarySynonym.h */,
@@ -747,6 +747,7 @@
 				113383A71859AAD400CBA6FF /* DictionarySynonym.m in Sources */,
 				5815F0B21905869700BB62AE /* ProceduresLoader.m in Sources */,
 				5815F09F1905841000BB62AE /* ICD10DiagnosisDrug.m in Sources */,
+				8CA4A9941906093B00D1E451 /* database.xcdatamodeld in Sources */,
 				8C97C5591904EC2C000CEA20 /* DrugDocType_Lookup.m in Sources */,
 				8C97C55C1904EC2C000CEA20 /* DrugRegActionDate.m in Sources */,
 				119B62F3185C827C009D3184 /* DictionaryDefinition.m in Sources */,
@@ -766,7 +767,6 @@
 				5815F0A31905841000BB62AE /* ICD10Procedure.m in Sources */,
 				5815F0A51905841000BB62AE /* ICD10ProcedureIndex.m in Sources */,
 				113383631859AA1900CBA6FF /* DrugsLoader.m in Sources */,
-				8C97C56E1904F27A000CEA20 /* database.xcdatamodeld in Sources */,
 				113383651859AA1900CBA6FF /* StedmansScraper.m in Sources */,
 				5815F0A21905841000BB62AE /* ICD10DiagnosisNeoplasm.m in Sources */,
 				5815F09E1905841000BB62AE /* ICD10Diagnosis.m in Sources */,
@@ -916,17 +916,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8C97C5691904F27A000CEA20 /* database.xcdatamodeld */ = {
+		8CA4A98F1906093B00D1E451 /* database.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8C97C56A1904F27A000CEA20 /* 1.xcdatamodel */,
-				8C97C56B1904F27A000CEA20 /* 2.xcdatamodel */,
-				8C97C56C1904F27A000CEA20 /* 3.xcdatamodel */,
-				8C97C56D1904F27A000CEA20 /* database.xcdatamodel */,
+				8CA4A9901906093B00D1E451 /* 1.xcdatamodel */,
+				8CA4A9911906093B00D1E451 /* 2.xcdatamodel */,
+				8CA4A9921906093B00D1E451 /* 3.xcdatamodel */,
+				8CA4A9931906093B00D1E451 /* database.xcdatamodel */,
 			);
-			currentVersion = 8C97C56C1904F27A000CEA20 /* 3.xcdatamodel */;
+			currentVersion = 8CA4A9921906093B00D1E451 /* 3.xcdatamodel */;
 			name = database.xcdatamodeld;
-			path = "../../../Dr. Lee's Reference/Dr. Lee's Reference/Data/database.xcdatamodeld";
+			path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/database.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

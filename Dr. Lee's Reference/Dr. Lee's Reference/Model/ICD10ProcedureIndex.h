@@ -17,10 +17,10 @@
 @property (nonatomic, retain) NSString * titleInitial;
 @property (nonatomic, retain) NSString * version;
 @property (nonatomic, retain) ICD10Procedure *procedure;
-@property (nonatomic, retain) NSOrderedSet *children;
+@property (nonatomic, retain) NSSet *children;
 @property (nonatomic, retain) ICD10ProcedureIndex *parent;
-@property (nonatomic, retain) NSOrderedSet *see;
-@property (nonatomic, retain) NSOrderedSet *use;
+@property (nonatomic, retain) NSSet *see;
+@property (nonatomic, retain) NSSet *use;
 @end
 
 @interface ICD10ProcedureIndex (CoreDataGeneratedAccessors)
@@ -33,8 +33,8 @@
 - (void)replaceChildrenAtIndexes:(NSIndexSet *)indexes withChildren:(NSArray *)values;
 - (void)addChildrenObject:(ICD10ProcedureIndex *)value;
 - (void)removeChildrenObject:(ICD10ProcedureIndex *)value;
-- (void)addChildren:(NSOrderedSet *)values;
-- (void)removeChildren:(NSOrderedSet *)values;
+- (void)addChildren:(NSSet *)values;
+- (void)removeChildren:(NSSet *)values;
 - (void)insertObject:(ICD10ProcedureIndex *)value inSeeAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromSeeAtIndex:(NSUInteger)idx;
 - (void)insertSee:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
@@ -43,8 +43,8 @@
 - (void)replaceSeeAtIndexes:(NSIndexSet *)indexes withSee:(NSArray *)values;
 - (void)addSeeObject:(ICD10ProcedureIndex *)value;
 - (void)removeSeeObject:(ICD10ProcedureIndex *)value;
-- (void)addSee:(NSOrderedSet *)values;
-- (void)removeSee:(NSOrderedSet *)values;
+- (void)addSee:(NSSet *)values;
+- (void)removeSee:(NSSet *)values;
 - (void)insertObject:(ICD10ProcedureIndex *)value inUseAtIndex:(NSUInteger)idx;
 - (void)removeObjectFromUseAtIndex:(NSUInteger)idx;
 - (void)insertUse:(NSArray *)value atIndexes:(NSIndexSet *)indexes;

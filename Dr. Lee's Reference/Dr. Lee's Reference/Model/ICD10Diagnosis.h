@@ -22,10 +22,10 @@
 @property (nonatomic, retain) NSString * version;
 @property (nonatomic, retain) NSString * excludes;
 @property (nonatomic, retain) NSString * useAdditionalCode;
+@property (nonatomic, retain) NSString * first;
+@property (nonatomic, retain) NSString * last;
 @property (nonatomic, retain) ICD10Diagnosis *parent;
-@property (nonatomic, retain) NSOrderedSet *children;
-@property (nonatomic, retain) ICD10Diagnosis *first;
-@property (nonatomic, retain) ICD10Diagnosis *last;
+@property (nonatomic, retain) NSSet *children;
 @end
 
 @interface ICD10Diagnosis (CoreDataGeneratedAccessors)
@@ -38,6 +38,6 @@
 - (void)replaceChildrenAtIndexes:(NSIndexSet *)indexes withChildren:(NSArray *)values;
 - (void)addChildrenObject:(ICD10Diagnosis *)value;
 - (void)removeChildrenObject:(ICD10Diagnosis *)value;
-- (void)addChildren:(NSOrderedSet *)values;
-- (void)removeChildren:(NSOrderedSet *)values;
+- (void)addChildren:(NSSet *)values;
+- (void)removeChildren:(NSSet *)values;
 @end
