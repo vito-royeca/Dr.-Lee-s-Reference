@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define NOTES_SEPARATOR @"&#&"
+
 @interface DiagnosesLoader : NSObject
 
 - (void) loadDiagnoses;

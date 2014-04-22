@@ -16,11 +16,13 @@
 @dynamic excludes1;
 @dynamic excludes2;
 @dynamic includes;
-@dynamic inclusionTerms;
+@dynamic inclusionTerm;
 @dynamic name;
 @dynamic shortName;
 @dynamic version;
 @dynamic excludes;
+@dynamic codeFirst;
+@dynamic codeAlso;
 @dynamic useAdditionalCode;
 @dynamic first;
 @dynamic last;

@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * titleInitial;
 @property (nonatomic, retain) NSString * version;
-@property (nonatomic, retain) NSSet *children;
+@property (nonatomic, retain) NSOrderedSet *children;
 @property (nonatomic, retain) ICD10DiagnosisIndex *parent;
 @property (nonatomic, retain) ICD10Diagnosis *code;
 @end
@@ -27,7 +27,7 @@
 
 - (void)addChildrenObject:(ICD10DiagnosisIndex *)value;
 - (void)removeChildrenObject:(ICD10DiagnosisIndex *)value;
-- (void)addChildren:(NSSet *)values;
-- (void)removeChildren:(NSSet *)values;
+- (void)addChildren:(NSOrderedSet *)values;
+- (void)removeChildren:(NSOrderedSet *)values;
 
 @end

@@ -66,7 +66,6 @@
                        @{@"External Causes"       : @[@"V00", @"Y99"]},
                        @{@"Factors | Reasons"     : @[@"Z00", @"Z99"]}];
     
-    NSError *error;
     NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Tabular.xml"];
     TFHpple *parser = [self parseFile:path];
 
@@ -75,31 +74,142 @@
     for (TFHppleElement *element in [self elementsWithPath:@"//chapter" inParser:parser])
     {
         ICD10Diagnosis *chapter = [ICD10Diagnosis MR_createEntity];
-
-        for (TFHppleElement *child in element.children)
+        NSMutableOrderedSet *setSections = [[NSMutableOrderedSet alloc] init];
+        
+        for (TFHppleElement *elemChapter in element.children)
         {
-            if ([child.tagName isEqualToString:@"name"])
+            if ([elemChapter.tagName isEqualToString:@"section"])
             {
-                chapter.name = [[child firstChild] content];
+                ICD10Diagnosis *section = [ICD10Diagnosis MR_createEntity];
+                NSMutableOrderedSet *setDiags = [[NSMutableOrderedSet alloc] init];
                 
-                NSDictionary *shortName = [_arrShortNames objectAtIndex:[chapter.name integerValue]-1];
-                chapter.first = [[[shortName allValues] objectAtIndex:0] objectAtIndex:0];
-                chapter.last = [[[shortName allValues] objectAtIndex:0] objectAtIndex:1];
-                chapter.shortName = [[shortName allKeys] objectAtIndex:0];
-            }
-            if ([child.tagName isEqualToString:@"desc"])
-            {
-                chapter.desc = [[child firstChild] content];
-            }
-            if ([child.tagName isEqualToString:@"includes"])
-            {
+                NSString *range = [elemChapter objectForKey:@"id"];
+                NSArray *arrRange = [range componentsSeparatedByString: @"-"];
+                section.first = [arrRange objectAtIndex:0];
+                if (arrRange.count == 2)
+                {
+                    section.last = [arrRange objectAtIndex:1];
+                }
                 
+                for (TFHppleElement *elemSection in elemChapter.children)
+                {
+                    if ([elemSection.tagName isEqualToString:@"desc"])
+                    {
+                        section.desc = [[elemSection firstChild] content];
+                    }
+                    else if ([elemSection.tagName isEqualToString:@"diag"])
+                    {
+                        [setDiags addObject:[self diagFromElement:elemSection]];
+                    }
+                }
+                section.children = setDiags;
+                
+                [setSections addObject:section];
             }
-            
-           
+            else
+            {
+                [self applyElementContent:elemChapter toDiagnosis:chapter];
+            }
         }
+        chapter.first = [[setSections objectAtIndex:0] first];
+        chapter.last = [[setSections lastObject] first];
+        chapter.children = setSections;
+        
         [currentContext MR_save];
     }
+}
+
+- (void) applyElementContent:(TFHppleElement*) element toDiagnosis:(ICD10Diagnosis*) diag
+{
+    NSString *content = [[element firstChild] content];
+    
+    if ([element.tagName isEqualToString:@"name"])
+    {
+        diag.name = content;
+        
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        NSNumber *number = [formatter numberFromString:diag.name];
+        int intVal = number ? [number intValue] : -1;
+        
+        if  (intVal >= 0 && intVal <= _arrShortNames.count)
+        {
+            NSDictionary *shortName = [_arrShortNames objectAtIndex:intVal-1];
+            diag.first = [[[shortName allValues] objectAtIndex:0] objectAtIndex:0];
+            diag.last = [[[shortName allValues] objectAtIndex:0] objectAtIndex:1];
+            diag.shortName = [[shortName allKeys] objectAtIndex:0];
+        }
+    }
+    else if ([element.tagName isEqualToString:@"desc"])
+    {
+        diag.desc = content;
+    }
+    else if ([element.tagName isEqualToString:@"includes"])
+    {
+        diag.includes = [self notesFromElement:element];
+    }
+    else if ([element.tagName isEqualToString:@"inclusionTerm"])
+    {
+        diag.inclusionTerm = [self notesFromElement:element];
+    }
+    else if ([element.tagName isEqualToString:@"codeFirst"])
+    {
+        diag.codeFirst = [self notesFromElement:element];
+    }
+    else if ([element.tagName isEqualToString:@"codeAlso"])
+    {
+        diag.codeFirst = [self notesFromElement:element];
+    }
+    else if ([element.tagName isEqualToString:@"useAdditionalCode"])
+    {
+        diag.useAdditionalCode = [self notesFromElement:element];
+    }
+    else if ([element.tagName isEqualToString:@"excludes1"])
+    {
+        diag.excludes1 = [self notesFromElement:element];
+    }
+    else if ([element.tagName isEqualToString:@"excludes2"])
+    {
+        diag.excludes2 = [self notesFromElement:element];
+    }
+}
+
+- (NSString*) notesFromElement:(TFHppleElement*) element
+{
+    NSMutableString *buffer = [[NSMutableString alloc] init];
+    
+    for (TFHppleElement *child in element.children)
+    {
+        if ([child.tagName isEqualToString:@"note"])
+        {
+            [buffer appendString:[[child firstChild] content]];
+            [buffer appendString:NOTES_SEPARATOR];
+        }
+    }
+    
+    // remove the trailing NOTES_SEPARATOR
+    return [buffer substringToIndex:buffer.length-3];
+}
+
+- (ICD10Diagnosis*) diagFromElement:(TFHppleElement*) element
+{
+    ICD10Diagnosis *diag = [ICD10Diagnosis MR_createEntity];
+    NSMutableOrderedSet *setDiags = [[NSMutableOrderedSet alloc] init];
+    
+    for (TFHppleElement *child in element.children)
+    {
+        if ([child.tagName isEqualToString:@"diag"])
+        {
+            [setDiags addObject:[self diagFromElement:child]];
+        }
+        else
+        {
+            [self applyElementContent:child toDiagnosis:diag];
+        }
+    }
+    
+    diag.children = setDiags;
+    
+    return diag;
 }
 
 -(TFHpple*) parseFile:(NSString*) file
@@ -113,30 +223,6 @@
 -(NSArray*) elementsWithPath:(NSString*)path inParser:(TFHpple*)parser
 {
     return [parser searchWithXPathQuery:path];
-}
-
--(NSArray*) parseChapters:(TFHpple*)parser
-{
-    NSString *path = @"//chapter";
-    NSArray *nodes = [parser searchWithXPathQuery:path];
-    NSMutableArray *arrTerms = [[NSMutableArray alloc] init];
-    
-    for (TFHppleElement *element in nodes)
-    {
-        for (TFHppleElement *child in element.children)
-        {
-            if ([child.tagName isEqualToString:@"name"])
-            {
-                NSLog(@"#### name=%@", [[child firstChild] content]);
-            }
-            if ([child.tagName isEqualToString:@"desc"])
-            {
-                NSLog(@"#### desc=%@", [[child firstChild] content]);
-            }
-        }
-    }
-    
-    return arrTerms;
 }
 
 @end

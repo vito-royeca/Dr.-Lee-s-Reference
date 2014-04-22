@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSString * version;
 @property (nonatomic, retain) NSNumber * level;
 @property (nonatomic, retain) ICD10DiagnosisDrug *parent;
-@property (nonatomic, retain) NSSet *children;
+@property (nonatomic, retain) NSOrderedSet *children;
 @property (nonatomic, retain) ICD10Diagnosis *poisoningAccidental;
 @property (nonatomic, retain) ICD10Diagnosis *poisoningAssault;
 @property (nonatomic, retain) ICD10Diagnosis *poisoningIntentional;
@@ -30,7 +30,7 @@
 
 - (void)addChildrenObject:(ICD10DiagnosisDrug *)value;
 - (void)removeChildrenObject:(ICD10DiagnosisDrug *)value;
-- (void)addChildren:(NSSet *)values;
-- (void)removeChildren:(NSSet *)values;
+- (void)addChildren:(NSOrderedSet *)values;
+- (void)removeChildren:(NSOrderedSet *)values;
 
 @end

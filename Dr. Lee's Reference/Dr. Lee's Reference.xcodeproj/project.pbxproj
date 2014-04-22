@@ -26,7 +26,6 @@
 		5815F04A19057ED700BB62AE /* ICD10DiagnosisIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F04919057ED700BB62AE /* ICD10DiagnosisIndex.m */; };
 		5815F04D19057ED700BB62AE /* ICD10DiagnosisEIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F04C19057ED700BB62AE /* ICD10DiagnosisEIndex.m */; };
 		5815F05019057ED700BB62AE /* ICD10DiagnosisDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F04F19057ED700BB62AE /* ICD10DiagnosisDrug.m */; };
-		5815F05319057ED700BB62AE /* ICD10.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F05219057ED700BB62AE /* ICD10.m */; };
 		5815F05619057ED700BB62AE /* ICD10ProcedureDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F05519057ED700BB62AE /* ICD10ProcedureDefinition.m */; };
 		5815F05919057ED700BB62AE /* ICD10ProcedureIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F05819057ED700BB62AE /* ICD10ProcedureIndex.m */; };
 		5815F05C19057ED800BB62AE /* ICD10Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F05B19057ED800BB62AE /* ICD10Diagnosis.m */; };
@@ -126,8 +125,6 @@
 		5815F04C19057ED700BB62AE /* ICD10DiagnosisEIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10DiagnosisEIndex.m; sourceTree = "<group>"; };
 		5815F04E19057ED700BB62AE /* ICD10DiagnosisDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10DiagnosisDrug.h; sourceTree = "<group>"; };
 		5815F04F19057ED700BB62AE /* ICD10DiagnosisDrug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10DiagnosisDrug.m; sourceTree = "<group>"; };
-		5815F05119057ED700BB62AE /* ICD10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10.h; sourceTree = "<group>"; };
-		5815F05219057ED700BB62AE /* ICD10.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10.m; sourceTree = "<group>"; };
 		5815F05419057ED700BB62AE /* ICD10ProcedureDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10ProcedureDefinition.h; sourceTree = "<group>"; };
 		5815F05519057ED700BB62AE /* ICD10ProcedureDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10ProcedureDefinition.m; sourceTree = "<group>"; };
 		5815F05719057ED700BB62AE /* ICD10ProcedureIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10ProcedureIndex.h; sourceTree = "<group>"; };
@@ -273,8 +270,6 @@
 				113383341859A95400CBA6FF /* Favorite.m */,
 				113383351859A95400CBA6FF /* History.h */,
 				113383361859A95400CBA6FF /* History.m */,
-				5815F05119057ED700BB62AE /* ICD10.h */,
-				5815F05219057ED700BB62AE /* ICD10.m */,
 				5815F05A19057ED800BB62AE /* ICD10Diagnosis.h */,
 				5815F05B19057ED800BB62AE /* ICD10Diagnosis.m */,
 				5815F04E19057ED700BB62AE /* ICD10DiagnosisDrug.h */,
@@ -651,7 +646,6 @@
 				8CEF1E7918F8092D00EAE98E /* DrugViewController.m in Sources */,
 				8C97C5291904EA6D000CEA20 /* DrugChemicalType_Lookup.m in Sources */,
 				113383471859A95400CBA6FF /* History.m in Sources */,
-				5815F05319057ED700BB62AE /* ICD10.m in Sources */,
 				8C97C52C1904EA6D000CEA20 /* DrugDocType_Lookup.m in Sources */,
 				5836F832189F2B3E00BE8DF3 /* Database.m in Sources */,
 			);
@@ -895,7 +889,7 @@
 				8CA4A98B1906091800D1E451 /* 3.xcdatamodel */,
 				8CA4A98C1906091800D1E451 /* database.xcdatamodel */,
 			);
-			currentVersion = 8CA4A9891906091800D1E451 /* 1.xcdatamodel */;
+			currentVersion = 8CA4A98B1906091800D1E451 /* 3.xcdatamodel */;
 			path = database.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

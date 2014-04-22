@@ -21,7 +21,7 @@
 @property (nonatomic, retain) ICD10Diagnosis *benign;
 @property (nonatomic, retain) ICD10Diagnosis *uncertainBehavior;
 @property (nonatomic, retain) ICD10Diagnosis *unspecifiedBehavior;
-@property (nonatomic, retain) NSSet *children;
+@property (nonatomic, retain) NSOrderedSet *children;
 @property (nonatomic, retain) ICD10DiagnosisNeoplasm *parent;
 @end
 
@@ -29,7 +29,7 @@
 
 - (void)addChildrenObject:(ICD10DiagnosisNeoplasm *)value;
 - (void)removeChildrenObject:(ICD10DiagnosisNeoplasm *)value;
-- (void)addChildren:(NSSet *)values;
-- (void)removeChildren:(NSSet *)values;
+- (void)addChildren:(NSOrderedSet *)values;
+- (void)removeChildren:(NSOrderedSet *)values;
 
 @end
