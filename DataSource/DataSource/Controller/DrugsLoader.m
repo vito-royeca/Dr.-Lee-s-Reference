@@ -23,77 +23,77 @@
 
 -(void) loadDrugs
 {
+    NSDate *dateStart = [NSDate date];
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"database.sqlite"];
+    
     NSUInteger count = [DrugChemicalType_Lookup MR_countOfEntities];
     if (count == 0)
     {
         [self loadChemicalType_Lookup];
-        count = [DrugChemicalType_Lookup MR_countOfEntities];
     }
-    NSLog(@"DrugChemicalType_Lookup = %tu", count);
     
     count = [DrugReviewClass_Lookup MR_countOfEntities];
     if (count == 0)
     {
         [self loadReviewClass_Lookup];
-        count = [DrugReviewClass_Lookup MR_countOfEntities];
     }
-    NSLog(@"DrugReviewClass_Lookup = %tu", count);
     
     count = [DrugApplication MR_countOfEntities];
     if (count == 0)
     {
         [self loadApplication];
-        count = [DrugApplication MR_countOfEntities];
     }
-    NSLog(@"DrugApplication = %tu", count);
     
     count = [DrugProduct MR_countOfEntities];
     if (count == 0)
     {
         [self loadProduct];
-        count = [DrugProduct MR_countOfEntities];
     }
-    NSLog(@"DrugProduct = %tu", count);
     
     count = [DrugProduct_TECode MR_countOfEntities];
     if (count == 0)
     {
         [self loadProductTECode];
-        count = [DrugProduct_TECode MR_countOfEntities];
     }
-    NSLog(@"DrugProduct_TECode = %tu", count);
     
     count = [DrugAppDocType_Lookup MR_countOfEntities];
     if (count == 0)
     {
         [self loadAppDocType_Lookup];
-        count = [DrugAppDocType_Lookup MR_countOfEntities];
     }
-    NSLog(@"DrugAppDocType_Lookup = %tu", count);
     
     count = [DrugAppDoc MR_countOfEntities];
     if (count == 0)
     {
         [self loadAppDoc];
-        count = [DrugAppDoc MR_countOfEntities];
     }
-    NSLog(@"DrugAppDoc = %tu", count);
     
     count = [DrugDocType_Lookup MR_countOfEntities];
     if (count == 0)
     {
         [self loadDocType_Lookup];
-        count = [DrugDocType_Lookup MR_countOfEntities];
     }
-    NSLog(@"DrugDocType_Lookup = %tu", count);
     
     count = [DrugRegActionDate MR_countOfEntities];
     if (count == 0)
     {
         [self loadRegActionDate];
-        count = [DrugRegActionDate MR_countOfEntities];
     }
-    NSLog(@"DrugRegActionDate = %tu", count);
+    
+    NSDate *dateEnd = [NSDate date];
+    NSTimeInterval timeDifference = [dateEnd timeIntervalSinceDate:dateStart];
+    NSLog(@"Started: %@", dateStart);
+    NSLog(@"Ended: %@", dateEnd);
+    NSLog(@"Time Elapsed: %@",  [JJJUtil formatInterval:timeDifference]);
+    NSLog(@"DrugChemicalType_Lookup = %tu", [DrugChemicalType_Lookup MR_countOfEntities]);
+    NSLog(@"DrugReviewClass_Lookup = %tu", [DrugReviewClass_Lookup MR_countOfEntities]);
+    NSLog(@"DrugApplication = %tu", [DrugApplication MR_countOfEntities]);
+    NSLog(@"DrugProduct = %tu", [DrugProduct MR_countOfEntities]);
+    NSLog(@"DrugProduct_TECode = %tu", [DrugProduct_TECode MR_countOfEntities]);
+    NSLog(@"DrugAppDocType_Lookup = %tu", [DrugAppDocType_Lookup MR_countOfEntities]);
+    NSLog(@"DrugAppDoc = %tu", [DrugAppDoc MR_countOfEntities]);
+    NSLog(@"DrugDocType_Lookup = %tu", [DrugDocType_Lookup MR_countOfEntities]);
+    NSLog(@"DrugRegActionDate = %tu", [DrugRegActionDate MR_countOfEntities]);
 }
 
 -(void) loadChemicalType_Lookup

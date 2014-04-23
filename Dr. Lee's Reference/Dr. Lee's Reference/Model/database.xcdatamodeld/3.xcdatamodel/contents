@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="DictionaryDefinition" representedClassName="DictionaryDefinition" syncable="YES">
         <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="term" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="definition" inverseEntity="DictionaryTerm" syncable="YES"/>
@@ -156,16 +156,17 @@
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="ICD10DiagnosisIndex" inverseName="children" inverseEntity="ICD10DiagnosisIndex" syncable="YES"/>
     </entity>
     <entity name="ICD10DiagnosisNeoplasm" representedClassName="ICD10DiagnosisNeoplasm" syncable="YES">
-        <attribute name="neoplasm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="benign" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="caInSitu" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="malignantPrimary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="malignantSecondary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seeAlso" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uncertainBehavior" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unspecifiedBehavior" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="benign" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
-        <relationship name="caInSitu" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10DiagnosisNeoplasm" inverseName="parent" inverseEntity="ICD10DiagnosisNeoplasm" syncable="YES"/>
-        <relationship name="malignantPrimary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
-        <relationship name="malignantSecondary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisNeoplasm" inverseName="children" inverseEntity="ICD10DiagnosisNeoplasm" syncable="YES"/>
-        <relationship name="uncertainBehavior" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
-        <relationship name="unspecifiedBehavior" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
     </entity>
     <entity name="ICD10Procedure" representedClassName="ICD10Procedure" syncable="YES">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
@@ -219,7 +220,7 @@
         <element name="ICD10DiagnosisDrug" positionX="18" positionY="144" width="128" height="210"/>
         <element name="ICD10DiagnosisEIndex" positionX="45" positionY="180" width="128" height="165"/>
         <element name="ICD10DiagnosisIndex" positionX="72" positionY="189" width="128" height="165"/>
-        <element name="ICD10DiagnosisNeoplasm" positionX="90" positionY="198" width="128" height="195"/>
+        <element name="ICD10DiagnosisNeoplasm" positionX="90" positionY="198" width="128" height="210"/>
         <element name="ICD10Procedure" positionX="108" positionY="207" width="128" height="225"/>
         <element name="ICD10ProcedureDefinition" positionX="63" positionY="162" width="128" height="133"/>
         <element name="ICD10ProcedureIndex" positionX="72" positionY="171" width="128" height="163"/>

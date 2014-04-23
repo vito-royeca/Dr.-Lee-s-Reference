@@ -13,8 +13,9 @@
 
 @implementation ICD10DiagnosisNeoplasm
 
-@dynamic neoplasm;
+@dynamic title;
 @dynamic version;
+@dynamic seeAlso;
 @dynamic malignantPrimary;
 @dynamic malignantSecondary;
 @dynamic caInSitu;

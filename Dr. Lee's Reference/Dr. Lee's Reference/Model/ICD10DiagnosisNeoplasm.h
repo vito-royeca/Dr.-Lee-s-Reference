@@ -13,14 +13,15 @@
 
 @interface ICD10DiagnosisNeoplasm : NSManagedObject
 
-@property (nonatomic, retain) NSString * neoplasm;
+@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * version;
-@property (nonatomic, retain) ICD10Diagnosis *malignantPrimary;
-@property (nonatomic, retain) ICD10Diagnosis *malignantSecondary;
-@property (nonatomic, retain) ICD10Diagnosis *caInSitu;
-@property (nonatomic, retain) ICD10Diagnosis *benign;
-@property (nonatomic, retain) ICD10Diagnosis *uncertainBehavior;
-@property (nonatomic, retain) ICD10Diagnosis *unspecifiedBehavior;
+@property (nonatomic, retain) NSString * seeAlso;
+@property (nonatomic, retain) NSString * malignantPrimary;
+@property (nonatomic, retain) NSString * malignantSecondary;
+@property (nonatomic, retain) NSString * caInSitu;
+@property (nonatomic, retain) NSString * benign;
+@property (nonatomic, retain) NSString * uncertainBehavior;
+@property (nonatomic, retain) NSString * unspecifiedBehavior;
 @property (nonatomic, retain) NSOrderedSet *children;
 @property (nonatomic, retain) ICD10DiagnosisNeoplasm *parent;
 @end

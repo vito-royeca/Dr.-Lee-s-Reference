@@ -9,11 +9,12 @@
 #import "DiagnosesLoader.h"
 #import "JJJ/JJJ.h"
 #import "ICD10Diagnosis.h"
+#import "ICD10DiagnosisNeoplasm.h"
 #import "TFHpple.h"
 
 @interface DiagnosesLoader()
 {
-    NSArray *_arrShortNames;
+    NSArray  *_arrShortNames;
 }
 @end
 
@@ -21,28 +22,31 @@
 
 - (void) loadDiagnoses
 {
-    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"database.sqlite"];
-    
     NSDate *dateStart = [NSDate date];
-    NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"database.sqlite"];
     
     NSUInteger count = [ICD10Diagnosis MR_countOfEntities];
     if (count == 0)
     {
-        [self loadICD10Diagnoses];
+        [self loadICD10Tabular];
     }
-    NSLog(@"Diagnoses = %tu", count);
     
+    count = [ICD10DiagnosisNeoplasm MR_countOfEntities];
+    if (count == 0)
+    {
+        [self loadICD10Neoplasm];
+    }
     
     NSDate *dateEnd = [NSDate date];
     NSTimeInterval timeDifference = [dateEnd timeIntervalSinceDate:dateStart];
     NSLog(@"Started: %@", dateStart);
     NSLog(@"Ended: %@", dateEnd);
     NSLog(@"Time Elapsed: %@",  [JJJUtil formatInterval:timeDifference]);
-    NSLog(@"Total: %@", dictTotals);
+    NSLog(@"Tabular = %tu", [ICD10Diagnosis MR_countOfEntities]);
+    NSLog(@"Neoplasm = %tu", [ICD10DiagnosisNeoplasm MR_countOfEntities]);
 }
 
-- (void) loadICD10Diagnoses
+- (void) loadICD10Tabular
 {
     _arrShortNames = @[@{@"Infectious"            : @[@"A00", @"B99"]},
                        @{@"Neoplasms"             : @[@"C00", @"D49"]},
@@ -68,7 +72,6 @@
     
     NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Tabular.xml"];
     TFHpple *parser = [self parseFile:path];
-
     NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
 
     for (TFHppleElement *element in [self elementsWithPath:@"//chapter" inParser:parser])
@@ -103,6 +106,7 @@
                     }
                 }
                 section.children = setDiags;
+                section.version = ICD10_VERSION;
                 
                 [setSections addObject:section];
             }
@@ -114,11 +118,26 @@
         chapter.first = [[setSections objectAtIndex:0] first];
         chapter.last = [[setSections lastObject] first];
         chapter.children = setSections;
+        chapter.version = ICD10_VERSION;
         
         [currentContext MR_save];
     }
 }
 
+- (void) loadICD10Neoplasm
+{
+    NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Neoplasm.xml"];
+    TFHpple *parser = [self parseFile:path];
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
+    for (TFHppleElement *element in [self elementsWithPath:@"//letter/mainTerm" inParser:parser])
+    {
+        ICD10DiagnosisNeoplasm *neo = [self neoplasmFromElement:element];
+        [currentContext MR_save];
+    }
+}
+
+#pragma mark - helper methods for Tabular
 - (void) applyElementContent:(TFHppleElement*) element toDiagnosis:(ICD10Diagnosis*) diag
 {
     NSString *content = [[element firstChild] content];
@@ -208,10 +227,69 @@
     }
     
     diag.children = setDiags;
-    
+    diag.version = ICD10_VERSION;
+
     return diag;
 }
 
+#pragma mark - helper methods for Neoplasm
+- (ICD10DiagnosisNeoplasm*) neoplasmFromElement:(TFHppleElement*) element
+{
+    ICD10DiagnosisNeoplasm *neo = [ICD10DiagnosisNeoplasm MR_createEntity];
+    NSMutableOrderedSet *setNeos = [[NSMutableOrderedSet alloc] init];
+    
+    for (TFHppleElement *child in element.children)
+    {
+        NSString *content = [[child firstChild] content];
+        
+        if ([child.tagName isEqualToString:@"term"])
+        {
+            [setNeos addObject:[self neoplasmFromElement:child]];
+        }
+        else if ([child.tagName isEqualToString:@"title"])
+        {
+            neo.title = content;
+        }
+        else if ([child.tagName isEqualToString:@"seeAlso"])
+        {
+            neo.seeAlso = content;
+        }
+        else if ([child.tagName isEqualToString:@"cell"])
+        {
+            if ([[child objectForKey:@"col"] isEqualToString:@"2"])
+            {
+                neo.malignantPrimary = content;
+            }
+            else if ([[child objectForKey:@"col"] isEqualToString:@"3"])
+            {
+                neo.malignantSecondary = content;
+            }
+            else if ([[child objectForKey:@"col"] isEqualToString:@"4"])
+            {
+                neo.caInSitu = content;
+            }
+            else if ([[child objectForKey:@"col"] isEqualToString:@"5"])
+            {
+                neo.benign = content;
+            }
+            else if ([[child objectForKey:@"col"] isEqualToString:@"6"])
+            {
+                neo.uncertainBehavior = content;
+            }
+            else if ([[child objectForKey:@"col"] isEqualToString:@"7"])
+            {
+                neo.unspecifiedBehavior = content;
+            }
+        }
+    }
+    
+    neo.children = setNeos;
+    neo.version = ICD10_VERSION;
+    
+    return neo;
+}
+
+#pragma mark - general helper methods
 -(TFHpple*) parseFile:(NSString*) file
 {
     NSData *data = [NSData dataWithContentsOfFile:file];

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define NOTES_SEPARATOR @"&#&"
+#define ICD10_VERSION   @"2014"
 
 @interface DiagnosesLoader : NSObject
 

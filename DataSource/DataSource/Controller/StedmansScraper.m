@@ -62,11 +62,10 @@
 
 -(void) scrape
 {
-    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"database.sqlite"];
-    
     NSDate *dateStart = [NSDate date];
     NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
-        
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"database.sqlite"];
+    
     // #1 scrape each letter
     for (NSString *letter in _letters)
     {
