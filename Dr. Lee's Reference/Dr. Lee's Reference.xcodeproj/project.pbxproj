@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		111B40FB185D5DED0077E5ED /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 111B40FA185D5DED0077E5ED /* database.sqlite */; };
+		111B40FB185D5DED0077E5ED /* database-stedmans.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 111B40FA185D5DED0077E5ED /* database-stedmans.sqlite */; };
 		113383461859A95400CBA6FF /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383341859A95400CBA6FF /* Favorite.m */; };
 		113383471859A95400CBA6FF /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383361859A95400CBA6FF /* History.m */; };
 		113DE87C1843D8420080B038 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87B1843D8420080B038 /* Foundation.framework */; };
@@ -42,6 +42,10 @@
 		5892E0BD18F58657004160E0 /* DrugSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0BA18F58657004160E0 /* DrugSummaryViewController.m */; };
 		5892E0C018F58661004160E0 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0BF18F58661004160E0 /* MenuViewController.m */; };
 		5892E0C318F5904F004160E0 /* DictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0C218F5904F004160E0 /* DictionaryViewController.m */; };
+		8C12B19F1907CF530092F82B /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8C12B19E1907CF530092F82B /* database.sqlite */; };
+		8C12B1A21907D39D0092F82B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1A11907D39D0092F82B /* MainViewController.m */; };
+		8C12B1A81907D9F50092F82B /* RADataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1A71907D9F50092F82B /* RADataObject.m */; };
+		8C12B1AB1907DA090092F82B /* BrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1AA1907DA090092F82B /* BrowseViewController.m */; };
 		8C182DAF18FB6CC8005105DB /* MMSideDrawerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C182DAE18FB6CC8005105DB /* MMSideDrawerTableViewCell.m */; };
 		8C182DB518FB6D6A005105DB /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C182DB418FB6D6A005105DB /* MMTableViewCell.m */; };
 		8C182DB818FB6FF3005105DB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C182DB718FB6FF3005105DB /* SearchViewController.m */; };
@@ -95,7 +99,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		111B40FA185D5DED0077E5ED /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
+		111B40FA185D5DED0077E5ED /* database-stedmans.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "database-stedmans.sqlite"; sourceTree = "<group>"; };
 		113383331859A95400CBA6FF /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		113383341859A95400CBA6FF /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
 		113383351859A95400CBA6FF /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
@@ -160,6 +164,13 @@
 		5892E0BF18F58661004160E0 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		5892E0C118F5904F004160E0 /* DictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryViewController.h; sourceTree = "<group>"; };
 		5892E0C218F5904F004160E0 /* DictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryViewController.m; sourceTree = "<group>"; };
+		8C12B19E1907CF530092F82B /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
+		8C12B1A01907D39D0092F82B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8C12B1A11907D39D0092F82B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8C12B1A61907D9F50092F82B /* RADataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RADataObject.h; sourceTree = "<group>"; };
+		8C12B1A71907D9F50092F82B /* RADataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RADataObject.m; sourceTree = "<group>"; };
+		8C12B1A91907DA090092F82B /* BrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseViewController.h; sourceTree = "<group>"; };
+		8C12B1AA1907DA090092F82B /* BrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseViewController.m; sourceTree = "<group>"; };
 		8C182DAD18FB6CC8005105DB /* MMSideDrawerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSideDrawerTableViewCell.h; sourceTree = "<group>"; };
 		8C182DAE18FB6CC8005105DB /* MMSideDrawerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSideDrawerTableViewCell.m; sourceTree = "<group>"; };
 		8C182DB318FB6D6A005105DB /* MMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableViewCell.h; sourceTree = "<group>"; };
@@ -293,9 +304,12 @@
 		1133834C1859A97200CBA6FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8C12B1A51907D70E0092F82B /* Browse */,
 				5892E0AC18F585AC004160E0 /* Dictionary */,
 				5892E0AD18F585CB004160E0 /* Drugs */,
 				5892E0AE18F585DB004160E0 /* ICD10 */,
+				8C12B1A01907D39D0092F82B /* MainViewController.h */,
+				8C12B1A11907D39D0092F82B /* MainViewController.m */,
 				5892E0BE18F58661004160E0 /* MenuViewController.h */,
 				5892E0BF18F58661004160E0 /* MenuViewController.m */,
 				8C182DAD18FB6CC8005105DB /* MMSideDrawerTableViewCell.h */,
@@ -374,7 +388,8 @@
 		116ED0AC18468F1700CDC13D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				111B40FA185D5DED0077E5ED /* database.sqlite */,
+				8C12B19E1907CF530092F82B /* database.sqlite */,
+				111B40FA185D5DED0077E5ED /* database-stedmans.sqlite */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -428,6 +443,17 @@
 			children = (
 			);
 			path = ICD10;
+			sourceTree = "<group>";
+		};
+		8C12B1A51907D70E0092F82B /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				8C12B1A91907DA090092F82B /* BrowseViewController.h */,
+				8C12B1AA1907DA090092F82B /* BrowseViewController.m */,
+				8C12B1A61907D9F50092F82B /* RADataObject.h */,
+				8C12B1A71907D9F50092F82B /* RADataObject.m */,
+			);
+			path = Browse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -541,7 +567,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				111B40FB185D5DED0077E5ED /* database.sqlite in Resources */,
+				8C12B19F1907CF530092F82B /* database.sqlite in Resources */,
+				111B40FB185D5DED0077E5ED /* database-stedmans.sqlite in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
 			);
@@ -613,6 +640,8 @@
 				5815F086190583A200BB62AE /* DictionarySynonym.m in Sources */,
 				8C97C53E1904EA6E000CEA20 /* DrugApplication.m in Sources */,
 				5815F05C19057ED800BB62AE /* ICD10Diagnosis.m in Sources */,
+				8C12B1AB1907DA090092F82B /* BrowseViewController.m in Sources */,
+				8C12B1A81907D9F50092F82B /* RADataObject.m in Sources */,
 				8CA4A98D1906091800D1E451 /* database.xcdatamodeld in Sources */,
 				8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */,
 				5815F080190583A100BB62AE /* DictionaryXRef.m in Sources */,
@@ -632,6 +661,7 @@
 				8C182DB818FB6FF3005105DB /* SearchViewController.m in Sources */,
 				5892E0C318F5904F004160E0 /* DictionaryViewController.m in Sources */,
 				5815F05619057ED700BB62AE /* ICD10ProcedureDefinition.m in Sources */,
+				8C12B1A21907D39D0092F82B /* MainViewController.m in Sources */,
 				5892E0C018F58661004160E0 /* MenuViewController.m in Sources */,
 				5815F083190583A200BB62AE /* DictionaryTerm.m in Sources */,
 				113DE88A1843D8420080B038 /* main.m in Sources */,

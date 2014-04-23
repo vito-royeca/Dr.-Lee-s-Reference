@@ -55,7 +55,7 @@
     
     MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
                                                                                       action:@selector(rightDrawerButtonPress:)];
-    
+
     if(OSVersionIsAtLeastiOS7())
     {
         UIColor *barColor = [UIColor colorWithRed:247.0/255.0

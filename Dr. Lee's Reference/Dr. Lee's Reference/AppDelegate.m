@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DictionaryViewController.h"
+#import "MainViewController.h"
 #import "MenuViewController.h"
 
 @implementation AppDelegate
@@ -28,8 +29,11 @@
                              initWithCenterViewController:centerViewController
                              leftDrawerViewController:nil
                              rightDrawerViewController:rightDrawer];
+//    self.window.rootViewController = self.drawerController;
     
-    self.window.rootViewController = self.drawerController;
+    MainViewController *mainViewController = [[MainViewController alloc] init];
+    self.window.rootViewController = mainViewController;
+    
     [self.window makeKeyAndVisible];
 
     return YES;
