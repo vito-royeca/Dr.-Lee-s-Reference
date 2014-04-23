@@ -6,17 +6,17 @@
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.
 //
 
-#import "MenuViewController.h"
+#import "SearchSettingsViewController.h"
 #import "AppDelegate.h"
 #import "DictionaryViewController.h"
 #import "DrugViewController.h"
 #import "MMSideDrawerTableViewCell.h"
 
-@interface MenuViewController ()
+@interface SearchSettingsViewController ()
 
 @end
 
-@implementation MenuViewController
+@implementation SearchSettingsViewController
 
 @synthesize tblMenu = _tblMenu;
 @synthesize drawerWidths = _drawerWidths;
@@ -36,16 +36,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-//    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-//    tblMenu = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-//    tblMenu.dataSource = self;
-//    tblMenu.delegate = self;
-//    [self.view addSubview:tblMenu];
-    
-//    self.view.backgroundColor = kMenuBackgroundColor;
-//    tblMenu.backgroundColor = kTableBackgroundColor;
-//    tblMenu.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
     if(OSVersionIsAtLeastiOS7())
     {
         self.tblMenu = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
@@ -58,64 +48,59 @@
     [self.tblMenu setDelegate:self];
     [self.tblMenu setDataSource:self];
     [self.view addSubview:self.tblMenu];
-    [self.tblMenu setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+//    [self.tblMenu setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
     
-    UIColor * tableViewBackgroundColor;
-    if(OSVersionIsAtLeastiOS7())
-    {
-        tableViewBackgroundColor = [UIColor colorWithRed:110.0/255.0
-                                                   green:113.0/255.0
-                                                    blue:115.0/255.0
-                                                   alpha:1.0];
-    }
-    else
-    {
-        tableViewBackgroundColor = [UIColor colorWithRed:77.0/255.0
-                                                   green:79.0/255.0
-                                                    blue:80.0/255.0
-                                                   alpha:1.0];
-    }
-    [self.tblMenu setBackgroundColor:tableViewBackgroundColor];
+//    UIColor * tableViewBackgroundColor;
+//    if(OSVersionIsAtLeastiOS7())
+//    {
+//        tableViewBackgroundColor = [UIColor colorWithRed:110.0/255.0
+//                                                   green:113.0/255.0
+//                                                    blue:115.0/255.0
+//                                                   alpha:1.0];
+//    }
+//    else
+//    {
+//        tableViewBackgroundColor = [UIColor colorWithRed:77.0/255.0
+//                                                   green:79.0/255.0
+//                                                    blue:80.0/255.0
+//                                                   alpha:1.0];
+//    }
+//    [self.tblMenu setBackgroundColor:tableViewBackgroundColor];
+//    
+//    [self.tblMenu setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+//    
+//    [self.view setBackgroundColor:[UIColor colorWithRed:66.0/255.0
+//                                                  green:69.0/255.0
+//                                                   blue:71.0/255.0
+//                                                  alpha:1.0]];
+//    
+//    UIColor * barColor = [UIColor colorWithRed:161.0/255.0
+//                                         green:164.0/255.0
+//                                          blue:166.0/255.0
+//                                         alpha:1.0];
+//    if([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)])
+//    {
+//        [self.navigationController.navigationBar setBarTintColor:barColor];
+//    }
+//    else
+//    {
+//        [self.navigationController.navigationBar setTintColor:barColor];
+//    }
+//    
+//    
+//    NSDictionary *navBarTitleDict;
+//    UIColor * titleColor = [UIColor colorWithRed:55.0/255.0
+//                                           green:70.0/255.0
+//                                            blue:77.0/255.0
+//                                           alpha:1.0];
+//    navBarTitleDict = @{NSForegroundColorAttributeName:titleColor};
+//    [self.navigationController.navigationBar setTitleTextAttributes:navBarTitleDict];
+//    
+//    self.drawerWidths = @[@(160),@(200),@(240),@(280),@(320)];
+//    
+//    [self.view setBackgroundColor:[UIColor clearColor]];
     
-    [self.tblMenu setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
-    [self.view setBackgroundColor:[UIColor colorWithRed:66.0/255.0
-                                                  green:69.0/255.0
-                                                   blue:71.0/255.0
-                                                  alpha:1.0]];
-    
-    UIColor * barColor = [UIColor colorWithRed:161.0/255.0
-                                         green:164.0/255.0
-                                          blue:166.0/255.0
-                                         alpha:1.0];
-    if([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)])
-    {
-        [self.navigationController.navigationBar setBarTintColor:barColor];
-    }
-    else
-    {
-        [self.navigationController.navigationBar setTintColor:barColor];
-    }
-    
-    
-    NSDictionary *navBarTitleDict;
-    UIColor * titleColor = [UIColor colorWithRed:55.0/255.0
-                                           green:70.0/255.0
-                                            blue:77.0/255.0
-                                           alpha:1.0];
-    navBarTitleDict = @{NSForegroundColorAttributeName:titleColor};
-    [self.navigationController.navigationBar setTitleTextAttributes:navBarTitleDict];
-    
-    self.drawerWidths = @[@(160),@(200),@(240),@(280),@(320)];
-    
-//    CGSize logoSize = CGSizeMake(58, 62);
-//    MMLogoView * logo = [[MMLogoView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.tableView.bounds)-logoSize.width/2.0,
-//                                                                     -logoSize.height-logoSize.height/4.0,
-//                                                                     logoSize.width,
-//                                                                     logoSize.height)];
-//    [logo setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
-//    [self.tableView addSubview:logo];
-    [self.view setBackgroundColor:[UIColor clearColor]];
+    self.navigationItem.title = @"Search Settings";
 }
 
 -(void)viewWillAppear:(BOOL)animated

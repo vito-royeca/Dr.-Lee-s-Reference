@@ -12,21 +12,6 @@
 
 @implementation DictionarySearchViewController
 
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    if (super.fetchedResultsController != nil)
-    {
-        return super.fetchedResultsController;
-    }
-    
-    NSFetchedResultsController *nsfrc = [[Database sharedInstance] search:DictionaryDataSource
-                                                                    query:super.searchBar.text
-                                                             narrowSearch:NO];
-    super.fetchedResultsController = nsfrc;
-    super.fetchedResultsController.delegate = self;
-    return super.fetchedResultsController;
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,7 +28,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    super.searchBar.placeholder = @"search dictionary";
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,8 +46,9 @@
 //    DictionaryDefinition *def = d.dictionaryDefinition && d.dictionaryDefinition.count > 0 ? [[d.dictionaryDefinition allObjects] objectAtIndex:0] : nil;
 //    DictionarySynonym *syn = d.dictionarySynonym && d.dictionarySynonym.count > 0 ? [[d.dictionarySynonym allObjects] objectAtIndex:0] : nil;
 
-    DictionaryTerm *d = [super.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = d.term;
+//    DictionaryTerm *d = [super.fetchedResultsController objectAtIndexPath:indexPath];
+//    cell.textLabel.text = d.term;
+    
 //    cell.detailTextLabel.text = def ? def.definition : (syn ? [NSString stringWithFormat:@"SYN %@", syn.term] : @"");
     //    cell.textLabel.font = kMenuFont;
     //    cell.detailTextLabel.font = kMenuFont;

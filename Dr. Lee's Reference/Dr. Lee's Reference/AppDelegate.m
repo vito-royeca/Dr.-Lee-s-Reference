@@ -7,9 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "DictionaryViewController.h"
 #import "MainViewController.h"
-#import "MenuViewController.h"
+#import "SearchViewController.h"
 
 @implementation AppDelegate
 
@@ -23,15 +22,9 @@
     
     [self setupDb:@"database.sqlite"];
 
-    UIViewController *rightDrawer = [[MenuViewController alloc] init];
-    UIViewController *centerViewController = [[DictionaryViewController alloc] init];
-    self.drawerController = [[MMDrawerController alloc]
-                             initWithCenterViewController:centerViewController
-                             leftDrawerViewController:nil
-                             rightDrawerViewController:rightDrawer];
-//    self.window.rootViewController = self.drawerController;
-    
     MainViewController *mainViewController = [[MainViewController alloc] init];
+//    SearchViewController *mainViewController = [[SearchViewController alloc] init];
+//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mainViewController];
     self.window.rootViewController = mainViewController;
     
     [self.window makeKeyAndVisible];

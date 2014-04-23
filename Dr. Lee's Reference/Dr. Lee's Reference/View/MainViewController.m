@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "SearchViewController.h"
 #import "BrowseViewController.h"
 
 @interface MainViewController ()
@@ -31,8 +32,7 @@
     // Do any additional setup after loading the view.
     
     UINavigationController *nc1 = [[UINavigationController alloc] init];
-    UIViewController *vc1 = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    vc1.view.backgroundColor = [UIColor greenColor];
+    UIViewController *vc1 = [[SearchViewController alloc] initWithNibName:nil bundle:nil];
     nc1.viewControllers = [NSArray arrayWithObjects:vc1, nil];
     nc1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Search"
                                                    image:[UIImage imageNamed:@"search.png"]
@@ -40,7 +40,6 @@
     
     UINavigationController *nc2 = [[UINavigationController alloc] init];
     UIViewController *vc2 = [[BrowseViewController alloc] initWithNibName:nil bundle:nil];
-    vc2.view.backgroundColor = [UIColor yellowColor];
     nc2.viewControllers = [NSArray arrayWithObjects:vc2, nil];
     nc2.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse"
                                                    image:[UIImage imageNamed:@"opened_folder.png"]

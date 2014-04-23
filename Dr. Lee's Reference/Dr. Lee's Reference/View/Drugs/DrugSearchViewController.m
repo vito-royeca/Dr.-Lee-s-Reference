@@ -12,17 +12,6 @@
 
 @implementation DrugSearchViewController
 
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    if (!super.fetchedResultsController)
-    {
-        super.fetchedResultsController = [[Database sharedInstance] search:DrugsDataSource
-                                                                     query:super.searchBar.text
-                                                              narrowSearch:NO];
-    }
-    return super.fetchedResultsController;
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,7 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    super.searchBar.placeholder = @"search drugs";
+//    super.searchBar.placeholder = @"search drugs";
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,14 +103,9 @@
 - (void)configureCell:(UITableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
 {
-//    NSString *prefix = [super.keys objectAtIndex:indexPath.section];
-//    NSArray *arr = [super.content objectForKey:prefix];
-//    
-//    Product *p = [arr objectAtIndex:indexPath.row];
-
-    DrugProduct *p = [super.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = p.drugName;
-    cell.detailTextLabel.text = p.activeIngred;
+//    DrugProduct *p = [super.fetchedResultsController objectAtIndexPath:indexPath];
+//    cell.textLabel.text = p.drugName;
+//    cell.detailTextLabel.text = p.activeIngred;
 }
 
 - (UIViewController*) detailViewWithObject:(id) object

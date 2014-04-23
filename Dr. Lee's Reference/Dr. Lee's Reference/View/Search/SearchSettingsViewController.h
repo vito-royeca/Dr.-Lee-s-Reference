@@ -10,7 +10,7 @@
 
 #include "Constants.h"
 
-@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SearchSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tblMenu;
 @property (nonatomic,strong) NSArray * drawerWidths;

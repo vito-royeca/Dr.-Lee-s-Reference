@@ -15,7 +15,7 @@
 #import "DictionaryXRef.h"
 #import "SearchViewController.h"
 
-@interface DrugSearchViewController : SearchViewController
+@interface DrugSearchViewController : UIViewController
 
 
 @end

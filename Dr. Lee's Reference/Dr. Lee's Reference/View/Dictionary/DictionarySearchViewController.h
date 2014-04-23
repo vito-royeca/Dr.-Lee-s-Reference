@@ -17,7 +17,7 @@
 #import "DrugSummaryViewController.h"
 #import "SearchViewController.h"
 
-@interface DictionarySearchViewController : SearchViewController
+@interface DictionarySearchViewController : UIViewController
 
 
 @end

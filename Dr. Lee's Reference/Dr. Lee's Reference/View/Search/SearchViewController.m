@@ -8,9 +8,8 @@
 
 #import "SearchViewController.h"
 #import "JJJ/JJJUtil.h"
-#import "MMDrawerBarButtonItem.h"
-#import "UIViewController+MMDrawerController.h"
 #import "Database.h"
+#import "SearchSettingsViewController.h"
 
 @interface SearchViewController ()
 
@@ -21,6 +20,21 @@
 @synthesize searchBar = _searchBar;
 @synthesize tblResults = _tblResults;
 @synthesize fetchedResultsController = _fetchedResultsController;
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (_fetchedResultsController != nil)
+    {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchedResultsController *nsfrc = [[Database sharedInstance] search:DictionaryDataSource
+                                                                    query:self.searchBar.text
+                                                             narrowSearch:NO];
+    _fetchedResultsController = nsfrc;
+    _fetchedResultsController.delegate = self;
+    return _fetchedResultsController;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,14 +52,15 @@
     // Do any additional setup after loading the view.
     
     CGFloat dX = 0;
-    CGFloat dY = 0;
+    CGFloat dY = 0;//[UIApplication sharedApplication].statusBarFrame.size.height;
     CGFloat dWidth = self.view.frame.size.width;
-    CGFloat dHeight = self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height;;
+    CGFloat dHeight = self.navigationController.navigationBar.frame.size.height;
     CGRect frame = CGRectMake(dX, dY, dWidth, dHeight);
     self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.searchBar.delegate = self;
     
+    dHeight = self.view.frame.size.height;
     frame = CGRectMake(dX, dY, dWidth, dHeight);
     self.tblResults = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     self.tblResults.delegate = self;
@@ -53,30 +68,12 @@
     self.tblResults.scrollEnabled = YES;
     self.tblResults.userInteractionEnabled = YES;
     
-    MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
-                                                                                      action:@selector(rightDrawerButtonPress:)];
+    UIBarButtonItem *btnSettings = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings.png"]
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self
+                                                                   action:@selector(showSettings:)];
 
-    if(OSVersionIsAtLeastiOS7())
-    {
-        UIColor *barColor = [UIColor colorWithRed:247.0/255.0
-                                            green:249.0/255.0
-                                            blue:250.0/255.0
-                                            alpha:1.0];
-        [self.navigationController.navigationBar setBarTintColor:barColor];
-        [self.tabBarController.tabBar setBarTintColor:barColor];
-    }
-    else
-    {
-        UIColor * barColor = [UIColor colorWithRed:78.0/255.0
-                                             green:156.0/255.0
-                                              blue:206.0/255.0
-                                             alpha:1.0];
-        [self.navigationController.navigationBar setTintColor:barColor];
-        [self.tabBarController.tabBar setTintColor:barColor];
-    }
-    
-    
-    [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
+    [self.navigationItem setRightBarButtonItem:btnSettings animated:YES];
     self.navigationItem.titleView = self.searchBar;
     [self.view addSubview:self.tblResults];
     
@@ -85,9 +82,10 @@
                                                          forBarMetrics:UIBarMetricsDefault];
 }
 
--(void) rightDrawerButtonPress:(id)sender
+-(void) showSettings:(id)sender
 {
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+    SearchSettingsViewController *viewController = [[SearchSettingsViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 -(void)contentSizeDidChange:(NSString *)size

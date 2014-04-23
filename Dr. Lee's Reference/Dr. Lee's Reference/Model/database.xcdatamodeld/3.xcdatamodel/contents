@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="DictionaryDefinition" representedClassName="DictionaryDefinition" syncable="YES">
         <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="term" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="definition" inverseEntity="DictionaryTerm" syncable="YES"/>
@@ -151,7 +151,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titleInitial" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="children" optional="YES" toMany="YES" deletionRule="No Action" ordered="YES" destinationEntity="ICD10DiagnosisIndex" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="No Action" ordered="YES" destinationEntity="ICD10DiagnosisIndex" inverseName="parent" inverseEntity="ICD10DiagnosisIndex" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="ICD10DiagnosisIndex" inverseName="children" inverseEntity="ICD10DiagnosisIndex" syncable="YES"/>
     </entity>
     <entity name="ICD10DiagnosisNeoplasm" representedClassName="ICD10DiagnosisNeoplasm" syncable="YES">

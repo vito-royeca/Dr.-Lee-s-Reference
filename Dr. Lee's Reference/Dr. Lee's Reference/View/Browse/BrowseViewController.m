@@ -62,7 +62,7 @@
     
     [treeView reloadData];
 //    [treeView expandRowForItem:phone withRowAnimation:RATreeViewRowAnimationLeft]; //expands Row
-    [treeView setBackgroundColor:[UIColor cyanColor]];
+//    [treeView setBackgroundColor:[UIColor cyanColor]];
     
     self.treeView = treeView;
     [self.view addSubview:treeView];
