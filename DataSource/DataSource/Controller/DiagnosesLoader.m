@@ -119,6 +119,8 @@
                     section.last = [arrRange objectAtIndex:1];
                 }
                 
+                section.parent = chapter;
+                
                 for (TFHppleElement *elemSection in elemChapter.children)
                 {
                     if ([elemSection.tagName isEqualToString:@"desc"])
@@ -127,7 +129,9 @@
                     }
                     else if ([elemSection.tagName isEqualToString:@"diag"])
                     {
-                        [setDiags addObject:[self diagFromElement:elemSection]];
+                        ICD10Diagnosis *sub = [self diagFromElement:elemSection];
+                        sub.parent = section;
+                        [setDiags addObject:sub];
                     }
                 }
                 section.children = setDiags;
@@ -229,7 +233,9 @@
     {
         if ([child.tagName isEqualToString:@"diag"])
         {
-            [setDiags addObject:[self diagFromElement:child]];
+            ICD10Diagnosis *sub = [self diagFromElement:child];
+            sub.parent = diag;
+            [setDiags addObject:sub];
         }
         else
         {
@@ -252,7 +258,7 @@
     
     for (TFHppleElement *element in [self elementsWithPath:@"//letter/mainTerm" inParser:parser])
     {
-        ICD10DiagnosisNeoplasm *neo = [self neoplasmFromElement:element];
+        [self neoplasmFromElement:element];
         [currentContext MR_save];
     }
 }
@@ -268,7 +274,9 @@
         
         if ([child.tagName isEqualToString:@"term"])
         {
-            [setNeos addObject:[self neoplasmFromElement:child]];
+            ICD10DiagnosisNeoplasm *sub = [self neoplasmFromElement:child];
+            sub.parent = neo;
+            [setNeos addObject:sub];
         }
         else if ([child.tagName isEqualToString:@"title"])
         {
@@ -322,7 +330,7 @@
     
     for (TFHppleElement *element in [self elementsWithPath:@"//letter/mainTerm" inParser:parser])
     {
-        ICD10DiagnosisDrug *drug = [self drugFromElement:element];
+        [self drugFromElement:element];
         [currentContext MR_save];
     }
 }
@@ -338,7 +346,9 @@
         
         if ([child.tagName isEqualToString:@"term"])
         {
-            [setDrugs addObject:[self drugFromElement:child]];
+            ICD10DiagnosisDrug *sub = [self drugFromElement:child];
+            sub.parent = drug;
+            [setDrugs addObject:sub];
         }
         else if ([child.tagName isEqualToString:@"title"])
         {
@@ -382,13 +392,169 @@
 #pragma mark - Index methods
 - (void) loadICD10Index
 {
+    NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Index.xml"];
+    TFHpple *parser = [self parseFile:path];
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
     
+    for (TFHppleElement *element in [self elementsWithPath:@"//letter/mainTerm" inParser:parser])
+    {
+        [self indexFromElement:element];
+        [currentContext MR_save];
+    }
+}
+
+- (ICD10DiagnosisIndex*) indexFromElement:(TFHppleElement*) element
+{
+    ICD10DiagnosisIndex *index = [ICD10DiagnosisIndex MR_createEntity];
+    NSMutableOrderedSet *setIndexes = [[NSMutableOrderedSet alloc] init];
+    
+    for (TFHppleElement *child in element.children)
+    {
+        NSString *content = [[child firstChild] content];
+        
+        if ([child.tagName isEqualToString:@"term"])
+        {
+            ICD10DiagnosisIndex *sub = [self indexFromElement:child];
+            sub.parent = index;
+            [setIndexes addObject:sub];
+        }
+        else if ([child.tagName isEqualToString:@"title"])
+        {
+            
+            if (child.hasChildren)
+            {
+                NSMutableString *buffer = [[NSMutableString alloc] init];
+                
+                if (content)
+                {
+                    [buffer appendString:content];
+                }
+                for (TFHppleElement *child2 in child.children)
+                {
+                    if ([child2.tagName isEqualToString:@"nemod"])
+                    {
+                        [buffer appendFormat:@" %@", [[child2 firstChild] content]];
+                    }
+                }
+                
+                index.title = buffer;
+            }
+            else
+            {
+                index.title = content;
+            }
+            
+            if ([JJJUtil isAlphaStart:index.title])
+            {
+                index.titleInitial = [[index.title substringToIndex:1] uppercaseString];
+            }
+            else
+            {
+                index.titleInitial = @"#";
+            }
+        }
+        else if ([child.tagName isEqualToString:@"code"])
+        {
+            index.code = content;
+        }
+        else if ([child.tagName isEqualToString:@"see"])
+        {
+            index.see = content;
+        }
+        else if ([child.tagName isEqualToString:@"seeAlso"])
+        {
+            index.seeAlso = content;
+        }
+    }
+    
+    index.children = setIndexes;
+    index.version = ICD10_VERSION;
+    
+    return index;
 }
 
 #pragma mark - EIndex methods
 - (void) loadICD10EIndex
 {
+    NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/E-Index.xml"];
+    TFHpple *parser = [self parseFile:path];
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
     
+    for (TFHppleElement *element in [self elementsWithPath:@"//letter/mainTerm" inParser:parser])
+    {
+        [self eIndexFromElement:element];
+        [currentContext MR_save];
+    }
+}
+
+- (ICD10DiagnosisEIndex*) eIndexFromElement:(TFHppleElement*) element
+{
+    ICD10DiagnosisEIndex *index = [ICD10DiagnosisEIndex MR_createEntity];
+    NSMutableOrderedSet *setIndexes = [[NSMutableOrderedSet alloc] init];
+    
+    for (TFHppleElement *child in element.children)
+    {
+        NSString *content = [[child firstChild] content];
+        
+        if ([child.tagName isEqualToString:@"term"])
+        {
+            ICD10DiagnosisEIndex *sub = [self eIndexFromElement:child];
+            sub.parent = index;
+            [setIndexes addObject:sub];
+        }
+        else if ([child.tagName isEqualToString:@"title"])
+        {
+            
+            if (child.hasChildren)
+            {
+                NSMutableString *buffer = [[NSMutableString alloc] init];
+                
+                if (content)
+                {
+                    [buffer appendString:content];
+                }
+                for (TFHppleElement *child2 in child.children)
+                {
+                    if ([child2.tagName isEqualToString:@"nemod"])
+                    {
+                        [buffer appendFormat:@" %@", [[child2 firstChild] content]];
+                    }
+                }
+                
+                index.title = buffer;
+            }
+            else
+            {
+                index.title = content;
+            }
+            
+            if ([JJJUtil isAlphaStart:index.title])
+            {
+                index.titleInitial = [[index.title substringToIndex:1] uppercaseString];
+            }
+            else
+            {
+                index.titleInitial = @"#";
+            }
+        }
+        else if ([child.tagName isEqualToString:@"code"])
+        {
+            index.code = content;
+        }
+        else if ([child.tagName isEqualToString:@"see"])
+        {
+            index.see = content;
+        }
+        else if ([child.tagName isEqualToString:@"seeAlso"])
+        {
+            index.seeAlso = content;
+        }
+    }
+    
+    index.children = setIndexes;
+    index.version = ICD10_VERSION;
+    
+    return index;
 }
 
 #pragma mark - general helper methods

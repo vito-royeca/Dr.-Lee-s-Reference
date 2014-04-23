@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSString * version;
 @property (nonatomic, retain) NSOrderedSet *children;
 @property (nonatomic, retain) ICD10DiagnosisEIndex *parent;
-@property (nonatomic, retain) ICD10Diagnosis *code;
+@property (nonatomic, retain) NSString *code;
 @end
 
 @interface ICD10DiagnosisEIndex (CoreDataGeneratedAccessors)

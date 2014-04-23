@@ -135,23 +135,23 @@
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisDrug" inverseName="children" inverseEntity="ICD10DiagnosisDrug" syncable="YES"/>
     </entity>
     <entity name="ICD10DiagnosisEIndex" representedClassName="ICD10DiagnosisEIndex" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="see" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="seeAlso" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titleInitial" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10DiagnosisEIndex" inverseName="parent" inverseEntity="ICD10DiagnosisEIndex" syncable="YES"/>
-        <relationship name="code" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisEIndex" inverseName="children" inverseEntity="ICD10DiagnosisEIndex" syncable="YES"/>
     </entity>
     <entity name="ICD10DiagnosisIndex" representedClassName="ICD10DiagnosisIndex" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="see" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="seeAlso" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titleInitial" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="No Action" ordered="YES" destinationEntity="ICD10DiagnosisIndex" syncable="YES"/>
-        <relationship name="code" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="ICD10DiagnosisIndex" inverseName="children" inverseEntity="ICD10DiagnosisIndex" syncable="YES"/>
     </entity>
     <entity name="ICD10DiagnosisNeoplasm" representedClassName="ICD10DiagnosisNeoplasm" syncable="YES">
