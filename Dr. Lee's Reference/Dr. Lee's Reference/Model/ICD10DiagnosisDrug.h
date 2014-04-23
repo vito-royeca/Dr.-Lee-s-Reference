@@ -16,14 +16,14 @@
 @property (nonatomic, retain) NSString * substance;
 @property (nonatomic, retain) NSString * version;
 @property (nonatomic, retain) NSNumber * level;
-@property (nonatomic, retain) ICD10DiagnosisDrug *parent;
-@property (nonatomic, retain) NSOrderedSet *children;
-@property (nonatomic, retain) ICD10Diagnosis *poisoningAccidental;
-@property (nonatomic, retain) ICD10Diagnosis *poisoningAssault;
-@property (nonatomic, retain) ICD10Diagnosis *poisoningIntentional;
-@property (nonatomic, retain) ICD10Diagnosis *poisoningUndetermined;
-@property (nonatomic, retain) ICD10Diagnosis *underdosing;
-@property (nonatomic, retain) ICD10Diagnosis *adverseEffect;
+@property (nonatomic, retain) ICD10DiagnosisDrug * parent;
+@property (nonatomic, retain) NSOrderedSet * children;
+@property (nonatomic, retain) NSString * poisoningAccidental;
+@property (nonatomic, retain) NSString * poisoningAssault;
+@property (nonatomic, retain) NSString * poisoningIntentional;
+@property (nonatomic, retain) NSString * poisoningUndetermined;
+@property (nonatomic, retain) NSString * underdosing;
+@property (nonatomic, retain) NSString * adverseEffect;
 @end
 
 @interface ICD10DiagnosisDrug (CoreDataGeneratedAccessors)

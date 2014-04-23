@@ -123,17 +123,16 @@
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" inverseName="children" inverseEntity="ICD10Diagnosis" syncable="YES"/>
     </entity>
     <entity name="ICD10DiagnosisDrug" representedClassName="ICD10DiagnosisDrug" syncable="YES">
-        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="adverseEffect" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="poisoningAccidental" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="poisoningAssault" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="poisoningIntentional" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="poisoningUndetermined" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="substance" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="underdosing" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="adverseEffect" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10DiagnosisDrug" inverseName="parent" inverseEntity="ICD10DiagnosisDrug" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10DiagnosisDrug" inverseName="children" inverseEntity="ICD10DiagnosisDrug" syncable="YES"/>
-        <relationship name="poisoningAccidental" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
-        <relationship name="poisoningAssault" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
-        <relationship name="poisoningIntentional" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
-        <relationship name="poisoningUndetermined" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
-        <relationship name="underdosing" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Diagnosis" syncable="YES"/>
     </entity>
     <entity name="ICD10DiagnosisEIndex" representedClassName="ICD10DiagnosisEIndex" syncable="YES">
         <attribute name="see" optional="YES" attributeType="String" syncable="YES"/>
@@ -217,7 +216,7 @@
         <element name="Favorite" positionX="0" positionY="0" width="128" height="75"/>
         <element name="History" positionX="0" positionY="0" width="128" height="75"/>
         <element name="ICD10Diagnosis" positionX="9" positionY="108" width="128" height="283"/>
-        <element name="ICD10DiagnosisDrug" positionX="18" positionY="144" width="128" height="210"/>
+        <element name="ICD10DiagnosisDrug" positionX="18" positionY="144" width="128" height="193"/>
         <element name="ICD10DiagnosisEIndex" positionX="45" positionY="180" width="128" height="165"/>
         <element name="ICD10DiagnosisIndex" positionX="72" positionY="189" width="128" height="165"/>
         <element name="ICD10DiagnosisNeoplasm" positionX="90" positionY="198" width="128" height="210"/>

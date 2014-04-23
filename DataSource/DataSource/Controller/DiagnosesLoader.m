@@ -9,6 +9,9 @@
 #import "DiagnosesLoader.h"
 #import "JJJ/JJJ.h"
 #import "ICD10Diagnosis.h"
+#import "ICD10DiagnosisDrug.h"
+#import "ICD10DiagnosisEIndex.h"
+#import "ICD10DiagnosisIndex.h"
 #import "ICD10DiagnosisNeoplasm.h"
 #import "TFHpple.h"
 
@@ -37,6 +40,24 @@
         [self loadICD10Neoplasm];
     }
     
+    count = [ICD10DiagnosisDrug MR_countOfEntities];
+    if (count == 0)
+    {
+        [self loadICD10Drug];
+    }
+    
+    count = [ICD10DiagnosisIndex MR_countOfEntities];
+    if (count == 0)
+    {
+        [self loadICD10Index];
+    }
+    
+    count = [ICD10DiagnosisEIndex MR_countOfEntities];
+    if (count == 0)
+    {
+        [self loadICD10EIndex];
+    }
+    
     NSDate *dateEnd = [NSDate date];
     NSTimeInterval timeDifference = [dateEnd timeIntervalSinceDate:dateStart];
     NSLog(@"Started: %@", dateStart);
@@ -44,8 +65,12 @@
     NSLog(@"Time Elapsed: %@",  [JJJUtil formatInterval:timeDifference]);
     NSLog(@"Tabular = %tu", [ICD10Diagnosis MR_countOfEntities]);
     NSLog(@"Neoplasm = %tu", [ICD10DiagnosisNeoplasm MR_countOfEntities]);
+    NSLog(@"Drug = %tu", [ICD10DiagnosisDrug MR_countOfEntities]);
+    NSLog(@"Index = %tu", [ICD10DiagnosisIndex MR_countOfEntities]);
+    NSLog(@"EIndex = %tu", [ICD10DiagnosisEIndex MR_countOfEntities]);
 }
 
+#pragma mark - Tabular methods
 - (void) loadICD10Tabular
 {
     _arrShortNames = @[@{@"Infectious"            : @[@"A00", @"B99"]},
@@ -73,7 +98,7 @@
     NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Tabular.xml"];
     TFHpple *parser = [self parseFile:path];
     NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
-
+    
     for (TFHppleElement *element in [self elementsWithPath:@"//chapter" inParser:parser])
     {
         ICD10Diagnosis *chapter = [ICD10Diagnosis MR_createEntity];
@@ -124,20 +149,6 @@
     }
 }
 
-- (void) loadICD10Neoplasm
-{
-    NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Neoplasm.xml"];
-    TFHpple *parser = [self parseFile:path];
-    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
-    
-    for (TFHppleElement *element in [self elementsWithPath:@"//letter/mainTerm" inParser:parser])
-    {
-        ICD10DiagnosisNeoplasm *neo = [self neoplasmFromElement:element];
-        [currentContext MR_save];
-    }
-}
-
-#pragma mark - helper methods for Tabular
 - (void) applyElementContent:(TFHppleElement*) element toDiagnosis:(ICD10Diagnosis*) diag
 {
     NSString *content = [[element firstChild] content];
@@ -232,7 +243,20 @@
     return diag;
 }
 
-#pragma mark - helper methods for Neoplasm
+#pragma mark - Neoplasm methods
+- (void) loadICD10Neoplasm
+{
+    NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Neoplasm.xml"];
+    TFHpple *parser = [self parseFile:path];
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
+    for (TFHppleElement *element in [self elementsWithPath:@"//letter/mainTerm" inParser:parser])
+    {
+        ICD10DiagnosisNeoplasm *neo = [self neoplasmFromElement:element];
+        [currentContext MR_save];
+    }
+}
+
 - (ICD10DiagnosisNeoplasm*) neoplasmFromElement:(TFHppleElement*) element
 {
     ICD10DiagnosisNeoplasm *neo = [ICD10DiagnosisNeoplasm MR_createEntity];
@@ -287,6 +311,84 @@
     neo.version = ICD10_VERSION;
     
     return neo;
+}
+
+#pragma mark - Drug methods
+- (void) loadICD10Drug
+{
+    NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Drug.xml"];
+    TFHpple *parser = [self parseFile:path];
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
+    for (TFHppleElement *element in [self elementsWithPath:@"//letter/mainTerm" inParser:parser])
+    {
+        ICD10DiagnosisDrug *drug = [self drugFromElement:element];
+        [currentContext MR_save];
+    }
+}
+
+- (ICD10DiagnosisDrug*) drugFromElement:(TFHppleElement*) element
+{
+    ICD10DiagnosisDrug *drug = [ICD10DiagnosisDrug MR_createEntity];
+    NSMutableOrderedSet *setDrugs = [[NSMutableOrderedSet alloc] init];
+    
+    for (TFHppleElement *child in element.children)
+    {
+        NSString *content = [[child firstChild] content];
+        
+        if ([child.tagName isEqualToString:@"term"])
+        {
+            [setDrugs addObject:[self drugFromElement:child]];
+        }
+        else if ([child.tagName isEqualToString:@"title"])
+        {
+            drug.substance = content;
+        }
+        else if ([child.tagName isEqualToString:@"cell"])
+        {
+            if ([[child objectForKey:@"col"] isEqualToString:@"2"])
+            {
+                drug.poisoningAccidental = content;
+            }
+            else if ([[child objectForKey:@"col"] isEqualToString:@"3"])
+            {
+                drug.poisoningIntentional = content;
+            }
+            else if ([[child objectForKey:@"col"] isEqualToString:@"4"])
+            {
+                drug.poisoningAssault = content;
+            }
+            else if ([[child objectForKey:@"col"] isEqualToString:@"5"])
+            {
+                drug.poisoningUndetermined = content;
+            }
+            else if ([[child objectForKey:@"col"] isEqualToString:@"6"])
+            {
+                drug.adverseEffect = content;
+            }
+            else if ([[child objectForKey:@"col"] isEqualToString:@"7"])
+            {
+                drug.underdosing = content;
+            }
+        }
+    }
+    
+    drug.children = setDrugs;
+    drug.version = ICD10_VERSION;
+    
+    return drug;
+}
+
+#pragma mark - Index methods
+- (void) loadICD10Index
+{
+    
+}
+
+#pragma mark - EIndex methods
+- (void) loadICD10EIndex
+{
+    
 }
 
 #pragma mark - general helper methods
