@@ -10,4 +10,9 @@
 
 @implementation ProceduresLoader
 
+- (void) loadProcedures
+{
+    
+}
+
 @end

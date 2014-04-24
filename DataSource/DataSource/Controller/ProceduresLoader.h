@@ -10,4 +10,6 @@
 
 @interface ProceduresLoader : NSObject
 
+- (void) loadProcedures;
+
 @end
