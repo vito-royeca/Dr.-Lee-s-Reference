@@ -7,8 +7,6 @@
 //
 
 #import "DrugBrowseViewController.h"
-#import "MMDrawerBarButtonItem.h"
-#import "UIViewController+MMDrawerController.h"
 
 @interface DrugBrowseViewController ()
 
@@ -30,16 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
-                                                                                      action:@selector(rightDrawerButtonPress:)];
-    [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
     self.navigationItem.title = @"Browse Drugs";
     self.view.backgroundColor = [UIColor greenColor];
-}
-
--(void) rightDrawerButtonPress:(id)sender
-{
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

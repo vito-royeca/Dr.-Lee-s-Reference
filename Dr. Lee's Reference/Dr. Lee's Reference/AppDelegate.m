@@ -8,11 +8,9 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-#import "SearchViewController.h"
 
 @implementation AppDelegate
 
-@synthesize drawerController = _drawerController;
 @synthesize window = _window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -23,8 +21,6 @@
     [self setupDb:@"database.sqlite"];
 
     MainViewController *mainViewController = [[MainViewController alloc] init];
-//    SearchViewController *mainViewController = [[SearchViewController alloc] init];
-//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:mainViewController];
     self.window.rootViewController = mainViewController;
     
     [self.window makeKeyAndVisible];

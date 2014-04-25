@@ -5,7 +5,7 @@
 target "Dr. Lee's Reference" do
 
 pod "AFNetworking"
-pod "InAppSettingsKit"
+#pod "InAppSettingsKit", :git => 'https://github.com/futuretap/InAppSettingsKit.git' 
 pod "MagicalRecord"
 pod "MBProgressHUD"
 #pod "MMDrawerController" 

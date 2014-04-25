@@ -7,9 +7,9 @@
 //
 
 #import "SearchViewController.h"
+#import "IASKSettingsReader.h"
 #import "JJJ/JJJUtil.h"
 #import "Database.h"
-#import "SearchSettingsViewController.h"
 
 @interface SearchViewController ()
 
@@ -17,9 +17,20 @@
 
 @implementation SearchViewController
 
-@synthesize searchBar = _searchBar;
+@synthesize searchBar  = _searchBar;
 @synthesize tblResults = _tblResults;
+@synthesize settingsViewController   = _settingsViewController;
 @synthesize fetchedResultsController = _fetchedResultsController;
+
+- (IASKAppSettingsViewController*)settingsViewController
+{
+	if (!_settingsViewController)
+    {
+		_settingsViewController = [[IASKAppSettingsViewController alloc] init];
+//		_settingsViewController.delegate = self;
+	}
+	return _settingsViewController;
+}
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -42,8 +53,19 @@
     if (self)
     {
         // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(settingsDidChange:)
+                                                     name:kIASKAppSettingChanged
+                                                   object:nil];
     }
     return self;
+}
+
+-(void) settingsDidChange:(NSNotification*)notification
+{
+    
+    NSString *key = [[[notification userInfo] allKeys] objectAtIndex:0];
+    NSLog(@"%@=%@", key, [[notification userInfo] valueForKey:key]);
 }
 
 - (void)viewDidLoad
@@ -82,10 +104,12 @@
                                                          forBarMetrics:UIBarMetricsDefault];
 }
 
--(void) showSettings:(id)sender
+-(void) showSettings:(id) sender
 {
-    SearchSettingsViewController *viewController = [[SearchSettingsViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    self.settingsViewController.showCreditsFooter = NO;
+	self.settingsViewController.showDoneButton = NO;
+	self.settingsViewController.navigationItem.rightBarButtonItem = nil;
+    [self.navigationController pushViewController:self.settingsViewController animated:YES];
 }
 
 -(void)contentSizeDidChange:(NSString *)size
@@ -289,6 +313,19 @@
 {
     return nil;
 }
+
+#pragma mark - IASKAppSettingsViewControllerDelegate
+/* does not work!!!
+- (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender
+{
+    NSLog(@"Settings done...");
+}
+
+- (void)settingsViewController:(IASKAppSettingsViewController*)sender
+      buttonTappedForSpecifier:(IASKSpecifier*)specifier
+{
+    NSLog(@"%@:%@", specifier.key, [[NSUserDefaults standardUserDefaults] objectForKey:specifier.key]);
+}*/
 
 /*
 #pragma mark - Navigation

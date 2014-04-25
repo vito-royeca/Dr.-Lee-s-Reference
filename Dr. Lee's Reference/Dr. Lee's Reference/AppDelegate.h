@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MMDrawerController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (nonatomic,strong) MMDrawerController *drawerController;
 @property(strong,nonatomic) UIWindow *window;
 
 @end

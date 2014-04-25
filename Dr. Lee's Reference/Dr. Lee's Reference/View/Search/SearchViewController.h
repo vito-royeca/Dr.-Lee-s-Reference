@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IASKAppSettingsViewController.h"
 #import "MBProgressHUD.h"
 
-@interface SearchViewController : UIViewController<MBProgressHUDDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SearchViewController : UIViewController<MBProgressHUDDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, IASKSettingsDelegate>
 
 @property(strong,nonatomic) UISearchBar *searchBar;
 @property(strong,nonatomic) UITableView *tblResults;
+@property(strong,nonatomic) IASKAppSettingsViewController *settingsViewController;
 @property(strong,nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 - (void) doSearch;
