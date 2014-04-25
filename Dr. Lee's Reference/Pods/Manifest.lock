@@ -18,36 +18,25 @@ PODS:
   - AFNetworking/UIKit (2.2.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - InAppSettingsKit (2.0.1)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.8)
-  - MMDrawerController (0.5.3):
-    - MMDrawerController/Core
-    - MMDrawerController/MMDrawerBarButtonItem
-    - MMDrawerController/MMDrawerVisualStates
-    - MMDrawerController/Subclass
-  - MMDrawerController/Core (0.5.3)
-  - MMDrawerController/MMDrawerBarButtonItem (0.5.3):
-    - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.5.3):
-    - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.5.3):
-    - MMDrawerController/Core
   - RATreeView (0.2.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - InAppSettingsKit
   - MagicalRecord
   - MBProgressHUD
-  - MMDrawerController
   - RATreeView
 
 SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
+  InAppSettingsKit: 5e42f626b9be9c33e3b04c0cc9523ca5eabe7ad3
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  MMDrawerController: 4445e1927e8947b7e2382136c9b7109840efbfb9
   RATreeView: fe5d5a7d6bdff3bdd63921b3f94503cda8788f1a
 
 COCOAPODS: 0.32.1

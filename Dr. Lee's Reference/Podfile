@@ -5,9 +5,10 @@
 target "Dr. Lee's Reference" do
 
 pod "AFNetworking"
+pod "InAppSettingsKit"
 pod "MagicalRecord"
 pod "MBProgressHUD"
-pod "MMDrawerController" 
+#pod "MMDrawerController" 
 pod "RATreeView"
 
 end

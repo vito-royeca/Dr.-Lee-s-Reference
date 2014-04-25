@@ -13,6 +13,6 @@
 @interface SearchSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tblMenu;
-@property (nonatomic,strong) NSArray * drawerWidths;
+@property (strong, nonatomic) NSArray *arrDataSource;
 
 @end
