@@ -27,7 +27,8 @@
 	if (!_settingsViewController)
     {
 		_settingsViewController = [[IASKAppSettingsViewController alloc] init];
-//		_settingsViewController.delegate = self;
+		_settingsViewController.delegate = self;
+        _settingsViewController.title = @"Search Settings";
 	}
 	return _settingsViewController;
 }
@@ -106,10 +107,11 @@
 
 -(void) showSettings:(id) sender
 {
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.settingsViewController];
+
     self.settingsViewController.showCreditsFooter = NO;
-	self.settingsViewController.showDoneButton = NO;
-	self.settingsViewController.navigationItem.rightBarButtonItem = nil;
-    [self.navigationController pushViewController:self.settingsViewController animated:YES];
+    self.settingsViewController.showDoneButton = YES;
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
 -(void)contentSizeDidChange:(NSString *)size
@@ -315,17 +317,17 @@
 }
 
 #pragma mark - IASKAppSettingsViewControllerDelegate
-/* does not work!!!
 - (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender
 {
-    NSLog(@"Settings done...");
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+// does not work!!!
 - (void)settingsViewController:(IASKAppSettingsViewController*)sender
       buttonTappedForSpecifier:(IASKSpecifier*)specifier
 {
     NSLog(@"%@:%@", specifier.key, [[NSUserDefaults standardUserDefaults] objectForKey:specifier.key]);
-}*/
+}
 
 /*
 #pragma mark - Navigation
