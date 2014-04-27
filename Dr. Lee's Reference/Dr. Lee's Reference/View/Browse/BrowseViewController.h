@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RATreeView.h"
 
-@interface BrowseViewController : UIViewController<RATreeViewDelegate, RATreeViewDataSource>
+@interface BrowseViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *data;
-@property (strong, nonatomic) id expanded;
-@property (weak, nonatomic) RATreeView *treeView;
+@property (strong, nonatomic) UITableView *tblBrowse;
 
 @end

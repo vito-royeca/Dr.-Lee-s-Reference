@@ -2,7 +2,7 @@
 //  DictionaryBrowseViewController.h
 //  Dr. Lee's Reference
 //
-//  Created by Jovit Royeca on 4/10/14.
+//  Created by Jovito Royeca on 4/27/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 

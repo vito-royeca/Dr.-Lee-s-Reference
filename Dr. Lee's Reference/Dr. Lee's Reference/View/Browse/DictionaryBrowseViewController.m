@@ -2,7 +2,7 @@
 //  DictionaryBrowseViewController.m
 //  Dr. Lee's Reference
 //
-//  Created by Jovit Royeca on 4/10/14.
+//  Created by Jovito Royeca on 4/27/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -20,6 +20,13 @@
     if (self)
     {
         // Custom initialization
+        UIBarButtonItem *btnSettings = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"info.png"]
+                                                                        style:UIBarButtonItemStylePlain
+                                                                       target:self
+                                                                       action:@selector(showInfo:)];
+        
+        [self.navigationItem setRightBarButtonItem:btnSettings animated:YES];
+        self.navigationItem.title = @"Dicitonary";
     }
     return self;
 }
@@ -28,15 +35,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.navigationItem.title = @"Browse Dictionary";
-    self.view.backgroundColor = [UIColor purpleColor];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) showInfo:(id) sender
+{
+    
 }
 
 /*

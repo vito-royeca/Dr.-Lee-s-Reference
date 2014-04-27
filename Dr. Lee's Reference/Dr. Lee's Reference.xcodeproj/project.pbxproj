@@ -41,6 +41,10 @@
 		5892E0BC18F58657004160E0 /* DrugProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0B818F58657004160E0 /* DrugProductTableViewCell.m */; };
 		5892E0BD18F58657004160E0 /* DrugSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0BA18F58657004160E0 /* DrugSummaryViewController.m */; };
 		5892E0C318F5904F004160E0 /* DictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5892E0C218F5904F004160E0 /* DictionaryViewController.m */; };
+		58A77128190D52E80097417B /* ICD10CMBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A77127190D52E80097417B /* ICD10CMBrowseViewController.m */; };
+		58A7712E190D53060097417B /* ICD10PCSBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7712D190D53060097417B /* ICD10PCSBrowseViewController.m */; };
+		58A77131190D531E0097417B /* DictionaryBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A77130190D531D0097417B /* DictionaryBrowseViewController.m */; };
+		58A77134190D53300097417B /* FDADrugsBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A77133190D53300097417B /* FDADrugsBrowseViewController.m */; };
 		58C8A9C419080DA1001549DB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C8A9C319080DA1001549DB /* SearchViewController.m */; };
 		8C12B19F1907CF530092F82B /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 8C12B19E1907CF530092F82B /* database.sqlite */; };
 		8C12B1A21907D39D0092F82B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1A11907D39D0092F82B /* MainViewController.m */; };
@@ -48,7 +52,6 @@
 		8C12B1AB1907DA090092F82B /* BrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1AA1907DA090092F82B /* BrowseViewController.m */; };
 		8C182DAF18FB6CC8005105DB /* MMSideDrawerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C182DAE18FB6CC8005105DB /* MMSideDrawerTableViewCell.m */; };
 		8C182DB518FB6D6A005105DB /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C182DB418FB6D6A005105DB /* MMTableViewCell.m */; };
-		8C35366618F6A7610029BFF9 /* DictionaryBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C35366518F6A7610029BFF9 /* DictionaryBrowseViewController.m */; };
 		8C447064190A7F73000DEFC2 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8C447063190A7F73000DEFC2 /* InAppSettings.bundle */; };
 		8C44708B190A898C000DEFC2 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C44706D190A898C000DEFC2 /* IASKAppSettingsViewController.m */; };
 		8C44708C190A898C000DEFC2 /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C44706F190A898C000DEFC2 /* IASKAppSettingsWebViewController.m */; };
@@ -176,6 +179,14 @@
 		5892E0BA18F58657004160E0 /* DrugSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSummaryViewController.m; sourceTree = "<group>"; };
 		5892E0C118F5904F004160E0 /* DictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryViewController.h; sourceTree = "<group>"; };
 		5892E0C218F5904F004160E0 /* DictionaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryViewController.m; sourceTree = "<group>"; };
+		58A77126190D52E80097417B /* ICD10CMBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10CMBrowseViewController.h; sourceTree = "<group>"; };
+		58A77127190D52E80097417B /* ICD10CMBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10CMBrowseViewController.m; sourceTree = "<group>"; };
+		58A7712C190D53060097417B /* ICD10PCSBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10PCSBrowseViewController.h; sourceTree = "<group>"; };
+		58A7712D190D53060097417B /* ICD10PCSBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10PCSBrowseViewController.m; sourceTree = "<group>"; };
+		58A7712F190D531D0097417B /* DictionaryBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBrowseViewController.h; sourceTree = "<group>"; };
+		58A77130190D531D0097417B /* DictionaryBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryBrowseViewController.m; sourceTree = "<group>"; };
+		58A77132190D53300097417B /* FDADrugsBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDADrugsBrowseViewController.h; sourceTree = "<group>"; };
+		58A77133190D53300097417B /* FDADrugsBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDADrugsBrowseViewController.m; sourceTree = "<group>"; };
 		58C8A9C219080DA1001549DB /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		58C8A9C319080DA1001549DB /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		8C12B19E1907CF530092F82B /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
@@ -189,8 +200,6 @@
 		8C182DAE18FB6CC8005105DB /* MMSideDrawerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSideDrawerTableViewCell.m; sourceTree = "<group>"; };
 		8C182DB318FB6D6A005105DB /* MMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableViewCell.h; sourceTree = "<group>"; };
 		8C182DB418FB6D6A005105DB /* MMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableViewCell.m; sourceTree = "<group>"; };
-		8C35366418F6A7610029BFF9 /* DictionaryBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBrowseViewController.h; sourceTree = "<group>"; };
-		8C35366518F6A7610029BFF9 /* DictionaryBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryBrowseViewController.m; sourceTree = "<group>"; };
 		8C447063190A7F73000DEFC2 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
 		8C44706C190A898C000DEFC2 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsViewController.h; sourceTree = "<group>"; };
 		8C44706D190A898C000DEFC2 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKAppSettingsViewController.m; sourceTree = "<group>"; };
@@ -448,8 +457,6 @@
 		5892E0AC18F585AC004160E0 /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
-				8C35366418F6A7610029BFF9 /* DictionaryBrowseViewController.h */,
-				8C35366518F6A7610029BFF9 /* DictionaryBrowseViewController.m */,
 				5892E0B218F5862F004160E0 /* DictionaryDetailViewController.h */,
 				5892E0B318F5862F004160E0 /* DictionaryDetailViewController.m */,
 				5892E0AF18F58605004160E0 /* DictionarySearchViewController.h */,
@@ -500,6 +507,14 @@
 			children = (
 				8C12B1A91907DA090092F82B /* BrowseViewController.h */,
 				8C12B1AA1907DA090092F82B /* BrowseViewController.m */,
+				58A7712F190D531D0097417B /* DictionaryBrowseViewController.h */,
+				58A77130190D531D0097417B /* DictionaryBrowseViewController.m */,
+				58A77132190D53300097417B /* FDADrugsBrowseViewController.h */,
+				58A77133190D53300097417B /* FDADrugsBrowseViewController.m */,
+				58A77126190D52E80097417B /* ICD10CMBrowseViewController.h */,
+				58A77127190D52E80097417B /* ICD10CMBrowseViewController.m */,
+				58A7712C190D53060097417B /* ICD10PCSBrowseViewController.h */,
+				58A7712D190D53060097417B /* ICD10PCSBrowseViewController.m */,
 				8C12B1A61907D9F50092F82B /* RADataObject.h */,
 				8C12B1A71907D9F50092F82B /* RADataObject.m */,
 			);
@@ -755,7 +770,6 @@
 			files = (
 				8C97C5351904EA6D000CEA20 /* DrugProduct.m in Sources */,
 				5815F04A19057ED700BB62AE /* ICD10DiagnosisIndex.m in Sources */,
-				8C35366618F6A7610029BFF9 /* DictionaryBrowseViewController.m in Sources */,
 				5815F086190583A200BB62AE /* DictionarySynonym.m in Sources */,
 				8C44708F190A898C000DEFC2 /* IASKSettingsStore.m in Sources */,
 				8C97C53E1904EA6E000CEA20 /* DrugApplication.m in Sources */,
@@ -765,6 +779,7 @@
 				8CA4A98D1906091800D1E451 /* database.xcdatamodeld in Sources */,
 				8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */,
 				5815F080190583A100BB62AE /* DictionaryXRef.m in Sources */,
+				58A77128190D52E80097417B /* ICD10CMBrowseViewController.m in Sources */,
 				8C447098190A898D000DEFC2 /* IASKTextField.m in Sources */,
 				8C97C53B1904EA6E000CEA20 /* DrugReviewClass_Lookup.m in Sources */,
 				8C447093190A898D000DEFC2 /* IASKPSSliderSpecifierViewCell.m in Sources */,
@@ -772,6 +787,7 @@
 				5892E0B418F5862F004160E0 /* DictionaryDetailViewController.m in Sources */,
 				113383461859A95400CBA6FF /* Favorite.m in Sources */,
 				8C182DB518FB6D6A005105DB /* MMTableViewCell.m in Sources */,
+				58A77131190D531E0097417B /* DictionaryBrowseViewController.m in Sources */,
 				8C97C5381904EA6E000CEA20 /* DrugRegActionDate.m in Sources */,
 				5892E0BB18F58657004160E0 /* DrugDetailsViewController.m in Sources */,
 				5815F05919057ED700BB62AE /* ICD10ProcedureIndex.m in Sources */,
@@ -791,11 +807,13 @@
 				8C12B1A21907D39D0092F82B /* MainViewController.m in Sources */,
 				5815F083190583A200BB62AE /* DictionaryTerm.m in Sources */,
 				113DE88A1843D8420080B038 /* main.m in Sources */,
+				58A77134190D53300097417B /* FDADrugsBrowseViewController.m in Sources */,
 				58C8A9C419080DA1001549DB /* SearchViewController.m in Sources */,
 				8C44708D190A898C000DEFC2 /* IASKSpecifierValuesViewController.m in Sources */,
 				5815F04719057ED600BB62AE /* ICD10DiagnosisNeoplasm.m in Sources */,
 				8C447094190A898D000DEFC2 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
 				5892E0BC18F58657004160E0 /* DrugProductTableViewCell.m in Sources */,
+				58A7712E190D53060097417B /* ICD10PCSBrowseViewController.m in Sources */,
 				5815F05F19057ED800BB62AE /* ICD10Procedure.m in Sources */,
 				5815F04D19057ED700BB62AE /* ICD10DiagnosisEIndex.m in Sources */,
 				8C447091190A898C000DEFC2 /* IASKSettingsStoreUserDefaults.m in Sources */,
