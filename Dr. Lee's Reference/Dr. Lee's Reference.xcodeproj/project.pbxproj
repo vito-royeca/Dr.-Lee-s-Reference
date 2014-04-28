@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		111B40FB185D5DED0077E5ED /* database-stedmans.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 111B40FA185D5DED0077E5ED /* database-stedmans.sqlite */; };
 		113383461859A95400CBA6FF /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383341859A95400CBA6FF /* Favorite.m */; };
 		113383471859A95400CBA6FF /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383361859A95400CBA6FF /* History.m */; };
 		113DE87C1843D8420080B038 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DE87B1843D8420080B038 /* Foundation.framework */; };
@@ -81,6 +80,7 @@
 		8CEF1E7618F8026100EAE98E /* DrugSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7518F8026100EAE98E /* DrugSearchViewController.m */; };
 		8CEF1E7918F8092D00EAE98E /* DrugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7818F8092D00EAE98E /* DrugViewController.m */; };
 		8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7B18F809C100EAE98E /* DrugBrowseViewController.m */; };
+		8CF996BE190E78A8007D7FE2 /* 2to3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8CF996BD190E78A8007D7FE2 /* 2to3.xcmappingmodel */; };
 		E9F67E2DAFD3466DAB5B6015 /* libPods-Dr. Lee's Reference.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA74D43AEC3403DB9C07229 /* libPods-Dr. Lee's Reference.a */; };
 /* End PBXBuildFile section */
 
@@ -116,7 +116,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		111B40FA185D5DED0077E5ED /* database-stedmans.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "database-stedmans.sqlite"; sourceTree = "<group>"; };
 		113383331859A95400CBA6FF /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		113383341859A95400CBA6FF /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
 		113383351859A95400CBA6FF /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
@@ -258,6 +257,7 @@
 		8CEF1E7818F8092D00EAE98E /* DrugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugViewController.m; sourceTree = "<group>"; };
 		8CEF1E7A18F809C100EAE98E /* DrugBrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugBrowseViewController.h; sourceTree = "<group>"; };
 		8CEF1E7B18F809C100EAE98E /* DrugBrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugBrowseViewController.m; sourceTree = "<group>"; };
+		8CF996BD190E78A8007D7FE2 /* 2to3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = 2to3.xcmappingmodel; sourceTree = "<group>"; };
 		FAA74D43AEC3403DB9C07229 /* libPods-Dr. Lee's Reference.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dr. Lee's Reference.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -301,6 +301,7 @@
 		113383241859A91D00CBA6FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8CF996BD190E78A8007D7FE2 /* 2to3.xcmappingmodel */,
 				8CA4A9881906091800D1E451 /* database.xcdatamodeld */,
 				5815F087190583A200BB62AE /* DictionaryDefinition.h */,
 				5815F088190583A200BB62AE /* DictionaryDefinition.m */,
@@ -439,7 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				8C12B19E1907CF530092F82B /* database.sqlite */,
-				111B40FA185D5DED0077E5ED /* database-stedmans.sqlite */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -701,7 +701,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C12B19F1907CF530092F82B /* database.sqlite in Resources */,
-				111B40FB185D5DED0077E5ED /* database-stedmans.sqlite in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
 				8C447064190A7F73000DEFC2 /* InAppSettings.bundle in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
@@ -821,6 +820,7 @@
 				8C44708B190A898C000DEFC2 /* IASKAppSettingsViewController.m in Sources */,
 				8C97C5261904EA6C000CEA20 /* DrugAppDoc.m in Sources */,
 				8C182DAF18FB6CC8005105DB /* MMSideDrawerTableViewCell.m in Sources */,
+				8CF996BE190E78A8007D7FE2 /* 2to3.xcmappingmodel in Sources */,
 				8CEF1E7618F8026100EAE98E /* DrugSearchViewController.m in Sources */,
 				8CEF1E7918F8092D00EAE98E /* DrugViewController.m in Sources */,
 				8C97C5291904EA6D000CEA20 /* DrugChemicalType_Lookup.m in Sources */,

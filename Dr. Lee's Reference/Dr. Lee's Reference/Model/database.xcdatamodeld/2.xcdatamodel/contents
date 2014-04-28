@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C64" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AppDoc" representedClassName="AppDoc" syncable="YES">
         <attribute name="actionType" attributeType="String" syncable="YES"/>
         <attribute name="appDocID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
@@ -49,7 +49,6 @@
         <attribute name="dictionaryId" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="term" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="termInitial" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="dictionaryDefinition" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryDefinition" inverseName="dictionaryTerm" inverseEntity="DictionaryDefinition" syncable="YES"/>
         <relationship name="dictionarySynonym" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionarySynonym" inverseName="dictionaryTerm" inverseEntity="DictionarySynonym" syncable="YES"/>
         <relationship name="dictionaryXRef" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryXRef" inverseName="dictionaryTerm" inverseEntity="DictionaryXRef" syncable="YES"/>
@@ -112,7 +111,7 @@
         <element name="ChemicalType_Lookup" positionX="0" positionY="0" width="128" height="105"/>
         <element name="DictionaryDefinition" positionX="0" positionY="0" width="128" height="75"/>
         <element name="DictionarySynonym" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="DictionaryTerm" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="DictionaryTerm" positionX="0" positionY="0" width="128" height="135"/>
         <element name="DictionaryXRef" positionX="0" positionY="0" width="128" height="75"/>
         <element name="DocType_Lookup" positionX="0" positionY="0" width="128" height="90"/>
         <element name="Favorite" positionX="0" positionY="0" width="128" height="75"/>

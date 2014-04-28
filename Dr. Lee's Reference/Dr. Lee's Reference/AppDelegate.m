@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "DictionaryTerm.h"
+#import "DrugProduct.h"
 #import "MainViewController.h"
 
 @implementation AppDelegate
@@ -18,7 +20,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    [self setupDb:@"database.sqlite"];
+    [self migrateDb];
+//    [self setupDb:@"database.sqlite"];
 
     MainViewController *mainViewController = [[MainViewController alloc] init];
     self.window.rootViewController = mainViewController;
@@ -26,6 +29,51 @@
     [self.window makeKeyAndVisible];
 
     return YES;
+}
+
+- (void) migrateDb
+{
+    NSArray *mappingModelNames = @[@"2to3"];
+    NSDictionary *sourceStoreOptions = nil;
+    
+    NSURL *sourceStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"database.sqlite"];
+    
+    NSURL *destinationStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"databaseNew.sqlite"];
+    
+    NSString *sourceStoreType = NSSQLiteStoreType;
+    NSString *destinationStoreType = NSSQLiteStoreType;
+    
+    NSDictionary *destinationStoreOptions = nil;
+    
+    for (NSString *mappingModelName in mappingModelNames)
+    {
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:mappingModelName withExtension:@"cdm"];
+        
+        NSMappingModel *mappingModel = [[NSMappingModel alloc] initWithContentsOfURL:fileURL];
+        ;
+//        NSManagedObjectModel *sourceModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"2" withExtension:@"momd"]];
+        NSDictionary *sourceMetadata =
+        [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:sourceStoreType
+                                                                   URL:sourceStoreURL
+                                                                 error:&error];
+        NSManagedObjectModel *sourceModel = [NSManagedObjectModel mergedModelFromBundles:@[@"2"]
+                                    forStoreMetadata:sourceMetadata];
+        
+        NSManagedObjectModel *destinationModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"3" withExtension:@"momd"]];
+        
+        NSMigrationManager *migrationManager = [[NSMigrationManager alloc] initWithSourceModel:sourceModel
+                                                                              destinationModel:destinationModel];
+        NSError *error;
+        
+        BOOL ok = [migrationManager migrateStoreFromURL:sourceStoreURL
+                                                   type:sourceStoreType
+                                                options:sourceStoreOptions
+                                       withMappingModel:mappingModel
+                                       toDestinationURL:destinationStoreURL
+                                        destinationType:destinationStoreType
+                                     destinationOptions:destinationStoreOptions
+                                                  error:&error];
+    }
 }
 
 - (void) setupDb:(NSString*) dbname
@@ -46,6 +94,9 @@
     }
     
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:dbname];
+    
+    NSLog(@"DictionaryTerm=%tu", [DictionaryTerm MR_countOfEntities]);
+    NSLog(@"DrugProduct=%tu", [DrugProduct MR_countOfEntities]);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -77,6 +128,11 @@
 //    [[Database sharedInstance] saveContext];
     [MagicalRecord cleanUp];
 
+}
+
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end
