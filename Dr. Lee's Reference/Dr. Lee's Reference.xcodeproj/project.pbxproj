@@ -66,6 +66,8 @@
 		8C447096190A898D000DEFC2 /* IASKSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C447086190A898C000DEFC2 /* IASKSlider.m */; };
 		8C447097190A898D000DEFC2 /* IASKSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C447088190A898C000DEFC2 /* IASKSwitch.m */; };
 		8C447098190A898D000DEFC2 /* IASKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C44708A190A898C000DEFC2 /* IASKTextField.m */; };
+		8C64C2BD190FB18600148440 /* MigrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64C2BC190FB18600148440 /* MigrationManager.m */; };
+		8C64C2C0190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64C2BF190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m */; };
 		8C97C5261904EA6C000CEA20 /* DrugAppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5251904EA6C000CEA20 /* DrugAppDoc.m */; };
 		8C97C5291904EA6D000CEA20 /* DrugChemicalType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5281904EA6D000CEA20 /* DrugChemicalType_Lookup.m */; };
 		8C97C52C1904EA6D000CEA20 /* DrugDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C52B1904EA6D000CEA20 /* DrugDocType_Lookup.m */; };
@@ -229,6 +231,10 @@
 		8C447088190A898C000DEFC2 /* IASKSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKSwitch.m; sourceTree = "<group>"; };
 		8C447089190A898C000DEFC2 /* IASKTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKTextField.h; sourceTree = "<group>"; };
 		8C44708A190A898C000DEFC2 /* IASKTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKTextField.m; sourceTree = "<group>"; };
+		8C64C2BB190FB18600148440 /* MigrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MigrationManager.h; sourceTree = "<group>"; };
+		8C64C2BC190FB18600148440 /* MigrationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MigrationManager.m; sourceTree = "<group>"; };
+		8C64C2BE190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectModel+MHWAdditions.h"; sourceTree = "<group>"; };
+		8C64C2BF190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectModel+MHWAdditions.m"; sourceTree = "<group>"; };
 		8C97C5241904EA6C000CEA20 /* DrugAppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugAppDoc.h; sourceTree = "<group>"; };
 		8C97C5251904EA6C000CEA20 /* DrugAppDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugAppDoc.m; sourceTree = "<group>"; };
 		8C97C5271904EA6D000CEA20 /* DrugChemicalType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugChemicalType_Lookup.h; sourceTree = "<group>"; };
@@ -292,6 +298,7 @@
 		113383201859A8BF00CBA6FF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8C64C2BA190FB18600148440 /* MigrationManager */,
 				5836F830189F2B3E00BE8DF3 /* Database.h */,
 				5836F831189F2B3E00BE8DF3 /* Database.m */,
 			);
@@ -589,6 +596,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8C64C2BA190FB18600148440 /* MigrationManager */ = {
+			isa = PBXGroup;
+			children = (
+				8C64C2BB190FB18600148440 /* MigrationManager.h */,
+				8C64C2BC190FB18600148440 /* MigrationManager.m */,
+				8C64C2BE190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.h */,
+				8C64C2BF190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m */,
+			);
+			path = MigrationManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -775,6 +793,7 @@
 				5815F05C19057ED800BB62AE /* ICD10Diagnosis.m in Sources */,
 				8C12B1AB1907DA090092F82B /* BrowseViewController.m in Sources */,
 				8C12B1A81907D9F50092F82B /* RADataObject.m in Sources */,
+				8C64C2BD190FB18600148440 /* MigrationManager.m in Sources */,
 				8CA4A98D1906091800D1E451 /* database.xcdatamodeld in Sources */,
 				8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */,
 				5815F080190583A100BB62AE /* DictionaryXRef.m in Sources */,
@@ -819,6 +838,7 @@
 				5815F089190583A200BB62AE /* DictionaryDefinition.m in Sources */,
 				8C44708B190A898C000DEFC2 /* IASKAppSettingsViewController.m in Sources */,
 				8C97C5261904EA6C000CEA20 /* DrugAppDoc.m in Sources */,
+				8C64C2C0190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m in Sources */,
 				8C182DAF18FB6CC8005105DB /* MMSideDrawerTableViewCell.m in Sources */,
 				8CF996BE190E78A8007D7FE2 /* 2to3.xcmappingmodel in Sources */,
 				8CEF1E7618F8026100EAE98E /* DrugSearchViewController.m in Sources */,

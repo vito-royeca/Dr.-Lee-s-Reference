@@ -10,7 +10,8 @@
 
 #import "JJJ/JJJ.h"
 
-#define kFetchBatchSize                100
+#define kFetchBatchSize       100
+#define kDatabaseStore        @"database.sqlite"
 
 typedef enum
 {
@@ -23,6 +24,8 @@ typedef enum
 @interface Database : NSObject
 
 + (id)sharedInstance;
+
+- (void) setupDb;
 
 - (NSFetchedResultsController*)search:(DataSource)dataSource
                                 query:(NSString*)query

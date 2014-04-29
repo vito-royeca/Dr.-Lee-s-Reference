@@ -9,6 +9,7 @@
 #import "Database.h"
 #import "DictionaryTerm.h"
 #import "DrugProduct.h"
+#import "MigrationManager.h"
 
 @implementation Database
 {
@@ -35,6 +36,32 @@ static Database *_me;
     }
     
     return self;
+}
+
+- (void) setupDb
+{
+    NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    NSURL *documentPath = [paths lastObject];
+    NSURL *storeURL = [documentPath URLByAppendingPathComponent:kDatabaseStore];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]])
+    {
+        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:[kDatabaseStore stringByDeletingPathExtension] ofType:@"sqlite"]];
+        NSError* err = nil;
+        
+        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err])
+        {
+            NSLog(@"Error: Unable to copy preloaded database.");
+        }
+    }
+    
+//    MigrationManager *manager = [[MigrationManager alloc] init];
+//    NSLog(@"needs migration? %@", [manager isMigrationNeeded] ? @"YES":@"NO");
+    
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kDatabaseStore];
+    
+    NSLog(@"DictionaryTerm=%tu", [DictionaryTerm MR_countOfEntities]);
+    NSLog(@"DrugProduct=%tu", [DrugProduct MR_countOfEntities]);
 }
 
 - (NSFetchedResultsController*)search:(DataSource)dataSource

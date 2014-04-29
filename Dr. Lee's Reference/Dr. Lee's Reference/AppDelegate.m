@@ -7,8 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "DictionaryTerm.h"
-#import "DrugProduct.h"
+#import "Database.h"
 #import "MainViewController.h"
 
 @implementation AppDelegate
@@ -20,83 +19,22 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    [self migrateDb];
-//    [self setupDb:@"database.sqlite"];
+    [[Database sharedInstance ] setupDb];
 
-    MainViewController *mainViewController = [[MainViewController alloc] init];
-    self.window.rootViewController = mainViewController;
+    UIViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        viewController = [[MainViewController alloc] init];
+    }
+    else
+    {
+        
+    }
     
+    self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
 
     return YES;
-}
-
-- (void) migrateDb
-{
-    NSArray *mappingModelNames = @[@"2to3"];
-    NSDictionary *sourceStoreOptions = nil;
-    
-    NSURL *sourceStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"database.sqlite"];
-    
-    NSURL *destinationStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"databaseNew.sqlite"];
-    
-    NSString *sourceStoreType = NSSQLiteStoreType;
-    NSString *destinationStoreType = NSSQLiteStoreType;
-    
-    NSDictionary *destinationStoreOptions = nil;
-    
-    for (NSString *mappingModelName in mappingModelNames)
-    {
-        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:mappingModelName withExtension:@"cdm"];
-        
-        NSMappingModel *mappingModel = [[NSMappingModel alloc] initWithContentsOfURL:fileURL];
-        ;
-//        NSManagedObjectModel *sourceModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"2" withExtension:@"momd"]];
-        NSDictionary *sourceMetadata =
-        [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:sourceStoreType
-                                                                   URL:sourceStoreURL
-                                                                 error:&error];
-        NSManagedObjectModel *sourceModel = [NSManagedObjectModel mergedModelFromBundles:@[@"2"]
-                                    forStoreMetadata:sourceMetadata];
-        
-        NSManagedObjectModel *destinationModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"3" withExtension:@"momd"]];
-        
-        NSMigrationManager *migrationManager = [[NSMigrationManager alloc] initWithSourceModel:sourceModel
-                                                                              destinationModel:destinationModel];
-        NSError *error;
-        
-        BOOL ok = [migrationManager migrateStoreFromURL:sourceStoreURL
-                                                   type:sourceStoreType
-                                                options:sourceStoreOptions
-                                       withMappingModel:mappingModel
-                                       toDestinationURL:destinationStoreURL
-                                        destinationType:destinationStoreType
-                                     destinationOptions:destinationStoreOptions
-                                                  error:&error];
-    }
-}
-
-- (void) setupDb:(NSString*) dbname
-{
-    NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-    NSURL *documentPath = [paths lastObject];
-    NSURL *storeURL = [documentPath URLByAppendingPathComponent:dbname];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]])
-    {
-        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:[dbname stringByDeletingPathExtension] ofType:@"sqlite"]];
-        NSError* err = nil;
-        
-        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err])
-        {
-            NSLog(@"Error: Unable to copy preloaded database.");
-        }
-    }
-    
-    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:dbname];
-    
-    NSLog(@"DictionaryTerm=%tu", [DictionaryTerm MR_countOfEntities]);
-    NSLog(@"DrugProduct=%tu", [DrugProduct MR_countOfEntities]);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -128,11 +66,6 @@
 //    [[Database sharedInstance] saveContext];
     [MagicalRecord cleanUp];
 
-}
-
-- (NSURL *)applicationDocumentsDirectory
-{
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end
