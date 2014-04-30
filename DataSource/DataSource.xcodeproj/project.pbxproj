@@ -13,7 +13,7 @@
 		11322DF71857A3070007E7B9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11322DF61857A3070007E7B9 /* libxml2.dylib */; };
 		113383631859AA1900CBA6FF /* DrugsLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133835E1859AA1900CBA6FF /* DrugsLoader.m */; };
 		113383641859AA1900CBA6FF /* FileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383601859AA1900CBA6FF /* FileDownloader.m */; };
-		113383651859AA1900CBA6FF /* StedmansScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383621859AA1900CBA6FF /* StedmansScraper.m */; };
+		113383651859AA1900CBA6FF /* DictionaryLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383621859AA1900CBA6FF /* DictionaryLoader.m */; };
 		113383A71859AAD400CBA6FF /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383931859AAD400CBA6FF /* DictionarySynonym.m */; };
 		113383A91859AAD400CBA6FF /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383971859AAD400CBA6FF /* Favorite.m */; };
 		113383AA1859AAD400CBA6FF /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 113383991859AAD400CBA6FF /* History.m */; };
@@ -26,7 +26,6 @@
 		117E6CCE18634D1E00D78A82 /* Product_tecode.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 113383721859AA7200CBA6FF /* Product_tecode.txt */; };
 		117E6CCF18634D1E00D78A82 /* RegActionDate.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 113383731859AA7200CBA6FF /* RegActionDate.txt */; };
 		117E6CD018634D1E00D78A82 /* ReviewClass_Lookup.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 113383741859AA7200CBA6FF /* ReviewClass_Lookup.txt */; };
-		119B62F3185C827C009D3184 /* DictionaryDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62EE185C827C009D3184 /* DictionaryDefinition.m */; };
 		119B62F4185C827C009D3184 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F0185C827C009D3184 /* DictionaryTerm.m */; };
 		119B62F5185C827C009D3184 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 119B62F2185C827C009D3184 /* DictionaryXRef.m */; };
 		5815F09E1905841000BB62AE /* ICD10Diagnosis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5815F08E1905841000BB62AE /* ICD10Diagnosis.m */; };
@@ -48,6 +47,7 @@
 		5815F10419058D8F00BB62AE /* icd10pcs_index_2014.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0E51905896D00BB62AE /* icd10pcs_index_2014.xml */; };
 		5815F10519058D8F00BB62AE /* icd10pcs_tabular_2014.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0E71905896D00BB62AE /* icd10pcs_tabular_2014.xml */; };
 		58264E88189E97E200D83B00 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E6E189E95B300D83B00 /* libJJJ.a */; };
+		8C2E636C1910FF3000B5A908 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E63691910FF3000B5A908 /* database.xcdatamodeld */; };
 		8C97C5551904EC2C000CEA20 /* DrugAppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5441904EC2C000CEA20 /* DrugAppDoc.m */; };
 		8C97C5561904EC2C000CEA20 /* DrugAppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5461904EC2C000CEA20 /* DrugAppDocType_Lookup.m */; };
 		8C97C5571904EC2C000CEA20 /* DrugApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5481904EC2C000CEA20 /* DrugApplication.m */; };
@@ -57,7 +57,6 @@
 		8C97C55B1904EC2C000CEA20 /* DrugProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5501904EC2C000CEA20 /* DrugProduct.m */; };
 		8C97C55C1904EC2C000CEA20 /* DrugRegActionDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5521904EC2C000CEA20 /* DrugRegActionDate.m */; };
 		8C97C55D1904EC2C000CEA20 /* DrugReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5541904EC2C000CEA20 /* DrugReviewClass_Lookup.m */; };
-		8CA4A9941906093B00D1E451 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CA4A98F1906093B00D1E451 /* database.xcdatamodeld */; };
 		B631D180A81C48A49AE71C6D /* libPods-DataSource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D306F727684247149BF7310D /* libPods-DataSource.a */; };
 /* End PBXBuildFile section */
 
@@ -126,8 +125,8 @@
 		1133835E1859AA1900CBA6FF /* DrugsLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsLoader.m; sourceTree = "<group>"; };
 		1133835F1859AA1900CBA6FF /* FileDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDownloader.h; sourceTree = "<group>"; };
 		113383601859AA1900CBA6FF /* FileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDownloader.m; sourceTree = "<group>"; };
-		113383611859AA1900CBA6FF /* StedmansScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StedmansScraper.h; sourceTree = "<group>"; };
-		113383621859AA1900CBA6FF /* StedmansScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StedmansScraper.m; sourceTree = "<group>"; };
+		113383611859AA1900CBA6FF /* DictionaryLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryLoader.h; sourceTree = "<group>"; };
+		113383621859AA1900CBA6FF /* DictionaryLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryLoader.m; sourceTree = "<group>"; };
 		1133836A1859AA7200CBA6FF /* db.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = db.sql; sourceTree = "<group>"; };
 		1133836C1859AA7200CBA6FF /* AppDoc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDoc.txt; sourceTree = "<group>"; };
 		1133836D1859AA7200CBA6FF /* AppDocType_Lookup.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDocType_Lookup.txt; sourceTree = "<group>"; };
@@ -144,8 +143,6 @@
 		113383971859AAD400CBA6FF /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Favorite.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/Favorite.m"; sourceTree = "<group>"; };
 		113383981859AAD400CBA6FF /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = History.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/History.h"; sourceTree = "<group>"; };
 		113383991859AAD400CBA6FF /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = History.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/History.m"; sourceTree = "<group>"; };
-		119B62ED185C827C009D3184 /* DictionaryDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryDefinition.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryDefinition.h"; sourceTree = "<group>"; };
-		119B62EE185C827C009D3184 /* DictionaryDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryDefinition.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryDefinition.m"; sourceTree = "<group>"; };
 		119B62EF185C827C009D3184 /* DictionaryTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryTerm.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryTerm.h"; sourceTree = "<group>"; };
 		119B62F0185C827C009D3184 /* DictionaryTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DictionaryTerm.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryTerm.m"; sourceTree = "<group>"; };
 		119B62F1185C827C009D3184 /* DictionaryXRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryXRef.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DictionaryXRef.h"; sourceTree = "<group>"; };
@@ -232,6 +229,8 @@
 		5815F0FD1905896D00BB62AE /* pcs_gemguide_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pcs_gemguide_2014.pdf; sourceTree = "<group>"; };
 		58264E61189E941F00D83B00 /* libJJJ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJJJ.a; path = "../../../../../../../../Users/buttmanizer/Library/Developer/Xcode/DerivedData/Dr._Lee's_Reference-czjeuqoykfphysdhxudpnheeuitz/Build/Products/Debug-iphoneos/libJJJ.a"; sourceTree = "<group>"; };
 		58264E67189E95B200D83B00 /* JJJ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JJJ.xcodeproj; path = ../jjj/JJJ/JJJ.xcodeproj; sourceTree = "<group>"; };
+		8C2E636A1910FF3000B5A908 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
+		8C2E636B1910FF3000B5A908 /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
 		8C97C5431904EC2C000CEA20 /* DrugAppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrugAppDoc.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugAppDoc.h"; sourceTree = "<group>"; };
 		8C97C5441904EC2C000CEA20 /* DrugAppDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrugAppDoc.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugAppDoc.m"; sourceTree = "<group>"; };
 		8C97C5451904EC2C000CEA20 /* DrugAppDocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrugAppDocType_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugAppDocType_Lookup.h"; sourceTree = "<group>"; };
@@ -250,10 +249,6 @@
 		8C97C5521904EC2C000CEA20 /* DrugRegActionDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrugRegActionDate.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugRegActionDate.m"; sourceTree = "<group>"; };
 		8C97C5531904EC2C000CEA20 /* DrugReviewClass_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrugReviewClass_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugReviewClass_Lookup.h"; sourceTree = "<group>"; };
 		8C97C5541904EC2C000CEA20 /* DrugReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrugReviewClass_Lookup.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugReviewClass_Lookup.m"; sourceTree = "<group>"; };
-		8CA4A9901906093B00D1E451 /* 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 1.xcdatamodel; sourceTree = "<group>"; };
-		8CA4A9911906093B00D1E451 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
-		8CA4A9921906093B00D1E451 /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
-		8CA4A9931906093B00D1E451 /* database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = database.xcdatamodel; sourceTree = "<group>"; };
 		D306F727684247149BF7310D /* libPods-DataSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataSource.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -329,14 +324,14 @@
 			children = (
 				5815F0AA1905867F00BB62AE /* DiagnosesLoader.h */,
 				5815F0AB1905867F00BB62AE /* DiagnosesLoader.m */,
+				113383611859AA1900CBA6FF /* DictionaryLoader.h */,
+				113383621859AA1900CBA6FF /* DictionaryLoader.m */,
 				1133835D1859AA1900CBA6FF /* DrugsLoader.h */,
 				1133835E1859AA1900CBA6FF /* DrugsLoader.m */,
 				1133835F1859AA1900CBA6FF /* FileDownloader.h */,
 				113383601859AA1900CBA6FF /* FileDownloader.m */,
 				5815F0B01905869700BB62AE /* ProceduresLoader.h */,
 				5815F0B11905869700BB62AE /* ProceduresLoader.m */,
-				113383611859AA1900CBA6FF /* StedmansScraper.h */,
-				113383621859AA1900CBA6FF /* StedmansScraper.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -379,9 +374,7 @@
 		113383871859AABB00CBA6FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8CA4A98F1906093B00D1E451 /* database.xcdatamodeld */,
-				119B62ED185C827C009D3184 /* DictionaryDefinition.h */,
-				119B62EE185C827C009D3184 /* DictionaryDefinition.m */,
+				8C2E63691910FF3000B5A908 /* database.xcdatamodeld */,
 				113383921859AAD400CBA6FF /* DictionarySynonym.h */,
 				113383931859AAD400CBA6FF /* DictionarySynonym.m */,
 				119B62EF185C827C009D3184 /* DictionaryTerm.h */,
@@ -742,10 +735,8 @@
 				113383A71859AAD400CBA6FF /* DictionarySynonym.m in Sources */,
 				5815F0B21905869700BB62AE /* ProceduresLoader.m in Sources */,
 				5815F09F1905841000BB62AE /* ICD10DiagnosisDrug.m in Sources */,
-				8CA4A9941906093B00D1E451 /* database.xcdatamodeld in Sources */,
 				8C97C5591904EC2C000CEA20 /* DrugDocType_Lookup.m in Sources */,
 				8C97C55C1904EC2C000CEA20 /* DrugRegActionDate.m in Sources */,
-				119B62F3185C827C009D3184 /* DictionaryDefinition.m in Sources */,
 				5815F0A11905841000BB62AE /* ICD10DiagnosisIndex.m in Sources */,
 				113383A91859AAD400CBA6FF /* Favorite.m in Sources */,
 				113383AA1859AAD400CBA6FF /* History.m in Sources */,
@@ -761,7 +752,8 @@
 				5815F0A31905841000BB62AE /* ICD10Procedure.m in Sources */,
 				5815F0A51905841000BB62AE /* ICD10ProcedureIndex.m in Sources */,
 				113383631859AA1900CBA6FF /* DrugsLoader.m in Sources */,
-				113383651859AA1900CBA6FF /* StedmansScraper.m in Sources */,
+				113383651859AA1900CBA6FF /* DictionaryLoader.m in Sources */,
+				8C2E636C1910FF3000B5A908 /* database.xcdatamodeld in Sources */,
 				5815F0A21905841000BB62AE /* ICD10DiagnosisNeoplasm.m in Sources */,
 				5815F09E1905841000BB62AE /* ICD10Diagnosis.m in Sources */,
 			);
@@ -910,15 +902,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8CA4A98F1906093B00D1E451 /* database.xcdatamodeld */ = {
+		8C2E63691910FF3000B5A908 /* database.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8CA4A9901906093B00D1E451 /* 1.xcdatamodel */,
-				8CA4A9911906093B00D1E451 /* 2.xcdatamodel */,
-				8CA4A9921906093B00D1E451 /* 3.xcdatamodel */,
-				8CA4A9931906093B00D1E451 /* database.xcdatamodel */,
+				8C2E636A1910FF3000B5A908 /* 2.xcdatamodel */,
+				8C2E636B1910FF3000B5A908 /* 3.xcdatamodel */,
 			);
-			currentVersion = 8CA4A9921906093B00D1E451 /* 3.xcdatamodel */;
+			currentVersion = 8C2E636B1910FF3000B5A908 /* 3.xcdatamodel */;
 			name = database.xcdatamodeld;
 			path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/database.xcdatamodeld";
 			sourceTree = "<group>";

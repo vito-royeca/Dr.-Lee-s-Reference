@@ -4,6 +4,7 @@
 
 target "DataSource" do
 pod "AFNetworking"
+pod "CHCSVParser"
 pod "hpple"
 pod "MagicalRecord"
 end

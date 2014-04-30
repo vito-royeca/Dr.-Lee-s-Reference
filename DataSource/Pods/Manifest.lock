@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/Reachability (2.2.1)
   - AFNetworking/Security (2.2.1)
   - AFNetworking/Serialization (2.2.1)
+  - CHCSVParser (2.0.7)
   - hpple (0.2.0)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
@@ -22,12 +23,14 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - CHCSVParser
   - hpple
   - MagicalRecord
 
 SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
+  CHCSVParser: 55dc941b33f48f153e727057260b442a12fca110
   hpple: dde62f905f482bbec50186280d1a1be2c881241b
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.32.1

@@ -8,7 +8,7 @@
 
 #import "DiagnosesLoader.h"
 #import "DrugsLoader.h"
-#import "StedmansScraper.h"
+#import "DictionaryLoader.h"
 
 int main(int argc, const char * argv[])
 {
@@ -18,11 +18,11 @@ int main(int argc, const char * argv[])
 //        DrugsLoader *loader = [[DrugsLoader alloc] init];
 //        [loader loadDrugs];
         
-//        StedmansScraper *sc = [[StedmansScraper alloc] init];
-//        [sc scrape];
+        DictionaryLoader *loader = [[DictionaryLoader alloc] init];
+        [loader scrape];
         
-        DiagnosesLoader *loader = [[DiagnosesLoader alloc] init];
-        [loader loadDiagnoses];
+//        DiagnosesLoader *loader = [[DiagnosesLoader alloc] init];
+//        [loader loadDiagnoses];
     }
 
     return 0;

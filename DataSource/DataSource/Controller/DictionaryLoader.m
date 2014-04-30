@@ -6,18 +6,24 @@
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.
 //
 
-#import "StedmansScraper.h"
+#import "DictionaryLoader.h"
 #import "JJJ/JJJ.h"
-#import "DictionaryDefinition.h"
 #import "DictionarySynonym.h"
 #import "DictionaryTerm.h"
 #import "DictionaryXRef.h"
 #import "TFHpple.h"
 
-@implementation StedmansScraper
+@implementation DictionaryLoader
 {
     NSArray *_letters;
     int _total;
+
+    CHCSVParser *_termsParser;
+    CHCSVParser *_synonymsParser;
+    CHCSVParser *_xrefsParser;
+    CHCSVWriter *_termsWriter;
+    CHCSVWriter *_synonymsWriter;
+    CHCSVWriter *_xrefsWriter;
 }
 
 -(id) init
@@ -64,7 +70,11 @@
 {
     NSDate *dateStart = [NSDate date];
     NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
-    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"database.sqlite"];
+
+    NSURL *appDocs = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    _termsWriter = [[CHCSVWriter alloc] initForWritingToCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], TERMS_CSV_FILE]];
+    _synonymsWriter = [[CHCSVWriter alloc] initForWritingToCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], SYNONYMS_CSV_FILE]];
+    _xrefsWriter = [[CHCSVWriter alloc] initForWritingToCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], XREFS_CSV_FILE]];
     
     // #1 scrape each letter
     for (NSString *letter in _letters)
@@ -81,6 +91,9 @@
         [dictTotals setObject:[NSNumber numberWithInt:_total] forKey:letter];
         _total = 0;
     }
+    [_termsWriter closeStream];
+    [_synonymsWriter closeStream];
+    [_xrefsWriter closeStream];
     
     NSDate *dateEnd = [NSDate date];
     NSTimeInterval timeDifference = [dateEnd timeIntervalSinceDate:dateStart];
@@ -96,15 +109,9 @@
     
     for (NSMutableDictionary *dict in [self parseTerms:parser])
     {
-        if (![self isTermInDatabase:[dict objectForKey:@"term"]])
-        {
-            [self parseDefinition:dict];
-            NSLog(@"%@", dict);
-            if ([self saveTermToDatabase:dict])
-            {
-                _total++;
-            }
-        }
+        [self parseDefinition:dict];
+        NSLog(@"%@", dict);
+        [self saveTermToCSV:dict];
     }
     
     return parser;
@@ -353,17 +360,14 @@
     
     if ([dict objectForKey:@"Definitions:"])
     {
-        NSMutableSet *set = [[NSMutableSet alloc] init];
+        NSMutableString *buffer = [[NSMutableString alloc] init];
         
         for (NSString *x in [dict objectForKey:@"Definitions:"])
         {
-            DictionaryDefinition *dd = [DictionaryDefinition MR_createInContext:currentContext];
-            dd.definition = x;
-            [set addObject:dd];
+            [buffer appendFormat:@"%@%@", x, DEFINITIONS_SEPARATOR];
         }
         
-        [d addDefinition:set];
-        [currentContext MR_save];
+        d.definition = [buffer substringToIndex:buffer.length-3];
     }
     
     if ([dict objectForKey:@"Synonyms:"])
@@ -373,7 +377,7 @@
         for (NSString *x in [dict objectForKey:@"Synonyms:"])
         {
             DictionarySynonym *ds = [DictionarySynonym MR_createInContext:currentContext];
-            ds.term = x;
+            ds.synonym = x;
             [set addObject:ds];
         }
         
@@ -388,7 +392,7 @@
         for (NSString *x in [dict objectForKey:@"See:"])
         {
             DictionaryXRef *dx = [DictionaryXRef MR_createInContext:currentContext];
-            dx.term = x;
+            dx.xref = x;
             [set addObject:dx];
         }
         
@@ -399,11 +403,161 @@
     return YES;
 }
 
+-(void) saveTermToCSV:(NSDictionary*)dict
+{
+    NSString *term = [dict objectForKey:@"term"];
+    NSString *termInitial = ([JJJUtil isAlphaStart:term]) ?
+                              [[term substringToIndex:1] uppercaseString] :
+                              @"#";
+    
+    NSMutableArray *arrTerms = [[NSMutableArray alloc] initWithObjects:[dict objectForKey:@"id"],
+                                 termInitial,
+                                 term, nil];
+    
+    if ([dict objectForKey:@"Definitions:"])
+    {
+        NSMutableString *buffer = [[NSMutableString alloc] init];
+        
+        for (NSString *x in [dict objectForKey:@"Definitions:"])
+        {
+            [buffer appendFormat:@"%@%@", x, DEFINITIONS_SEPARATOR];
+        }
+        
+        [arrTerms addObject:[buffer substringToIndex:buffer.length-3]];
+    }
+    if ([dict objectForKey:@"Pronunciation:"])
+    {
+        [arrTerms addObject:[dict objectForKey:@"Pronunciation:"]];
+    }
+    
+    [_termsWriter writeLineOfFields:arrTerms];
+    
+    if ([dict objectForKey:@"Synonyms:"])
+    {
+        for (NSString *x in [dict objectForKey:@"Synonyms:"])
+        {
+            [_synonymsWriter writeLineOfFields:@[[dict objectForKey:@"id"], x]];
+        }
+    }
+    
+    if ([dict objectForKey:@"See:"])
+    {
+        for (NSString *x in [dict objectForKey:@"See:"])
+        {
+            [_xrefsWriter writeLineOfFields:@[[dict objectForKey:@"id"], x]];
+        }
+    }
+}
+
 - (BOOL) isTermInDatabase:(NSString*)term
 {
     NSArray *arr = [DictionaryTerm MR_findByAttribute:@"term" withValue:term];
     
     return arr && arr.count > 0;
+}
+
+-(void) csv2CoreData
+{
+    NSURL *appDocs = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    
+    _termsParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], TERMS_CSV_FILE]];
+    _termsParser.delegate = self;
+    [_termsParser parse];
+    
+    
+    _synonymsParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], SYNONYMS_CSV_FILE]];
+    _synonymsParser.delegate = self;
+    [_synonymsParser parse];
+    
+    _xrefsParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], XREFS_CSV_FILE]];
+    _xrefsParser.delegate = self;
+    [_xrefsParser parse];
+}
+
+#pragma mark - CHCSVParserDelegate
+- (void)parserDidBeginDocument:(CHCSVParser *)parser
+{
+    if (parser == _termsParser)
+    {
+        
+    }
+    else if (parser == _synonymsParser)
+    {
+        
+    }
+    else if (parser == _xrefsParser)
+    {
+        
+    }
+}
+
+- (void)parserDidEndDocument:(CHCSVParser *)parser
+{
+    if (parser == _termsParser)
+    {
+        
+    }
+    else if (parser == _synonymsParser)
+    {
+        
+    }
+    else if (parser == _xrefsParser)
+    {
+        
+    }
+}
+
+- (void)parser:(CHCSVParser *)parser didBeginLine:(NSUInteger)recordNumber
+{
+    if (parser == _termsParser)
+    {
+        
+    }
+    else if (parser == _synonymsParser)
+    {
+        
+    }
+    else if (parser == _xrefsParser)
+    {
+        
+    }
+}
+
+- (void)parser:(CHCSVParser *)parser didEndLine:(NSUInteger)recordNumber
+{
+    if (parser == _termsParser)
+    {
+        
+    }
+    else if (parser == _synonymsParser)
+    {
+        
+    }
+    else if (parser == _xrefsParser)
+    {
+        
+    }
+}
+
+- (void)parser:(CHCSVParser *)parser didReadField:(NSString *)field atIndex:(NSInteger)fieldIndex
+{
+    if (parser == _termsParser)
+    {
+        
+    }
+    else if (parser == _synonymsParser)
+    {
+        
+    }
+    else if (parser == _xrefsParser)
+    {
+        
+    }
+}
+
+- (void)parser:(CHCSVParser *)parser didFailWithError:(NSError *)error
+{
+    NSLog(@"%@", [error userInfo]);
 }
 
 @end

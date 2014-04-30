@@ -2,7 +2,7 @@
 //  ICD10Diagnosis.h
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 4/22/14.
+//  Created by Jovit Royeca on 4/30/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -13,22 +13,22 @@
 
 @interface ICD10Diagnosis : NSManagedObject
 
+@property (nonatomic, retain) NSString * codeAlso;
+@property (nonatomic, retain) NSString * codeFirst;
 @property (nonatomic, retain) NSString * desc;
+@property (nonatomic, retain) NSString * excludes;
 @property (nonatomic, retain) NSString * excludes1;
 @property (nonatomic, retain) NSString * excludes2;
+@property (nonatomic, retain) NSString * first;
 @property (nonatomic, retain) NSString * includes;
 @property (nonatomic, retain) NSString * inclusionTerm;
+@property (nonatomic, retain) NSString * last;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * shortName;
-@property (nonatomic, retain) NSString * version;
-@property (nonatomic, retain) NSString * excludes;
-@property (nonatomic, retain) NSString * codeFirst;
-@property (nonatomic, retain) NSString * codeAlso;
 @property (nonatomic, retain) NSString * useAdditionalCode;
-@property (nonatomic, retain) NSString * first;
-@property (nonatomic, retain) NSString * last;
-@property (nonatomic, retain) ICD10Diagnosis *parent;
+@property (nonatomic, retain) NSString * version;
 @property (nonatomic, retain) NSOrderedSet *children;
+@property (nonatomic, retain) ICD10Diagnosis *parent;
 @end
 
 @interface ICD10Diagnosis (CoreDataGeneratedAccessors)

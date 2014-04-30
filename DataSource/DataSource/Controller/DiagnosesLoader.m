@@ -215,8 +215,7 @@
     {
         if ([child.tagName isEqualToString:@"note"])
         {
-            [buffer appendString:[[child firstChild] content]];
-            [buffer appendString:NOTES_SEPARATOR];
+            [buffer appendFormat:@"%@%@", [[child firstChild] content], NOTES_SEPARATOR];
         }
     }
     

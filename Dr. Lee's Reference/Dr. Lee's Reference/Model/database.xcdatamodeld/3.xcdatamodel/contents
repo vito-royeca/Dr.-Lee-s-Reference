@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="DictionaryDefinition" representedClassName="DictionaryDefinition" syncable="YES">
-        <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="term" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="definition" inverseEntity="DictionaryTerm" syncable="YES"/>
-    </entity>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="DictionarySynonym" representedClassName="DictionarySynonym" syncable="YES">
         <attribute name="synonym" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="termId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="term" maxCount="1" deletionRule="Cascade" destinationEntity="DictionaryTerm" inverseName="synonym" inverseEntity="DictionaryTerm" syncable="YES"/>
     </entity>
     <entity name="DictionaryTerm" representedClassName="DictionaryTerm" syncable="YES">
+        <attribute name="definition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="term" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="termId" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="termInitial" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="definition" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryDefinition" inverseName="term" inverseEntity="DictionaryDefinition" syncable="YES"/>
         <relationship name="synonym" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionarySynonym" inverseName="term" inverseEntity="DictionarySynonym" syncable="YES"/>
         <relationship name="xref" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DictionaryXRef" inverseName="term" inverseEntity="DictionaryXRef" syncable="YES"/>
     </entity>
     <entity name="DictionaryXRef" representedClassName="DictionaryXRef" syncable="YES">
+        <attribute name="termId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="xref" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="term" maxCount="1" deletionRule="Nullify" destinationEntity="DictionaryTerm" inverseName="xref" inverseEntity="DictionaryTerm" syncable="YES"/>
     </entity>
@@ -200,10 +198,9 @@
         <relationship name="use" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10ProcedureIndex" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DictionaryDefinition" positionX="90" positionY="180" width="128" height="73"/>
-        <element name="DictionarySynonym" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="DictionarySynonym" positionX="0" positionY="0" width="128" height="88"/>
         <element name="DictionaryTerm" positionX="0" positionY="0" width="128" height="148"/>
-        <element name="DictionaryXRef" positionX="0" positionY="0" width="128" height="73"/>
+        <element name="DictionaryXRef" positionX="0" positionY="0" width="128" height="88"/>
         <element name="DrugAppDoc" positionX="0" positionY="0" width="128" height="178"/>
         <element name="DrugAppDocType_Lookup" positionX="0" positionY="0" width="128" height="88"/>
         <element name="DrugApplication" positionX="0" positionY="0" width="128" height="238"/>

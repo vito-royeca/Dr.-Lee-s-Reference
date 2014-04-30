@@ -2,7 +2,7 @@
 //  ICD10Diagnosis.m
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 4/22/14.
+//  Created by Jovit Royeca on 4/30/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -12,21 +12,21 @@
 
 @implementation ICD10Diagnosis
 
+@dynamic codeAlso;
+@dynamic codeFirst;
 @dynamic desc;
+@dynamic excludes;
 @dynamic excludes1;
 @dynamic excludes2;
+@dynamic first;
 @dynamic includes;
 @dynamic inclusionTerm;
+@dynamic last;
 @dynamic name;
 @dynamic shortName;
-@dynamic version;
-@dynamic excludes;
-@dynamic codeFirst;
-@dynamic codeAlso;
 @dynamic useAdditionalCode;
-@dynamic first;
-@dynamic last;
-@dynamic parent;
+@dynamic version;
 @dynamic children;
+@dynamic parent;
 
 @end

@@ -2,7 +2,7 @@
 //  ICD10Procedure.m
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 4/22/14.
+//  Created by Jovit Royeca on 4/30/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -15,14 +15,14 @@
 @dynamic code;
 @dynamic name;
 @dynamic version;
-@dynamic section;
-@dynamic bodySystem;
-@dynamic operation;
-@dynamic bodyPart;
 @dynamic approach;
-@dynamic device;
-@dynamic qualifier;
+@dynamic bodyPart;
+@dynamic bodySystem;
 @dynamic children;
+@dynamic device;
+@dynamic operation;
 @dynamic parent;
+@dynamic qualifier;
+@dynamic section;
 
 @end

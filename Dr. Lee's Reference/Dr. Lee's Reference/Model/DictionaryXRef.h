@@ -2,7 +2,7 @@
 //  DictionaryXRef.h
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 4/22/14.
+//  Created by Jovit Royeca on 4/30/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 @interface DictionaryXRef : NSManagedObject
 
 @property (nonatomic, retain) NSString * xref;
+@property (nonatomic, retain) NSString * termId;
 @property (nonatomic, retain) DictionaryTerm *term;
 
 @end

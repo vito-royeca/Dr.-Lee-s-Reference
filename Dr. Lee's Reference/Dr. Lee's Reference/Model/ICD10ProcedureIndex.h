@@ -2,7 +2,7 @@
 //  ICD10ProcedureIndex.h
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 4/22/14.
+//  Created by Jovit Royeca on 4/30/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -16,9 +16,9 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * titleInitial;
 @property (nonatomic, retain) NSString * version;
-@property (nonatomic, retain) ICD10Procedure *procedure;
 @property (nonatomic, retain) NSOrderedSet *children;
 @property (nonatomic, retain) ICD10ProcedureIndex *parent;
+@property (nonatomic, retain) ICD10Procedure *procedure;
 @property (nonatomic, retain) NSOrderedSet *see;
 @property (nonatomic, retain) NSOrderedSet *use;
 @end

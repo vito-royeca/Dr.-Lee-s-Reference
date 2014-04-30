@@ -2,7 +2,7 @@
 //  DictionarySynonym.m
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 4/22/14.
+//  Created by Jovit Royeca on 4/30/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -13,6 +13,7 @@
 @implementation DictionarySynonym
 
 @dynamic synonym;
+@dynamic termId;
 @dynamic term;
 
 @end

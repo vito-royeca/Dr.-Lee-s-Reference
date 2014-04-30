@@ -2,7 +2,7 @@
 //  ICD10Procedure.h
 //  Dr. Lee's Reference
 //
-//  Created by Jovito Royeca on 4/22/14.
+//  Created by Jovit Royeca on 4/30/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -16,15 +16,15 @@
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * version;
-@property (nonatomic, retain) ICD10Procedure *section;
-@property (nonatomic, retain) ICD10Procedure *bodySystem;
-@property (nonatomic, retain) ICD10Procedure *operation;
-@property (nonatomic, retain) ICD10Procedure *bodyPart;
 @property (nonatomic, retain) ICD10Procedure *approach;
-@property (nonatomic, retain) ICD10Procedure *device;
-@property (nonatomic, retain) ICD10Procedure *qualifier;
+@property (nonatomic, retain) ICD10Procedure *bodyPart;
+@property (nonatomic, retain) ICD10Procedure *bodySystem;
 @property (nonatomic, retain) NSOrderedSet *children;
+@property (nonatomic, retain) ICD10Procedure *device;
+@property (nonatomic, retain) ICD10Procedure *operation;
 @property (nonatomic, retain) ICD10Procedure *parent;
+@property (nonatomic, retain) ICD10Procedure *qualifier;
+@property (nonatomic, retain) ICD10Procedure *section;
 @end
 
 @interface ICD10Procedure (CoreDataGeneratedAccessors)
