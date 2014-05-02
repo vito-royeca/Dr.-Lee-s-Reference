@@ -72,9 +72,19 @@
     NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
 
     NSURL *appDocs = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    _termsWriter = [[CHCSVWriter alloc] initForWritingToCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], TERMS_CSV_FILE]];
-    _synonymsWriter = [[CHCSVWriter alloc] initForWritingToCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], SYNONYMS_CSV_FILE]];
-    _xrefsWriter = [[CHCSVWriter alloc] initForWritingToCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], XREFS_CSV_FILE]];
+    unichar delimeter = ',';
+    
+    NSURL *termsURL = [appDocs URLByAppendingPathComponent:TERMS_CSV_FILE];
+    NSOutputStream *termsOut = [[NSOutputStream alloc] initWithURL:termsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[termsURL path]]];
+    _termsWriter = [[CHCSVWriter alloc] initWithOutputStream:termsOut encoding:NSStringEncodingConversionAllowLossy delimiter:delimeter];
+    
+    NSURL *synsURL = [appDocs URLByAppendingPathComponent:SYNONYMS_CSV_FILE];
+    NSOutputStream *synsOut = [[NSOutputStream alloc] initWithURL:synsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[synsURL path]]];
+    _synonymsWriter = [[CHCSVWriter alloc] initWithOutputStream:synsOut encoding:NSStringEncodingConversionAllowLossy delimiter:delimeter];
+    
+    NSURL *xrefsURL = [appDocs URLByAppendingPathComponent:XREFS_CSV_FILE];
+    NSOutputStream *xrefsOut = [[NSOutputStream alloc] initWithURL:xrefsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[xrefsURL path]]];
+    _xrefsWriter = [[CHCSVWriter alloc] initWithOutputStream:xrefsOut encoding:NSStringEncodingConversionAllowLossy delimiter:delimeter];
     
     // #1 scrape each letter
     for (NSString *letter in _letters)
@@ -106,12 +116,13 @@
 -(TFHpple*) scrapePageTerms:(NSString*)pageParams
 {
     TFHpple *parser = [self parsePage:pageParams];
-    
+
     for (NSMutableDictionary *dict in [self parseTerms:parser])
     {
         [self parseDefinition:dict];
         NSLog(@"%@", dict);
         [self saveTermToCSV:dict];
+        _total++;
     }
     
     return parser;
