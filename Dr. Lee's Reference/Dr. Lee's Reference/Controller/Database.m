@@ -9,7 +9,6 @@
 #import "Database.h"
 #import "DictionaryTerm.h"
 #import "DrugProduct.h"
-#import "MigrationManager.h"
 
 @implementation Database
 {
@@ -64,6 +63,7 @@ static Database *_me;
     NSLog(@"DrugProduct=%tu", [DrugProduct MR_countOfEntities]);
 }
 
+#if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
 - (NSFetchedResultsController*)search:(DataSource)dataSource
                                 query:(NSString*)query
                          narrowSearch:(BOOL)narrow
@@ -85,7 +85,9 @@ static Database *_me;
         }
     }
 }
+#endif
 
+#if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
 - (NSFetchedResultsController*)searchDictionary:(NSString*)query narrowSearch:(BOOL)narrow
 {
     // Delete cache first, if a cache is used
@@ -136,7 +138,9 @@ static Database *_me;
                                                  sectionNameKeyPath:@"termInitial"
                                                           cacheName:@"DictionaryCache"];
 }
+#endif
 
+#if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
 - (NSFetchedResultsController*)searchDrugs:(NSString*)query narrowSearch:(BOOL)narrow
 {
     // Delete cache first, if a cache is used
@@ -185,5 +189,6 @@ static Database *_me;
                                                  sectionNameKeyPath:@"drugNameInitial"
                                                           cacheName:@"DrugCache"];
 }
+#endif
 
 @end

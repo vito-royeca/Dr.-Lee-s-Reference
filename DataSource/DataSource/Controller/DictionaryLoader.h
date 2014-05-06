@@ -14,6 +14,10 @@
 #define TERMS_CSV_FILE        @"dictionaryTerms.csv"
 #define SYNONYMS_CSV_FILE     @"dictionarySynonyms.csv"
 #define XREFS_CSV_FILE        @"dictionaryXRefs.csv"
+#define CSV_DELIMETER         '|'
+
+//comment to scrape all
+#define SCRAPE_LIMIT          10
 
 @interface DictionaryLoader : NSObject<CHCSVParserDelegate>
 

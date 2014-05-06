@@ -8,6 +8,7 @@
 
 #import "DictionaryLoader.h"
 #import "JJJ/JJJ.h"
+#import "Database.h"
 #import "DictionarySynonym.h"
 #import "DictionaryTerm.h"
 #import "DictionaryXRef.h"
@@ -24,6 +25,7 @@
     CHCSVWriter *_termsWriter;
     CHCSVWriter *_synonymsWriter;
     CHCSVWriter *_xrefsWriter;
+    NSMutableDictionary *_currentLine;
 }
 
 -(id) init
@@ -34,32 +36,32 @@
     {
         _letters = [NSArray arrayWithObjects:
                     @"9",
-//                    @"a",
-//                    @"b",
-//                    @"c",
-//                    @"d",
-//                    @"e",
-//                    @"f",
-//                    @"g",
-//                    @"h",
-//                    @"i",
-//                    @"j",
-//                    @"k",
-//                    @"l",
-//                    @"m",
-//                    @"n",
-//                    @"o",
-//                    @"p",
-//                    @"q",
-//                    @"r",
-//                    @"s",
-//                    @"t",
-//                    @"u",
-//                    @"v",
-//                    @"w",
-//                    @"x",
-//                    @"y",
-//                    @"z",
+                    @"a",
+                    @"b",
+                    @"c",
+                    @"d",
+                    @"e",
+                    @"f",
+                    @"g",
+                    @"h",
+                    @"i",
+                    @"j",
+                    @"k",
+                    @"l",
+                    @"m",
+                    @"n",
+                    @"o",
+                    @"p",
+                    @"q",
+                    @"r",
+                    @"s",
+                    @"t",
+                    @"u",
+                    @"v",
+                    @"w",
+                    @"x",
+                    @"y",
+                    @"z",
                     nil];
     }
     
@@ -72,19 +74,18 @@
     NSMutableDictionary *dictTotals = [[NSMutableDictionary alloc] init];
 
     NSURL *appDocs = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    unichar delimeter = ',';
     
     NSURL *termsURL = [appDocs URLByAppendingPathComponent:TERMS_CSV_FILE];
     NSOutputStream *termsOut = [[NSOutputStream alloc] initWithURL:termsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[termsURL path]]];
-    _termsWriter = [[CHCSVWriter alloc] initWithOutputStream:termsOut encoding:NSStringEncodingConversionAllowLossy delimiter:delimeter];
+    _termsWriter = [[CHCSVWriter alloc] initWithOutputStream:termsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
     
     NSURL *synsURL = [appDocs URLByAppendingPathComponent:SYNONYMS_CSV_FILE];
     NSOutputStream *synsOut = [[NSOutputStream alloc] initWithURL:synsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[synsURL path]]];
-    _synonymsWriter = [[CHCSVWriter alloc] initWithOutputStream:synsOut encoding:NSStringEncodingConversionAllowLossy delimiter:delimeter];
+    _synonymsWriter = [[CHCSVWriter alloc] initWithOutputStream:synsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
     
     NSURL *xrefsURL = [appDocs URLByAppendingPathComponent:XREFS_CSV_FILE];
     NSOutputStream *xrefsOut = [[NSOutputStream alloc] initWithURL:xrefsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[xrefsURL path]]];
-    _xrefsWriter = [[CHCSVWriter alloc] initWithOutputStream:xrefsOut encoding:NSStringEncodingConversionAllowLossy delimiter:delimeter];
+    _xrefsWriter = [[CHCSVWriter alloc] initWithOutputStream:xrefsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
     
     // #1 scrape each letter
     for (NSString *letter in _letters)
@@ -92,15 +93,18 @@
         // #2 scrape terms in the 1st page letter
         TFHpple *parser = [self scrapePageTerms:[NSString stringWithFormat:@"?l=%@", letter]];
 
+#ifndef SCRAPE_LIMIT
         // #3 scrape terms in the subsections of the letter
         for (NSString *sub in [self subsectionsByLetter:parser])
         {
             [self scrapePageTerms:[NSString stringWithFormat:@"%@", sub]];
         }
-            
+        
         [dictTotals setObject:[NSNumber numberWithInt:_total] forKey:letter];
         _total = 0;
+#endif
     }
+    
     [_termsWriter closeStream];
     [_synonymsWriter closeStream];
     [_xrefsWriter closeStream];
@@ -123,6 +127,14 @@
         NSLog(@"%@", dict);
         [self saveTermToCSV:dict];
         _total++;
+        
+#ifdef SCRAPE_LIMIT
+        if (_total == 10)
+        {
+            _total = 0;
+            break;
+        }
+#endif
     }
     
     return parser;
@@ -351,97 +363,31 @@
     return dest;
 }
 
--(BOOL) saveTermToDatabase:(NSDictionary*)dict
-{
-    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
-    
-    DictionaryTerm *d = [DictionaryTerm MR_createInContext:currentContext];
-    d.termId = [dict objectForKey:@"id"];
-    d.term = [dict objectForKey:@"term"];
-    d.pronunciation = [dict objectForKey:@"Pronunciation:"];
-    if ([JJJUtil isAlphaStart:d.term])
-    {
-        d.termInitial = [[d.term substringToIndex:1] uppercaseString];
-    }
-    else
-    {
-        d.termInitial = @"#";
-    }
-    [currentContext MR_save];
-    
-    if ([dict objectForKey:@"Definitions:"])
-    {
-        NSMutableString *buffer = [[NSMutableString alloc] init];
-        
-        for (NSString *x in [dict objectForKey:@"Definitions:"])
-        {
-            [buffer appendFormat:@"%@%@", x, DEFINITIONS_SEPARATOR];
-        }
-        
-        d.definition = [buffer substringToIndex:buffer.length-3];
-    }
-    
-    if ([dict objectForKey:@"Synonyms:"])
-    {
-        NSMutableSet *set = [[NSMutableSet alloc] init];
-        
-        for (NSString *x in [dict objectForKey:@"Synonyms:"])
-        {
-            DictionarySynonym *ds = [DictionarySynonym MR_createInContext:currentContext];
-            ds.synonym = x;
-            [set addObject:ds];
-        }
-        
-        [d addSynonym:set];
-        [currentContext MR_save];
-    }
-    
-    if ([dict objectForKey:@"See:"])
-    {
-        NSMutableSet *set = [[NSMutableSet alloc] init];
-        
-        for (NSString *x in [dict objectForKey:@"See:"])
-        {
-            DictionaryXRef *dx = [DictionaryXRef MR_createInContext:currentContext];
-            dx.xref = x;
-            [set addObject:dx];
-        }
-        
-        [d addXref:set];
-        [currentContext MR_save];
-    }
-    
-    return YES;
-}
-
 -(void) saveTermToCSV:(NSDictionary*)dict
 {
-    NSString *term = [dict objectForKey:@"term"];
-    NSString *termInitial = ([JJJUtil isAlphaStart:term]) ?
-                              [[term substringToIndex:1] uppercaseString] :
-                              @"#";
-    
     NSMutableArray *arrTerms = [[NSMutableArray alloc] initWithObjects:[dict objectForKey:@"id"],
-                                 termInitial,
-                                 term, nil];
+                                 [dict objectForKey:@"term"], nil];
+    NSMutableString *buffer = [[NSMutableString alloc] init];
     
     if ([dict objectForKey:@"Definitions:"])
     {
-        NSMutableString *buffer = [[NSMutableString alloc] init];
+        if ([dict objectForKey:@"Pronunciation:"])
+        {
+            [arrTerms addObject:[dict objectForKey:@"Pronunciation:"]];
+        }
+        else
+        {
+            [arrTerms addObject:@""];
+        }
         
         for (NSString *x in [dict objectForKey:@"Definitions:"])
         {
             [buffer appendFormat:@"%@%@", x, DEFINITIONS_SEPARATOR];
         }
-        
         [arrTerms addObject:[buffer substringToIndex:buffer.length-3]];
+        
+        [_termsWriter writeLineOfFields:arrTerms];
     }
-    if ([dict objectForKey:@"Pronunciation:"])
-    {
-        [arrTerms addObject:[dict objectForKey:@"Pronunciation:"]];
-    }
-    
-    [_termsWriter writeLineOfFields:arrTerms];
     
     if ([dict objectForKey:@"Synonyms:"])
     {
@@ -469,100 +415,151 @@
 
 -(void) csv2CoreData
 {
-    NSURL *appDocs = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    [[Database sharedInstance ] setupDb];
     
-    _termsParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], TERMS_CSV_FILE]];
+    NSURL *appDocs = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSStringEncoding encoding = NSUTF8StringEncoding;
+    
+    
+    NSURL *url = [appDocs URLByAppendingPathComponent:TERMS_CSV_FILE];
+    NSInputStream *is = [[NSInputStream alloc] initWithURL:url];
+    _termsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
+    _termsParser.sanitizesFields = YES;
     _termsParser.delegate = self;
     [_termsParser parse];
+    [is close];
     
-    
-    _synonymsParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], SYNONYMS_CSV_FILE]];
+    url = [appDocs URLByAppendingPathComponent:SYNONYMS_CSV_FILE];
+    is = [[NSInputStream alloc] initWithURL:url];
+    _synonymsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
+    _synonymsParser.sanitizesFields = YES;
     _synonymsParser.delegate = self;
     [_synonymsParser parse];
+    [is close];
     
-    _xrefsParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:[NSString stringWithFormat:@"%@/%@", [appDocs path], XREFS_CSV_FILE]];
+    url = [appDocs URLByAppendingPathComponent:XREFS_CSV_FILE];
+    is = [[NSInputStream alloc] initWithURL:url];
+    _xrefsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
+    _xrefsParser.sanitizesFields = YES;
     _xrefsParser.delegate = self;
     [_xrefsParser parse];
+    [is close];
+}
+
+-(void) saveTermToDatabase:(NSDictionary*)dict
+{
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
+    DictionaryTerm *d = [DictionaryTerm MR_createInContext:currentContext];
+    d.termId = [dict objectForKey:@"id"];
+    d.term = [dict objectForKey:@"term"];
+    if ([JJJUtil isAlphaStart:d.term])
+    {
+        d.termInitial = [[d.term substringToIndex:1] uppercaseString];
+    }
+    else
+    {
+        d.termInitial = @"#";
+    }
+    d.pronunciation = [dict objectForKey:@"Pronunciation:"];
+    d.definition = [dict objectForKey:@"Definitions:"];
+    
+    [currentContext MR_save];
+}
+
+-(void) saveSynonymToDatabase:(NSDictionary*)dict
+{
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
+    DictionaryTerm *d = [DictionarySynonym MR_createInContext:currentContext];
+    d.termId = [dict objectForKey:@"id"];
+    d.term = [dict objectForKey:@"term"];
+    
+    [currentContext MR_save];
+}
+
+-(void) saveXrefToDatabase:(NSDictionary*)dict
+{
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
+    DictionaryTerm *d = [DictionarySynonym MR_createInContext:currentContext];
+    d.termId = [dict objectForKey:@"id"];
+    d.term = [dict objectForKey:@"term"];
+    
+    [currentContext MR_save];
 }
 
 #pragma mark - CHCSVParserDelegate
-- (void)parserDidBeginDocument:(CHCSVParser *)parser
-{
-    if (parser == _termsParser)
-    {
-        
-    }
-    else if (parser == _synonymsParser)
-    {
-        
-    }
-    else if (parser == _xrefsParser)
-    {
-        
-    }
-}
-
-- (void)parserDidEndDocument:(CHCSVParser *)parser
-{
-    if (parser == _termsParser)
-    {
-        
-    }
-    else if (parser == _synonymsParser)
-    {
-        
-    }
-    else if (parser == _xrefsParser)
-    {
-        
-    }
-}
-
 - (void)parser:(CHCSVParser *)parser didBeginLine:(NSUInteger)recordNumber
 {
-    if (parser == _termsParser)
-    {
-        
-    }
-    else if (parser == _synonymsParser)
-    {
-        
-    }
-    else if (parser == _xrefsParser)
-    {
-        
-    }
+    NSLog(@"Parsing line #%tu...", recordNumber);
+    _currentLine = [[NSMutableDictionary alloc] init];
 }
 
 - (void)parser:(CHCSVParser *)parser didEndLine:(NSUInteger)recordNumber
 {
+    NSLog(@"%@", _currentLine);
+    
     if (parser == _termsParser)
     {
-        
+        [self saveTermToDatabase:_currentLine];
     }
     else if (parser == _synonymsParser)
     {
-        
+        [self saveSynonymToDatabase:_currentLine];
     }
     else if (parser == _xrefsParser)
     {
-        
+        [self saveXrefToDatabase:_currentLine];
     }
+    
+    [_currentLine removeAllObjects];
+    _currentLine = nil;
 }
 
 - (void)parser:(CHCSVParser *)parser didReadField:(NSString *)field atIndex:(NSInteger)fieldIndex
 {
     if (parser == _termsParser)
     {
-        
+        switch (fieldIndex)
+        {
+            case 0:
+            {
+                [_currentLine setObject:field forKey:@"id"];
+                break;
+            }
+            case 1:
+            {
+                [_currentLine setObject:field forKey:@"term"];
+                break;
+            }
+            case 2:
+            {
+                [_currentLine setObject:field forKey:@"Pronunciation:"];
+                break;
+            }
+            case 3:
+            {
+                [_currentLine setObject:field forKey:@"Definitions:"];
+                break;
+            }
+        }
     }
-    else if (parser == _synonymsParser)
+    else if (parser == _synonymsParser || parser == _xrefsParser)
     {
-        
-    }
-    else if (parser == _xrefsParser)
-    {
-        
+        switch (fieldIndex)
+        {
+            case 0:
+            {
+                [_currentLine setObject:field forKey:@"id"];
+                break;
+            }
+            case 1:
+            {
+                [_currentLine setObject:field forKey:@"term"];
+                break;
+            }
+        }
     }
 }
 

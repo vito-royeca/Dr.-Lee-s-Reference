@@ -20,6 +20,7 @@ int main(int argc, const char * argv[])
         
         DictionaryLoader *loader = [[DictionaryLoader alloc] init];
         [loader scrape];
+//        [loader csv2CoreData];
         
 //        DiagnosesLoader *loader = [[DiagnosesLoader alloc] init];
 //        [loader loadDiagnoses];

@@ -48,6 +48,7 @@
 		5815F10519058D8F00BB62AE /* icd10pcs_tabular_2014.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5815F0E71905896D00BB62AE /* icd10pcs_tabular_2014.xml */; };
 		58264E88189E97E200D83B00 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E6E189E95B300D83B00 /* libJJJ.a */; };
 		8C2E636C1910FF3000B5A908 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E63691910FF3000B5A908 /* database.xcdatamodeld */; };
+		8C3E2E731918946C0077CF5A /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E2E721918946C0077CF5A /* Database.m */; };
 		8C97C5551904EC2C000CEA20 /* DrugAppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5441904EC2C000CEA20 /* DrugAppDoc.m */; };
 		8C97C5561904EC2C000CEA20 /* DrugAppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5461904EC2C000CEA20 /* DrugAppDocType_Lookup.m */; };
 		8C97C5571904EC2C000CEA20 /* DrugApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5481904EC2C000CEA20 /* DrugApplication.m */; };
@@ -231,6 +232,8 @@
 		58264E67189E95B200D83B00 /* JJJ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JJJ.xcodeproj; path = ../jjj/JJJ/JJJ.xcodeproj; sourceTree = "<group>"; };
 		8C2E636A1910FF3000B5A908 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
 		8C2E636B1910FF3000B5A908 /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
+		8C3E2E711918946C0077CF5A /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = "../../../Dr. Lee's Reference/Dr. Lee's Reference/Controller/Database.h"; sourceTree = "<group>"; };
+		8C3E2E721918946C0077CF5A /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = "../../../Dr. Lee's Reference/Dr. Lee's Reference/Controller/Database.m"; sourceTree = "<group>"; };
 		8C97C5431904EC2C000CEA20 /* DrugAppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrugAppDoc.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugAppDoc.h"; sourceTree = "<group>"; };
 		8C97C5441904EC2C000CEA20 /* DrugAppDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrugAppDoc.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugAppDoc.m"; sourceTree = "<group>"; };
 		8C97C5451904EC2C000CEA20 /* DrugAppDocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrugAppDocType_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugAppDocType_Lookup.h"; sourceTree = "<group>"; };
@@ -322,6 +325,8 @@
 		1133835C1859A9EA00CBA6FF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8C3E2E711918946C0077CF5A /* Database.h */,
+				8C3E2E721918946C0077CF5A /* Database.m */,
 				5815F0AA1905867F00BB62AE /* DiagnosesLoader.h */,
 				5815F0AB1905867F00BB62AE /* DiagnosesLoader.m */,
 				113383611859AA1900CBA6FF /* DictionaryLoader.h */,
@@ -743,6 +748,7 @@
 				8C97C5581904EC2C000CEA20 /* DrugChemicalType_Lookup.m in Sources */,
 				11322DE91857A2E30007E7B9 /* main.m in Sources */,
 				8C97C5561904EC2C000CEA20 /* DrugAppDocType_Lookup.m in Sources */,
+				8C3E2E731918946C0077CF5A /* Database.m in Sources */,
 				119B62F5185C827C009D3184 /* DictionaryXRef.m in Sources */,
 				8C97C5551904EC2C000CEA20 /* DrugAppDoc.m in Sources */,
 				8C97C55B1904EC2C000CEA20 /* DrugProduct.m in Sources */,

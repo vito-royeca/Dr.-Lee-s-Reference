@@ -27,9 +27,11 @@ typedef enum
 
 - (void) setupDb;
 
+#if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
 - (NSFetchedResultsController*)search:(DataSource)dataSource
                                 query:(NSString*)query
                          narrowSearch:(BOOL)narrow;
 
+#endif
 
 @end
