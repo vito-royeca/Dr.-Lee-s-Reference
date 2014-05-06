@@ -384,7 +384,7 @@
         
         for (NSString *x in [dict objectForKey:@"Definitions:"])
         {
-            [buffer appendFormat:@"%@%@", x, DEFINITIONS_SEPARATOR];
+            [buffer appendFormat:@"%@%@", x, COMPOUND_SEPARATOR];
         }
         [arrTerms addObject:[buffer substringToIndex:buffer.length-3]];
     }
