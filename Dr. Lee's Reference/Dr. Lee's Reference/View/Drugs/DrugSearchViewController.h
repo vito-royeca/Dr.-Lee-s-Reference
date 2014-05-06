@@ -11,7 +11,6 @@
 #include "Constants.h"
 
 #import "Database.h"
-#import "DictionaryDefinition.h"
 #import "DictionaryXRef.h"
 #import "SearchViewController.h"
 

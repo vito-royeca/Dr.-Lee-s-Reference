@@ -10,13 +10,12 @@
 #import "CHCSVParser.h"
 
 #define TARGET_WEBSITE        @"http://www.medilexicon.com/medicaldictionary.php"
-#define DEFINITIONS_SEPARATOR @"&#&"
 #define TERMS_CSV_FILE        @"dictionaryTerms.csv"
 #define SYNONYMS_CSV_FILE     @"dictionarySynonyms.csv"
 #define XREFS_CSV_FILE        @"dictionaryXRefs.csv"
 #define CSV_DELIMETER         '|'
 
-//comment to scrape all
+// comment the line below to scrape all
 #define SCRAPE_LIMIT          10
 
 @interface DictionaryLoader : NSObject<CHCSVParserDelegate>

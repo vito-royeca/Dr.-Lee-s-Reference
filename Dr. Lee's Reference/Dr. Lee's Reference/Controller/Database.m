@@ -39,6 +39,7 @@ static Database *_me;
 
 - (void) setupDb
 {
+#if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
     NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
     NSURL *documentPath = [paths lastObject];
     NSURL *storeURL = [documentPath URLByAppendingPathComponent:kDatabaseStore];
@@ -53,7 +54,8 @@ static Database *_me;
             NSLog(@"Error: Unable to copy preloaded database.");
         }
     }
-    
+#endif
+
 //    MigrationManager *manager = [[MigrationManager alloc] init];
 //    NSLog(@"needs migration? %@", [manager isMigrationNeeded] ? @"YES":@"NO");
     

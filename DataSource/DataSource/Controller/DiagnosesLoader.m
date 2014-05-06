@@ -7,6 +7,7 @@
 //
 
 #import "DiagnosesLoader.h"
+#import "Database.h"
 #import "JJJ/JJJ.h"
 #import "ICD10Diagnosis.h"
 #import "ICD10DiagnosisDrug.h"
@@ -26,8 +27,8 @@
 - (void) loadDiagnoses
 {
     NSDate *dateStart = [NSDate date];
-    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"database.sqlite"];
-    
+    [[Database sharedInstance] setupDb];
+
     NSUInteger count = [ICD10Diagnosis MR_countOfEntities];
     if (count == 0)
     {

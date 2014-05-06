@@ -367,27 +367,28 @@
 {
     NSMutableArray *arrTerms = [[NSMutableArray alloc] initWithObjects:[dict objectForKey:@"id"],
                                  [dict objectForKey:@"term"], nil];
-    NSMutableString *buffer = [[NSMutableString alloc] init];
+    
+    
+    if ([dict objectForKey:@"Pronunciation:"])
+    {
+        [arrTerms addObject:[dict objectForKey:@"Pronunciation:"]];
+    }
+    else
+    {
+        [arrTerms addObject:@""];
+    }
     
     if ([dict objectForKey:@"Definitions:"])
     {
-        if ([dict objectForKey:@"Pronunciation:"])
-        {
-            [arrTerms addObject:[dict objectForKey:@"Pronunciation:"]];
-        }
-        else
-        {
-            [arrTerms addObject:@""];
-        }
+        NSMutableString *buffer = [[NSMutableString alloc] init];
         
         for (NSString *x in [dict objectForKey:@"Definitions:"])
         {
             [buffer appendFormat:@"%@%@", x, DEFINITIONS_SEPARATOR];
         }
         [arrTerms addObject:[buffer substringToIndex:buffer.length-3]];
-        
-        [_termsWriter writeLineOfFields:arrTerms];
     }
+    [_termsWriter writeLineOfFields:arrTerms];
     
     if ([dict objectForKey:@"Synonyms:"])
     {
@@ -406,39 +407,30 @@
     }
 }
 
-- (BOOL) isTermInDatabase:(NSString*)term
-{
-    NSArray *arr = [DictionaryTerm MR_findByAttribute:@"term" withValue:term];
-    
-    return arr && arr.count > 0;
-}
-
 -(void) csv2CoreData
 {
     [[Database sharedInstance ] setupDb];
     
-    NSURL *appDocs = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     NSStringEncoding encoding = NSUTF8StringEncoding;
     
-    
-    NSURL *url = [appDocs URLByAppendingPathComponent:TERMS_CSV_FILE];
-    NSInputStream *is = [[NSInputStream alloc] initWithURL:url];
+    NSString *path = [NSString stringWithFormat:@"%@/Data/%@", [[NSBundle mainBundle] resourcePath], TERMS_CSV_FILE];
+    NSInputStream *is = [[NSInputStream alloc] initWithFileAtPath:path];
     _termsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
     _termsParser.sanitizesFields = YES;
     _termsParser.delegate = self;
     [_termsParser parse];
     [is close];
     
-    url = [appDocs URLByAppendingPathComponent:SYNONYMS_CSV_FILE];
-    is = [[NSInputStream alloc] initWithURL:url];
+    path = [NSString stringWithFormat:@"%@/Data/%@", [[NSBundle mainBundle] resourcePath], SYNONYMS_CSV_FILE];
+    is = [[NSInputStream alloc] initWithFileAtPath:path];
     _synonymsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
     _synonymsParser.sanitizesFields = YES;
     _synonymsParser.delegate = self;
     [_synonymsParser parse];
     [is close];
     
-    url = [appDocs URLByAppendingPathComponent:XREFS_CSV_FILE];
-    is = [[NSInputStream alloc] initWithURL:url];
+    path = [NSString stringWithFormat:@"%@/Data/%@", [[NSBundle mainBundle] resourcePath], XREFS_CSV_FILE];
+    is = [[NSInputStream alloc] initWithFileAtPath:path];
     _xrefsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
     _xrefsParser.sanitizesFields = YES;
     _xrefsParser.delegate = self;
@@ -448,6 +440,18 @@
 
 -(void) saveTermToDatabase:(NSDictionary*)dict
 {
+    if (![dict objectForKey:@"term"])
+    {
+        return;
+    }
+    else
+    {
+        if ([DictionaryTerm MR_findFirstByAttribute:@"term" withValue:[dict objectForKey:@"term"]])
+        {
+            return;
+        }
+    }
+    
     NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
     
     DictionaryTerm *d = [DictionaryTerm MR_createInContext:currentContext];
@@ -469,22 +473,34 @@
 
 -(void) saveSynonymToDatabase:(NSDictionary*)dict
 {
+    if (![dict objectForKey:@"term"])
+    {
+        return;
+    }
+    
     NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
     
-    DictionaryTerm *d = [DictionarySynonym MR_createInContext:currentContext];
+    DictionarySynonym *d = [DictionarySynonym MR_createInContext:currentContext];
     d.termId = [dict objectForKey:@"id"];
-    d.term = [dict objectForKey:@"term"];
+    d.synonym = [dict objectForKey:@"term"];
+    d.term = [DictionaryTerm MR_findFirstByAttribute:@"termId" withValue:d.termId];
     
     [currentContext MR_save];
 }
 
 -(void) saveXrefToDatabase:(NSDictionary*)dict
 {
+    if (![dict objectForKey:@"id"] || ![dict objectForKey:@"term"])
+    {
+        return;
+    }
+    
     NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
     
-    DictionaryTerm *d = [DictionarySynonym MR_createInContext:currentContext];
+    DictionaryXRef *d = [DictionaryXRef MR_createInContext:currentContext];
     d.termId = [dict objectForKey:@"id"];
-    d.term = [dict objectForKey:@"term"];
+    d.xref = [dict objectForKey:@"term"];
+    d.term = [DictionaryTerm MR_findFirstByAttribute:@"termId" withValue:d.termId];
     
     [currentContext MR_save];
 }

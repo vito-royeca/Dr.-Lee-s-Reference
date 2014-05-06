@@ -10,6 +10,7 @@
 #import "IASKSettingsReader.h"
 #import "JJJ/JJJUtil.h"
 #import "Database.h"
+#import "DictionaryTerm.h"
 
 @interface SearchViewController ()
 
@@ -308,7 +309,8 @@
 - (void) configureCell:(UITableViewCell *)cell
            atIndexPath:(NSIndexPath *)indexPath
 {
-    
+    DictionaryTerm *term = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = term.term;
 }
 
 - (UIViewController*) detailViewWithObject:(id) object

@@ -7,6 +7,7 @@
 //
 
 #import "DictionaryDetailViewController.h"
+#import "JJJ/JJJ.h"
 
 @interface DictionaryDetailViewController ()
 
@@ -79,19 +80,20 @@
         [html appendFormat:@"<br>(<font color='red'>%@</font>)", dictionaryTerm.pronunciation];
     }
     
-    if (dictionaryTerm.definition.count > 0)
+    if (dictionaryTerm.definition)
     {
-        if (dictionaryTerm.definition.count == 1)
+        NSArray *defs = [dictionaryTerm.definition componentsSeparatedByString:COMPOUND_SEPARATOR];
+        
+        if (defs.count == 1)
         {
-            DictionaryDefinition *def = [[dictionaryTerm.definition allObjects] objectAtIndex:0];
-            [html appendFormat:@"<p>%@",  def.definition];
+            [html appendFormat:@"<p>%@",  [defs objectAtIndex:0]];
         }
         else
         {
             [html appendFormat:@"<p><ul>"];
-            for (DictionaryDefinition *def in dictionaryTerm.definition)
+            for (NSString *def in defs)
             {
-                [html appendFormat:@"<li>%@</li>", def.definition];
+                [html appendFormat:@"<li>%@</li>", def];
             }
             [html appendFormat:@"</ul>"];
         }

@@ -10,7 +10,6 @@
 
 #include "Constants.h"
 #import "Database.h"
-#import "DictionaryDefinition.h"
 #import "DictionarySynonym.h"
 #import "DictionaryTerm.h"
 #import "DictionaryXRef.h"
