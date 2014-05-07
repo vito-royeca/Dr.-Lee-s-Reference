@@ -26,7 +26,8 @@
 - (id)initWithName:(NSString *)name children:(NSArray *)children
 {
   self = [super init];
-  if (self) {
+  if (self)
+  {
     self.children = children;
     self.name = name;
   }

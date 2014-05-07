@@ -60,9 +60,6 @@ static Database *_me;
 //    NSLog(@"needs migration? %@", [manager isMigrationNeeded] ? @"YES":@"NO");
     
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kDatabaseStore];
-    
-    NSLog(@"DictionaryTerm=%tu", [DictionaryTerm MR_countOfEntities]);
-    NSLog(@"DrugProduct=%tu", [DrugProduct MR_countOfEntities]);
 }
 
 #if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
@@ -80,7 +77,8 @@ static Database *_me;
         {
             return [self searchDrugs:query narrowSearch:narrow];
         }
-        case ICD10DataSource:
+        case ICD10CMDataSource:
+        case ICD10PCSDataSource:
         default:
         {
             return nil;
@@ -88,6 +86,47 @@ static Database *_me;
     }
 }
 #endif
+
+- (NSArray*) searchRange:(DataSource)dataSource
+              startQuery:(NSString*)startQuery
+                endQuery:(NSString*)endQuery
+              limit:(int)limit
+{
+//    NSArray *all = [DictionaryTerm MR_findAll];
+//    int count500s = (int) all.count / 500;
+//    int mod500s   = all.count% 500;
+//    
+//    
+//    NSArray *arrResult = [[NSArray alloc] init];
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"term", startQuery];
+//    
+//    
+//    NSManagedObjectContext *moc = [NSManagedObjectContext MR_contextForCurrentThread];
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"term"
+//                                                                    ascending:YES
+//                                                                     selector:@selector(localizedCaseInsensitiveCompare:)];
+//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
+//                                              inManagedObjectContext:moc];
+//    
+//    [fetchRequest setPredicate:predicate];
+//    [fetchRequest setEntity:entity];
+//    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+//    [fetchRequest setFetchBatchSize:kFetchBatchSize];
+//    
+//    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+//                                                                          managedObjectContext:moc
+//                                                                            sectionNameKeyPath:@"term"
+//                                                                                     cacheName:@"DictionaryCache"];
+//    
+//    NSError *error;
+//    if ([frc performFetch:&error])
+//    {
+//        arrResult = [frc fetchedObjects];
+//    }
+//    return arrResult;
+    return nil;
+}
 
 #if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
 - (NSFetchedResultsController*)searchDictionary:(NSString*)query narrowSearch:(BOOL)narrow

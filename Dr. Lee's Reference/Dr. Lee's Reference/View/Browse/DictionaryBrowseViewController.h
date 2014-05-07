@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RATreeView.h"
 
-@interface DictionaryBrowseViewController : UIViewController
+@interface DictionaryBrowseViewController : UIViewController<RATreeViewDelegate, RATreeViewDataSource>
+
+@property (strong, nonatomic) NSMutableArray *data;
+@property (strong, nonatomic) id expanded;
+@property (strong, nonatomic) RATreeView *treeView;
 
 @end

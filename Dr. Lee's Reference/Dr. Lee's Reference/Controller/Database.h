@@ -17,7 +17,8 @@ typedef enum
 {
     DictionaryDataSource = 0,
     DrugsDataSource,
-    ICD10DataSource
+    ICD10CMDataSource,
+    ICD10PCSDataSource
 } DataSource;
 
 
@@ -31,6 +32,10 @@ typedef enum
 - (NSFetchedResultsController*)search:(DataSource)dataSource
                                 query:(NSString*)query
                          narrowSearch:(BOOL)narrow;
+
+- (NSArray*)searchGroup:(DataSource)dataSource
+                  query:(NSString*)query
+                  groupCount:(int)count;
 
 #endif
 

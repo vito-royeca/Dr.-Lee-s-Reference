@@ -22,6 +22,7 @@
 
 @interface RADataObject : NSObject
 
+@property (strong, nonatomic) id object;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSArray *children;
 

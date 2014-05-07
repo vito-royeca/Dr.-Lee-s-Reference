@@ -7,6 +7,7 @@
 //
 
 #import "ICD10PCSBrowseViewController.h"
+#import "JJJ/JJJ.h"
 #import "RADataObject.h"
 
 @interface ICD10PCSBrowseViewController ()
@@ -21,29 +22,6 @@
     if (self)
     {
         // Custom initialization
-        self.data = @[[RADataObject dataObjectWithName:@"Tabular" children:nil],
-                      [RADataObject dataObjectWithName:@"Index" children:nil],
-                      [RADataObject dataObjectWithName:@"Definitions" children:nil]];
-        
-        self.treeView = [[RATreeView alloc] initWithFrame:self.view.frame];
-        
-        self.treeView.delegate = self;
-        self.treeView.dataSource = self;
-        self.treeView.separatorStyle = RATreeViewCellSeparatorStyleSingleLine;
-        
-        [self.treeView reloadData];
-        //    [self.treeView expandRowForItem:phone withRowAnimation:RATreeViewRowAnimationLeft]; //expands Row
-        //    [self.treeView setBackgroundColor:[UIColor cyanColor]];
-        
-        
-        UIBarButtonItem *btnSettings = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"info.png"]
-                                                                        style:UIBarButtonItemStylePlain
-                                                                       target:self
-                                                                       action:@selector(showInfo:)];
-        
-        [self.navigationItem setRightBarButtonItem:btnSettings animated:YES];
-        self.navigationItem.title = @"ICD10 PCS";
-        [self.view addSubview:self.treeView];
     }
     return self;
 }
@@ -52,6 +30,44 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.data = @[[RADataObject dataObjectWithName:@"Tabular" children:nil],
+                  [RADataObject dataObjectWithName:@"Index" children:nil],
+                  [RADataObject dataObjectWithName:@"Definitions" children:nil]];
+    
+    self.treeView = [[RATreeView alloc] initWithFrame:self.view.frame];
+    
+    self.treeView.delegate = self;
+    self.treeView.dataSource = self;
+    self.treeView.separatorStyle = RATreeViewCellSeparatorStyleSingleLine;
+    
+    [self.treeView reloadData];
+    //    [self.treeView expandRowForItem:phone withRowAnimation:RATreeViewRowAnimationLeft]; //expands Row
+    [self.treeView setBackgroundColor:UIColorFromRGB(0xF7F7F7)];
+    
+    
+    UIBarButtonItem *btnSettings = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"info.png"]
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self
+                                                                   action:@selector(showInfo:)];
+    
+    [self.navigationItem setRightBarButtonItem:btnSettings animated:YES];
+    self.navigationItem.title = @"ICD10 PCS";
+    [self.view addSubview:self.treeView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if([[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."][0] intValue] >= 7)
+    {
+        CGRect statusBarViewRect = [[UIApplication sharedApplication] statusBarFrame];
+        float heightPadding = statusBarViewRect.size.height+self.navigationController.navigationBar.frame.size.height;
+        self.treeView.contentInset = UIEdgeInsetsMake(heightPadding, 0.0, 0.0, 0.0);
+        self.treeView.contentOffset = CGPointMake(0.0, -heightPadding);
+    }
+    
+    self.treeView.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning
