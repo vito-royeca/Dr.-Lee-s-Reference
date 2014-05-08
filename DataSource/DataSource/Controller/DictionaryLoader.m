@@ -35,33 +35,33 @@
     if (self)
     {
         _letters = [NSArray arrayWithObjects:
-                    @"9",
+//                    @"9",
                     @"a",
-                    @"b",
-                    @"c",
-                    @"d",
-                    @"e",
-                    @"f",
-                    @"g",
-                    @"h",
-                    @"i",
-                    @"j",
-                    @"k",
-                    @"l",
-                    @"m",
-                    @"n",
-                    @"o",
-                    @"p",
-                    @"q",
-                    @"r",
-                    @"s",
-                    @"t",
-                    @"u",
-                    @"v",
-                    @"w",
-                    @"x",
-                    @"y",
-                    @"z",
+//                    @"b",
+//                    @"c",
+//                    @"d",
+//                    @"e",
+//                    @"f",
+//                    @"g",
+//                    @"h",
+//                    @"i",
+//                    @"j",
+//                    @"k",
+//                    @"l",
+//                    @"m",
+//                    @"n",
+//                    @"o",
+//                    @"p",
+//                    @"q",
+//                    @"r",
+//                    @"s",
+//                    @"t",
+//                    @"u",
+//                    @"v",
+//                    @"w",
+//                    @"x",
+//                    @"y",
+//                    @"z",
                     nil];
     }
     
@@ -473,19 +473,23 @@
 
 -(void) saveSynonymToDatabase:(NSDictionary*)dict
 {
-    if (![dict objectForKey:@"term"])
+    if (![dict objectForKey:@"id"] || ![dict objectForKey:@"term"])
     {
         return;
     }
     
-    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    DictionaryTerm *term = [DictionaryTerm MR_findFirstByAttribute:@"termId" withValue:[dict objectForKey:@"id"]];
+    if (term)
+    {
+        NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
     
-    DictionarySynonym *d = [DictionarySynonym MR_createInContext:currentContext];
-    d.termId = [dict objectForKey:@"id"];
-    d.synonym = [dict objectForKey:@"term"];
-    d.term = [DictionaryTerm MR_findFirstByAttribute:@"termId" withValue:d.termId];
+        DictionarySynonym *d = [DictionarySynonym MR_createInContext:currentContext];
+        d.termId = [dict objectForKey:@"id"];
+        d.synonym = [dict objectForKey:@"term"];
+        d.term = term;
     
-    [currentContext MR_save];
+        [currentContext MR_save];
+    }
 }
 
 -(void) saveXrefToDatabase:(NSDictionary*)dict
@@ -495,14 +499,18 @@
         return;
     }
     
-    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    DictionaryTerm *term = [DictionaryTerm MR_findFirstByAttribute:@"termId" withValue:[dict objectForKey:@"id"]];
+    if (term)
+    {
+        NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
     
-    DictionaryXRef *d = [DictionaryXRef MR_createInContext:currentContext];
-    d.termId = [dict objectForKey:@"id"];
-    d.xref = [dict objectForKey:@"term"];
-    d.term = [DictionaryTerm MR_findFirstByAttribute:@"termId" withValue:d.termId];
+        DictionaryXRef *d = [DictionaryXRef MR_createInContext:currentContext];
+        d.termId = [dict objectForKey:@"id"];
+        d.xref = [dict objectForKey:@"term"];
+        d.term = term;
     
-    [currentContext MR_save];
+        [currentContext MR_save];
+    }
 }
 
 #pragma mark - CHCSVParserDelegate
@@ -518,7 +526,10 @@
     
     if (parser == _termsParser)
     {
-        [self saveTermToDatabase:_currentLine];
+        if (![DictionaryTerm MR_findFirstByAttribute:@"term" withValue:[_currentLine objectForKey:@"term"]])
+        {
+            [self saveTermToDatabase:_currentLine];
+        }
     }
     else if (parser == _synonymsParser)
     {

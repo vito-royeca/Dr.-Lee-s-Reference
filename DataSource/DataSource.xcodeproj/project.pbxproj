@@ -49,9 +49,6 @@
 		58264E88189E97E200D83B00 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E6E189E95B300D83B00 /* libJJJ.a */; };
 		8C2E636C1910FF3000B5A908 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E63691910FF3000B5A908 /* database.xcdatamodeld */; };
 		8C3E2E731918946C0077CF5A /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E2E721918946C0077CF5A /* Database.m */; };
-		8C3E2E7F1918B9A90077CF5A /* dictionarySynonyms.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C3E2E791918B6340077CF5A /* dictionarySynonyms.csv */; };
-		8C3E2E801918B9A90077CF5A /* dictionaryTerms.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C3E2E7A1918B6340077CF5A /* dictionaryTerms.csv */; };
-		8C3E2E811918B9A90077CF5A /* dictionaryXRefs.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C3E2E7B1918B6340077CF5A /* dictionaryXRefs.csv */; };
 		8C97C5551904EC2C000CEA20 /* DrugAppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5441904EC2C000CEA20 /* DrugAppDoc.m */; };
 		8C97C5561904EC2C000CEA20 /* DrugAppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5461904EC2C000CEA20 /* DrugAppDocType_Lookup.m */; };
 		8C97C5571904EC2C000CEA20 /* DrugApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5481904EC2C000CEA20 /* DrugApplication.m */; };
@@ -95,9 +92,6 @@
 			dstPath = Data;
 			dstSubfolderSpec = 16;
 			files = (
-				8C3E2E7F1918B9A90077CF5A /* dictionarySynonyms.csv in CopyFiles */,
-				8C3E2E801918B9A90077CF5A /* dictionaryTerms.csv in CopyFiles */,
-				8C3E2E811918B9A90077CF5A /* dictionaryXRefs.csv in CopyFiles */,
 				5815F0FE19058D8F00BB62AE /* Drug.xml in CopyFiles */,
 				5815F0FF19058D8F00BB62AE /* E-Index.xml in CopyFiles */,
 				5815F10019058D8F00BB62AE /* Index.xml in CopyFiles */,
@@ -236,13 +230,13 @@
 		5815F0FD1905896D00BB62AE /* pcs_gemguide_2014.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pcs_gemguide_2014.pdf; sourceTree = "<group>"; };
 		58264E61189E941F00D83B00 /* libJJJ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJJJ.a; path = "../../../../../../../../Users/buttmanizer/Library/Developer/Xcode/DerivedData/Dr._Lee's_Reference-czjeuqoykfphysdhxudpnheeuitz/Build/Products/Debug-iphoneos/libJJJ.a"; sourceTree = "<group>"; };
 		58264E67189E95B200D83B00 /* JJJ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JJJ.xcodeproj; path = ../jjj/JJJ/JJJ.xcodeproj; sourceTree = "<group>"; };
+		58CFF27F191A904800949552 /* synonyms.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = synonyms.csv; sourceTree = "<group>"; };
+		58CFF280191A904800949552 /* terms.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = terms.csv; sourceTree = "<group>"; };
+		58CFF281191A904800949552 /* xrefs.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xrefs.csv; sourceTree = "<group>"; };
 		8C2E636A1910FF3000B5A908 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
 		8C2E636B1910FF3000B5A908 /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
 		8C3E2E711918946C0077CF5A /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = "../../../Dr. Lee's Reference/Dr. Lee's Reference/Controller/Database.h"; sourceTree = "<group>"; };
 		8C3E2E721918946C0077CF5A /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = "../../../Dr. Lee's Reference/Dr. Lee's Reference/Controller/Database.m"; sourceTree = "<group>"; };
-		8C3E2E791918B6340077CF5A /* dictionarySynonyms.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dictionarySynonyms.csv; sourceTree = "<group>"; };
-		8C3E2E7A1918B6340077CF5A /* dictionaryTerms.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dictionaryTerms.csv; sourceTree = "<group>"; };
-		8C3E2E7B1918B6340077CF5A /* dictionaryXRefs.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dictionaryXRefs.csv; sourceTree = "<group>"; };
 		8C97C5431904EC2C000CEA20 /* DrugAppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrugAppDoc.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugAppDoc.h"; sourceTree = "<group>"; };
 		8C97C5441904EC2C000CEA20 /* DrugAppDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrugAppDoc.m; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugAppDoc.m"; sourceTree = "<group>"; };
 		8C97C5451904EC2C000CEA20 /* DrugAppDocType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrugAppDocType_Lookup.h; path = "../../Dr. Lee's Reference/Dr. Lee's Reference/Model/DrugAppDocType_Lookup.h"; sourceTree = "<group>"; };
@@ -354,9 +348,9 @@
 			isa = PBXGroup;
 			children = (
 				1133836A1859AA7200CBA6FF /* db.sql */,
+				58CFF27E191A904800949552 /* dictionary */,
 				1133836B1859AA7200CBA6FF /* drugsatfda */,
 				113383751859AA7200CBA6FF /* icd10 */,
-				8C3E2E781918B6340077CF5A /* stedmans */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -626,14 +620,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8C3E2E781918B6340077CF5A /* stedmans */ = {
+		58CFF27E191A904800949552 /* dictionary */ = {
 			isa = PBXGroup;
 			children = (
-				8C3E2E791918B6340077CF5A /* dictionarySynonyms.csv */,
-				8C3E2E7A1918B6340077CF5A /* dictionaryTerms.csv */,
-				8C3E2E7B1918B6340077CF5A /* dictionaryXRefs.csv */,
+				58CFF27F191A904800949552 /* synonyms.csv */,
+				58CFF280191A904800949552 /* terms.csv */,
+				58CFF281191A904800949552 /* xrefs.csv */,
 			);
-			path = stedmans;
+			path = dictionary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
