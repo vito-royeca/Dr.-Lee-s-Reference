@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InfoViewController : UIViewController
+@interface InfoViewController : UIViewController<UIWebViewDelegate>
+
+@property(strong,nonatomic) UIWebView *webView;
+
+- (id)initWithHTMLString:(NSString*) html;
 
 @end
