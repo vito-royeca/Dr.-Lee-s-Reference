@@ -31,8 +31,6 @@
 		8C12B1A21907D39D0092F82B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1A11907D39D0092F82B /* MainViewController.m */; };
 		8C12B1A81907D9F50092F82B /* RADataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1A71907D9F50092F82B /* RADataObject.m */; };
 		8C12B1AB1907DA090092F82B /* BrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1AA1907DA090092F82B /* BrowseViewController.m */; };
-		8C182DAF18FB6CC8005105DB /* MMSideDrawerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C182DAE18FB6CC8005105DB /* MMSideDrawerTableViewCell.m */; };
-		8C182DB518FB6D6A005105DB /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C182DB418FB6D6A005105DB /* MMTableViewCell.m */; };
 		8C2E63461910FC9E00B5A908 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E63451910FC9E00B5A908 /* DictionaryXRef.m */; };
 		8C2E63491910FC9F00B5A908 /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E63481910FC9F00B5A908 /* DictionarySynonym.m */; };
 		8C2E634C1910FC9F00B5A908 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E634B1910FC9F00B5A908 /* DictionaryTerm.m */; };
@@ -144,10 +142,6 @@
 		8C12B1A71907D9F50092F82B /* RADataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RADataObject.m; sourceTree = "<group>"; };
 		8C12B1A91907DA090092F82B /* BrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseViewController.h; sourceTree = "<group>"; };
 		8C12B1AA1907DA090092F82B /* BrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseViewController.m; sourceTree = "<group>"; };
-		8C182DAD18FB6CC8005105DB /* MMSideDrawerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSideDrawerTableViewCell.h; sourceTree = "<group>"; };
-		8C182DAE18FB6CC8005105DB /* MMSideDrawerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSideDrawerTableViewCell.m; sourceTree = "<group>"; };
-		8C182DB318FB6D6A005105DB /* MMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableViewCell.h; sourceTree = "<group>"; };
-		8C182DB418FB6D6A005105DB /* MMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableViewCell.m; sourceTree = "<group>"; };
 		8C2E63441910FC9E00B5A908 /* DictionaryXRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryXRef.h; sourceTree = "<group>"; };
 		8C2E63451910FC9E00B5A908 /* DictionaryXRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryXRef.m; sourceTree = "<group>"; };
 		8C2E63471910FC9F00B5A908 /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySynonym.h; sourceTree = "<group>"; };
@@ -313,10 +307,6 @@
 				5892E0AE18F585DB004160E0 /* ICD10 */,
 				8C12B1A01907D39D0092F82B /* MainViewController.h */,
 				8C12B1A11907D39D0092F82B /* MainViewController.m */,
-				8C182DAD18FB6CC8005105DB /* MMSideDrawerTableViewCell.h */,
-				8C182DAE18FB6CC8005105DB /* MMSideDrawerTableViewCell.m */,
-				8C182DB318FB6D6A005105DB /* MMTableViewCell.h */,
-				8C182DB418FB6D6A005105DB /* MMTableViewCell.m */,
 				58C8A9BE19080D75001549DB /* Search */,
 			);
 			path = View;
@@ -680,7 +670,6 @@
 				8C97C53B1904EA6E000CEA20 /* DrugReviewClass_Lookup.m in Sources */,
 				5892E0B418F5862F004160E0 /* DictionaryDetailViewController.m in Sources */,
 				113383461859A95400CBA6FF /* Favorite.m in Sources */,
-				8C182DB518FB6D6A005105DB /* MMTableViewCell.m in Sources */,
 				8C97C5381904EA6E000CEA20 /* DrugRegActionDate.m in Sources */,
 				8C674F49191B46E700536C02 /* DictionaryBrowseViewExpander.m in Sources */,
 				5892E0BB18F58657004160E0 /* DrugDetailsViewController.m in Sources */,
@@ -701,7 +690,6 @@
 				8C2E63491910FC9F00B5A908 /* DictionarySynonym.m in Sources */,
 				8C97C5261904EA6C000CEA20 /* DrugAppDoc.m in Sources */,
 				8C64C2C0190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m in Sources */,
-				8C182DAF18FB6CC8005105DB /* MMSideDrawerTableViewCell.m in Sources */,
 				8C674F5C191B55D100536C02 /* InfoViewController.m in Sources */,
 				8CEF1E7618F8026100EAE98E /* DrugSearchViewController.m in Sources */,
 				8CEF1E7918F8092D00EAE98E /* DrugViewController.m in Sources */,

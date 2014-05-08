@@ -68,6 +68,25 @@
                 }
             }
         }
+        case 2:
+        {
+            if ([object.parent.parent.name isEqualToString:@"Tabular"])
+            {
+                ICD10Diagnosis *parent = object.object;
+                
+                for (ICD10Diagnosis *diag in parent.children)
+                {
+                    NSMutableString *buffer = [[NSMutableString alloc] init];
+                    [buffer appendFormat:@"%@", diag.first];
+                    if (diag.last)
+                    {
+                        [buffer appendFormat:@"-%@", diag.last];
+                    }
+                    RADataObject *data = [[RADataObject alloc] initWithName:buffer parent:object children:nil object:diag];
+                    [tree addObject:data];
+                }
+            }
+        }
     }
     
     return tree;
@@ -83,8 +102,8 @@
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     RADataObject *data = (RADataObject *)item;
     
-    cell.textLabel.text = data.name;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.text = data.name;
     
     switch (treeNodeInfo.treeDepthLevel)
     {
@@ -95,10 +114,24 @@
         }
         case 1:
         case 2:
+        case 3:
         {
             ICD10Diagnosis *diag = (ICD10Diagnosis*) data.object;
+            
             NSRange range = [diag.desc rangeOfString:@"(" options:NSBackwardsSearch];
-            cell.detailTextLabel.text = [diag.desc substringToIndex:range.location];
+            if (range.location < diag.desc.length)
+            {
+                cell.detailTextLabel.text = [diag.desc substringToIndex:range.location];
+            }
+            else
+            {
+                cell.detailTextLabel.text = diag.desc;
+            }
+            
+            if (treeNodeInfo.treeDepthLevel == 3)
+            {
+                cell.textLabel.text = diag.name;
+            }
             break;
         }
         default:
