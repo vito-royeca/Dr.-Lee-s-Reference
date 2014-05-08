@@ -79,6 +79,10 @@
     {
         [html appendFormat:@"<br>(<font color='red'>%@</font>)", dictionaryTerm.pronunciation];
     }
+    else
+    {
+        [html appendFormat:@"<br>&nbsp;"];
+    }
     
     if (dictionaryTerm.definition)
     {
@@ -90,12 +94,12 @@
         }
         else
         {
-            [html appendFormat:@"<p><ul>"];
+            [html appendFormat:@"<p><ol>"];
             for (NSString *def in defs)
             {
                 [html appendFormat:@"<li>%@</li>", def];
             }
-            [html appendFormat:@"</ul>"];
+            [html appendFormat:@"</ol>"];
         }
     }
     
@@ -105,7 +109,7 @@
         int sentinel = 0;
         for (DictionaryXRef *ref in dictionaryTerm.xref)
         {
-            [html appendFormat:@"<a href='#%@'>%@</a>%@", ref.term, ref.term, sentinel<dictionaryTerm.xref.count-1?@", ":@""];
+            [html appendFormat:@"<a href='#%@'>%@</a>%@", ref.xref, ref.xref, sentinel<dictionaryTerm.xref.count-1?@", ":@""];
             sentinel++;
         }
     }
@@ -116,7 +120,7 @@
         int sentinel = 0;
         for (DictionarySynonym *syn in dictionaryTerm.synonym)
         {
-            [html appendFormat:@"<a href='#%@'>%@</a>%@", syn.term, syn.term, sentinel<dictionaryTerm.synonym.count-1?@", ":@""];
+            [html appendFormat:@"<a href='#%@'>%@</a>%@", syn.synonym, syn.synonym, sentinel<dictionaryTerm.synonym.count-1?@", ":@""];
             sentinel++;
         }
     }

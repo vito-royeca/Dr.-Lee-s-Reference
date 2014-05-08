@@ -7,10 +7,11 @@
 //
 
 #import "BrowseViewController.h"
-#import "DictionaryBrowseViewController.h"
-#import "FDADrugsBrowseViewController.h"
-#import "ICD10CMBrowseViewController.h"
-#import "ICD10PCSBrowseViewController.h"
+#import "JJJ/JJJ.h"
+#import "DictionaryBrowseViewExpander.h"
+#import "FDADrugsBrowseViewExpander.h"
+#import "ICD10CMBrowseViewExpander.h"
+#import "ICD10PCSBrowseViewExpander.h"
 #import "RADataObject.h"
 
 @interface BrowseViewController ()
@@ -20,7 +21,8 @@
 @implementation BrowseViewController
 
 @synthesize data = _data;
-@synthesize tblBrowse = _tblBrowse;
+@synthesize segmentedControl;
+@synthesize treeView = _treeView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,17 +38,45 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.data = @[@"Dictionary",
-                  @"FDA Drugs",
-                  @"ICD10 CM",
-                  @"ICD10 PCS"];
+    CGFloat dX = 0;
+    CGFloat dY = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height;
+    CGFloat dWidth = self.view.frame.size.width;
+    CGFloat dHeight = 40;
+    CGRect frame = CGRectMake(dX, dY, dWidth, dHeight);
+    self.segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:
+                             @[@"Dictionary", @"FDA Drugs", @"ICD10 CM", @"ICD10 PCS"]];
+    self.segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
+    self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+    self.segmentedControl.scrollEnabled = YES;
+    self.segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    self.segmentedControl.frame = frame;
+    [self.segmentedControl addTarget:self
+                              action:@selector(segmentedControlChangedValue:)
+                    forControlEvents:UIControlEventValueChanged];
+
+    dY += 40;
+    dHeight = self.view.frame.size.height - dHeight;
+    frame = CGRectMake(dX, dY, dWidth, dHeight);
+    self.treeView = [[RATreeView alloc] initWithFrame:frame];
+    self.treeView.delegate = self;
+    self.treeView.dataSource = self;
+    self.treeView.separatorStyle = RATreeViewCellSeparatorStyleSingleLine;
+    [self.treeView reloadData];
+    [self.treeView setBackgroundColor:UIColorFromRGB(0xF7F7F7)];
     
-    self.tblBrowse = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
-    self.tblBrowse.delegate = self;
-    self.tblBrowse.dataSource = self;
     
-    [self.view addSubview:self.tblBrowse];
+    UIBarButtonItem *btnSettings = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"info.png"]
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self
+                                                                   action:@selector(showInfo:)];
+    
+    [self.navigationItem setRightBarButtonItem:btnSettings animated:YES];
+    [self.view addSubview:self.segmentedControl];
+    [self.view addSubview:self.treeView];
     self.navigationItem.title = @"Browse";
+    
+    [self segmentedControlChangedValue:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,69 +85,161 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-#pragma - mark UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(void) segmentedControlChangedValue:(id) sender
 {
-	return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-	return self.data.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.text = [self.data objectAtIndex:indexPath.row];
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UIViewController *viewController;
-    
-    switch (indexPath.row)
+    switch (self.segmentedControl.selectedSegmentIndex)
     {
         case 0:
         {
-            viewController = [[DictionaryBrowseViewController alloc] initWithNibName:nil bundle:nil];
+            self.delegate = [[DictionaryBrowseViewExpander alloc] init];
             break;
         }
         case 1:
         {
-            viewController = [[FDADrugsBrowseViewController alloc] initWithNibName:nil bundle:nil];
+            self.delegate = [[FDADrugsBrowseViewExpander alloc] init];
             break;
         }
         case 2:
         {
-            viewController = [[ICD10CMBrowseViewController alloc] initWithNibName:nil bundle:nil];
+            self.delegate = [[ICD10CMBrowseViewExpander alloc] init];
             break;
         }
         case 3:
         {
-            viewController = [[ICD10PCSBrowseViewController alloc] initWithNibName:nil bundle:nil];
-            break;
-        }
-        default:
-        {
+            self.delegate = [[ICD10PCSBrowseViewExpander alloc] init];
             break;
         }
     }
     
-    if (viewController)
+    self.data = [self.delegate treeStructure:0];
+    [self.treeView reloadData];
+}
+
+-(void) showInfo:(id) sender
+{
+    
+}
+
+#pragma mark - RATreeViewDelegate methods
+- (CGFloat)treeView:(RATreeView *)treeView heightForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+{
+    return 47;
+}
+
+- (NSInteger)treeView:(RATreeView *)treeView indentationLevelForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+{
+    return 3 * treeNodeInfo.treeDepthLevel;
+}
+
+- (BOOL)treeView:(RATreeView *)treeView shouldExpandItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+{
+    return YES;
+}
+
+- (BOOL)treeView:(RATreeView *)treeView shouldItemBeExpandedAfterDataReload:(id)item treeDepthLevel:(NSInteger)treeDepthLevel
+{
+    if ([item isEqual:self.expanded])
     {
-        [self.navigationController pushViewController:viewController animated:NO];
+        return YES;
     }
+    
+    return NO;
+}
+
+- (void)treeView:(RATreeView *)treeView willDisplayCell:(UITableViewCell *)cell forItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+{
+    if (treeNodeInfo.treeDepthLevel == 0)
+    {
+        cell.backgroundColor = UIColorFromRGB(0xF7F7F7);
+    }
+    else if (treeNodeInfo.treeDepthLevel == 1)
+    {
+        cell.backgroundColor = UIColorFromRGB(0xD1EEFC);
+    }
+    else if (treeNodeInfo.treeDepthLevel == 2)
+    {
+        cell.backgroundColor = UIColorFromRGB(0xE0F8D8);
+    }
+}
+
+- (void)treeView:(RATreeView *)treeView didSelectRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+{
+    RADataObject *node = item;
+    
+    switch (treeNodeInfo.treeDepthLevel)
+    {
+        case 0:
+        {
+//            if (!node.children)
+//            {
+//                for (RADataObject *ra in self.data)
+//                {
+//                    [self.treeView collapseRowForItem:ra];
+//                    ra.children = nil;
+//                }
+//                
+//                NSFetchedResultsController *frc = [[Database sharedInstance] search:DictionaryDataSource
+//                                                                              query:node.name
+//                                                                       narrowSearch:NO];
+//                NSError *error;
+//                if ([frc performFetch:&error])
+//                {
+//                    NSMutableArray *children = [[NSMutableArray alloc] init];
+//                    
+//                    for (DictionaryTerm *dict in [frc fetchedObjects])
+//                    {
+//                        RADataObject *ra = [[RADataObject alloc] initWithName:dict.term children:nil];
+//                        ra.object = dict;
+//                        [children addObject:ra];
+//                    }
+//                    node.children = children;
+//                }
+//                
+//                self.expanded = node;
+//                [self.treeView reloadData];
+//            }
+            
+            break;
+        }
+    }
+}
+
+#pragma mark - RATreeViewDataSource
+
+- (UITableViewCell *)treeView:(RATreeView *)treeView cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+    cell.textLabel.text = ((RADataObject *)item).name;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (treeNodeInfo.treeDepthLevel == 0)
+    {
+        cell.detailTextLabel.textColor = [UIColor blackColor];
+    }
+    
+    return cell;
+}
+
+- (NSInteger)treeView:(RATreeView *)treeView numberOfChildrenOfItem:(id)item
+{
+    if (item == nil)
+    {
+        return [self.data count];
+    }
+    
+    RADataObject *data = item;
+    return [data.children count];
+}
+
+- (id)treeView:(RATreeView *)treeView child:(NSInteger)index ofItem:(id)item
+{
+    RADataObject *data = item;
+    if (item == nil)
+    {
+        return [self.data objectAtIndex:index];
+    }
+    
+    return [data.children objectAtIndex:index];
 }
 
 /*

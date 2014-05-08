@@ -11,6 +11,7 @@
 #import "JJJ/JJJUtil.h"
 #import "Database.h"
 #import "DictionaryTerm.h"
+#import "DictionaryDetailViewController.h"
 
 @interface SearchViewController ()
 
@@ -19,20 +20,10 @@
 @implementation SearchViewController
 
 @synthesize searchBar  = _searchBar;
+@synthesize segmentedControl = _segmentedControl;
 @synthesize tblResults = _tblResults;
-@synthesize settingsViewController   = _settingsViewController;
+//@synthesize settingsViewController   = _settingsViewController;
 @synthesize fetchedResultsController = _fetchedResultsController;
-
-- (IASKAppSettingsViewController*)settingsViewController
-{
-	if (!_settingsViewController)
-    {
-		_settingsViewController = [[IASKAppSettingsViewController alloc] init];
-		_settingsViewController.delegate = self;
-        _settingsViewController.title = @"Search Settings";
-	}
-	return _settingsViewController;
-}
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -41,7 +32,32 @@
         return _fetchedResultsController;
     }
     
-    NSFetchedResultsController *nsfrc = [[Database sharedInstance] search:DictionaryDataSource
+    DataSource dataSource;
+    
+    switch (self.segmentedControl.selectedSegmentIndex)
+    {
+        case 0:
+        {
+            dataSource = DictionaryDataSource;
+            break;
+        }
+        case 1:
+        {
+            dataSource = DrugsDataSource;
+            break;
+        }
+        case 2:
+        {
+            dataSource = ICD10CMDataSource;
+            break;
+        }
+        case 3:
+        {
+            dataSource = ICD10PCSDataSource;
+            break;
+        }
+    }
+    NSFetchedResultsController *nsfrc = [[Database sharedInstance] search:dataSource
                                                                     query:self.searchBar.text
                                                              narrowSearch:NO];
     _fetchedResultsController = nsfrc;
@@ -55,19 +71,8 @@
     if (self)
     {
         // Custom initialization
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(settingsDidChange:)
-                                                     name:kIASKAppSettingChanged
-                                                   object:nil];
     }
     return self;
-}
-
--(void) settingsDidChange:(NSNotification*)notification
-{
-    
-    NSString *key = [[[notification userInfo] allKeys] objectAtIndex:0];
-    NSLog(@"%@=%@", key, [[notification userInfo] valueForKey:key]);
 }
 
 - (void)viewDidLoad
@@ -76,7 +81,7 @@
     // Do any additional setup after loading the view.
     
     CGFloat dX = 0;
-    CGFloat dY = 0;//[UIApplication sharedApplication].statusBarFrame.size.height;
+    CGFloat dY = 0;
     CGFloat dWidth = self.view.frame.size.width;
     CGFloat dHeight = self.navigationController.navigationBar.frame.size.height;
     CGRect frame = CGRectMake(dX, dY, dWidth, dHeight);
@@ -84,7 +89,23 @@
     self.searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.searchBar.delegate = self;
     
-    dHeight = self.view.frame.size.height;
+    dY = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height;
+    dHeight = 40;
+    frame = CGRectMake(dX, dY, dWidth, dHeight);
+    self.segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:
+                             @[@"Dictionary", @"FDA Drugs", @"ICD10 CM", @"ICD10 PCS"]];
+    self.segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
+    self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
+    self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+    self.segmentedControl.scrollEnabled = YES;
+    self.segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+    self.segmentedControl.frame = frame;
+    [self.segmentedControl addTarget:self
+                              action:@selector(segmentedControlChangedValue:)
+                    forControlEvents:UIControlEventValueChanged];
+    
+    dY += 40;
+    dHeight = self.view.frame.size.height - dY;
     frame = CGRectMake(dX, dY, dWidth, dHeight);
     self.tblResults = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     self.tblResults.delegate = self;
@@ -92,13 +113,8 @@
     self.tblResults.scrollEnabled = YES;
     self.tblResults.userInteractionEnabled = YES;
     
-    UIBarButtonItem *btnSettings = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings.png"]
-                                                                    style:UIBarButtonItemStylePlain
-                                                                   target:self
-                                                                   action:@selector(showSettings:)];
-
-    [self.navigationItem setRightBarButtonItem:btnSettings animated:YES];
     self.navigationItem.titleView = self.searchBar;
+    [self.view addSubview:self.segmentedControl];
     [self.view addSubview:self.tblResults];
     
     // remove the "< Back" title in back buttons
@@ -106,13 +122,9 @@
                                                          forBarMetrics:UIBarMetricsDefault];
 }
 
--(void) showSettings:(id) sender
+-(void) segmentedControlChangedValue:(id) sender
 {
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.settingsViewController];
-
-    self.settingsViewController.showCreditsFooter = NO;
-    self.settingsViewController.showDoneButton = YES;
-    [self.navigationController presentViewController:navController animated:YES completion:nil];
+    [self doSearch];
 }
 
 -(void)contentSizeDidChange:(NSString *)size
@@ -178,11 +190,70 @@
     return cell;
 }
 
+- (void) configureCell:(UITableViewCell *)cell
+           atIndexPath:(NSIndexPath *)indexPath
+{
+    switch (self.segmentedControl.selectedSegmentIndex)
+    {
+        case 0:
+        {
+            DictionaryTerm *term = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            cell.textLabel.text = term.term;
+            break;
+        }
+        case 1:
+        {
+            
+            break;
+        }
+        case 2:
+        {
+            
+            break;
+        }
+        case 3:
+        {
+            
+            break;
+        }
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UIViewController *viewController = [self detailViewWithObject:object];
-    [self.navigationController pushViewController:viewController animated:YES];
+    UIViewController *viewController;
+    
+    switch (self.segmentedControl.selectedSegmentIndex)
+    {
+        case 0:
+        {
+            DictionaryDetailViewController *v = [[DictionaryDetailViewController alloc] init];
+            v.dictionaryTerm = object;
+            viewController = v;
+            break;
+        }
+        case 1:
+        {
+            
+            break;
+        }
+        case 2:
+        {
+            
+            break;
+        }
+        case 3:
+        {
+            
+            break;
+        }
+    }
+    
+    if (viewController)
+    {
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 #pragma mark - MBProgressHUDDelegate methods
@@ -294,7 +365,6 @@
     }
 }
 
-
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     NSLog(@"%d %s %s", __LINE__, __PRETTY_FUNCTION__, __FUNCTION__);
@@ -303,32 +373,6 @@
     
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [tableView endUpdates];
-}
-
-#pragma mark - Empty methods to be implemented by subclasses
-- (void) configureCell:(UITableViewCell *)cell
-           atIndexPath:(NSIndexPath *)indexPath
-{
-    DictionaryTerm *term = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = term.term;
-}
-
-- (UIViewController*) detailViewWithObject:(id) object
-{
-    return nil;
-}
-
-#pragma mark - IASKAppSettingsViewControllerDelegate
-- (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender
-{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
-
-// does not work!!!
-- (void)settingsViewController:(IASKAppSettingsViewController*)sender
-      buttonTappedForSpecifier:(IASKSpecifier*)specifier
-{
-    NSLog(@"%@:%@", specifier.key, [[NSUserDefaults standardUserDefaults] objectForKey:specifier.key]);
 }
 
 /*

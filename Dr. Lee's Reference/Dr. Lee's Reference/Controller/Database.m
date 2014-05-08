@@ -216,7 +216,7 @@ static Database *_me;
                                                                    ascending:YES
                                                                     selector:@selector(localizedCaseInsensitiveCompare:)];
     NSArray *sortDescriptors = @[sortDescriptor];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Product"
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DrugProduct"
                                               inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 
     [fetchRequest setFetchBatchSize:kFetchBatchSize];
@@ -227,7 +227,7 @@ static Database *_me;
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                managedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]
-                                                 sectionNameKeyPath:@"drugNameInitial"
+                                                 sectionNameKeyPath:@"drugName"
                                                           cacheName:@"DrugCache"];
 }
 #endif

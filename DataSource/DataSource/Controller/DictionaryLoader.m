@@ -409,6 +409,8 @@
 
 -(void) csv2CoreData
 {
+    NSDate *dateStart = [NSDate date];
+    
     [[Database sharedInstance ] setupDb];
     
     NSStringEncoding encoding = NSUTF8StringEncoding;
@@ -436,6 +438,12 @@
     _xrefsParser.delegate = self;
     [_xrefsParser parse];
     [is close];
+    
+    NSDate *dateEnd = [NSDate date];
+    NSTimeInterval timeDifference = [dateEnd timeIntervalSinceDate:dateStart];
+    NSLog(@"Started: %@", dateStart);
+    NSLog(@"Ended: %@", dateEnd);
+    NSLog(@"Time Elapsed: %@",  [JJJUtil formatInterval:timeDifference]);
 }
 
 -(void) saveTermToDatabase:(NSDictionary*)dict
@@ -465,24 +473,37 @@
     {
         d.termInitial = @"#";
     }
-    d.pronunciation = [dict objectForKey:@"Pronunciation:"];
-    d.definition = [dict objectForKey:@"Definitions:"];
+    
+    NSString *pronunciation = [dict objectForKey:@"Pronunciation:"];
+    if (pronunciation && pronunciation.length > 0)
+    {
+        d.pronunciation = pronunciation;
+    }
+    
+    NSString *definition = [dict objectForKey:@"Definitions:"];
+    if (definition && definition.length > 0)
+    {
+        d.definition = definition;
+    }
     
     [currentContext MR_save];
 }
 
 -(void) saveSynonymToDatabase:(NSDictionary*)dict
 {
-    if (![dict objectForKey:@"id"] || ![dict objectForKey:@"term"])
+    if (![dict objectForKey:@"term"])
     {
         return;
     }
     
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
     DictionaryTerm *term = [DictionaryTerm MR_findFirstByAttribute:@"termId" withValue:[dict objectForKey:@"id"]];
-    if (term)
-    {
-        NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"termId == %@", [dict objectForKey:@"id"]];
+    NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"synonym == %@", [dict objectForKey:@"term"]];
+    NSPredicate *compred = [NSCompoundPredicate andPredicateWithSubpredicates:@[pred1, pred2]];
     
+    if (term && ![DictionarySynonym MR_findFirstWithPredicate:compred])
+    {
         DictionarySynonym *d = [DictionarySynonym MR_createInContext:currentContext];
         d.termId = [dict objectForKey:@"id"];
         d.synonym = [dict objectForKey:@"term"];
@@ -494,16 +515,19 @@
 
 -(void) saveXrefToDatabase:(NSDictionary*)dict
 {
-    if (![dict objectForKey:@"id"] || ![dict objectForKey:@"term"])
+    if (![dict objectForKey:@"term"])
     {
         return;
     }
     
+    NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
     DictionaryTerm *term = [DictionaryTerm MR_findFirstByAttribute:@"termId" withValue:[dict objectForKey:@"id"]];
-    if (term)
-    {
-        NSManagedObjectContext *currentContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"termId == %@", [dict objectForKey:@"id"]];
+    NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"xref == %@", [dict objectForKey:@"term"]];
+    NSPredicate *compred = [NSCompoundPredicate andPredicateWithSubpredicates:@[pred1, pred2]];
     
+    if (term && ![DictionaryXRef MR_findFirstWithPredicate:compred])
+    {
         DictionaryXRef *d = [DictionaryXRef MR_createInContext:currentContext];
         d.termId = [dict objectForKey:@"id"];
         d.xref = [dict objectForKey:@"term"];

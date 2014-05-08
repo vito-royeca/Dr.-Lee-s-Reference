@@ -49,6 +49,9 @@
 		58264E88189E97E200D83B00 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E6E189E95B300D83B00 /* libJJJ.a */; };
 		8C2E636C1910FF3000B5A908 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E63691910FF3000B5A908 /* database.xcdatamodeld */; };
 		8C3E2E731918946C0077CF5A /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3E2E721918946C0077CF5A /* Database.m */; };
+		8C674F3D191B1FE100536C02 /* synonyms.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58CFF27F191A904800949552 /* synonyms.csv */; };
+		8C674F3E191B1FE100536C02 /* terms.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58CFF280191A904800949552 /* terms.csv */; };
+		8C674F3F191B1FE100536C02 /* xrefs.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58CFF281191A904800949552 /* xrefs.csv */; };
 		8C97C5551904EC2C000CEA20 /* DrugAppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5441904EC2C000CEA20 /* DrugAppDoc.m */; };
 		8C97C5561904EC2C000CEA20 /* DrugAppDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5461904EC2C000CEA20 /* DrugAppDocType_Lookup.m */; };
 		8C97C5571904EC2C000CEA20 /* DrugApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5481904EC2C000CEA20 /* DrugApplication.m */; };
@@ -92,6 +95,9 @@
 			dstPath = Data;
 			dstSubfolderSpec = 16;
 			files = (
+				8C674F3D191B1FE100536C02 /* synonyms.csv in CopyFiles */,
+				8C674F3E191B1FE100536C02 /* terms.csv in CopyFiles */,
+				8C674F3F191B1FE100536C02 /* xrefs.csv in CopyFiles */,
 				5815F0FE19058D8F00BB62AE /* Drug.xml in CopyFiles */,
 				5815F0FF19058D8F00BB62AE /* E-Index.xml in CopyFiles */,
 				5815F10019058D8F00BB62AE /* Index.xml in CopyFiles */,

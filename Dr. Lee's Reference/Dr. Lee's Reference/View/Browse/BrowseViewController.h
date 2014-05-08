@@ -7,10 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HMSegmentedControl.h"
+#import "RATreeView.h"
 
-@interface BrowseViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@protocol BrowseViewExpander <NSObject>
 
+-(NSArray*) treeStructure:(int) depthLevel;
+
+@end
+
+@interface BrowseViewController : UIViewController<RATreeViewDelegate, RATreeViewDataSource>
+
+@property (strong, nonatomic) id<BrowseViewExpander> delegate;
 @property (strong, nonatomic) NSArray *data;
-@property (strong, nonatomic) UITableView *tblBrowse;
+@property (strong, nonatomic) id expanded;
+@property (strong, nonatomic) HMSegmentedControl *segmentedControl;
+@property (strong, nonatomic) RATreeView *treeView;
 
 @end
