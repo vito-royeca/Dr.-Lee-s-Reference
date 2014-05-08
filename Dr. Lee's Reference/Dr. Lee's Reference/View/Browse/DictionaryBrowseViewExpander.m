@@ -8,11 +8,24 @@
 
 #import "DictionaryBrowseViewExpander.h"
 #import "JJJ/JJJ.h"
+#import "Database.h"
+#import "DictionaryTerm.h"
 #import "RADataObject.h"
 
 @implementation DictionaryBrowseViewExpander
 
--(NSArray*) treeStructure:(int) depthLevel
+-(NSArray*) initialTreeStructure
+{
+    NSMutableArray *tree = [[NSMutableArray alloc] init];
+    
+    for (NSString *alpha in [JJJUtil alphabetWithWildcard])
+    {
+        [tree addObject:[[RADataObject alloc] initWithName:alpha parent:nil children:nil object:nil]];
+    }
+    return tree;
+}
+
+-(NSArray*) treeStructure:(int) depthLevel withObject:(RADataObject*) object
 {
     NSMutableArray *tree = [[NSMutableArray alloc] init];
     
@@ -20,10 +33,19 @@
     {
         case 0:
         {
-            for (NSString *alpha in [JJJUtil alphabetWithWildcard])
+            NSFetchedResultsController *frc = [[Database sharedInstance] search:DictionaryDataSource
+                                                                          query:object.name
+                                                                   narrowSearch:NO];
+            NSError *error;
+            if ([frc performFetch:&error])
             {
-                [tree addObject:[RADataObject dataObjectWithName:alpha children:nil]];
+                for (DictionaryTerm *dict in [frc fetchedObjects])
+                {
+                    RADataObject *ra = [[RADataObject alloc] initWithName:dict.term parent:object children:nil object:dict];
+                    [tree addObject:ra];
+                }
             }
+
             break;
         }
     }
@@ -31,5 +53,9 @@
     return tree;
 }
 
+-(NSString*) treeInfo:(int) depthLevel withObject:(RADataObject*) object
+{
+    return @"<html>Dictionary</html>";
+}
 
 @end

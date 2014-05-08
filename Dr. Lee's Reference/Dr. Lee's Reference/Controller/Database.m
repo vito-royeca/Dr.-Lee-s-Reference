@@ -92,10 +92,10 @@ static Database *_me;
                 endQuery:(NSString*)endQuery
               limit:(int)limit
 {
-//    NSArray *all = [DictionaryTerm MR_findAll];
-//    int count500s = (int) all.count / 500;
-//    int mod500s   = all.count% 500;
-//    
+    NSArray *all = [DictionaryTerm MR_findAll];
+    int count500s = (int) all.count / 500;
+    int mod500s   = all.count% 500;
+//
 //    
 //    NSArray *arrResult = [[NSArray alloc] init];
 //    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"term", startQuery];

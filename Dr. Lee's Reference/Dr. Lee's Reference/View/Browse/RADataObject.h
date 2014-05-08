@@ -24,10 +24,12 @@
 
 @property (strong, nonatomic) id object;
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) RADataObject *parent;
 @property (strong, nonatomic) NSArray *children;
 
-- (id)initWithName:(NSString *)name children:(NSArray *)array;
-
-+ (id)dataObjectWithName:(NSString *)name children:(NSArray *)children;
+- (id)initWithName:(NSString *)name
+            parent:(RADataObject*)parent
+          children:(NSArray *)children
+            object:(id)object;
 
 @end

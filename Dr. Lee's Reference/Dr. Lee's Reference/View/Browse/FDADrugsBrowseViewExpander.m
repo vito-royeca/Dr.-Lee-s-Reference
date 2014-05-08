@@ -12,7 +12,14 @@
 
 @implementation FDADrugsBrowseViewExpander
 
--(NSArray*) treeStructure:(int) depthLevel
+-(NSArray*) initialTreeStructure
+{
+    NSMutableArray *tree = [[NSMutableArray alloc] init];
+    
+    return tree;
+}
+
+-(NSArray*) treeStructure:(int) depthLevel withObject:(RADataObject*) object
 {
     NSMutableArray *tree = [[NSMutableArray alloc] init];
     
@@ -20,15 +27,16 @@
     {
         case 0:
         {
-            for (NSString *alpha in [JJJUtil alphabetWithWildcard])
-            {
-                [tree addObject:[RADataObject dataObjectWithName:alpha children:nil]];
-            }
             break;
         }
     }
     
     return tree;
+}
+
+-(NSString*) treeInfo:(int) depthLevel withObject:(RADataObject*) object
+{
+    return @"FDA Drugs";
 }
 
 @end

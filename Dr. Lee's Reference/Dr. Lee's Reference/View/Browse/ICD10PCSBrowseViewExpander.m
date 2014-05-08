@@ -11,7 +11,17 @@
 
 @implementation ICD10PCSBrowseViewExpander
 
--(NSArray*) treeStructure:(int) depthLevel
+-(NSArray*) initialTreeStructure
+{
+    NSMutableArray *tree = [[NSMutableArray alloc] init];
+
+    [tree addObjectsFromArray:@[ [[RADataObject alloc] initWithName:@"Tabular" parent:nil children:nil object:nil],
+                                 [[RADataObject alloc] initWithName:@"Index" parent:nil children:nil object:nil],
+                                 [[RADataObject alloc] initWithName:@"Definitions" parent:nil children:nil object:nil]]];
+    return tree;
+}
+
+-(NSArray*) treeStructure:(int) depthLevel withObject:(RADataObject*) object
 {
     NSMutableArray *tree = [[NSMutableArray alloc] init];
     
@@ -19,10 +29,6 @@
     {
         case 0:
         {
-            [tree addObjectsFromArray:@[[RADataObject dataObjectWithName:@"Tabular" children:nil],
-                                        [RADataObject dataObjectWithName:@"Index" children:nil],
-                                        [RADataObject dataObjectWithName:@"Definitions" children:nil]]];
-
             break;
         }
     }
@@ -30,4 +36,8 @@
     return tree;
 }
 
+-(NSString*) treeInfo:(int) depthLevel withObject:(RADataObject*) object
+{
+    return @"ICD10 PCS";
+}
 @end

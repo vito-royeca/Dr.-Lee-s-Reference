@@ -7,7 +7,6 @@
 //
 
 #import "SearchViewController.h"
-#import "IASKSettingsReader.h"
 #import "JJJ/JJJUtil.h"
 #import "Database.h"
 #import "DictionaryTerm.h"
@@ -22,7 +21,6 @@
 @synthesize searchBar  = _searchBar;
 @synthesize segmentedControl = _segmentedControl;
 @synthesize tblResults = _tblResults;
-//@synthesize settingsViewController   = _settingsViewController;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 - (NSFetchedResultsController *)fetchedResultsController

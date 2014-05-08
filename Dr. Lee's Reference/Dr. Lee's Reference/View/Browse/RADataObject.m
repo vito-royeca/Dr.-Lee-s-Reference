@@ -23,20 +23,20 @@
 @implementation RADataObject
 
 
-- (id)initWithName:(NSString *)name children:(NSArray *)children
+- (id)initWithName:(NSString *)name
+            parent:(RADataObject*)parent
+          children:(NSArray *)children
+            object:(id)object
 {
-  self = [super init];
-  if (self)
-  {
-    self.children = children;
-    self.name = name;
-  }
-  return self;
-}
-
-+ (id)dataObjectWithName:(NSString *)name children:(NSArray *)children
-{
-  return [[self alloc] initWithName:name children:children];
+    self = [super init];
+    if (self)
+    {
+        self.name = name;
+        self.parent = parent;
+        self.children = children;
+        self.object = object;
+    }
+    return self;
 }
 
 @end

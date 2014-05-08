@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "HMSegmentedControl.h"
+#import "RADataObject.h"
 #import "RATreeView.h"
 
 @protocol BrowseViewExpander <NSObject>
 
--(NSArray*) treeStructure:(int) depthLevel;
+-(NSArray*) initialTreeStructure;
+-(NSArray*) treeStructure:(int) depthLevel withObject:(RADataObject*) object;
+-(NSString*) treeInfo:(int) depthLevel withObject:(RADataObject*) object;
+
+@optional
+- (UITableViewCell *)cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
 
 @end
 

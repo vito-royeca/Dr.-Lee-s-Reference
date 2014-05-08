@@ -12,10 +12,14 @@
 #import "FDADrugsBrowseViewExpander.h"
 #import "ICD10CMBrowseViewExpander.h"
 #import "ICD10PCSBrowseViewExpander.h"
+#import "InfoViewController.h"
 #import "RADataObject.h"
 
 @interface BrowseViewController ()
-
+{
+    int _nodeLevel;
+    RADataObject *_currectNode;
+}
 @end
 
 @implementation BrowseViewController
@@ -71,7 +75,7 @@
                                                                    target:self
                                                                    action:@selector(showInfo:)];
     
-    [self.navigationItem setRightBarButtonItem:btnSettings animated:YES];
+    [self.navigationItem setRightBarButtonItem:btnSettings];
     [self.view addSubview:self.segmentedControl];
     [self.view addSubview:self.treeView];
     self.navigationItem.title = @"Browse";
@@ -111,13 +115,16 @@
         }
     }
     
-    self.data = [self.delegate treeStructure:0];
+    self.data = [self.delegate initialTreeStructure];
     [self.treeView reloadData];
 }
 
 -(void) showInfo:(id) sender
 {
-    
+    NSString *info = [self.delegate treeInfo:_nodeLevel withObject:_currectNode];
+    InfoViewController *infoView = [[InfoViewController alloc] initWithHTMLString:info];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:infoView];
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
 #pragma mark - RATreeViewDelegate methods
@@ -166,41 +173,21 @@
 {
     RADataObject *node = item;
     
-    switch (treeNodeInfo.treeDepthLevel)
+    if (!node.children)
     {
-        case 0:
-        {
-//            if (!node.children)
+        NSArray *children = [self.delegate treeStructure:(int)treeNodeInfo.treeDepthLevel withObject:node];
+
+        node.children = children;
+        self.expanded = node;
+
+//        for (RADataObject *ra in self.data)
+//        {
+//            if (ra != node)
 //            {
-//                for (RADataObject *ra in self.data)
-//                {
-//                    [self.treeView collapseRowForItem:ra];
-//                    ra.children = nil;
-//                }
-//                
-//                NSFetchedResultsController *frc = [[Database sharedInstance] search:DictionaryDataSource
-//                                                                              query:node.name
-//                                                                       narrowSearch:NO];
-//                NSError *error;
-//                if ([frc performFetch:&error])
-//                {
-//                    NSMutableArray *children = [[NSMutableArray alloc] init];
-//                    
-//                    for (DictionaryTerm *dict in [frc fetchedObjects])
-//                    {
-//                        RADataObject *ra = [[RADataObject alloc] initWithName:dict.term children:nil];
-//                        ra.object = dict;
-//                        [children addObject:ra];
-//                    }
-//                    node.children = children;
-//                }
-//                
-//                self.expanded = node;
-//                [self.treeView reloadData];
+//                ra.children = nil;
 //            }
-            
-            break;
-        }
+//        }
+        [self.treeView reloadData];
     }
 }
 
@@ -208,6 +195,12 @@
 
 - (UITableViewCell *)treeView:(RATreeView *)treeView cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
+    if ([self.delegate respondsToSelector:@selector(cellForItem:treeNodeInfo:)])
+    {
+        return [self.delegate cellForItem:item treeNodeInfo:treeNodeInfo];
+    }
+    else
+    {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     cell.textLabel.text = ((RADataObject *)item).name;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -218,6 +211,7 @@
     }
     
     return cell;
+    }
 }
 
 - (NSInteger)treeView:(RATreeView *)treeView numberOfChildrenOfItem:(id)item
