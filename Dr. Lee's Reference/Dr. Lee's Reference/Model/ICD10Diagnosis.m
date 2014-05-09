@@ -23,7 +23,6 @@
 @dynamic inclusionTerm;
 @dynamic last;
 @dynamic name;
-@dynamic shortName;
 @dynamic useAdditionalCode;
 @dynamic version;
 @dynamic children;

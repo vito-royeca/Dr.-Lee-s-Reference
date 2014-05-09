@@ -24,7 +24,6 @@
 @property (nonatomic, retain) NSString * inclusionTerm;
 @property (nonatomic, retain) NSString * last;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * shortName;
 @property (nonatomic, retain) NSString * useAdditionalCode;
 @property (nonatomic, retain) NSString * version;
 @property (nonatomic, retain) NSOrderedSet *children;

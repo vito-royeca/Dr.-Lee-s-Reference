@@ -14,11 +14,11 @@
 @protocol BrowseViewExpander <NSObject>
 
 -(NSArray*) initialTreeStructure;
--(NSArray*) treeStructure:(int) depthLevel withObject:(RADataObject*) object;
--(NSString*) treeInfo:(int) depthLevel withObject:(RADataObject*) object;
+-(NSArray*) treeStructureForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
 
 @optional
-- (UITableViewCell *)cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
+-(UITableViewCell*)cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
+-(UIViewController*) detailViewForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
 
 @end
 

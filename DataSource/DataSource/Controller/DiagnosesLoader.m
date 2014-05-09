@@ -18,7 +18,7 @@
 
 @interface DiagnosesLoader()
 {
-    NSArray  *_arrShortNames;
+//    NSArray  *_arrShortNames;
 }
 @end
 
@@ -74,27 +74,27 @@
 #pragma mark - Tabular methods
 - (void) loadICD10Tabular
 {
-    _arrShortNames = @[@{@"Infectious"            : @[@"A00", @"B99"]},
-                       @{@"Neoplasms"             : @[@"C00", @"D49"]},
-                       @{@"Blood | Immune"        : @[@"D50", @"D89"]},
-                       @{@"Endo | Nutrit | Metab" : @[@"E00", @"E89"]},
-                       @{@"Mental | Behavioral"   : @[@"F01", @"F99"]},
-                       @{@"Nervous System"        : @[@"G00", @"G99"]},
-                       @{@"Eye | Adnexa"          : @[@"H00", @"H59"]},
-                       @{@"Ear | Mastoid"         : @[@"H60", @"H95"]},
-                       @{@"Circulatory"           : @[@"I00", @"I99"]},
-                       @{@"Respiratory"           : @[@"J00", @"J99"]},
-                       @{@"Digestive"             : @[@"K00", @"K95"]},
-                       @{@"Skin | Subcutaneous"   : @[@"L00", @"L99"]},
-                       @{@"Musculoskeletal"       : @[@"M00", @"M99"]},
-                       @{@"Genetourinary"         : @[@"N00", @"N99"]},
-                       @{@"Pregnancy | Childbirth": @[@"O00", @"O9A"]},
-                       @{@"Perinatal"             : @[@"P00", @"P96"]},
-                       @{@"Congenital"            : @[@"Q00", @"Q99"]},
-                       @{@"Symp | Signs | Labs"   : @[@"R00", @"R99"]},
-                       @{@"Injury | Poisoning"    : @[@"S00", @"T88"]},
-                       @{@"External Causes"       : @[@"V00", @"Y99"]},
-                       @{@"Factors | Reasons"     : @[@"Z00", @"Z99"]}];
+//    _arrShortNames = @[@{@"Infectious"            : @[@"A00", @"B99"]},
+//                       @{@"Neoplasms"             : @[@"C00", @"D49"]},
+//                       @{@"Blood | Immune"        : @[@"D50", @"D89"]},
+//                       @{@"Endo | Nutrit | Metab" : @[@"E00", @"E89"]},
+//                       @{@"Mental | Behavioral"   : @[@"F01", @"F99"]},
+//                       @{@"Nervous System"        : @[@"G00", @"G99"]},
+//                       @{@"Eye | Adnexa"          : @[@"H00", @"H59"]},
+//                       @{@"Ear | Mastoid"         : @[@"H60", @"H95"]},
+//                       @{@"Circulatory"           : @[@"I00", @"I99"]},
+//                       @{@"Respiratory"           : @[@"J00", @"J99"]},
+//                       @{@"Digestive"             : @[@"K00", @"K95"]},
+//                       @{@"Skin | Subcutaneous"   : @[@"L00", @"L99"]},
+//                       @{@"Musculoskeletal"       : @[@"M00", @"M99"]},
+//                       @{@"Genetourinary"         : @[@"N00", @"N99"]},
+//                       @{@"Pregnancy | Childbirth": @[@"O00", @"O9A"]},
+//                       @{@"Perinatal"             : @[@"P00", @"P96"]},
+//                       @{@"Congenital"            : @[@"Q00", @"Q99"]},
+//                       @{@"Symp | Signs | Labs"   : @[@"R00", @"R99"]},
+//                       @{@"Injury | Poisoning"    : @[@"S00", @"T88"]},
+//                       @{@"External Causes"       : @[@"V00", @"Y99"]},
+//                       @{@"Factors | Reasons"     : @[@"Z00", @"Z99"]}];
     
     NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/Tabular.xml"];
     TFHpple *parser = [self parseFile:path];
@@ -114,10 +114,10 @@
                 
                 NSString *range = [elemChapter objectForKey:@"id"];
                 NSArray *arrRange = [range componentsSeparatedByString: @"-"];
-                section.first = [arrRange objectAtIndex:0];
+                section.first = [arrRange firstObject];
                 if (arrRange.count == 2)
                 {
-                    section.last = [arrRange objectAtIndex:1];
+                    section.last = [arrRange lastObject];
                 }
                 
                 section.parent = chapter;
@@ -137,6 +137,15 @@
                 }
                 section.children = setDiags;
                 section.version = ICD10_VERSION;
+                NSRange range1 = [section.desc rangeOfString:@"(" options:NSBackwardsSearch];
+                if (range1.location != NSNotFound)
+                {
+                    NSString *name = [section.desc substringFromIndex:range1.location+1];
+                    section.name = [name substringToIndex:name.length-1];
+                    
+                    NSString *desc = [section.desc substringToIndex:range1.location-1];
+                    section.desc = desc;
+                }
                 
                 [setSections addObject:section];
             }
@@ -145,11 +154,20 @@
                 [self applyElementContent:elemChapter toDiagnosis:chapter];
             }
         }
-        chapter.first = [[setSections objectAtIndex:0] first];
+        
+        chapter.first = [[setSections firstObject] first];
         chapter.last = [[setSections lastObject] first];
         chapter.children = setSections;
         chapter.version = ICD10_VERSION;
-        
+        NSRange range2 = [chapter.desc rangeOfString:@"(" options:NSBackwardsSearch];
+        if (range2.location != NSNotFound)
+        {
+            NSString *name = [chapter.desc substringFromIndex:range2.location+1];
+            chapter.name = [name substringToIndex:name.length-1];
+            
+            NSString *desc = [chapter.desc substringToIndex:range2.location-1];
+            chapter.desc = desc;
+        }
         [currentContext MR_save];
     }
 }
@@ -161,18 +179,6 @@
     if ([element.tagName isEqualToString:@"name"])
     {
         diag.name = content;
-        
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        NSNumber *number = [formatter numberFromString:diag.name];
-        int intVal = number ? [number intValue] : -1;
-        
-        if  (intVal >= 0 && intVal <= _arrShortNames.count)
-        {
-            NSDictionary *shortName = [_arrShortNames objectAtIndex:intVal-1];
-            diag.first = [[[shortName allValues] objectAtIndex:0] objectAtIndex:0];
-            diag.last = [[[shortName allValues] objectAtIndex:0] objectAtIndex:1];
-            diag.shortName = [[shortName allKeys] objectAtIndex:0];
-        }
     }
     else if ([element.tagName isEqualToString:@"desc"])
     {
