@@ -114,7 +114,6 @@
         <attribute name="inclusionTerm" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="useAdditionalCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10Diagnosis" inverseName="parent" inverseEntity="ICD10Diagnosis" syncable="YES"/>
@@ -212,7 +211,7 @@
         <element name="DrugReviewClass_Lookup" positionX="0" positionY="0" width="128" height="103"/>
         <element name="Favorite" positionX="0" positionY="0" width="128" height="75"/>
         <element name="History" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="ICD10Diagnosis" positionX="9" positionY="108" width="128" height="283"/>
+        <element name="ICD10Diagnosis" positionX="9" positionY="108" width="128" height="270"/>
         <element name="ICD10DiagnosisDrug" positionX="18" positionY="144" width="128" height="193"/>
         <element name="ICD10DiagnosisEIndex" positionX="45" positionY="180" width="128" height="165"/>
         <element name="ICD10DiagnosisIndex" positionX="72" positionY="189" width="128" height="165"/>

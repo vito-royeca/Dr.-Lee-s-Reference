@@ -45,11 +45,12 @@
 		8C447064190A7F73000DEFC2 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8C447063190A7F73000DEFC2 /* InAppSettings.bundle */; };
 		8C64C2BD190FB18600148440 /* MigrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64C2BC190FB18600148440 /* MigrationManager.m */; };
 		8C64C2C0190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64C2BF190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m */; };
-		8C674F49191B46E700536C02 /* DictionaryBrowseViewExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C674F48191B46E700536C02 /* DictionaryBrowseViewExpander.m */; };
-		8C674F4F191B46FE00536C02 /* FDADrugsBrowseViewExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C674F4E191B46FE00536C02 /* FDADrugsBrowseViewExpander.m */; };
-		8C674F52191B471300536C02 /* ICD10CMBrowseViewExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C674F51191B471300536C02 /* ICD10CMBrowseViewExpander.m */; };
-		8C674F55191B472500536C02 /* ICD10PCSBrowseViewExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C674F54191B472500536C02 /* ICD10PCSBrowseViewExpander.m */; };
 		8C674F5C191B55D100536C02 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C674F5B191B55D100536C02 /* InfoViewController.m */; };
+		8C6ACEB6191C993900E4A274 /* ICD10CMBrowseViewExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6ACEB2191C993900E4A274 /* ICD10CMBrowseViewExpander.m */; };
+		8C6ACEB7191C993900E4A274 /* ICD10PCSBrowseViewExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6ACEB5191C993900E4A274 /* ICD10PCSBrowseViewExpander.m */; };
+		8C6ACEBA191C997500E4A274 /* DictionaryBrowseViewExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6ACEB9191C997500E4A274 /* DictionaryBrowseViewExpander.m */; };
+		8C6ACEBD191C998200E4A274 /* DrugsBrowseViewExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6ACEBC191C998200E4A274 /* DrugsBrowseViewExpander.m */; };
+		8C6ACEC0191C9A1300E4A274 /* ICD10CMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6ACEBF191C9A1300E4A274 /* ICD10CMDetailViewController.m */; };
 		8C784CEF1910CF1E001A9FB1 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C784CEC1910CF1E001A9FB1 /* database.xcdatamodeld */; };
 		8C97C5261904EA6C000CEA20 /* DrugAppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5251904EA6C000CEA20 /* DrugAppDoc.m */; };
 		8C97C5291904EA6D000CEA20 /* DrugChemicalType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5281904EA6D000CEA20 /* DrugChemicalType_Lookup.m */; };
@@ -169,16 +170,18 @@
 		8C64C2BC190FB18600148440 /* MigrationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MigrationManager.m; sourceTree = "<group>"; };
 		8C64C2BE190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectModel+MHWAdditions.h"; sourceTree = "<group>"; };
 		8C64C2BF190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectModel+MHWAdditions.m"; sourceTree = "<group>"; };
-		8C674F47191B46E700536C02 /* DictionaryBrowseViewExpander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBrowseViewExpander.h; sourceTree = "<group>"; };
-		8C674F48191B46E700536C02 /* DictionaryBrowseViewExpander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryBrowseViewExpander.m; sourceTree = "<group>"; };
-		8C674F4D191B46FE00536C02 /* FDADrugsBrowseViewExpander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDADrugsBrowseViewExpander.h; sourceTree = "<group>"; };
-		8C674F4E191B46FE00536C02 /* FDADrugsBrowseViewExpander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDADrugsBrowseViewExpander.m; sourceTree = "<group>"; };
-		8C674F50191B471300536C02 /* ICD10CMBrowseViewExpander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10CMBrowseViewExpander.h; sourceTree = "<group>"; };
-		8C674F51191B471300536C02 /* ICD10CMBrowseViewExpander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10CMBrowseViewExpander.m; sourceTree = "<group>"; };
-		8C674F53191B472500536C02 /* ICD10PCSBrowseViewExpander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10PCSBrowseViewExpander.h; sourceTree = "<group>"; };
-		8C674F54191B472500536C02 /* ICD10PCSBrowseViewExpander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10PCSBrowseViewExpander.m; sourceTree = "<group>"; };
 		8C674F5A191B55D100536C02 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		8C674F5B191B55D100536C02 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		8C6ACEB1191C993900E4A274 /* ICD10CMBrowseViewExpander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10CMBrowseViewExpander.h; sourceTree = "<group>"; };
+		8C6ACEB2191C993900E4A274 /* ICD10CMBrowseViewExpander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10CMBrowseViewExpander.m; sourceTree = "<group>"; };
+		8C6ACEB4191C993900E4A274 /* ICD10PCSBrowseViewExpander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10PCSBrowseViewExpander.h; sourceTree = "<group>"; };
+		8C6ACEB5191C993900E4A274 /* ICD10PCSBrowseViewExpander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10PCSBrowseViewExpander.m; sourceTree = "<group>"; };
+		8C6ACEB8191C997500E4A274 /* DictionaryBrowseViewExpander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryBrowseViewExpander.h; sourceTree = "<group>"; };
+		8C6ACEB9191C997500E4A274 /* DictionaryBrowseViewExpander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryBrowseViewExpander.m; sourceTree = "<group>"; };
+		8C6ACEBB191C998200E4A274 /* DrugsBrowseViewExpander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugsBrowseViewExpander.h; sourceTree = "<group>"; };
+		8C6ACEBC191C998200E4A274 /* DrugsBrowseViewExpander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsBrowseViewExpander.m; sourceTree = "<group>"; };
+		8C6ACEBE191C9A1300E4A274 /* ICD10CMDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10CMDetailViewController.h; sourceTree = "<group>"; };
+		8C6ACEBF191C9A1300E4A274 /* ICD10CMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10CMDetailViewController.m; sourceTree = "<group>"; };
 		8C784CED1910CF1E001A9FB1 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
 		8C784CEE1910CF1E001A9FB1 /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
 		8C97C5241904EA6C000CEA20 /* DrugAppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugAppDoc.h; sourceTree = "<group>"; };
@@ -304,7 +307,8 @@
 				8C12B1A51907D70E0092F82B /* Browse */,
 				5892E0AC18F585AC004160E0 /* Dictionary */,
 				5892E0AD18F585CB004160E0 /* Drugs */,
-				5892E0AE18F585DB004160E0 /* ICD10 */,
+				8C6ACEB0191C993900E4A274 /* ICD10CM */,
+				8C6ACEB3191C993900E4A274 /* ICD10PCS */,
 				8C12B1A01907D39D0092F82B /* MainViewController.h */,
 				8C12B1A11907D39D0092F82B /* MainViewController.m */,
 				58C8A9BE19080D75001549DB /* Search */,
@@ -398,6 +402,8 @@
 		5892E0AC18F585AC004160E0 /* Dictionary */ = {
 			isa = PBXGroup;
 			children = (
+				8C6ACEB8191C997500E4A274 /* DictionaryBrowseViewExpander.h */,
+				8C6ACEB9191C997500E4A274 /* DictionaryBrowseViewExpander.m */,
 				5892E0B218F5862F004160E0 /* DictionaryDetailViewController.h */,
 				5892E0B318F5862F004160E0 /* DictionaryDetailViewController.m */,
 			);
@@ -407,6 +413,8 @@
 		5892E0AD18F585CB004160E0 /* Drugs */ = {
 			isa = PBXGroup;
 			children = (
+				8C6ACEBB191C998200E4A274 /* DrugsBrowseViewExpander.h */,
+				8C6ACEBC191C998200E4A274 /* DrugsBrowseViewExpander.m */,
 				8CEF1E7A18F809C100EAE98E /* DrugBrowseViewController.h */,
 				8CEF1E7B18F809C100EAE98E /* DrugBrowseViewController.m */,
 				5892E0B518F58657004160E0 /* DrugDetailsViewController.h */,
@@ -423,13 +431,6 @@
 			path = Drugs;
 			sourceTree = "<group>";
 		};
-		5892E0AE18F585DB004160E0 /* ICD10 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ICD10;
-			sourceTree = "<group>";
-		};
 		58C8A9BE19080D75001549DB /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,14 +445,6 @@
 			children = (
 				8C12B1A91907DA090092F82B /* BrowseViewController.h */,
 				8C12B1AA1907DA090092F82B /* BrowseViewController.m */,
-				8C674F47191B46E700536C02 /* DictionaryBrowseViewExpander.h */,
-				8C674F48191B46E700536C02 /* DictionaryBrowseViewExpander.m */,
-				8C674F4D191B46FE00536C02 /* FDADrugsBrowseViewExpander.h */,
-				8C674F4E191B46FE00536C02 /* FDADrugsBrowseViewExpander.m */,
-				8C674F50191B471300536C02 /* ICD10CMBrowseViewExpander.h */,
-				8C674F51191B471300536C02 /* ICD10CMBrowseViewExpander.m */,
-				8C674F53191B472500536C02 /* ICD10PCSBrowseViewExpander.h */,
-				8C674F54191B472500536C02 /* ICD10PCSBrowseViewExpander.m */,
 				8C674F5A191B55D100536C02 /* InfoViewController.h */,
 				8C674F5B191B55D100536C02 /* InfoViewController.m */,
 				8C12B1A61907D9F50092F82B /* RADataObject.h */,
@@ -476,6 +469,26 @@
 				8C64C2BF190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m */,
 			);
 			path = MigrationManager;
+			sourceTree = "<group>";
+		};
+		8C6ACEB0191C993900E4A274 /* ICD10CM */ = {
+			isa = PBXGroup;
+			children = (
+				8C6ACEB1191C993900E4A274 /* ICD10CMBrowseViewExpander.h */,
+				8C6ACEB2191C993900E4A274 /* ICD10CMBrowseViewExpander.m */,
+				8C6ACEBE191C9A1300E4A274 /* ICD10CMDetailViewController.h */,
+				8C6ACEBF191C9A1300E4A274 /* ICD10CMDetailViewController.m */,
+			);
+			path = ICD10CM;
+			sourceTree = "<group>";
+		};
+		8C6ACEB3191C993900E4A274 /* ICD10PCS */ = {
+			isa = PBXGroup;
+			children = (
+				8C6ACEB4191C993900E4A274 /* ICD10PCSBrowseViewExpander.h */,
+				8C6ACEB5191C993900E4A274 /* ICD10PCSBrowseViewExpander.m */,
+			);
+			path = ICD10PCS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -660,18 +673,17 @@
 				8C97C53E1904EA6E000CEA20 /* DrugApplication.m in Sources */,
 				8C2E63551910FCD500B5A908 /* ICD10DiagnosisDrug.m in Sources */,
 				8C784CEF1910CF1E001A9FB1 /* database.xcdatamodeld in Sources */,
-				8C674F55191B472500536C02 /* ICD10PCSBrowseViewExpander.m in Sources */,
 				8C12B1AB1907DA090092F82B /* BrowseViewController.m in Sources */,
 				8C12B1A81907D9F50092F82B /* RADataObject.m in Sources */,
-				8C674F4F191B46FE00536C02 /* FDADrugsBrowseViewExpander.m in Sources */,
 				8C64C2BD190FB18600148440 /* MigrationManager.m in Sources */,
+				8C6ACEBD191C998200E4A274 /* DrugsBrowseViewExpander.m in Sources */,
 				8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */,
 				8C2E63641910FCD600B5A908 /* ICD10Procedure.m in Sources */,
 				8C97C53B1904EA6E000CEA20 /* DrugReviewClass_Lookup.m in Sources */,
+				8C6ACEB7191C993900E4A274 /* ICD10PCSBrowseViewExpander.m in Sources */,
 				5892E0B418F5862F004160E0 /* DictionaryDetailViewController.m in Sources */,
 				113383461859A95400CBA6FF /* Favorite.m in Sources */,
 				8C97C5381904EA6E000CEA20 /* DrugRegActionDate.m in Sources */,
-				8C674F49191B46E700536C02 /* DictionaryBrowseViewExpander.m in Sources */,
 				5892E0BB18F58657004160E0 /* DrugDetailsViewController.m in Sources */,
 				113DE88E1843D8420080B038 /* AppDelegate.m in Sources */,
 				8C97C52F1904EA6D000CEA20 /* DrugAppDocType_Lookup.m in Sources */,
@@ -681,22 +693,24 @@
 				8C2E634C1910FC9F00B5A908 /* DictionaryTerm.m in Sources */,
 				8C97C5321904EA6D000CEA20 /* DrugProduct_TECode.m in Sources */,
 				8C12B1A21907D39D0092F82B /* MainViewController.m in Sources */,
+				8C6ACEB6191C993900E4A274 /* ICD10CMBrowseViewExpander.m in Sources */,
 				113DE88A1843D8420080B038 /* main.m in Sources */,
 				8C2E63521910FCD500B5A908 /* ICD10DiagnosisIndex.m in Sources */,
 				58C8A9C419080DA1001549DB /* SearchViewController.m in Sources */,
 				5892E0BC18F58657004160E0 /* DrugProductTableViewCell.m in Sources */,
 				8C2E635E1910FCD600B5A908 /* ICD10DiagnosisEIndex.m in Sources */,
+				8C6ACEBA191C997500E4A274 /* DictionaryBrowseViewExpander.m in Sources */,
 				8C2E63581910FCD600B5A908 /* ICD10ProcedureDefinition.m in Sources */,
 				8C2E63491910FC9F00B5A908 /* DictionarySynonym.m in Sources */,
 				8C97C5261904EA6C000CEA20 /* DrugAppDoc.m in Sources */,
 				8C64C2C0190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m in Sources */,
 				8C674F5C191B55D100536C02 /* InfoViewController.m in Sources */,
 				8CEF1E7618F8026100EAE98E /* DrugSearchViewController.m in Sources */,
+				8C6ACEC0191C9A1300E4A274 /* ICD10CMDetailViewController.m in Sources */,
 				8CEF1E7918F8092D00EAE98E /* DrugViewController.m in Sources */,
 				8C97C5291904EA6D000CEA20 /* DrugChemicalType_Lookup.m in Sources */,
 				8C2E63461910FC9E00B5A908 /* DictionaryXRef.m in Sources */,
 				113383471859A95400CBA6FF /* History.m in Sources */,
-				8C674F52191B471300536C02 /* ICD10CMBrowseViewExpander.m in Sources */,
 				8C2E634F1910FCD500B5A908 /* ICD10DiagnosisNeoplasm.m in Sources */,
 				8C97C52C1904EA6D000CEA20 /* DrugDocType_Lookup.m in Sources */,
 				5836F832189F2B3E00BE8DF3 /* Database.m in Sources */,

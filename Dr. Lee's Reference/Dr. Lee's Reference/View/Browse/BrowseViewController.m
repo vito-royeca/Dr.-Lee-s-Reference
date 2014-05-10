@@ -9,7 +9,7 @@
 #import "BrowseViewController.h"
 #import "JJJ/JJJ.h"
 #import "DictionaryBrowseViewExpander.h"
-#import "FDADrugsBrowseViewExpander.h"
+#import "DrugsBrowseViewExpander.h"
 #import "ICD10CMBrowseViewExpander.h"
 #import "ICD10PCSBrowseViewExpander.h"
 #import "InfoViewController.h"
@@ -70,12 +70,6 @@
     [self.treeView setBackgroundColor:UIColorFromRGB(0xF7F7F7)];
     
     
-    UIBarButtonItem *btnSettings = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"info.png"]
-                                                                    style:UIBarButtonItemStylePlain
-                                                                   target:self
-                                                                   action:@selector(showInfo:)];
-    
-    [self.navigationItem setRightBarButtonItem:btnSettings];
     [self.view addSubview:self.segmentedControl];
     [self.view addSubview:self.treeView];
     self.navigationItem.title = @"Browse";
@@ -100,7 +94,7 @@
         }
         case 1:
         {
-            self.delegate = [[FDADrugsBrowseViewExpander alloc] init];
+            self.delegate = [[DrugsBrowseViewExpander alloc] init];
             break;
         }
         case 2:
@@ -117,14 +111,6 @@
     
     self.data = [self.delegate initialTreeStructure];
     [self.treeView reloadData];
-}
-
--(void) showInfo:(id) sender
-{
-    NSString *info = [self.delegate treeInfo:_nodeLevel withObject:_currectNode];
-    InfoViewController *infoView = [[InfoViewController alloc] initWithHTMLString:info];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:infoView];
-    [self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
 #pragma mark - RATreeViewDelegate methods
@@ -171,14 +157,14 @@
 
 - (void)treeView:(RATreeView *)treeView didSelectRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
-    RADataObject *node = item;
+    RADataObject *data = item;
     
-    if (!node.children)
+    if (!data.children)
     {
-        NSArray *children = [self.delegate treeStructure:(int)treeNodeInfo.treeDepthLevel withObject:node];
+        NSArray *children = [self.delegate treeStructureForItem:data treeNodeInfo:treeNodeInfo];
 
-        node.children = children;
-        self.expanded = node;
+        data.children = children;
+        self.expanded = data;
 
 //        for (RADataObject *ra in self.data)
 //        {
@@ -188,6 +174,20 @@
 //            }
 //        }
         [self.treeView reloadData];
+    }
+}
+
+- (void)treeView:(RATreeView *)treeView accessoryButtonTappedForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+{
+    if ([self.delegate respondsToSelector:@selector(detailViewForItem:treeNodeInfo:)])
+    {
+        UIViewController *detailView = [self.delegate detailViewForItem:item treeNodeInfo:treeNodeInfo];
+        
+        if (detailView)
+        {
+            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailView];
+            [self.navigationController presentViewController:navController animated:NO completion:nil];
+        }
     }
 }
 
@@ -201,16 +201,12 @@
     }
     else
     {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-    cell.textLabel.text = ((RADataObject *)item).name;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    if (treeNodeInfo.treeDepthLevel == 0)
-    {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+        cell.textLabel.text = ((RADataObject *)item).name;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.detailTextLabel.textColor = [UIColor blackColor];
-    }
-    
-    return cell;
+        
+        return cell;
     }
 }
 
@@ -228,6 +224,7 @@
 - (id)treeView:(RATreeView *)treeView child:(NSInteger)index ofItem:(id)item
 {
     RADataObject *data = item;
+    
     if (item == nil)
     {
         return [self.data objectAtIndex:index];
