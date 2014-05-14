@@ -20,8 +20,8 @@
     NSString *_backButton;
 }
 
-@synthesize webView;
-@synthesize dictionaryTerm;
+@synthesize webView = _webView;
+@synthesize dictionaryTerm = _dictionaryTerm;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,18 +42,18 @@
     _backButton = @"<p><a href='#back__'>Back</a>";
     
 
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    webView.delegate = self;
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.webView.delegate = self;
     
     NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-    [webView loadHTMLString:[self composeHTMLDefinition] baseURL:bundleUrl];
+    [self.webView loadHTMLString:[self composeHTMLDefinition] baseURL:bundleUrl];
     
     UIBarButtonItem *btnAction = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                target:self
                                                                                action:@selector(doAction)];
 
     self.navigationItem.rightBarButtonItem = btnAction;
-    [self.view addSubview:webView];
+    [self.view addSubview:self.webView];
 }
 
 - (void) doAction
@@ -74,19 +74,19 @@
     [html appendFormat:@"<html><head><style type='text/css'> body {font-family:verdana;} </style> </head>"];
     [html appendFormat:@"<body"];
     
-    [html appendFormat:@"<p><font color='blue'><strong>%@</strong></font>", dictionaryTerm.term];
-    if (dictionaryTerm.pronunciation)
+    [html appendFormat:@"<p><font color='blue'><strong>%@</strong></font>", self.dictionaryTerm.term];
+    if (self.dictionaryTerm.pronunciation)
     {
-        [html appendFormat:@"<br>(<font color='red'>%@</font>)", dictionaryTerm.pronunciation];
+        [html appendFormat:@"<br>(<font color='red'>%@</font>)", self.dictionaryTerm.pronunciation];
     }
     else
     {
         [html appendFormat:@"<br>&nbsp;"];
     }
     
-    if (dictionaryTerm.definition)
+    if (self.dictionaryTerm.definition)
     {
-        NSArray *defs = [dictionaryTerm.definition componentsSeparatedByString:COMPOUND_SEPARATOR];
+        NSArray *defs = [self.dictionaryTerm.definition componentsSeparatedByString:COMPOUND_SEPARATOR];
         
         if (defs.count == 1)
         {
@@ -103,24 +103,24 @@
         }
     }
     
-    if (dictionaryTerm.xref.count > 0)
+    if (self.dictionaryTerm.xref.count > 0)
     {
         [html appendFormat:@"<p>SEE ALSO "];
         int sentinel = 0;
-        for (DictionaryXRef *ref in dictionaryTerm.xref)
+        for (DictionaryXRef *ref in self.dictionaryTerm.xref)
         {
-            [html appendFormat:@"<a href='#%@'>%@</a>%@", ref.xref, ref.xref, sentinel<dictionaryTerm.xref.count-1?@", ":@""];
+            [html appendFormat:@"<a href='#%@'>%@</a>%@", ref.xref, ref.xref, sentinel<self.dictionaryTerm.xref.count-1?@", ":@""];
             sentinel++;
         }
     }
     
-    if (dictionaryTerm.synonym.count > 0)
+    if (self.dictionaryTerm.synonym.count > 0)
     {
         [html appendFormat:@"<p>SYN "];
         int sentinel = 0;
-        for (DictionarySynonym *syn in dictionaryTerm.synonym)
+        for (DictionarySynonym *syn in self.dictionaryTerm.synonym)
         {
-            [html appendFormat:@"<a href='#%@'>%@</a>%@", syn.synonym, syn.synonym, sentinel<dictionaryTerm.synonym.count-1?@", ":@""];
+            [html appendFormat:@"<a href='#%@'>%@</a>%@", syn.synonym, syn.synonym, sentinel<self.dictionaryTerm.synonym.count-1?@", ":@""];
             sentinel++;
         }
     }
@@ -129,7 +129,7 @@
 //    if (_previousHTML && ![_previousHTML isEqualToString:html])
     if (_history.count > 0)
     {
-        if (![[_history objectAtIndex:_history.count-1] isEqualToString:dictionaryTerm.term])
+        if (![[_history objectAtIndex:_history.count-1] isEqualToString:self.dictionaryTerm.term])
         {
             [html insertString:_backButton atIndex:html.length-14];
         }
@@ -158,7 +158,7 @@
 //    if (_previousHTML && ![_previousHTML isEqualToString:html])
     if (_history.count > 0)
     {
-        if (![[_history objectAtIndex:_history.count-1] isEqualToString:dictionaryTerm.term])
+        if (![[_history objectAtIndex:_history.count-1] isEqualToString:self.dictionaryTerm.term])
         {
             [html insertString:_backButton atIndex:html.length-14];
         }

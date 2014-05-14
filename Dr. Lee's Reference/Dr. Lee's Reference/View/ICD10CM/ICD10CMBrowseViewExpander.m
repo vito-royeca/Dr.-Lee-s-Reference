@@ -9,6 +9,7 @@
 #import "ICD10CMBrowseViewExpander.h"
 #import "ICD10CMDetailViewController.h"
 #import "ICD10Diagnosis.h"
+#import "ICD10DiagnosisNeoplasm.h"
 #import "RADataObject.h"
 
 @implementation ICD10CMBrowseViewExpander
@@ -29,95 +30,93 @@
 {
     NSMutableArray *tree = [[NSMutableArray alloc] init];
     RADataObject *object = item;
+    NSArray *children;
+    NSString *name;
     
-    switch (treeNodeInfo.treeDepthLevel)
+    
+    if (treeNodeInfo.treeDepthLevel == 0)
     {
-        case 0:
+        name = object.name;
+    }
+    else
+    {
+        while (object)
         {
-            if ([object.name isEqualToString:@"Tabular"])
-            {
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
-                
-                for (ICD10Diagnosis *diag in [ICD10Diagnosis MR_findAllSortedBy:@"first" ascending:YES withPredicate:predicate])
-                {
-                    NSMutableString *buffer = [[NSMutableString alloc] init];
-                    if (diag.first)
-                    {
-                        [buffer appendFormat:@"%@", diag.first];
-                        if (diag.last)
-                        {
-                            [buffer appendFormat:@"-%@", diag.last];
-                        }
-                    }
-                    else
-                    {
-                        [buffer appendFormat:@"%@", diag.name];
-                    }
-                    RADataObject *data = [[RADataObject alloc] initWithName:buffer parent:object children:nil object:diag];
-                    [tree addObject:data];
-                }
-            }
+            name = object.name;
+            object = object.parent;
         }
-        case 1:
+        object = item;
+    }
+    
+    if ([name isEqualToString:@"Tabular"])
+    {
+        if (treeNodeInfo.treeDepthLevel == 0)
         {
-            if ([object.parent.name isEqualToString:@"Tabular"])
-            {
-                ICD10Diagnosis *parent = object.object;
-                
-                for (ICD10Diagnosis *diag in parent.children)
-                {
-                    NSMutableString *buffer = [[NSMutableString alloc] init];
-                    if (diag.first)
-                    {
-                        [buffer appendFormat:@"%@", diag.first];
-                        if (diag.last)
-                        {
-                            [buffer appendFormat:@"-%@", diag.last];
-                        }
-                    }
-                    else
-                    {
-                        [buffer appendFormat:@"%@", diag.name];
-                    }
-                    RADataObject *data = [[RADataObject alloc] initWithName:buffer parent:object children:nil object:diag];
-                    [tree addObject:data];
-                }
-            }
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
+            children = [ICD10Diagnosis MR_findAllSortedBy:@"first" ascending:YES withPredicate:predicate];
         }
-        case 2:
+        else
         {
-            if ([object.parent.parent.name isEqualToString:@"Tabular"])
+            ICD10Diagnosis *parent = object.object;
+            children = [parent.children array];
+        }
+        
+        for (ICD10Diagnosis *diag in children)
+        {
+            NSMutableString *buffer = [[NSMutableString alloc] init];
+            if (diag.first)
             {
-                ICD10Diagnosis *parent = object.object;
-                
-                for (ICD10Diagnosis *diag in parent.children)
+                [buffer appendFormat:@"%@", diag.first];
+                if (diag.last)
                 {
-                    NSMutableString *buffer = [[NSMutableString alloc] init];
-                    if (diag.first)
-                    {
-                        [buffer appendFormat:@"%@", diag.first];
-                        if (diag.last)
-                        {
-                            [buffer appendFormat:@"-%@", diag.last];
-                        }
-                    }
-                    else
-                    {
-                        [buffer appendFormat:@"%@", diag.name];
-                    }
-                    RADataObject *data = [[RADataObject alloc] initWithName:buffer parent:object children:nil object:diag];
-                    [tree addObject:data];
+                    [buffer appendFormat:@"-%@", diag.last];
                 }
             }
+            else
+            {
+                [buffer appendFormat:@"%@", diag.name];
+            }
+            RADataObject *data = [[RADataObject alloc] initWithName:buffer parent:object children:nil object:diag];
+            [tree addObject:data];
         }
     }
     
+    else if ([name isEqualToString:@"Neoplasm"])
+    {
+        if (treeNodeInfo.treeDepthLevel == 0)
+        {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
+            children = [ICD10DiagnosisNeoplasm MR_findAllSortedBy:@"title" ascending:YES withPredicate:predicate];
+        }
+        else
+        {
+            ICD10DiagnosisNeoplasm *parent = object.object;
+            children = [parent.children array];
+        }
+        
+        for (ICD10DiagnosisNeoplasm *neo in children)
+        {
+            RADataObject *data = [[RADataObject alloc] initWithName:neo.title parent:object children:nil object:neo];
+            [tree addObject:data];
+        }
+    }
+    
+    else if ([name isEqualToString:@"Drugs"])
+    {
+        
+    }
+    
+    else if ([name isEqualToString:@"Index"])
+    {
+        
+    }
+    
+    else if ([name isEqualToString:@"Extended Index"])
+    {
+        
+    }
+    
     return tree;
-}
-
--(NSString*) treeInfo:(int) depthLevel withObject:(RADataObject*) object
-{
-    return @"ICD10 CM";
 }
 
 - (UITableViewCell *)cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
@@ -128,34 +127,43 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = data.name;
     cell.detailTextLabel.textColor = [UIColor blackColor];
+    cell.imageView.image = nil;
     
-    ICD10Diagnosis *diag = (ICD10Diagnosis*) data.object;
-    if (diag)
+    if ([data.object isKindOfClass:[ICD10Diagnosis class]])
     {
+        ICD10Diagnosis *diag = data.object;
+
         cell.detailTextLabel.text = diag.desc;
         cell.accessoryType = UITableViewCellAccessoryDetailButton;
+        if (diag.children.count > 0)
+        {
+            if (treeNodeInfo.expanded)
+            {
+                cell.imageView.image = [UIImage imageNamed:@"down4.png"];
+            }
+            else
+            {
+                cell.imageView.image = [UIImage imageNamed:@"forward.png"];
+            }
+        }
     }
-//    switch (treeNodeInfo.treeDepthLevel)
-//    {
-//        case 0:
-//        {
-//            cell.detailTextLabel.textColor = [UIColor blackColor];
-//            break;
-//        }
-//        case 1:
-//        case 2:
-//        case 3:
-//        {
-//            ICD10Diagnosis *diag = (ICD10Diagnosis*) data.object;
-//            
-//            cell.detailTextLabel.text = diag.desc;
-//            break;
-//        }
-//        default:
-//        {
-//            
-//        }
-//    }
+    else if ([data.object isKindOfClass:[ICD10DiagnosisNeoplasm class]])
+    {
+        ICD10DiagnosisNeoplasm *neo = data.object;
+        
+        cell.accessoryType = UITableViewCellAccessoryDetailButton;
+        if (neo.children.count > 0)
+        {
+            if (treeNodeInfo.expanded)
+            {
+                cell.imageView.image = [UIImage imageNamed:@"down4.png"];
+            }
+            else
+            {
+                cell.imageView.image = [UIImage imageNamed:@"forward.png"];
+            }
+        }
+    }
     
     return cell;
 }

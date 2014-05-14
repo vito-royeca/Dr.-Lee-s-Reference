@@ -58,7 +58,7 @@
     NSFetchedResultsController *nsfrc = [[Database sharedInstance] search:dataSource
                                                                     query:self.searchBar.text
                                                              narrowSearch:NO];
-    _fetchedResultsController = nsfrc;
+    self.fetchedResultsController = nsfrc;
     _fetchedResultsController.delegate = self;
     return _fetchedResultsController;
 }
@@ -118,6 +118,12 @@
     // remove the "< Back" title in back buttons
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
                                                          forBarMetrics:UIBarMetricsDefault];
+    
+}
+
+- (void)viewDidUnload
+{
+    self.fetchedResultsController = nil;
 }
 
 -(void) segmentedControlChangedValue:(id) sender
@@ -277,7 +283,7 @@
 - (void) doSearch
 {
     self.fetchedResultsController = nil;
-
+    
     NSError *error;
     if (![[self fetchedResultsController] performFetch:&error])
     {

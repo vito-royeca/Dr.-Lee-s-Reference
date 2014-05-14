@@ -62,6 +62,11 @@ static Database *_me;
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kDatabaseStore];
 }
 
+- (void) closeDb
+{
+    [MagicalRecord cleanUp];
+}
+
 #if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
 - (NSFetchedResultsController*)search:(DataSource)dataSource
                                 query:(NSString*)query
@@ -158,7 +163,7 @@ static Database *_me;
         }
     }
 
-    NSManagedObjectContext *moc = [NSManagedObjectContext MR_contextForCurrentThread];
+    NSManagedObjectContext *moc = [NSManagedObjectContext MR_defaultContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
                                                                    ascending:YES];

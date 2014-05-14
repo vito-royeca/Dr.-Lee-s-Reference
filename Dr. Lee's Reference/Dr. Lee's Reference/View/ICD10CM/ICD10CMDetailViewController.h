@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ICD10Diagnosis.h"
 
-@interface ICD10CMDetailViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface ICD10CMDetailViewController : UIViewController<UIWebViewDelegate>
 
 @property(strong,nonatomic) ICD10Diagnosis *diagnosis;
-@property(strong,nonatomic) NSMutableArray *data;
-@property(strong,nonatomic) UITableView *tblData;
+@property(strong, nonatomic) UIWebView *webView;
 
 -(id) initWithDiagnosis:(ICD10Diagnosis*) diagnosis;
 

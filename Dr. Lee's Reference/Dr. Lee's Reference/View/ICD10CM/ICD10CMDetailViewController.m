@@ -16,8 +16,7 @@
 @implementation ICD10CMDetailViewController
 
 @synthesize diagnosis = _diagnosis;
-@synthesize data = _data;
-@synthesize tblData = _tblData;
+@synthesize webView = _webView;
 
 -(id) initWithDiagnosis:(ICD10Diagnosis*) diagnosis
 {
@@ -40,52 +39,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.data = [[NSMutableArray alloc] init];
-    
-    [self.data addObject:@{@"Code": @[self.diagnosis.name]}];
-    [self.data addObject:@{@"Description": @[self.diagnosis.desc]}];
-     
-    if (self.diagnosis.inclusionTerm)
-    {
-        [self.data addObject:@{@"Inclusion Terms" : [self.diagnosis.inclusionTerm componentsSeparatedByString:COMPOUND_SEPARATOR]}];
-    }
-    if (self.diagnosis.includes)
-    {
-        [self.data addObject:@{@"Includes" : [self.diagnosis.includes componentsSeparatedByString:COMPOUND_SEPARATOR]}];
-    }
-    if (self.diagnosis.excludes)
-    {
-        [self.data addObject:@{@"Excludes" : [self.diagnosis.excludes componentsSeparatedByString:COMPOUND_SEPARATOR]}];
-    }
-    if (self.diagnosis.useAdditionalCode)
-    {
-        [self.data addObject:@{@"Use Additional Code" : [self.diagnosis.useAdditionalCode componentsSeparatedByString:COMPOUND_SEPARATOR]}];
-    }
-    if (self.diagnosis.excludes1)
-    {
-        [self.data addObject:@{@"Excludes 1" : [self.diagnosis.excludes1 componentsSeparatedByString:COMPOUND_SEPARATOR]}];
-    }
-    if (self.diagnosis.excludes2)
-    {
-        [self.data addObject:@{@"Excludes 2" : [self.diagnosis.excludes2 componentsSeparatedByString:COMPOUND_SEPARATOR]}];
-    }
-    if (self.diagnosis.codeFirst)
-    {
-        [self.data addObject:@{@"Code First" : [self.diagnosis.codeFirst componentsSeparatedByString:COMPOUND_SEPARATOR]}];
-    }
-    if (self.diagnosis.codeAlso)
-    {
-        [self.data addObject:@{@"Code Also" : [self.diagnosis.codeAlso componentsSeparatedByString:COMPOUND_SEPARATOR]}];
-    }
     
     CGFloat dX = 0;
     CGFloat dY = 0;
     CGFloat dWidth = self.view.frame.size.width;
     CGFloat dHeight = self.view.frame.size.height;
     CGRect frame = CGRectMake(dX, dY, dWidth, dHeight);
-    self.tblData = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
-    self.tblData.dataSource = self;
-    self.tblData.delegate = self;
+    self.webView = [[UIWebView alloc] initWithFrame:frame];
+    self.webView.delegate = self;
+    
+    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    [self.webView loadHTMLString:[self composeHTML] baseURL:bundleUrl];
     
     UIBarButtonItem *btnClose = [[UIBarButtonItem alloc] initWithTitle:@"Close"
                                                                  style:UIBarButtonItemStylePlain
@@ -93,7 +57,7 @@
                                                                 action:@selector(closeDetail:)];
     
     [self.navigationItem setRightBarButtonItem:btnClose];
-    [self.view addSubview:self.tblData];
+    [self.view addSubview:self.webView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,44 +71,112 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
-#pragma mark UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSString*) composeHTML
 {
-    NSDictionary *dict = [self.data objectAtIndex:section];
-//    NSArray *arr = [dict objectForKey:[[dict allKeys] firstObject]];
-//    return arr.count;
-    return [dict allValues].count;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return self.data.count;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSDictionary *dict = [self.data objectAtIndex:section];
-    return [[dict allKeys] firstObject];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"SearchResultsCell";
+    NSMutableString *html = [[NSMutableString alloc] init];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
+    [html appendFormat:@"<html><head><style type='text/css'> body {font-family:verdana;} </style> </head>"];
+    [html appendFormat:@"<body"];
+    
+    [html appendFormat:@"<p><font color='blue'><strong>%@</strong></font>", self.diagnosis.name];
+    [html appendFormat:@"<p>%@", self.diagnosis.desc];
+    
+    
+    if (self.diagnosis.inclusionTerm)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        [html appendFormat:@"<p><strong>Inclusion Terms</strong>"];
+        [html appendFormat:@"<ul>"];
+        for (NSString *x in [self.diagnosis.inclusionTerm componentsSeparatedByString:COMPOUND_SEPARATOR])
+        {
+            [html appendFormat:@"<li>%@</li>", x];
+        }
+        [html appendFormat:@"</ul>"];
     }
     
-    NSDictionary *dict = [self.data objectAtIndex:indexPath.section];
-    NSArray *arr = [dict allValues];
-    NSLog(@"%@", [arr objectAtIndex:indexPath.row]);
-    cell.textLabel.text = @"high";[arr objectAtIndex:indexPath.row];
-    return cell;
+    if (self.diagnosis.includes)
+    {
+        [html appendFormat:@"<p><strong>Includes</strong>"];
+        [html appendFormat:@"<ul>"];
+        for (NSString *x in [self.diagnosis.includes componentsSeparatedByString:COMPOUND_SEPARATOR])
+        {
+            [html appendFormat:@"<li>%@</li>", x];
+        }
+        [html appendFormat:@"</ul>"];
+    }
+    
+    if (self.diagnosis.excludes)
+    {
+        [html appendFormat:@"<p><strong>Excludes</strong>"];
+        [html appendFormat:@"<ul>"];
+        for (NSString *x in [self.diagnosis.excludes componentsSeparatedByString:COMPOUND_SEPARATOR])
+        {
+            [html appendFormat:@"<li>%@</li>", x];
+        }
+        [html appendFormat:@"</ul>"];
+    }
+    
+    if (self.diagnosis.useAdditionalCode)
+    {
+        [html appendFormat:@"<p><strong>Use Additional Code</strong>"];
+        [html appendFormat:@"<ul>"];
+        for (NSString *x in [self.diagnosis.useAdditionalCode componentsSeparatedByString:COMPOUND_SEPARATOR])
+        {
+            [html appendFormat:@"<li>%@</li>", x];
+        }
+        [html appendFormat:@"</ul>"];
+    }
+    
+    if (self.diagnosis.excludes1)
+    {
+        [html appendFormat:@"<p><strong>Excludes 1</strong>"];
+        [html appendFormat:@"<ul>"];
+        for (NSString *x in [self.diagnosis.excludes1 componentsSeparatedByString:COMPOUND_SEPARATOR])
+        {
+            [html appendFormat:@"<li>%@</li>", x];
+        }
+        [html appendFormat:@"</ul>"];
+    }
+
+    if (self.diagnosis.excludes2)
+    {
+        [html appendFormat:@"<p><strong>Excludes 2</strong>"];
+        [html appendFormat:@"<ul>"];
+        for (NSString *x in [self.diagnosis.excludes2 componentsSeparatedByString:COMPOUND_SEPARATOR])
+        {
+            [html appendFormat:@"<li>%@</li>", x];
+        }
+        [html appendFormat:@"</ul>"];
+    }
+    
+    if (self.diagnosis.codeFirst)
+    {
+        [html appendFormat:@"<p><strong>Code First</strong>"];
+        [html appendFormat:@"<ul>"];
+        for (NSString *x in [self.diagnosis.codeFirst componentsSeparatedByString:COMPOUND_SEPARATOR])
+        {
+            [html appendFormat:@"<li>%@</li>", x];
+        }
+        [html appendFormat:@"</ul>"];
+    }
+    
+    if (self.diagnosis.codeAlso)
+    {
+        [html appendFormat:@"<p><strong>Code Also</strong>"];
+        [html appendFormat:@"<ul>"];
+        for (NSString *x in [self.diagnosis.codeAlso componentsSeparatedByString:COMPOUND_SEPARATOR])
+        {
+            [html appendFormat:@"<li>%@</li>", x];
+        }
+        [html appendFormat:@"</ul>"];
+    }
+    
+    [html appendFormat:@"</body></html>"];
+    
+    return html;
 }
 
-#pragma mark UITableViewDelegate
+#pragma mark UITableViewDataSource
+
 
 /*
 #pragma mark - Navigation

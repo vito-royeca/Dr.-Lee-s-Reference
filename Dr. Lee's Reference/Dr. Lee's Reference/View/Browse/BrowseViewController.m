@@ -141,17 +141,22 @@
 
 - (void)treeView:(RATreeView *)treeView willDisplayCell:(UITableViewCell *)cell forItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
+    RADataObject *object = item;
+    
     if (treeNodeInfo.treeDepthLevel == 0)
     {
         cell.backgroundColor = UIColorFromRGB(0xF7F7F7);
     }
-    else if (treeNodeInfo.treeDepthLevel == 1)
+    else
     {
-        cell.backgroundColor = UIColorFromRGB(0xD1EEFC);
-    }
-    else if (treeNodeInfo.treeDepthLevel == 2)
-    {
-        cell.backgroundColor = UIColorFromRGB(0xE0F8D8);
+        if (treeNodeInfo.treeDepthLevel % 2 == 0)
+        {
+            cell.backgroundColor = UIColorFromRGB(0xD1EEFC);
+        }
+        else
+        {
+            cell.backgroundColor = UIColorFromRGB(0xE0F8D8);
+        }
     }
 }
 
