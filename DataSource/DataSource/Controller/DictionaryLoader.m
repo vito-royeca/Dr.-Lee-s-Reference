@@ -439,6 +439,8 @@
     [_xrefsParser parse];
     [is close];
     
+    [[Database sharedInstance ] closeDb];
+    
     NSDate *dateEnd = [NSDate date];
     NSTimeInterval timeDifference = [dateEnd timeIntervalSinceDate:dateStart];
     NSLog(@"Started: %@", dateStart);

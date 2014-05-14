@@ -69,6 +69,8 @@
     NSLog(@"Drug = %tu", [ICD10DiagnosisDrug MR_countOfEntities]);
     NSLog(@"Index = %tu", [ICD10DiagnosisIndex MR_countOfEntities]);
     NSLog(@"EIndex = %tu", [ICD10DiagnosisEIndex MR_countOfEntities]);
+    
+    [[Database sharedInstance ] closeDb];
 }
 
 #pragma mark - Tabular methods

@@ -27,6 +27,7 @@ typedef enum
 + (id)sharedInstance;
 
 - (void) setupDb;
+- (void) closeDb;
 
 #if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
 - (NSFetchedResultsController*)search:(DataSource)dataSource

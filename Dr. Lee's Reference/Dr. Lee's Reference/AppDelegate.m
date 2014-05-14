@@ -63,9 +63,7 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
 
-//    [[Database sharedInstance] saveContext];
-    [MagicalRecord cleanUp];
-
+    [[Database sharedInstance] closeDb];
 }
 
 @end
