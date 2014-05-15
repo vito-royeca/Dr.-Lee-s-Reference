@@ -22,6 +22,7 @@
 
 @synthesize webView = _webView;
 @synthesize dictionaryTerm = _dictionaryTerm;
+@synthesize searchTerm = _searchTerm;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,11 +49,11 @@
     NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     [self.webView loadHTMLString:[self composeHTMLDefinition] baseURL:bundleUrl];
     
-    UIBarButtonItem *btnAction = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                               target:self
-                                                                               action:@selector(doAction)];
-
-    self.navigationItem.rightBarButtonItem = btnAction;
+//    UIBarButtonItem *btnAction = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+//                                                                               target:self
+//                                                                               action:@selector(doAction)];
+//
+//    self.navigationItem.rightBarButtonItem = btnAction;
     [self.view addSubview:self.webView];
 }
 
@@ -74,7 +75,14 @@
     [html appendFormat:@"<html><head><style type='text/css'> body {font-family:verdana;} </style> </head>"];
     [html appendFormat:@"<body"];
     
-    [html appendFormat:@"<p><font color='blue'><strong>%@</strong></font>", self.dictionaryTerm.term];
+    NSString *term = self.dictionaryTerm.term;
+    if (self.searchTerm && self.searchTerm.length>1)
+    {
+        term = [term stringByReplacingOccurrencesOfString:self.searchTerm withString:[NSString stringWithFormat:@"<mark>%@</mark>", self.searchTerm]];
+    }
+    [html appendFormat:@"<p><font color='blue'><strong>%@</strong></font>", term];
+    
+    
     if (self.dictionaryTerm.pronunciation)
     {
         [html appendFormat:@"<br>(<font color='red'>%@</font>)", self.dictionaryTerm.pronunciation];
@@ -86,7 +94,21 @@
     
     if (self.dictionaryTerm.definition)
     {
-        NSArray *defs = [self.dictionaryTerm.definition componentsSeparatedByString:COMPOUND_SEPARATOR];
+        NSMutableArray *defs = [[NSMutableArray alloc] init];
+        
+        for (NSString *def in [NSMutableArray arrayWithArray:[self.dictionaryTerm.definition componentsSeparatedByString:COMPOUND_SEPARATOR]])
+        {
+            if (self.searchTerm && self.searchTerm.length>1)
+            {
+                NSString *defReplacement = [def stringByReplacingOccurrencesOfString:self.searchTerm withString:[NSString stringWithFormat:@"<mark>%@</mark>", self.searchTerm]];
+                
+                [defs addObject:defReplacement];
+            }
+            else
+            {
+                [defs addObject:def];
+            }
+        }
         
         if (defs.count == 1)
         {

@@ -19,5 +19,6 @@
 @property(strong, nonatomic) UIWebView *webView;
 
 @property(strong, nonatomic) DictionaryTerm *dictionaryTerm;
+@property(strong, nonatomic) NSString *searchTerm;
 
 @end

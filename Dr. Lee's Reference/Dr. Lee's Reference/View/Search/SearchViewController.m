@@ -234,6 +234,7 @@
         {
             DictionaryDetailViewController *v = [[DictionaryDetailViewController alloc] init];
             v.dictionaryTerm = object;
+            v.searchTerm = self.searchBar.text;
             viewController = v;
             break;
         }

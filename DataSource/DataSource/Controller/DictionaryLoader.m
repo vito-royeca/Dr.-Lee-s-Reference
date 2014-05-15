@@ -447,6 +447,10 @@
     NSLog(@"Started: %@", dateStart);
     NSLog(@"Ended: %@", dateEnd);
     NSLog(@"Time Elapsed: %@",  [JJJUtil formatInterval:timeDifference]);
+    for (NSString *x in [JJJUtil alphabetWithWildcard])
+    {
+        NSLog(@"%@=%tu", x, [DictionaryTerm MR_findByAttribute:@"termInitial" withValue:x].count);
+    }
 }
 
 -(void) saveTermToDatabase:(NSDictionary*)dict
