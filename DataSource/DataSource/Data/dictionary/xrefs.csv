@@ -116,13 +116,13 @@
 79797|intelligence
 1064|Addis count
 90353|Addis count
-1066|Addison clinical planes
-1066|under plane
 1065|Addison anemia
 1065|Addison disease
 1065|addisonian anemia
 1065|addisonian crisis
 1065|Addison-Biermer disease
+1066|Addison clinical planes
+1066|under plane
 1082|adeno-
 92207|lymphatic tissue
 92207|epithelium
@@ -201,8 +201,8 @@
 1955|Albarran y Dominguez tubules
 1955|under tubule
 1957|Albers-Schönberg disease
-1959|Albert stain
 1958|Albert suture
+1959|Albert stain
 1963|Albini nodules
 1963|under nodule
 1964|ocular albinism
@@ -240,8 +240,8 @@
 2129|Aldrich syndrome
 2129|Wiskott-Aldrich syndrome
 11131|cutaneous leishmaniasis
-2145|Alexander hearing impairment
 2146|Alexander disease
+2145|Alexander hearing impairment
 2160|alge-
 2175|alge-
 2179|alge-
@@ -344,9 +344,9 @@
 3555|Andersch ganglion
 3555|Andersch nerve
 3556|Andersen disease
-3557|Anderson-Collip test
 3558|Anderson splint
 3558|Roger Anderson pin fixation appliance
+3557|Anderson-Collip test
 3562|andral decubitus
 2448|female pattern alopecia
 2448|male pattern alopecia
@@ -541,17 +541,17 @@
 6350|under stage
 18018|Arneth stages
 18018|under stage
-6353|Arnold bodies
-6353|under body
-6353|Arnold-Chiari deformity
-6353|Arnold-Chiari malformation
-6353|Arnold-Chiari syndrome
 6352|Arnold bundle
 6352|Arnold canal
 6352|Arnold ganglion
 6352|Arnold nerve
 6352|Arnold tract
 6352|foramen of Arnold
+6353|Arnold bodies
+6353|under body
+6353|Arnold-Chiari deformity
+6353|Arnold-Chiari malformation
+6353|Arnold-Chiari syndrome
 6355|aromatic compound
 19519|cyclic compound
 6377|Arrhenius doctrine
@@ -777,12 +777,12 @@
 9319|Ball operation
 9325|Ballance sign
 9325|Koerte-Ballance operation
-9357|Bamberger-Marie disease
-9357|Bamberger-Marie syndrome
 9358|Bamberger albuminuria
 9358|Bamberger disease
 9358|Bamberger sign
 9358|Bamberger-Pins-Ewart sign
+9357|Bamberger-Marie disease
+9357|Bamberger-Marie syndrome
 9360|zone2Any ribbon-shaped or cordlike anatomic structure that encircles or binds another structure or that connects two or more parts.fascia
 9360|line
 9360|linea
@@ -807,8 +807,8 @@
 9503|Barkman reflex
 9504|Barkow ligaments
 9504|under ligament
-9505|Barlow syndrome
 9506|Barlow disease
+9505|Barlow syndrome
 9509|Barnes dystrophy
 9508|Barnes curve
 9508|Barnes zone
@@ -911,9 +911,9 @@
 11544|Böttcher space
 11544|Charcot-Böttcher crystalloids
 11544|under crystalloid
-12644|Büchner extract
 12643|Büchner extract
 12643|Büchner funnel
+12644|Büchner extract
 12649|Reis-Bücklers corneal dystrophy
 12850|Bürger-Grütz syndrome
 12850|Bürger-Grütz disease
@@ -931,11 +931,11 @@
 9830|Bechterew-Mendel reflex
 9830|Mendel-Bechterew reflex
 61359|vestibular nuclei
-9832|Beck triad
 9831|Beck method
+9832|Beck triad
+9834|Becker nevus
 9833|Becker-type tardive muscular dystrophy
 9833|Becker muscular dystrophy
-9834|Becker nevus
 9835|Beckmann apparatus
 9836|Beckwith-Wiedemann syndrome
 9838|becquerel
@@ -943,9 +943,9 @@
 9838|under ray
 82943|bedsore
 9851|Cimex
-9853|Bednar tumor
 9854|Bednar aphthae
 9854|under aphtha
+9853|Bednar tumor
 86224|xylose
 9861|Beer knife
 9860|Beer-Lambert law
@@ -1011,10 +1011,10 @@
 9943|Bensley specific granules
 9943|under granule
 9992|Berardinelli syndrome
-9998|Berger rhythm
 9997|Berger disease
 9997|Berger focal glomerulonephritis
 9999|Berger space
+9998|Berger rhythm
 10000|Bergman sign
 10001|Bergmann cords
 10001|under cord
@@ -1224,21 +1224,21 @@
 10880|Bodansky unit
 10882|Bodian copper-protargol stain
 47933|kinesics
+11120|Danielssen-Boeck disease
 11121|Boeck disease
 11121|Boeck sarcoid
 11121|Besnier-Boeck-Schaumann disease
 11121|Besnier-Boeck-Schaumann syndrome
-11120|Danielssen-Boeck disease
 11122|Boerhaave syndrome
 11125|Bogros space
 11124|Bogros serous membrane
 11126|Bohn nodules
 11126|under nodule
+11127|Bohr effect
+11127|Bohr equation
 11128|Bohr atom
 11128|Bohr magneton
 11128|Bohr theory
-11127|Bohr effect
-11127|Bohr equation
 11147|Boll cells
 11147|under cell
 11148|Bollinger granules
@@ -1395,12 +1395,12 @@
 12365|Brock syndrome
 12365|Brock operation
 12366|Brockenbrough sign
-12369|Brodie ligament
 12368|Brodie abscess
 12368|Brodie bursa
 12368|Brodie disease
 12368|Brodie knee
 12370|Brodie fluid
+12369|Brodie ligament
 12372|Brodmann areas
 12372|under area
 6159|cerebral cortex
@@ -1410,18 +1410,18 @@
 12400|broncho-
 12656|laryngotracheal diverticulum
 25327|hemochromatosis
-12522|Brooke ileostomy
 12521|Brooke tumor
+12522|Brooke ileostomy
 12523|Broviac catheter
 12524|eyebrow
 71931|cephalic presentation
+12525|Brown sign
+12528|Brown-Brenn stain
+12527|Brown-Adson forceps
 12526|Brown syndrome
 12529|brownian motion
 12529|brownian movement
 12529|brownian-Zsigmondy movement
-12525|Brown sign
-12528|Brown-Brenn stain
-12527|Brown-Adson forceps
 12533|Brown-Séquard paralysis
 12533|Brown-Séquard syndrome
 12530|Denis Browne pouch
@@ -1458,9 +1458,9 @@
 12647|Buck extension
 12647|Buck fascia
 12647|Buck traction
-12651|Bucky diaphragm
 12652|grid
 12652|Bucky diaphragm
+12651|Bucky diaphragm
 12654|Klüver-Bucy syndrome
 12681|Budd syndrome
 12681|Budd-Chiari syndrome
@@ -1544,10 +1544,10 @@
 13326|leucovorin calcium
 81844|aortic dissection
 13405|Caldani ligament
-13407|Caldwell-Luc operation
 13409|Caldwell projection
 13409|Caldwell view
 13408|Caldwell-Moloy classification
+13407|Caldwell-Luc operation
 13423|hepatitis E virus
 13423|Norwalk agent
 13441|Calkins sign
@@ -1928,9 +1928,9 @@
 62986|oculopharyngeal dystrophy
 17555|Churg-Strauss syndrome
 17557|Chvostek sign
+17604|Ciaccio stain
 17603|Ciaccio glands
 17603|under gland
-17604|Ciaccio stain
 37094|accessory lacrimal glands
 17627|cilio-
 14695|tarsus2
@@ -1975,10 +1975,10 @@
 17968|Claisen condensation
 17996|Clapton line
 17997|Clara cell
+18001|Clark weight rule
 18000|Clark level
 18003|Clark electrode
 18002|Sandison-Clark chamber
-18001|Clark weight rule
 18004|Clarke column
 18004|Clarke nucleus
 18005|Clarke-Hadfield syndrome
@@ -2058,8 +2058,8 @@
 4726|cold agglutinin
 4727|cold agglutinin
 18805|Goldie-Coldman hypothesis
-18807|Graham-Cole test
 18806|Benedict-Hopkins-Cole reagent
+18807|Graham-Cole test
 7039|left colic artery
 7039|middle colic artery
 7039|right colic artery
@@ -2139,9 +2139,9 @@
 51692|hereditary lymphedema
 19819|Bennhold Congo red stain
 19841|conjugate
-19922|Conn syndrome
 19921|Hucker-Conn stain
 19923|Hucker-Conn stain
+19922|Conn syndrome
 9459|major connector
 9459|minor connector
 19943|Connell suture
@@ -2188,9 +2188,9 @@
 20439|Cori ester
 20438|Cori disease
 86229|d-glucose
-20462|Corner tampon
 20461|Corner-Allen test
 20461|Corner-Allen unit
+20462|Corner tampon
 20463|stratum corneum epidermidis
 20463|stratum corneum unguis
 20495|anterior horn2
@@ -2435,787 +2435,3 @@
 4237|Ǻngström law
 4237|angstrom unit
 4237|Ǻngström scale
-22760|physiologic dead space
-22865|d'Arcet metal
-22871|d'Arsonval current
-22871|d'Arsonval galvanometer
-24094|d'Espine sign
-24303|d'Herelle phenomenon
-24303|Twort-d'Herelle phenomenon
-26373|d'Ocagne nomogram
-5863|fructose
-22814|Da Fano stain
-90466|immunologic pregnancy test
-22770|Daae disease
-22772|dacryo-
-22798|dactylo-
-22804|digit
-22811|Galton system of classification of fingerprints
-22811|under fingerprint
-22817|Aschner-Dagnini reflex
-22823|Dakin fluid
-22823|Dakin solution
-22823|Dakin-Carrel treatment
-22824|Dale reaction
-22824|Dale-Feldberg law
-22824|Schultz-Dale reaction
-76097|Schultz-Dale reaction
-22825|Dalen-Fuchs nodules
-22825|under nodule
-22826|Shine-Dalgarno sequence
-22827|Dalrymple sign
-22828|Dalton law
-22828|Dalton-Henry law
-22828|daltonian
-22828|daltonism
-22834|Dam unit
-22847|Dana operation
-22847|Putnam-Dana syndrome
-22849|Dance sign
-22855|Dandy operation
-22855|Dandy-Walker syndrome
-62800|third ventriculostomy
-62800|trigeminal rhizotomy
-22856|Dane particles
-22856|under particle
-22857|Danforth sign
-22858|Danielssen disease
-22858|Danielssen-Boeck disease
-22859|Ehlers-Danlos syndrome
-22862|Danysz phenomenon
-22863|DAPI stain
-22866|Darier disease
-22866|Darier sign
-22867|nucleus of Darkschewitsch
-22868|Darling disease
-22873|dartos fascia
-22873|dartos muscle
-11134|cutaneous leishmaniasis
-22882|data
-22887|Daubenton angle
-22887|Daubenton line
-22887|Daubenton plane
-22888|daughter isotope
-22888|radionuclide generator
-45993|radionuclide generator
-45993|cow
-22891|Davidoff cells
-22891|under cell
-22892|Davidson syringe
-22893|Daviel operation
-22893|Daviel spoon
-22894|Davies disease
-22896|Davis graft
-22896|Crowe-Davis mouth gag
-22897|Davis battery model of transduction
-22898|sound
-22899|Dawson encephalitis
-22902|Riley-Day syndrome
-22901|Day test
-23403|déjà vu phenomenon
-26387|Döderlein bacillus
-26396|Döhle bodies
-26396|under body
-26396|Döhle inclusions
-26396|under inclusion
-26466|Pette-Döring disease
-27006|Dührssen incisions
-27006|under incision
-27067|Dürck nodes
-27067|under node
-23054|de Clerambault syndrome
-23412|de Lange syndrome
-23537|De Morgan spots
-23537|under spot
-23539|de Morsier syndrome
-23542|Musset
-23799|de Pezzer catheter
-23856|de Quervain disease
-23856|de Quervain tenosynovitis
-23856|de Quervain thyroiditis
-24032|De Sanctis-Cacchione syndrome
-24220|de Wecker scissors
-83073|anatomic dead space
-83073|physiologic dead space
-22945|Dean fluorosis index
-22967|Deaver method
-22966|Deaver incision
-22968|DeBakey classification
-22968|DeBakey forceps
-22976|Debré phenomenon
-22976|Debré-Sémélaigne syndrome
-22976|Kocher-Debré-Sémélaigne syndrome
-23003|decapitate
-23044|deciduous tooth
-23048|morgan
-62803|decompression
-23089|decubitus film
-23097|decussationes tegmentales
-23104|tegmental decussations
-23104|under decussation
-23105|tegmental decussations
-23105|under decussation
-39361|medial head
-48319|deep layer of levator palpebrae superioris
-48319|deep layer of temporal fascia
-65844|external anal sphincter
-65846|masseter (muscle)
-65848|parotid gland
-23137|Deetjen bodies
-23137|under body
-23139|def caries index
-72148|defective bacteriophage
-72778|defective bacteriophage
-84273|defervescence
-23273|anterograde
-23273|retrograde
-23350|degloving injury
-23354|Degos disease
-23354|Degos syndrome
-23354|Kohlmeier-Degos syndrome
-23357|scale
-23361|Dehio test
-23401|Deiters cells
-23401|under cell
-23401|Deiters terminal frames
-23401|under frame
-23401|Deiters nucleus
-23401|deiterospinal tract
-61407|vestibular nuclei
-23406|Dejerine disease
-23406|Dejerine hand phenomenon
-23406|Dejerine reflex
-23406|Dejerine sign
-23406|Dejerine-Roussy syndrome
-23406|Dejerine-Sottas disease
-23406|Landouzy-Dejerine dystrophy
-23407|Klumpke palsy
-23407|Klumpke paralysis
-23407|Dejerine-Klumpke palsy
-23407|Dejerine-Klumpke syndrome
-23408|deca-
-23417|del Castillo syndrome
-23409|Delafield hematoxylin
-19687|atrioventricular block
-19687|intraventricular block
-19687|bundle-branch block
-76100|cell-mediated reaction
-23416|Delbet sign
-23432|delirium
-23468|deltoid (muscle)
-23488|Demarquay sign
-52626|Demodex
-23534|Demoivre formula
-23564|Dennie-Morgan fold
-23564|Dennie line
-23566|Denonvilliers aponeurosis
-23566|Denonvilliers ligament
-25417|membranoproliferative glomerulonephritis
-16143|isopycnic zone
-16034|cement2
-59340|inferior alveolar nerve
-59340|superior alveolar nerves
-23614|dent-
-23674|dent-
-23678|forensic dentistry
-23704|Denucé ligament
-23708|Denys-Leclef phenomenon
-23708|Denys-Drash syndrome
-23714|demineralization
-23737|deoxyribonucleoside
-23738|deoxyribonucleoside
-24397|DNA markers
-24397|familial screening
-24397|prenatal screening
-23781|deoxyribonucleotide
-23813|nuclease
-60268|depression
-60268|dysthymia
-73708|depression
-23861|Dercum disease
-23871|cut-
-23936|derm-
-24010|derm-
-24035|Desault bandage
-24036|Descartes law
-24037|Descemet membrane
-65851|duodenum
-24049|Deschamps needle
-24067|desmo-
-24068|Desmarres dacryoliths
-24068|under dacryolith
-24068|Desmarres retractor
-24090|deoxy-
-24145|detrusor (muscle)
-24149|deutero-
-24168|deutero-
-24177|Deutschländer disease
-24182|adaptation6
-24182|equilibration5
-24186|Deventer pelvis
-24204|Devic disease
-24219|Dewar flask
-24226|dextro-
-24272|excycloduction
-24275|d-glucose
-24282|dextrocardia
-24286|d-glucose
-24300|antigen
-24840|Di Guglielmo disease
-24840|Di Guglielmo syndrome
-77928|diabetic retinopathy
-24361|diacetyl
-85501|Broca diagonal band
-24454|Diamond-Blackfan anemia
-24454|Diamond-Blackfan syndrome
-24454|Gardner-Diamond syndrome
-24454|Shwachman-Diamond syndrome
-24453|Diamond TYM medium
-24470|collimator
-24519|Verner-Morrison syndrome
-24519|WDHA syndrome
-24580|sodium diatrizoate
-76104|van den Bergh test
-670|acid1
-24599|conjoined twins
-24599|under twin
-24604|conjoined twins
-24604|under twin
-69189|twin placenta
-24637|Dick method
-24637|Dick test
-24637|Dick test toxin
-24636|Dick method
-24636|Dick test
-24636|Dick test toxin
-24638|Dickens shunt
-24638|Warburg-Lipmann-Dickens-Horecker shunt
-24666|Blood Groups Appendix.
-24671|Diels hydrocarbon
-24678|phosphodiesterases
-24738|Dietl crisis
-24739|Dieulafoy erosion
-24762|monochromator
-24771|digastric (muscle)
-24776|DiGeorge syndrome
-74937|digital subtraction angiography
-97214|dorsal digital veins of foot
-97214|palmar digital veins
-97214|plantar digital veins
-23992|parapsoriasis en plaque
-24816|clubbing
-24834|bifid tongue
-24864|tachysterol
-24963|Dimmer keratitis
-24989|Diogenes cup
-24989|poculum diogenis
-25014|dipeptidyl peptidase
-25028|phenytoin
-61298|nicotinamide adenine dinucleotide
-92759|Corynebacterium diphtheriae
-25074|haplo-
-25084|Neisseria
-25084|Peptococcus
-25084|Streptococcus
-25097|conjoined twins
-25097|under twin
-25107|conjoined twins
-25107|under twin
-25113|conjoined twins
-25113|under twin
-25116|alcoholism
-25123|conjoined twins
-25123|under twin
-90479|fluorescent antibody technique
-40527|inguinal hernia
-25206|disco-
-25211|Dische reaction
-25211|Dische reagent
-25211|Dische-Schwarz reagent
-25225|disconjugate movement of eyes
-25912|stuttering
-25938|disco-
-13260|aortic dissection
-26105|Disse space
-26117|dissociative identity disorder
-25993|multiple personality disorder
-25993|dissociation3
-26134|cognitive dissonance theory
-81058|spiral septum
-98803|canine distemper virus
-26195|frequency distribution
-26226|Dittrich plugs
-26226|under plug
-26226|Dittrich stenosis
-78374|diurnal
-26293|lathyrism
-26329|Dix-Hallpike maneuver
-26351|(null)Tc-dimercaptosuccinic acid
-23766|nucleotidyltransferases
-26386|sodium dodecyl sulfate
-26389|Doerfler-Stewart test
-26391|Dogiel cells
-26391|under cell
-26390|Dogiel corpuscle
-26394|dogmatic school
-26397|Allen-Doisy test
-26397|Allen-Doisy unit
-26411|Armitage-Doll model
-26420|Blood Groups Appendix.
-16534|phenotype
-36639|dominance of traits
-44591|dominance of traits
-93151|dominance of traits
-26437|Don Juan
-26434|Donath-Landsteiner phenomenon
-26434|Donath-Landsteiner cold autoantibody
-26434|Landsteiner-Donath test
-26435|Donders law
-26435|Donders pressure
-26435|space of Donders
-26438|Donnan equilibrium
-26438|Gibbs-Donnan equilibrium
-26439|Donné corpuscle
-26440|Donohue disease
-26444|Donovan bodies
-26444|under body
-26444|Leishman-Donovan body
-26445|Doose syndrome
-26446|dopa reaction
-26460|Doppler echocardiography
-26460|Doppler effect
-26460|Doppler phenomenon
-26460|Doppler shift
-26460|Doppler ultrasonography
-34069|Doppler ultrasonography
-27709|duplex ultrasonography
-27709|Doppler ultrasonography
-26463|Dorello canal
-26464|Dorendorf sign
-26465|Dorfman-Chanarin syndrome
-49487|bifurcate ligament
-49488|bifurcate ligament
-59345|dorsal digital nerves of superficial fibular nerve
-59345|dorsal digital nerves of deep fibular nerve
-59346|dorsal digital nerves of ulnar nerve
-61412|medial geniculate nuclei
-61424|posterior hypothalamic area
-61425|septal area
-23109|tegmental decussations
-97218|deep dorsal vein of clitoris
-97218|superficial dorsal veins of clitoris
-97225|deep dorsal vein of penis
-97225|superficial dorsal veins of penis
-26476|Dorset culture egg medium
-61431|anterior horn
-61432|dorsal hypothalamic area
-90483|gel diffusion precipitin tests in one dimension
-90484|gel diffusion precipitin tests in two dimensions
-43719|gel diffusion precipitin tests in two dimensions
-43719|under test
-72545|Robinson index
-52398|quotidian malaria
-26570|Beverly Douglas procedure
-26569|Douglas abscess
-26569|Douglas cul-de-sac
-26569|Douglas fold
-26569|Douglas line
-26569|Douglas pouch
-26569|cavum douglasi
-26568|Douglas mechanism
-26571|Douglas bag
-26575|Down syndrome
-26576|Downey cell
-26580|Downs analysis
-26581|Czapek-Dox medium
-26585|Doyère eminence
-26586|Doyle operation
-26587|Doyne honeycomb choroidopathy
-26596|diphtheria toxoid
-26596|tetanus toxoid
-26596|pertussis vaccine
-26611|Dragendorff test
-26611|Dragendorff reagent
-26612|Shy-Drager syndrome
-26634|Draper law
-26613|Dräger respirometer
-26643|Emery-Dreifuss muscular dystrophy
-26660|Dressler beat
-26660|Dressler syndrome
-26661|Dreyer formula
-26675|Drinker respirator
-34507|footdrop
-26697|footdrop
-39415|medication-overuse headache
-26739|artery of Drummond
-26739|Drummond sign
-5674|sex chromatin
-5674|lyonization
-26787|Du Bois-Reymond law
-26781|Duane syndrome
-26782|Dubin-Johnson syndrome
-26785|Dubois abscesses
-26785|under abscess
-26785|Dubois disease
-26784|DuBois formula
-26784|Aub-DuBois table
-26786|hyoscyamine
-26788|Duboscq colorimeter
-26789|Dubowitz score
-26790|Dubreuil-Chambardel syndrome
-26791|Duchenne disease
-26791|Duchenne sign
-26791|Duchenne-Aran disease
-26791|Aran-Duchenne disease
-26791|Duchenne-Erb paralysis
-26791|Duchenne dystrophy
-96404|rabies vaccine
-26792|Duckworth phenomenon
-26793|Ducrey bacillus
-26793|Ducrey test
-27003|Duddell membrane
-27004|Blood Groups Appendix
-27005|Duhring disease
-27007|Duke bleeding time test
-27008|Dukes classification
-27009|Dukes disease
-27009|Filatov-Dukes disease
-27014|Dulong-Petit law
-27016|Dumontpallier pessary
-27017|dumping syndrome
-27018|Duncan folds
-27018|under fold
-27018|Duncan mechanism
-27018|Duncan placenta
-27018|Duncan ventricle
-27020|Lison-Dunn stain
-34984|inferior duodenal fossa
-34984|superior duodenal fossa
-82547|alimentary tract smear
-27039|duplex ultrasonography
-27041|hemoglobin Lepore
-27044|conjoined twins
-27044|under twin
-27045|conjoined twins
-27045|under twin
-27046|Dupré muscle
-27047|Dupuytren amputation
-27047|Dupuytren canal
-27047|Dupuytren contracture
-27047|Dupuytren disease of the foot
-27047|Dupuytren fascia
-27047|Dupuytren fracture
-27047|Dupuytren hydrocele
-27047|Dupuytren sign
-27047|Dupuytren suture
-27047|Dupuytren tourniquet
-27062|Duran-Reynals permeability factor
-27069|Duret lesion
-27069|Duret hemorrhage
-27070|Durham tube
-27071|Duroziez disease
-27071|Duroziez murmur
-27071|Duroziez sign
-27074|Dutton disease
-27074|Dutton relapsing fever
-27075|Duverney fissures
-27075|under fissure
-27075|Duverney gland
-27075|Duverney muscle
-56708|orbicularis oculi (muscle)
-27079|dwarfism
-27122|Dwyer osteotomy
-27146|Dyggve-Melchior-Clausen syndrome
-52399|algid malaria
-27295|amelia
-27295|phocomelia
-27318|dystonia
-60382|malignant mole syndromedysplastic nevus syndromedysplastic nevus syndrome
-27466|mood disorders
-27466|under disorder
-27466|endogenous depression
-27466|exogenous depression
-25994|depression
-7988|EAC rosette
-27580|Eagle basal medium
-27580|Eagle minimum essential medium
-27581|Eagle syndrome
-27582|Eales disease
-27609|Earle L fibrosarcoma
-27609|Earle solution
-27620|Eaton agent
-27619|Eaton-Lambert syndrome
-27622|Ebbinghaus test
-27623|Eberth bacillus
-27623|Eberth lines
-27623|under line
-27623|Eberth perithelium
-27624|von Ebner
-27627|Ebstein anomaly
-27627|Ebstein disease
-27627|Ebstein sign
-27627|Armanni-Ebstein change
-27627|Armanni-Ebstein kidney
-27627|Pel-Ebstein disease
-27627|Pel-Ebstein fever
-27654|Paget-Eccleston stain
-93912|cardiac gating
-27671|echino-
-27695|ECHO virus
-27705|ultrasonography
-27730|echopathy
-27734|Eck fistula
-27734|reverse Eck fistula
-27735|Rees-Ecker fluid
-27736|Ecker fissure
-27746|ECMO virus
-27756|Economo von San Serff disease
-27767|ECSO virus
-27772|ecto-
-28715|panlobular emphysema
-27395|anhidrotic ectodermal dysplasia
-27395|hidrotic ectodermal dysplasia
-27826|conjoined twins
-27826|under twin
-27890|intertrigo
-27911|Nägele rule
-27969|Edinger-Westphal nucleus
-27971|Edlefsen reagent
-27973|Edman method
-27973|Edman reagent
-54794|phenylisothiocyanate
-27976|Edridge-Green lamp
-27985|Carpentier-Edwards valve
-27985|Starr-Edwards valve
-27984|Edwards syndrome
-28097|Egger line
-28098|Eggleston method
-28098|Bradbury-Eggleston syndrome
-28101|gland
-28108|ego
-28108|persona
-28116|Ehlers-Danlos syndrome
-28117|Ehrenritter ganglion
-28118|Ehret phenomenon
-28119|Ehrlichia
-28119|Ehrlich anemia
-28119|Ehrlich inner body
-28119|Ehrlich phenomenon
-28119|Ehrlich postulate
-28119|Ehrlich diazo reagent
-28119|Ehrlich theory
-28119|Ehrlich-Türk line
-91234|side-chain theory
-28134|Eichhorst corpuscles
-28134|under corpuscle
-28134|Eichhorst neuritis
-28135|Eicken method
-28151|einstein
-28151|einsteinium
-28154|Einthoven equation
-28154|Einthoven law
-28154|Einthoven string galvanometer
-28154|Einthoven triangle
-28155|Eisenmenger complex
-28155|Eisenmenger defect
-28155|Eisenmenger disease
-28155|Eisenmenger syndrome
-28155|Eisenmenger tetralogy
-28157|ejaculation
-18176|sound
-28167|Ejrup maneuver
-28169|Ekbom syndrome
-48327|anterior limiting layer of cornea
-48327|posterior limiting layer of cornea
-82456|Ehlers-Danlos syndrome
-28212|Elaut triangle
-45746|modal alteration
-45746|qualitative alteration
-45746|quantitative alteration
-8946|triaxial reference system
-28247|electroshock therapy
-28251|electrocute
-9793|betatron
-74938|xeroradiography
-74938|phosphor plate
-315|electron spin resonance
-28397|electronegative2
-28326|electrodiagnosis2
-28364|electrosurgery
-28367|electroshock therapy
-28376|electroscission
-82492|electrotherapeutic sleep therapy
-21952|electrotonus
-28439|Ellik evacuator
-28440|Elliot position
-28441|Elliot operation
-28442|Elliott law
-28446|Ellis-van Creveld syndrome
-28447|Zollinger-Ellison syndrome
-28447|Zollinger-Ellison tumor
-28448|Ellsworth-Howard test
-28449|Eloesser flap
-28449|Eloesser procedure
-28451|Elschnig pearls
-28451|under pearl
-28451|Elschnig spots
-28451|under spot
-28451|Koerber-Salus-Elschnig syndrome
-28463|en-
-28478|eosin-methylene blue agar
-28481|Embden ester
-28481|Robison-Embden ester
-28481|Embden-Meyerhof pathway
-28481|Embden-Meyerhof-Parnas pathway
-28537|embryo-
-40103|hemoglobin Gower-1
-40103|hemoglobin Gower-2
-28578|property emergence
-28584|Emery-Dreifuss muscular dystrophy
-28685|Emmet needle
-28685|Emmet operation
-25447|mental illness
-25996|mental illness
-25996|behavior disorder
-26216|mental illness
-26216|behavior disorder
-28805|encephalo-
-28862|encephalitogen
-28876|pneumoencephalography
-69531|endplate
-28980|endo-
-28997|end bulb
-29019|Endo agar
-29019|Endo medium
-30999|Graves ophthalmopathy
-30999|Graves orbitopathy
-65862|pancreas
-29098|fulguration
-29099|fulguration
-29107|mesognathion
-42005|Ménière disease
-61443|dorsal hypothalamic area
-29159|ophthalmia nodosa
-29184|endoscope
-11164|high-energy compounds
-11164|under compound
-29282|Engelmann basal knobs
-29282|under knob
-29337|otorhinolaryngology
-29338|ento-
-29342|amebiasis
-29342|amebic dysentery
-29353|entero-
-29422|omphalocele
-29502|zygomycosis
-19790|Haworth conformational formulas of cyclic sugars
-89155|biosynthesis
-29598|EC
-29664|conjoined twins
-29664|under twin
-29687|epicranius (muscle)
-80930|epicritic
-26201|histogram
-29739|estriol
-97230|inferior epigastric vein
-97230|superficial epigastric vein
-97230|superior epigastric veins
-29744|conjoined twins
-29744|under twin
-29753|supraglottitis
-29754|conjoined twins
-29754|under twin
-29844|myotome3
-35317|Salter-Harris classification of epiphysial plate injuries
-29883|pygomelus
-29883|conjoined twins
-29883|under twin
-48331|epithelium
-92222|epithelium
-30002|dome cell
-30008|appendicitis
-30029|Fosdick-Hansen-Epple test
-30035|Epstein disease
-30035|Epstein pearls
-30035|under pearl
-30035|Epstein sign
-30035|Epstein symptom
-30034|Epstein-Barr virus
-81897|setting sun sign
-81897|Collier sign
-87434|Epstein sign
-30076|development1
-30076|adaptation6
-30076|accommodation2
-30076|assimilation2
-30118|Eranko fluorescence stain
-30119|Erb disease
-30119|Erb palsy
-30119|Erb paralysis
-30119|Erb-Charcot disease
-30119|Duchenne-Erb paralysis
-30126|Erdheim disease
-30126|Erdheim tumor
-30127|Erdmann reagent
-30170|Erlenmeyer flask
-30170|Erlenmeyer flask deformity
-30205|tachysterol
-30264|intertrigo
-30292|erythro-
-75866|respiratory frequency
-30381|Esbach reagent
-30406|Esmarch bandage
-82551|alimentary tract smear
-30474|Essick cell bands
-30474|under band
-30488|Estes operation
-30517|Estlander flap
-30575|ethmoid bone
-15591|anterior ethmoidal cells
-15591|middle ethmoidal cells
-15591|posterior ethmoidal cells
-21230|ethmoidal crest of maxilla
-21230|ethmoidal crest of palatine bone
-30585|middle nasal concha
-30585|superior nasal concha
-30585|supreme nasal concha
-30612|glycol2
-30696|Eulenburg disease
-30738|blepharodiastasis
-30745|eustachian catheter
-30745|eustachian cushion
-30745|eustachian tonsil
-30745|tuba eustachiana
-30745|eustachian tube
-30745|eustachian tuber
-30745|eustachian valve
-30785|Evans syndrome
-30784|Evans blue
-30820|Ewart procedure
-30820|Ewart sign
-30822|Ewing sarcoma
-30822|Ewing tumor
-30821|Ewing sign
-25461|exanthema
-43586|stress test
-30966|Call-Exner bodies
-30966|under body
-30966|Exner plexus
-65863|pancreas
-28014|double-blind study
-38647|logarithmic phase
-31105|muscle
-77969|exudative retinitis
-47766|medullary laminae of thalamus
-15594|pillar cells
-81411|root sheath
-31113|conditioning
-31116|conditioning
-31118|Exton reagent
-89417|extrasystole
-31182|extrapyramidal motor system
-31208|limb
-92549|extrusion of a tooth
-26701|eyewash
-26701|ophthalmic solutions
-26701|under solution

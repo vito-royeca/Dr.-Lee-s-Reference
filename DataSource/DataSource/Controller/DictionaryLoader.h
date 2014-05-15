@@ -1,5 +1,5 @@
 //
-//  StedmansScraper.h
+//  DictionaryLoader.h
 //  Dr. Lee's Reference
 //
 //  Created by Jovito Royeca on 11/30/13.

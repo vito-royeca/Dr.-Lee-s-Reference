@@ -1,5 +1,5 @@
 //
-//  StedmansScraper.m
+//  DictionaryLoader.m
 //  Dr. Lee's Reference
 //
 //  Created by Jovito Royeca on 11/30/13.
@@ -36,9 +36,9 @@
     {
         _letters = [NSArray arrayWithObjects:
 //                    @"9",
-                    @"a",
+//                    @"a",
 //                    @"b",
-//                    @"c",
+                    @"c",
 //                    @"d",
 //                    @"e",
 //                    @"f",
@@ -174,13 +174,9 @@
     
     NSString *path = @"//div[@id='main']/a";
     NSArray *nodes;
-    @try {
+
     nodes = [parser searchWithXPathQuery:path];
-    } @catch (NSException *error)
-    {
-        NSLog(@"%@ = %@", error, [error userInfo]);
-    }
-    
+
     for (TFHppleElement *element in nodes)
     {
         [arrSubsections addObject:[element objectForKey:@"href"]];
@@ -197,7 +193,8 @@
     [dict setObject:id_ forKey:@"id"];
     
     TFHpple *parser = [self parsePage:href];
-    NSString *path = @"//div[@id='main']";
+//    NSString *path = @"//div[@id='main']";
+    NSString *path = @"//div[@class='definitionbox']";
     NSArray *nodes = [parser searchWithXPathQuery:path];
     
     for (TFHppleElement *element in nodes)
@@ -387,6 +384,10 @@
             [buffer appendFormat:@"%@%@", x, COMPOUND_SEPARATOR];
         }
         [arrTerms addObject:[buffer substringToIndex:buffer.length-3]];
+    }
+    else
+    {
+        [arrTerms addObject:@""];
     }
     [_termsWriter writeLineOfFields:arrTerms];
     
