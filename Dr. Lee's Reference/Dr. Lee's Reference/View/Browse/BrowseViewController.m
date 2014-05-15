@@ -121,7 +121,7 @@
 
 - (NSInteger)treeView:(RATreeView *)treeView indentationLevelForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
-    return 3 * treeNodeInfo.treeDepthLevel;
+    return treeNodeInfo.treeDepthLevel * treeNodeInfo.treeDepthLevel;
 }
 
 - (BOOL)treeView:(RATreeView *)treeView shouldExpandItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
