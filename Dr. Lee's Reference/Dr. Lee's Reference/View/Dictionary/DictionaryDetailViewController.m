@@ -16,7 +16,8 @@
 @implementation DictionaryDetailViewController
 {
     NSString *_currentTerm;
-    NSMutableArray *_history;
+    NSMutableArray *_backHistory;
+    NSMutableArray *_forwardHistory;
     NSString *_backButton;
 }
 
@@ -39,10 +40,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    _history = [[NSMutableArray alloc] init];
-    _backButton = @"<p><a href='#back__'>Back</a>";
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"back" ofType:@"png"];
+    _forwardHistory = [[NSMutableArray alloc] init];
+    _backHistory    = [[NSMutableArray alloc] init];
+    _backButton     = [NSString stringWithFormat:@"<a href='#back__'><img src=\"file://%@\"></a>", path];
     
-
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.webView.delegate = self;
     
@@ -78,7 +80,8 @@
     NSString *term = self.dictionaryTerm.term;
     if (self.searchTerm && self.searchTerm.length>1)
     {
-        term = [term stringByReplacingOccurrencesOfString:self.searchTerm withString:[NSString stringWithFormat:@"<mark>%@</mark>", self.searchTerm]];
+        term = [JJJUtil highlightTerm:term withQuery:self.searchTerm];
+        
     }
     [html appendFormat:@"<p><font color='blue'><strong>%@</strong></font>", term];
     
@@ -100,9 +103,7 @@
         {
             if (self.searchTerm && self.searchTerm.length>1)
             {
-                NSString *defReplacement = [def stringByReplacingOccurrencesOfString:self.searchTerm withString:[NSString stringWithFormat:@"<mark>%@</mark>", self.searchTerm]];
-                
-                [defs addObject:defReplacement];
+                [defs addObject:[JJJUtil highlightTerm:def withQuery:self.searchTerm]];
             }
             else
             {
@@ -129,9 +130,9 @@
     {
         [html appendFormat:@"<p>SEE ALSO "];
         int sentinel = 0;
-        for (DictionaryXRef *ref in self.dictionaryTerm.xref)
+        for (DictionaryXRef *xref in self.dictionaryTerm.xref)
         {
-            [html appendFormat:@"<a href='#%@'>%@</a>%@", ref.xref, ref.xref, sentinel<self.dictionaryTerm.xref.count-1?@", ":@""];
+            [html appendFormat:@"<a href='#%@'>%@</a>%@", xref.xref, [JJJUtil highlightTerm:xref.xref withQuery:self.searchTerm], sentinel<self.dictionaryTerm.xref.count-1?@", ":@""];
             sentinel++;
         }
     }
@@ -142,49 +143,34 @@
         int sentinel = 0;
         for (DictionarySynonym *syn in self.dictionaryTerm.synonym)
         {
-            [html appendFormat:@"<a href='#%@'>%@</a>%@", syn.synonym, syn.synonym, sentinel<self.dictionaryTerm.synonym.count-1?@", ":@""];
+            [html appendFormat:@"<a href='#%@'>%@</a>%@", syn.synonym, [JJJUtil highlightTerm:syn.synonym withQuery:self.searchTerm], sentinel<self.dictionaryTerm.synonym.count-1?@", ":@""];
             sentinel++;
         }
     }
+    
+    [html appendFormat:@"<p align='center'>%@&nbsp;&nbsp;", (_backHistory.count > 0 ? _backButton : @"")];
     [html appendFormat:@"</body></html>"];
 
-//    if (_previousHTML && ![_previousHTML isEqualToString:html])
-    if (_history.count > 0)
-    {
-        if (![[_history objectAtIndex:_history.count-1] isEqualToString:self.dictionaryTerm.term])
-        {
-            [html insertString:_backButton atIndex:html.length-14];
-        }
-    }
     return html;
 }
 
-- (NSString*) composeHTMLList:(NSString*)term withResults:(NSArray*)results
+- (NSString*) composeHTMLList:(NSArray*) list fromQuery:(NSString*) query
 {
     NSMutableString *html = [[NSMutableString alloc] init];
     
     [html appendFormat:@"<html><head><style type='text/css'> body {font-family:verdana;} </style> </head>"];
     [html appendFormat:@"<body"];
     
-    [html appendFormat:@"<p><font color='blue'><strong>%@</strong></font>", term];
-    
-
     [html appendFormat:@"<p><ul>"];
-    for (DictionaryTerm *dict in results)
+    for (DictionaryTerm *dt in list)
     {
-        [html appendFormat:@"<li><a href='#%@'>%@</a></li>", dict.term, dict.term];
+        [html appendFormat:@"<li><a href='#%@'>%@</a></li>", dt.term, [JJJUtil highlightTerm:dt.term withQuery:query]];
     }
     [html appendFormat:@"</ul>"];
+    
+    [html appendFormat:@"<p align='center'>%@&nbsp;&nbsp;", (_backHistory.count > 0 ? _backButton : @"")];
     [html appendFormat:@"</body></html>"];
-
-//    if (_previousHTML && ![_previousHTML isEqualToString:html])
-    if (_history.count > 0)
-    {
-        if (![[_history objectAtIndex:_history.count-1] isEqualToString:self.dictionaryTerm.term])
-        {
-            [html insertString:_backButton atIndex:html.length-14];
-        }
-    }
+    
     return html;
 }
 
@@ -199,41 +185,49 @@
         
         if ([fragment isEqualToString:@"back__"])
         {
-            if (_history.count > 0)
-            {
-                [self.webView loadHTMLString:[_history objectAtIndex:_history.count-1]  baseURL:bundleUrl];
-                return YES;
-            }
+            NSString *current = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+            NSString *previous = [_backHistory lastObject];
+            
+            [_backHistory removeObject:previous];
+            [_forwardHistory addObject:current];
+            [self.webView loadHTMLString:previous baseURL:bundleUrl];
+        }
+        else if ([fragment isEqualToString:@"forward__"])
+        {
+            NSString *current = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+            NSString *next = [_forwardHistory lastObject];
+            
+            [_forwardHistory removeObject:next];
+            [_backHistory addObject:current];
+            [self.webView loadHTMLString:next baseURL:bundleUrl];
         }
         else
         {
-/*            NSArray *results = [[Database sharedInstance] search:DictionaryDataSource
-                                                           query:fragment
-                                                    narrowSearch:YES];
-
-            if (_history.count > 0)
+            NSFetchedResultsController *nsfrc = [[Database sharedInstance] search:DictionaryDataSource
+                                                                            query:fragment
+                                                                     narrowSearch:NO];
+            NSError *error;
+            if ([nsfrc performFetch:&error])
             {
+                NSArray *terms = [nsfrc fetchedObjects];
+                NSString *html;
                 
+                [_backHistory addObject:[self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"]];
+                
+                if (terms.count == 1)
+                {
+                    self.dictionaryTerm = [terms firstObject];
+                    self.searchTerm = self.dictionaryTerm.term;
+                    html = [self composeHTMLDefinition];
+                }
+                else
+                {
+                    html = [self composeHTMLList:terms fromQuery:fragment];
+                }
+                
+                [self.webView loadHTMLString:html baseURL:bundleUrl];
             }
-//            _previousHTML = _currentHTML;
-//            if (_previousHTML)
-//            {
-//                _previousHTML = [_previousHTML stringByReplacingOccurrencesOfString:_backButton withString:@""];
-//            }
-            
-            if (results.count == 1)
-            {
-                dictionaryTerm = [results objectAtIndex:0];
-                [self.webView loadHTMLString:[self composeHTMLDefinition] baseURL:bundleUrl];
-                return YES;
-            }
-            else
-            {
-                [self.webView loadHTMLString:[self composeHTMLList:fragment withResults:results] baseURL:bundleUrl];
-                return YES;
-            }*/
         }
-        return NO;
     }
     
     return YES;
