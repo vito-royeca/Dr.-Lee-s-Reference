@@ -80,6 +80,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    self.delegate = nil;
 }
 
 -(void) segmentedControlChangedValue:(id) sender
@@ -120,8 +121,7 @@
 
 - (NSInteger)treeView:(RATreeView *)treeView indentationLevelForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
-//    return treeNodeInfo.treeDepthLevel * treeNodeInfo.treeDepthLevel;
-    return 0;
+    return treeNodeInfo.treeDepthLevel * treeNodeInfo.treeDepthLevel;
 }
 
 - (BOOL)treeView:(RATreeView *)treeView shouldExpandItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
@@ -181,9 +181,6 @@
 //        }
         [self.treeView reloadData];
     }
-    
-//    UITableViewCell *cell = [self treeView:treeView cellForItem:item treeNodeInfo:treeNodeInfo];
-//    [cell reloadInputViews];
 }
 
 - (void)treeView:(RATreeView *)treeView accessoryButtonTappedForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
@@ -199,6 +196,16 @@
         }
     }
 }
+
+//- (void)treeView:(RATreeView *)treeView didExpandRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    [self treeView:treeView cellForItem:item treeNodeInfo:treeNodeInfo];
+//}
+//
+//- (void)treeView:(RATreeView *)treeView didCollapseRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    [self treeView:treeView cellForItem:item treeNodeInfo:treeNodeInfo];
+//}
 
 #pragma mark - RATreeViewDataSource
 

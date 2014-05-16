@@ -43,6 +43,8 @@
 		8C2E63611910FCD600B5A908 /* ICD10ProcedureIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E63601910FCD600B5A908 /* ICD10ProcedureIndex.m */; };
 		8C2E63641910FCD600B5A908 /* ICD10Procedure.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E63631910FCD600B5A908 /* ICD10Procedure.m */; };
 		8C447064190A7F73000DEFC2 /* InAppSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8C447063190A7F73000DEFC2 /* InAppSettings.bundle */; };
+		8C45BD551925AD1400A1FF26 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C45BD531925AD1400A1FF26 /* back.png */; };
+		8C45BD561925AD1400A1FF26 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C45BD541925AD1400A1FF26 /* back@2x.png */; };
 		8C64C2BD190FB18600148440 /* MigrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64C2BC190FB18600148440 /* MigrationManager.m */; };
 		8C64C2C0190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C64C2BF190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.m */; };
 		8C674F5C191B55D100536C02 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C674F5B191B55D100536C02 /* InfoViewController.m */; };
@@ -52,8 +54,6 @@
 		8C6ACEBD191C998200E4A274 /* DrugsBrowseViewExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6ACEBC191C998200E4A274 /* DrugsBrowseViewExpander.m */; };
 		8C6ACEC0191C9A1300E4A274 /* ICD10CMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6ACEBF191C9A1300E4A274 /* ICD10CMDetailViewController.m */; };
 		8C784CEF1910CF1E001A9FB1 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C784CEC1910CF1E001A9FB1 /* database.xcdatamodeld */; };
-		8C7E32BD1924976500A21471 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C7E32BC1924976500A21471 /* back@2x.png */; };
-		8C7E32C21924977200A21471 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C7E32C11924977200A21471 /* back.png */; };
 		8C97C5261904EA6C000CEA20 /* DrugAppDoc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5251904EA6C000CEA20 /* DrugAppDoc.m */; };
 		8C97C5291904EA6D000CEA20 /* DrugChemicalType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C5281904EA6D000CEA20 /* DrugChemicalType_Lookup.m */; };
 		8C97C52C1904EA6D000CEA20 /* DrugDocType_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C52B1904EA6D000CEA20 /* DrugDocType_Lookup.m */; };
@@ -168,6 +168,8 @@
 		8C2E63621910FCD600B5A908 /* ICD10Procedure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICD10Procedure.h; sourceTree = "<group>"; };
 		8C2E63631910FCD600B5A908 /* ICD10Procedure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10Procedure.m; sourceTree = "<group>"; };
 		8C447063190A7F73000DEFC2 /* InAppSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = InAppSettings.bundle; sourceTree = "<group>"; };
+		8C45BD531925AD1400A1FF26 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		8C45BD541925AD1400A1FF26 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		8C64C2BB190FB18600148440 /* MigrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MigrationManager.h; sourceTree = "<group>"; };
 		8C64C2BC190FB18600148440 /* MigrationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MigrationManager.m; sourceTree = "<group>"; };
 		8C64C2BE190FB5E200148440 /* NSManagedObjectModel+MHWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectModel+MHWAdditions.h"; sourceTree = "<group>"; };
@@ -186,8 +188,6 @@
 		8C6ACEBF191C9A1300E4A274 /* ICD10CMDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICD10CMDetailViewController.m; sourceTree = "<group>"; };
 		8C784CED1910CF1E001A9FB1 /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
 		8C784CEE1910CF1E001A9FB1 /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
-		8C7E32BC1924976500A21471 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
-		8C7E32C11924977200A21471 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		8C97C5241904EA6C000CEA20 /* DrugAppDoc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugAppDoc.h; sourceTree = "<group>"; };
 		8C97C5251904EA6C000CEA20 /* DrugAppDoc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugAppDoc.m; sourceTree = "<group>"; };
 		8C97C5271904EA6D000CEA20 /* DrugChemicalType_Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugChemicalType_Lookup.h; sourceTree = "<group>"; };
@@ -367,6 +367,7 @@
 				113DE8921843D8420080B038 /* Images.xcassets */,
 				8C447066190A8960000DEFC2 /* Libs */,
 				113383241859A91D00CBA6FF /* Model */,
+				8C45BD4F1925ACE500A1FF26 /* Resources */,
 				113DE8841843D8420080B038 /* Supporting Files */,
 				1133834C1859A97200CBA6FF /* View */,
 			);
@@ -388,8 +389,6 @@
 		116ED0AC18468F1700CDC13D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				8C7E32C11924977200A21471 /* back.png */,
-				8C7E32BC1924976500A21471 /* back@2x.png */,
 				8C12B19E1907CF530092F82B /* database.sqlite */,
 			);
 			path = Data;
@@ -464,6 +463,15 @@
 			children = (
 			);
 			path = Libs;
+			sourceTree = "<group>";
+		};
+		8C45BD4F1925ACE500A1FF26 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8C45BD531925AD1400A1FF26 /* back.png */,
+				8C45BD541925AD1400A1FF26 /* back@2x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		8C64C2BA190FB18600148440 /* MigrationManager */ = {
@@ -608,12 +616,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C7E32BD1924976500A21471 /* back@2x.png in Resources */,
 				8C12B19F1907CF530092F82B /* database.sqlite in Resources */,
+				8C45BD551925AD1400A1FF26 /* back.png in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
-				8C7E32C21924977200A21471 /* back.png in Resources */,
 				8C447064190A7F73000DEFC2 /* InAppSettings.bundle in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
+				8C45BD561925AD1400A1FF26 /* back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

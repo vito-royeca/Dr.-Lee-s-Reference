@@ -233,7 +233,6 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.text = data.name;
     cell.detailTextLabel.textColor = [UIColor blackColor];
-    cell.imageView.image = nil;
     cell.accessoryType = UITableViewCellAccessoryDetailButton;
     
     if ([data.object isKindOfClass:[ICD10Diagnosis class]])
@@ -241,82 +240,22 @@
         ICD10Diagnosis *diag = data.object;
 
         cell.detailTextLabel.text = diag.desc;
-        
-        if (diag.children.count > 0)
-        {
-            if (treeNodeInfo.expanded)
-            {
-                cell.imageView.image = [UIImage imageNamed:@"down4.png"];
-            }
-            else
-            {
-                cell.imageView.image = [UIImage imageNamed:@"forward.png"];
-            }
-        }
     }
     else if ([data.object isKindOfClass:[ICD10DiagnosisNeoplasm class]])
     {
         ICD10DiagnosisNeoplasm *neo = data.object;
-        
-        if (neo.children.count > 0)
-        {
-            if (treeNodeInfo.expanded)
-            {
-                cell.imageView.image = [UIImage imageNamed:@"down4.png"];
-            }
-            else
-            {
-                cell.imageView.image = [UIImage imageNamed:@"forward.png"];
-            }
-        }
     }
     else if ([data.object isKindOfClass:[ICD10DiagnosisDrug class]])
     {
         ICD10DiagnosisDrug *drug = data.object;
-        
-        if (drug.children.count > 0)
-        {
-            if (treeNodeInfo.expanded)
-            {
-                cell.imageView.image = [UIImage imageNamed:@"down4.png"];
-            }
-            else
-            {
-                cell.imageView.image = [UIImage imageNamed:@"forward.png"];
-            }
-        }
     }
     else if ([data.object isKindOfClass:[ICD10DiagnosisIndex class]])
     {
         ICD10DiagnosisIndex *index = data.object;
-        
-        if (index.children.count > 0)
-        {
-            if (treeNodeInfo.expanded)
-            {
-                cell.imageView.image = [UIImage imageNamed:@"down4.png"];
-            }
-            else
-            {
-                cell.imageView.image = [UIImage imageNamed:@"forward.png"];
-            }
-        }
     }
     else if ([data.object isKindOfClass:[ICD10DiagnosisEIndex class]])
     {
         ICD10DiagnosisEIndex *index = data.object;
-        
-        if (index.children.count > 0)
-        {
-            if (treeNodeInfo.expanded)
-            {
-                cell.imageView.image = [UIImage imageNamed:@"down4.png"];
-            }
-            else
-            {
-                cell.imageView.image = [UIImage imageNamed:@"forward.png"];
-            }
-        }
     }
     
     return cell;
