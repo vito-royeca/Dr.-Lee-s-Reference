@@ -14,10 +14,9 @@
 @protocol BrowseViewExpander <NSObject>
 
 -(NSArray*) initialTreeStructure;
--(NSArray*) treeStructureForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
+-(NSArray*) treeStructureForItem:(id)item;
 
 @optional
--(UITableViewCell*)cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
 -(UIViewController*) detailViewForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
 
 @end
@@ -29,5 +28,8 @@
 @property (strong, nonatomic) id expanded;
 @property (strong, nonatomic) HMSegmentedControl *segmentedControl;
 @property (strong, nonatomic) RATreeView *treeView;
+@property (strong, nonatomic) NSString *mainTitle;
+
+- (id)initShowSegmentedControl:(BOOL)showSegmentedControl;
 
 @end

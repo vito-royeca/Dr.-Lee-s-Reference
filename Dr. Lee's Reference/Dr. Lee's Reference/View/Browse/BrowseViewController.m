@@ -19,6 +19,7 @@
 {
     int _nodeLevel;
     RADataObject *_currectNode;
+    BOOL _showSegmentedControl;
 }
 @end
 
@@ -27,6 +28,13 @@
 @synthesize data = _data;
 @synthesize segmentedControl;
 @synthesize treeView = _treeView;
+@synthesize mainTitle = _mainTitle;
+
+- (id)initShowSegmentedControl:(BOOL)showSegmentedControl
+{
+    _showSegmentedControl = showSegmentedControl;
+    return [self initWithNibName:nil bundle:nil];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,8 +53,13 @@
     CGFloat dX = 0;
     CGFloat dY = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height;
     CGFloat dWidth = self.view.frame.size.width;
-    CGFloat dHeight = 40;
-    CGRect frame = CGRectMake(dX, dY, dWidth, dHeight);
+    CGFloat dHeight = 0;
+    CGRect frame;
+    
+    if (_showSegmentedControl)
+    {
+    dHeight = 40;
+    frame = CGRectMake(dX, dY, dWidth, dHeight);
     self.segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:
                              @[@"Dictionary", @"FDA Drugs", @"ICD10 CM", @"ICD10 PCS"]];
     self.segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
@@ -58,28 +71,47 @@
     [self.segmentedControl addTarget:self
                               action:@selector(segmentedControlChangedValue:)
                     forControlEvents:UIControlEventValueChanged];
-
-    dY += 40;
+        
+    dY += dHeight;
     dHeight = self.view.frame.size.height - dHeight;
+    }
+    else
+    {
+        dY = 0;
+        dHeight = self.view.frame.size.height;
+    }
+    
     frame = CGRectMake(dX, dY, dWidth, dHeight);
     self.treeView = [[RATreeView alloc] initWithFrame:frame];
     self.treeView.delegate = self;
     self.treeView.dataSource = self;
     self.treeView.separatorStyle = RATreeViewCellSeparatorStyleSingleLine;
+    self.treeView.backgroundColor = [UIColor greenColor];
     [self.treeView reloadData];
     [self.treeView setBackgroundColor:UIColorFromRGB(0xF7F7F7)];
     
-    [self.view addSubview:self.segmentedControl];
+    if (_showSegmentedControl)
+    {
+        [self.view addSubview:self.segmentedControl];
+    }
     [self.view addSubview:self.treeView];
-    self.navigationItem.title = @"Browse";
+    self.navigationItem.title = self.mainTitle ? self.mainTitle : @"Browse";
     
-    [self segmentedControlChangedValue:nil];
+    if (_showSegmentedControl)
+    {
+        [self segmentedControlChangedValue:nil];
+    }
+    else
+    {
+        [self.treeView reloadData];
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    self.data = nil;
     self.delegate = nil;
 }
 
@@ -141,7 +173,7 @@
 
 - (void)treeView:(RATreeView *)treeView willDisplayCell:(UITableViewCell *)cell forItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
-    RADataObject *data = item;
+    RADataObject *object = item;
     
     if (treeNodeInfo.treeDepthLevel == 0)
     {
@@ -163,23 +195,26 @@
 
 - (void)treeView:(RATreeView *)treeView didSelectRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
-    RADataObject *data = item;
+    RADataObject *object = item;
+    self.expanded = object;
     
-    if (!data.children)
+    NSArray *children = [self.delegate treeStructureForItem:object];
+
+    if (treeNodeInfo.treeDepthLevel == 2 && children.count > 0)
     {
-        NSArray *children = [self.delegate treeStructureForItem:data treeNodeInfo:treeNodeInfo];
-
-        data.children = children;
-        self.expanded = data;
-
-//        for (RADataObject *ra in self.data)
-//        {
-//            if (ra != node)
-//            {
-//                ra.children = nil;
-//            }
-//        }
-        [self.treeView reloadData];
+        BrowseViewController *details = [[BrowseViewController alloc] initShowSegmentedControl:NO];
+        details.data = children;
+        details.delegate = self.delegate;
+        details.mainTitle = object.name;
+        [self.navigationController pushViewController:details animated:NO];
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(),
+        ^{
+            object.children = children;
+            [self.treeView reloadData];
+        });
     }
 }
 
@@ -197,33 +232,21 @@
     }
 }
 
-//- (void)treeView:(RATreeView *)treeView didExpandRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-//{
-//    [self treeView:treeView cellForItem:item treeNodeInfo:treeNodeInfo];
-//}
-//
-//- (void)treeView:(RATreeView *)treeView didCollapseRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-//{
-//    [self treeView:treeView cellForItem:item treeNodeInfo:treeNodeInfo];
-//}
-
 #pragma mark - RATreeViewDataSource
 
 - (UITableViewCell *)treeView:(RATreeView *)treeView cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
-    if ([self.delegate respondsToSelector:@selector(cellForItem:treeNodeInfo:)])
-    {
-        return [self.delegate cellForItem:item treeNodeInfo:treeNodeInfo];
-    }
-    else
-    {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-        cell.textLabel.text = ((RADataObject *)item).name;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.detailTextLabel.textColor = [UIColor blackColor];
-        
-        return cell;
-    }
+    RADataObject *object = item;
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.text = object.name;
+    cell.detailTextLabel.text = object.details;
+    cell.detailTextLabel.textColor = [UIColor blackColor];
+    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    
+    return cell;
 }
 
 - (NSInteger)treeView:(RATreeView *)treeView numberOfChildrenOfItem:(id)item
@@ -233,20 +256,20 @@
         return [self.data count];
     }
     
-    RADataObject *data = item;
-    return [data.children count];
+    RADataObject *object = item;
+    return [object.children count];
 }
 
 - (id)treeView:(RATreeView *)treeView child:(NSInteger)index ofItem:(id)item
 {
-    RADataObject *data = item;
+    RADataObject *object = item;
     
     if (item == nil)
     {
         return [self.data objectAtIndex:index];
     }
     
-    return [data.children objectAtIndex:index];
+    return [object.children objectAtIndex:index];
 }
 
 - (BOOL)treeView:(RATreeView *)treeView canEditRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo

@@ -20,7 +20,7 @@
     
     for (NSString *alpha in [JJJUtil alphabetWithWildcard])
     {
-        [tree addObject:[[RADataObject alloc] initWithName:alpha parent:nil children:nil object:nil]];
+        [tree addObject:[[RADataObject alloc] initWithName:alpha details:nil parent:nil children:nil object:nil]];
     }
     return tree;
 }
@@ -42,7 +42,7 @@
             {
                 for (DictionaryTerm *dict in [frc fetchedObjects])
                 {
-                    RADataObject *ra = [[RADataObject alloc] initWithName:dict.term parent:object children:nil object:dict];
+                    RADataObject *ra = [[RADataObject alloc] initWithName:dict.term details:nil parent:object children:nil object:dict];
                     [tree addObject:ra];
                 }
             }

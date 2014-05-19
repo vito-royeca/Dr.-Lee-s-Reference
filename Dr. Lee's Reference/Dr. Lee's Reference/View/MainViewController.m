@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view.
     
     UINavigationController *nc1 = [[UINavigationController alloc] init];
-    UIViewController *vc1 = [[BrowseViewController alloc] initWithNibName:nil bundle:nil];
+    UIViewController *vc1 = [[BrowseViewController alloc] initShowSegmentedControl:YES];
     nc1.viewControllers = [NSArray arrayWithObjects:vc1, nil];
     nc1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse"
                                                    image:[UIImage imageNamed:@"opened_folder.png"]

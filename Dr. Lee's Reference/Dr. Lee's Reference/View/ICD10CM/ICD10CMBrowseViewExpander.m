@@ -22,51 +22,39 @@
 {
     NSMutableArray *tree = [[NSMutableArray alloc] init];
 
-    [tree addObjectsFromArray:@[ [[RADataObject alloc] initWithName:@"Tabular" parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Neoplasms" parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Drugs" parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Index" parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Extended Index" parent:nil children:nil object:nil]]];
+    [tree addObjectsFromArray:@[ [[RADataObject alloc] initWithName:@"Tabular" details:nil parent:nil children:nil object:nil],
+                                 [[RADataObject alloc] initWithName:@"Neoplasms" details:nil parent:nil children:nil object:nil],
+                                 [[RADataObject alloc] initWithName:@"Drugs" details:nil parent:nil children:nil object:nil],
+                                 [[RADataObject alloc] initWithName:@"Index" details:nil parent:nil children:nil object:nil],
+                                 [[RADataObject alloc] initWithName:@"Extended Index" details:nil parent:nil children:nil object:nil]]];
     return tree;
 }
 
--(NSArray*) treeStructureForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+-(NSString *) parentName:(RADataObject*) item
+{
+    RADataObject *data = item;
+    
+    if (data.parent)
+    {
+        do
+        {
+            data = data.parent;
+        }
+        while (data.parent);
+    }
+    return data.name;
+}
+
+- (NSArray*) constructTreeFromParent:(id)parent andChildren:(NSArray*) children
 {
     NSMutableArray *tree = [[NSMutableArray alloc] init];
-    RADataObject *object = item;
-    NSArray *children;
-    NSString *name;
     
-    
-    if (treeNodeInfo.treeDepthLevel == 0)
+    for (id child in children)
     {
-        name = object.name;
-    }
-    else
-    {
-        while (object)
+        if ([child isKindOfClass:[ICD10Diagnosis class]])
         {
-            name = object.name;
-            object = object.parent;
-        }
-        object = item;
-    }
-    
-    if ([name isEqualToString:@"Tabular"])
-    {
-        if (treeNodeInfo.treeDepthLevel == 0)
-        {
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
-            children = [ICD10Diagnosis MR_findAllSortedBy:@"first" ascending:YES withPredicate:predicate];
-        }
-        else
-        {
-            ICD10Diagnosis *parent = object.object;
-            children = [parent.children array];
-        }
-        
-        for (ICD10Diagnosis *diag in children)
-        {
+            ICD10Diagnosis *diag = child;
+            
             NSMutableString *buffer = [[NSMutableString alloc] init];
             if (diag.first)
             {
@@ -80,185 +68,159 @@
             {
                 [buffer appendFormat:@"%@", diag.name];
             }
-            RADataObject *data = [[RADataObject alloc] initWithName:buffer parent:object children:nil object:diag];
+            RADataObject *data = [[RADataObject alloc] initWithName:buffer details:diag.desc parent:parent children:nil object:diag];
+            [tree addObject:data];
+            
+        }
+        else if ([child isKindOfClass:[ICD10DiagnosisNeoplasm class]])
+        {
+            ICD10DiagnosisNeoplasm *neo = child;
+            
+            RADataObject *data = [[RADataObject alloc] initWithName:neo.title details:nil  parent:parent children:nil object:neo];
             [tree addObject:data];
         }
-    }
-    
-    else if ([name isEqualToString:@"Neoplasms"])
-    {
-        if (treeNodeInfo.treeDepthLevel == 0)
+        else if ([child isKindOfClass:[ICD10DiagnosisDrug class]])
         {
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
-            children = [ICD10DiagnosisNeoplasm MR_findAllSortedBy:@"title" ascending:YES withPredicate:predicate];
-        }
-        else
-        {
-            ICD10DiagnosisNeoplasm *parent = object.object;
-            children = [parent.children array];
-        }
-        
-        for (ICD10DiagnosisNeoplasm *neo in children)
-        {
-            RADataObject *data = [[RADataObject alloc] initWithName:neo.title parent:object children:nil object:neo];
+            ICD10DiagnosisDrug *drug = child;
+            
+            RADataObject *data = [[RADataObject alloc] initWithName:drug.substance details:nil parent:parent children:nil object:drug];
             [tree addObject:data];
         }
-    }
-    
-    else if ([name isEqualToString:@"Drugs"])
-    {
-        if (treeNodeInfo.treeDepthLevel == 0)
+        else if ([child isKindOfClass:[ICD10DiagnosisIndex class]])
         {
-            children = [JJJUtil alphabetWithWildcard];
+            ICD10DiagnosisIndex *index = child;
             
-            for (NSString *alpha in children)
-            {
-                RADataObject *data = [[RADataObject alloc] initWithName:alpha parent:object children:nil object:alpha];
-                [tree addObject:data];
-            }
+            RADataObject *data = [[RADataObject alloc] initWithName:index.title details:nil parent:parent children:nil object:index];
+            [tree addObject:data];
         }
-        else
+        else if ([child isKindOfClass:[ICD10DiagnosisEIndex class]])
         {
-            if (treeNodeInfo.treeDepthLevel == 1)
-            {
-                NSString *alpha = object.object;
-                
-                NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"parent = nil"];
-                NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"substance", alpha];
-                
-                children = [ICD10DiagnosisDrug MR_findAllSortedBy:@"substance"
-                                                        ascending:YES
-                                                    withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
-            }
-            else
-            {
-                ICD10DiagnosisDrug *parent = object.object;
-                children = [parent.children array];
-            }
+            ICD10DiagnosisEIndex *index = child;
             
-            for (ICD10DiagnosisDrug *drug in children)
-            {
-                RADataObject *data = [[RADataObject alloc] initWithName:drug.substance parent:object children:nil object:drug];
-                [tree addObject:data];
-            }
+            RADataObject *data = [[RADataObject alloc] initWithName:index.title details:nil parent:parent children:nil object:index];
+            [tree addObject:data];
         }
-    }
-    
-    else if ([name isEqualToString:@"Index"])
-    {
-        if (treeNodeInfo.treeDepthLevel == 0)
+        else if ([child isKindOfClass:[NSString class]])
         {
-            children = [JJJUtil alphabetWithWildcard];
+            NSString *alpha = child;
             
-            for (NSString *alpha in children)
-            {
-                RADataObject *data = [[RADataObject alloc] initWithName:alpha parent:object children:nil object:alpha];
-                [tree addObject:data];
-            }
-        }
-        else
-        {
-            if (treeNodeInfo.treeDepthLevel == 1)
-            {
-                NSString *alpha = object.object;
-                
-                NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"parent = nil"];
-                NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"title", alpha];
-                
-                children = [ICD10DiagnosisIndex MR_findAllSortedBy:@"title"
-                                                        ascending:YES
-                                                    withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
-            }
-            else
-            {
-                ICD10DiagnosisIndex *parent = object.object;
-                children = [parent.children array];
-            }
-            
-            for (ICD10DiagnosisIndex *index in children)
-            {
-                RADataObject *data = [[RADataObject alloc] initWithName:index.title parent:object children:nil object:index];
-                [tree addObject:data];
-            }
-        }
-    }
-    
-    else if ([name isEqualToString:@"Extended Index"])
-    {
-        if (treeNodeInfo.treeDepthLevel == 0)
-        {
-            children = [JJJUtil alphabetWithWildcard];
-            
-            for (NSString *alpha in children)
-            {
-                RADataObject *data = [[RADataObject alloc] initWithName:alpha parent:object children:nil object:alpha];
-                [tree addObject:data];
-            }
-        }
-        else
-        {
-            if (treeNodeInfo.treeDepthLevel == 1)
-            {
-                NSString *alpha = object.object;
-                
-                NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"parent = nil"];
-                NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"title", alpha];
-                
-                children = [ICD10DiagnosisEIndex MR_findAllSortedBy:@"title"
-                                                         ascending:YES
-                                                     withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
-            }
-            else
-            {
-                ICD10DiagnosisEIndex *parent = object.object;
-                children = [parent.children array];
-            }
-            
-            for (ICD10DiagnosisEIndex *index in children)
-            {
-                RADataObject *data = [[RADataObject alloc] initWithName:index.title parent:object children:nil object:index];
-                [tree addObject:data];
-            }
+            RADataObject *data = [[RADataObject alloc] initWithName:alpha details:nil parent:parent children:nil object:alpha];
+            [tree addObject:data];
         }
     }
     
     return tree;
 }
 
-- (UITableViewCell *)cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+-(NSArray*) treeStructureForItem:(id)item
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-    RADataObject *data = (RADataObject *)item;
+    RADataObject *object = item;
+    NSString *name = object.name;
+    NSArray *children;
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text = data.name;
-    cell.detailTextLabel.textColor = [UIColor blackColor];
-    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    if ([name isEqualToString:@"Tabular"])
+    {
+        if (!object.children || object.children.count == 0)
+        {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
+            children = [ICD10Diagnosis MR_findAllSortedBy:@"first" ascending:YES withPredicate:predicate];
+        }
+    }
+    else if ([name isEqualToString:@"Neoplasms"])
+    {
+        if (!object.children || object.children.count == 0)
+        {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
+            children = [ICD10DiagnosisNeoplasm MR_findAllSortedBy:@"title" ascending:YES withPredicate:predicate];
+        }
+    }
+    else if ([name isEqualToString:@"Drugs"])
+    {
+        if (!object.children || object.children.count == 0)
+        {
+            children = [JJJUtil alphabetWithWildcard];
+        }
+    }
+    else if ([name isEqualToString:@"Index"])
+    {
+        if (!object.children || object.children.count == 0)
+        {
+            children = [JJJUtil alphabetWithWildcard];
+        }
+    }
+    else if ([name isEqualToString:@"Extended Index"])
+    {
+        if (!object.children || object.children.count == 0)
+        {
+            children = [JJJUtil alphabetWithWildcard];
+        }
+    }
+    else
+    {
+        if (!object.children || object.children.count == 0)
+        {
+            
+        if ([object.object isKindOfClass:[ICD10Diagnosis class]])
+        {
+            ICD10Diagnosis *diag = object.object;
+            children = [diag.children array];
+        }
+        else if ([object.object isKindOfClass:[ICD10DiagnosisNeoplasm class]])
+        {
+            ICD10DiagnosisNeoplasm *neo = object.object;
+            children = [neo.children array];
+        }
+        else if ([object.object isKindOfClass:[ICD10DiagnosisDrug class]])
+        {
+            ICD10DiagnosisDrug *drug = object.object;
+            children = [drug.children array];
+        }
+        else if ([object.object isKindOfClass:[ICD10DiagnosisIndex class]])
+        {
+            ICD10DiagnosisIndex *index = object.object;
+            children = [index.children array];
+        }
+        else if ([object.object isKindOfClass:[ICD10DiagnosisEIndex class]])
+        {
+            ICD10DiagnosisEIndex *index = object.object;
+            children = [index.children array];
+        }
+        else if ([object.object isKindOfClass:[NSString class]])
+        {
+            NSString *parent = [self parentName:object];
+            
+            if ([parent isEqualToString:@"Drugs"])
+            {
+                NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"parent = nil"];
+                NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"substance", name];
+                
+                children = [ICD10DiagnosisDrug MR_findAllSortedBy:@"substance"
+                                                        ascending:YES
+                                                    withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
+            }
+            else if ([parent isEqualToString:@"Index"])
+            {
+                NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"parent = nil"];
+                NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"title", name];
+                
+                children = [ICD10DiagnosisIndex MR_findAllSortedBy:@"title"
+                                                         ascending:YES
+                                                     withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
+            }
+            else if ([parent isEqualToString:@"Extended Index"])
+            {
+                NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"parent = nil"];
+                NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"title", name];
+                
+                children = [ICD10DiagnosisEIndex MR_findAllSortedBy:@"title"
+                                                          ascending:YES
+                                                      withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
+            }
+        }
+        }
+    }
     
-    if ([data.object isKindOfClass:[ICD10Diagnosis class]])
-    {
-        ICD10Diagnosis *diag = data.object;
-
-        cell.detailTextLabel.text = diag.desc;
-    }
-    else if ([data.object isKindOfClass:[ICD10DiagnosisNeoplasm class]])
-    {
-        ICD10DiagnosisNeoplasm *neo = data.object;
-    }
-    else if ([data.object isKindOfClass:[ICD10DiagnosisDrug class]])
-    {
-        ICD10DiagnosisDrug *drug = data.object;
-    }
-    else if ([data.object isKindOfClass:[ICD10DiagnosisIndex class]])
-    {
-        ICD10DiagnosisIndex *index = data.object;
-    }
-    else if ([data.object isKindOfClass:[ICD10DiagnosisEIndex class]])
-    {
-        ICD10DiagnosisEIndex *index = data.object;
-    }
-    
-    return cell;
+    return [self constructTreeFromParent:object andChildren:children];
 }
 
 -(UIViewController*) detailViewForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo

@@ -24,6 +24,7 @@
 
 
 - (id)initWithName:(NSString *)name
+           details:(NSString*)details
             parent:(RADataObject*)parent
           children:(NSArray *)children
             object:(id)object
@@ -32,6 +33,7 @@
     if (self)
     {
         self.name = name;
+        self.details = details;
         self.parent = parent;
         self.children = children;
         self.object = object;

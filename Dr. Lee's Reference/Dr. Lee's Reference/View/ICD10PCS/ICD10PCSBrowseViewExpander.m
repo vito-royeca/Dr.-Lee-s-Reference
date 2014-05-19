@@ -15,9 +15,9 @@
 {
     NSMutableArray *tree = [[NSMutableArray alloc] init];
 
-    [tree addObjectsFromArray:@[ [[RADataObject alloc] initWithName:@"Tabular" parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Index" parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Definitions" parent:nil children:nil object:nil]]];
+    [tree addObjectsFromArray:@[ [[RADataObject alloc] initWithName:@"Tabular" details:nil parent:nil children:nil object:nil],
+                                 [[RADataObject alloc] initWithName:@"Index" details:nil parent:nil children:nil object:nil],
+                                 [[RADataObject alloc] initWithName:@"Definitions" details:nil parent:nil children:nil object:nil]]];
     return tree;
 }
 
