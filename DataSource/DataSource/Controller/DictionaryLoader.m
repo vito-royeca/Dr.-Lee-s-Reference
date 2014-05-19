@@ -38,11 +38,11 @@
 //                    @"9",
 //                    @"a",
 //                    @"b",
-                    @"c",
+//                    @"c",
 //                    @"d",
 //                    @"e",
-//                    @"f",
-//                    @"g",
+                    @"f",
+                    @"g",
 //                    @"h",
 //                    @"i",
 //                    @"j",
@@ -440,8 +440,6 @@
     [_xrefsParser parse];
     [is close];
     
-    [[Database sharedInstance ] closeDb];
-    
     NSDate *dateEnd = [NSDate date];
     NSTimeInterval timeDifference = [dateEnd timeIntervalSinceDate:dateStart];
     NSLog(@"Started: %@", dateStart);
@@ -451,6 +449,7 @@
     {
         NSLog(@"%@=%tu", x, [DictionaryTerm MR_findByAttribute:@"termInitial" withValue:x].count);
     }
+    [[Database sharedInstance ] closeDb];
 }
 
 -(void) saveTermToDatabase:(NSDictionary*)dict
