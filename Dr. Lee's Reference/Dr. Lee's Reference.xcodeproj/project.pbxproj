@@ -64,6 +64,8 @@
 		8C97C53B1904EA6E000CEA20 /* DrugReviewClass_Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C53A1904EA6E000CEA20 /* DrugReviewClass_Lookup.m */; };
 		8C97C53E1904EA6E000CEA20 /* DrugApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C97C53D1904EA6E000CEA20 /* DrugApplication.m */; };
 		8C9FECE718F280F100714818 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E7A189E95BA00D83B00 /* libJJJ.a */; };
+		8CB91906192B39C100D3E034 /* BrowseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB91905192B39C100D3E034 /* BrowseTableViewCell.m */; };
+		8CB9190B192B3CBE00D3E034 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 8CB9190A192B3CBE00D3E034 /* style.css */; };
 		8CEF1E7618F8026100EAE98E /* DrugSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7518F8026100EAE98E /* DrugSearchViewController.m */; };
 		8CEF1E7918F8092D00EAE98E /* DrugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7818F8092D00EAE98E /* DrugViewController.m */; };
 		8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7B18F809C100EAE98E /* DrugBrowseViewController.m */; };
@@ -206,6 +208,9 @@
 		8C97C53A1904EA6E000CEA20 /* DrugReviewClass_Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugReviewClass_Lookup.m; sourceTree = "<group>"; };
 		8C97C53C1904EA6E000CEA20 /* DrugApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugApplication.h; sourceTree = "<group>"; };
 		8C97C53D1904EA6E000CEA20 /* DrugApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugApplication.m; sourceTree = "<group>"; };
+		8CB91904192B39C100D3E034 /* BrowseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseTableViewCell.h; sourceTree = "<group>"; };
+		8CB91905192B39C100D3E034 /* BrowseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseTableViewCell.m; sourceTree = "<group>"; };
+		8CB9190A192B3CBE00D3E034 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		8CEF1E7418F8026100EAE98E /* DrugSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSearchViewController.h; sourceTree = "<group>"; };
 		8CEF1E7518F8026100EAE98E /* DrugSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSearchViewController.m; sourceTree = "<group>"; };
 		8CEF1E7718F8092D00EAE98E /* DrugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugViewController.h; sourceTree = "<group>"; };
@@ -448,6 +453,8 @@
 		8C12B1A51907D70E0092F82B /* Browse */ = {
 			isa = PBXGroup;
 			children = (
+				8CB91904192B39C100D3E034 /* BrowseTableViewCell.h */,
+				8CB91905192B39C100D3E034 /* BrowseTableViewCell.m */,
 				8C12B1A91907DA090092F82B /* BrowseViewController.h */,
 				8C12B1AA1907DA090092F82B /* BrowseViewController.m */,
 				8C674F5A191B55D100536C02 /* InfoViewController.h */,
@@ -470,6 +477,7 @@
 			children = (
 				8C45BD531925AD1400A1FF26 /* back.png */,
 				8C45BD541925AD1400A1FF26 /* back@2x.png */,
+				8CB9190A192B3CBE00D3E034 /* style.css */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -618,6 +626,7 @@
 			files = (
 				8C12B19F1907CF530092F82B /* database.sqlite in Resources */,
 				8C45BD551925AD1400A1FF26 /* back.png in Resources */,
+				8CB9190B192B3CBE00D3E034 /* style.css in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
 				8C447064190A7F73000DEFC2 /* InAppSettings.bundle in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
@@ -692,6 +701,7 @@
 				8C12B1AB1907DA090092F82B /* BrowseViewController.m in Sources */,
 				8C12B1A81907D9F50092F82B /* RADataObject.m in Sources */,
 				8C64C2BD190FB18600148440 /* MigrationManager.m in Sources */,
+				8CB91906192B39C100D3E034 /* BrowseTableViewCell.m in Sources */,
 				8C6ACEBD191C998200E4A274 /* DrugsBrowseViewExpander.m in Sources */,
 				8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */,
 				8C2E63641910FCD600B5A908 /* ICD10Procedure.m in Sources */,

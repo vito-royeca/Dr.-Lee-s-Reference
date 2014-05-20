@@ -159,7 +159,7 @@ static Database *_me;
         {
             NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"term", query];
             NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"definition", query];
-            predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
+            predicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[pred1, pred2]];
         }
     }
 

@@ -43,7 +43,7 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"back" ofType:@"png"];
     _forwardHistory = [[NSMutableArray alloc] init];
     _backHistory    = [[NSMutableArray alloc] init];
-    _backButton     = [NSString stringWithFormat:@"<a href='#back__'><img src=\"file://%@\"></a>", path];
+    _backButton     = [NSString stringWithFormat:@"<a href='#back__'><img src=\"file://%@\" border=\"0\"></a>", path];
     
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.webView.delegate = self;
@@ -73,8 +73,9 @@
 - (NSString*) composeHTMLDefinition
 {
     NSMutableString *html = [[NSMutableString alloc] init];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"style" ofType:@"css"];
     
-    [html appendFormat:@"<html><head><style type='text/css'> body {font-family:verdana;} </style> </head>"];
+    [html appendFormat:@"<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file://%@\"></head>", path];
     [html appendFormat:@"<body"];
     
     NSString *term = self.dictionaryTerm.term;
@@ -83,12 +84,12 @@
         term = [JJJUtil highlightTerm:term withQuery:self.searchTerm];
         
     }
-    [html appendFormat:@"<p><font color='blue'><strong>%@</strong></font>", term];
+    [html appendFormat:@"<p><div class='term'>%@</div>", term];
     
     
     if (self.dictionaryTerm.pronunciation)
     {
-        [html appendFormat:@"<br>(<font color='red'>%@</font>)", self.dictionaryTerm.pronunciation];
+        [html appendFormat:@"<br>(<div class='pron'>%@</div>)", self.dictionaryTerm.pronunciation];
     }
     else
     {
@@ -128,7 +129,7 @@
     
     if (self.dictionaryTerm.xref.count > 0)
     {
-        [html appendFormat:@"<p>SEE ALSO "];
+        [html appendFormat:@"<p><div class=\"see\">SEE ALSO</div> "];
         int sentinel = 0;
         for (DictionaryXRef *xref in self.dictionaryTerm.xref)
         {
@@ -139,7 +140,7 @@
     
     if (self.dictionaryTerm.synonym.count > 0)
     {
-        [html appendFormat:@"<p>SYN "];
+        [html appendFormat:@"<p><div class=\"syn\">SYN</div> "];
         int sentinel = 0;
         for (DictionarySynonym *syn in self.dictionaryTerm.synonym)
         {
@@ -157,8 +158,9 @@
 - (NSString*) composeHTMLList:(NSArray*) list fromQuery:(NSString*) query
 {
     NSMutableString *html = [[NSMutableString alloc] init];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"style" ofType:@"css"];
     
-    [html appendFormat:@"<html><head><style type='text/css'> body {font-family:verdana;} </style> </head>"];
+    [html appendFormat:@"<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file://%@\"></head>", path];
     [html appendFormat:@"<body"];
     
     [html appendFormat:@"<p><ul>"];

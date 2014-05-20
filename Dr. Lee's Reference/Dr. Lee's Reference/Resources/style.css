@@ -1,0 +1,33 @@
+body
+{
+    font-family: verdana;
+}
+a
+{
+    color: #0066FF;
+}
+div
+{
+    display: inline-block;
+}
+.term
+{
+    color: #0066FF;
+    font-weight: bold;
+}
+.def
+{
+    
+}
+.pron
+{
+    color: #CC3333;
+}
+.syn
+{
+    font-family: serif
+}
+.see
+{
+    font-family: serif
+}
