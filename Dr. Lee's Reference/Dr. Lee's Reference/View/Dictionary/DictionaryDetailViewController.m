@@ -166,7 +166,7 @@
     [html appendFormat:@"<p><ul>"];
     for (DictionaryTerm *dt in list)
     {
-        [html appendFormat:@"<li><a href='#%@'>%@</a></li>", dt.term, [JJJUtil highlightTerm:dt.term withQuery:query]];
+        [html appendFormat:@"<li><a href='#%@&type=list'>%@</a></li>", dt.term, [JJJUtil highlightTerm:dt.term withQuery:query]];
     }
     [html appendFormat:@"</ul>"];
     
@@ -181,11 +181,14 @@
 {
     if (navigationType == UIWebViewNavigationTypeLinkClicked)
     {
+        NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
         NSURL *url = [request URL];
         NSString *fragment = [[url fragment] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+        NSArray *params = [fragment componentsSeparatedByString:@"&"];
+        NSString *query = [params firstObject];
         
-        if ([fragment isEqualToString:@"back__"])
+        
+        if ([query isEqualToString:@"back__"])
         {
             NSString *current = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
             NSString *previous = [_backHistory lastObject];
@@ -194,7 +197,7 @@
             [_forwardHistory addObject:current];
             [self.webView loadHTMLString:previous baseURL:bundleUrl];
         }
-        else if ([fragment isEqualToString:@"forward__"])
+        else if ([query isEqualToString:@"forward__"])
         {
             NSString *current = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
             NSString *next = [_forwardHistory lastObject];
@@ -205,16 +208,30 @@
         }
         else
         {
-            NSFetchedResultsController *nsfrc = [[Database sharedInstance] search:DictionaryDataSource
-                                                                            query:fragment
-                                                                     narrowSearch:NO];
-            NSError *error;
-            if ([nsfrc performFetch:&error])
-            {
-                NSArray *terms = [nsfrc fetchedObjects];
-                NSString *html;
+            MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+            [self.view addSubview:hud];
+            hud.delegate = self;
+            __block NSString *html;
+            
+            [hud showAnimated:YES whileExecutingBlock:
+            ^{
+                NSString *type = params.count > 1 ? [params objectAtIndex:1] : nil;
+                NSArray *terms;
                 
-                [_backHistory addObject:[self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"]];
+                if (type)
+                {
+                    terms = [DictionaryTerm MR_findByAttribute:@"term" withValue:query];
+                }
+                else
+                {
+                    NSFetchedResultsController *nsfrc = [[Database sharedInstance] search:DictionaryDataSource
+                                                                                    query:query
+                                                                             narrowSearch:NO];
+                    if ([nsfrc performFetch:nil])
+                    {
+                        terms = [nsfrc fetchedObjects];
+                    }
+                }
                 
                 if (terms.count == 1)
                 {
@@ -226,13 +243,23 @@
                 {
                     html = [self composeHTMLList:terms fromQuery:fragment];
                 }
+            }
+            completionBlock:
+            ^{
+                [_backHistory addObject:[self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"]];
                 
                 [self.webView loadHTMLString:html baseURL:bundleUrl];
-            }
+            }];
         }
     }
     
     return YES;
+}
+
+#pragma mark - MBProgressHUDDelegate methods
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+	[hud removeFromSuperview];
 }
 
 @end

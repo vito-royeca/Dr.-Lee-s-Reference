@@ -13,8 +13,9 @@
 #import "DictionarySynonym.h"
 #import "DictionaryTerm.h"
 #import "DictionaryXRef.h"
+#import "MBProgressHUD.h"
 
-@interface DictionaryDetailViewController : UIViewController<UIWebViewDelegate>
+@interface DictionaryDetailViewController : UIViewController<UIWebViewDelegate, MBProgressHUDDelegate>
 
 @property(strong, nonatomic) UIWebView *webView;
 
