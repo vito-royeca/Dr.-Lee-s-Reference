@@ -8,22 +8,10 @@
 
 #import "InfoViewController.h"
 
-@interface InfoViewController ()
-{
-    NSString *_html;
-}
-@end
-
 @implementation InfoViewController
 
 @synthesize webView = _webView;
-
-- (id)initWithHTMLString:(NSString*) html
-{
-    _html = html;
-    
-    return [self initWithNibName:nil bundle:nil];
-}
+@synthesize htmlPath = _htmlPath;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,7 +34,8 @@
     CGRect frame = CGRectMake(dX, dY, dWidth, dHeight);
     self.webView = [[UIWebView alloc] initWithFrame:frame];
     self.webView.delegate = self;
-    [self.webView loadHTMLString:_html baseURL:nil];
+    NSString* htmlString = [NSString stringWithContentsOfFile:self.htmlPath encoding:NSUTF8StringEncoding error:nil];
+    [self.webView loadHTMLString:htmlString baseURL:nil];
     
     UIBarButtonItem *btnClose = [[UIBarButtonItem alloc] initWithTitle:@"Close"
                                                                     style:UIBarButtonItemStylePlain

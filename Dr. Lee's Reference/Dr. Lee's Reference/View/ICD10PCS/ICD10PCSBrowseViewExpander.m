@@ -15,23 +15,27 @@
 {
     NSMutableArray *tree = [[NSMutableArray alloc] init];
 
-    [tree addObjectsFromArray:@[ [[RADataObject alloc] initWithName:@"Tabular" details:nil parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Index" details:nil parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Definitions" details:nil parent:nil children:nil object:nil]]];
+    [tree addObjectsFromArray:@[ [[RADataObject alloc] initWithName:@"Tabular"
+                                                            details:nil
+                                                             parent:nil
+                                                           children:nil
+                                                             object:nil],
+                                 [[RADataObject alloc] initWithName:@"Index"
+                                                            details:nil
+                                                             parent:nil
+                                                           children:nil
+                                                             object:nil],
+                                 [[RADataObject alloc] initWithName:@"Definitions"
+                                                            details:nil
+                                                             parent:nil
+                                                           children:nil
+                                                             object:nil]]];
     return tree;
 }
 
--(NSArray*) treeStructureForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+-(NSArray*) treeStructureForItem:(id)item
 {
     NSMutableArray *tree = [[NSMutableArray alloc] init];
-    
-    switch (treeNodeInfo.treeDepthLevel)
-    {
-        case 0:
-        {
-            break;
-        }
-    }
     
     return tree;
 }

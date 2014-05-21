@@ -61,7 +61,7 @@
     dHeight = 40;
     frame = CGRectMake(dX, dY, dWidth, dHeight);
     self.segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:
-                             @[@"Dictionary", @"FDA Drugs", @"ICD10 CM", @"ICD10 PCS"]];
+                             @[@"Dictionary", @"FDA Drugs", @"ICD-10-CM", @"ICD-10-PCS"]];
     self.segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
     self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
     self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
@@ -230,15 +230,14 @@
 
 - (void)treeView:(RATreeView *)treeView accessoryButtonTappedForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
-    if ([self.delegate respondsToSelector:@selector(detailViewForItem:treeNodeInfo:)])
+    NSString *htmlPath = [self.delegate infoPathForItem:item treeNodeInfo:treeNodeInfo];
+    
+    if (htmlPath)
     {
-        UIViewController *detailView = [self.delegate detailViewForItem:item treeNodeInfo:treeNodeInfo];
-        
-        if (detailView)
-        {
-            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailView];
-            [self.navigationController presentViewController:navController animated:NO completion:nil];
-        }
+        InfoViewController *infoView = [[InfoViewController alloc] init];
+        infoView.htmlPath = htmlPath;
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:infoView];
+        [self.navigationController presentViewController:navController animated:NO completion:nil];
     }
 }
 
@@ -254,7 +253,22 @@
     cell.textLabel.text = object.name;
     cell.detailTextLabel.text = object.details;
     cell.detailTextLabel.textColor = [UIColor blackColor];
-    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    
+    if ([self.delegate respondsToSelector:@selector(infoPathForItem:treeNodeInfo:)])
+    {
+        if ([self.delegate infoPathForItem:item treeNodeInfo:treeNodeInfo])
+        {
+            cell.accessoryType = UITableViewCellAccessoryDetailButton;
+        }
+    }
+
+//    if (!bAccessory)
+//    {
+//        if (object.children && object.children.count > 0)
+//        {
+//            cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"down4.png"]];
+//        }
+//    }
     
     return cell;
 }

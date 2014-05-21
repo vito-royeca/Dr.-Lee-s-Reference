@@ -22,11 +22,31 @@
 {
     NSMutableArray *tree = [[NSMutableArray alloc] init];
 
-    [tree addObjectsFromArray:@[ [[RADataObject alloc] initWithName:@"Tabular" details:nil parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Neoplasms" details:nil parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Drugs" details:nil parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Index" details:nil parent:nil children:nil object:nil],
-                                 [[RADataObject alloc] initWithName:@"Extended Index" details:nil parent:nil children:nil object:nil]]];
+    [tree addObjectsFromArray:@[ [[RADataObject alloc] initWithName:@"Tabular"
+                                                            details:@"Tabular List of Diseases and Injuries"
+                                                             parent:nil
+                                                           children:nil
+                                                             object:nil],
+                                 [[RADataObject alloc] initWithName:@"Neoplasms"
+                                                            details:@"Table of Neoplasms"
+                                                             parent:nil
+                                                           children:nil
+                                                             object:nil],
+                                 [[RADataObject alloc] initWithName:@"Drugs"
+                                                            details:@"Table of Drugs and Chemicals"
+                                                             parent:nil
+                                                           children:nil
+                                                             object:nil],
+                                 [[RADataObject alloc] initWithName:@"Index"
+                                                            details:@"Index To Diseases and Injuries"
+                                                             parent:nil
+                                                           children:nil
+                                                             object:nil],
+                                 [[RADataObject alloc] initWithName:@"Extended Index"
+                                                            details:@"External Cause of Injuries Index"
+                                                             parent:nil
+                                                           children:nil
+                                                             object:nil]]];
     return tree;
 }
 
@@ -68,7 +88,11 @@
             {
                 [buffer appendFormat:@"%@", diag.name];
             }
-            RADataObject *data = [[RADataObject alloc] initWithName:buffer details:diag.desc parent:parent children:nil object:diag];
+            RADataObject *data = [[RADataObject alloc] initWithName:buffer
+                                                            details:diag.desc
+                                                             parent:parent
+                                                           children:nil
+                                                             object:diag];
             [tree addObject:data];
             
         }
@@ -76,35 +100,55 @@
         {
             ICD10DiagnosisNeoplasm *neo = child;
             
-            RADataObject *data = [[RADataObject alloc] initWithName:neo.title details:nil  parent:parent children:nil object:neo];
+            RADataObject *data = [[RADataObject alloc] initWithName:neo.title
+                                                            details:nil
+                                                             parent:parent
+                                                           children:nil
+                                                             object:neo];
             [tree addObject:data];
         }
         else if ([child isKindOfClass:[ICD10DiagnosisDrug class]])
         {
             ICD10DiagnosisDrug *drug = child;
             
-            RADataObject *data = [[RADataObject alloc] initWithName:drug.substance details:nil parent:parent children:nil object:drug];
+            RADataObject *data = [[RADataObject alloc] initWithName:drug.substance
+                                                            details:nil
+                                                             parent:parent
+                                                           children:nil
+                                                             object:drug];
             [tree addObject:data];
         }
         else if ([child isKindOfClass:[ICD10DiagnosisIndex class]])
         {
             ICD10DiagnosisIndex *index = child;
             
-            RADataObject *data = [[RADataObject alloc] initWithName:index.title details:nil parent:parent children:nil object:index];
+            RADataObject *data = [[RADataObject alloc] initWithName:index.title
+                                                            details:nil
+                                                             parent:parent
+                                                           children:nil
+                                                             object:index];
             [tree addObject:data];
         }
         else if ([child isKindOfClass:[ICD10DiagnosisEIndex class]])
         {
             ICD10DiagnosisEIndex *index = child;
             
-            RADataObject *data = [[RADataObject alloc] initWithName:index.title details:nil parent:parent children:nil object:index];
+            RADataObject *data = [[RADataObject alloc] initWithName:index.title
+                                                            details:nil
+                                                             parent:parent
+                                                           children:nil
+                                                             object:index];
             [tree addObject:data];
         }
         else if ([child isKindOfClass:[NSString class]])
         {
             NSString *alpha = child;
             
-            RADataObject *data = [[RADataObject alloc] initWithName:alpha details:nil parent:parent children:nil object:alpha];
+            RADataObject *data = [[RADataObject alloc] initWithName:alpha
+                                                            details:nil
+                                                             parent:parent
+                                                           children:nil
+                                                             object:alpha];
             [tree addObject:data];
         }
     }
@@ -223,12 +267,21 @@
     return [self constructTreeFromParent:object andChildren:children];
 }
 
--(UIViewController*) detailViewForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+-(NSString*) infoPathForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
-    if (treeNodeInfo.treeDepthLevel > 0)
+    if (treeNodeInfo.treeDepthLevel == 0)
     {
-        RADataObject *data = item;
-        return [[ICD10CMDetailViewController alloc] initWithDiagnosis:data.object];
+        RADataObject *object = item;
+        NSString *name = object.name;
+        
+        if ([name isEqualToString:@"Tabular"])
+        {
+            return [[NSBundle mainBundle] pathForResource:@"icd10cmTabular" ofType:@"html"];
+        }
+        else if ([name isEqualToString:@"Neoplasms"])
+        {
+            return [[NSBundle mainBundle] pathForResource:@"icd10cmNeoplasms" ofType:@"html"];
+        }
     }
     return nil;
 }

@@ -91,7 +91,7 @@
     dHeight = 40;
     frame = CGRectMake(dX, dY, dWidth, dHeight);
     self.segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:
-                             @[@"Dictionary", @"FDA Drugs", @"ICD10 CM", @"ICD10 PCS"]];
+                             @[@"Dictionary", @"FDA Drugs", @"ICD-10-CM", @"ICD-10-PCS"]];
     self.segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
     self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
     self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;

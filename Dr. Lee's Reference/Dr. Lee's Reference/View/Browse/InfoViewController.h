@@ -11,7 +11,6 @@
 @interface InfoViewController : UIViewController<UIWebViewDelegate>
 
 @property(strong,nonatomic) UIWebView *webView;
-
-- (id)initWithHTMLString:(NSString*) html;
+@property(strong,nonatomic) NSString *htmlPath;
 
 @end

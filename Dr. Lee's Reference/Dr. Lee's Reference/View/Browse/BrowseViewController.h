@@ -18,7 +18,7 @@
 -(NSArray*) treeStructureForItem:(id)item;
 
 @optional
--(UIViewController*) detailViewForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
+-(NSString*) infoPathForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
 
 @end
 

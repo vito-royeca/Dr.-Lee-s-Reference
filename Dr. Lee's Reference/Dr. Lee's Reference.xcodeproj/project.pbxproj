@@ -31,6 +31,8 @@
 		8C12B1A21907D39D0092F82B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1A11907D39D0092F82B /* MainViewController.m */; };
 		8C12B1A81907D9F50092F82B /* RADataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1A71907D9F50092F82B /* RADataObject.m */; };
 		8C12B1AB1907DA090092F82B /* BrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C12B1AA1907DA090092F82B /* BrowseViewController.m */; };
+		8C1635A0192CAC51003C01AB /* icd10cmTabular.html in Resources */ = {isa = PBXBuildFile; fileRef = 8C16359F192CAC51003C01AB /* icd10cmTabular.html */; };
+		8C1635A5192CAC62003C01AB /* icd10cmNeoplasms.html in Resources */ = {isa = PBXBuildFile; fileRef = 8C1635A4192CAC62003C01AB /* icd10cmNeoplasms.html */; };
 		8C2E63461910FC9E00B5A908 /* DictionaryXRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E63451910FC9E00B5A908 /* DictionaryXRef.m */; };
 		8C2E63491910FC9F00B5A908 /* DictionarySynonym.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E63481910FC9F00B5A908 /* DictionarySynonym.m */; };
 		8C2E634C1910FC9F00B5A908 /* DictionaryTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2E634B1910FC9F00B5A908 /* DictionaryTerm.m */; };
@@ -147,6 +149,8 @@
 		8C12B1A71907D9F50092F82B /* RADataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RADataObject.m; sourceTree = "<group>"; };
 		8C12B1A91907DA090092F82B /* BrowseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseViewController.h; sourceTree = "<group>"; };
 		8C12B1AA1907DA090092F82B /* BrowseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseViewController.m; sourceTree = "<group>"; };
+		8C16359F192CAC51003C01AB /* icd10cmTabular.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = icd10cmTabular.html; sourceTree = "<group>"; };
+		8C1635A4192CAC62003C01AB /* icd10cmNeoplasms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = icd10cmNeoplasms.html; sourceTree = "<group>"; };
 		8C2E63441910FC9E00B5A908 /* DictionaryXRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryXRef.h; sourceTree = "<group>"; };
 		8C2E63451910FC9E00B5A908 /* DictionaryXRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryXRef.m; sourceTree = "<group>"; };
 		8C2E63471910FC9F00B5A908 /* DictionarySynonym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionarySynonym.h; sourceTree = "<group>"; };
@@ -477,6 +481,8 @@
 			children = (
 				8C45BD531925AD1400A1FF26 /* back.png */,
 				8C45BD541925AD1400A1FF26 /* back@2x.png */,
+				8C1635A4192CAC62003C01AB /* icd10cmNeoplasms.html */,
+				8C16359F192CAC51003C01AB /* icd10cmTabular.html */,
 				8CB9190A192B3CBE00D3E034 /* style.css */,
 			);
 			path = Resources;
@@ -626,9 +632,11 @@
 			files = (
 				8C12B19F1907CF530092F82B /* database.sqlite in Resources */,
 				8C45BD551925AD1400A1FF26 /* back.png in Resources */,
+				8C1635A0192CAC51003C01AB /* icd10cmTabular.html in Resources */,
 				8CB9190B192B3CBE00D3E034 /* style.css in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
 				8C447064190A7F73000DEFC2 /* InAppSettings.bundle in Resources */,
+				8C1635A5192CAC62003C01AB /* icd10cmNeoplasms.html in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
 				8C45BD561925AD1400A1FF26 /* back@2x.png in Resources */,
 			);
