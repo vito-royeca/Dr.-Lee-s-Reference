@@ -128,7 +128,10 @@
 
 -(void) segmentedControlChangedValue:(id) sender
 {
-    [self doSearch];
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hud];
+    hud.delegate = self;
+    [hud showWhileExecuting:@selector(doSearch) onTarget:self withObject:nil animated:YES];
 }
 
 -(void)contentSizeDidChange:(NSString *)size

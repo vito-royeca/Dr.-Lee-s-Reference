@@ -170,13 +170,12 @@ static Database *_me;
     NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term"
                                                                     ascending:YES
                                                                      selector:@selector(localizedCaseInsensitiveCompare:)];
-    NSArray *sortDescriptors = @[sortDescriptor, sortDescriptor2];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
                                               inManagedObjectContext:moc];
     
     [fetchRequest setPredicate:predicate];
     [fetchRequest setEntity:entity];
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    [fetchRequest setSortDescriptors:@[sortDescriptor, sortDescriptor2]];
     [fetchRequest setFetchBatchSize:kFetchBatchSize];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
@@ -220,7 +219,6 @@ static Database *_me;
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"drugName"
                                                                    ascending:YES
                                                                     selector:@selector(localizedCaseInsensitiveCompare:)];
-    NSArray *sortDescriptors = @[sortDescriptor];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"DrugProduct"
                                               inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 
@@ -228,7 +226,7 @@ static Database *_me;
 //    [fetchRequest setReturnsDistinctResults:YES];
     [fetchRequest setPredicate:predicate];
     [fetchRequest setEntity:entity];
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                managedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]

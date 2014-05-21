@@ -44,9 +44,25 @@
     
     if (isAplha)
     {
-        NSFetchedResultsController *frc = [[Database sharedInstance] search:DictionaryDataSource
-                                                                      query:object.name
-                                                               narrowSearch:NO];
+        NSManagedObjectContext *moc = [NSManagedObjectContext MR_defaultContext];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"termInitial", name];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
+                                                                       ascending:YES];
+        NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term"
+                                                                        ascending:YES
+                                                                         selector:@selector(localizedCaseInsensitiveCompare:)];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
+                                                  inManagedObjectContext:moc];
+        
+        [fetchRequest setPredicate:predicate];
+        [fetchRequest setEntity:entity];
+        [fetchRequest setSortDescriptors:@[sortDescriptor, sortDescriptor2]];
+        
+        NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                              managedObjectContext:moc
+                                                                                sectionNameKeyPath:nil
+                                                                                         cacheName:nil];
         NSError *error;
         if ([frc performFetch:&error])
         {
@@ -71,8 +87,10 @@
                 
                 if (first && last)
                 {
-                    NSString *range = [NSString stringWithFormat:@"%@ - %@", first.term, last.term];
-                    RADataObject *ra = [[RADataObject alloc] initWithName:range details:nil parent:nil children:nil object:nil];
+                    NSString *range = [NSString stringWithFormat:@"%@ - %@",
+                                       first.term.length < 8 ? first.term : [first.term substringToIndex:8],
+                                       last.term.length < 8 ? last.term : [last.term substringToIndex:8]];
+                    RADataObject *ra = [[RADataObject alloc] initWithName:range details:nil parent:nil children:nil object:@[first, last]];
                     [tree addObject:ra];
                     
                     i += 1;
@@ -82,27 +100,28 @@
             }
         }
     }
-    
-//    switch (treeNodeInfo.treeDepthLevel)
-//    {
-//        case 0:
-//        {
-//            NSFetchedResultsController *frc = [[Database sharedInstance] search:DictionaryDataSource
-//                                                                          query:object.name
-//                                                                   narrowSearch:NO];
-//            NSError *error;
-//            if ([frc performFetch:&error])
-//            {
-//                for (DictionaryTerm *dict in [frc fetchedObjects])
-//                {
-//                    RADataObject *ra = [[RADataObject alloc] initWithName:dict.term details:nil parent:object children:nil object:dict];
-//                    [tree addObject:ra];
-//                }
-//            }
-//
-//            break;
-//        }
-//    }
+    else
+    {
+//        NSManagedObjectContext *moc = [NSManagedObjectContext MR_defaultContext];
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"termInitial", name];
+//        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
+//                                                                       ascending:YES];
+//        NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term"
+//                                                                        ascending:YES
+//                                                                         selector:@selector(localizedCaseInsensitiveCompare:)];
+//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
+//                                                  inManagedObjectContext:moc];
+//        
+//        [fetchRequest setPredicate:predicate];
+//        [fetchRequest setEntity:entity];
+//        [fetchRequest setSortDescriptors:@[sortDescriptor, sortDescriptor2]];
+//        
+//        NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+//                                                                              managedObjectContext:moc
+//                                                                                sectionNameKeyPath:nil
+//                                                                                         cacheName:nil];
+    }
     
     return tree;
 }

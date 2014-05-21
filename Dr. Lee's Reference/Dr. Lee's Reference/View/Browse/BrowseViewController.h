@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HMSegmentedControl.h"
+#import "MBProgressHUD.h"
 #import "RADataObject.h"
 #import "RATreeView.h"
 
@@ -21,7 +22,7 @@
 
 @end
 
-@interface BrowseViewController : UIViewController<RATreeViewDelegate, RATreeViewDataSource>
+@interface BrowseViewController : UIViewController<MBProgressHUDDelegate, RATreeViewDelegate, RATreeViewDataSource>
 
 @property (strong, nonatomic) id<BrowseViewExpander> delegate;
 @property (strong, nonatomic) NSArray *data;

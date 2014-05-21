@@ -197,25 +197,35 @@
 {
     RADataObject *object = item;
     self.expanded = object;
+    __block NSArray *children;
     
-    NSArray *children = [self.delegate treeStructureForItem:object];
-
-    if (treeNodeInfo.treeDepthLevel == 2 && children.count > 0)
-    {
-        BrowseViewController *details = [[BrowseViewController alloc] initShowSegmentedControl:NO];
-        details.data = children;
-        details.delegate = self.delegate;
-        details.mainTitle = object.name;
-        [self.navigationController pushViewController:details animated:NO];
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:hud];
+    hud.delegate = self;
+    
+    [hud showAnimated:YES whileExecutingBlock:
+    ^{
+        children = [self.delegate treeStructureForItem:object];
     }
-    else
-    {
-        dispatch_async(dispatch_get_main_queue(),
-        ^{
-            object.children = children;
-            [self.treeView reloadData];
-        });
-    }
+    completionBlock:
+    ^{
+        if (treeNodeInfo.treeDepthLevel == 2 && children.count > 0)
+        {
+            BrowseViewController *details = [[BrowseViewController alloc] initShowSegmentedControl:NO];
+            details.data = children;
+            details.delegate = self.delegate;
+            details.mainTitle = object.name;
+            [self.navigationController pushViewController:details animated:NO];
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(),
+            ^{
+                object.children = children;
+                [self.treeView reloadData];
+            });
+        }
+    }];
 }
 
 - (void)treeView:(RATreeView *)treeView accessoryButtonTappedForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
@@ -275,6 +285,12 @@
 - (BOOL)treeView:(RATreeView *)treeView canEditRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
     return NO;
+}
+
+#pragma mark - MBProgressHUDDelegate methods
+- (void)hudWasHidden:(MBProgressHUD *)hud
+{
+	[hud removeFromSuperview];
 }
 
 /*
