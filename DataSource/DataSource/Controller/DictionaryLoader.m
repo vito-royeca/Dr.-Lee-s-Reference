@@ -41,8 +41,8 @@
 //                    @"c",
 //                    @"d",
 //                    @"e",
-                    @"f",
-//                    @"g",
+//                    @"f",
+                    @"g",
 //                    @"h",
 //                    @"i",
 //                    @"j",
@@ -321,7 +321,11 @@
                     }
                     else if ([strong isEqualToString:@"Pronunciation:"])
                     {
-                        [dest setObject:[JJJUtil trim:[JJJUtil toUTF8:[child content]]] forKey:strong];
+                        NSString *pron = [JJJUtil toUTF8:[child content]];
+                        if (pron)
+                        {
+                            [dest setObject:[JJJUtil trim:pron] forKey:strong];
+                        }
                     }
                 }
                 // Definitions:
