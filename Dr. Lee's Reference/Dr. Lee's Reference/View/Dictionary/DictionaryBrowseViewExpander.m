@@ -32,98 +32,161 @@
     NSString *name = object.name;
     NSArray *children;
     
-    BOOL isAplha = NO;
+    BOOL isAlpha = NO;
     for (NSString *x in [JJJUtil alphabetWithWildcard])
     {
         if ([name isEqualToString:x])
         {
-            isAplha = YES;
+            isAlpha = YES;
             break;
         }
     }
     
-    if (isAplha)
+    if (isAlpha)
     {
-        NSManagedObjectContext *moc = [NSManagedObjectContext MR_defaultContext];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"termInitial", name];
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
-                                                                       ascending:YES];
-        NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term"
-                                                                        ascending:YES
-                                                                         selector:@selector(localizedCaseInsensitiveCompare:)];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
-                                                  inManagedObjectContext:moc];
+        NSArray *terms = [self fetchByAlphaInitial:name];
+        int count = (int)terms.count;
+        int mod = count / 10;
+        int i = 0;
+        DictionaryTerm *first, *last;
         
-        [fetchRequest setPredicate:predicate];
-        [fetchRequest setEntity:entity];
-        [fetchRequest setSortDescriptors:@[sortDescriptor, sortDescriptor2]];
-        
-        NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                              managedObjectContext:moc
-                                                                                sectionNameKeyPath:nil
-                                                                                         cacheName:nil];
-        NSError *error;
-        if ([frc performFetch:&error])
+        while (i < count)
         {
-            NSArray *terms = [frc fetchedObjects];
-            int count = (int)terms.count;
-            int mod = count / 10;
-            int i = 0;
-            DictionaryTerm *first, *last;
+            DictionaryTerm *term = [terms objectAtIndex:i];
             
-            while (i < count)
+            if ([JJJUtil stringContainsSpace:term.term])
             {
-                if (!first)
-                {
-                    first = [terms objectAtIndex:i];
-                    i += mod;
-                    continue;
-                }
-                if (!last)
-                {
-                    last = [terms objectAtIndex:i];
-                }
+                i++;
+                continue;
+            }
+            
+            if (!first)
+            {
+                first = term;
+                i += mod;
+                continue;
+            }
+            if (!last)
+            {
+                last = term;
+            }
+            
+            if (first && last)
+            {
+                NSString *range = [NSString stringWithFormat:@"%@ - %@",
+                                   first.term.length < 5 ? first.term : [first.term substringToIndex:5],
+                                   last.term.length < 5 ? last.term : [last.term substringToIndex:5]];
+                RADataObject *ra = [[RADataObject alloc] initWithName:range details:nil parent:nil children:nil object:@[first, last]];
+                [tree addObject:ra];
                 
-                if (first && last)
-                {
-                    NSString *range = [NSString stringWithFormat:@"%@ - %@",
-                                       first.term.length < 8 ? first.term : [first.term substringToIndex:8],
-                                       last.term.length < 8 ? last.term : [last.term substringToIndex:8]];
-                    RADataObject *ra = [[RADataObject alloc] initWithName:range details:nil parent:nil children:nil object:@[first, last]];
-                    [tree addObject:ra];
-                    
-                    i += 1;
-                    first = nil;
-                    last = nil;
-                }
+                i++;
+                first = nil;
+                last = nil;
             }
         }
     }
     else
     {
-//        NSManagedObjectContext *moc = [NSManagedObjectContext MR_defaultContext];
-//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"termInitial", name];
-//        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
-//                                                                       ascending:YES];
-//        NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term"
-//                                                                        ascending:YES
-//                                                                         selector:@selector(localizedCaseInsensitiveCompare:)];
-//        NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
-//                                                  inManagedObjectContext:moc];
+//        int level = 0;
+//        RADataObject *parent = object.parent;
+//        while (parent)
+//        {
+//            parent = parent.parent;
+//            level++;
+//        }
 //        
-//        [fetchRequest setPredicate:predicate];
-//        [fetchRequest setEntity:entity];
-//        [fetchRequest setSortDescriptors:@[sortDescriptor, sortDescriptor2]];
+//        NSArray *terms = [self fetchByFirst:@"" andLast:@""];
 //        
-//        NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-//                                                                              managedObjectContext:moc
-//                                                                                sectionNameKeyPath:nil
-//                                                                                         cacheName:nil];
+//        switch (level)
+//        {
+//            case 0:
+//            {
+//                break;
+//            }
+//            case 1:
+//            {
+//                break;
+//            }
+//        }
+        NSArray *array = object.object;
+        NSArray *terms = [self fetchByFirst:[array firstObject] andLast:[array lastObject]];
+        NSLog(@"%@", terms);
     }
     
     return tree;
+}
+
+-(NSArray*) fetchByAlphaInitial:(NSString*) initial
+{
+    NSManagedObjectContext *moc = [NSManagedObjectContext MR_defaultContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"termInitial", initial];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
+                                                                   ascending:YES];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term"
+                                                                    ascending:YES
+                                                                     selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
+                                              inManagedObjectContext:moc];
+    
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setSortDescriptors:@[sortDescriptor, sortDescriptor2]];
+    
+    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                          managedObjectContext:moc
+                                                                            sectionNameKeyPath:nil
+                                                                                     cacheName:nil];
+    NSArray *arrResults = @[];
+    
+    NSError *error;
+    if ([frc performFetch:&error])
+    {
+        arrResults = [frc fetchedObjects];
+    }
+    
+    return arrResults;
+}
+
+-(NSArray*) fetchByFirst:(DictionaryTerm*) first andLast:(DictionaryTerm*) last
+{
+    NSManagedObjectContext *moc = [NSManagedObjectContext MR_defaultContext];
+//    NSString *regex = [NSString stringWithFormat:@"(?i)(%@).*|(?i)(%@).*",
+//                       first.term.length <5 ? first.term : [first.term substringToIndex:5],
+//                       last.term.length <5 ? last.term : [last.term substringToIndex:5]];
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K MATCHES '%@'", @"term", regex];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@ AND %K <= %@",
+                              @"term",
+                              first.term.length <5 ? first.term : [first.term substringToIndex:5],
+                              @"term",
+                              last.term.length <5 ? last.term : [last.term substringToIndex:5]];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
+                                                                   ascending:YES];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"term"
+                                                                    ascending:YES
+                                                                     selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
+                                              inManagedObjectContext:moc];
+    
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setSortDescriptors:@[sortDescriptor2]];
+    
+    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                          managedObjectContext:moc
+                                                                            sectionNameKeyPath:nil
+                                                                                     cacheName:nil];
+    NSArray *arrResults = @[];
+    
+    NSError *error;
+    if ([frc performFetch:&error])
+    {
+        arrResults = [frc fetchedObjects];
+    }
+    
+    return arrResults;
 }
 
 @end
