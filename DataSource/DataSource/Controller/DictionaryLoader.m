@@ -79,14 +79,22 @@
     for (NSString *letter in _letters)
     {
         NSURL *termsURL = [appDocs URLByAppendingPathComponent:[NSString stringWithFormat:@"%@_terms.csv", letter]];
+        NSURL *synsURL = [appDocs URLByAppendingPathComponent:[NSString stringWithFormat:@"%@_syns.csv", letter]];
+        NSURL *xrefsURL = [appDocs URLByAppendingPathComponent:[NSString stringWithFormat:@"%@_xrefs.csv", letter]];
+        
+        if ([termsURL checkResourceIsReachableAndReturnError:nil] == YES &&
+            [synsURL  checkResourceIsReachableAndReturnError:nil] == YES &&
+            [xrefsURL checkResourceIsReachableAndReturnError:nil] == YES)
+        {
+            continue;
+        }
+        
         NSOutputStream *termsOut = [[NSOutputStream alloc] initWithURL:termsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[termsURL path]]];
         _termsWriter = [[CHCSVWriter alloc] initWithOutputStream:termsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
         
-        NSURL *synsURL = [appDocs URLByAppendingPathComponent:[NSString stringWithFormat:@"%@_syns.csv", letter]];
         NSOutputStream *synsOut = [[NSOutputStream alloc] initWithURL:synsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[synsURL path]]];
         _synonymsWriter = [[CHCSVWriter alloc] initWithOutputStream:synsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
         
-        NSURL *xrefsURL = [appDocs URLByAppendingPathComponent:[NSString stringWithFormat:@"%@_xrefs.csv", letter]];
         NSOutputStream *xrefsOut = [[NSOutputStream alloc] initWithURL:xrefsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[xrefsURL path]]];
         _xrefsWriter = [[CHCSVWriter alloc] initWithOutputStream:xrefsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
     
