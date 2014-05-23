@@ -35,33 +35,33 @@
     if (self)
     {
         _letters = [NSArray arrayWithObjects:
-//                    @"9",
-//                    @"a",
-//                    @"b",
-//                    @"c",
-//                    @"d",
-//                    @"e",
-//                    @"f",
+                    @"9",
+                    @"a",
+                    @"b",
+                    @"c",
+                    @"d",
+                    @"e",
+                    @"f",
                     @"g",
-//                    @"h",
-//                    @"i",
-//                    @"j",
-//                    @"k",
-//                    @"l",
-//                    @"m",
-//                    @"n",
-//                    @"o",
-//                    @"p",
-//                    @"q",
-//                    @"r",
-//                    @"s",
-//                    @"t",
-//                    @"u",
-//                    @"v",
-//                    @"w",
-//                    @"x",
-//                    @"y",
-//                    @"z",
+                    @"h",
+                    @"i",
+                    @"j",
+                    @"k",
+                    @"l",
+                    @"m",
+                    @"n",
+                    @"o",
+                    @"p",
+                    @"q",
+                    @"r",
+                    @"s",
+                    @"t",
+                    @"u",
+                    @"v",
+                    @"w",
+                    @"x",
+                    @"y",
+                    @"z",
                     nil];
     }
     
@@ -75,25 +75,24 @@
 
     NSURL *appDocs = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     
-    NSURL *termsURL = [appDocs URLByAppendingPathComponent:TERMS_CSV_FILE];
-    NSOutputStream *termsOut = [[NSOutputStream alloc] initWithURL:termsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[termsURL path]]];
-    _termsWriter = [[CHCSVWriter alloc] initWithOutputStream:termsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
-    
-    NSURL *synsURL = [appDocs URLByAppendingPathComponent:SYNONYMS_CSV_FILE];
-    NSOutputStream *synsOut = [[NSOutputStream alloc] initWithURL:synsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[synsURL path]]];
-    _synonymsWriter = [[CHCSVWriter alloc] initWithOutputStream:synsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
-    
-    NSURL *xrefsURL = [appDocs URLByAppendingPathComponent:XREFS_CSV_FILE];
-    NSOutputStream *xrefsOut = [[NSOutputStream alloc] initWithURL:xrefsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[xrefsURL path]]];
-    _xrefsWriter = [[CHCSVWriter alloc] initWithOutputStream:xrefsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
-    
     // #1 scrape each letter
     for (NSString *letter in _letters)
     {
+        NSURL *termsURL = [appDocs URLByAppendingPathComponent:[NSString stringWithFormat:@"%@_terms.csv", letter]];
+        NSOutputStream *termsOut = [[NSOutputStream alloc] initWithURL:termsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[termsURL path]]];
+        _termsWriter = [[CHCSVWriter alloc] initWithOutputStream:termsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
+        
+        NSURL *synsURL = [appDocs URLByAppendingPathComponent:[NSString stringWithFormat:@"%@_syns.csv", letter]];
+        NSOutputStream *synsOut = [[NSOutputStream alloc] initWithURL:synsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[synsURL path]]];
+        _synonymsWriter = [[CHCSVWriter alloc] initWithOutputStream:synsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
+        
+        NSURL *xrefsURL = [appDocs URLByAppendingPathComponent:[NSString stringWithFormat:@"%@_xrefs.csv", letter]];
+        NSOutputStream *xrefsOut = [[NSOutputStream alloc] initWithURL:xrefsURL append:[[NSFileManager defaultManager] fileExistsAtPath:[xrefsURL path]]];
+        _xrefsWriter = [[CHCSVWriter alloc] initWithOutputStream:xrefsOut encoding:NSUTF8StringEncoding delimiter:CSV_DELIMETER];
+    
         // #2 scrape terms in the 1st page letter
         TFHpple *parser = [self scrapePageTerms:[NSString stringWithFormat:@"?l=%@", letter]];
 
-#ifndef SCRAPE_LIMIT
         // #3 scrape terms in the subsections of the letter
         for (NSString *sub in [self subsectionsByLetter:parser])
         {
@@ -102,12 +101,11 @@
         
         [dictTotals setObject:[NSNumber numberWithInt:_total] forKey:letter];
         _total = 0;
-#endif
+        
+        [_termsWriter closeStream];
+        [_synonymsWriter closeStream];
+        [_xrefsWriter closeStream];
     }
-    
-    [_termsWriter closeStream];
-    [_synonymsWriter closeStream];
-    [_xrefsWriter closeStream];
     
     NSDate *dateEnd = [NSDate date];
     NSTimeInterval timeDifference = [dateEnd timeIntervalSinceDate:dateStart];
@@ -127,14 +125,6 @@
         NSLog(@"%@", dict);
         [self saveTermToCSV:dict];
         _total++;
-        
-#ifdef SCRAPE_LIMIT
-        if (_total == 10)
-        {
-            _total = 0;
-            break;
-        }
-#endif
     }
     
     return parser;
@@ -193,7 +183,6 @@
     [dict setObject:id_ forKey:@"id"];
     
     TFHpple *parser = [self parsePage:href];
-//    NSString *path = @"//div[@id='main']";
     NSString *path = @"//div[@class='definitionbox']";
     NSArray *nodes = [parser searchWithXPathQuery:path];
     
@@ -420,29 +409,44 @@
     
     NSStringEncoding encoding = NSUTF8StringEncoding;
     
-    NSString *path = [NSString stringWithFormat:@"%@/Data/%@", [[NSBundle mainBundle] resourcePath], TERMS_CSV_FILE];
-    NSInputStream *is = [[NSInputStream alloc] initWithFileAtPath:path];
-    _termsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
-    _termsParser.sanitizesFields = YES;
-    _termsParser.delegate = self;
-    [_termsParser parse];
-    [is close];
-    
-    path = [NSString stringWithFormat:@"%@/Data/%@", [[NSBundle mainBundle] resourcePath], SYNONYMS_CSV_FILE];
-    is = [[NSInputStream alloc] initWithFileAtPath:path];
-    _synonymsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
-    _synonymsParser.sanitizesFields = YES;
-    _synonymsParser.delegate = self;
-    [_synonymsParser parse];
-    [is close];
-    
-    path = [NSString stringWithFormat:@"%@/Data/%@", [[NSBundle mainBundle] resourcePath], XREFS_CSV_FILE];
-    is = [[NSInputStream alloc] initWithFileAtPath:path];
-    _xrefsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
-    _xrefsParser.sanitizesFields = YES;
-    _xrefsParser.delegate = self;
-    [_xrefsParser parse];
-    [is close];
+    for (NSString *letter in _letters)
+    {
+        NSString *path;
+        NSInputStream *is;
+        
+        path = [NSString stringWithFormat:@"%@/Data/%@_terms.csv", [[NSBundle mainBundle] resourcePath], letter];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+        {
+            is = [[NSInputStream alloc] initWithFileAtPath:path];
+            _termsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
+            _termsParser.sanitizesFields = YES;
+            _termsParser.delegate = self;
+            [_termsParser parse];
+            [is close];
+        }
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+        {
+            path = [NSString stringWithFormat:@"%@/Data/%@_syns.csv", [[NSBundle mainBundle] resourcePath], letter];
+            is = [[NSInputStream alloc] initWithFileAtPath:path];
+            _synonymsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
+            _synonymsParser.sanitizesFields = YES;
+            _synonymsParser.delegate = self;
+            [_synonymsParser parse];
+            [is close];
+        }
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+        {
+            path = [NSString stringWithFormat:@"%@/Data/%@_xrefs.csv", [[NSBundle mainBundle] resourcePath], letter];
+            is = [[NSInputStream alloc] initWithFileAtPath:path];
+            _xrefsParser = [[CHCSVParser alloc] initWithInputStream:is usedEncoding:&encoding delimiter:CSV_DELIMETER];
+            _xrefsParser.sanitizesFields = YES;
+            _xrefsParser.delegate = self;
+            [_xrefsParser parse];
+            [is close];
+        }
+    }
     
     NSDate *dateEnd = [NSDate date];
     NSTimeInterval timeDifference = [dateEnd timeIntervalSinceDate:dateStart];
