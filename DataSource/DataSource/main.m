@@ -19,8 +19,8 @@ int main(int argc, const char * argv[])
 //        [loader loadDrugs];
         
         DictionaryLoader *loader = [[DictionaryLoader alloc] init];
-        [loader scrape];
-//        [loader csv2CoreData];
+//        [loader scrape];
+        [loader csv2CoreData];
         
 //        DiagnosesLoader *loader = [[DiagnosesLoader alloc] init];
 //        [loader loadDiagnoses];

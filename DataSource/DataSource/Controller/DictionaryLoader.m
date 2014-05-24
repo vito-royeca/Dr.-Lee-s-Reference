@@ -572,10 +572,7 @@
     
     if (parser == _termsParser)
     {
-        if (![DictionaryTerm MR_findFirstByAttribute:@"term" withValue:[_currentLine objectForKey:@"term"]])
-        {
-            [self saveTermToDatabase:_currentLine];
-        }
+        [self saveTermToDatabase:_currentLine];
     }
     else if (parser == _synonymsParser)
     {
