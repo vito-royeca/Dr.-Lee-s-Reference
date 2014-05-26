@@ -41,15 +41,10 @@
         }
         case 1:
         {
-            dataSource = DrugsDataSource;
-            break;
-        }
-        case 2:
-        {
             dataSource = ICD10CMDataSource;
             break;
         }
-        case 3:
+        case 2:
         {
             dataSource = ICD10PCSDataSource;
             break;
@@ -85,6 +80,7 @@
     CGRect frame = CGRectMake(dX, dY, dWidth, dHeight);
     self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.searchBar.placeholder = @"Search";
     self.searchBar.delegate = self;
     
     dY = [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height;

@@ -8,6 +8,7 @@
 
 #import "DictionaryDetailViewController.h"
 #import "JJJ/JJJ.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface DictionaryDetailViewController ()
 
@@ -18,6 +19,9 @@
     NSString *_currentTerm;
     NSMutableArray *_backHistory;
     NSString *_backButton;
+    NSString *_playButton;
+    AVSpeechSynthesizer *_synthesizer;
+    AVSpeechUtterance *_utterance;
 }
 
 @synthesize webView = _webView;
@@ -42,6 +46,10 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"back" ofType:@"png"];
     _backHistory    = [[NSMutableArray alloc] init];
     _backButton     = [NSString stringWithFormat:@"<a href='#back__'><img src=\"file://%@\" border=\"0\"></a>", path];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"high_volume" ofType:@"png"];
+    _playButton     = [NSString stringWithFormat:@"<a href='#play__'><img src=\"file://%@\" border=\"0\"></a>", path];
+    _synthesizer = [[AVSpeechSynthesizer alloc]init];
     
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.webView.delegate = self;
@@ -87,7 +95,7 @@
     
     if (self.dictionaryTerm.pronunciation)
     {
-        [html appendFormat:@"<br>(<div class='pron'>%@</div>)", self.dictionaryTerm.pronunciation];
+        [html appendFormat:@"<br>(<div class='pron'>%@</div>)&nbsp;%@", self.dictionaryTerm.pronunciation, _playButton];
     }
     else
     {
@@ -177,14 +185,29 @@
 #pragma mark - UIWebViewDelegate
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    NSURL *url = [request URL];
+    NSString *fragment = [[url fragment] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSArray *params = [fragment componentsSeparatedByString:@"&"];
+    NSString *query = [params firstObject];
+    
+    NSString *currentPage = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+    
+    if ([query isEqualToString:@"play__"])
+    {
+        if (!_synthesizer.speaking)
+        {
+            _utterance = [AVSpeechUtterance speechUtteranceWithString:_dictionaryTerm.term];
+            _utterance.rate = 0.1f;
+            [_synthesizer speakUtterance:_utterance];
+        }
+        
+        [self.webView loadHTMLString:currentPage baseURL:bundleUrl];
+        return NO;
+    }
+    
     if (navigationType == UIWebViewNavigationTypeLinkClicked)
     {
-        NSURL *bundleUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
-        NSURL *url = [request URL];
-        NSString *fragment = [[url fragment] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSArray *params = [fragment componentsSeparatedByString:@"&"];
-        NSString *query = [params firstObject];
-        
         if ([query isEqualToString:@"back__"])
         {
             NSString *previous = [_backHistory lastObject];
@@ -199,7 +222,7 @@
             hud.delegate = self;
             __block NSString *html;
             
-            NSString *currentPage = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+            
             [_backHistory addObject:currentPage];
             
             [hud showAnimated:YES whileExecutingBlock:

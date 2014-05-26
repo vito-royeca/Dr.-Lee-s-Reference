@@ -68,6 +68,11 @@
 		8C9FECE718F280F100714818 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E7A189E95BA00D83B00 /* libJJJ.a */; };
 		8CB91906192B39C100D3E034 /* BrowseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB91905192B39C100D3E034 /* BrowseTableViewCell.m */; };
 		8CB9190B192B3CBE00D3E034 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 8CB9190A192B3CBE00D3E034 /* style.css */; };
+		8CCAC8131932EB0B00D49010 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CCAC8121932EB0B00D49010 /* play.png */; };
+		8CCAC8181932EB1800D49010 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CCAC8171932EB1800D49010 /* play@2x.png */; };
+		8CCAC81A1932EC6800D49010 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCAC8191932EC6800D49010 /* AVFoundation.framework */; };
+		8CCAC81E1932EF6100D49010 /* high_volume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CCAC81D1932EF6100D49010 /* high_volume@2x.png */; };
+		8CCAC8201932EF6E00D49010 /* high_volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CCAC81F1932EF6E00D49010 /* high_volume.png */; };
 		8CEF1E7618F8026100EAE98E /* DrugSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7518F8026100EAE98E /* DrugSearchViewController.m */; };
 		8CEF1E7918F8092D00EAE98E /* DrugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7818F8092D00EAE98E /* DrugViewController.m */; };
 		8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7B18F809C100EAE98E /* DrugBrowseViewController.m */; };
@@ -215,6 +220,11 @@
 		8CB91904192B39C100D3E034 /* BrowseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseTableViewCell.h; sourceTree = "<group>"; };
 		8CB91905192B39C100D3E034 /* BrowseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseTableViewCell.m; sourceTree = "<group>"; };
 		8CB9190A192B3CBE00D3E034 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		8CCAC8121932EB0B00D49010 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		8CCAC8171932EB1800D49010 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		8CCAC8191932EC6800D49010 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8CCAC81D1932EF6100D49010 /* high_volume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "high_volume@2x.png"; path = "../../../../../Library/Application Support/com.visualpharm.Icons8/Icons/iOS7/PNG/Media_Controls/high_volume/high_volume@2x.png"; sourceTree = "<group>"; };
+		8CCAC81F1932EF6E00D49010 /* high_volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = high_volume.png; path = "../../../../../Library/Application Support/com.visualpharm.Icons8/Icons/iOS7/PNG/Media_Controls/high_volume/high_volume.png"; sourceTree = "<group>"; };
 		8CEF1E7418F8026100EAE98E /* DrugSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSearchViewController.h; sourceTree = "<group>"; };
 		8CEF1E7518F8026100EAE98E /* DrugSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSearchViewController.m; sourceTree = "<group>"; };
 		8CEF1E7718F8092D00EAE98E /* DrugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugViewController.h; sourceTree = "<group>"; };
@@ -229,6 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CCAC81A1932EC6800D49010 /* AVFoundation.framework in Frameworks */,
 				8C9FECE718F280F100714818 /* libJJJ.a in Frameworks */,
 				113DE87E1843D8420080B038 /* CoreGraphics.framework in Frameworks */,
 				113DE8821843D8420080B038 /* CoreData.framework in Frameworks */,
@@ -352,6 +363,7 @@
 		113DE87A1843D8420080B038 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8CCAC8191932EC6800D49010 /* AVFoundation.framework */,
 				58264E65189E943F00D83B00 /* libJJJ.a */,
 				58264E63189E942C00D83B00 /* AudioUnit.framework */,
 				11F34C0B184978DA00CF5852 /* libxml2.dylib */,
@@ -479,10 +491,14 @@
 		8C45BD4F1925ACE500A1FF26 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8CCAC81F1932EF6E00D49010 /* high_volume.png */,
+				8CCAC81D1932EF6100D49010 /* high_volume@2x.png */,
 				8C45BD531925AD1400A1FF26 /* back.png */,
 				8C45BD541925AD1400A1FF26 /* back@2x.png */,
 				8C1635A4192CAC62003C01AB /* icd10cmNeoplasms.html */,
 				8C16359F192CAC51003C01AB /* icd10cmTabular.html */,
+				8CCAC8121932EB0B00D49010 /* play.png */,
+				8CCAC8171932EB1800D49010 /* play@2x.png */,
 				8CB9190A192B3CBE00D3E034 /* style.css */,
 			);
 			path = Resources;
@@ -634,11 +650,15 @@
 				8C45BD551925AD1400A1FF26 /* back.png in Resources */,
 				8C1635A0192CAC51003C01AB /* icd10cmTabular.html in Resources */,
 				8CB9190B192B3CBE00D3E034 /* style.css in Resources */,
+				8CCAC8201932EF6E00D49010 /* high_volume.png in Resources */,
 				113DE8881843D8420080B038 /* InfoPlist.strings in Resources */,
+				8CCAC81E1932EF6100D49010 /* high_volume@2x.png in Resources */,
 				8C447064190A7F73000DEFC2 /* InAppSettings.bundle in Resources */,
 				8C1635A5192CAC62003C01AB /* icd10cmNeoplasms.html in Resources */,
 				113DE8931843D8420080B038 /* Images.xcassets in Resources */,
+				8CCAC8131932EB0B00D49010 /* play.png in Resources */,
 				8C45BD561925AD1400A1FF26 /* back@2x.png in Resources */,
+				8CCAC8181932EB1800D49010 /* play@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

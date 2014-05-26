@@ -126,15 +126,10 @@
         }
         case 1:
         {
-            self.delegate = [[DrugsBrowseViewExpander alloc] init];
-            break;
-        }
-        case 2:
-        {
             self.delegate = [[ICD10CMBrowseViewExpander alloc] init];
             break;
         }
-        case 3:
+        case 2:
         {
             self.delegate = [[ICD10PCSBrowseViewExpander alloc] init];
             break;
