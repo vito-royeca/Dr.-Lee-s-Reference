@@ -17,7 +17,6 @@
 {
     NSString *_currentTerm;
     NSMutableArray *_backHistory;
-    NSMutableArray *_forwardHistory;
     NSString *_backButton;
 }
 
@@ -41,7 +40,6 @@
 	// Do any additional setup after loading the view.
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"back" ofType:@"png"];
-    _forwardHistory = [[NSMutableArray alloc] init];
     _backHistory    = [[NSMutableArray alloc] init];
     _backButton     = [NSString stringWithFormat:@"<a href='#back__'><img src=\"file://%@\" border=\"0\"></a>", path];
     
@@ -187,24 +185,12 @@
         NSArray *params = [fragment componentsSeparatedByString:@"&"];
         NSString *query = [params firstObject];
         
-        
         if ([query isEqualToString:@"back__"])
         {
-            NSString *current = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
             NSString *previous = [_backHistory lastObject];
             
             [_backHistory removeObject:previous];
-            [_forwardHistory addObject:current];
             [self.webView loadHTMLString:previous baseURL:bundleUrl];
-        }
-        else if ([query isEqualToString:@"forward__"])
-        {
-            NSString *current = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
-            NSString *next = [_forwardHistory lastObject];
-            
-            [_forwardHistory removeObject:next];
-            [_backHistory addObject:current];
-            [self.webView loadHTMLString:next baseURL:bundleUrl];
         }
         else
         {
@@ -212,6 +198,9 @@
             [self.view addSubview:hud];
             hud.delegate = self;
             __block NSString *html;
+            
+            NSString *currentPage = [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+            [_backHistory addObject:currentPage];
             
             [hud showAnimated:YES whileExecutingBlock:
             ^{
@@ -246,8 +235,6 @@
             }
             completionBlock:
             ^{
-                [_backHistory addObject:[self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"]];
-                
                 [self.webView loadHTMLString:html baseURL:bundleUrl];
             }];
         }
