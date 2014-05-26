@@ -6,24 +6,28 @@
 //  Copyright (c) 2013 Jovito Royeca. All rights reserved.
 //
 
-#import "DiagnosesLoader.h"
-#import "DrugsLoader.h"
 #import "DictionaryLoader.h"
+#import "DrugsLoader.h"
+#import "DiagnosesLoader.h"
+#import "ProceduresLoader.h"
 
 int main(int argc, const char * argv[])
 {
 
     @autoreleasepool
     {
-//        DrugsLoader *loader = [[DrugsLoader alloc] init];
-//        [loader loadDrugs];
+//        DrugsLoader *drugsLoader = [[DrugsLoader alloc] init];
+//        [drugsLoader loadDrugs];
         
-//        DictionaryLoader *loader = [[DictionaryLoader alloc] init];
-//        [loader scrape];
-//        [loader csv2CoreData];
+//        DictionaryLoader *dictionaryLoader = [[DictionaryLoader alloc] init];
+//        [dictionaryLoader scrape];
+//        [dictionaryLoader csv2CoreData];
         
-        DiagnosesLoader *loader = [[DiagnosesLoader alloc] init];
-        [loader loadDiagnoses];
+//        DiagnosesLoader *diagnosisLoader = [[DiagnosesLoader alloc] init];
+//        [diagnosisLoader loadDiagnoses];
+        
+        ProceduresLoader *proceduresLoader = [[ProceduresLoader alloc] init];
+        [proceduresLoader loadProcedures];
     }
 
     return 0;

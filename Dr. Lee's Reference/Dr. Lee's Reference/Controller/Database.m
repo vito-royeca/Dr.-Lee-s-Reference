@@ -8,7 +8,6 @@
 
 #import "Database.h"
 #import "DictionaryTerm.h"
-#import "DrugProduct.h"
 
 @implementation Database
 {
@@ -79,9 +78,6 @@ static Database *_me;
             return [self searchDictionary:query narrowSearch:narrow];
         }
         case DrugsDataSource:
-        {
-            return [self searchDrugs:query narrowSearch:narrow];
-        }
         case ICD10CMDataSource:
         case ICD10PCSDataSource:
         default:
@@ -91,47 +87,6 @@ static Database *_me;
     }
 }
 #endif
-
-- (NSArray*) searchRange:(DataSource)dataSource
-              startQuery:(NSString*)startQuery
-                endQuery:(NSString*)endQuery
-              limit:(int)limit
-{
-    NSArray *all = [DictionaryTerm MR_findAll];
-    int count500s = (int) all.count / 500;
-    int mod500s   = all.count% 500;
-//
-//    
-//    NSArray *arrResult = [[NSArray alloc] init];
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"term", startQuery];
-//    
-//    
-//    NSManagedObjectContext *moc = [NSManagedObjectContext MR_contextForCurrentThread];
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"term"
-//                                                                    ascending:YES
-//                                                                     selector:@selector(localizedCaseInsensitiveCompare:)];
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DictionaryTerm"
-//                                              inManagedObjectContext:moc];
-//    
-//    [fetchRequest setPredicate:predicate];
-//    [fetchRequest setEntity:entity];
-//    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-//    [fetchRequest setFetchBatchSize:kFetchBatchSize];
-//    
-//    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-//                                                                          managedObjectContext:moc
-//                                                                            sectionNameKeyPath:@"term"
-//                                                                                     cacheName:@"DictionaryCache"];
-//    
-//    NSError *error;
-//    if ([frc performFetch:&error])
-//    {
-//        arrResult = [frc fetchedObjects];
-//    }
-//    return arrResult;
-    return nil;
-}
 
 #if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
 - (NSFetchedResultsController*)searchDictionary:(NSString*)query narrowSearch:(BOOL)narrow
@@ -182,56 +137,6 @@ static Database *_me;
                                                managedObjectContext:moc
                                                  sectionNameKeyPath:@"termInitial"
                                                           cacheName:@"DictionaryCache"];
-}
-#endif
-
-#if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
-- (NSFetchedResultsController*)searchDrugs:(NSString*)query narrowSearch:(BOOL)narrow
-{
-    // Delete cache first, if a cache is used
-    [NSFetchedResultsController deleteCacheWithName:@"DrugCache"];
-    
-    NSPredicate *predicate;
-    
-    if (query.length == 0)
-    {
-        return nil;
-    }
-    else if (query.length == 1)
-    {
-        predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"drugName", query];
-    }
-    else
-    {
-        if (narrow)
-        {
-            predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"drugName", query];
-        }
-        else
-        {
-            NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"drugName", query];
-            NSPredicate *pred2 = [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", @"activeIngred", query];
-            predicate = [NSCompoundPredicate orPredicateWithSubpredicates:[NSArray arrayWithObjects:pred1, pred2, nil]];
-        }
-    }
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"drugName"
-                                                                   ascending:YES
-                                                                    selector:@selector(localizedCaseInsensitiveCompare:)];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DrugProduct"
-                                              inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-
-    [fetchRequest setFetchBatchSize:kFetchBatchSize];
-//    [fetchRequest setReturnsDistinctResults:YES];
-    [fetchRequest setPredicate:predicate];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                               managedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]
-                                                 sectionNameKeyPath:@"drugName"
-                                                          cacheName:@"DrugCache"];
 }
 #endif
 
