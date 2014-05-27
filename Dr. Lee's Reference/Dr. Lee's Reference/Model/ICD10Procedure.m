@@ -15,6 +15,8 @@
 @dynamic code;
 @dynamic key;
 @dynamic name;
+@dynamic shortName;
+@dynamic longName;
 @dynamic version;
 @dynamic definition;
 @dynamic children;

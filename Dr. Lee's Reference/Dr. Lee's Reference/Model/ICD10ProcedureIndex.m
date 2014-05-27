@@ -2,7 +2,7 @@
 //  ICD10ProcedureIndex.m
 //  Dr. Lee's Reference
 //
-//  Created by Jovit Royeca on 4/30/14.
+//  Created by Jovit Royeca on 5/27/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -13,13 +13,15 @@
 
 @implementation ICD10ProcedureIndex
 
+@dynamic see;
 @dynamic title;
 @dynamic titleInitial;
+@dynamic use;
 @dynamic version;
 @dynamic children;
+@dynamic code;
 @dynamic parent;
-@dynamic procedure;
-@dynamic see;
-@dynamic use;
+@dynamic seeCode;
+@dynamic useCode;
 
 @end

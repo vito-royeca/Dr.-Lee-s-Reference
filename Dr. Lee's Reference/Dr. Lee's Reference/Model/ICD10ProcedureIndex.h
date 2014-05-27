@@ -2,7 +2,7 @@
 //  ICD10ProcedureIndex.h
 //  Dr. Lee's Reference
 //
-//  Created by Jovit Royeca on 4/30/14.
+//  Created by Jovit Royeca on 5/27/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -13,14 +13,16 @@
 
 @interface ICD10ProcedureIndex : NSManagedObject
 
+@property (nonatomic, retain) NSString * see;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * titleInitial;
+@property (nonatomic, retain) NSString * use;
 @property (nonatomic, retain) NSString * version;
 @property (nonatomic, retain) NSOrderedSet *children;
+@property (nonatomic, retain) ICD10Procedure *code;
 @property (nonatomic, retain) ICD10ProcedureIndex *parent;
-@property (nonatomic, retain) ICD10Procedure *procedure;
-@property (nonatomic, retain) NSOrderedSet *see;
-@property (nonatomic, retain) NSOrderedSet *use;
+@property (nonatomic, retain) ICD10Procedure *seeCode;
+@property (nonatomic, retain) ICD10Procedure *useCode;
 @end
 
 @interface ICD10ProcedureIndex (CoreDataGeneratedAccessors)
@@ -35,24 +37,26 @@
 - (void)removeChildrenObject:(ICD10ProcedureIndex *)value;
 - (void)addChildren:(NSOrderedSet *)values;
 - (void)removeChildren:(NSOrderedSet *)values;
-- (void)insertObject:(ICD10ProcedureIndex *)value inSeeAtIndex:(NSUInteger)idx;
-- (void)removeObjectFromSeeAtIndex:(NSUInteger)idx;
-- (void)insertSee:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
-- (void)removeSeeAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInSeeAtIndex:(NSUInteger)idx withObject:(ICD10ProcedureIndex *)value;
-- (void)replaceSeeAtIndexes:(NSIndexSet *)indexes withSee:(NSArray *)values;
-- (void)addSeeObject:(ICD10ProcedureIndex *)value;
-- (void)removeSeeObject:(ICD10ProcedureIndex *)value;
-- (void)addSee:(NSOrderedSet *)values;
-- (void)removeSee:(NSOrderedSet *)values;
-- (void)insertObject:(ICD10ProcedureIndex *)value inUseAtIndex:(NSUInteger)idx;
-- (void)removeObjectFromUseAtIndex:(NSUInteger)idx;
-- (void)insertUse:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
-- (void)removeUseAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInUseAtIndex:(NSUInteger)idx withObject:(ICD10ProcedureIndex *)value;
-- (void)replaceUseAtIndexes:(NSIndexSet *)indexes withUse:(NSArray *)values;
-- (void)addUseObject:(ICD10ProcedureIndex *)value;
-- (void)removeUseObject:(ICD10ProcedureIndex *)value;
-- (void)addUse:(NSOrderedSet *)values;
-- (void)removeUse:(NSOrderedSet *)values;
+
+//- (void)insertObject:(ICD10Procedure *)value inSeeCodeAtIndex:(NSUInteger)idx;
+//- (void)removeObjectFromSeeCodeAtIndex:(NSUInteger)idx;
+//- (void)insertSeeCode:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+//- (void)removeSeeCodeAtIndexes:(NSIndexSet *)indexes;
+//- (void)replaceObjectInSeeCodeAtIndex:(NSUInteger)idx withObject:(ICD10Procedure *)value;
+//- (void)replaceSeeCodeAtIndexes:(NSIndexSet *)indexes withSeeCode:(NSArray *)values;
+//- (void)addSeeCodeObject:(ICD10Procedure *)value;
+//- (void)removeSeeCodeObject:(ICD10Procedure *)value;
+//- (void)addSeeCode:(NSOrderedSet *)values;
+//- (void)removeSeeCode:(NSOrderedSet *)values;
+//
+//- (void)insertObject:(ICD10Procedure *)value inUseCodeAtIndex:(NSUInteger)idx;
+//- (void)removeObjectFromUseCodeAtIndex:(NSUInteger)idx;
+//- (void)insertUseCode:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+//- (void)removeUseCodeAtIndexes:(NSIndexSet *)indexes;
+//- (void)replaceObjectInUseCodeAtIndex:(NSUInteger)idx withObject:(ICD10Procedure *)value;
+//- (void)replaceUseCodeAtIndexes:(NSIndexSet *)indexes withUseCode:(NSArray *)values;
+//- (void)addUseCodeObject:(ICD10Procedure *)value;
+//- (void)removeUseCodeObject:(ICD10Procedure *)value;
+//- (void)addUseCode:(NSOrderedSet *)values;
+//- (void)removeUseCode:(NSOrderedSet *)values;
 @end

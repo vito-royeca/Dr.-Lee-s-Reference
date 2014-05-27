@@ -16,6 +16,8 @@
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSString * key;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * shortName;
+@property (nonatomic, retain) NSString * longName;
 @property (nonatomic, retain) NSString * version;
 @property (nonatomic, retain) NSString * definition;
 @property (nonatomic, retain) NSOrderedSet *children;
