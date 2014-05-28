@@ -1,8 +1,8 @@
 //
 //  ICD10ProcedureIndex.m
-//  Dr. Lee's Reference
+//  DataSource
 //
-//  Created by Jovit Royeca on 5/27/14.
+//  Created by Jovit Royeca on 5/28/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -18,8 +18,8 @@
 @dynamic titleInitial;
 @dynamic use;
 @dynamic version;
+@dynamic codes;
 @dynamic children;
-@dynamic code;
 @dynamic parent;
 @dynamic seeCode;
 @dynamic useCode;

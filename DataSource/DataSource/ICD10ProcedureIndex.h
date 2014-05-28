@@ -1,8 +1,8 @@
 //
 //  ICD10ProcedureIndex.h
-//  Dr. Lee's Reference
+//  DataSource
 //
-//  Created by Jovit Royeca on 5/27/14.
+//  Created by Jovit Royeca on 5/28/14.
 //  Copyright (c) 2014 Jovito Royeca. All rights reserved.
 //
 
@@ -18,8 +18,8 @@
 @property (nonatomic, retain) NSString * titleInitial;
 @property (nonatomic, retain) NSString * use;
 @property (nonatomic, retain) NSString * version;
+@property (nonatomic, retain) NSString * codes;
 @property (nonatomic, retain) NSOrderedSet *children;
-@property (nonatomic, retain) ICD10Procedure *code;
 @property (nonatomic, retain) ICD10ProcedureIndex *parent;
 @property (nonatomic, retain) ICD10Procedure *seeCode;
 @property (nonatomic, retain) ICD10Procedure *useCode;
@@ -48,7 +48,6 @@
 //- (void)removeSeeCodeObject:(ICD10Procedure *)value;
 //- (void)addSeeCode:(NSOrderedSet *)values;
 //- (void)removeSeeCode:(NSOrderedSet *)values;
-//
 //- (void)insertObject:(ICD10Procedure *)value inUseCodeAtIndex:(NSUInteger)idx;
 //- (void)removeObjectFromUseCodeAtIndex:(NSUInteger)idx;
 //- (void)insertUseCode:(NSArray *)value atIndexes:(NSIndexSet *)indexes;

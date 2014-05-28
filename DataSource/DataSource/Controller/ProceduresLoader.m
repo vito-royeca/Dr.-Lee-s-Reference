@@ -39,7 +39,7 @@
     count = [ICD10ProcedureDefinition MR_countOfEntities];
     if (count == 0)
     {
-//        [self loadICD10Definition];
+        [self loadICD10Definition];
     }
     
     
@@ -156,7 +156,7 @@
                                         proc6.parent = proc5;
                                         
                                         NSLog(@"code = %@", code);
-//                                        [currentContext MR_save];
+                                        [currentContext MR_save];
                                         [arrProc6 addObject:proc6];
                                     }
                                 }
@@ -309,7 +309,7 @@
     NSString *use;
     NSString *see;
     
-    ICD10Procedure *code;
+    NSString *codes;
     ICD10Procedure *useCode;
     ICD10Procedure *seeCode;
     
@@ -333,6 +333,11 @@
         else if ([child.tagName isEqualToString:@"term"])
         {
             [arrTerms addObject:[self findIndexInElement:child]];
+        }
+        else if ([child.tagName isEqualToString:@"code"] ||
+                 [child.tagName isEqualToString:@"codes"])
+        {
+            codes = [[child firstChild] content];
         }
     }
     
@@ -362,6 +367,7 @@
         index.useCode = useCode;
         index.see = see;
         index.seeCode = seeCode;
+        index.codes = codes;
         index.version = @"2014";
 
         if (index.title)
@@ -406,6 +412,25 @@
     }
     
     return proc;
+}
+
+- (void) loadICD10Definition
+{
+    NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/icd10pcs_definitions_2014.xml"];
+    TFHpple *parser = [self parseFile:path];
+    
+    for (TFHppleElement *elemSection in [self elementsWithPath:@"//section" inParser:parser])
+    {
+        ICD10Procedure *proc = [ICD10Procedure MR_findFirstByAttribute:@"code" withValue:[elemSection objectForKey:@"code"]];
+        
+        for (TFHppleElement *elemAxis in elemSection.children)
+        {
+            for (TFHppleElement *elemTerms in elemAxis.children)
+            {
+                
+            }
+        }
+    }
 }
 
 #pragma mark - general helper methods

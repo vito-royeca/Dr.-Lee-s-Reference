@@ -184,16 +184,16 @@
         <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
     </entity>
     <entity name="ICD10ProcedureIndex" representedClassName="ICD10ProcedureIndex" syncable="YES">
+        <attribute name="codes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="see" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titleInitial" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="use" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10ProcedureIndex" inverseName="parent" inverseEntity="ICD10ProcedureIndex" syncable="YES"/>
-        <relationship name="code" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10ProcedureIndex" inverseName="children" inverseEntity="ICD10ProcedureIndex" syncable="YES"/>
-        <relationship name="seeCode" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10Procedure" syncable="YES"/>
-        <relationship name="useCode" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="seeCode" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="useCode" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="ICD10Procedure" syncable="YES"/>
     </entity>
     <elements>
         <element name="DictionarySynonym" positionX="0" positionY="0" width="128" height="88"/>
@@ -217,6 +217,6 @@
         <element name="ICD10DiagnosisNeoplasm" positionX="90" positionY="198" width="128" height="210"/>
         <element name="ICD10Procedure" positionX="108" positionY="207" width="128" height="178"/>
         <element name="ICD10ProcedureDefinition" positionX="63" positionY="162" width="128" height="133"/>
-        <element name="ICD10ProcedureIndex" positionX="72" positionY="171" width="128" height="195"/>
+        <element name="ICD10ProcedureIndex" positionX="72" positionY="171" width="128" height="193"/>
     </elements>
 </model>
