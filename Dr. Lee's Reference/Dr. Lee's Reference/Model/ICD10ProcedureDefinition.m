@@ -16,7 +16,6 @@
 @dynamic explanation;
 @dynamic includes;
 @dynamic version;
-@dynamic character;
-@dynamic section;
+@dynamic procedure;
 
 @end

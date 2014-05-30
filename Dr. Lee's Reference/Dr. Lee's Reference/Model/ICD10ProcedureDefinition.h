@@ -17,7 +17,6 @@
 @property (nonatomic, retain) NSString * explanation;
 @property (nonatomic, retain) NSString * includes;
 @property (nonatomic, retain) NSString * version;
-@property (nonatomic, retain) ICD10Procedure *character;
-@property (nonatomic, retain) ICD10Procedure *section;
+@property (nonatomic, retain) ICD10Procedure *procedure;
 
 @end

@@ -180,8 +180,7 @@
         <attribute name="explanation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="includes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
-        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
+        <relationship name="procedure" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ICD10Procedure" syncable="YES"/>
     </entity>
     <entity name="ICD10ProcedureIndex" representedClassName="ICD10ProcedureIndex" syncable="YES">
         <attribute name="codes" optional="YES" attributeType="String" syncable="YES"/>
@@ -216,7 +215,7 @@
         <element name="ICD10DiagnosisIndex" positionX="72" positionY="189" width="128" height="165"/>
         <element name="ICD10DiagnosisNeoplasm" positionX="90" positionY="198" width="128" height="210"/>
         <element name="ICD10Procedure" positionX="108" positionY="207" width="128" height="178"/>
-        <element name="ICD10ProcedureDefinition" positionX="63" positionY="162" width="128" height="133"/>
+        <element name="ICD10ProcedureDefinition" positionX="63" positionY="162" width="128" height="120"/>
         <element name="ICD10ProcedureIndex" positionX="72" positionY="171" width="128" height="193"/>
     </elements>
 </model>

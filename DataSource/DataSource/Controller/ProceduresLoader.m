@@ -419,16 +419,90 @@
     NSString *path = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Data/icd10pcs_definitions_2014.xml"];
     TFHpple *parser = [self parseFile:path];
     
+    NSMutableString *code = [[NSMutableString alloc] init];
+    
     for (TFHppleElement *elemSection in [self elementsWithPath:@"//section" inParser:parser])
     {
-        ICD10Procedure *proc = [ICD10Procedure MR_findFirstByAttribute:@"code" withValue:[elemSection objectForKey:@"code"]];
+        NSString *code =  [elemSection objectForKey:@"code"];
         
         for (TFHppleElement *elemAxis in elemSection.children)
         {
+            int pos = [[elemAxis objectForKey:@"code"] intValue];
+            NSString *title;
+            
             for (TFHppleElement *elemTerms in elemAxis.children)
             {
-                
+                if ([elemTerms.tagName isEqualToString:@"terms"])
+                {
+                    title = [[elemTerms firstChild] content];
+                }
+                else if ([elemTerms.tagName isEqualToString:@"terms"])
+                {
+                    NSMutableString *titles = [[NSMutableString alloc] init];
+                    NSMutableString *definitions = [[NSMutableString alloc] init];
+                    NSMutableString *explanations = [[NSMutableString alloc] init];
+                    NSMutableString *includes = [[NSMutableString alloc] init];
+                    
+                    for (TFHppleElement *elem in elemTerms.children)
+                    {
+                        NSString *content = [[elem firstChild] content];
+                        
+                        if ([elemTerms.tagName isEqualToString:@"title"])
+                        {
+                            [titles appendFormat:@"%@%@", titles.length > 0 ? COMPOUND_SEPARATOR : @"", content];
+                            
+                        }
+                        else if ([elemTerms.tagName isEqualToString:@"definition"])
+                        {
+                            [definitions appendFormat:@"%@%@", titles.length > 0 ? COMPOUND_SEPARATOR : @"", content];
+                        }
+                        else if ([elemTerms.tagName isEqualToString:@"explanation"])
+                        {
+                            [explanations appendFormat:@"%@%@", titles.length > 0 ? COMPOUND_SEPARATOR : @"", content];
+                        }
+                        else if ([elemTerms.tagName isEqualToString:@"includes"])
+                        {
+                            [includes appendFormat:@"%@%@", titles.length > 0 ? COMPOUND_SEPARATOR : @"", content];
+                        }
+                    }
+                }
             }
+            
+            
+            
+            NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"%K == %@", @"code", code];
+            NSPredicate *predicate2;
+            
+            switch (pos)
+            {
+                case 3:
+                {
+                    predicate2 = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"code", code];
+                    break;
+                }
+                case 4:
+                {
+                    break;
+                }
+                case 5:
+                {
+                    break;
+                }
+                case 6:
+                {
+                    break;
+                }
+                case 7:
+                {
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+            
+            
         }
     }
 }
