@@ -1,0 +1,6 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/HMSegmentedControl" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/MagicalRecord" "${PODS_ROOT}/Headers/Public/RATreeView"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/HMSegmentedControl" -isystem "${PODS_ROOT}/Headers/Public/MBProgressHUD" -isystem "${PODS_ROOT}/Headers/Public/MagicalRecord" -isystem "${PODS_ROOT}/Headers/Public/RATreeView"
+OTHER_LDFLAGS = -ObjC -l"Pods-Dr. Lee's Reference-AFNetworking" -l"Pods-Dr. Lee's Reference-HMSegmentedControl" -l"Pods-Dr. Lee's Reference-MBProgressHUD" -l"Pods-Dr. Lee's Reference-MagicalRecord" -l"Pods-Dr. Lee's Reference-RATreeView" -framework "CoreData" -framework "CoreGraphics" -framework "MobileCoreServices" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration"
+OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+PODS_ROOT = ${SRCROOT}/Pods

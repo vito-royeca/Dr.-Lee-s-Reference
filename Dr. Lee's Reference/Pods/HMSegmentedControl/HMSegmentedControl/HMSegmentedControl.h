@@ -13,17 +13,30 @@ typedef void (^IndexChangeBlock)(NSInteger index);
 typedef enum {
     HMSegmentedControlSelectionStyleTextWidthStripe, // Indicator width will only be as big as the text width
     HMSegmentedControlSelectionStyleFullWidthStripe, // Indicator width will fill the whole segment
-    HMSegmentedControlSelectionStyleBox
+    HMSegmentedControlSelectionStyleBox, // A rectangle that covers the whole segment
+    HMSegmentedControlSelectionStyleArrow // An arrow in the middle of the segment pointing up or down depending on `HMSegmentedControlSelectionIndicatorLocation`
 } HMSegmentedControlSelectionStyle;
 
 typedef enum {
     HMSegmentedControlSelectionIndicatorLocationUp,
-    HMSegmentedControlSelectionIndicatorLocationDown
+    HMSegmentedControlSelectionIndicatorLocationDown,
+	HMSegmentedControlSelectionIndicatorLocationNone // No selection indicator
 } HMSegmentedControlSelectionIndicatorLocation;
 
+typedef enum {
+    HMSegmentedControlSegmentWidthStyleFixed, // Segment width is fixed
+    HMSegmentedControlSegmentWidthStyleDynamic, // Segment width will only be as big as the text width (including inset)
+} HMSegmentedControlSegmentWidthStyle;
+
 enum {
-    HMSegmentedControlNoSegment = -1   // segment index for no selected segment
+    HMSegmentedControlNoSegment = -1   // Segment index for no selected segment
 };
+
+typedef enum {
+    HMSegmentedControlTypeText,
+    HMSegmentedControlTypeImages,
+	HMSegmentedControlTypeTextImages
+} HMSegmentedControlType;
 
 @interface HMSegmentedControl : UIControl
 
@@ -74,11 +87,32 @@ enum {
 @property (nonatomic, strong) UIColor *selectionIndicatorColor;
 
 /*
+ Opacity for the seletion inficator box.
+ 
+ Default is 0.2
+ */
+@property (nonatomic) CGFloat selectionIndicatorBoxOpacity;
+
+/*
+ Specifies the style of the control
+ 
+ Default is `HMSegmentedControlTypeText`
+ */
+@property (nonatomic, assign) HMSegmentedControlType type;
+
+/*
  Specifies the style of the selection indicator.
  
  Default is `HMSegmentedControlSelectionStyleTextWidthStripe`
  */
 @property (nonatomic, assign) HMSegmentedControlSelectionStyle selectionStyle;
+
+/*
+ Specifies the style of the segment's width.
+ 
+ Default is `HMSegmentedControlSegmentWidthStyleFixed`
+ */
+@property (nonatomic, assign) HMSegmentedControlSegmentWidthStyle segmentWidthStyle;
 
 /*
  Specifies the location of the selection indicator.
@@ -92,8 +126,21 @@ enum {
  
  When set to YES, segment width will be automatically set to the width of the biggest segment's text or image,
  otherwise it will be equal to the width of the control's frame divided by the number of segments.
+ 
+ As of v 1.4 this is no longer needed. The control will manage scrolling automatically based on tabs sizes.
  */
-@property(nonatomic, getter = isScrollEnabled) BOOL scrollEnabled;
+@property(nonatomic, getter = isScrollEnabled) BOOL scrollEnabled DEPRECATED_ATTRIBUTE;
+
+/*
+ Default is YES. Set to NO to deny scrolling by dragging the scrollView by the user.
+ */
+@property(nonatomic, getter = isUserDraggable) BOOL userDraggable;
+
+/*
+ Default is YES. Set to NO to deny any touch events by the user.
+ */
+@property(nonatomic, getter = isTouchEnabled) BOOL touchEnabled;
+
 
 /*
  Index of the currently selected segment.
@@ -108,14 +155,35 @@ enum {
 @property (nonatomic, readwrite) CGFloat selectionIndicatorHeight;
 
 /*
+ Edge insets for the selection indicator.
+ NOTE: This does not affect the bounding box of HMSegmentedControlSelectionStyleBox
+ 
+ When HMSegmentedControlSelectionIndicatorLocationUp is selected, bottom edge insets are not used
+ 
+ When HMSegmentedControlSelectionIndicatorLocationDown is selected, top edge insets are not used
+ 
+ Defaults are top: 0.0f
+             left: 0.0f
+           bottom: 0.0f
+            right: 0.0f
+ */
+@property (nonatomic, readwrite) UIEdgeInsets selectionIndicatorEdgeInsets;
+
+/*
  Inset left and right edges of segments. Only effective when `scrollEnabled` is set to YES.
  
  Default is UIEdgeInsetsMake(0, 5, 0, 5)
  */
 @property (nonatomic, readwrite) UIEdgeInsets segmentEdgeInset;
 
+/*
+ Default is YES. Set to NO to disable animation during user selection.
+ */
+@property (nonatomic) BOOL shouldAnimateUserSelection;
+
 - (id)initWithSectionTitles:(NSArray *)sectiontitles;
 - (id)initWithSectionImages:(NSArray *)sectionImages sectionSelectedImages:(NSArray *)sectionSelectedImages;
+- (instancetype)initWithSectionImages:(NSArray *)sectionImages sectionSelectedImages:(NSArray *)sectionSelectedImages titlesForSections:(NSArray *)sectiontitles;
 - (void)setSelectedSegmentIndex:(NSUInteger)index animated:(BOOL)animated;
 - (void)setIndexChangeBlock:(IndexChangeBlock)indexChangeBlock;
 

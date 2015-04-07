@@ -1,5 +1,0 @@
-#include "Pods-Dr. Lee's Reference-MagicalRecord.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/MagicalRecord" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/HMSegmentedControl" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/MagicalRecord" "${PODS_ROOT}/Headers/RATreeView"
-OTHER_LDFLAGS = -ObjC ${PODS_DR__LEE_S_REFERENCE_MAGICALRECORD_OTHER_LDFLAGS}
-PODS_ROOT = ${SRCROOT}
