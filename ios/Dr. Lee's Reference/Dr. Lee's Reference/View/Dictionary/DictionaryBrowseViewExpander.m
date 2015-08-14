@@ -118,7 +118,7 @@
 
 -(NSArray*) fetchByAlphaInitial:(NSString*) initial
 {
-    NSManagedObjectContext *moc = [NSManagedObjectContext MR_defaultContext];
+    NSManagedObjectContext *moc = nil; //[NSManagedObjectContext MR_defaultContext];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"termInitial", initial];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
@@ -150,7 +150,7 @@
 
 -(NSArray*) fetchByFirst:(DictionaryTerm*) first andLast:(DictionaryTerm*) last
 {
-    NSManagedObjectContext *moc = [NSManagedObjectContext MR_defaultContext];
+    NSManagedObjectContext *moc = nil; //[NSManagedObjectContext MR_defaultContext];
 //    NSString *regex = [NSString stringWithFormat:@"(?i)(%@).*|(?i)(%@).*",
 //                       first.term.length <5 ? first.term : [first.term substringToIndex:5],
 //                       last.term.length <5 ? last.term : [last.term substringToIndex:5]];

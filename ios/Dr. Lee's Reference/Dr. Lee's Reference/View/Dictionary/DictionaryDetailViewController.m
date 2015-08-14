@@ -232,7 +232,7 @@
                 
                 if (type)
                 {
-                    terms = [DictionaryTerm MR_findByAttribute:@"term" withValue:query];
+//                    terms = [DictionaryTerm MR_findByAttribute:@"term" withValue:query];
                 }
                 else
                 {

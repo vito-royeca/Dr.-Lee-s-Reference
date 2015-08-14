@@ -10,7 +10,7 @@
 #import "HMSegmentedControl.h"
 #import "MBProgressHUD.h"
 #import "RADataObject.h"
-#import "RATreeView.h"
+#import "RATreeView/RATreeView.h"
 
 @protocol BrowseViewExpander <NSObject>
 
@@ -18,7 +18,7 @@
 -(NSArray*) treeStructureForItem:(id)item;
 
 @optional
--(NSString*) infoPathForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
+//-(NSString*) infoPathForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo;
 
 @end
 

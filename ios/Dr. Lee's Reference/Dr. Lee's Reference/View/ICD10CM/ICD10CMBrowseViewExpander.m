@@ -167,7 +167,7 @@
         if (!object.children || object.children.count == 0)
         {
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
-            children = [ICD10Diagnosis MR_findAllSortedBy:@"first" ascending:YES withPredicate:predicate];
+//            children = [ICD10Diagnosis MR_findAllSortedBy:@"first" ascending:YES withPredicate:predicate];
         }
     }
     else if ([name isEqualToString:@"Neoplasms"])
@@ -175,7 +175,7 @@
         if (!object.children || object.children.count == 0)
         {
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"parent = nil"];
-            children = [ICD10DiagnosisNeoplasm MR_findAllSortedBy:@"title" ascending:YES withPredicate:predicate];
+//            children = [ICD10DiagnosisNeoplasm MR_findAllSortedBy:@"title" ascending:YES withPredicate:predicate];
         }
     }
     else if ([name isEqualToString:@"Drugs"])
@@ -238,27 +238,27 @@
                 NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"parent = nil"];
                 NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"substance", name];
                 
-                children = [ICD10DiagnosisDrug MR_findAllSortedBy:@"substance"
-                                                        ascending:YES
-                                                    withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
+//                children = [ICD10DiagnosisDrug MR_findAllSortedBy:@"substance"
+//                                                        ascending:YES
+//                                                    withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
             }
             else if ([parent isEqualToString:@"Index"])
             {
                 NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"parent = nil"];
                 NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"title", name];
                 
-                children = [ICD10DiagnosisIndex MR_findAllSortedBy:@"title"
-                                                         ascending:YES
-                                                     withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
+//                children = [ICD10DiagnosisIndex MR_findAllSortedBy:@"title"
+//                                                         ascending:YES
+//                                                     withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
             }
             else if ([parent isEqualToString:@"Extended Index"])
             {
                 NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"parent = nil"];
                 NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"%K BEGINSWITH[cd] %@", @"title", name];
                 
-                children = [ICD10DiagnosisEIndex MR_findAllSortedBy:@"title"
-                                                          ascending:YES
-                                                      withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
+//                children = [ICD10DiagnosisEIndex MR_findAllSortedBy:@"title"
+//                                                          ascending:YES
+//                                                      withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:@[predicate1, predicate2]]];
             }
         }
         }
@@ -267,23 +267,23 @@
     return [self constructTreeFromParent:object andChildren:children];
 }
 
--(NSString*) infoPathForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-{
-    if (treeNodeInfo.treeDepthLevel == 0)
-    {
-        RADataObject *object = item;
-        NSString *name = object.name;
-        
-        if ([name isEqualToString:@"Tabular"])
-        {
-            return [[NSBundle mainBundle] pathForResource:@"icd10cmTabular" ofType:@"html"];
-        }
-        else if ([name isEqualToString:@"Neoplasms"])
-        {
-            return [[NSBundle mainBundle] pathForResource:@"icd10cmNeoplasms" ofType:@"html"];
-        }
-    }
-    return nil;
-}
+//-(NSString*) infoPathForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    if (treeNodeInfo.treeDepthLevel == 0)
+//    {
+//        RADataObject *object = item;
+//        NSString *name = object.name;
+//        
+//        if ([name isEqualToString:@"Tabular"])
+//        {
+//            return [[NSBundle mainBundle] pathForResource:@"icd10cmTabular" ofType:@"html"];
+//        }
+//        else if ([name isEqualToString:@"Neoplasms"])
+//        {
+//            return [[NSBundle mainBundle] pathForResource:@"icd10cmNeoplasms" ofType:@"html"];
+//        }
+//    }
+//    return nil;
+//}
 
 @end

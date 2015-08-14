@@ -19,19 +19,19 @@
     return tree;
 }
 
--(NSArray*) treeStructureForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-{
-    NSMutableArray *tree = [[NSMutableArray alloc] init];
-    
-    switch (treeNodeInfo.treeDepthLevel)
-    {
-        case 0:
-        {
-            break;
-        }
-    }
-    
-    return tree;
-}
+//-(NSArray*) treeStructureForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    NSMutableArray *tree = [[NSMutableArray alloc] init];
+//    
+//    switch (treeNodeInfo.treeDepthLevel)
+//    {
+//        case 0:
+//        {
+//            break;
+//        }
+//    }
+//    
+//    return tree;
+//}
 
 @end

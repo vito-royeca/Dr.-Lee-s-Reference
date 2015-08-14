@@ -347,6 +347,17 @@ typedef enum RATreeViewRowAnimation {
 - (BOOL)treeView:(RATreeView *)treeView shouldIndentWhileEditingRowForItem:(id)item;
 
 
+/**
+ *  Asks the data source for the edit actions for an item. This is an iOS 8 only method.
+ *
+ *  @praram treeView	The tree-view object requesting this information.
+ *  @param item			An item identifying a cell in the tree view.
+ *
+ *  @return An NSArray of `UITableViewRowAction` objects to show for editing.
+ */
+- (NSArray *)treeView:(RATreeView *)treeView editActionsForItem:(id)item;
+
+
 ///------------------------------------------------
 /// @name Tracking the Removal of Views
 ///------------------------------------------------
@@ -467,10 +478,14 @@ typedef enum RATreeViewRowAnimation {
 /// @name Expanding and Collapsing Rows
 ///------------------------------------------------
 
+- (void)expandRowForItem:(id)item expandChildren:(BOOL)expandChildren withRowAnimation:(RATreeViewRowAnimation)animation;
 - (void)expandRowForItem:(id)item withRowAnimation:(RATreeViewRowAnimation)animation;
-- (void)collapseRowForItem:(id)item withRowAnimation:(RATreeViewRowAnimation)animation;
 - (void)expandRowForItem:(id)item;
+- (void)collapseRowForItem:(id)item collapseChildren:(BOOL)collapseChildren withRowAnimation:(RATreeViewRowAnimation)animation;
+- (void)collapseRowForItem:(id)item withRowAnimation:(RATreeViewRowAnimation)animation;
 - (void)collapseRowForItem:(id)item;
+@property (nonatomic) BOOL expandsChildRowsWhenRowExpands;
+@property (nonatomic) BOOL collapsesChildRowsWhenRowCollapses;
 @property (nonatomic) RATreeViewRowAnimation rowsExpandingAnimation;
 @property (nonatomic) RATreeViewRowAnimation rowsCollapsingAnimation;
 

@@ -65,7 +65,7 @@
     self.segmentedControl.segmentEdgeInset = UIEdgeInsetsMake(0, 10, 0, 10);
     self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
     self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-    self.segmentedControl.scrollEnabled = YES;
+//    self.segmentedControl.scrollEnabled = YES;
     self.segmentedControl.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     self.segmentedControl.frame = frame;
     [self.segmentedControl addTarget:self
@@ -88,7 +88,7 @@
     self.treeView.separatorStyle = RATreeViewCellSeparatorStyleSingleLine;
     self.treeView.backgroundColor = [UIColor greenColor];
     [self.treeView reloadData];
-    [self.treeView setBackgroundColor:UIColorFromRGB(0xF7F7F7)];
+//    [self.treeView setBackgroundColor:UIColorFromRGB(0xF7F7F7)];
     
     if (_showSegmentedControl)
     {
@@ -141,121 +141,121 @@
 }
 
 #pragma mark - RATreeViewDelegate methods
-- (CGFloat)treeView:(RATreeView *)treeView heightForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-{
-    return 64;
-}
+//- (CGFloat)treeView:(RATreeView *)treeView heightForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    return 64;
+//}
+//
+//- (NSInteger)treeView:(RATreeView *)treeView indentationLevelForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    return treeNodeInfo.treeDepthLevel * treeNodeInfo.treeDepthLevel;
+//}
+//
+//- (BOOL)treeView:(RATreeView *)treeView shouldExpandItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    return YES;
+//}
 
-- (NSInteger)treeView:(RATreeView *)treeView indentationLevelForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-{
-    return treeNodeInfo.treeDepthLevel * treeNodeInfo.treeDepthLevel;
-}
+//- (BOOL)treeView:(RATreeView *)treeView shouldItemBeExpandedAfterDataReload:(id)item treeDepthLevel:(NSInteger)treeDepthLevel
+//{
+//    if ([item isEqual:self.expanded])
+//    {
+//        return YES;
+//    }
+//    
+//    return NO;
+//}
 
-- (BOOL)treeView:(RATreeView *)treeView shouldExpandItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-{
-    return YES;
-}
-
-- (BOOL)treeView:(RATreeView *)treeView shouldItemBeExpandedAfterDataReload:(id)item treeDepthLevel:(NSInteger)treeDepthLevel
-{
-    if ([item isEqual:self.expanded])
-    {
-        return YES;
-    }
-    
-    return NO;
-}
-
-- (void)treeView:(RATreeView *)treeView willDisplayCell:(UITableViewCell *)cell forItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-{
-    RADataObject *object = item;
-    
-    if (treeNodeInfo.treeDepthLevel == 0)
-    {
-        cell.backgroundColor = UIColorFromRGB(0xF7F7F7);
-    }
-    else
-    {
-        if (treeNodeInfo.treeDepthLevel % 2 == 0)
-        {
-            cell.backgroundColor = UIColorFromRGB(0xD1EEFC);
-        }
-        else
-        {
-            cell.backgroundColor = UIColorFromRGB(0xE0F8D8);
-        }
-    }
-    
-}
-
-- (void)treeView:(RATreeView *)treeView didSelectRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-{
-    RADataObject *object = item;
-    self.expanded = object;
-    __block NSArray *children;
-    
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:hud];
-    hud.delegate = self;
-    
-    [hud showAnimated:YES whileExecutingBlock:
-    ^{
-        children = [self.delegate treeStructureForItem:object];
-    }
-    completionBlock:
-    ^{
-        if (treeNodeInfo.treeDepthLevel == 2 && children.count > 0)
-        {
-            BrowseViewController *details = [[BrowseViewController alloc] initShowSegmentedControl:NO];
-            details.data = children;
-            details.delegate = self.delegate;
-            details.mainTitle = object.name;
-            [self.navigationController pushViewController:details animated:NO];
-        }
-        else
-        {
-            dispatch_async(dispatch_get_main_queue(),
-            ^{
-                object.children = children;
-                [self.treeView reloadData];
-            });
-        }
-    }];
-}
-
-- (void)treeView:(RATreeView *)treeView accessoryButtonTappedForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-{
-    NSString *htmlPath = [self.delegate infoPathForItem:item treeNodeInfo:treeNodeInfo];
-    
-    if (htmlPath)
-    {
-        InfoViewController *infoView = [[InfoViewController alloc] init];
-        infoView.htmlPath = htmlPath;
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:infoView];
-        [self.navigationController presentViewController:navController animated:NO completion:nil];
-    }
-}
+//- (void)treeView:(RATreeView *)treeView willDisplayCell:(UITableViewCell *)cell forItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    RADataObject *object = item;
+//    
+//    if (treeNodeInfo.treeDepthLevel == 0)
+//    {
+//        cell.backgroundColor = UIColorFromRGB(0xF7F7F7);
+//    }
+//    else
+//    {
+//        if (treeNodeInfo.treeDepthLevel % 2 == 0)
+//        {
+//            cell.backgroundColor = UIColorFromRGB(0xD1EEFC);
+//        }
+//        else
+//        {
+//            cell.backgroundColor = UIColorFromRGB(0xE0F8D8);
+//        }
+//    }
+//    
+//}
+//
+//- (void)treeView:(RATreeView *)treeView didSelectRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    RADataObject *object = item;
+//    self.expanded = object;
+//    __block NSArray *children;
+//    
+//    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+//    [self.view addSubview:hud];
+//    hud.delegate = self;
+//    
+//    [hud showAnimated:YES whileExecutingBlock:
+//    ^{
+//        children = [self.delegate treeStructureForItem:object];
+//    }
+//    completionBlock:
+//    ^{
+//        if (treeNodeInfo.treeDepthLevel == 2 && children.count > 0)
+//        {
+//            BrowseViewController *details = [[BrowseViewController alloc] initShowSegmentedControl:NO];
+//            details.data = children;
+//            details.delegate = self.delegate;
+//            details.mainTitle = object.name;
+//            [self.navigationController pushViewController:details animated:NO];
+//        }
+//        else
+//        {
+//            dispatch_async(dispatch_get_main_queue(),
+//            ^{
+//                object.children = children;
+//                [self.treeView reloadData];
+//            });
+//        }
+//    }];
+//}
+//
+//- (void)treeView:(RATreeView *)treeView accessoryButtonTappedForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    NSString *htmlPath = [self.delegate infoPathForItem:item treeNodeInfo:treeNodeInfo];
+//    
+//    if (htmlPath)
+//    {
+//        InfoViewController *infoView = [[InfoViewController alloc] init];
+//        infoView.htmlPath = htmlPath;
+//        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:infoView];
+//        [self.navigationController presentViewController:navController animated:NO completion:nil];
+//    }
+//}
 
 #pragma mark - RATreeViewDataSource
 
-- (UITableViewCell *)treeView:(RATreeView *)treeView cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-{
-    RADataObject *object = item;
-    
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text = object.name;
-    cell.detailTextLabel.text = object.details;
-    cell.detailTextLabel.textColor = [UIColor blackColor];
-    
-    if ([self.delegate respondsToSelector:@selector(infoPathForItem:treeNodeInfo:)])
-    {
-        if ([self.delegate infoPathForItem:item treeNodeInfo:treeNodeInfo])
-        {
-            cell.accessoryType = UITableViewCellAccessoryDetailButton;
-        }
-    }
+//- (UITableViewCell *)treeView:(RATreeView *)treeView cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    RADataObject *object = item;
+//    
+//    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+//    
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.textLabel.text = object.name;
+//    cell.detailTextLabel.text = object.details;
+//    cell.detailTextLabel.textColor = [UIColor blackColor];
+//    
+//    if ([self.delegate respondsToSelector:@selector(infoPathForItem:treeNodeInfo:)])
+//    {
+//        if ([self.delegate infoPathForItem:item treeNodeInfo:treeNodeInfo])
+//        {
+//            cell.accessoryType = UITableViewCellAccessoryDetailButton;
+//        }
+//    }
 
 //    if (!bAccessory)
 //    {
@@ -265,36 +265,36 @@
 //        }
 //    }
     
-    return cell;
-}
+//    return cell;
+//}
 
-- (NSInteger)treeView:(RATreeView *)treeView numberOfChildrenOfItem:(id)item
-{
-    if (item == nil)
-    {
-        return [self.data count];
-    }
-    
-    RADataObject *object = item;
-    return [object.children count];
-}
-
-- (id)treeView:(RATreeView *)treeView child:(NSInteger)index ofItem:(id)item
-{
-    RADataObject *object = item;
-    
-    if (item == nil)
-    {
-        return [self.data objectAtIndex:index];
-    }
-    
-    return [object.children objectAtIndex:index];
-}
-
-- (BOOL)treeView:(RATreeView *)treeView canEditRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
-{
-    return NO;
-}
+//- (NSInteger)treeView:(RATreeView *)treeView numberOfChildrenOfItem:(id)item
+//{
+//    if (item == nil)
+//    {
+//        return [self.data count];
+//    }
+//    
+//    RADataObject *object = item;
+//    return [object.children count];
+//}
+//
+//- (id)treeView:(RATreeView *)treeView child:(NSInteger)index ofItem:(id)item
+//{
+//    RADataObject *object = item;
+//    
+//    if (item == nil)
+//    {
+//        return [self.data objectAtIndex:index];
+//    }
+//    
+//    return [object.children objectAtIndex:index];
+//}
+//
+//- (BOOL)treeView:(RATreeView *)treeView canEditRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+//{
+//    return NO;
+//}
 
 #pragma mark - MBProgressHUDDelegate methods
 - (void)hudWasHidden:(MBProgressHUD *)hud

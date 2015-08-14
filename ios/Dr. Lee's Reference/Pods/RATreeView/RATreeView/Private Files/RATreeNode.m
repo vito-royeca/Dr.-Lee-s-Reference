@@ -18,43 +18,58 @@
 //CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+
 #import "RATreeNode.h"
 
 #import "RATreeNodeItem.h"
 
 
-typedef enum RATreeDepthLevel {
-  RATreeDepthLevelNotInitialized
-} RATreeDepthLevel;
+@interface RATreeNode () {
+  BOOL _expanded;
+}
 
-@interface RATreeNode ()
-
-@property (nonatomic, getter = isExpanded, readwrite) BOOL expanded;
-@property (nonatomic) NSInteger treeDepthLevel;
-
-@property (strong, nonatomic) RATreeNodeItem *lazyItem;
-
-@property (strong, nonatomic) NSArray *descendants;
+@property (nonatomic) BOOL expanded;
+@property (nonatomic, strong) RATreeNodeItem *lazyItem;
+@property (nonatomic, copy) BOOL (^expandedBlock)(id);
 
 @end
 
+
 @implementation RATreeNode
 
-- (id)initWithLazyItem:(RATreeNodeItem *)item expanded:(BOOL)expanded
+- (id)initWithLazyItem:(RATreeNodeItem *)item expandedBlock:(BOOL (^)(id))expandedBlock;
 {
   self = [super init];
   if (self) {
-    _treeDepthLevel = RATreeDepthLevelNotInitialized;
     _lazyItem = item;
-    _expanded = expanded;
+    _expandedBlock = expandedBlock;
   }
   
   return self;
 }
 
+
+#pragma mark -
+
 - (RATreeNodeItem *)item
 {
   return self.lazyItem.item;
+}
+
+- (BOOL)expanded
+{
+  if (self.expandedBlock) {
+    _expanded = self.expandedBlock(self.item);
+    self.expandedBlock = nil;
+  }
+  
+  return _expanded;
+}
+
+- (void)setExpanded:(BOOL)expanded
+{
+  self.expandedBlock = nil;
+  _expanded = expanded;
 }
 
 @end

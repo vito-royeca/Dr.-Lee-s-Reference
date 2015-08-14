@@ -58,12 +58,12 @@ static Database *_me;
 //    MigrationManager *manager = [[MigrationManager alloc] init];
 //    NSLog(@"needs migration? %@", [manager isMigrationNeeded] ? @"YES":@"NO");
     
-    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kDatabaseStore];
+//    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kDatabaseStore];
 }
 
 - (void) closeDb
 {
-    [MagicalRecord cleanUp];
+//    [MagicalRecord cleanUp];
 }
 
 #if defined(_OS_IPHONE) || defined(_OS_IPHONE_SIMULATOR)
@@ -118,7 +118,7 @@ static Database *_me;
         }
     }
 
-    NSManagedObjectContext *moc = [NSManagedObjectContext MR_defaultContext];
+    NSManagedObjectContext *moc = nil;//[NSManagedObjectContext MR_defaultContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"termInitial"
                                                                    ascending:YES];

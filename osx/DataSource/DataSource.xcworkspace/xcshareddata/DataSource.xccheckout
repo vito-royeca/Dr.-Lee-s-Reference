@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7660ADED-BCE6-4C2F-A171-31B5E1BC19D7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DataSource</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>660D3E71C9E58E5C4A23770105F172433B1EFB46</key>
+		<string>https://github.com/jovito-royeca/JJJ.git</string>
+		<key>CF4C21C0F746DE6157585D34F9DAC9BA63E8DF16</key>
+		<string>https://github.com/jovito-royeca/Dr.-Lee-s-Reference.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>osx/DataSource/DataSource.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>660D3E71C9E58E5C4A23770105F172433B1EFB46</key>
+		<string>../../..osx/JJJ</string>
+		<key>CF4C21C0F746DE6157585D34F9DAC9BA63E8DF16</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jovito-royeca/Dr.-Lee-s-Reference.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CF4C21C0F746DE6157585D34F9DAC9BA63E8DF16</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CF4C21C0F746DE6157585D34F9DAC9BA63E8DF16</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Dr.-Lee-s-Reference</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>660D3E71C9E58E5C4A23770105F172433B1EFB46</string>
+			<key>IDESourceControlWCCName</key>
+			<string>JJJ</string>
+		</dict>
+	</array>
+</dict>
+</plist>
