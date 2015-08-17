@@ -1,4 +1,4 @@
-# Dr.-Lee-s-Reference
+# Dr. Lee's Reference
 
 Dr. Lee's Reference is a mobile application of Drugs@FDA, ICD10, and medical terms database.
 
