@@ -60,7 +60,6 @@
 		8C6ACEBD191C998200E4A274 /* DrugsBrowseViewExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6ACEBC191C998200E4A274 /* DrugsBrowseViewExpander.m */; };
 		8C6ACEC0191C9A1300E4A274 /* ICD10CMDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6ACEBF191C9A1300E4A274 /* ICD10CMDetailViewController.m */; };
 		8C784CEF1910CF1E001A9FB1 /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C784CEC1910CF1E001A9FB1 /* database.xcdatamodeld */; };
-		8C9FECE718F280F100714818 /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58264E7A189E95BA00D83B00 /* libJJJ.a */; };
 		8CB91906192B39C100D3E034 /* BrowseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CB91905192B39C100D3E034 /* BrowseTableViewCell.m */; };
 		8CB9190B192B3CBE00D3E034 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 8CB9190A192B3CBE00D3E034 /* style.css */; };
 		8CCAC8131932EB0B00D49010 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CCAC8121932EB0B00D49010 /* play.png */; };
@@ -71,30 +70,6 @@
 		8CEF1E7C18F809C100EAE98E /* DrugBrowseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF1E7B18F809C100EAE98E /* DrugBrowseViewController.m */; };
 		E9F67E2DAFD3466DAB5B6015 /* libPods-Dr. Lee's Reference.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA74D43AEC3403DB9C07229 /* libPods-Dr. Lee's Reference.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		58264E79189E95BA00D83B00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 58264E73189E95BA00D83B00 /* JJJ.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 580E1D4C189E8DDA00336A44;
-			remoteInfo = JJJ;
-		};
-		58264E7B189E95BA00D83B00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 58264E73189E95BA00D83B00 /* JJJ.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 580E1D5C189E8DDB00336A44;
-			remoteInfo = JJJTests;
-		};
-		58264E7D189E95BA00D83B00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 58264E73189E95BA00D83B00 /* JJJ.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 580E1D79189E8F4000336A44;
-			remoteInfo = JJJBundle;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		113383331859A95400CBA6FF /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
@@ -119,7 +94,6 @@
 		2E3ED67B1DAC71EFE5306C52 /* Pods-Dr. Lee's Reference.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dr. Lee's Reference.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dr. Lee's Reference/Pods-Dr. Lee's Reference.debug.xcconfig"; sourceTree = "<group>"; };
 		58264E63189E942C00D83B00 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		58264E65189E943F00D83B00 /* libJJJ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJJJ.a; path = "../../../../../../../../Users/buttmanizer/Library/Developer/Xcode/DerivedData/Dr._Lee's_Reference-czjeuqoykfphysdhxudpnheeuitz/Build/Products/Debug-iphoneos/libJJJ.a"; sourceTree = "<group>"; };
-		58264E73189E95BA00D83B00 /* JJJ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JJJ.xcodeproj; path = ../jjj/JJJ/JJJ.xcodeproj; sourceTree = "<group>"; };
 		5836F830189F2B3E00BE8DF3 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		5836F831189F2B3E00BE8DF3 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		5892E0B218F5862F004160E0 /* DictionaryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictionaryDetailViewController.h; sourceTree = "<group>"; };
@@ -222,7 +196,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CCAC81A1932EC6800D49010 /* AVFoundation.framework in Frameworks */,
-				8C9FECE718F280F100714818 /* libJJJ.a in Frameworks */,
 				113DE87E1843D8420080B038 /* CoreGraphics.framework in Frameworks */,
 				113DE8821843D8420080B038 /* CoreData.framework in Frameworks */,
 				113DE8801843D8420080B038 /* UIKit.framework in Frameworks */,
@@ -312,7 +285,6 @@
 		113DE86F1843D8420080B038 = {
 			isa = PBXGroup;
 			children = (
-				58264E73189E95BA00D83B00 /* JJJ.xcodeproj */,
 				113DE8831843D8420080B038 /* Dr. Lee's Reference */,
 				113DE87A1843D8420080B038 /* Frameworks */,
 				113DE8791843D8420080B038 /* Products */,
@@ -381,16 +353,6 @@
 				8C12B19E1907CF530092F82B /* database.sqlite */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		58264E74189E95BA00D83B00 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				58264E7A189E95BA00D83B00 /* libJJJ.a */,
-				58264E7C189E95BA00D83B00 /* JJJTests.xctest */,
-				58264E7E189E95BA00D83B00 /* JJJBundle.bundle */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		5892E0AC18F585AC004160E0 /* Dictionary */ = {
@@ -557,42 +519,12 @@
 			mainGroup = 113DE86F1843D8420080B038;
 			productRefGroup = 113DE8791843D8420080B038 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 58264E74189E95BA00D83B00 /* Products */;
-					ProjectRef = 58264E73189E95BA00D83B00 /* JJJ.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				113DE8771843D8420080B038 /* Dr. Lee's Reference */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		58264E7A189E95BA00D83B00 /* libJJJ.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libJJJ.a;
-			remoteRef = 58264E79189E95BA00D83B00 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		58264E7C189E95BA00D83B00 /* JJJTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = JJJTests.xctest;
-			remoteRef = 58264E7B189E95BA00D83B00 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		58264E7E189E95BA00D83B00 /* JJJBundle.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = JJJBundle.bundle;
-			remoteRef = 58264E7D189E95BA00D83B00 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		113DE8761843D8420080B038 /* Resources */ = {

@@ -139,26 +139,8 @@
 		8C6AC7DE1B7E26930018438C /* ICD10ProcedureDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AC7C71B7E26930018438C /* ICD10ProcedureDefinition.m */; };
 		8C6AC7DF1B7E26930018438C /* ICD10ProcedureIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AC7C91B7E26930018438C /* ICD10ProcedureIndex.m */; };
 		8C6AC7E31B7E26B90018438C /* database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AC7E01B7E26B90018438C /* database.xcdatamodeld */; };
-		8C6AC7F61B7E2AD70018438C /* libJJJ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C6AC7EB1B7E27CF0018438C /* libJJJ.a */; };
 		B631D180A81C48A49AE71C6D /* libPods-DataSource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D306F727684247149BF7310D /* libPods-DataSource.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		8C6AC7EA1B7E27CF0018438C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C6AC7E41B7E27CE0018438C /* JJJ.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 580E1D4C189E8DDA00336A44;
-			remoteInfo = JJJ;
-		};
-		8C6AC7F21B7E2A250018438C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C6AC7E41B7E27CE0018438C /* JJJ.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 580E1D4B189E8DDA00336A44;
-			remoteInfo = JJJ;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		11322DDE1857A2E30007E7B9 /* CopyFiles */ = {
@@ -490,7 +472,6 @@
 		8C6AC7C91B7E26930018438C /* ICD10ProcedureIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ICD10ProcedureIndex.m; path = "../../../ios/Dr. Lee's Reference/Dr. Lee's Reference/Model/ICD10ProcedureIndex.m"; sourceTree = "<group>"; };
 		8C6AC7E11B7E26B90018438C /* 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2.xcdatamodel; sourceTree = "<group>"; };
 		8C6AC7E21B7E26B90018438C /* 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 3.xcdatamodel; sourceTree = "<group>"; };
-		8C6AC7E41B7E27CE0018438C /* JJJ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JJJ.xcodeproj; path = ../JJJ/JJJ/JJJ.xcodeproj; sourceTree = "<group>"; };
 		D306F727684247149BF7310D /* libPods-DataSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataSource.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -499,7 +480,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C6AC7F61B7E2AD70018438C /* libJJJ.a in Frameworks */,
 				11322DF71857A3070007E7B9 /* libxml2.dylib in Frameworks */,
 				11322DE41857A2E30007E7B9 /* CoreData.framework in Frameworks */,
 				11322DE61857A2E30007E7B9 /* Foundation.framework in Frameworks */,
@@ -522,7 +502,6 @@
 		11322DD71857A2E30007E7B9 = {
 			isa = PBXGroup;
 			children = (
-				8C6AC7E41B7E27CE0018438C /* JJJ.xcodeproj */,
 				11322DE71857A2E30007E7B9 /* DataSource */,
 				11322DE21857A2E30007E7B9 /* Frameworks */,
 				11322DE11857A2E30007E7B9 /* Products */,
@@ -943,14 +922,6 @@
 			path = "ProcedureGEMs-2014";
 			sourceTree = "<group>";
 		};
-		8C6AC7E51B7E27CE0018438C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8C6AC7EB1B7E27CF0018438C /* libJJJ.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -967,7 +938,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				8C6AC7F31B7E2A250018438C /* PBXTargetDependency */,
 			);
 			name = DataSource;
 			productName = DataSource;
@@ -993,28 +963,12 @@
 			mainGroup = 11322DD71857A2E30007E7B9;
 			productRefGroup = 11322DE11857A2E30007E7B9 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8C6AC7E51B7E27CE0018438C /* Products */;
-					ProjectRef = 8C6AC7E41B7E27CE0018438C /* JJJ.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				11322DDF1857A2E30007E7B9 /* DataSource */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		8C6AC7EB1B7E27CF0018438C /* libJJJ.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libJJJ.a;
-			remoteRef = 8C6AC7EA1B7E27CF0018438C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		7B8B3A124DCD48B58C622501 /* Copy Pods Resources */ = {
@@ -1088,14 +1042,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8C6AC7F31B7E2A250018438C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = JJJ;
-			targetProxy = 8C6AC7F21B7E2A250018438C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		11322DF11857A2E40007E7B9 /* Debug */ = {
